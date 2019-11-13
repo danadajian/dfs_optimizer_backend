@@ -46,16 +46,16 @@ class DateOperationsTest {
     }
 
     @Test
-    void shouldReturnThursdayDateStringAfterMonday() {
-        testCal.add(Calendar.DATE, 1);
+    void shouldReturnThursdayDateStringOnTuesday() {
+        testCal.add(Calendar.DATE, -1);
         when(dateOperations.getTodaysDate()).thenReturn(testCal);
         String result = dateOperations.getDfsDateString(Calendar.THURSDAY);
         assertEquals("2019-11-14", result);
     }
 
     @Test
-    void shouldReturnSundayDateStringAfterMonday() {
-        testCal.add(Calendar.DATE, 0);
+    void shouldReturnSundayDateStringOnTuesday() {
+        testCal.add(Calendar.DATE, -1);
         when(dateOperations.getTodaysDate()).thenReturn(testCal);
         String result = dateOperations.getDfsDateString(Calendar.SUNDAY);
         assertEquals("2019-11-17", result);

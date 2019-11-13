@@ -7,6 +7,16 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 public class MakeHttpRequest {
+    private int statusCode;
+
+    MakeHttpRequest() {
+        this.statusCode = 200;
+    }
+
+    public int getStatusCode() {
+        return statusCode;
+    }
+
     String HttpRequest(String url) {
         StringBuilder response = new StringBuilder();
         try {
@@ -21,7 +31,7 @@ public class MakeHttpRequest {
             }
             in.close();
         } catch (IOException e) {
-            throw new ApiException(e);
+            statusCode = extractErrorCodeFromString(e.toString());
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -36,36 +46,5 @@ public class MakeHttpRequest {
         int errorCodeIndex = errorMessage.indexOf(errorCodeText) + errorCodeText.length();
         String messageSubString = errorMessage.substring(errorCodeIndex);
         return Integer.parseInt(messageSubString.split(" ")[0]);
-    }
-
-    public class ApiException extends RuntimeException {
-        String errorMessage;
-
-        ApiException(Throwable e) {
-            this.errorMessage = e.toString();
-        }
-
-        public int getErrorCode() {
-            return extractErrorCodeFromString(errorMessage);
-        }
-
-        public String getErrorMessage(int errorCode) {
-            String errorMessage;
-            switch(errorCode) {
-                case 403:
-                    errorMessage = "Access denied.";
-                    break;
-                case 404:
-                    errorMessage = "Data not found.";
-                    break;
-                case 500:
-                    errorMessage = "Internal server error.";
-                    break;
-                default:
-                    errorMessage = "An unknown error occurred.";
-            }
-            return errorMessage;
-        }
-
     }
 }

@@ -4,7 +4,6 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Calendar;
 
-import static api.CallApi.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 class CallApiTest {
@@ -12,40 +11,35 @@ class CallApiTest {
 
     @Test
     void shouldReturnData() {
-        String result = callStatsApi(baseCall, "");
-        assertTrue(result.startsWith("{\"status\":\"OK\""));
+        CallApi callApi = new CallApi();
+        callApi.callStatsApi(baseCall, "");
+        assertEquals(200, callApi.getStatusCode());
     }
     @Test
     void shouldReturnNoData() {
-        String result = "";
-        try {
-            result = callStatsApi(baseCall, "&season=2100");
-        } catch (MakeHttpRequest.ApiException e) {
-            assertEquals(404, e.getErrorCode());
-        }
-        assertEquals("", result);
+        CallApi callApi = new CallApi();
+        callApi.callStatsApi(baseCall, "&season=2100");
+        assertEquals(404, callApi.getStatusCode());
     }
 
     @Test
     void shouldReturnErrorCode() {
-        String result = "";
-        try {
-            result = callStatsApi(baseCall, "thisIsAMalformedUrl");
-        } catch (MakeHttpRequest.ApiException e) {
-            assertEquals(403, e.getErrorCode());
-        }
-        assertEquals("", result);
+        CallApi callApi = new CallApi();
+        callApi.callStatsApi(baseCall, "thisIsAMalformedUrl");
+        assertEquals(403, callApi.getStatusCode());
     }
 
     @Test
     void shouldCallFanduelApi() {
-        String result = callFanduelApi(Calendar.THURSDAY);
-        assertTrue(result.startsWith("<?xml version=\"1.0\" encoding=\"UTF-8\" ?><data>\t<fixturelist>"));
+        CallApi callApi = new CallApi();
+        callApi.callFanduelApi(Calendar.THURSDAY);
+        assertEquals(200, callApi.getStatusCode());
     }
 
     @Test
     void shouldCallDraftKingsApi() {
-        String result = callDraftKingsApi();
-        assertTrue(result.startsWith("{\"draftPool\":"));
+        CallApi callApi = new CallApi();
+        callApi.callDraftKingsApi();
+        assertEquals(200, callApi.getStatusCode());
     }
 }

@@ -5,7 +5,7 @@ import java.util.Calendar;
 
 class DateOperations {
 
-    String getDfsDateString(int dayOfWeekInt) {
+    String getFanduelDateString(int dayOfWeekInt) {
         Calendar today = getTodaysDate();
         int dayOfWeekToday = today.get(Calendar.DAY_OF_WEEK);
         int dayOfWeekDiff = adjustToTuesdayStart(dayOfWeekInt) - adjustToTuesdayStart(dayOfWeekToday);

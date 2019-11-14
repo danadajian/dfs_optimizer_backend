@@ -1,6 +1,6 @@
 package api;
 
-public class CallApi extends MakeHttpRequest {
+public class ApiCaller extends MakeHttpRequest {
 
     @Override
     public int getStatusCode() {
@@ -17,7 +17,7 @@ public class CallApi extends MakeHttpRequest {
     }
 
     public String callFanduelApi(int dayOfWeek) {
-        String dateString = new DateOperations().getDfsDateString(dayOfWeek);
+        String dateString = new DateOperations().getFanduelDateString(dayOfWeek);
         String url = "https://www.fanduel.com/api/playerprices?date=" + dateString;
         return super.HttpRequest(url);
     }

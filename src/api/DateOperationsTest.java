@@ -1,5 +1,6 @@
 package api;
 
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -20,11 +21,16 @@ class DateOperationsTest {
         testCal.setTime(sdf.parse("Wed Nov 13 16:20:00 CST 2019"));
     }
 
+    @AfterEach
+    void verifyDates() {
+        verify(dateOperations).getTodaysDate();
+    }
+
     @Test
     void shouldReturnTodaysDateString() {
         Calendar cal = Calendar.getInstance();
         int dayOfWeekToday = cal.get(Calendar.DAY_OF_WEEK);
-        String result = dateOperations.getDfsDateString(dayOfWeekToday);
+        String result = dateOperations.getFanduelDateString(dayOfWeekToday);
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         assertEquals(dateFormat.format(cal.getTime()), result);
     }
@@ -32,8 +38,9 @@ class DateOperationsTest {
     @Test
     void shouldReturnThursdayDateStringOnSunday() {
         testCal.add(Calendar.DATE, -3);
+        System.out.println(testCal);
         when(dateOperations.getTodaysDate()).thenReturn(testCal);
-        String result = dateOperations.getDfsDateString(Calendar.THURSDAY);
+        String result = dateOperations.getFanduelDateString(Calendar.THURSDAY);
         assertEquals("2019-11-07", result);
     }
 
@@ -41,7 +48,7 @@ class DateOperationsTest {
     void shouldReturnThursdayDateStringOnMonday() {
         testCal.add(Calendar.DATE, -2);
         when(dateOperations.getTodaysDate()).thenReturn(testCal);
-        String result = dateOperations.getDfsDateString(Calendar.THURSDAY);
+        String result = dateOperations.getFanduelDateString(Calendar.THURSDAY);
         assertEquals("2019-11-07", result);
     }
 
@@ -49,7 +56,7 @@ class DateOperationsTest {
     void shouldReturnThursdayDateStringOnTuesday() {
         testCal.add(Calendar.DATE, -1);
         when(dateOperations.getTodaysDate()).thenReturn(testCal);
-        String result = dateOperations.getDfsDateString(Calendar.THURSDAY);
+        String result = dateOperations.getFanduelDateString(Calendar.THURSDAY);
         assertEquals("2019-11-14", result);
     }
 
@@ -57,15 +64,23 @@ class DateOperationsTest {
     void shouldReturnSundayDateStringOnTuesday() {
         testCal.add(Calendar.DATE, -1);
         when(dateOperations.getTodaysDate()).thenReturn(testCal);
-        String result = dateOperations.getDfsDateString(Calendar.SUNDAY);
+        String result = dateOperations.getFanduelDateString(Calendar.SUNDAY);
         assertEquals("2019-11-17", result);
+    }
+
+    @Test
+    void shouldReturnSundayDateStringOnSaturday() {
+        testCal.add(Calendar.DATE, -4);
+        when(dateOperations.getTodaysDate()).thenReturn(testCal);
+        String result = dateOperations.getFanduelDateString(Calendar.SUNDAY);
+        assertEquals("2019-11-10", result);
     }
 
     @Test
     void shouldReturnSundayDateStringOnSunday() {
         testCal.add(Calendar.DATE, -3);
         when(dateOperations.getTodaysDate()).thenReturn(testCal);
-        String result = dateOperations.getDfsDateString(Calendar.SUNDAY);
+        String result = dateOperations.getFanduelDateString(Calendar.SUNDAY);
         assertEquals("2019-11-10", result);
     }
 
@@ -73,7 +88,7 @@ class DateOperationsTest {
     void shouldReturnSundayDateStringOnMonday() {
         testCal.add(Calendar.DATE, -2);
         when(dateOperations.getTodaysDate()).thenReturn(testCal);
-        String result = dateOperations.getDfsDateString(Calendar.SUNDAY);
+        String result = dateOperations.getFanduelDateString(Calendar.SUNDAY);
         assertEquals("2019-11-10", result);
     }
 }

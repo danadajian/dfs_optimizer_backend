@@ -10,13 +10,12 @@ import java.util.List;
 import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 class WrapFanduelDataTest implements MockResponses {
 
     private ApiClient mockApi = mock(ApiClient.class);
-    private WrapFanduelData wrapFanduelData = new WrapFanduelData(mockApi, "NFL", "PIT @ CLE");
+    private WrapFanduelData wrapFanduelData = new WrapFanduelData(mockApi);
 
     @BeforeEach
     void setUp() {
@@ -25,25 +24,25 @@ class WrapFanduelDataTest implements MockResponses {
 
     @Test
     void shouldGetValidContests() {
-        List<JSONObject> result = wrapFanduelData.getvalidContests();
+        List<JSONObject> result = wrapFanduelData.getValidContests();
+        verify(mockApi).getFanduelData();
         assertEquals(1, result.size());
     }
 
-//    @Test
-//    void shouldGetAllContestData() {
-//        List<Map<String, Object>> result = wrapFanduelData.getAllContestData();
-//        assertEquals("NFL", result.get(0).get("sport"));
-//        assertEquals("Showdown Captain Mode (PIT vs CLE)", result.get(0).get("contest"));
-//        HashMap players = (HashMap) result.get(0).get("players");
-//        HashMap playerInfo1 = (HashMap) players.get(822857);
-//        assertEquals("Nick Chubb", playerInfo1.get("name"));
-//        assertEquals("RB", playerInfo1.get("position"));
-//        assertEquals(10600, playerInfo1.get("salary"));
-//        HashMap playerInfo2 = (HashMap) players.get(589991);
-//        assertEquals("Jarvis Landry", playerInfo2.get("name"));
-//        assertEquals("WR", playerInfo2.get("position"));
-//        assertEquals(8000, playerInfo2.get("salary"));
-//        assertEquals(38, ((HashMap) result.get(0).get("players")).size());
-//    }
+    @Test
+    void shouldGetAllContestData() {
+        List<Map<String, Object>> result = wrapFanduelData.getAllContestData();
+        verify(mockApi).getFanduelData();
+        assertEquals("NFL", result.get(0).get("sport"));
+        assertEquals("PIT @ CLE", result.get(0).get("contest"));
+        HashMap players = (HashMap) result.get(0).get("players");
+        HashMap playerInfo1 = (HashMap) players.get(589984);
+        assertEquals("WR", playerInfo1.get("position"));
+        assertEquals(11500, playerInfo1.get("salary"));
+        HashMap playerInfo2 = (HashMap) players.get(746613);
+        assertEquals("RB", playerInfo2.get("position"));
+        assertEquals(9000, playerInfo2.get("salary"));
+        assertEquals(44, ((HashMap) result.get(0).get("players")).size());
+    }
 
 }

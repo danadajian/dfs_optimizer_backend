@@ -12,25 +12,34 @@ class WrapFanduelData {
     private final List<String> supportedContests = Arrays.asList("Thu-Mon", "Main", "Sun-Mon");
     private ApiClient apiClient;
 
-    WrapFanduelData(ApiClient apiClient, String sport, String contest) {
+    WrapFanduelData(ApiClient apiClient) {
         this.apiClient = apiClient;
     }
 
-//    Map<Integer, Map<String, Object>> getAllContestData() {
-//        JSONArray playerPool = getFixtureLists().getJSONArray("player");
-//        Map<Integer, Map<String, Object>> playerMap = new HashMap<>();
-//        for (Object object : playerPool) {
-//            JSONObject playerObject = (JSONObject) object;
-//            int playerId = playerObject.getInt("statsid");
-//            Map<String, Object> infoMap = new HashMap<>();
-//            infoMap.put("position", playerObject.getString("position"));
-//            infoMap.put("salary", playerObject.getInt("salary"));
-//            playerMap.put(playerId, infoMap);
-//        }
-//        return playerMap;
-//    }
+    List<Map<String, Object>> getAllContestData() {
+        List<Map<String, Object>> allContestInfo = new ArrayList<>();
+        getValidContests().forEach((JSONObject event) -> {
+            Map<String, Object> contestMap = new HashMap<>();
+            contestMap.put("site", "fd");
+            contestMap.put("sport", event.get("sport"));
+            contestMap.put("contest", event.getJSONObject("game").getString("label"));
+            JSONArray playerPool = event.getJSONArray("player");
+            Map<Integer, Map<String, Object>> playerMap = new HashMap<>();
+            for (Object object : playerPool) {
+                JSONObject playerObject = (JSONObject) object;
+                    Map<String, Object> infoMap = new HashMap<>();
+                    infoMap.put("position", playerObject.getString("position").equals("D") ?
+                            "D/ST" : playerObject.getString("position"));
+                    infoMap.put("salary", playerObject.getInt("salary"));
+                    playerMap.put(playerObject.getInt("statsid"), infoMap);
+            }
+            contestMap.put("players", playerMap);
+            allContestInfo.add(contestMap);
+        });
+        return allContestInfo;
+    }
 
-    List<JSONObject> getvalidContests() {
+    List<JSONObject> getValidContests() {
         String apiResponse = apiClient.getFanduelData();
         List<JSONObject> validContests = new ArrayList<>();
         JSONArray contests = XML.toJSONObject(apiResponse).getJSONObject("data").getJSONArray("fixturelist");

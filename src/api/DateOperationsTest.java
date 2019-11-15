@@ -38,7 +38,6 @@ class DateOperationsTest {
     @Test
     void shouldReturnThursdayDateStringOnSunday() {
         testCal.add(Calendar.DATE, -3);
-        System.out.println(testCal);
         when(dateOperations.getTodaysDate()).thenReturn(testCal);
         String result = dateOperations.getFanduelDateString(Calendar.THURSDAY);
         assertEquals("2019-11-07", result);

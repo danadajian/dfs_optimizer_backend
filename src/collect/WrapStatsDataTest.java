@@ -1,11 +1,10 @@
 package collect;
 
 import api.ApiClient;
+import org.json.JSONObject;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.util.Arrays;
-import java.util.List;
 import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -23,21 +22,42 @@ class WrapStatsDataTest implements MockResponses {
     }
 
     @Test
-    void shouldGetEventIdsFromThisWeek() {
-        List<Integer> result = wrapStatsData.getEventIdsFromThisWeek();
-        List<Integer> eventList = Arrays.asList(2142081, 2142120, 2142062, 2142094, 2142098, 2142105, 2142114, 2142127,
-                2142131, 2142140, 2142145, 2142163, 2142174, 2142182);
+    void shouldGetHomeOrAwayMapFromEvents() {
+        Map<Integer, String> result = wrapStatsData.getHomeOrAwayMap();
         verify(mockApi).getEventsFromThisWeek();
-        assertEquals(eventList, result);
+        assertEquals("@ Det", result.get(331));
+        assertEquals("v. Ari", result.get(359));
     }
 
     @Test
     void shouldGetProjectionsFromThisWeek() {
         Map<Integer, Map<String, Object>> result = wrapStatsData.getFantasyProjections();
+        verify(mockApi, times(1)).getEventsFromThisWeek();
+        verify(mockApi).getProjectionsFromThisWeek();
+        assertEquals("Dak Prescott", result.get(591816).get("name"));
+        assertEquals("Dal", result.get(591816).get("team"));
+        assertEquals("@ Det", result.get(591816).get("opponent"));
+        assertEquals("Sun 1:00PM EST", result.get(347).get("gameDate"));
         assertEquals(26.0332570149543679641473708950911299307, result.get(591816).get("dkProjection"));
         assertEquals(23.8622262095728403380510578974536722008, result.get(591816).get("fdProjection"));
+        assertEquals("Vikings D/ST", result.get(347).get("name"));
+        assertEquals("Min", result.get(347).get("team"));
+        assertEquals("v. Den", result.get(347).get("opponent"));
+        assertEquals("Sun 1:00PM EST", result.get(347).get("gameDate"));
         assertEquals(11.07, result.get(347).get("dkProjection"));
         assertEquals(11.07, result.get(347).get("fdProjection"));
+        assertEquals("49ers D/ST", result.get(359).get("name"));
+        assertEquals("SF", result.get(359).get("team"));
+        assertEquals("v. Ari", result.get(359).get("opponent"));
+        assertEquals("Sun 4:05PM EST", result.get(359).get("gameDate"));
+        assertEquals(11.01, result.get(359).get("dkProjection"));
+        assertEquals(11.01, result.get(359).get("fdProjection"));
     }
 
+    @Test
+    void shouldGetEasternTimeFromGameDateJson() {
+        JSONObject exampleGameDate = new JSONObject("{\"year\":2019,\"month\":11,\"date\":17,\"hour\":18,\"minute\":0,\"full\":\"2019-11-17T18:00:00\",\"dateType\":\"utc\"}");
+        String result = wrapStatsData.getEasternTime(exampleGameDate);
+        assertEquals("Sun 1:00PM EST", result);
+    }
 }

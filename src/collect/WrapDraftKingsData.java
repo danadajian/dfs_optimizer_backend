@@ -20,6 +20,7 @@ public class WrapDraftKingsData {
         List<Map<String, Object>> allContestInfo = new ArrayList<>();
         getValidContests().forEach((JSONObject event) -> {
             Map<String, Object> contestMap = new HashMap<>();
+            contestMap.put("site", "dk");
             contestMap.put("sport", event.get("sport"));
             contestMap.put("contest", event.getString("gameType") +
                     (event.getString("suffix") == null ? " Main" : event.getString("suffix")));
@@ -29,7 +30,6 @@ public class WrapDraftKingsData {
                 JSONObject playerObject = (JSONObject) object;
                 if (!playerObject.get("rosterSlots").toString().equals("[\"CPT\"]")) {
                     Map<String, Object> infoMap = new HashMap<>();
-                    infoMap.put("name", playerObject.getString("name"));
                     infoMap.put("position", playerObject.getString("position"));
                     infoMap.put("salary", playerObject.getInt("salary"));
                     playerMap.put(playerObject.getInt("playerId"), infoMap);

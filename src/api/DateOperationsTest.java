@@ -90,4 +90,20 @@ class DateOperationsTest {
         String result = dateOperations.getFanduelDateString(Calendar.SUNDAY);
         assertEquals("2019-11-10", result);
     }
+
+    @Test
+    void shouldReturnThursdayDateStringOnFriday() {
+        testCal.add(Calendar.DATE, 2);
+        when(dateOperations.getTodaysDate()).thenReturn(testCal);
+        String result = dateOperations.getFanduelDateString(Calendar.THURSDAY);
+        assertEquals("2019-11-14", result);
+    }
+
+    @Test
+    void shouldReturnMondayDateStringOnTuesday() {
+        testCal.add(Calendar.DATE, -1);
+        when(dateOperations.getTodaysDate()).thenReturn(testCal);
+        String result = dateOperations.getFanduelDateString(Calendar.MONDAY);
+        assertEquals("2019-11-18", result);
+    }
 }

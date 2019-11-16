@@ -5,7 +5,7 @@ import java.util.Calendar;
 public class DataCollector implements ApiClient {
     private ApiCaller apiCaller;
 
-    DataCollector(ApiCaller apiCaller) {
+    public DataCollector(ApiCaller apiCaller) {
         this.apiCaller = apiCaller;
     }
 
@@ -26,7 +26,7 @@ public class DataCollector implements ApiClient {
 
     @Override
     public String getFanduelData() {
-        return apiCaller.callFanduelApi(Calendar.THURSDAY);
+        return apiCaller.callFanduelApi();
     }
 
     @Override

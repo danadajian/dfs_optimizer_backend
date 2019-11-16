@@ -16,8 +16,8 @@ public class ApiCaller extends MakeHttpRequest {
         return super.HttpRequest(url);
     }
 
-    public String callFanduelApi(int dayOfWeek) {
-        String dateString = new DateOperations().getFanduelDateString(dayOfWeek);
+    public String callFanduelApi() {
+        String dateString = new DateOperations().getFanduelDateString();
         String url = "https://www.fanduel.com/api/playerprices?date=" + dateString;
         return super.HttpRequest(url);
     }

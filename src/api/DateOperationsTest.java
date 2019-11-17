@@ -28,9 +28,16 @@ class DateOperationsTest {
 
     @Test
     void shouldReturnTodaysDateString() {
+        when(dateOperations.getTodaysDate()).thenReturn(testCal);
+        String result = dateOperations.getTodaysDateString();
+        assertEquals("2019-11-13", result);
+    }
+
+    @Test
+    void shouldReturnTodaysDateStringTuesdayAdjusted() {
         Calendar cal = Calendar.getInstance();
         int dayOfWeekToday = cal.get(Calendar.DAY_OF_WEEK);
-        String result = dateOperations.getFanduelDateString(dayOfWeekToday);
+        String result = dateOperations.getTuesdayAdjustedDateStringForDay(dayOfWeekToday);
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         assertEquals(dateFormat.format(cal.getTime()), result);
     }
@@ -39,7 +46,7 @@ class DateOperationsTest {
     void shouldReturnThursdayDateStringOnSunday() {
         testCal.add(Calendar.DATE, -3);
         when(dateOperations.getTodaysDate()).thenReturn(testCal);
-        String result = dateOperations.getFanduelDateString(Calendar.THURSDAY);
+        String result = dateOperations.getTuesdayAdjustedDateStringForDay(Calendar.THURSDAY);
         assertEquals("2019-11-07", result);
     }
 
@@ -47,7 +54,7 @@ class DateOperationsTest {
     void shouldReturnThursdayDateStringOnMonday() {
         testCal.add(Calendar.DATE, -2);
         when(dateOperations.getTodaysDate()).thenReturn(testCal);
-        String result = dateOperations.getFanduelDateString(Calendar.THURSDAY);
+        String result = dateOperations.getTuesdayAdjustedDateStringForDay(Calendar.THURSDAY);
         assertEquals("2019-11-07", result);
     }
 
@@ -55,7 +62,7 @@ class DateOperationsTest {
     void shouldReturnThursdayDateStringOnTuesday() {
         testCal.add(Calendar.DATE, -1);
         when(dateOperations.getTodaysDate()).thenReturn(testCal);
-        String result = dateOperations.getFanduelDateString(Calendar.THURSDAY);
+        String result = dateOperations.getTuesdayAdjustedDateStringForDay(Calendar.THURSDAY);
         assertEquals("2019-11-14", result);
     }
 
@@ -63,7 +70,7 @@ class DateOperationsTest {
     void shouldReturnSundayDateStringOnTuesday() {
         testCal.add(Calendar.DATE, -1);
         when(dateOperations.getTodaysDate()).thenReturn(testCal);
-        String result = dateOperations.getFanduelDateString(Calendar.SUNDAY);
+        String result = dateOperations.getTuesdayAdjustedDateStringForDay(Calendar.SUNDAY);
         assertEquals("2019-11-17", result);
     }
 
@@ -71,7 +78,7 @@ class DateOperationsTest {
     void shouldReturnSundayDateStringOnSaturday() {
         testCal.add(Calendar.DATE, -4);
         when(dateOperations.getTodaysDate()).thenReturn(testCal);
-        String result = dateOperations.getFanduelDateString(Calendar.SUNDAY);
+        String result = dateOperations.getTuesdayAdjustedDateStringForDay(Calendar.SUNDAY);
         assertEquals("2019-11-10", result);
     }
 
@@ -79,7 +86,7 @@ class DateOperationsTest {
     void shouldReturnSundayDateStringOnSunday() {
         testCal.add(Calendar.DATE, -3);
         when(dateOperations.getTodaysDate()).thenReturn(testCal);
-        String result = dateOperations.getFanduelDateString(Calendar.SUNDAY);
+        String result = dateOperations.getTuesdayAdjustedDateStringForDay(Calendar.SUNDAY);
         assertEquals("2019-11-10", result);
     }
 
@@ -87,7 +94,7 @@ class DateOperationsTest {
     void shouldReturnSundayDateStringOnMonday() {
         testCal.add(Calendar.DATE, -2);
         when(dateOperations.getTodaysDate()).thenReturn(testCal);
-        String result = dateOperations.getFanduelDateString(Calendar.SUNDAY);
+        String result = dateOperations.getTuesdayAdjustedDateStringForDay(Calendar.SUNDAY);
         assertEquals("2019-11-10", result);
     }
 
@@ -95,7 +102,7 @@ class DateOperationsTest {
     void shouldReturnThursdayDateStringOnFriday() {
         testCal.add(Calendar.DATE, 2);
         when(dateOperations.getTodaysDate()).thenReturn(testCal);
-        String result = dateOperations.getFanduelDateString(Calendar.THURSDAY);
+        String result = dateOperations.getTuesdayAdjustedDateStringForDay(Calendar.THURSDAY);
         assertEquals("2019-11-14", result);
     }
 
@@ -103,7 +110,7 @@ class DateOperationsTest {
     void shouldReturnMondayDateStringOnTuesday() {
         testCal.add(Calendar.DATE, -1);
         when(dateOperations.getTodaysDate()).thenReturn(testCal);
-        String result = dateOperations.getFanduelDateString(Calendar.MONDAY);
+        String result = dateOperations.getTuesdayAdjustedDateStringForDay(Calendar.MONDAY);
         assertEquals("2019-11-18", result);
     }
 }

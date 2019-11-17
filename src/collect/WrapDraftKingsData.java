@@ -12,11 +12,11 @@ public class WrapDraftKingsData {
     private final List<String> supportedContests = Arrays.asList(" (Thu-Mon)", " (Sun-Mon)");
     private ApiClient apiClient;
 
-    WrapDraftKingsData(ApiClient apiClient) {
+    public WrapDraftKingsData(ApiClient apiClient) {
         this.apiClient = apiClient;
     }
 
-    List<Map<String, Object>> getAllContestData() {
+    public List<Map<String, Object>> getAllContestData() {
         List<Map<String, Object>> allContestInfo = new ArrayList<>();
         getValidContests().forEach((JSONObject event) -> {
             Map<String, Object> contestMap = new HashMap<>();

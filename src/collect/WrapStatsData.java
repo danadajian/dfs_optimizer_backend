@@ -13,8 +13,22 @@ public class WrapStatsData {
     private ApiClient apiClient;
     private Map<Integer, String> homeOrAwayMap;
 
-    WrapStatsData(ApiClient apiClient) {
+    public WrapStatsData(ApiClient apiClient) {
         this.apiClient = apiClient;
+    }
+
+    public Map<Integer, Map<String, Object>> getFantasyProjections() {
+        String apiResponse = apiClient.getProjectionsFromThisWeek();
+        JSONObject projectionsJson = new JSONObject(apiResponse).getJSONArray("apiResults").getJSONObject(0)
+                .getJSONObject("league").getJSONObject("season").getJSONArray("eventType").getJSONObject(0)
+                .getJSONObject("fantasyProjections");
+        homeOrAwayMap = getHomeOrAwayMap();
+        JSONArray offensiveJson = projectionsJson.getJSONArray("offensiveProjections");
+        JSONArray defensiveJson = projectionsJson.getJSONArray("defensiveProjections");
+        Map<Integer, Map<String, Object>> resultMap = new HashMap<>();
+        resultMap.putAll(getOffensiveProjections(offensiveJson));
+        resultMap.putAll(getDefensiveProjections(defensiveJson));
+        return resultMap;
     }
 
     Map<Integer, String> getHomeOrAwayMap() {
@@ -33,20 +47,6 @@ public class WrapStatsData {
             homeOrAwayMap.put(awayTeamId, "@ " + homeOppString);
         }
         return homeOrAwayMap;
-    }
-
-    Map<Integer, Map<String, Object>> getFantasyProjections() {
-        String apiResponse = apiClient.getProjectionsFromThisWeek();
-        JSONObject projectionsJson = new JSONObject(apiResponse).getJSONArray("apiResults").getJSONObject(0)
-                .getJSONObject("league").getJSONObject("season").getJSONArray("eventType").getJSONObject(0)
-                .getJSONObject("fantasyProjections");
-        homeOrAwayMap = getHomeOrAwayMap();
-        JSONArray offensiveJson = projectionsJson.getJSONArray("offensiveProjections");
-        JSONArray defensiveJson = projectionsJson.getJSONArray("defensiveProjections");
-        Map<Integer, Map<String, Object>> resultMap = new HashMap<>();
-        resultMap.putAll(getOffensiveProjections(offensiveJson));
-        resultMap.putAll(getDefensiveProjections(defensiveJson));
-        return resultMap;
     }
 
     private Map<Integer, Map<String, Object>> getOffensiveProjections(JSONArray offensiveJson) {
@@ -74,6 +74,18 @@ public class WrapStatsData {
         return defensiveMap;
     }
 
+    private void addInfoToPlayerMap(Map<Integer, Map<String, Object>> defensiveMap, JSONObject playerObject,
+                                    int teamId, Map<String, Object> statMap) {
+        statMap.put("team", playerObject.getJSONObject("team").getString("abbreviation"));
+        statMap.put("opponent", homeOrAwayMap.get(playerObject.getJSONObject("team").getInt("teamId")));
+        statMap.put("gameDate", getEasternTime(playerObject.getJSONObject("gameDate")));
+        statMap.put("dkProjection",  Double.parseDouble(playerObject.getJSONArray("fantasyProjections")
+                .getJSONObject(0).getString("points")));
+        statMap.put("fdProjection", Double.parseDouble(playerObject.getJSONArray("fantasyProjections")
+                .getJSONObject(1).getString("points")));
+        defensiveMap.put(teamId, statMap);
+    }
+
     String getEasternTime(JSONObject gameDate) {
         Calendar cal = Calendar.getInstance();
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss", Locale.ENGLISH);
@@ -88,18 +100,4 @@ public class WrapStatsData {
         format.setTimeZone(TimeZone.getTimeZone("EST"));
         return format.format(cal.getTime());
     }
-
-    private void addInfoToPlayerMap(Map<Integer, Map<String, Object>> defensiveMap, JSONObject playerObject,
-                                    int teamId, Map<String, Object> statMap) {
-        statMap.put("team", playerObject.getJSONObject("team").getString("abbreviation"));
-        statMap.put("opponent", homeOrAwayMap.get(playerObject.getJSONObject("team").getInt("teamId")));
-        statMap.put("gameDate", getEasternTime(playerObject.getJSONObject("gameDate")));
-        statMap.put("dkProjection",  Double.parseDouble(playerObject.getJSONArray("fantasyProjections")
-                .getJSONObject(0).getString("points")));
-        statMap.put("fdProjection", Double.parseDouble(playerObject.getJSONArray("fantasyProjections")
-                .getJSONObject(1).getString("points")));
-        defensiveMap.put(teamId, statMap);
-    }
-
-
 }

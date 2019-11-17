@@ -1,7 +1,5 @@
 package api;
 
-import java.util.Calendar;
-
 public class DataCollector implements ApiClient {
     private ApiCaller apiCaller;
 
@@ -19,14 +17,9 @@ public class DataCollector implements ApiClient {
         return apiCaller.callStatsApi("stats/football/nfl/fantasyProjections/weekly/", "");
     }
 
-//    @Override
-//    public String getWeather(String date) {
-//        return apiCaller.callStatsApi("stats/football/nfl/weatherforecasts/", "");
-//    }
-
     @Override
-    public String getFanduelData() {
-        return apiCaller.callFanduelApi();
+    public String getFanduelData(String dateString) {
+        return apiCaller.callFanduelApi(dateString);
     }
 
     @Override

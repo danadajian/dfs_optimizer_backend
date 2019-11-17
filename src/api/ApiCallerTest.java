@@ -2,8 +2,6 @@ package api;
 
 import org.junit.jupiter.api.Test;
 
-import java.util.Calendar;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 class ApiCallerTest {
@@ -33,7 +31,7 @@ class ApiCallerTest {
     @Test
     void shouldCallFanduelApi() {
         ApiCaller apiCaller = new ApiCaller();
-        apiCaller.callFanduelApi(Calendar.THURSDAY);
+        apiCaller.callFanduelApi(new DateOperations().getTodaysDateString());
         assertEquals(200, apiCaller.getStatusCode());
     }
 

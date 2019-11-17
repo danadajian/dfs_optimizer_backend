@@ -7,16 +7,18 @@ import org.json.XML;
 
 import java.util.*;
 
-class WrapFanduelData {
+public class WrapFanduelData {
     private final List<String> supportedSports = Arrays.asList("NFL", "MLB", "NBA", "NHL");
     private final List<String> supportedContests = Arrays.asList("Thu-Mon", "Main", "Sun-Mon");
     private ApiClient apiClient;
+    private String dateString;
 
-    WrapFanduelData(ApiClient apiClient) {
+    public WrapFanduelData(ApiClient apiClient, String dateString) {
         this.apiClient = apiClient;
+        this.dateString = dateString;
     }
 
-    List<Map<String, Object>> getAllContestData() {
+    public List<Map<String, Object>> getAllContestData() {
         List<Map<String, Object>> allContestInfo = new ArrayList<>();
         getValidContests().forEach((JSONObject event) -> {
             Map<String, Object> contestMap = new HashMap<>();
@@ -40,7 +42,7 @@ class WrapFanduelData {
     }
 
     List<JSONObject> getValidContests() {
-        String apiResponse = apiClient.getFanduelData();
+        String apiResponse = apiClient.getFanduelData(dateString);
         List<JSONObject> validContests = new ArrayList<>();
         JSONArray contests = XML.toJSONObject(apiResponse).getJSONObject("data").getJSONArray("fixturelist");
         for (Object object : contests) {

@@ -15,24 +15,24 @@ import static org.mockito.Mockito.*;
 class WrapFanduelDataTest implements MockResponses {
 
     private ApiClient mockApi = mock(ApiClient.class);
-    private WrapFanduelData wrapFanduelData = new WrapFanduelData(mockApi);
+    private WrapFanduelData wrapFanduelData = new WrapFanduelData(mockApi, "testDateString");
 
     @BeforeEach
     void setUp() {
-        when(mockApi.getFanduelData()).thenReturn(fakeFanduelData);
+        when(mockApi.getFanduelData(anyString())).thenReturn(fakeFanduelData);
     }
 
     @Test
     void shouldGetValidContests() {
         List<JSONObject> result = wrapFanduelData.getValidContests();
-        verify(mockApi).getFanduelData();
+        verify(mockApi).getFanduelData(anyString());
         assertEquals(1, result.size());
     }
 
     @Test
     void shouldGetAllContestData() {
         List<Map<String, Object>> result = wrapFanduelData.getAllContestData();
-        verify(mockApi).getFanduelData();
+        verify(mockApi).getFanduelData(anyString());
         assertEquals("NFL", result.get(0).get("sport"));
         assertEquals("PIT @ CLE", result.get(0).get("contest"));
         HashMap players = (HashMap) result.get(0).get("players");

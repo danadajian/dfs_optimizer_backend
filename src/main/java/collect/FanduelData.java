@@ -29,11 +29,12 @@ public class FanduelData {
             Map<Integer, Map<String, Object>> playerMap = new HashMap<>();
             for (Object object : playerPool) {
                 JSONObject playerObject = (JSONObject) object;
-                    Map<String, Object> infoMap = new HashMap<>();
-                    infoMap.put("position", playerObject.getString("position").equals("D") ?
-                            "D/ST" : playerObject.getString("position"));
-                    infoMap.put("salary", playerObject.getInt("salary"));
+                Map<String, Object> infoMap = new HashMap<>();
+                infoMap.put("position", playerObject.getString("position"));
+                infoMap.put("salary", playerObject.getInt("salary"));
+                if (playerObject.get("statsid").toString().length() > 0) {
                     playerMap.put(playerObject.getInt("statsid"), infoMap);
+                }
             }
             contestMap.put("players", playerMap);
             allContestInfo.add(contestMap);

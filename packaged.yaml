@@ -10,32 +10,32 @@ Resources:
     Properties:
       StageName: prod
       DefinitionBody:
-        swagger: "2.0"
+        swagger: '2.0'
         info:
-          version: "1.0"
+          version: '1.0'
           title:
             Ref: AWS::StackName
         paths:
           /draftkings:
             get:
               produces:
-                - "application/json"
+              - application/json
               responses:
-                "200":
-                  description: "200 response"
+                '200':
+                  description: 200 response
               x-amazon-apigateway-integration:
-                uri: "arn:${AWS::Partition}:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/${GetDraftKingsDataFunction.Arn}/invocations"
+                uri: arn:${AWS::Partition}:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/${GetDraftKingsDataFunction.Arn}/invocations
                 responses:
                   default:
-                    statusCode: "200"
-                passthroughBehavior: "when_no_match"
-                httpMethod: "POST"
-                contentHandling: "CONVERT_TO_TEXT"
-                type: "aws"
+                    statusCode: '200'
+                passthroughBehavior: when_no_match
+                httpMethod: POST
+                contentHandling: CONVERT_TO_TEXT
+                type: aws
   GetDraftKingsDataFunction:
     Type: AWS::Serverless::Function
     Properties:
-      CodeUri: target/DFS-Optimizer-Web-1.0-jar-with-dependencies.jar
+      CodeUri: s3://dfs-optimizer/8b409f1f51b0996a45c0dcf382ad0cd0
       Handler: handler.DraftKingsHandler::handleRequest
       Runtime: java8
       Events:
@@ -80,5 +80,6 @@ Resources:
                 Ref: ServerlessRestApi
 Outputs:
   DfsOptimizerApi:
-    Description: "API Gateway endpoint URL for Prod stage for DFS Optimizer"
-    Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/prod/"
+    Description: API Gateway endpoint URL for Prod stage for DFS Optimizer
+    Value:
+      Fn::Sub: https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/prod/

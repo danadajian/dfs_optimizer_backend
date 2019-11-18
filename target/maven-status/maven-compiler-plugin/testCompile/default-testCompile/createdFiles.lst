@@ -1,3 +1,12 @@
 com\optimizer\collect\DraftKingsDataTest.class
+com\optimizer\api\MakeHttpRequestTest.class
 com\optimizer\collect\FanduelDataTest.class
+com\optimizer\collect\MockResponses.class
+com\optimizer\api\StatsApiSignatureTest.class
+com\optimizer\api\ApiCallerTest.class
+com\optimizer\api\DateOperationsTest.class
+com\optimizer\handler\FanduelHandlerTest.class
+com\optimizer\handler\DraftKingsHandlerTest.class
 com\optimizer\collect\WeeklyProjectionsDataTest.class
+com\optimizer\api\GetCredentialsTest.class
+com\optimizer\handler\ProjectionsHandlerTest.class

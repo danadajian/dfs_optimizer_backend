@@ -23,7 +23,7 @@ public class DraftKingsData {
             contestMap.put("site", "dk");
             contestMap.put("sport", event.get("sport"));
             contestMap.put("contest", event.getString("gameType") +
-                    (event.getString("suffix") == null ? " Main" : event.getString("suffix")));
+                    (event.has("suffix") ? event.getString("suffix") : " Main"));
             JSONArray playerPool = event.getJSONArray("draftPool");
             Map<Integer, Map<String, Object>> playerMap = new HashMap<>();
             for (Object object : playerPool) {
@@ -49,8 +49,8 @@ public class DraftKingsData {
             JSONObject event = (JSONObject) object;
             if (supportedSports.contains(event.getString("sport")) &&
                     supportedGameTypes.contains(event.getString("gameType")) &&
-                    (supportedContests.contains(event.getString("suffix")) ||
-                            event.getString("suffix") == null ||
+                    (!event.has("suffix") ||
+                            supportedContests.contains(event.getString("suffix")) ||
                             event.getString("gameType").equals("Showdown Captain Mode")) &&
                     event.getJSONArray("draftPool").length() > 0) {
                 validContests.add(event);

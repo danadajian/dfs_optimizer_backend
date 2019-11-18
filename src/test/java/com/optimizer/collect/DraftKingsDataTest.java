@@ -1,7 +1,7 @@
 package com.optimizer.collect;
 
 import api.ApiClient;
-import collect.WrapDraftKingsData;
+import collect.DraftKingsData;
 import org.json.JSONObject;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -13,10 +13,10 @@ import java.util.Map;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
-class WrapDraftKingsDataTest implements MockResponses {
+class DraftKingsDataTest implements MockResponses {
 
     private ApiClient mockApi = mock(ApiClient.class);
-    private WrapDraftKingsData wrapDraftKingsData = new WrapDraftKingsData(mockApi);
+    private DraftKingsData draftKingsData = new DraftKingsData(mockApi);
 
     @BeforeEach
     void setUp() {
@@ -25,14 +25,14 @@ class WrapDraftKingsDataTest implements MockResponses {
 
     @Test
     void shouldGetFixtureLists() {
-        List<JSONObject> result = wrapDraftKingsData.getValidContests();
+        List<JSONObject> result = draftKingsData.getValidContests();
         verify(mockApi).getDraftKingsData();
         assertEquals(1, result.size());
     }
 
     @Test
     void shouldGetAllContestData() {
-        List<Map<String, Object>> result = wrapDraftKingsData.getAllContestData();
+        List<Map<String, Object>> result = draftKingsData.getAllContestData();
         verify(mockApi).getDraftKingsData();
         assertEquals("NFL", result.get(0).get("sport"));
         assertEquals("Showdown Captain Mode (PIT vs CLE)", result.get(0).get("contest"));

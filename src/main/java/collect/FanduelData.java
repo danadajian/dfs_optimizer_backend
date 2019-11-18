@@ -7,13 +7,13 @@ import org.json.XML;
 
 import java.util.*;
 
-public class WrapFanduelData {
+public class FanduelData {
     private final List<String> supportedSports = Arrays.asList("NFL", "MLB", "NBA", "NHL");
     private final List<String> supportedContests = Arrays.asList("Thu-Mon", "Main", "Sun-Mon");
     private ApiClient apiClient;
     private String dateString;
 
-    public WrapFanduelData(ApiClient apiClient, String dateString) {
+    public FanduelData(ApiClient apiClient, String dateString) {
         this.apiClient = apiClient;
         this.dateString = dateString;
     }

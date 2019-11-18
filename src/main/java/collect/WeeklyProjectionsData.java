@@ -9,16 +9,18 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
-public class WrapStatsData {
+public class WeeklyProjectionsData {
     private ApiClient apiClient;
+    private String sport;
     private Map<Integer, String> homeOrAwayMap;
 
-    public WrapStatsData(ApiClient apiClient) {
+    public WeeklyProjectionsData(ApiClient apiClient, String sport) {
         this.apiClient = apiClient;
+        this.sport = sport;
     }
 
     public Map<Integer, Map<String, Object>> getFantasyProjections() {
-        String apiResponse = apiClient.getProjectionsFromThisWeek();
+        String apiResponse = apiClient.getProjectionsFromThisWeek(sport);
         JSONObject projectionsJson = new JSONObject(apiResponse).getJSONArray("apiResults").getJSONObject(0)
                 .getJSONObject("league").getJSONObject("season").getJSONArray("eventType").getJSONObject(0)
                 .getJSONObject("fantasyProjections");
@@ -32,7 +34,7 @@ public class WrapStatsData {
     }
 
     public Map<Integer, String> getHomeOrAwayMap() {
-        String apiResponse = apiClient.getEventsFromThisWeek();
+        String apiResponse = apiClient.getEventsFromThisWeek(sport);
         JSONArray eventsArray = new JSONObject(apiResponse).getJSONArray("apiResults").getJSONObject(0)
                 .getJSONObject("league").getJSONObject("season").getJSONArray("eventType").getJSONObject(0)
                 .getJSONArray("events");

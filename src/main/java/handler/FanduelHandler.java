@@ -2,16 +2,16 @@ package handler;
 
 import api.ApiCaller;
 import api.DataCollector;
-import collect.WrapFanduelData;
+import collect.FanduelData;
 
 import java.util.List;
 import java.util.Map;
 
 public class FanduelHandler {
-    public List<Map<String, Object>> handleRequest(Map<String,String> input) {
+    public List<Map<String, Object>> handleRequest(Map<String, String> input) {
         String dateString = input.get("date");
         DataCollector dataCollector = new DataCollector(new ApiCaller());
-        WrapFanduelData wrapFanduelData = new WrapFanduelData(dataCollector, dateString);
-        return wrapFanduelData.getAllContestData();
+        FanduelData fanduelData = new FanduelData(dataCollector, dateString);
+        return fanduelData.getAllContestData();
     }
 }

@@ -7,12 +7,12 @@ public class ApiCaller extends MakeHttpRequest {
         return super.getStatusCode();
     }
 
-    public String callStatsApi(String baseCall, String params) {
+    public String callStatsApi(String baseCall) {
         String[] credentials = new GetCredentials().getPropValues("src/main/resources/config.properties");
         String key = credentials[0];
         String secret = credentials[1];
         String sig = new StatsApiSignature(key, secret).getSignature();
-        String url = "http://api.stats.com/v1/" + baseCall + "?accept=json&api_key=" + key + "&sig=" + sig + params;
+        String url = "http://api.stats.com/v1/" + baseCall + "?accept=json&api_key=" + key + "&sig=" + sig;
         return super.HttpRequest(url);
     }
 

@@ -1,7 +1,7 @@
 package com.optimizer.collect;
 
 import api.ApiClient;
-import collect.WrapFanduelData;
+import collect.FanduelData;
 import org.json.JSONObject;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -13,10 +13,10 @@ import java.util.Map;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
-class WrapFanduelDataTest implements MockResponses {
+class FanduelDataTest implements MockResponses {
 
     private ApiClient mockApi = mock(ApiClient.class);
-    private WrapFanduelData wrapFanduelData = new WrapFanduelData(mockApi, "testDateString");
+    private FanduelData fanduelData = new FanduelData(mockApi, "testDateString");
 
     @BeforeEach
     void setUp() {
@@ -25,14 +25,14 @@ class WrapFanduelDataTest implements MockResponses {
 
     @Test
     void shouldGetValidContests() {
-        List<JSONObject> result = wrapFanduelData.getValidContests();
+        List<JSONObject> result = fanduelData.getValidContests();
         verify(mockApi).getFanduelData(anyString());
         assertEquals(1, result.size());
     }
 
     @Test
     void shouldGetAllContestData() {
-        List<Map<String, Object>> result = wrapFanduelData.getAllContestData();
+        List<Map<String, Object>> result = fanduelData.getAllContestData();
         verify(mockApi).getFanduelData(anyString());
         assertEquals("NFL", result.get(0).get("sport"));
         assertEquals("PIT @ CLE", result.get(0).get("contest"));

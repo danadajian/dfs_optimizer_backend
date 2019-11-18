@@ -6,13 +6,13 @@ import org.json.JSONObject;
 
 import java.util.*;
 
-public class WrapDraftKingsData {
+public class DraftKingsData {
     private final List<String> supportedSports = Arrays.asList("NFL", "MLB", "NBA", "NHL");
     private final List<String> supportedGameTypes = Arrays.asList("Classic", "Showdown Captain Mode");
     private final List<String> supportedContests = Arrays.asList(" (Thu-Mon)", " (Sun-Mon)");
     private ApiClient apiClient;
 
-    public WrapDraftKingsData(ApiClient apiClient) {
+    public DraftKingsData(ApiClient apiClient) {
         this.apiClient = apiClient;
     }
 

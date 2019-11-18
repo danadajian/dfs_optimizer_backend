@@ -12,22 +12,8 @@ class ApiCallerTest {
     @Test
     void shouldReturnData() {
         ApiCaller apiCaller = new ApiCaller();
-        apiCaller.callStatsApi(baseCall, "");
+        apiCaller.callStatsApi(baseCall);
         assertEquals(200, apiCaller.getStatusCode());
-    }
-
-    @Test
-    void shouldReturnNoData() {
-        ApiCaller apiCaller = new ApiCaller();
-        apiCaller.callStatsApi(baseCall, "&season=2100");
-        assertEquals(404, apiCaller.getStatusCode());
-    }
-
-    @Test
-    void shouldReturnErrorCode() {
-        ApiCaller apiCaller = new ApiCaller();
-        apiCaller.callStatsApi(baseCall, "thisIsAMalformedUrl");
-        assertEquals(403, apiCaller.getStatusCode());
     }
 
     @Test

@@ -8,13 +8,20 @@ public class DataCollector implements ApiClient {
     }
 
     @Override
-    public String getEventsFromThisWeek() {
-        return apiCaller.callStatsApi("stats/football/nfl/events/", "");
+    public String getEventsFromThisWeek(String sport) {
+        return apiCaller.callStatsApi("stats/" + getSportName(sport) + "/" + sport + "/events/");
     }
 
     @Override
-    public String getProjectionsFromThisWeek() {
-        return apiCaller.callStatsApi("stats/football/nfl/fantasyProjections/weekly/", "");
+    public String getProjectionsFromThisWeek(String sport) {
+        String baseCall = "stats/" + getSportName(sport) + "/" + sport + "/fantasyProjections/" + "weekly";
+        return apiCaller.callStatsApi(baseCall);
+    }
+
+    @Override
+    public String getProjectionsFromEvent(String sport, int eventId) {
+        String baseCall = "stats/" + getSportName(sport) + "/" + sport + "/fantasyProjections/" + eventId;
+        return apiCaller.callStatsApi(baseCall);
     }
 
     @Override
@@ -27,4 +34,18 @@ public class DataCollector implements ApiClient {
         return apiCaller.callDraftKingsApi();
     }
 
+    private String getSportName(String sport) {
+        switch (sport) {
+            case "nfl":
+                return "football";
+            case "mlb":
+                return "baseball";
+            case "nba":
+                return "basketball";
+            case "nhl":
+                return "hockey";
+            default:
+                return "";
+        }
+    }
 }

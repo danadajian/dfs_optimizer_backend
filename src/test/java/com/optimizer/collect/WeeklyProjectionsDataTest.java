@@ -1,7 +1,7 @@
 package com.optimizer.collect;
 
 import api.ApiClient;
-import collect.WrapStatsData;
+import collect.WeeklyProjectionsData;
 import org.json.JSONObject;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -11,30 +11,30 @@ import java.util.Map;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
-class WrapStatsDataTest implements MockResponses {
+class WeeklyProjectionsDataTest implements MockResponses {
 
     private ApiClient mockApi = mock(ApiClient.class);
-    private WrapStatsData wrapStatsData = new WrapStatsData(mockApi);
+    private WeeklyProjectionsData weeklyProjectionsData = new WeeklyProjectionsData(mockApi, "sport");
 
     @BeforeEach
     void setUp() {
-        when(mockApi.getEventsFromThisWeek()).thenReturn(fakeEventsResponse);
-        when(mockApi.getProjectionsFromThisWeek()).thenReturn(fakeProjectionsResponse);
+        when(mockApi.getEventsFromThisWeek(anyString())).thenReturn(fakeEventsResponse);
+        when(mockApi.getProjectionsFromThisWeek(anyString())).thenReturn(fakeProjectionsResponse);
     }
 
     @Test
     void shouldGetHomeOrAwayMapFromEvents() {
-        Map<Integer, String> result = wrapStatsData.getHomeOrAwayMap();
-        verify(mockApi).getEventsFromThisWeek();
+        Map<Integer, String> result = weeklyProjectionsData.getHomeOrAwayMap();
+        verify(mockApi).getEventsFromThisWeek(anyString());
         assertEquals("@ Det", result.get(331));
         assertEquals("v. Ari", result.get(359));
     }
 
     @Test
     void shouldGetProjectionsFromThisWeek() {
-        Map<Integer, Map<String, Object>> result = wrapStatsData.getFantasyProjections();
-        verify(mockApi, times(1)).getEventsFromThisWeek();
-        verify(mockApi).getProjectionsFromThisWeek();
+        Map<Integer, Map<String, Object>> result = weeklyProjectionsData.getFantasyProjections();
+        verify(mockApi, times(1)).getEventsFromThisWeek(anyString());
+        verify(mockApi).getProjectionsFromThisWeek(anyString());
         assertEquals("Dak Prescott", result.get(591816).get("name"));
         assertEquals("Dal", result.get(591816).get("team"));
         assertEquals("@ Det", result.get(591816).get("opponent"));
@@ -58,7 +58,7 @@ class WrapStatsDataTest implements MockResponses {
     @Test
     void shouldGetEasternTimeFromGameDateJson() {
         JSONObject exampleGameDate = new JSONObject("{\"year\":2019,\"month\":11,\"date\":17,\"hour\":18,\"minute\":0,\"full\":\"2019-11-17T18:00:00\",\"dateType\":\"utc\"}");
-        String result = wrapStatsData.getEasternTime(exampleGameDate);
+        String result = weeklyProjectionsData.getEasternTime(exampleGameDate);
         assertEquals("Sun 1:00PM EST", result);
     }
 }

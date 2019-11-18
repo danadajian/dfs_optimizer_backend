@@ -1,0 +1,44 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+
+Globals:
+  Function:
+    Timeout: 20
+
+Resources:
+  GetDraftKingsDataFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: target/DFS-Optimizer-Web-1.0.jar
+      Handler: com.optimizer.handler.DraftKingsHandler::handleRequest
+      Runtime: java8
+      Events:
+        GetOrder:
+          Type: Api
+          Properties:
+            Path: /draftkings
+            Method: get
+  GetFanduelDataFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: target/DFS-Optimizer-Web-1.0.jar
+      Handler: com.optimizer.handler.FanduelHandler::handleRequest
+      Runtime: java8
+      Events:
+        GetOrder:
+          Type: Api
+          Properties:
+            Path: /fanduel/{date}
+            Method: get
+  GetProjectionsDataFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: target/DFS-Optimizer-Web-1.0.jar
+      Handler: com.optimizer.handler.ProjectionsHandler::handleRequest
+      Runtime: java8
+      Events:
+        GetOrder:
+          Type: Api
+          Properties:
+            Path: /projections/{sport}
+            Method: get

@@ -1,4 +1,4 @@
 # Config file
-resources/config.properties
+src/main/resources/config.properties
 
 out/

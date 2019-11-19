@@ -9,9 +9,8 @@ import java.util.Map;
 
 public class DraftKingsHandler {
     public List<Map<String, Object>> handleRequest(Map<String, String> input) {
-        String sport = input.get("sport");
         DataCollector dataCollector = new DataCollector(new ApiCaller());
-        DraftKingsData draftKingsData = new DraftKingsData(dataCollector, sport);
+        DraftKingsData draftKingsData = new DraftKingsData(dataCollector, input.get("sport"));
         return draftKingsData.getAllContestData();
     }
 }

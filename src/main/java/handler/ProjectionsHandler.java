@@ -9,7 +9,7 @@ import java.util.Map;
 public class ProjectionsHandler {
     public Map<Integer, Map<String, Object>> handleRequest(Map<String, String> input) {
         DataCollector dataCollector = new DataCollector(new ApiCaller());
-        String sport = input.get("sport");
-        return new ProjectionsData(dataCollector, sport).getFantasyProjections();
+        ProjectionsData projectionsData = new ProjectionsData(dataCollector, input.get("sport"));
+        return projectionsData.getFantasyProjections();
     }
 }

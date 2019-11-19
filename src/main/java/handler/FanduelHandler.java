@@ -9,9 +9,8 @@ import java.util.Map;
 
 public class FanduelHandler {
     public List<Map<String, Object>> handleRequest(Map<String, String> input) {
-        String dateString = input.get("date");
         DataCollector dataCollector = new DataCollector(new ApiCaller());
-        FanduelData fanduelData = new FanduelData(dataCollector, dateString);
+        FanduelData fanduelData = new FanduelData(dataCollector, input.get("date"));
         return fanduelData.getAllContestData();
     }
 }

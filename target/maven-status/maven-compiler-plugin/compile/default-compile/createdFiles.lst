@@ -2,12 +2,10 @@ api\GetCredentials.class
 api\ApiClient.class
 collect\DraftKingsData.class
 handler\ProjectionsHandler.class
-collect\DailyProjectionsData.class
 api\DataCollector.class
 api\DateOperations.class
 api\ApiCaller.class
 collect\FanduelData.class
-collect\WeeklyProjectionsData.class
 api\StatsApiSignature.class
 handler\FanduelHandler.class
 api\MakeHttpRequest.class

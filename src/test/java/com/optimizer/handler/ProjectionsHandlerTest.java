@@ -18,4 +18,13 @@ class ProjectionsHandlerTest {
         System.out.println(result);
         assertTrue(result.size() > 0);
     }
+
+    @Test
+    void shouldHandleRequestForOtherProjections() {
+        Map<String, String> testMap = new HashMap<>();
+        testMap.put("sport", "nba");
+        Map<Integer, Map<String, Object>> result = new ProjectionsHandler().handleRequest(testMap);
+        System.out.println(result);
+        assertTrue(result.size() > 0);
+    }
 }

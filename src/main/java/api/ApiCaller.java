@@ -21,7 +21,7 @@ public class ApiCaller extends MakeHttpRequest {
         return super.HttpRequest(url);
     }
 
-    public String callDraftKingsApi() {
-        return super.HttpRequest("https://api.draftkings.com/partners/v1/draftpool/sports/nfl/?format=json");
+    public String callDraftKingsApi(String sport) {
+        return super.HttpRequest("https://api.draftkings.com/partners/v1/draftpool/sports/" + sport + "/?format=json");
     }
 }

@@ -14,7 +14,7 @@ class DraftKingsHandlerTest {
     @Test
     void shouldHandleRequestForDraftKingsData() {
         Map<String, String> testMap = new HashMap<>();
-        testMap.put("test", "test");
+        testMap.put("sport", "nfl");
         List<Map<String, Object>> result = new DraftKingsHandler().handleRequest(testMap);
         System.out.println(result);
         assertTrue(result.size() > 0);

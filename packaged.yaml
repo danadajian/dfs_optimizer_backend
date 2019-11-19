@@ -18,7 +18,7 @@ Resources:
   GetDraftKingsDataFunction:
     Type: AWS::Serverless::Function
     Properties:
-      CodeUri: s3://dfs-optimizer/ab9f8ecc512ea2c240a30626de3ba006
+      CodeUri: s3://dfs-optimizer/b7f9635e5d8fc7cf92d925cc496a168d
       Handler: handler.DraftKingsHandler::handleRequest
       Runtime: java8
       Events:
@@ -32,7 +32,7 @@ Resources:
   GetFanduelDataFunction:
     Type: AWS::Serverless::Function
     Properties:
-      CodeUri: s3://dfs-optimizer/ab9f8ecc512ea2c240a30626de3ba006
+      CodeUri: s3://dfs-optimizer/b7f9635e5d8fc7cf92d925cc496a168d
       Handler: handler.FanduelHandler::handleRequest
       Runtime: java8
       Events:
@@ -46,7 +46,7 @@ Resources:
   GetProjectionsDataFunction:
     Type: AWS::Serverless::Function
     Properties:
-      CodeUri: s3://dfs-optimizer/ab9f8ecc512ea2c240a30626de3ba006
+      CodeUri: s3://dfs-optimizer/b7f9635e5d8fc7cf92d925cc496a168d
       Handler: handler.ProjectionsHandler::handleRequest
       Runtime: java8
       Environment:

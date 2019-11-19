@@ -8,7 +8,7 @@ public class DataCollector implements ApiClient {
     }
 
     @Override
-    public String getEventsFromThisWeek(String sport) {
+    public String getCurrentEvents(String sport) {
         return apiCaller.callStatsApi("stats/" + getSportName(sport) + "/" + sport + "/events/");
     }
 
@@ -25,13 +25,19 @@ public class DataCollector implements ApiClient {
     }
 
     @Override
+    public String getParticipants(String sport) {
+        String baseCall = "stats/" + getSportName(sport) + "/" + sport + "/participants/";
+        return apiCaller.callStatsApi(baseCall);
+    }
+
+    @Override
     public String getFanduelData(String dateString) {
         return apiCaller.callFanduelApi(dateString);
     }
 
     @Override
-    public String getDraftKingsData() {
-        return apiCaller.callDraftKingsApi();
+    public String getDraftKingsData(String sport) {
+        return apiCaller.callDraftKingsApi(sport);
     }
 
     private String getSportName(String sport) {

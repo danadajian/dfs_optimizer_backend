@@ -26,7 +26,7 @@ class ApiCallerTest {
     @Test
     void shouldCallDraftKingsApi() {
         ApiCaller apiCaller = new ApiCaller();
-        apiCaller.callDraftKingsApi();
+        apiCaller.callDraftKingsApi("nfl");
         assertEquals(200, apiCaller.getStatusCode());
     }
 }

@@ -7,21 +7,20 @@ import org.json.JSONObject;
 import java.util.*;
 
 public class DraftKingsData {
-    private final List<String> supportedSports = Arrays.asList("NFL", "MLB", "NBA", "NHL");
-    private final List<String> supportedGameTypes = Arrays.asList("Classic", "Showdown Captain Mode");
+    private final List<String> supportedGameTypes = Arrays.asList("Classic", "Showdown Captain Mode", "Showdown");
     private final List<String> supportedContests = Arrays.asList(" (Thu-Mon)", " (Sun-Mon)");
     private ApiClient apiClient;
+    private String sport;
 
-    public DraftKingsData(ApiClient apiClient) {
+    public DraftKingsData(ApiClient apiClient, String sport) {
         this.apiClient = apiClient;
+        this.sport = sport;
     }
 
     public List<Map<String, Object>> getAllContestData() {
         List<Map<String, Object>> allContestInfo = new ArrayList<>();
         getValidContests().forEach((JSONObject event) -> {
             Map<String, Object> contestMap = new HashMap<>();
-            contestMap.put("site", "dk");
-            contestMap.put("sport", event.get("sport"));
             contestMap.put("contest", event.getString("gameType") +
                     (event.has("suffix") ? event.getString("suffix") : " Main"));
             JSONArray playerPool = event.getJSONArray("draftPool");
@@ -42,16 +41,15 @@ public class DraftKingsData {
     }
 
     public List<JSONObject> getValidContests() {
-        String apiResponse = apiClient.getDraftKingsData();
+        String apiResponse = apiClient.getDraftKingsData(sport);
         List<JSONObject> validContests = new ArrayList<>();
         JSONArray contests = new JSONObject(apiResponse).getJSONArray("draftPool");
         for (Object object : contests) {
             JSONObject event = (JSONObject) object;
-            if (supportedSports.contains(event.getString("sport")) &&
-                    supportedGameTypes.contains(event.getString("gameType")) &&
+            if (supportedGameTypes.contains(event.getString("gameType")) &&
                     (!event.has("suffix") ||
                             supportedContests.contains(event.getString("suffix")) ||
-                            event.getString("gameType").equals("Showdown Captain Mode")) &&
+                            event.getString("gameType").contains("Showdown")) &&
                     event.getJSONArray("draftPool").length() > 0) {
                 validContests.add(event);
             }

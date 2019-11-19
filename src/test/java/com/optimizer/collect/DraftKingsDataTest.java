@@ -16,25 +16,24 @@ import static org.mockito.Mockito.*;
 class DraftKingsDataTest implements MockResponses {
 
     private ApiClient mockApi = mock(ApiClient.class);
-    private DraftKingsData draftKingsData = new DraftKingsData(mockApi);
+    private DraftKingsData draftKingsData = new DraftKingsData(mockApi, "sport");
 
     @BeforeEach
     void setUp() {
-        when(mockApi.getDraftKingsData()).thenReturn(fakeDraftKingsData);
+        when(mockApi.getDraftKingsData(anyString())).thenReturn(fakeDraftKingsData);
     }
 
     @Test
     void shouldGetFixtureLists() {
         List<JSONObject> result = draftKingsData.getValidContests();
-        verify(mockApi).getDraftKingsData();
+        verify(mockApi).getDraftKingsData(anyString());
         assertEquals(1, result.size());
     }
 
     @Test
     void shouldGetAllContestData() {
         List<Map<String, Object>> result = draftKingsData.getAllContestData();
-        verify(mockApi).getDraftKingsData();
-        assertEquals("NFL", result.get(0).get("sport"));
+        verify(mockApi).getDraftKingsData(anyString());
         assertEquals("Showdown Captain Mode (PIT vs CLE)", result.get(0).get("contest"));
         HashMap players = (HashMap) result.get(0).get("players");
         HashMap playerInfo1 = (HashMap) players.get(822857);

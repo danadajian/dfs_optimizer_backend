@@ -1,7 +1,7 @@
 package com.optimizer.collect;
 
 import api.ApiClient;
-import collect.WeeklyProjectionsData;
+import collect.ProjectionsData;
 import org.json.JSONObject;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -11,29 +11,29 @@ import java.util.Map;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
-class WeeklyProjectionsDataTest implements MockResponses {
+class NFLProjectionsDataTest implements MockResponses {
 
     private ApiClient mockApi = mock(ApiClient.class);
-    private WeeklyProjectionsData weeklyProjectionsData = new WeeklyProjectionsData(mockApi, "sport");
+    private ProjectionsData projectionsData = new ProjectionsData(mockApi, "nfl");
 
     @BeforeEach
     void setUp() {
-        when(mockApi.getEventsFromThisWeek(anyString())).thenReturn(fakeEventsResponse);
-        when(mockApi.getProjectionsFromThisWeek(anyString())).thenReturn(fakeProjectionsResponse);
+        when(mockApi.getCurrentEvents(anyString())).thenReturn(fakeNFLEventsResponse);
+        when(mockApi.getProjectionsFromThisWeek(anyString())).thenReturn(fakeNFLProjectionsResponse);
     }
 
     @Test
     void shouldGetHomeOrAwayMapFromEvents() {
-        Map<Integer, String> result = weeklyProjectionsData.getHomeOrAwayMap();
-        verify(mockApi).getEventsFromThisWeek(anyString());
-        assertEquals("@ Det", result.get(331));
-        assertEquals("v. Ari", result.get(359));
+        Map<Integer, Map<Object, Object>> result = projectionsData.getEventData();
+        verify(mockApi).getCurrentEvents(anyString());
+        assertEquals("@ Det", result.get(2142062).get(331));
+        assertEquals("v. Ari", result.get(2142140).get(359));
     }
 
     @Test
     void shouldGetProjectionsFromThisWeek() {
-        Map<Integer, Map<String, Object>> result = weeklyProjectionsData.getFantasyProjections();
-        verify(mockApi, times(1)).getEventsFromThisWeek(anyString());
+        Map<Integer, Map<String, Object>> result = projectionsData.getFantasyProjections();
+        verify(mockApi, times(1)).getCurrentEvents(anyString());
         verify(mockApi).getProjectionsFromThisWeek(anyString());
         assertEquals("Dak Prescott", result.get(591816).get("name"));
         assertEquals("Dal", result.get(591816).get("team"));
@@ -58,7 +58,7 @@ class WeeklyProjectionsDataTest implements MockResponses {
     @Test
     void shouldGetEasternTimeFromGameDateJson() {
         JSONObject exampleGameDate = new JSONObject("{\"year\":2019,\"month\":11,\"date\":17,\"hour\":18,\"minute\":0,\"full\":\"2019-11-17T18:00:00\",\"dateType\":\"utc\"}");
-        String result = weeklyProjectionsData.getEasternTime(exampleGameDate);
+        String result = projectionsData.getEasternTime(exampleGameDate);
         assertEquals("Sun 1:00PM EST", result);
     }
 }

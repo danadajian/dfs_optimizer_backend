@@ -22,7 +22,6 @@ public class FanduelData {
         List<Map<String, Object>> allContestInfo = new ArrayList<>();
         getValidContests().forEach((JSONObject event) -> {
             Map<String, Object> contestMap = new HashMap<>();
-            contestMap.put("site", "fd");
             contestMap.put("sport", event.get("sport"));
             contestMap.put("contest", event.getJSONObject("game").getString("label"));
             JSONArray playerPool = event.getJSONArray("player");

@@ -5,37 +5,20 @@ Globals:
     MemorySize: 512
     Timeout: 15
 Resources:
-  ServerlessRestApi:
+  MyApi:
     Type: AWS::Serverless::Api
     Properties:
       StageName: prod
+      Cors: '''*'''
       DefinitionBody:
-        swagger: '2.0'
-        info:
-          version: '1.0'
-          title:
-            Ref: AWS::StackName
-        paths:
-          /draftkings:
-            get:
-              produces:
-              - application/json
-              responses:
-                '200':
-                  description: 200 response
-              x-amazon-apigateway-integration:
-                uri: arn:${AWS::Partition}:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/${GetDraftKingsDataFunction.Arn}/invocations
-                responses:
-                  default:
-                    statusCode: '200'
-                passthroughBehavior: when_no_match
-                httpMethod: POST
-                contentHandling: CONVERT_TO_TEXT
-                type: aws
+        Fn::Transform:
+          Name: AWS::Include
+          Parameters:
+            Location: s3://dfs-optimizer/swagger.yaml
   GetDraftKingsDataFunction:
     Type: AWS::Serverless::Function
     Properties:
-      CodeUri: s3://dfs-optimizer/8b409f1f51b0996a45c0dcf382ad0cd0
+      CodeUri: s3://dfs-optimizer/26edccf01718fcd5c4eb315ad8c79ac8
       Handler: handler.DraftKingsHandler::handleRequest
       Runtime: java8
       Events:
@@ -45,41 +28,55 @@ Resources:
             Path: /draftkings
             Method: get
             RestApiId:
-              Ref: ServerlessRestApi
-    GetFanduelDataFunction:
-      Type: AWS::Serverless::Function
-      Properties:
-        CodeUri: target/DFS-Optimizer-Web-1.0-jar-with-dependencies.jar
-        Handler: handler.FanduelHandler::handleRequest
-        Runtime: java8
-        Events:
-          GetFanduelData:
-            Type: Api
-            Properties:
-              Path: /fanduel/{date}
-              Method: get
-              RestApiId:
-                Ref: ServerlessRestApi
-    GetProjectionsDataFunction:
-      Type: AWS::Serverless::Function
-      Properties:
-        CodeUri: target/DFS-Optimizer-Web-1.0-jar-with-dependencies.jar
-        Handler: handler.ProjectionsHandler::handleRequest
-        Runtime: java8
-        Environment:
-          Variables:
-            key: key
-            secret: secret
-        Events:
-          GetProjectionsData:
-            Type: Api
-            Properties:
-              Path: /projections/{sport}
-              Method: get
-              RestApiId:
-                Ref: ServerlessRestApi
+              Ref: MyApi
+  GetFanduelDataFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: s3://dfs-optimizer/26edccf01718fcd5c4eb315ad8c79ac8
+      Handler: handler.FanduelHandler::handleRequest
+      Runtime: java8
+      Events:
+        GetFanduelData:
+          Type: Api
+          Properties:
+            Path: /fanduel
+            Method: get
+            RestApiId:
+              Ref: MyApi
+  GetProjectionsDataFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: s3://dfs-optimizer/26edccf01718fcd5c4eb315ad8c79ac8
+      Handler: handler.ProjectionsHandler::handleRequest
+      Runtime: java8
+      Environment:
+        Variables:
+          key: key
+          secret: secret
+      Events:
+        GetProjectionsData:
+          Type: Api
+          Properties:
+            Path: /projections
+            Method: get
+            RestApiId:
+              Ref: MyApi
 Outputs:
-  DfsOptimizerApi:
-    Description: API Gateway endpoint URL for Prod stage for DFS Optimizer
+  GetDraftKingsDataFunction:
+    Description: GetDraftKingsDataFunction ARN
     Value:
-      Fn::Sub: https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/prod/
+      Fn::GetAtt:
+      - GetDraftKingsDataFunction
+      - Arn
+  GetFanduelDataFunction:
+    Description: GetFanduelDataFunction ARN
+    Value:
+      Fn::GetAtt:
+      - GetFanduelDataFunction
+      - Arn
+  GetProjectionsDataFunction:
+    Description: GetProjectionsDataFunction ARN
+    Value:
+      Fn::GetAtt:
+      - GetProjectionsDataFunction
+      - Arn

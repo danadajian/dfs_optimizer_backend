@@ -14,7 +14,7 @@ public class DataCollector implements ApiClient {
 
     @Override
     public String getProjectionsFromThisWeek(String sport) {
-        String baseCall = "stats/" + getSportName(sport) + "/" + sport + "/fantasyProjections/" + "weekly";
+        String baseCall = "stats/" + getSportName(sport) + "/" + sport + "/fantasyProjections/weekly";
         return apiCaller.callStatsApi(baseCall);
     }
 

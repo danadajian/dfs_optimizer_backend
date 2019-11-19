@@ -5,33 +5,16 @@ Globals:
     MemorySize: 512
     Timeout: 15
 Resources:
-  ServerlessRestApi:
+  MyApi:
     Type: AWS::Serverless::Api
     Properties:
       StageName: prod
+      Cors: "'*'"
       DefinitionBody:
-        swagger: "2.0"
-        info:
-          version: "1.0"
-          title:
-            Ref: AWS::StackName
-        paths:
-          /draftkings:
-            get:
-              produces:
-                - "application/json"
-              responses:
-                "200":
-                  description: "200 response"
-              x-amazon-apigateway-integration:
-                uri: "arn:${AWS::Partition}:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/${GetDraftKingsDataFunction.Arn}/invocations"
-                responses:
-                  default:
-                    statusCode: "200"
-                passthroughBehavior: "when_no_match"
-                httpMethod: "POST"
-                contentHandling: "CONVERT_TO_TEXT"
-                type: "aws"
+        'Fn::Transform':
+          Name: 'AWS::Include'
+          Parameters:
+            Location: s3://dfs-optimizer/swagger.yaml
   GetDraftKingsDataFunction:
     Type: AWS::Serverless::Function
     Properties:
@@ -44,41 +27,46 @@ Resources:
           Properties:
             Path: /draftkings
             Method: get
-            RestApiId:
-              Ref: ServerlessRestApi
-    GetFanduelDataFunction:
-      Type: AWS::Serverless::Function
-      Properties:
-        CodeUri: target/DFS-Optimizer-Web-1.0-jar-with-dependencies.jar
-        Handler: handler.FanduelHandler::handleRequest
-        Runtime: java8
-        Events:
-          GetFanduelData:
-            Type: Api
-            Properties:
-              Path: /fanduel/{date}
-              Method: get
-              RestApiId:
-                Ref: ServerlessRestApi
-    GetProjectionsDataFunction:
-      Type: AWS::Serverless::Function
-      Properties:
-        CodeUri: target/DFS-Optimizer-Web-1.0-jar-with-dependencies.jar
-        Handler: handler.ProjectionsHandler::handleRequest
-        Runtime: java8
-        Environment:
-          Variables:
-            key: key
-            secret: secret
-        Events:
-          GetProjectionsData:
-            Type: Api
-            Properties:
-              Path: /projections/{sport}
-              Method: get
-              RestApiId:
-                Ref: ServerlessRestApi
+            RestApiId: !Ref MyApi
+  GetFanduelDataFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: target/DFS-Optimizer-Web-1.0-jar-with-dependencies.jar
+      Handler: handler.FanduelHandler::handleRequest
+      Runtime: java8
+      Events:
+        GetFanduelData:
+          Type: Api
+          Properties:
+            Path: /fanduel
+            Method: get
+            RestApiId: !Ref MyApi
+  GetProjectionsDataFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: target/DFS-Optimizer-Web-1.0-jar-with-dependencies.jar
+      Handler: handler.ProjectionsHandler::handleRequest
+      Runtime: java8
+      Environment:
+        Variables:
+          key: key
+          secret: secret
+      Events:
+        GetProjectionsData:
+          Type: Api
+          Properties:
+            Path: /projections
+            Method: get
+            RestApiId: !Ref MyApi
 Outputs:
-  DfsOptimizerApi:
-    Description: "API Gateway endpoint URL for Prod stage for DFS Optimizer"
-    Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/prod/"
+  GetDraftKingsDataFunction:
+    Description: "GetDraftKingsDataFunction ARN"
+    Value: !GetAtt GetDraftKingsDataFunction.Arn
+
+  GetFanduelDataFunction:
+    Description: "GetFanduelDataFunction ARN"
+    Value: !GetAtt GetFanduelDataFunction.Arn
+
+  GetProjectionsDataFunction:
+    Description: "GetProjectionsDataFunction ARN"
+    Value: !GetAtt GetProjectionsDataFunction.Arn

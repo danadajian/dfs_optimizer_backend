@@ -58,15 +58,3 @@ Resources:
             Path: /projections
             Method: get
             RestApiId: !Ref MyApi
-Outputs:
-  GetDraftKingsDataFunction:
-    Description: "GetDraftKingsDataFunction ARN"
-    Value: !GetAtt GetDraftKingsDataFunction.Arn
-
-  GetFanduelDataFunction:
-    Description: "GetFanduelDataFunction ARN"
-    Value: !GetAtt GetFanduelDataFunction.Arn
-
-  GetProjectionsDataFunction:
-    Description: "GetProjectionsDataFunction ARN"
-    Value: !GetAtt GetProjectionsDataFunction.Arn

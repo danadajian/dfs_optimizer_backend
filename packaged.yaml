@@ -18,7 +18,7 @@ Resources:
   GetDraftKingsDataFunction:
     Type: AWS::Serverless::Function
     Properties:
-      CodeUri: s3://dfs-optimizer/26edccf01718fcd5c4eb315ad8c79ac8
+      CodeUri: s3://dfs-optimizer/ab9f8ecc512ea2c240a30626de3ba006
       Handler: handler.DraftKingsHandler::handleRequest
       Runtime: java8
       Events:
@@ -32,7 +32,7 @@ Resources:
   GetFanduelDataFunction:
     Type: AWS::Serverless::Function
     Properties:
-      CodeUri: s3://dfs-optimizer/26edccf01718fcd5c4eb315ad8c79ac8
+      CodeUri: s3://dfs-optimizer/ab9f8ecc512ea2c240a30626de3ba006
       Handler: handler.FanduelHandler::handleRequest
       Runtime: java8
       Events:
@@ -46,7 +46,7 @@ Resources:
   GetProjectionsDataFunction:
     Type: AWS::Serverless::Function
     Properties:
-      CodeUri: s3://dfs-optimizer/26edccf01718fcd5c4eb315ad8c79ac8
+      CodeUri: s3://dfs-optimizer/ab9f8ecc512ea2c240a30626de3ba006
       Handler: handler.ProjectionsHandler::handleRequest
       Runtime: java8
       Environment:
@@ -61,22 +61,3 @@ Resources:
             Method: get
             RestApiId:
               Ref: MyApi
-Outputs:
-  GetDraftKingsDataFunction:
-    Description: GetDraftKingsDataFunction ARN
-    Value:
-      Fn::GetAtt:
-      - GetDraftKingsDataFunction
-      - Arn
-  GetFanduelDataFunction:
-    Description: GetFanduelDataFunction ARN
-    Value:
-      Fn::GetAtt:
-      - GetFanduelDataFunction
-      - Arn
-  GetProjectionsDataFunction:
-    Description: GetProjectionsDataFunction ARN
-    Value:
-      Fn::GetAtt:
-      - GetProjectionsDataFunction
-      - Arn

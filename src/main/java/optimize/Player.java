@@ -1,13 +1,12 @@
 package optimize;
 
-import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.Map;
 
 public class Player {
     public int playerId, salary;
     public String position;
-    public BigDecimal projection;
+    public double projection;
 
     public Player() {
 
@@ -22,7 +21,7 @@ public class Player {
         this.position = position;
     }
 
-    public Player(int playerId, String position, BigDecimal projection, int salary) {
+    public Player(int playerId, String position, double projection, int salary) {
         this.playerId = playerId;
         this.position = position;
         this.projection = projection;

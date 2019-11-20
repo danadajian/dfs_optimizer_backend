@@ -1,7 +1,5 @@
 package optimize;
 
-import java.math.BigDecimal;
-import java.math.RoundingMode;
 import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -12,7 +10,6 @@ public class Optimizer {
     private List<Player> blackList;
     private List<String> lineupMatrix;
     private List<List<Player>> playerPools;
-    private BigDecimal zero = new BigDecimal("0");
 
     public Optimizer(List<Player> playerList, List<Player> whiteList, List<Player> blackList,
                      List<String> lineupMatrix) {
@@ -29,16 +26,16 @@ public class Optimizer {
 
     public Player selectPlayerToDowngrade(List<Player> lineup) {
         Player playerWithLowestDownGradeCost = new Player();
-        BigDecimal lowestDowngradeCost = zero;
+        double lowestDowngradeCost = 0;
         for (int i = 0; i < lineup.size(); i++) {
             Player player = lineup.get(i);
             List<Player> downgradePool = playerPools.get(i);
             int playerIndex = downgradePool.indexOf(player);
             Player nextPlayer = downgradePool.get(playerIndex + 1);
-            BigDecimal valueRatio = player.projection.divide(BigDecimal.valueOf(player.salary), 7, RoundingMode.CEILING);
-            BigDecimal nextPlayerValueRatio = nextPlayer.projection.divide(BigDecimal.valueOf(nextPlayer.salary), 7, RoundingMode.CEILING);
-            BigDecimal downgradeCost = valueRatio.subtract(nextPlayerValueRatio);
-            if (lowestDowngradeCost.equals(zero) || downgradeCost.compareTo(lowestDowngradeCost) < 0) {
+            double valueRatio = player.projection / player.salary;
+            double nextPlayerValueRatio = nextPlayer.projection / nextPlayer.salary;
+            double downgradeCost = valueRatio - nextPlayerValueRatio;
+            if (lowestDowngradeCost == 0 || downgradeCost < lowestDowngradeCost) {
                 playerWithLowestDownGradeCost = player;
                 lowestDowngradeCost = downgradeCost;
             }
@@ -81,7 +78,7 @@ public class Optimizer {
                             player -> Arrays.asList(position.split(",")).contains(player.position)
                                     && !blackList.contains(player)
                     )
-                    .sorted((player1, player2) -> (player2.projection).compareTo(player1.projection))
+                    .sorted((player1, player2) -> Double.compare(player2.projection, player1.projection))
                     .collect(Collectors.toList());
             playerPools.add(playerPool);
         }

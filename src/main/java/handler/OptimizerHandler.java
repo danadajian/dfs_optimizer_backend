@@ -3,7 +3,6 @@ package handler;
 import optimize.Optimizer;
 import optimize.Player;
 
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -18,7 +17,7 @@ public class OptimizerHandler {
             Map playerMap = (Map) object;
             int playerId = (int) playerMap.get("playerId");
             String position = (String) playerMap.get("position");
-            BigDecimal projection = new BigDecimal((String) playerMap.get("projection"));
+            double projection = (double) playerMap.get("projection");
             int salary = (int) playerMap.get("salary");
             playerList.add(new Player(playerId, position, projection, salary));
         }

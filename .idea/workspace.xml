@@ -2,13 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="352060b1-b9b3-400c-8051-85a2b23146fe" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/handler/OptimizerHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/optimize/Optimizer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/optimizer/optimize/OptimizerTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/optimize/Player.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/optimizer/optimize/PlayerTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/handler/DraftKingsHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/handler/DraftKingsHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/handler/FanduelHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/handler/FanduelHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/handler/ProjectionsHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/handler/ProjectionsHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/handler/OptimizerHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/handler/OptimizerHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/optimize/Optimizer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/optimize/Optimizer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/optimizer/optimize/OptimizerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/optimizer/optimize/OptimizerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/handler/DraftKingsHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/handler/DraftKingsHandler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/handler/FanduelHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/handler/FanduelHandler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/handler/ProjectionsHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/handler/ProjectionsHandler.class" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -21,43 +23,10 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/handler/FanduelHandler.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="10" column="79" selection-start-line="10" selection-start-column="79" selection-end-line="10" selection-end-column="79" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/handler/DraftKingsHandler.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/handler/ProjectionsHandler.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
-              <caret line="13" column="5" lean-forward="true" selection-start-line="13" selection-start-column="5" selection-end-line="13" selection-end-column="5" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/handler/OptimizerHandler.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="5" column="21" lean-forward="true" selection-start-line="5" selection-start-column="21" selection-end-line="5" selection-end-column="21" />
+            <state relative-caret-position="272">
+              <caret line="30" column="41" selection-start-line="30" selection-start-column="41" selection-end-line="30" selection-end-column="41" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -68,13 +37,34 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/optimize/Optimizer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="19" column="5" lean-forward="true" selection-start-line="19" selection-start-column="5" selection-end-line="19" selection-end-column="5" />
+            <state relative-caret-position="136">
+              <caret line="29" column="59" selection-start-line="29" selection-start-column="59" selection-end-line="29" selection-end-column="59" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#464#465#0" expanded="true" />
-                <element signature="e#501#502#0" expanded="true" />
+                <element signature="e#635#636#0" expanded="true" />
+                <element signature="e#673#674#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/optimize/Player.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="136">
+              <caret line="8" column="27" lean-forward="true" selection-start-line="8" selection-start-column="27" selection-end-line="8" selection-end-column="27" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/java/com/optimizer/optimize/OptimizerTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="69">
+              <caret line="62" column="41" selection-start-line="62" selection-start-column="41" selection-end-line="62" selection-end-column="41" />
             </state>
           </provider>
         </entry>
@@ -92,8 +82,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>player</find>
-      <find>team</find>
       <find>748070</find>
       <find>5000</find>
       <find>data</find>
@@ -122,9 +110,12 @@
       <find>projectionsData</find>
       <find>getFanduelData</find>
       <find>sport</find>
+      <find>nullPlayer</find>
+      <find>getPlayerPools</find>
     </findStrings>
     <replaceStrings>
       <replace>MyApi</replace>
+      <replace>emptyPlayer</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -133,8 +124,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/FanduelHandler.java" />
-        <option value="$PROJECT_DIR$/src/DraftKingsHandler.java" />
         <option value="$PROJECT_DIR$/src/collect/WrapFanduelDataTest.java" />
         <option value="$PROJECT_DIR$/src/api/DataCollector.java" />
         <option value="$PROJECT_DIR$/src/api/ApiClient.java" />
@@ -181,9 +170,11 @@
         <option value="$PROJECT_DIR$/src/main/java/handler/ProjectionsHandler.java" />
         <option value="$PROJECT_DIR$/src/main/java/handler/DraftKingsHandler.java" />
         <option value="$PROJECT_DIR$/src/main/java/collect/FanduelData.java" />
-        <option value="$PROJECT_DIR$/src/main/java/optimize/Optimizer.java" />
         <option value="$PROJECT_DIR$/src/main/java/handler/OptimizerHandler.java" />
+        <option value="$PROJECT_DIR$/src/test/java/optimize/PlayerTest.java" />
         <option value="$PROJECT_DIR$/src/test/java/com/optimizer/optimize/OptimizerTest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/optimize/Optimizer.java" />
+        <option value="$PROJECT_DIR$/src/main/java/optimize/Player.java" />
       </list>
     </option>
   </component>
@@ -224,8 +215,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -257,28 +246,20 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="api" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="DFS-Optimizer-Web" type="b2602c69:ProjectViewProjectNode" />
-              <item name="DFS-Optimizer-Web" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="collect" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="DFS-Optimizer-Web" type="b2602c69:ProjectViewProjectNode" />
-              <item name="DFS-Optimizer-Web" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="handler" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="DFS-Optimizer-Web" type="b2602c69:ProjectViewProjectNode" />
               <item name="DFS-Optimizer-Web" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="optimize" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="DFS-Optimizer-Web" type="b2602c69:ProjectViewProjectNode" />
+              <item name="DFS-Optimizer-Web" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="test" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -303,12 +284,14 @@
               <item name="test" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="optimizer" type="462c0819:PsiDirectoryNode" />
-              <item name="collect" type="462c0819:PsiDirectoryNode" />
+              <item name="optimize" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -318,7 +301,7 @@
     <property name="Repository.Attach.Sources" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1574197000965" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1574287567998" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit5" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
     <property name="create.test.in.the.same.root" value="true" />
@@ -332,11 +315,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CreateTestDialog.RecentsKey">
+      <recent name="optimize" />
+      <recent name="com.optimizer.optimize" />
       <recent name="com.optimizer.collect" />
       <recent name="collect" />
       <recent name="com.optimizer.handler" />
-      <recent name="handler" />
-      <recent name="api" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Dan\Documents\DFS-Optimizer-Web\src\main" />
@@ -366,90 +349,100 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.All in DFS-Optimizer-Web">
-    <configuration name="All in DFS-Optimizer-Web" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="DFS-Optimizer-Web" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="TEST_OBJECT" value="package" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="OtherProjectionsDataTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.OptimizerTest">
+    <configuration name="OptimizerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="DFS-Optimizer-Web" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.optimizer.collect.*" />
+          <option name="PATTERN" value="com.optimizer.optimize.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.optimizer.collect" />
-      <option name="MAIN_CLASS_NAME" value="com.optimizer.collect.OtherProjectionsDataTest" />
+      <option name="PACKAGE_NAME" value="com.optimizer.optimize" />
+      <option name="MAIN_CLASS_NAME" value="com.optimizer.optimize.OptimizerTest" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="OtherProjectionsDataTest.shouldGetProjectionsFromThisWeek" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="OptimizerTest.shouldConsiderTwoListsOfSamePlayersEqual" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="DFS-Optimizer-Web" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.optimizer.collect.*" />
+          <option name="PATTERN" value="com.optimizer.optimize.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.optimizer.collect" />
-      <option name="MAIN_CLASS_NAME" value="com.optimizer.collect.OtherProjectionsDataTest" />
-      <option name="METHOD_NAME" value="shouldGetProjectionsFromThisWeek" />
+      <option name="PACKAGE_NAME" value="com.optimizer.optimize" />
+      <option name="MAIN_CLASS_NAME" value="com.optimizer.optimize.OptimizerTest" />
+      <option name="METHOD_NAME" value="shouldConsiderTwoListsOfSamePlayersEqual" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ProjectionsHandlerTest.shouldHandleRequestForOtherProjections" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="OptimizerTest.shouldGetInitialLineupWithWhiteListedPlayers" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="DFS-Optimizer-Web" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.optimizer.handler.*" />
+          <option name="PATTERN" value="com.optimizer.optimize.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.optimizer.handler" />
-      <option name="MAIN_CLASS_NAME" value="com.optimizer.handler.ProjectionsHandlerTest" />
-      <option name="METHOD_NAME" value="shouldHandleRequestForOtherProjections" />
+      <option name="PACKAGE_NAME" value="com.optimizer.optimize" />
+      <option name="MAIN_CLASS_NAME" value="com.optimizer.optimize.OptimizerTest" />
+      <option name="METHOD_NAME" value="shouldGetInitialLineupWithWhiteListedPlayers" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="com.optimizer.collect in DFS-Optimizer-Web" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="OptimizerTest.shouldGetPlayerPools" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="DFS-Optimizer-Web" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.optimizer.collect.*" />
+          <option name="PATTERN" value="com.optimizer.optimize.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.optimizer.collect" />
-      <option name="TEST_OBJECT" value="package" />
+      <option name="PACKAGE_NAME" value="com.optimizer.optimize" />
+      <option name="MAIN_CLASS_NAME" value="com.optimizer.optimize.OptimizerTest" />
+      <option name="METHOD_NAME" value="shouldGetPlayerPools" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="OptimizerTest.shouldReturnDistinctPositions" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="DFS-Optimizer-Web" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.optimizer.optimize.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.optimizer.optimize" />
+      <option name="MAIN_CLASS_NAME" value="com.optimizer.optimize.OptimizerTest" />
+      <option name="METHOD_NAME" value="shouldReturnDistinctPositions" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <list>
-      <item itemvalue="JUnit.OtherProjectionsDataTest" />
-      <item itemvalue="JUnit.OtherProjectionsDataTest.shouldGetProjectionsFromThisWeek" />
-      <item itemvalue="JUnit.com.optimizer.collect in DFS-Optimizer-Web" />
-      <item itemvalue="JUnit.All in DFS-Optimizer-Web" />
-      <item itemvalue="JUnit.ProjectionsHandlerTest.shouldHandleRequestForOtherProjections" />
+      <item itemvalue="JUnit.OptimizerTest.shouldConsiderTwoListsOfSamePlayersEqual" />
+      <item itemvalue="JUnit.OptimizerTest.shouldGetPlayerPools" />
+      <item itemvalue="JUnit.OptimizerTest" />
+      <item itemvalue="JUnit.OptimizerTest.shouldReturnDistinctPositions" />
+      <item itemvalue="JUnit.OptimizerTest.shouldGetInitialLineupWithWhiteListedPlayers" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.All in DFS-Optimizer-Web" />
-        <item itemvalue="JUnit.ProjectionsHandlerTest.shouldHandleRequestForOtherProjections" />
-        <item itemvalue="JUnit.com.optimizer.collect in DFS-Optimizer-Web" />
-        <item itemvalue="JUnit.OtherProjectionsDataTest.shouldGetProjectionsFromThisWeek" />
-        <item itemvalue="JUnit.OtherProjectionsDataTest" />
+        <item itemvalue="JUnit.OptimizerTest" />
+        <item itemvalue="JUnit.OptimizerTest.shouldGetInitialLineupWithWhiteListedPlayers" />
+        <item itemvalue="JUnit.OptimizerTest.shouldReturnDistinctPositions" />
+        <item itemvalue="JUnit.OptimizerTest.shouldGetPlayerPools" />
+        <item itemvalue="JUnit.OptimizerTest.shouldConsiderTwoListsOfSamePlayersEqual" />
       </list>
     </recent_temporary>
   </component>
@@ -474,49 +467,51 @@
       <workItem from="1574089733678" duration="9609000" />
       <workItem from="1574101315368" duration="14048000" />
       <workItem from="1574127178908" duration="8035000" />
-      <workItem from="1574195035992" duration="2280000" />
+      <workItem from="1574195035992" duration="2900000" />
+      <workItem from="1574258664002" duration="27125000" />
     </task>
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="com_optimizer_collect_in_DFS-Optimizer-Web - 2019.11.19 at 13h 14m 55s.xml">
-      <configuration name="com.optimizer.collect in DFS-Optimizer-Web" configurationId="JUnit" />
+    <history-entry file="OptimizerTest - 2019.11.20 at 15h 51m 35s.xml">
+      <configuration name="OptimizerTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="com_optimizer_collect_in_DFS-Optimizer-Web - 2019.11.19 at 13h 47m 01s.xml">
-      <configuration name="com.optimizer.collect in DFS-Optimizer-Web" configurationId="JUnit" />
+    <history-entry file="OptimizerTest - 2019.11.20 at 15h 52m 01s.xml">
+      <configuration name="OptimizerTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="com_optimizer_collect_in_DFS-Optimizer-Web - 2019.11.19 at 13h 48m 35s.xml">
-      <configuration name="com.optimizer.collect in DFS-Optimizer-Web" configurationId="JUnit" />
+    <history-entry file="OptimizerTest - 2019.11.20 at 15h 54m 18s.xml">
+      <configuration name="OptimizerTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="com_optimizer_collect_in_DFS-Optimizer-Web - 2019.11.19 at 13h 49m 40s.xml">
-      <configuration name="com.optimizer.collect in DFS-Optimizer-Web" configurationId="JUnit" />
+    <history-entry file="OptimizerTest - 2019.11.20 at 15h 56m 36s.xml">
+      <configuration name="OptimizerTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="All_in_DFS-Optimizer-Web - 2019.11.19 at 13h 51m 22s.xml">
-      <configuration name="All in DFS-Optimizer-Web" configurationId="JUnit" />
+    <history-entry file="OptimizerTest - 2019.11.20 at 15h 57m 23s.xml">
+      <configuration name="OptimizerTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="ProjectionsHandlerTest_shouldHandleRequestForOtherProjections - 2019.11.19 at 14h 02m 44s.xml">
-      <configuration name="ProjectionsHandlerTest.shouldHandleRequestForOtherProjections" configurationId="JUnit" />
+    <history-entry file="OptimizerTest - 2019.11.20 at 15h 59m 30s.xml">
+      <configuration name="OptimizerTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="ProjectionsHandlerTest_shouldHandleRequestForOtherProjections - 2019.11.19 at 14h 05m 16s.xml">
-      <configuration name="ProjectionsHandlerTest.shouldHandleRequestForOtherProjections" configurationId="JUnit" />
+    <history-entry file="OptimizerTest - 2019.11.20 at 16h 00m 09s.xml">
+      <configuration name="OptimizerTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="All_in_DFS-Optimizer-Web - 2019.11.19 at 14h 20m 03s.xml">
-      <configuration name="All in DFS-Optimizer-Web" configurationId="JUnit" />
+    <history-entry file="OptimizerTest - 2019.11.20 at 16h 00m 26s.xml">
+      <configuration name="OptimizerTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="All_in_DFS-Optimizer-Web - 2019.11.19 at 14h 21m 40s.xml">
-      <configuration name="All in DFS-Optimizer-Web" configurationId="JUnit" />
+    <history-entry file="OptimizerTest - 2019.11.20 at 16h 01m 15s.xml">
+      <configuration name="OptimizerTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="All_in_DFS-Optimizer-Web - 2019.11.19 at 14h 22m 06s.xml">
-      <configuration name="All in DFS-Optimizer-Web" configurationId="JUnit" />
+    <history-entry file="OptimizerTest - 2019.11.20 at 16h 01m 43s.xml">
+      <configuration name="OptimizerTest" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="140300000" />
+    <option name="totallyTimeSpent" value="168045000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.15724947" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.15884861" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -525,7 +520,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32936078" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.2881907" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.34019503" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3997833" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -533,9 +528,9 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="10" visible="true" weight="0.2708559" />
+      <window_info anchor="bottom" id="Terminal" order="10" weight="0.2708559" />
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
-      <window_info anchor="bottom" id="Messages" order="12" weight="0.21018419" />
+      <window_info active="true" anchor="bottom" id="Messages" order="12" visible="true" weight="0.21018419" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -587,8 +582,6 @@
     </ignored-roots>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/api/DataCollectorTest.java" />
-    <entry file="file://$PROJECT_DIR$/src/collect/121ff.java" />
     <entry file="jar://$MAVEN_REPOSITORY$/org/json/json/20190722/json-20190722.jar!/org/json/JSONObject.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="176">
@@ -843,6 +836,23 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/handler/ProjectionsHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="13" column="5" selection-start-line="13" selection-start-column="5" selection-end-line="13" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/handler/DraftKingsHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" selection-start-line="5" selection-end-line="5" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/handler/FanduelHandler.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
@@ -853,27 +863,27 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/handler/DraftKingsHandler.java">
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/optimizer/optimize/PlayerTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
+        <state relative-caret-position="68">
+          <caret line="9" column="6" selection-start-line="9" selection-start-column="6" selection-end-line="9" selection-end-column="6" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/handler/ProjectionsHandler.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/handler/OptimizerHandler.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="13" column="5" lean-forward="true" selection-start-line="13" selection-start-column="5" selection-end-line="13" selection-end-column="5" />
+        <state relative-caret-position="272">
+          <caret line="30" column="41" selection-start-line="30" selection-start-column="41" selection-end-line="30" selection-end-column="41" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/handler/OptimizerHandler.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/optimize/Player.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="21" lean-forward="true" selection-start-line="5" selection-start-column="21" selection-end-line="5" selection-end-column="21" />
+        <state relative-caret-position="136">
+          <caret line="8" column="27" lean-forward="true" selection-start-line="8" selection-start-column="27" selection-end-line="8" selection-end-column="27" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -882,19 +892,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/com/optimizer/optimize/OptimizerTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="10" column="5" selection-start-line="10" selection-start-column="5" selection-end-line="10" selection-end-column="5" />
+        <state relative-caret-position="69">
+          <caret line="62" column="41" selection-start-line="62" selection-start-column="41" selection-end-line="62" selection-end-column="41" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/optimize/Optimizer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="19" column="5" lean-forward="true" selection-start-line="19" selection-start-column="5" selection-end-line="19" selection-end-column="5" />
+        <state relative-caret-position="136">
+          <caret line="29" column="59" selection-start-line="29" selection-start-column="59" selection-end-line="29" selection-end-column="59" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#464#465#0" expanded="true" />
-            <element signature="e#501#502#0" expanded="true" />
+            <element signature="e#635#636#0" expanded="true" />
+            <element signature="e#673#674#0" expanded="true" />
           </folding>
         </state>
       </provider>

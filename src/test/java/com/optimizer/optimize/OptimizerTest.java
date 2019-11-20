@@ -1,12 +1,93 @@
 package com.optimizer.optimize;
 
+import optimize.Optimizer;
+import optimize.Player;
 import org.junit.jupiter.api.Test;
+
+import java.math.BigDecimal;
+import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class OptimizerTest {
+    private Player qb1 = new Player(1, "QB", new BigDecimal("6.9"), 6900);
+    private Player qb2 = new Player(2, "QB", new BigDecimal("17.0"), 6100);
+    private Player rb1 = new Player(3, "RB", new BigDecimal("15.0"), 5000);
+    private Player rb2 = new Player(4, "RB", new BigDecimal("13.9"), 8000);
+    private Player rb3 = new Player(5, "RB", new BigDecimal("14.0"), 7500);
+    private Player rb4 = new Player(6, "RB", new BigDecimal("12.7"), 7500);
+    private Player rb5 = new Player(7, "RB", new BigDecimal("7.7"), 7500);
+    private Player rb6 = new Player(8, "RB", new BigDecimal("13.2"), 4900);
+    private Player wr1 = new Player(9, "WR", new BigDecimal("12.9"), 10000);
+    private Player wr2 = new Player(10, "WR", new BigDecimal("11.6"), 7900);
+    private Player wr3 = new Player(11, "WR", new BigDecimal("5.5"), 8400);
+    private Player wr4 = new Player(12, "WR", new BigDecimal("7.9"), 3700);
+    private Player te1 = new Player(13, "TE", new BigDecimal("10.1"), 6700);
+    private Player te2 = new Player(14, "TE", new BigDecimal("8.1"), 5200);
+    private Player dst1 = new Player(15, "D/ST", new BigDecimal("6.0"), 4600);
+    private Player dst2 = new Player(16, "D/ST", new BigDecimal("9.0"), 5300);
+
+    private List<Player> playerList = Arrays.asList(
+            qb1, qb2, rb1, rb2, rb3, rb4, rb5, rb6, wr1, wr2, wr3, wr4, te1, te2, dst1, dst2
+    );
+
+    private List<Player> whiteList = Arrays.asList(qb2, wr2);
+
+    private List<Player> blackList = Arrays.asList(rb2);
+
+    private List<String> lineupMatrix = Arrays.asList(
+            "QB", "RB", "RB", "WR", "WR", "WR", "TE", "RB,WR,TE", "D/ST"
+    );
+
+    private Optimizer optimizer = new Optimizer(playerList, whiteList, blackList, lineupMatrix);
 
     @Test
-    void optimize() {
+    void shouldConsiderTwoListsOfSamePlayersEqual() {
+        List<Player> playerList1 = Arrays.asList(new Player(1), new Player(2));
+        List<Player> playerList2 = Arrays.asList(new Player(1), new Player(2));
+        assertEquals(playerList1, playerList2);
+    }
+
+    @Test
+    void shouldGetPlayerPools() {
+        List<List<Player>> result = optimizer.getPlayerPools();
+        List<List<Player>> expected = Arrays.asList(
+                Arrays.asList(qb2, qb1),
+                Arrays.asList(rb1, rb3, rb6, rb4, rb5),
+                Arrays.asList(rb1, rb3, rb6, rb4, rb5),
+                Arrays.asList(wr1, wr2, wr4, wr3),
+                Arrays.asList(wr1, wr2, wr4, wr3),
+                Arrays.asList(wr1, wr2, wr4, wr3),
+                Arrays.asList(te1, te2),
+                Arrays.asList(rb1, rb3, rb6, wr1, rb4, wr2, te1, te2, wr4, rb5, wr3),
+                Arrays.asList(dst2, dst1)
+        );
+        assertEquals(expected, result);
+    }
+
+    @Test
+    void shouldGetLineupWithWhiteListedPlayers() {
+        Player emptyPlayer = new Player();
+        List<Player> result = optimizer.getLineupWithWhiteListedPlayers();
+        List<Player> expected = Arrays.asList(
+                qb2, emptyPlayer, emptyPlayer, wr2, emptyPlayer, emptyPlayer, emptyPlayer, emptyPlayer, emptyPlayer
+        );
+        assertEquals(expected, result);
+    }
+
+    @Test
+    void shouldGetBestLineupWithWhiteListedPlayers() {
+        List<Player> result = optimizer.getBestLineupWithWhiteListedPlayers();
+        List<Player> expected = Arrays.asList(
+                qb2, rb1, rb3, wr2, wr1, wr4, te1, rb6, dst2
+        );
+        assertEquals(expected, result);
+    }
+
+    @Test
+    void shouldSelectCorrectPlayerToDowngrade() {
+        List<Player> lineup = Arrays.asList(qb2, rb1, rb3, wr2, wr1, wr4, te1, rb6, dst2);
+        Player result = optimizer.selectPlayerToDowngrade(lineup);
+        assertEquals(rb3, result);
     }
 }

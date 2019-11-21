@@ -1,5 +1,14 @@
 AWSTemplateFormatVersion: '2010-09-09'
 Transform: AWS::Serverless-2016-10-31
+Parameters:
+  BucketName:
+    Type: String
+  CodeKey:
+    Type: String
+  ApiKey:
+    Type: String
+  ApiSecret:
+    Type: String
 Globals:
   Function:
     MemorySize: 512
@@ -14,11 +23,13 @@ Resources:
         'Fn::Transform':
           Name: 'AWS::Include'
           Parameters:
-            Location: s3://dfs-optimizer/swagger.yaml
+            Location: !Sub "s3://${BucketName}/swagger.yaml"
   GetDraftKingsDataFunction:
     Type: AWS::Serverless::Function
     Properties:
-      CodeUri: target/DFS-Optimizer-Web-1.0-jar-with-dependencies.jar
+      CodeUri:
+        Bucket: !Ref BucketName
+        Key: !Ref CodeKey
       Handler: handler.DraftKingsHandler::handleRequest
       Runtime: java8
       Events:
@@ -31,7 +42,9 @@ Resources:
   GetFanduelDataFunction:
     Type: AWS::Serverless::Function
     Properties:
-      CodeUri: target/DFS-Optimizer-Web-1.0-jar-with-dependencies.jar
+      CodeUri:
+        Bucket: !Ref BucketName
+        Key: !Ref CodeKey
       Handler: handler.FanduelHandler::handleRequest
       Runtime: java8
       Events:
@@ -44,13 +57,15 @@ Resources:
   GetProjectionsDataFunction:
     Type: AWS::Serverless::Function
     Properties:
-      CodeUri: target/DFS-Optimizer-Web-1.0-jar-with-dependencies.jar
+      CodeUri:
+        Bucket: !Ref BucketName
+        Key: !Ref CodeKey
       Handler: handler.ProjectionsHandler::handleRequest
       Runtime: java8
       Environment:
         Variables:
-          key: key
-          secret: secret
+          key: !Ref ApiKey
+          secret: !Ref ApiSecret
       Events:
         GetProjectionsData:
           Type: Api

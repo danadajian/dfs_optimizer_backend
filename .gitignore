@@ -1,4 +1,5 @@
-# Config file
+# Config files
 src/main/resources/config.properties
+config.sh
 
-out/
+target/

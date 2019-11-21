@@ -20,7 +20,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="DFS-Optimizer-Web" target="8" />
+      <module name="DFS-Optimizer-Web" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>

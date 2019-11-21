@@ -73,3 +73,22 @@ Resources:
             Path: /projections
             Method: get
             RestApiId: !Ref MyApi
+  GetOptimalLineupFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri:
+        Bucket: !Ref BucketName
+        Key: !Ref CodeKey
+      Handler: handler.OptimizerHandler::handleRequest
+      Runtime: java8
+      Environment:
+        Variables:
+          key: !Ref ApiKey
+          secret: !Ref ApiSecret
+      Events:
+        GetOptimalLineup:
+          Type: Api
+          Properties:
+            Path: /optimize
+            Method: post
+            RestApiId: !Ref MyApi

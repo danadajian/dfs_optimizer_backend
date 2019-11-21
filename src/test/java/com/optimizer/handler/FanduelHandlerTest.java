@@ -12,12 +12,12 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class FanduelHandlerTest {
 
-    @Test
-    void shouldHandleRequestForFanduelData() {
-        Map<String, String> testMap = new HashMap<>();
-        testMap.put("date", new DateOperations().getTodaysDateString());
-        List<Map<String, Object>> result = new FanduelHandler().handleRequest(testMap);
-        System.out.println(result);
-        assertTrue(result.size() > 0);
-    }
+//    @Test
+//    void shouldHandleRequestForFanduelData() {
+//        Map<String, String> testMap = new HashMap<>();
+//        testMap.put("date", new DateOperations().getTodaysDateString());
+//        List<Map<String, Object>> result = new FanduelHandler().handleRequest(testMap);
+//        System.out.println(result);
+//        assertTrue(result.size() > 0);
+//    }
 }

@@ -38,7 +38,7 @@ class OptimizerTest {
             "QB", "RB", "RB", "WR", "WR", "WR", "TE", "RB,WR,TE", "D/ST"
     );
 
-    private Optimizer optimizer = new Optimizer(playerList, whiteList, blackList, lineupMatrix);
+    private Optimizer optimizer = new Optimizer(playerList, whiteList, blackList, lineupMatrix, 55000);
 
     @Test
     void shouldConsiderTwoListsOfSamePlayersEqual() {
@@ -49,7 +49,7 @@ class OptimizerTest {
 
     @Test
     void shouldGetSortedPlayerPools() {
-        List<List<Player>> result = optimizer.getSortedPlayerPools();
+        List<List<Player>> result = optimizer.getSortedPlayerPoolsWithoutBlackList();
         List<List<Player>> expected = Arrays.asList(
                 Arrays.asList(qb2, qb1),
                 Arrays.asList(rb1, rb3, rb4, rb6, rb5),
@@ -67,7 +67,7 @@ class OptimizerTest {
     @Test
     void shouldGetLineupWithWhiteListedPlayers() {
         Player emptyPlayer = new Player();
-        List<Player> result = optimizer.getLineupWithWhiteListedPlayers();
+        List<Player> result = optimizer.lineupWithWhiteList();
         List<Player> expected = Arrays.asList(
                 qb2, emptyPlayer, emptyPlayer, wr2, emptyPlayer, emptyPlayer, emptyPlayer, emptyPlayer, emptyPlayer
         );
@@ -76,7 +76,7 @@ class OptimizerTest {
 
     @Test
     void shouldGetBestLineupWithWhiteListedPlayers() {
-        List<Player> result = optimizer.getBestLineupWithWhiteListedPlayers();
+        List<Player> result = optimizer.bestLineupWithWhiteList();
         List<Player> expected = Arrays.asList(
                 qb2, rb1, rb3, wr2, wr1, wr4, te1, rb4, dst2
         );
@@ -102,19 +102,15 @@ class OptimizerTest {
     @Test
     void shouldDowngradeLineupToWithinCap() {
         List<Player> lineup = Arrays.asList(qb2, rb1, rb3, wr2, wr1, wr4, te1, rb6, dst2);
-        List<Player> result = optimizer.getLineupUnderCap(lineup, 55000);
+        List<Player> result = optimizer.downgradePlayersUntilUnderCap(lineup);
         assertTrue(optimizer.totalSalary(result) <= 55000);
     }
 
     @Test
     void shouldBeUnableToDowngradeLineupToWithinCapIfCapTooLow() {
         List<Player> lineup = Arrays.asList(qb2, rb1, rb3, wr2, wr1, wr4, te1, rb6, dst2);
-        List<Player> result = optimizer.getLineupUnderCap(lineup, 40000);
+        List<Player> result = new Optimizer(playerList, whiteList, blackList, lineupMatrix, 40000)
+                .downgradePlayersUntilUnderCap(lineup);
         assertEquals(new ArrayList<>(), result);
-    }
-
-    @Test
-    void shouldUpgradeLineupWherePossible() {
-        // List<Player> result = optimizer.upgradeLineupWherePossible()
     }
 }

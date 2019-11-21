@@ -105,6 +105,34 @@ paths:
           application/json: "{\n\"sport\": \"$input.params('sport')\"\n}"
         contentHandling: "CONVERT_TO_TEXT"
         type: "aws"
+  /optimize:
+    post:
+      consumes:
+        - "application/json"
+      produces:
+        - "application/json"
+      responses:
+        200:
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/Empty"
+          headers:
+            Access-Control-Allow-Origin:
+              type: "string"
+      x-amazon-apigateway-integration:
+        uri:
+          Fn::Sub: "arn:aws:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/${GetOptimalLineupFunction.Arn}/invocations"
+        responses:
+          default:
+            statusCode: "200"
+            responseParameters:
+              method.response.header.Access-Control-Allow-Origin: "'*'"
+        passthroughBehavior: "when_no_templates"
+        httpMethod: "POST"
+#        requestTemplates:
+#          application/json: "{\n\"sport\": \"$input.params('sport')\"\n}"
+        contentHandling: "CONVERT_TO_TEXT"
+        type: "aws"
 definitions:
   Empty:
     type: "object"

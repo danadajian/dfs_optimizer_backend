@@ -5,46 +5,32 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class Optimizer {
-    private List<Player> playerList;
-    private List<Player> whiteList;
-    private List<Player> blackList;
+    private List<Player> playerList, whiteList, blackList;
     private List<String> lineupMatrix;
+    private int salaryCap;
     private List<List<Player>> playerPools;
 
     public Optimizer(List<Player> playerList, List<Player> whiteList, List<Player> blackList,
-                     List<String> lineupMatrix) {
+                     List<String> lineupMatrix, int salaryCap) {
         this.playerList = playerList;
         this.whiteList = whiteList;
         this.blackList = blackList;
         this.lineupMatrix = lineupMatrix;
-        this.playerPools = getSortedPlayerPools();
+        this.salaryCap = salaryCap;
+        this.playerPools = getSortedPlayerPoolsWithoutBlackList();
     }
 
-    public Map<Integer, String> optimize() {
-        return new HashMap<>();
+    public List<Player> optimize() {
+        return downgradePlayersUntilUnderCap(bestLineupWithWhiteList());
     }
 
-    public List<Player> upgradeLineupWherePossible(List<Player> lineup, int salaryCap) {
-        List<Player> lineupUnderCap = new ArrayList<>(lineup);
-        for (int i = 0; i < lineupUnderCap.size(); i++) {
-            Player player = lineupUnderCap.get(i);
-
-
-        }
-        return lineupUnderCap;
-    }
-
-    public List<Player> getLineupUnderCap(List<Player> lineup, int salaryCap) {
+    public List<Player> downgradePlayersUntilUnderCap(List<Player> lineup) {
         List<Player> lineupUnderCap = new ArrayList<>(lineup);
         while (totalSalary(lineupUnderCap) > salaryCap) {
             lineupUnderCap = downgradeLowestCostPlayer(lineupUnderCap);
             // System.out.println("salary: " + totalSalary(lineupUnderCap) + ", lineup: " + lineupUnderCap);
         }
         return lineupUnderCap;
-    }
-
-    public int totalSalary(List<Player> lineup) {
-        return lineup.stream().mapToInt(player -> player.salary).sum();
     }
 
     public List<Player> downgradeLowestCostPlayer(List<Player> lineup) {
@@ -81,8 +67,12 @@ public class Optimizer {
                 .orElse(new Player());
     }
 
-    public List<Player> getBestLineupWithWhiteListedPlayers() {
-        List<Player> initialLineup = getLineupWithWhiteListedPlayers();
+    public int totalSalary(List<Player> lineup) {
+        return lineup.stream().mapToInt(player -> player.salary).sum();
+    }
+
+    public List<Player> bestLineupWithWhiteList() {
+        List<Player> initialLineup = lineupWithWhiteList();
         for (int i = 0; i < lineupMatrix.size(); i++) {
             if (initialLineup.get(i).playerId == 0) {
                 Player bestPlayer = playerPools.get(i).stream()
@@ -95,7 +85,7 @@ public class Optimizer {
         return initialLineup;
     }
 
-    public List<Player> getLineupWithWhiteListedPlayers() {
+    public List<Player> lineupWithWhiteList() {
         List<Player> lineupWithWhiteListedPlayers = new ArrayList<>();
         lineupMatrix.forEach(player -> lineupWithWhiteListedPlayers.add(new Player()));
         for (Player player : whiteList) {
@@ -108,7 +98,7 @@ public class Optimizer {
         return lineupWithWhiteListedPlayers;
     }
 
-    public List<List<Player>> getSortedPlayerPools() {
+    public List<List<Player>> getSortedPlayerPoolsWithoutBlackList() {
         List<List<Player>> playerPools = new ArrayList<>();
         for (String position : lineupMatrix) {
             List<Player> playerPool = playerList.stream()

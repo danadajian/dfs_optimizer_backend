@@ -34,15 +34,18 @@ class DraftKingsDataTest implements MockResponses {
     void shouldGetAllContestData() {
         List<Map<String, Object>> result = draftKingsData.getAllContestData();
         verify(mockApi).getDraftKingsData(anyString());
-        assertEquals("Showdown Captain Mode (PIT vs CLE)", result.get(0).get("contest"));
-        HashMap players = (HashMap) result.get(0).get("players");
-        HashMap playerInfo1 = (HashMap) players.get(822857);
+        assertEquals("PIT vs CLE", result.get(0).get("contest"));
+        assertEquals("Showdown Captain Mode", result.get(0).get("gameType"));
+        List players = (List) result.get(0).get("players");
+        HashMap playerInfo1 = (HashMap) players.get(0);
+        assertEquals(822857, playerInfo1.get("playerId"));
         assertEquals("RB", playerInfo1.get("position"));
         assertEquals(10600, playerInfo1.get("salary"));
-        HashMap playerInfo2 = (HashMap) players.get(589991);
-        assertEquals("WR", playerInfo2.get("position"));
-        assertEquals(8000, playerInfo2.get("salary"));
-        assertEquals(38, ((HashMap) result.get(0).get("players")).size());
+        HashMap playerInfo2 = (HashMap) players.get(1);
+        assertEquals(742390, playerInfo2.get("playerId"));
+        assertEquals("RB", playerInfo2.get("position"));
+        assertEquals(10800, playerInfo2.get("salary"));
+        assertEquals(38, ((List) result.get(0).get("players")).size());
     }
 
 }

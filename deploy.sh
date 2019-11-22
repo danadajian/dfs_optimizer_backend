@@ -10,8 +10,9 @@ if aws s3api head-bucket --bucket ${BUCKET_NAME} 2>/dev/null
 then
     echo "Bucket exists: $BUCKET_NAME"
 else
-    echo "Bucket does not exist, creating: $BUCKET_NAME"
+    echo "Bucket does not exist, creating: ${BUCKET_NAME}"
     aws s3 mb s3://${BUCKET_NAME}
+    aws s3api put-bucket-policy --bucket ${BUCKET_NAME} --policy file://./bucket-policy.json
 fi
 
 PATH_TO_FILE=$(find . -name *-jar-with-dependencies.jar* | head -n 1)
@@ -35,3 +36,10 @@ else
      --parameter-overrides BucketName=${BUCKET_NAME} CodeKey=${FILE_NAME} ApiKey=${API_KEY} ApiSecret=${API_SECRET} \
       --no-fail-on-empty-changeset
 fi
+
+echo "### Building frontend"
+cd frontend
+npm test
+npm run build
+aws s3 cp ./build/ "s3://${BUCKET_NAME}/" --recursive --exclude "precache-manifest.*"
+aws s3 website "s3://${BUCKET_NAME}" --index-document index.html

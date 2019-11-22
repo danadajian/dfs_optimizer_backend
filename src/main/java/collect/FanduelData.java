@@ -25,17 +25,18 @@ public class FanduelData {
             contestMap.put("sport", event.get("sport"));
             contestMap.put("contest", event.getJSONObject("game").getString("label"));
             JSONArray playerPool = event.getJSONArray("player");
-            Map<Integer, Map<String, Object>> playerMap = new HashMap<>();
+            List<Map<String, Object>> playerList = new ArrayList<>();
             for (Object object : playerPool) {
                 JSONObject playerObject = (JSONObject) object;
-                Map<String, Object> infoMap = new HashMap<>();
-                infoMap.put("position", playerObject.getString("position"));
-                infoMap.put("salary", playerObject.getInt("salary"));
                 if (playerObject.get("statsid").toString().length() > 0) {
-                    playerMap.put(playerObject.getInt("statsid"), infoMap);
+                    Map<String, Object> infoMap = new HashMap<>();
+                    infoMap.put("playerId", playerObject.getInt("statsid"));
+                    infoMap.put("position", playerObject.getString("position"));
+                    infoMap.put("salary", playerObject.getInt("salary"));
+                    playerList.add(infoMap);
                 }
             }
-            contestMap.put("players", playerMap);
+            contestMap.put("players", playerList);
             allContestInfo.add(contestMap);
         });
         return allContestInfo;

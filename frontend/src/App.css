@@ -1,0 +1,163 @@
+html, body {
+  height: 100%;
+  width: 100%;
+}
+
+html {
+  display: table;
+  margin: auto;
+}
+
+body {
+  display: table-cell;
+  vertical-align: middle;
+  background-color: white;
+}
+
+.Dfs-button {
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  background-color: darkblue;
+  color: white;
+  padding: 10px 15px;
+}
+
+.Loading-text {
+  font-size: x-large;
+  font-weight: bold;
+  font-style: oblique;
+  text-align: center;
+  color: white;
+}
+
+.App-header {
+  text-align: center;
+  color: black;
+  padding-top: 30px;
+}
+
+.Player-list-box {
+  display: flex;
+  flex-direction: column;
+  height: 50vmin;
+  overflow: auto;
+}
+
+.Loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.Loading-text {
+  font-size: x-large;
+  font-weight: bold;
+  font-style: oblique;
+  text-align: center;
+  color: black;
+  padding-bottom: 30%;
+}
+
+.Optimizing-text {
+  font-size: x-large;
+  font-weight: bold;
+  font-style: oblique;
+  text-align: center;
+  color: black;
+  padding-top: 25%;
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 2.5s linear;
+  height: 15vmin;
+  pointer-events: none;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.App-logo2 {
+  animation: App-logo-fill 2s ease infinite;
+  background: white;
+  height: 20vmin;
+}
+
+@keyframes App-logo-fill {
+  0% {mask-image: linear-gradient(to right, rgba(0, 0, 0, 1) 0%, transparent 0)}
+  5% {mask-image: linear-gradient(to right, rgba(0, 0, 0, 1) 5%, transparent 0)}
+  10% {mask-image: linear-gradient(to right, rgba(0, 0, 0, 1) 10%, transparent 0)}
+  15% {mask-image: linear-gradient(to right, rgba(0, 0, 0, 1) 15%, transparent 0)}
+  20% {mask-image: linear-gradient(to right, rgba(0, 0, 0, 1) 20%, transparent 0)}
+  25% {mask-image: linear-gradient(to right, rgba(0, 0, 0, 1) 25%, transparent 0)}
+  30% {mask-image: linear-gradient(to right, rgba(0, 0, 0, 1) 30%, transparent 0)}
+  35% {mask-image: linear-gradient(to right, rgba(0, 0, 0, 1) 35%, transparent 0)}
+  40% {mask-image: linear-gradient(to right, rgba(0, 0, 0, 1) 40%, transparent 0)}
+  45% {mask-image: linear-gradient(to right, rgba(0, 0, 0, 1) 45%, transparent 0)}
+  50% {mask-image: linear-gradient(to right, rgba(0, 0, 0, 1) 50%, transparent 0)}
+  55% {mask-image: linear-gradient(to right, rgba(0, 0, 0, 1) 55%, transparent 0)}
+  60% {mask-image: linear-gradient(to right, rgba(0, 0, 0, 1) 60%, transparent 0)}
+  65% {mask-image: linear-gradient(to right, rgba(0, 0, 0, 1) 65%, transparent 0)}
+  70% {mask-image: linear-gradient(to right, rgba(0, 0, 0, 1) 70%, transparent 0)}
+  75% {mask-image: linear-gradient(to right, rgba(0, 0, 0, 1) 75%, transparent 0)}
+  80% {mask-image: linear-gradient(to right, rgba(0, 0, 0, 1) 80%, transparent 0)}
+  85% {mask-image: linear-gradient(to right, rgba(0, 0, 0, 1) 85%, transparent 0)}
+  90% {mask-image: linear-gradient(to right, rgba(0, 0, 0, 1) 90%, transparent 0)}
+  95% {mask-image: linear-gradient(to right, rgba(0, 0, 0, 1) 95%, transparent 0)}
+  100% {mask-image: none}
+}
+
+.Dfs-grid-section {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  width: 100%;
+  align-items: flex-start;
+  padding-bottom: 3%;
+}
+
+.Dfs-header {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: center;
+  font-size: 28px;
+  color: black;
+}
+
+.Dfs-grid table {
+  border-spacing: 0;
+  margin: 0 auto 0 auto;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.Dfs-grid td, th {
+  padding: 0 16px 0 16px;
+}
+
+.Dfs-grid tr:hover {
+  background-color: indianred;
+}
+
+.Dfs-grid th {
+  padding: 0 16px 0 16px;
+  text-align: center;
+  color: white;
+}
+
+.Dfs-sport {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: black;
+}

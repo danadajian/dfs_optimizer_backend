@@ -92,3 +92,23 @@ Resources:
             Path: /optimize
             Method: post
             RestApiId: !Ref MyApi
+Outputs:
+  MyApi:
+    Description: "API Gateway endpoint URL"
+    Value: !Sub "https://${MyApi}.execute-api.${AWS::Region}.amazonaws.com/prod"
+
+  GetDraftKingsDataFunction:
+    Description: "GetDraftKingsDataFunction Lambda Function ARN"
+    Value: !GetAtt GetDraftKingsDataFunction.Arn
+
+  GetFanduelDataFunction:
+    Description: "GetFanduelDataFunction Lambda Function ARN"
+    Value: !GetAtt GetFanduelDataFunction.Arn
+
+  GetProjectionsDataFunction:
+    Description: "GetProjectionsDataFunction Lambda Function ARN"
+    Value: !GetAtt GetProjectionsDataFunction.Arn
+
+  GetOptimalLineupFunction:
+    Description: "GetOptimalLineupFunction Lambda Function ARN"
+    Value: !GetAtt GetOptimalLineupFunction.Arn

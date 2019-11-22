@@ -21,20 +21,23 @@ public class DraftKingsData {
         List<Map<String, Object>> allContestInfo = new ArrayList<>();
         getValidContests().forEach((JSONObject event) -> {
             Map<String, Object> contestMap = new HashMap<>();
-            contestMap.put("contest", event.getString("gameType") +
-                    (event.has("suffix") ? event.getString("suffix") : " Main"));
+            contestMap.put("contest", (event.has("suffix") ?
+                    event.getString("suffix")
+                            .substring(2, event.getString("suffix").length() - 1) : "Main"));
+            contestMap.put("gameType", event.getString("gameType"));
             JSONArray playerPool = event.getJSONArray("draftPool");
-            Map<Integer, Map<String, Object>> playerMap = new HashMap<>();
+            List<Map<String, Object>> playerList = new ArrayList<>();
             for (Object object : playerPool) {
                 JSONObject playerObject = (JSONObject) object;
                 if (!playerObject.get("rosterSlots").toString().equals("[\"CPT\"]")) {
                     Map<String, Object> infoMap = new HashMap<>();
+                    infoMap.put("playerId", playerObject.getInt("playerId"));
                     infoMap.put("position", playerObject.getString("position"));
                     infoMap.put("salary", playerObject.getInt("salary"));
-                    playerMap.put(playerObject.getInt("playerId"), infoMap);
+                    playerList.add(infoMap);
                 }
             }
-            contestMap.put("players", playerMap);
+            contestMap.put("players", playerList);
             allContestInfo.add(contestMap);
         });
         return allContestInfo;

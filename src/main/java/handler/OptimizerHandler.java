@@ -36,9 +36,7 @@ public class OptimizerHandler {
         int salaryCap = (int) input.get("salaryCap");
         List<Player> optimalLineup = new Optimizer(playerList, whiteList, blackList, lineupMatrix, salaryCap).optimize();
         Map<Integer, String> lineupResponse = new HashMap<>();
-        for (Player player : optimalLineup) {
-            lineupResponse.put(player.playerId, player.position);
-        }
+        optimalLineup.forEach(player -> lineupResponse.put(player.playerId, player.position));
         return lineupResponse;
     }
 }

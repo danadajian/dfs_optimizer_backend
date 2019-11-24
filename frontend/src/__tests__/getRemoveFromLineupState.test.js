@@ -3,19 +3,19 @@ import { getRemoveFromLineupState } from '../functions/getRemoveFromLineupState'
 describe('removes player to lineup', () => {
     test('can remove player', () => {
         let lineup = [
-            {Position: 'QB', Team: '', Name: 'Player0', Id: 0, Status: '', Projected: '', Price: '', Opp: '', Weather: ''},
-            {Position: 'RB', Team: '', Name: 'Player1', Id: 1, Status: '', Projected: '', Price: '', Opp: '', Weather: ''},
-            {Position: 'RB', Team: '', Name: '', Id: '', Status: '', Projected: '', Price: '', Opp: '', Weather: ''},
-            {Position: 'FLEX', Team: '', Name: '', Id: '', Status: '', Projected: '', Price: '', Opp: '', Weather: ''},
+            {position: 'QB', team: '', name: 'Player0', playerId: 0, status: '', projected: '', salary: '', opponent: ''},
+            {position: 'RB', team: '', name: 'Player1', playerId: 1, status: '', projected: '', salary: '', opponent: ''},
+            {position: 'RB', team: '', name: '', playerId: '', status: '', projected: '', salary: '', opponent: ''},
+            {position: 'RB,WR,TE', team: '', name: '', playerId: '', status: '', projected: '', salary: '', opponent: ''},
         ];
-        let whiteList = [{Position: 'RB', Team: '', Name: 'Player1', Id: 1, Status: '', Projected: '', Price: '', Opp: '', Weather: ''}];
+        let whiteList = [{position: 'RB', team: '', name: 'Player1', playerId: 1, status: '', projected: '', salary: '', opponent: ''}];
         let state = {lineup, whiteList};
         expect(getRemoveFromLineupState(1, state)).toMatchObject({
             lineup: [
-                {Position: 'QB', Team: '', Name: 'Player0', Id: 0, Status: '', Projected: '', Price: '', Opp: '', Weather: ''},
-                {Position: 'RB', Team: '', Name: '', Id: '', Status: '', Projected: '', Price: '', Opp: '', Weather: ''},
-                {Position: 'RB', Team: '', Name: '', Id: '', Status: '', Projected: '', Price: '', Opp: '', Weather: ''},
-                {Position: 'FLEX', Team: '', Name: '', Id: '',Status: '', Projected: '', Price: '', Opp: '', Weather: ''},
+                {position: 'QB', team: '', name: 'Player0', playerId: 0, status: '', projected: '', salary: '', opponent: ''},
+                {position: 'RB', team: '', name: '', playerId: '', status: '', projected: '', salary: '', opponent: ''},
+                {position: 'RB', team: '', name: '', playerId: '', status: '', projected: '', salary: '', opponent: ''},
+                {position: 'RB,WR,TE', team: '', name: '', playerId: '', status: '', projected: '', salary: '', opponent: ''},
             ],
             whiteList: []
         });

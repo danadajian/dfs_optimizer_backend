@@ -14,15 +14,6 @@ body {
   background-color: white;
 }
 
-.Dfs-button {
-  font-size: 16px;
-  font-weight: bold;
-  text-align: center;
-  background-color: darkblue;
-  color: white;
-  padding: 10px 15px;
-}
-
 .Loading-text {
   font-size: x-large;
   font-weight: bold;
@@ -132,6 +123,20 @@ body {
   color: black;
 }
 
+.Draft-grid table, td {
+  border: 1px solid black;
+  margin: 0 auto 0 auto;
+  vertical-align: middle;
+}
+
+.Draft-grid td {
+  padding: 0 16px 0 16px;
+}
+
+.Draft-grid tr:hover {
+  background-color: indianred;
+}
+
 .Dfs-grid table {
   border-spacing: 0;
   margin: 0 auto 0 auto;
@@ -160,4 +165,10 @@ body {
   align-items: center;
   text-align: center;
   color: black;
+}
+
+.Drop-down {
+  text-align: center;
+  width: 100px;
+  height: 30px;
 }

@@ -1,20 +1,19 @@
 function getRemoveFromLineupState(lineupIndex, state) {
     let {lineup, whiteList} = state;
     let playerToRemove = lineup[lineupIndex];
-    let playerInWhiteList = whiteList.find((player) => player.Id === playerToRemove.Id, null);
+    let playerInWhiteList = whiteList.find((player) => player.playerId === playerToRemove.playerId, null);
     if (playerInWhiteList) {
         whiteList.splice(whiteList.indexOf(playerInWhiteList), 1);
     }
     lineup[lineupIndex] = {
-        Position: playerToRemove.Position,
-        Team: '',
-        Name: '',
-        Id: '',
-        Status: '',
-        Projected: '',
-        Price: '',
-        Opp: '',
-        Weather: ''
+        position: playerToRemove.position,
+        displayPosition: playerToRemove.displayPosition,
+        team: '',
+        name: '',
+        playerId: '',
+        projected: '',
+        salary: '',
+        opponent: ''
     };
     return {
         lineup: lineup,

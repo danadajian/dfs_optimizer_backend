@@ -3,41 +3,41 @@ import { getToggleBlackListState } from '../functions/getToggleBlackListState'
 describe('can toggle blacklist', () => {
     test('adds player to blacklist', () => {
         let playerPool = [
-        {Name: 'Player0', Id: 0, Position: 'QB'},
-        {Name: 'Player1', Id: 1, Position: 'QB'},
-        {Name: 'Player2', Id: 2, Position: 'RB'},
-        {Name: 'Player3', Id: 3, Position: 'RB'},
-        {Name: 'Player4', Id: 4, Position: 'RB'},
-        {Name: 'Player5', Id: 5, Position: 'RB'}
+        {name: 'Player0', playerId: 0, position: 'QB'},
+        {name: 'Player1', playerId: 1, position: 'QB'},
+        {name: 'Player2', playerId: 2, position: 'RB'},
+        {name: 'Player3', playerId: 3, position: 'RB'},
+        {name: 'Player4', playerId: 4, position: 'RB'},
+        {name: 'Player5', playerId: 5, position: 'RB'}
         ];
-        let whiteList = [{Name: 'Player5', Id: 5, Position: 'RB'}];
+        let whiteList = [{name: 'Player5', playerId: 5, position: 'RB'}];
         let blackList = [
-            {Name: 'Player0', Id: 0, Position: 'QB'},
-            {Name: 'Player2', Id: 2, Position: 'RB'},
-            {Name: 'Player3', Id: 3, Position: 'RB'},
-            {Name: 'Player4', Id: 4, Position: 'RB'}
+            {name: 'Player0', playerId: 0, position: 'QB'},
+            {name: 'Player2', playerId: 2, position: 'RB'},
+            {name: 'Player3', playerId: 3, position: 'RB'},
+            {name: 'Player4', playerId: 4, position: 'RB'}
             ];
         let lineup = [
-            {Name: '', Id: '', Position: 'QB'},
-            {Name: 'Player5', Id: 5, Position: 'RB'},
-            {Name: '', Id: '', Position: 'RB'},
-            {Name: '', Id: '', Position: 'FLEX'}
+            {name: '', playerId: '', position: 'QB'},
+            {name: 'Player5', playerId: 5, position: 'RB'},
+            {name: '', playerId: '', position: 'RB'},
+            {name: '', playerId: '', position: 'RB,WR,TE'}
         ];
         let state = {playerPool, lineup, whiteList, blackList};
         expect(getToggleBlackListState(5, state)).toMatchObject({
             lineup: [
-                {Name: '', Id: '', Position: 'QB'},
-                {Name: '', Id: '', Position: 'RB'},
-                {Name: '', Id: '', Position: 'RB'},
-                {Name: '', Id: '', Position: 'FLEX'}
+                {name: '', playerId: '', position: 'QB'},
+                {name: '', playerId: '', position: 'RB'},
+                {name: '', playerId: '', position: 'RB'},
+                {name: '', playerId: '', position: 'RB,WR,TE'}
             ],
             whiteList: [],
             blackList: [
-            {Name: 'Player0', Id: 0, Position: 'QB'},
-            {Name: 'Player2', Id: 2, Position: 'RB'},
-            {Name: 'Player3', Id: 3, Position: 'RB'},
-            {Name: 'Player4', Id: 4, Position: 'RB'},
-            {Name: 'Player5', Id: 5, Position: 'RB'}
+            {name: 'Player0', playerId: 0, position: 'QB'},
+            {name: 'Player2', playerId: 2, position: 'RB'},
+            {name: 'Player3', playerId: 3, position: 'RB'},
+            {name: 'Player4', playerId: 4, position: 'RB'},
+            {name: 'Player5', playerId: 5, position: 'RB'}
             ],
             filteredPool: null,
             searchText: ''
@@ -45,41 +45,41 @@ describe('can toggle blacklist', () => {
     });
     test('removes player from blacklist', () => {
         let playerPool = [
-        {Name: 'Player0', Id: 0, Position: 'QB'},
-        {Name: 'Player1', Id: 1, Position: 'QB'},
-        {Name: 'Player2', Id: 2, Position: 'RB'},
-        {Name: 'Player3', Id: 3, Position: 'RB'},
-        {Name: 'Player4', Id: 4, Position: 'RB'},
-        {Name: 'Player5', Id: 5, Position: 'RB'}
+        {name: 'Player0', playerId: 0, position: 'QB'},
+        {name: 'Player1', playerId: 1, position: 'QB'},
+        {name: 'Player2', playerId: 2, position: 'RB'},
+        {name: 'Player3', playerId: 3, position: 'RB'},
+        {name: 'Player4', playerId: 4, position: 'RB'},
+        {name: 'Player5', playerId: 5, position: 'RB'}
         ];
         let whiteList = [];
         let blackList = [
-            {Name: 'Player0', Id: 0, Position: 'QB'},
-            {Name: 'Player2', Id: 2, Position: 'RB'},
-            {Name: 'Player3', Id: 3, Position: 'RB'},
-            {Name: 'Player4', Id: 4, Position: 'RB'},
-            {Name: 'Player5', Id: 5, Position: 'RB'}
+            {name: 'Player0', playerId: 0, position: 'QB'},
+            {name: 'Player2', playerId: 2, position: 'RB'},
+            {name: 'Player3', playerId: 3, position: 'RB'},
+            {name: 'Player4', playerId: 4, position: 'RB'},
+            {name: 'Player5', playerId: 5, position: 'RB'}
             ];
         let lineup = [
-            {Name: '', Id: '', Position: 'QB'},
-            {Name: '', Id: '', Position: 'RB'},
-            {Name: '', Id: '', Position: 'RB'},
-            {Name: '', Id: '', Position: 'FLEX'}
+            {name: '', playerId: '', position: 'QB'},
+            {name: '', playerId: '', position: 'RB'},
+            {name: '', playerId: '', position: 'RB'},
+            {name: '', playerId: '', position: 'RB,WR,TE'}
         ];
         let state = {playerPool, lineup, whiteList, blackList};
         expect(getToggleBlackListState(5, state)).toMatchObject({
             lineup: [
-                {Name: '', Id: '', Position: 'QB'},
-                {Name: '', Id: '', Position: 'RB'},
-                {Name: '', Id: '', Position: 'RB'},
-                {Name: '', Id: '', Position: 'FLEX'}
+                {name: '', playerId: '', position: 'QB'},
+                {name: '', playerId: '', position: 'RB'},
+                {name: '', playerId: '', position: 'RB'},
+                {name: '', playerId: '', position: 'RB,WR,TE'}
             ],
             whiteList: [],
             blackList: [
-            {Name: 'Player0', Id: 0, Position: 'QB'},
-            {Name: 'Player2', Id: 2, Position: 'RB'},
-            {Name: 'Player3', Id: 3, Position: 'RB'},
-            {Name: 'Player4', Id: 4, Position: 'RB'}
+            {name: 'Player0', playerId: 0, position: 'QB'},
+            {name: 'Player2', playerId: 2, position: 'RB'},
+            {name: 'Player3', playerId: 3, position: 'RB'},
+            {name: 'Player4', playerId: 4, position: 'RB'}
             ],
             filteredPool: null,
             searchText: ''

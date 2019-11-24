@@ -1,28 +1,30 @@
-import React, { Component } from 'react';
-import './App.css';
+import React, { Component } from 'react'
+import './App.css'
 import { Container } from 'react-bootstrap'
-import DatePicker from 'react-date-picker';
+import DatePicker from 'react-date-picker'
+import {createEmptyLineup} from './functions/createEmptyLineup'
 import { getAddToLineupState } from './functions/getAddToLineupState'
 import { getRemoveFromLineupState } from './functions/getRemoveFromLineupState'
 import { getToggleBlackListState } from './functions/getToggleBlackListState'
 import { getFilterPlayersState } from './functions/getFilterPlayersState'
-import {formatDate} from "./functions/formatDate";
+import {formatDate} from "./functions/formatDate"
 import { sumAttribute } from './functions/sumAttribute'
-import { DfsGrid } from './DfsGrid.tsx';
-import { DfsPlayerBox } from './DfsPlayerListBox.tsx'
-import { DfsBlackListBox } from './DfsBlackListBox.tsx'
-import football2 from './icons/football2.svg';
-import football from './icons/football.ico';
-import search from "./icons/search.ico";
-import { apiRoot } from './config.js';
+import { lineupStructures } from './resources/lineupStructures'
+import { Lineup } from './ts_objects/Lineup.tsx'
+import { DfsPlayerBox } from './ts_objects/PlayerPool.tsx'
+import { BlackList } from './ts_objects/BlackList.tsx'
+import football2 from './resources/football2.svg'
+import football from './resources/football.ico'
+import search from "./resources/search.ico"
+import { apiRoot } from './resources/config.js'
 
 class App extends Component {
 
   constructor(props) {
     super(props);
-    this.state = {isLoading: false, isOptimizing: false, site: '', sport: '', contest: '',
-        date: new Date(), dfsData: {}, projectionsData: {}, contests: [], sports: [],
-        lineup: [], cap: 0, playerPool: [], filteredPool: null, searchText: '', whiteList: [], blackList: []};
+    this.state = {isLoading: false, isOptimizing: false, site: '', sport: '', contest: '', gameType: '',
+        date: new Date(), fanduelData: {}, dfsData: {}, dfsPlayers: [], contests: [], sports: [],
+        lineup: [], salaryCap: 0, playerPool: [], filteredPool: null, searchText: '', whiteList: [], blackList: []};
   }
 
   getFanduelData = (date) => {
@@ -38,15 +40,21 @@ class App extends Component {
             } else {
                 response.json()
                     .then((data) => {
-                        console.log(data);
                         this.setState({
                             isLoading: false,
-                            dfsData: data,
-                            contests: this.extractContestsFromData(data)
+                            fanduelData: data
                         });
                     });
             }
         });
+  };
+
+  filterFanduelDataBySport = (sport) => {
+      let filteredDfsData = this.state.fanduelData.filter(contest => contest.sport === sport.toUpperCase());
+      this.setState({
+          dfsData: filteredDfsData,
+          contests: this.extractContestsFromData(filteredDfsData)
+      })
   };
 
   getDraftKingsData = (sport) => {
@@ -62,7 +70,6 @@ class App extends Component {
                   } else {
                       response.json()
                           .then((data) => {
-                              console.log(data);
                               if (data.length === 0) {
                                   alert('There are no upcoming ' + sport.toUpperCase() + ' games at this time.');
                               } else {
@@ -79,6 +86,44 @@ class App extends Component {
       }
   };
 
+  appendProjectionsData = (sport) => {
+      this.setState({isLoading: true});
+      fetch(apiRoot + '/projections?sport=' + sport)
+          .then(response => {
+              if (response.status !== 200) {
+                  alert('An error occurred.');
+              } else {
+                  response.json()
+                      .then((data) => {
+                          if (data.length === 0) {
+                              alert('No ' + sport.toUpperCase() + ' data is available at this time.');
+                          } else {
+                              this.setState({
+                                  isLoading: false,
+                                  playerPool: this.combineData(this.state.dfsPlayers, data)
+                              });
+                          }
+                      });
+              }
+          });
+  };
+
+  combineData = (dfsPlayers, projectionsData) => {
+      let combinedData = [];
+      dfsPlayers.forEach(player => {
+          let playerData = projectionsData[player.playerId];
+          if (playerData) {
+              player.name = playerData.name;
+              player.team = playerData.team;
+              player.opponent = playerData.opponent;
+              player.gameDate = playerData.gameDate;
+              player.projection = playerData[this.state.site + 'Projection'];
+              combinedData.push(player);
+          }
+      });
+      return combinedData;
+  };
+
   extractContestsFromData = (dataArray) => {
       let contestArray = [];
       dataArray.forEach(contestJson => contestArray.push(contestJson.contest));
@@ -87,91 +132,21 @@ class App extends Component {
 
   setSport = (sport) => {
       this.setState({sport: sport});
-      if (this.state.site === 'dk')
-          this.getDraftKingsData(sport);
+      this.state.site === 'fd' ? this.filterFanduelDataBySport(sport) : this.getDraftKingsData(sport);
   };
 
   setContest = (contest) => {
-      let playerPool = this.state.dfsData
-          .filter(contestJson => contestJson.contest === contest)[0]['players'];
+      let {site, sport} = this.state;
+      let gameType = contest.includes('@') || contest.includes('vs') ? 'Single Game' : 'Classic';
       this.setState({
           contest: contest,
-          playerPool: playerPool
+          gameType: gameType,
+          dfsPlayers: this.state.dfsData
+              .filter(contestJson => contestJson.contest === contest)[0]['players'],
+          lineup: createEmptyLineup(lineupStructures[site][sport][gameType].lineupMatrix,
+              lineupStructures[site][sport][gameType].displayMatrix),
+          salaryCap: lineupStructures[site][sport][gameType].salaryCap
       });
-  };
-
-  generateLineup = (sport, site, contest) => {
-    let {lineup, blackList} = this.state;
-    let whiteListNames = lineup.filter((player) => player.Name).map((player) => (player.Name));
-    let blackListNames = blackList.filter((player) => player.Name).map((player) => (player.Name));
-    this.setState({
-      isOptimizing: true,
-      sport: sport,
-      site: site,
-      contest: contest,
-      whiteList: lineup.filter((player) => player.Name)
-    });
-    fetch(window.location.origin + '/optimize/generate/' + sport + '/' + site + '/' + contest, {
-      method: 'POST',
-      body: whiteListNames.toString() + '|' + blackListNames.toString()
-    }).then(response => {
-      if (response.status !== 200) {
-        alert('Error removing player.');
-      } else {
-        response.json()
-            .then((lineupJson) => {
-              this.ingestDfsLineup(lineupJson);
-            });
-      }
-    });
-  };
-
-  ingestDfsLineup = (lineupJson) => {
-    if (typeof lineupJson === "string") {
-      this.setState({isOptimizing: false});
-      alert(lineupJson);
-      return
-    }
-    let lineup = (typeof lineupJson === "string") ? [] : lineupJson;
-    this.setState({
-      isOptimizing: false,
-      lineup: lineup
-    });
-  };
-
-  clearLineup = (sport, site, contest) => {
-    if (!sport) {
-      alert('Please select a sport.');
-    } else if (sport === 'nba') {
-      alert('Warning: \nThis sport is currently unavailable.');
-    } else if (!site || !contest) {
-      this.setState({sport: sport, site: site, contest: contest});
-    } else {
-      this.setState({
-        isLoading: true,
-        sport: sport,
-        site: site,
-        contest: contest
-      });
-      fetch(window.location.origin + '/optimize/clear/' + sport + '/' + site + '/' + contest)
-          .then(response => {
-            if (response.status !== 200) {
-              alert('An error occurred.');
-            } else {
-              response.json()
-                  .then((data) => {
-                    this.setState({
-                      isLoading: false,
-                      playerPool: data.playerPool,
-                      lineup: data.lineup,
-                      cap: data.cap,
-                      whiteList: [],
-                      blackList: []
-                    });
-                  });
-            }
-          });
-    }
   };
 
   filterPlayers = (attribute, value) => {
@@ -193,15 +168,26 @@ class App extends Component {
     this.setState(newState);
   };
 
+  clearLineup = () => {
+      let {site, sport, gameType} = this.state;
+      this.setState({
+          lineup: createEmptyLineup(lineupStructures[site][sport][gameType].lineupMatrix,
+              lineupStructures[site][sport][gameType].displayMatrix),
+          whiteList: [],
+          blackList: []
+      })
+  };
+
   toggleBlackList = (playerIndex) => {
     let newState = getToggleBlackListState(playerIndex, this.state);
     this.setState(newState);
   };
 
   render() {
-    const {isLoading, isOptimizing, sport, site, contest, date, contests, lineup, cap, playerPool, filteredPool,
+    const {isLoading, isOptimizing, sport, site, contest, date, contests, lineup, salaryCap, playerPool, filteredPool,
       searchText, whiteList, blackList} = this.state;
 
+    let sports = ['mlb', 'nfl', 'nba', 'nhl'];
     let gridSection;
 
     if (isLoading) {
@@ -221,31 +207,27 @@ class App extends Component {
           <div className={"Dfs-grid-section"}>
             <div className={"Player-list-box"}>
               <h2 className={"Dfs-header"}>Blacklist</h2>
-              <DfsBlackListBox blackList={blackList}/>
+              <BlackList blackList={blackList}/>
             </div>
             <div>
               <h2 className={"Dfs-header"}>Players</h2>
               <div style={{display: 'flex', flexDirection: 'column'}}>
-                {!filteredPool &&
-                <img src={search} style={{height: '3vmin', position: 'absolute'}}
-                     alt="search"/>}
+                {!filteredPool && <img src={search} style={{height: '3vmin', position: 'absolute'}} alt="search"/>}
                 <input type="text" style={{height: '25px', width: '90%'}}
                        value={searchText}
-                       onChange={(event) =>
-                           this.filterPlayers('Name', event.target.value)}>{null}</input>
+                       onChange={(event) => this.filterPlayers('name', event.target.value)}>{null}</input>
               </div>
               <div style={{display: 'flex'}}>
-                <button onClick={() => this.filterPlayers('Position', 'All')}>All</button>
+                <button onClick={() => this.filterPlayers('position', 'All')}>All</button>
                 {
-                  [...new Set(playerPool.map((player) => (player.position === 'D/ST') ?
-                      player.position : player.position.split('/')[0]))]
+                  [...new Set(playerPool.map((player) => player.position.split('/')[0]))]
                       .map((position) =>
-                          <button onClick={() => this.filterPlayers('Position', position)}>{position}</button>
+                          <button onClick={() => this.filterPlayers('position', position)}>{position}</button>
                       )
                 }
-                <select onChange={(event) => this.filterPlayers('Team', event.target.value)}>
-                  <option selected={"selected"} value={'All'}>All</option>
-                  {[...new Set(playerPool.map((player) => player.Team))].sort().map((team) =>
+                <select onChange={(event) => this.filterPlayers('team', event.target.value)}>
+                  <option defaultValue={'All'}>All</option>
+                  {[...new Set(playerPool.map((player) => player.team))].sort().map((team) =>
                       <option value={team}>{team}</option>
                   )}
                 </select>
@@ -253,15 +235,15 @@ class App extends Component {
               <div className={"Player-list-box"}>
                 <DfsPlayerBox playerList={playerPool} filterList={filteredPool}
                               whiteListFunction={this.addToLineup} blackListFunction={this.toggleBlackList}
-                              whiteList={whiteList} blackList={blackList} salarySum={sumAttribute(lineup, 'Price')}
-                              cap={cap}/>
+                              whiteList={whiteList} blackList={blackList}
+                              salarySum={sumAttribute(lineup, 'salary')} cap={salaryCap}/>
               </div>
             </div>
             <div>
               <h2 className={"Dfs-header"}>Lineup</h2>
-              <DfsGrid dfsLineup={lineup} removePlayer={this.removeFromLineup} site={site}
-                       whiteList={whiteList} pointSum={sumAttribute(lineup, 'Projected')}
-                       salarySum={sumAttribute(lineup, 'Price')} cap={cap}/>
+              <Lineup dfsLineup={lineup} removePlayer={this.removeFromLineup} site={site}
+                      whiteList={whiteList} pointSum={sumAttribute(lineup, 'projection')}
+                      salarySum={sumAttribute(lineup, 'salary')} cap={salaryCap}/>
             </div>
           </div>;
     }
@@ -277,41 +259,34 @@ class App extends Component {
               <button style={{backgroundColor: (site === 'dk') ? 'dodgerblue' : 'white'}}
                       onClick={() => this.getDraftKingsData(sport)}>Draftkings</button>
             </div>
-          {site === 'fd' && <div>
-              <DatePicker
-                  onChange={(date) => this.getFanduelData(date)}
-                  value={date}
-              />
-          </div>}
-          {site && <h3>Choose a sport:</h3>}
-          {site && <div style={{display: 'flex'}}>
-              <button style={{backgroundColor: (sport === 'mlb') ? 'dodgerblue' : 'white'}}
-                      onClick={() => this.setSport('mlb')}>MLB</button>
-              <button style={{backgroundColor: (sport === 'nfl') ? 'dodgerblue' : 'white'}}
-                      onClick={() => this.setSport('nfl')}>NFL</button>
-              <button style={{backgroundColor: (sport === 'nba') ? 'dodgerblue' : 'white'}}
-                      onClick={() => this.setSport('nba')}>NBA</button>
-              <button style={{backgroundColor: (sport === 'nhl') ? 'dodgerblue' : 'white'}}
-                      onClick={() => this.setSport('nhl')}>NHL</button>
+            {site === 'fd' &&
+            <div>
+                <DatePicker onChange={(date) => this.getFanduelData(date)} value={date}/>
+            </div>}
+            {site && <h3>Choose a sport:</h3>}
+            {site && <div style={{display: 'flex'}}>
+                {sports.map(
+                    thisSport => <button
+                        style={{backgroundColor: (sport === thisSport) ? 'dodgerblue' : 'white'}}
+                        onClick={() => this.setSport(thisSport)}>{thisSport.toUpperCase()}</button>
+                )}
             </div>}
             {site && sport && <h3>Choose a game contest:</h3>}
             {site && sport &&
             <div style={{display: 'flex'}}>
                 {contests.map(
-                    contestName =>
-                        <button
-                            style={{backgroundColor: (contestName === contest) ? 'dodgerblue' : 'white'}}
-                            key={contestName}
-                            onClick={() => this.setContest(contestName)}
-                        >{contestName}</button>
+                    contestName => <button style={{backgroundColor: (contestName === contest) ? 'dodgerblue' : 'white'}}
+                                           key={contestName}
+                                           onClick={() => this.setContest(contestName)}>{contestName}</button>
                 )}
             </div>}
-
             <div style={{display: 'flex', margin: '2%'}}>
+                {sport && contest && site && <button style={{marginTop: '10px'}}
+                onClick={() => this.appendProjectionsData(sport)}>Build Lineup</button>}
+                {sport && contest && site && <button style={{marginTop: '10px'}}
+                >Optimize Lineup</button>}
               {sport && contest && site && <button style={{marginTop: '10px'}}
-                                                 onClick={() => this.generateLineup(sport, site, contest)}>Optimize Lineup</button>}
-              {sport && contest && site && <button style={{marginTop: '10px'}}
-                                                 onClick={() => this.clearLineup(sport, site, contest)}>Clear Lineup</button>}
+                                                   onClick={() => this.clearLineup()}>Clear Lineup</button>}
             </div>
           </div>
           {site && gridSection}

@@ -6,10 +6,10 @@ function getFilterPlayersState(attribute, value, state) {
             searchText: '',
             filteredPool: playerPool
         }
-    } else if (attribute === 'Name') {
+    } else if (attribute === 'name') {
         text = value.toLowerCase();
         filteredPool = playerPool.filter(
-            (player) => player.Name.toLowerCase().includes(text.toLowerCase())
+            (player) => player.name.toLowerCase().includes(text.toLowerCase())
         );
     } else {
         filteredPool = playerPool.filter(

@@ -2,48 +2,43 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="352060b1-b9b3-400c-8051-85a2b23146fe" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/bucket-policy.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/public/football.ico" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/DfsBlackListBox.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/DfsGrid.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/DfsPlayerListBox.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/__tests__/getAddToLineupState.test.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/__tests__/getFilterPlayersState.test.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/__tests__/getRemoveFromLineupState.test.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/__tests__/getToggleBlackListState.test.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/__tests__/sumAttribute.test.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/functions/formatDate.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/functions/getAddToLineupState.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/functions/getFilterPlayersState.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/functions/getRemoveFromLineupState.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/functions/getToggleBlackListState.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/functions/sumAttribute.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/icons/cloudy.ico" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/icons/down.ico" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/icons/football.ico" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/icons/football2.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/icons/minus.ico" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/icons/partlycloudy.ico" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/icons/plus.ico" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/icons/rainy.ico" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/icons/search.ico" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/icons/snowy.ico" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/icons/stormy.ico" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/icons/sunny.ico" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/icons/up.ico" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dictionaries/Dan.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/__tests__/createEmptyLineup.test.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/functions/createEmptyLineup.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/resources/lineupStructures.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/ts_objects/Lineup.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/deploy.sh" beforeDir="false" afterPath="$PROJECT_DIR$/deploy.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/api/ApiCaller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/api/ApiCaller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/App.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/DfsBlackListBox.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/ts_objects/BlackList.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/DfsGrid.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/DfsPlayerListBox.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/ts_objects/PlayerPool.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/__tests__/getAddToLineupState.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/__tests__/getAddToLineupState.test.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/__tests__/getFilterPlayersState.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/__tests__/getFilterPlayersState.test.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/__tests__/getRemoveFromLineupState.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/__tests__/getRemoveFromLineupState.test.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/__tests__/getToggleBlackListState.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/__tests__/getToggleBlackListState.test.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/__tests__/sumAttribute.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/__tests__/sumAttribute.test.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/functions/getAddToLineupState.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/functions/getAddToLineupState.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/functions/getFilterPlayersState.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/functions/getFilterPlayersState.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/functions/getRemoveFromLineupState.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/functions/getRemoveFromLineupState.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/functions/getToggleBlackListState.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/functions/getToggleBlackListState.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/icons/cloudy.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/icons/down.ico" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/resources/down.ico" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/icons/football.ico" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/resources/football.ico" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/icons/football2.svg" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/resources/football2.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/icons/minus.ico" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/resources/minus.ico" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/icons/partlycloudy.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/icons/plus.ico" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/resources/plus.ico" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/icons/rainy.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/icons/search.ico" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/resources/search.ico" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/icons/snowy.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/icons/stormy.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/icons/sunny.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/icons/up.ico" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/resources/up.ico" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/collect/DraftKingsData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/collect/DraftKingsData.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/collect/FanduelData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/collect/FanduelData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/handler/LineupHandler.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/handler/OptimizerHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/handler/OptimizerHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/com/optimizer/collect/DraftKingsDataTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/optimizer/collect/DraftKingsDataTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/optimizer/collect/FanduelDataTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/optimizer/collect/FanduelDataTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/optimizer/handler/LineupHandlerTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/swagger.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/swagger.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/template.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/template.yaml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -56,46 +51,31 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/handler/OptimizerHandler.java">
+        <entry file="file://$PROJECT_DIR$/frontend/src/App.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret line="5" column="19" selection-start-line="5" selection-start-column="19" selection-end-line="5" selection-end-column="19" />
+            <state relative-caret-position="88">
+              <caret line="150" selection-start-line="150" selection-end-line="150" />
               <folding>
-                <element signature="imports" expanded="true" />
+                <element signature="e#0#40#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/frontend/src/App.js">
+        <entry file="file://$PROJECT_DIR$/frontend/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-3610">
-              <caret line="50" selection-start-line="50" selection-end-line="50" />
-              <folding>
-                <element signature="e#0#41#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="85">
+              <caret line="5" column="14" lean-forward="true" selection-start-line="5" selection-start-column="14" selection-end-line="5" selection-end-column="14" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/collect/DraftKingsData.java">
+        <entry file="file://$PROJECT_DIR$/frontend/src/resources/lineupStructures.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
-              <caret line="15" column="35" selection-start-line="15" selection-start-column="35" selection-end-line="15" selection-end-column="35" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/deploy.sh">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="487">
-              <caret line="40" column="11" selection-start-line="40" selection-start-column="11" selection-end-line="40" selection-end-column="11" />
+            <state relative-caret-position="88">
+              <caret line="59" column="35" selection-start-line="59" selection-start-column="35" selection-end-line="59" selection-end-column="35" />
             </state>
           </provider>
         </entry>
@@ -114,41 +94,56 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>hover</find>
-      <find>app-head</find>
-      <find>buttons-and</find>
-      <find>player-list</find>
-      <find>loading</find>
-      <find>loading&quot;</find>
-      <find>down</find>
-      <find>icons/plus</find>
-      <find>icons/footbal</find>
-      <find>DfsReport</find>
-      <find>getFilter</find>
-      <find>getfilter</find>
-      <find>getAddToLineupState</find>
-      <find>isReporting</find>
-      <find>reporting</find>
-      <find>weeks</find>
-      <find>cap</find>
-      <find>logo192</find>
-      <find>-w</find>
-      <find>watch</find>
-      <find>slate</find>
+      <find>weather</find>
+      <find>console</find>
+      <find>/</find>
+      <find>Id</find>
+      <find>FLEX</find>
+      <find>'FLEX'</find>
+      <find>flex</find>
       <find>contest</find>
+      <find>gameType</find>
+      <find>Showdown</find>
+      <find>position</find>
+      <find>display</find>
+      <find>'id': 0,</find>
+      <find>playerId: ''</find>
+      <find>null</find>
+      <find>id</find>
+      <find>DST</find>
+      <find>Projected</find>
+      <find>filterPlayers</find>
+      <find>sumAttribute</find>
+      <find>projected</find>
+      <find>['</find>
+      <find>Player-list-box</find>
+      <find>Player-buttons</find>
+      <find>Buttons-and-boxes</find>
+      <find>Draft-grid</find>
+      <find>cap</find>
       <find>fanduelData</find>
-      <find>draftKingsData</find>
-      <find>.filter</find>
-      <find>filter(</find>
-      <find>playerId</find>
-      <find>.position</find>
-      <find>playerPool</find>
-      <find>statsid</find>
+      <find>dfsPlayers</find>
+      <find>status</find>
     </findStrings>
     <replaceStrings>
       <replace>MyApi</replace>
       <replace>emptyPlayer</replace>
       <replace>contest</replace>
+      <replace>projection</replace>
+      <replace>team</replace>
+      <replace>opponent</replace>
+      <replace>salary</replace>
+      <replace>salaryCap</replace>
+      <replace>name</replace>
+      <replace>position</replace>
+      <replace>projected</replace>
+      <replace>id</replace>
+      <replace>'RB,WR,TE'</replace>
+      <replace>displayPosition</replace>
+      <replace>Single Game</replace>
+      <replace>'id': null,</replace>
+      <replace>playerId</replace>
+      <replace>''</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -157,20 +152,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/collect/ProjectionsData.java" />
-        <option value="$PROJECT_DIR$/src/main/java/api/DataCollector.java" />
-        <option value="$PROJECT_DIR$/src/main/java/api/ApiClient.java" />
-        <option value="$PROJECT_DIR$/src/main/java/handler/FanduelHandler.java" />
-        <option value="$PROJECT_DIR$/src/main/java/handler/ProjectionsHandler.java" />
-        <option value="$PROJECT_DIR$/src/main/java/handler/DraftKingsHandler.java" />
-        <option value="$PROJECT_DIR$/src/test/java/optimize/PlayerTest.java" />
-        <option value="$PROJECT_DIR$/src/test/java/com/optimizer/optimize/PlayerTest.java" />
-        <option value="$PROJECT_DIR$/src/main/java/optimize/Player.java" />
-        <option value="$PROJECT_DIR$/src/test/java/com/optimizer/api/ApiCallerTest.java" />
-        <option value="$PROJECT_DIR$/pom.xml" />
-        <option value="$PROJECT_DIR$/packaged.yaml" />
-        <option value="$PROJECT_DIR$/.gitignore" />
-        <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/src/test/java/com/optimizer/handler/DraftKingsHandlerTest.java" />
         <option value="$PROJECT_DIR$/src/test/java/com/optimizer/handler/FanduelHandlerTest.java" />
         <option value="$PROJECT_DIR$/src/test/java/com/optimizer/handler/ProjectionsHandlerTest.java" />
@@ -180,15 +161,8 @@
         <option value="$PROJECT_DIR$/config.sh" />
         <option value="$PROJECT_DIR$/src/main/java/handler/OptimizerHandler.java" />
         <option value="$PROJECT_DIR$/src/main/java/handler/LineupHandler.java" />
-        <option value="$PROJECT_DIR$/frontend/src/App.css" />
         <option value="$PROJECT_DIR$/frontend/tsconfig.json" />
         <option value="$PROJECT_DIR$/frontend/package-lock.json" />
-        <option value="$PROJECT_DIR$/frontend/src/__tests__/sumAttribute.test.js" />
-        <option value="$PROJECT_DIR$/frontend/src/__tests__/getToggleBlackListState.test.js" />
-        <option value="$PROJECT_DIR$/frontend/src/__tests__/getRemoveFromLineupState.test.js" />
-        <option value="$PROJECT_DIR$/frontend/src/__tests__/getAddToLineupState.test.js" />
-        <option value="$PROJECT_DIR$/frontend/src/__tests__/getFilterPlayersState.test.js" />
-        <option value="$PROJECT_DIR$/frontend/.gitignore" />
         <option value="$PROJECT_DIR$/frontend/public/index.html" />
         <option value="$PROJECT_DIR$/frontend/public/manifest.json" />
         <option value="$PROJECT_DIR$/swagger.yaml" />
@@ -197,17 +171,38 @@
         <option value="$PROJECT_DIR$/frontend/src/getTodaysDate.js" />
         <option value="$PROJECT_DIR$/frontend/src/__tests__/getTodaysDate.test.js" />
         <option value="$PROJECT_DIR$/src/main/java/api/ApiCaller.java" />
-        <option value="$PROJECT_DIR$/src/main/java/collect/DraftKingsData.java" />
-        <option value="$PROJECT_DIR$/src/test/java/com/optimizer/collect/DraftKingsDataTest.java" />
         <option value="$PROJECT_DIR$/deploy.sh" />
-        <option value="$PROJECT_DIR$/frontend/src/config.js" />
-        <option value="$PROJECT_DIR$/frontend/src/App.js" />
-        <option value="$PROJECT_DIR$/frontend/src/DfsGrid.tsx" />
-        <option value="$PROJECT_DIR$/frontend/src/DfsPlayerListBox.tsx" />
-        <option value="$PROJECT_DIR$/frontend/src/DfsBlackListBox.tsx" />
-        <option value="$PROJECT_DIR$/src/main/java/collect/FanduelData.java" />
         <option value="$PROJECT_DIR$/src/test/java/com/optimizer/collect/FanduelDataTest.java" />
         <option value="$PROJECT_DIR$/template.yaml" />
+        <option value="$PROJECT_DIR$/frontend/src/config.js" />
+        <option value="$PROJECT_DIR$/frontend/src/functions/getFilterPlayersState.js" />
+        <option value="$PROJECT_DIR$/frontend/src/DfsPlayerListBox.tsx" />
+        <option value="$PROJECT_DIR$/frontend/src/DfsGrid.tsx" />
+        <option value="$PROJECT_DIR$/frontend/src/DfsBlackListBox.tsx" />
+        <option value="$PROJECT_DIR$/frontend/src/DfsBlackList.tsx" />
+        <option value="$PROJECT_DIR$/frontend/src/lineup-structures.json" />
+        <option value="$PROJECT_DIR$/src/main/java/collect/FanduelData.java" />
+        <option value="$PROJECT_DIR$/frontend/src/__tests__/sumAttribute.test.js" />
+        <option value="$PROJECT_DIR$/frontend/src/__tests__/getAddToLineupState.test.js" />
+        <option value="$PROJECT_DIR$/src/main/java/collect/DraftKingsData.java" />
+        <option value="$PROJECT_DIR$/frontend/src/__tests__/getFilterPlayersState.test.js" />
+        <option value="$PROJECT_DIR$/frontend/src/__tests__/getRemoveFromLineupState.test.js" />
+        <option value="$PROJECT_DIR$/frontend/src/__tests__/getToggleBlackListState.test.js" />
+        <option value="$PROJECT_DIR$/frontend/src/functions/createEmptyLineup.js" />
+        <option value="$PROJECT_DIR$/frontend/src/__tests__/createEmptyLineup.test.js" />
+        <option value="$PROJECT_DIR$/frontend/src/functions/getRemoveFromLineupState.js" />
+        <option value="$PROJECT_DIR$/frontend/src/functions/getAddToLineupState.js" />
+        <option value="$PROJECT_DIR$/frontend/src/lineupStructures.js" />
+        <option value="$PROJECT_DIR$/frontend/src/App.css" />
+        <option value="$PROJECT_DIR$/frontend/src/getGridSection.js" />
+        <option value="$PROJECT_DIR$/src/test/java/com/optimizer/collect/DraftKingsDataTest.java" />
+        <option value="$PROJECT_DIR$/frontend/src/Lineup.tsx" />
+        <option value="$PROJECT_DIR$/frontend/src/functions/getToggleBlackListState.js" />
+        <option value="$PROJECT_DIR$/frontend/src/PlayerPool.tsx" />
+        <option value="$PROJECT_DIR$/frontend/src/BlackList.tsx" />
+        <option value="$PROJECT_DIR$/frontend/src/App.js" />
+        <option value="$PROJECT_DIR$/frontend/.gitignore" />
+        <option value="$PROJECT_DIR$/frontend/src/resources/config.js" />
       </list>
     </option>
   </component>
@@ -235,9 +230,9 @@
     </treeState>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-8" />
+    <option name="x" value="952" />
     <option name="y" value="-8" />
-    <option name="width" value="1936" />
+    <option name="width" value="976" />
     <option name="height" value="1056" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -248,8 +243,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -271,58 +266,9 @@
             <path>
               <item name="DFS-Optimizer-Web" type="b2602c69:ProjectViewProjectNode" />
               <item name="DFS-Optimizer-Web" type="462c0819:PsiDirectoryNode" />
+              <item name="frontend" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="DFS-Optimizer-Web" type="b2602c69:ProjectViewProjectNode" />
-              <item name="DFS-Optimizer-Web" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="DFS-Optimizer-Web" type="b2602c69:ProjectViewProjectNode" />
-              <item name="DFS-Optimizer-Web" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="DFS-Optimizer-Web" type="b2602c69:ProjectViewProjectNode" />
-              <item name="DFS-Optimizer-Web" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="collect" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="DFS-Optimizer-Web" type="b2602c69:ProjectViewProjectNode" />
-              <item name="DFS-Optimizer-Web" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="DFS-Optimizer-Web" type="b2602c69:ProjectViewProjectNode" />
-              <item name="DFS-Optimizer-Web" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="DFS-Optimizer-Web" type="b2602c69:ProjectViewProjectNode" />
-              <item name="DFS-Optimizer-Web" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="optimizer" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="DFS-Optimizer-Web" type="b2602c69:ProjectViewProjectNode" />
-              <item name="DFS-Optimizer-Web" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="optimizer" type="462c0819:PsiDirectoryNode" />
-              <item name="collect" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -337,7 +283,7 @@
     <property name="Repository.Attach.Sources" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1574460168375" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1574571172241" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit5" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
     <property name="create.test.in.the.same.root" value="true" />
@@ -368,10 +314,11 @@
       <recent name="com.optimizer.api" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Dan\Documents\DFS-Optimizer-Web\frontend\src\resources" />
+      <recent name="C:\Users\Dan\Documents\DFS-Optimizer-Web\frontend\src\ts_objects" />
       <recent name="C:\Users\Dan\Documents\DFS-Optimizer-Web\frontend\src\functions" />
       <recent name="C:\Users\Dan\Documents\DFS-Optimizer-Web\src\main" />
       <recent name="C:\Users\dadajian\Documents\Personal\DFS-Optimizer-Web\src\test\java\com\optimizer\collect" />
-      <recent name="C:\Users\dadajian\Documents\Personal\DFS-Optimizer-Web\src\test\resources" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Dan\Documents\DFS-Optimizer-Web\frontend\public" />
@@ -460,8 +407,8 @@
     </configuration>
     <list>
       <item itemvalue="Bash.deploy.sh (1)" />
-      <item itemvalue="JUnit.All in DFS-Optimizer-Web" />
       <item itemvalue="Jest.adds player to lineup" />
+      <item itemvalue="JUnit.All in DFS-Optimizer-Web" />
       <item itemvalue="JUnit.DraftKingsDataTest" />
       <item itemvalue="JUnit.FanduelDataTest" />
     </list>
@@ -506,7 +453,8 @@
       <workItem from="1574393868755" duration="2997000" />
       <workItem from="1574431505046" duration="3652000" />
       <workItem from="1574440413082" duration="1518000" />
-      <workItem from="1574441971965" duration="17733000" />
+      <workItem from="1574441971965" duration="17980000" />
+      <workItem from="1574521778614" duration="26627000" />
     </task>
     <servers />
   </component>
@@ -543,7 +491,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="223729000" />
+    <option name="totallyTimeSpent" value="250603000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -558,7 +506,7 @@
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.16204691" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.16364606" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -575,7 +523,7 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
-      <window_info anchor="bottom" id="Terminal" order="10" weight="0.2611051" />
+      <window_info anchor="bottom" id="Terminal" order="10" weight="0.34127843" />
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
       <window_info anchor="bottom" id="Messages" order="12" weight="0.21018419" />
       <window_info anchor="bottom" id="TypeScript" order="13" />
@@ -590,7 +538,7 @@
       <window_info anchor="right" id="Palette&#9;" order="8" />
     </layout>
     <layout-to-restore>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.16204691" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.16364606" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -607,7 +555,7 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="10" visible="true" weight="0.2611051" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="10" visible="true" weight="0.4073673" />
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
       <window_info anchor="bottom" id="Messages" order="12" weight="0.21018419" />
       <window_info anchor="bottom" id="TypeScript" order="13" />
@@ -631,93 +579,8 @@
     </ignored-roots>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/test/java/com/optimizer/collect/NFLProjectionsDataTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="196">
-          <caret line="25" column="9" selection-start-line="25" selection-start-column="9" selection-end-line="25" selection-end-column="9" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/config.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" column="17" selection-start-line="1" selection-start-column="7" selection-end-line="1" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/handler/LineupHandler.java" />
-    <entry file="file://$PROJECT_DIR$/src/test/java/com/optimizer/optimize/OptimizerTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="27" selection-start-line="27" selection-end-line="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/optimize/Optimizer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="595">
-          <caret line="42" column="33" selection-start-line="42" selection-start-column="33" selection-end-line="42" selection-end-column="33" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#762#763#0" expanded="true" />
-            <element signature="e#841#842#0" expanded="true" />
-            <element signature="e#2959#2960#0" expanded="true" />
-            <element signature="e#3037#3038#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/com/optimizer/handler/DraftKingsHandlerTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="232">
-          <caret line="20" lean-forward="true" selection-start-line="20" selection-end-line="20" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/src/App.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="6" lean-forward="true" selection-start-line="5" selection-start-column="6" selection-end-line="5" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/yarn.lock" />
-    <entry file="file://$PROJECT_DIR$/frontend/src/icons/football2.svg">
+    <entry file="file://$PROJECT_DIR$/frontend/src/resources/football2.svg">
       <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/src/__tests__/getToggleBlackListState.test.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="40" lean-forward="true" selection-start-line="2" selection-start-column="40" selection-end-line="2" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/src/__tests__/getRemoveFromLineupState.test.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="44" lean-forward="true" selection-start-line="2" selection-start-column="44" selection-end-line="2" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/src/functions/getFilterPlayersState.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="23" selection-start-line="23" selection-end-line="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/src/functions/getAddToLineupState.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="19" lean-forward="true" selection-start-line="8" selection-start-column="19" selection-end-line="8" selection-end-column="19" />
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/frontend/public/robots.txt">
       <provider selected="true" editor-type-id="text-editor">
@@ -733,16 +596,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/src/logo.svg">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/src/__tests__/getAddToLineupState.test.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend/src/logo.svg" />
     <entry file="file://$PROJECT_DIR$/frontend/public/manifest.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
@@ -778,58 +632,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/src/functions/getToggleBlackListState.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/src/__tests__/getFilterPlayersState.test.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="45" selection-start-line="3" selection-start-column="45" selection-end-line="3" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/handler/OptimizerHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret line="5" column="19" selection-start-line="5" selection-start-column="19" selection-end-line="5" selection-end-column="19" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/src/__tests__/sumAttribute.test.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret selection-end-line="12" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/src/functions/formatDate.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/api/ApiCaller.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="374">
           <caret line="24" column="99" selection-start-line="24" selection-start-column="99" selection-end-line="24" selection-end-column="99" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/src/__tests__/formatDate.test.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="3" lean-forward="true" selection-start-line="7" selection-start-column="3" selection-end-line="7" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config.sh">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="23" selection-start-line="2" selection-start-column="23" selection-end-line="2" selection-end-column="23" />
         </state>
       </provider>
     </entry>
@@ -854,51 +660,6 @@
         <state relative-caret-position="-167" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/src/config.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="83" selection-start-column="83" selection-end-column="83" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/deploy.sh">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="487">
-          <caret line="40" column="11" selection-start-line="40" selection-start-column="11" selection-end-line="40" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/src/DfsBlackListBox.tsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="27" column="10" lean-forward="true" selection-start-line="27" selection-start-column="10" selection-end-line="27" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/src/DfsPlayerListBox.tsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="753">
-          <caret line="78" column="20" selection-start-line="78" selection-start-column="20" selection-end-line="78" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/src/DfsGrid.tsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="561">
-          <caret line="68" column="21" lean-forward="true" selection-start-line="68" selection-start-column="21" selection-end-line="68" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/com/optimizer/collect/DraftKingsDataTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="385">
-          <caret line="40" column="8" lean-forward="true" selection-start-line="40" selection-start-column="8" selection-end-line="40" selection-end-column="58" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/com/optimizer/collect/MockResponses.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="221">
@@ -913,31 +674,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/collect/FanduelData.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="36" column="17" lean-forward="true" selection-start-line="36" selection-start-column="17" selection-end-line="36" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/collect/DraftKingsData.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="15" column="35" selection-start-line="15" selection-start-column="35" selection-end-line="15" selection-end-column="35" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/README.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor />
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend/README.md" />
     <entry file="file://$PROJECT_DIR$/frontend/tsconfig.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
@@ -945,25 +682,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/src/App.test.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" selection-start-line="9" selection-end-line="9" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend/src/App.test.js" />
     <entry file="file://$PROJECT_DIR$/frontend/src/react-app-env.d.ts">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/template.yaml">
       <provider selected="true" editor-type-id="text-editor">
@@ -972,13 +693,228 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/config.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="23" selection-start-line="2" selection-start-column="23" selection-end-line="2" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/handler/OptimizerHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret line="5" column="19" selection-start-line="5" selection-start-column="19" selection-end-line="5" selection-end-column="19" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/collect/ProjectionsData.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="442">
+          <caret line="55" column="25" lean-forward="true" selection-start-line="55" selection-start-column="25" selection-end-line="55" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/deploy.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="495">
+          <caret line="40" column="11" selection-start-line="40" selection-start-column="11" selection-end-line="40" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend/src/__tests__/formatDate.test.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="7" lean-forward="true" selection-start-line="6" selection-start-column="7" selection-end-line="6" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend/src/functions/formatDate.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" lean-forward="true" selection-end-line="7" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend/src/__tests__/getAddToLineupState.test.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="23" lean-forward="true" selection-start-line="11" selection-start-column="23" selection-end-line="11" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/collect/DraftKingsData.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="29" column="47" selection-start-line="29" selection-start-column="47" selection-end-line="29" selection-end-column="47" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/collect/FanduelData.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="27" column="87" selection-start-line="27" selection-start-column="87" selection-end-line="27" selection-end-column="87" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend/src/__tests__/getRemoveFromLineupState.test.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="17" column="67" selection-start-line="17" selection-start-column="67" selection-end-line="17" selection-end-column="67" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend/src/__tests__/getToggleBlackListState.test.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="546">
+          <caret line="81" column="38" selection-start-line="81" selection-start-column="38" selection-end-line="81" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend/src/__tests__/sumAttribute.test.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="45" lean-forward="true" selection-start-line="2" selection-start-column="45" selection-end-line="2" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend/src/__tests__/getFilterPlayersState.test.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1254">
+          <caret line="79" column="38" selection-start-line="79" selection-start-column="38" selection-end-line="79" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend/src/functions/getFilterPlayersState.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="16" lean-forward="true" selection-start-line="4" selection-start-column="16" selection-end-line="4" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend/src/__tests__/createEmptyLineup.test.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="598">
+          <caret line="97" selection-start-line="97" selection-end-line="97" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend/src/functions/getRemoveFromLineupState.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="5" lean-forward="true" selection-start-line="6" selection-start-column="5" selection-end-line="6" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend/src/functions/sumAttribute.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend/src/functions/createEmptyLineup.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="12" column="1" lean-forward="true" selection-start-line="12" selection-start-column="1" selection-end-line="12" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend/src/App.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2262">
+          <caret line="14" column="1" selection-start-line="14" selection-start-column="1" selection-end-line="14" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend/src/getGridSection.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-459">
+          <caret line="8" selection-start-line="8" selection-end-line="8" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/optimizer/collect/DraftKingsDataTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="79">
+          <caret line="20" column="15" lean-forward="true" selection-start-line="20" selection-start-column="15" selection-end-line="20" selection-end-column="15" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend/src/functions/getAddToLineupState.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="36" selection-start-line="5" selection-start-column="36" selection-end-line="5" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend/src/ts_objects/Lineup.tsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="17" selection-start-line="6" selection-start-column="17" selection-end-line="6" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend/src/ts_objects/PlayerPool.tsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="17" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend/src/functions/getToggleBlackListState.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="230">
+          <caret line="18" column="29" selection-start-line="18" selection-start-column="29" selection-end-line="18" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend/src/resources/lineupStructures.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="88">
+          <caret line="59" column="35" selection-start-line="59" selection-start-column="35" selection-end-line="59" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend/src/ts_objects/BlackList.tsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/frontend/src/App.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-3610">
-          <caret line="50" selection-start-line="50" selection-end-line="50" />
+        <state relative-caret-position="88">
+          <caret line="150" selection-start-line="150" selection-end-line="150" />
           <folding>
-            <element signature="e#0#41#0" expanded="true" />
+            <element signature="e#0#40#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend/src/resources/config.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="85" selection-start-column="85" selection-end-column="85" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="14" lean-forward="true" selection-start-line="5" selection-start-column="14" selection-end-line="5" selection-end-column="14" />
         </state>
       </provider>
     </entry>

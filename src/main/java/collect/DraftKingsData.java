@@ -21,10 +21,13 @@ public class DraftKingsData {
         List<Map<String, Object>> allContestInfo = new ArrayList<>();
         getValidContests().forEach((JSONObject event) -> {
             Map<String, Object> contestMap = new HashMap<>();
-            contestMap.put("contest", (event.has("suffix") ?
-                    event.getString("suffix")
-                            .substring(2, event.getString("suffix").length() - 1) : "Main"));
-            contestMap.put("gameType", event.getString("gameType"));
+            String contest = event.has("suffix") ? event.getString("suffix")
+                    .substring(2, event.getString("suffix").length() - 1) :
+                    "Main ("
+                            + event.getJSONArray("competitions").getJSONObject(0).getString("startTime")
+                            .split("T")[0].substring(5)
+                            + ")";
+            contestMap.put("contest", contest);
             JSONArray playerPool = event.getJSONArray("draftPool");
             List<Map<String, Object>> playerList = new ArrayList<>();
             for (Object object : playerPool) {

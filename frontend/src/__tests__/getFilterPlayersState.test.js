@@ -1,83 +1,83 @@
 import { getFilterPlayersState } from '../functions/getFilterPlayersState'
 
 describe('filters by attribute', () => {
-    test('filters by Name attribute', () => {
+    test('filters by name attribute', () => {
         let playerPool = [
-        {Name: 'Player0', Id: 0, Position: 'QB'},
-        {Name: 'Player1', Id: 1, Position: 'QB'},
-        {Name: 'Player2', Id: 2, Position: 'RB'},
-        {Name: 'Player3', Id: 3, Position: 'RB'},
-        {Name: 'Player4', Id: 4, Position: 'RB'},
-        {Name: 'Player5', Id: 5, Position: 'RB'}
+        {name: 'Player0', playerId: 0, position: 'QB'},
+        {name: 'Player1', playerId: 1, position: 'QB'},
+        {name: 'Player2', playerId: 2, position: 'RB'},
+        {name: 'Player3', playerId: 3, position: 'RB'},
+        {name: 'Player4', playerId: 4, position: 'RB'},
+        {name: 'Player5', playerId: 5, position: 'RB'}
         ];
         let text = 'test';
         let state = {playerPool, text};
-        expect(getFilterPlayersState('Name', '4', state)).toMatchObject({
+        expect(getFilterPlayersState('name', '4', state)).toMatchObject({
             searchText: '4',
             filteredPool: [
-            {Name: 'Player4', Id: 4, Position: 'RB'}
+            {name: 'Player4', playerId: 4, position: 'RB'}
             ]
         });
     });
-    test('filters by non-Name attribute', () => {
+    test('filters by non-name attribute', () => {
         let playerPool = [
-        {Name: 'Player0', Id: 0, Position: 'QB'},
-        {Name: 'Player1', Id: 1, Position: 'QB'},
-        {Name: 'Player2', Id: 2, Position: 'RB'},
-        {Name: 'Player3', Id: 3, Position: 'RB'},
-        {Name: 'Player4', Id: 4, Position: 'RB'},
-        {Name: 'Player5', Id: 5, Position: 'RB'}
+        {name: 'Player0', playerId: 0, position: 'QB'},
+        {name: 'Player1', playerId: 1, position: 'QB'},
+        {name: 'Player2', playerId: 2, position: 'RB'},
+        {name: 'Player3', playerId: 3, position: 'RB'},
+        {name: 'Player4', playerId: 4, position: 'RB'},
+        {name: 'Player5', playerId: 5, position: 'RB'}
         ];
         let text = 'test';
         let state = {playerPool, text};
-        expect(getFilterPlayersState('Position', 'RB', state)).toMatchObject({
+        expect(getFilterPlayersState('position', 'RB', state)).toMatchObject({
             searchText: 'test',
             filteredPool: [
-            {Name: 'Player2', Id: 2, Position: 'RB'},
-            {Name: 'Player3', Id: 3, Position: 'RB'},
-            {Name: 'Player4', Id: 4, Position: 'RB'},
-            {Name: 'Player5', Id: 5, Position: 'RB'}
+            {name: 'Player2', playerId: 2, position: 'RB'},
+            {name: 'Player3', playerId: 3, position: 'RB'},
+            {name: 'Player4', playerId: 4, position: 'RB'},
+            {name: 'Player5', playerId: 5, position: 'RB'}
             ]
         });
     });
     test('filters by position with multi-position player', () => {
         let playerPool = [
-        {Name: 'Player0', Id: 0, Position: 'QB'},
-        {Name: 'Player1', Id: 1, Position: 'QB'},
-        {Name: 'Player2', Id: 2, Position: 'RB'},
-        {Name: 'Player3', Id: 3, Position: 'RB/WR'},
-        {Name: 'Player4', Id: 4, Position: 'RB'},
-        {Name: 'Player5', Id: 5, Position: 'RB'}
+        {name: 'Player0', playerId: 0, position: 'QB'},
+        {name: 'Player1', playerId: 1, position: 'QB'},
+        {name: 'Player2', playerId: 2, position: 'RB'},
+        {name: 'Player3', playerId: 3, position: 'RB/WR'},
+        {name: 'Player4', playerId: 4, position: 'RB'},
+        {name: 'Player5', playerId: 5, position: 'RB'}
         ];
         let text = 'test';
         let state = {playerPool, text};
-        expect(getFilterPlayersState('Position', 'WR', state)).toMatchObject({
+        expect(getFilterPlayersState('position', 'WR', state)).toMatchObject({
             searchText: 'test',
             filteredPool: [
-            {Name: 'Player3', Id: 3, Position: 'RB/WR'}
+            {name: 'Player3', playerId: 3, position: 'RB/WR'}
             ]
         });
     });
     test('filters by all attributes', () => {
         let playerPool = [
-        {Name: 'Player0', Id: 0, Position: 'QB'},
-        {Name: 'Player1', Id: 1, Position: 'QB'},
-        {Name: 'Player2', Id: 2, Position: 'RB'},
-        {Name: 'Player3', Id: 3, Position: 'RB'},
-        {Name: 'Player4', Id: 4, Position: 'RB'},
-        {Name: 'Player5', Id: 5, Position: 'RB'}
+        {name: 'Player0', playerId: 0, position: 'QB'},
+        {name: 'Player1', playerId: 1, position: 'QB'},
+        {name: 'Player2', playerId: 2, position: 'RB'},
+        {name: 'Player3', playerId: 3, position: 'RB'},
+        {name: 'Player4', playerId: 4, position: 'RB'},
+        {name: 'Player5', playerId: 5, position: 'RB'}
         ];
         let text = 'test';
         let state = {playerPool, text};
-        expect(getFilterPlayersState('Position', 'All', state)).toMatchObject({
+        expect(getFilterPlayersState('position', 'All', state)).toMatchObject({
             searchText: '',
             filteredPool: [
-            {Name: 'Player0', Id: 0, Position: 'QB'},
-            {Name: 'Player1', Id: 1, Position: 'QB'},
-            {Name: 'Player2', Id: 2, Position: 'RB'},
-            {Name: 'Player3', Id: 3, Position: 'RB'},
-            {Name: 'Player4', Id: 4, Position: 'RB'},
-            {Name: 'Player5', Id: 5, Position: 'RB'}
+            {name: 'Player0', playerId: 0, position: 'QB'},
+            {name: 'Player1', playerId: 1, position: 'QB'},
+            {name: 'Player2', playerId: 2, position: 'RB'},
+            {name: 'Player3', playerId: 3, position: 'RB'},
+            {name: 'Player4', playerId: 4, position: 'RB'},
+            {name: 'Player5', playerId: 5, position: 'RB'}
             ]
         });
     });

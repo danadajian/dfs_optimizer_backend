@@ -1,6 +1,7 @@
 package collect;
 
 import api.ApiClient;
+import api.DateOperations;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -21,12 +22,16 @@ public class DraftKingsData {
         List<Map<String, Object>> allContestInfo = new ArrayList<>();
         getValidContests().forEach((JSONObject event) -> {
             Map<String, Object> contestMap = new HashMap<>();
-            String contest = event.has("suffix") ? event.getString("suffix")
-                    .substring(2, event.getString("suffix").length() - 1) :
-                    "Main ("
-                            + event.getJSONArray("competitions").getJSONObject(0).getString("startTime")
-                            .split("T")[0].substring(5)
-                            + ")";
+            String contest;
+            if (event.has("suffix")) {
+                contest = event.getString("suffix").substring(2, event.getString("suffix").length() - 1);
+            } else {
+                String gameDate = event.getJSONArray("competitions").getJSONObject(0)
+                        .getString("startTime");
+                contest = "Main ("
+                        + new DateOperations().getEasternTime(gameDate, "UTC")
+                        + ")";
+            }
             contestMap.put("contest", contest);
             JSONArray playerPool = event.getJSONArray("draftPool");
             List<Map<String, Object>> playerList = new ArrayList<>();

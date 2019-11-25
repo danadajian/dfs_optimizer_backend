@@ -54,11 +54,4 @@ class NFLProjectionsDataTest implements MockResponses {
         assertEquals(11.01, result.get(359).get("dkProjection"));
         assertEquals(11.01, result.get(359).get("fdProjection"));
     }
-
-    @Test
-    void shouldGetEasternTimeFromGameDateJson() {
-        JSONObject exampleGameDate = new JSONObject("{\"year\":2019,\"month\":11,\"date\":17,\"hour\":18,\"minute\":0,\"full\":\"2019-11-17T18:00:00\",\"dateType\":\"utc\"}");
-        String result = projectionsData.getEasternTime(exampleGameDate);
-        assertEquals("Sun 1:00PM EST", result);
-    }
 }

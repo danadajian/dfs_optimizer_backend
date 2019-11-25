@@ -6,7 +6,7 @@
 
     <groupId>com.optimizer</groupId>
     <artifactId>DFS-Optimizer-Web</artifactId>
-    <version>1.0</version>
+    <version>1.4</version>
 
     <dependencies>
         <dependency>
@@ -72,6 +72,30 @@
             <plugin>
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>3.0.0-M3</version>
+            </plugin>
+            <plugin>
+                <groupId>com.google.code.maven-replacer-plugin</groupId>
+                <artifactId>replacer</artifactId>
+                <version>1.5.3</version>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>replace</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <file>pom.xml</file>
+                    <replacements>
+                        <replacement>
+                            <!--suppress UnresolvedMavenProperty -->
+                            <token>${ccih.origin}</token>
+                            <!--suppress UnresolvedMavenProperty -->
+                            <value>${ccih.target}</value>
+                        </replacement>
+                    </replacements>
+                </configuration>
             </plugin>
         </plugins>
     </build>

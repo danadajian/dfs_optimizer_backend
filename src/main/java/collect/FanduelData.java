@@ -25,7 +25,6 @@ public class FanduelData {
             contestMap.put("sport", event.get("sport"));
             String contest = event.getJSONObject("game").getString("label");
             contestMap.put("contest", contest);
-            contestMap.put("gameType", contest.contains("@") ? "Showdown" : "Classic");
             JSONArray playerPool = event.getJSONArray("player");
             List<Map<String, Object>> playerList = new ArrayList<>();
             for (Object object : playerPool) {

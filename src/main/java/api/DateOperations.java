@@ -1,7 +1,11 @@
 package api;
 
+import org.json.JSONObject;
+
 import java.text.*;
 import java.util.Calendar;
+import java.util.Locale;
+import java.util.TimeZone;
 
 public class DateOperations {
 
@@ -26,5 +30,19 @@ public class DateOperations {
 
     private int adjustToTuesdayStart(int dayOfWeek) {
         return dayOfWeek > 2 ? dayOfWeek - 2 : dayOfWeek + 5;
+    }
+
+    public String getEasternTime(String dateString, String timeZone) {
+        Calendar cal = Calendar.getInstance();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss", Locale.ENGLISH);
+        sdf.setTimeZone(TimeZone.getTimeZone(timeZone));
+        try {
+            cal.setTime(sdf.parse(dateString));
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        DateFormat format = new SimpleDateFormat("EEE h:mma z", Locale.US);
+        format.setTimeZone(TimeZone.getTimeZone("EST"));
+        return format.format(cal.getTime());
     }
 }

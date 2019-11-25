@@ -1,13 +1,11 @@
 package collect;
 
 import api.ApiClient;
+import api.DateOperations;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.*;
 
 public class ProjectionsData {
@@ -70,7 +68,8 @@ public class ProjectionsData {
         for (Object object : eventsArray) {
             JSONObject eventObject = (JSONObject) object;
             int eventId = eventObject.getInt("eventId");
-            String gameDate = getEasternTime(eventObject.getJSONArray("startDate").getJSONObject(1));
+            JSONObject dateObject = eventObject.getJSONArray("startDate").getJSONObject(1);
+            String gameDate = new DateOperations().getEasternTime(dateObject.getString("full"), dateObject.getString("dateType"));
             JSONArray teamsArray = eventObject.getJSONArray("teams");
             int homeTeamId = teamsArray.getJSONObject(0).getInt("teamId");
             int awayTeamId = teamsArray.getJSONObject(1).getInt("teamId");
@@ -130,7 +129,9 @@ public class ProjectionsData {
         statMap.put("team", playerObject.getJSONObject("team").getString("abbreviation"));
         statMap.put("opponent", eventData.get(playerObject.getInt("eventId"))
                 .get(playerObject.getJSONObject("team").getInt("teamId")));
-        statMap.put("gameDate", getEasternTime(playerObject.getJSONObject("gameDate")));
+        statMap.put("gameDate",
+                new DateOperations().getEasternTime(playerObject.getJSONObject("gameDate").getString("full"),
+                        playerObject.getJSONObject("gameDate").getString("dateType")));
         addProjectionsToMap(playerMap, playerObject, statMap, id);
     }
 
@@ -145,20 +146,5 @@ public class ProjectionsData {
             statMap.put("fdProjection", 0);
         }
         projectionsData.put(playerId, statMap);
-    }
-
-    public String getEasternTime(JSONObject gameDate) {
-        Calendar cal = Calendar.getInstance();
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss", Locale.ENGLISH);
-        sdf.setTimeZone(TimeZone.getTimeZone(gameDate.getString("dateType")));
-        try {
-            String dateString = gameDate.getString("full");
-            cal.setTime(sdf.parse(dateString));
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-        DateFormat format = new SimpleDateFormat("EEE h:mma z", Locale.US);
-        format.setTimeZone(TimeZone.getTimeZone("EST"));
-        return format.format(cal.getTime());
     }
 }

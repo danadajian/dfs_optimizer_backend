@@ -13,17 +13,17 @@ import { lineupStructures } from './resources/lineupStructures'
 import { Lineup } from './ts_objects/Lineup.tsx'
 import { DfsPlayerBox } from './ts_objects/PlayerPool.tsx'
 import { BlackList } from './ts_objects/BlackList.tsx'
-import football2 from './resources/football2.svg'
-import football from './resources/football.ico'
 import search from "./resources/search.ico"
 import { apiRoot } from './resources/config.js'
+import {Loading} from "./Loading";
+import {Optimizing} from "./Optimizing";
 
 class App extends Component {
 
   constructor(props) {
     super(props);
     this.state = {isLoading: false, isOptimizing: false, site: '', sport: '', contest: '', gameType: '',
-        date: new Date(), fanduelData: {}, dfsData: {}, dfsPlayers: [], contests: [], sports: [],
+        date: new Date(), fanduelData: {}, dfsData: {}, projectionsData: {}, contests: [], sports: [],
         lineup: [], salaryCap: 0, playerPool: [], filteredPool: null, searchText: '', whiteList: [], blackList: []};
   }
 
@@ -31,6 +31,8 @@ class App extends Component {
       this.setState({
           isLoading: true,
           site: 'fd',
+          sport: '',
+          contest: '',
           date: date
       });
     fetch(apiRoot + '/fanduel?date=' + formatDate(date))
@@ -54,36 +56,35 @@ class App extends Component {
       this.setState({
           dfsData: filteredDfsData,
           contests: this.extractContestsFromData(filteredDfsData)
-      })
+      });
   };
 
   getDraftKingsData = (sport) => {
-      this.setState({site: 'dk'});
-      if (sport) {
-          this.setState({
-              isLoading: true
+      this.setState({
+          isLoading: true,
+          sport: '',
+          contest: ''
+      });
+      fetch(apiRoot + '/draftkings?sport=' + sport)
+          .then(response => {
+              if (response.status !== 200) {
+                  alert('An error occurred.');
+              } else {
+                  response.json()
+                      .then((data) => {
+                          if (data.length === 0) {
+                              alert('There are no upcoming ' + sport.toUpperCase() + ' games at this time.');
+                          } else {
+                              this.setState({
+                                  isLoading: false,
+                                  sport: sport,
+                                  dfsData: data,
+                                  contests: this.extractContestsFromData(data)
+                              });
+                          }
+                      });
+              }
           });
-          fetch(apiRoot + '/draftkings?sport=' + sport)
-              .then(response => {
-                  if (response.status !== 200) {
-                      alert('An error occurred.');
-                  } else {
-                      response.json()
-                          .then((data) => {
-                              if (data.length === 0) {
-                                  alert('There are no upcoming ' + sport.toUpperCase() + ' games at this time.');
-                              } else {
-                                  this.setState({
-                                      isLoading: false,
-                                      sport: sport,
-                                      dfsData: data,
-                                      contests: this.extractContestsFromData(data)
-                                  });
-                              }
-                          });
-                  }
-              });
-      }
   };
 
   appendProjectionsData = (sport) => {
@@ -98,9 +99,10 @@ class App extends Component {
                           if (data.length === 0) {
                               alert('No ' + sport.toUpperCase() + ' data is available at this time.');
                           } else {
+                              console.log('hello');
                               this.setState({
                                   isLoading: false,
-                                  playerPool: this.combineData(this.state.dfsPlayers, data)
+                                  projectionsData: data
                               });
                           }
                       });
@@ -130,19 +132,37 @@ class App extends Component {
       return contestArray;
   };
 
-  setSport = (sport) => {
-      this.setState({sport: sport});
+  setSite = (site) => {
+      this.setState({site: site});
+      if (site === 'fd')
+          this.getFanduelData(this.state.date);
+  };
+
+  setSport = async (sport) => {
+      this.setState({
+          sport: sport,
+          contest: '',
+          playerPool: [],
+          filteredPool: null,
+          whiteList: [],
+          blackList: [],
+      });
+      await this.appendProjectionsData(sport);
       this.state.site === 'fd' ? this.filterFanduelDataBySport(sport) : this.getDraftKingsData(sport);
   };
 
   setContest = (contest) => {
-      let {site, sport} = this.state;
+      let {site, sport, projectionsData} = this.state;
       let gameType = contest.includes('@') || contest.includes('vs') ? 'Single Game' : 'Classic';
+      let dfsPlayers = this.state.dfsData
+          .filter(contestJson => contestJson.contest === contest)[0]['players'];
       this.setState({
           contest: contest,
           gameType: gameType,
-          dfsPlayers: this.state.dfsData
-              .filter(contestJson => contestJson.contest === contest)[0]['players'],
+          playerPool: this.combineData(dfsPlayers, projectionsData),
+          filteredPool: null,
+          whiteList: [],
+          blackList: [],
           lineup: createEmptyLineup(lineupStructures[site][sport][gameType].lineupMatrix,
               lineupStructures[site][sport][gameType].displayMatrix),
           salaryCap: lineupStructures[site][sport][gameType].salaryCap
@@ -188,26 +208,32 @@ class App extends Component {
       searchText, whiteList, blackList} = this.state;
 
     let sports = ['mlb', 'nfl', 'nba', 'nhl'];
-    let gridSection;
+    let sportSection = isLoading || !site ? null : <h3>Choose a sport:</h3>;
+    let sportButtons = isLoading || !site ? null :
+      <div style={{display: 'flex'}}>
+          {sports.map(
+              thisSport => <button
+                  key={thisSport}
+                  style={{backgroundColor: (sport === thisSport) ? 'dodgerblue' : 'white'}}
+                  onClick={() => this.setSport(thisSport)}>{thisSport.toUpperCase()}</button>
+          )}
+      </div>;
 
-    if (isLoading) {
-      gridSection =
-          <div className={"Loading"}>
-            <div><p className={"Loading-text"}>Loading . . .</p></div>
-            <div><img src={football} className={"App-logo"} alt="football"/></div>
-          </div>;
-    } else if (isOptimizing) {
-      gridSection =
-          <div className={"Loading"}>
-            <div><p className={"Optimizing-text"}>Optimizing . . .</p></div>
-            <div><img src={football2} className={"App-logo2"} alt="football2"/></div>
-          </div>;
-    } else {
-      gridSection =
-          <div className={"Dfs-grid-section"}>
+      let contestSection = isLoading || (!site || !sport) ? null : <h3>Choose a game contest:</h3>;
+      let contestButtons = isLoading || (!site || !sport) ? null :
+      <div style={{display: 'flex'}}>
+          {contests.map(
+              contestName => <button style={{backgroundColor: (contestName === contest) ? 'dodgerblue' : 'white'}}
+                                     key={contestName}
+                                     onClick={() => this.setContest(contestName)}>{contestName}</button>
+          )}
+      </div>;
+
+    let gridSection = isLoading ? Loading : isOptimizing ? Optimizing :
+        <div className={"Dfs-grid-section"}>
             <div className={"Player-list-box"}>
-              <h2 className={"Dfs-header"}>Blacklist</h2>
-              <BlackList blackList={blackList}/>
+                <h2 className={"Dfs-header"}>Blacklist</h2>
+                <BlackList blackList={blackList}/>
             </div>
             <div>
               <h2 className={"Dfs-header"}>Players</h2>
@@ -245,8 +271,7 @@ class App extends Component {
                       whiteList={whiteList} pointSum={sumAttribute(lineup, 'projection')}
                       salarySum={sumAttribute(lineup, 'salary')} cap={salaryCap}/>
             </div>
-          </div>;
-    }
+        </div>;
 
     return (
         <Container fluid={true}>
@@ -255,41 +280,26 @@ class App extends Component {
             <h3>Choose a site:</h3>
             <div style={{display: 'flex'}}>
               <button style={{backgroundColor: (site === 'fd') ? 'dodgerblue' : 'white'}}
-                      onClick={() => this.getFanduelData(date)}>Fanduel</button>
+                      onClick={() => this.setSite('fd')}>Fanduel</button>
               <button style={{backgroundColor: (site === 'dk') ? 'dodgerblue' : 'white'}}
-                      onClick={() => this.getDraftKingsData(sport)}>Draftkings</button>
+                      onClick={() => this.setSite('dk')}>Draftkings</button>
             </div>
             {site === 'fd' &&
             <div>
                 <DatePicker onChange={(date) => this.getFanduelData(date)} value={date}/>
             </div>}
-            {site && <h3>Choose a sport:</h3>}
-            {site && <div style={{display: 'flex'}}>
-                {sports.map(
-                    thisSport => <button
-                        style={{backgroundColor: (sport === thisSport) ? 'dodgerblue' : 'white'}}
-                        onClick={() => this.setSport(thisSport)}>{thisSport.toUpperCase()}</button>
-                )}
-            </div>}
-            {site && sport && <h3>Choose a game contest:</h3>}
-            {site && sport &&
-            <div style={{display: 'flex'}}>
-                {contests.map(
-                    contestName => <button style={{backgroundColor: (contestName === contest) ? 'dodgerblue' : 'white'}}
-                                           key={contestName}
-                                           onClick={() => this.setContest(contestName)}>{contestName}</button>
-                )}
-            </div>}
+            {sportSection}
+            {sportButtons}
+            {contestSection}
+            {contestButtons}
             <div style={{display: 'flex', margin: '2%'}}>
-                {sport && contest && site && <button style={{marginTop: '10px'}}
-                onClick={() => this.appendProjectionsData(sport)}>Build Lineup</button>}
                 {sport && contest && site && <button style={{marginTop: '10px'}}
                 >Optimize Lineup</button>}
               {sport && contest && site && <button style={{marginTop: '10px'}}
                                                    onClick={() => this.clearLineup()}>Clear Lineup</button>}
             </div>
           </div>
-          {site && gridSection}
+          {isLoading ? Loading : (site && sport && contest && gridSection)}
         </Container>
     )
   }

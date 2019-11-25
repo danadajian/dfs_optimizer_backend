@@ -28,7 +28,6 @@ public class Optimizer {
         List<Player> lineupUnderCap = new ArrayList<>(lineup);
         while (totalSalary(lineupUnderCap) > salaryCap) {
             lineupUnderCap = downgradeLowestCostPlayer(lineupUnderCap);
-            // System.out.println("salary: " + totalSalary(lineupUnderCap) + ", lineup: " + lineupUnderCap);
         }
         return lineupUnderCap;
     }
@@ -87,10 +86,11 @@ public class Optimizer {
 
     public List<Player> lineupWithWhiteList() {
         List<Player> lineupWithWhiteListedPlayers = new ArrayList<>();
-        lineupMatrix.forEach(player -> lineupWithWhiteListedPlayers.add(new Player()));
+        lineupMatrix.forEach(position -> lineupWithWhiteListedPlayers.add(new Player()));
         for (Player player : whiteList) {
             int lineupIndex = IntStream.range(0, lineupMatrix.size())
-                    .filter(i -> Arrays.asList(lineupMatrix.get(i).split(",")).contains(player.position))
+                    .filter(i -> lineupMatrix.get(i).equals("any") ||
+                            Arrays.asList(lineupMatrix.get(i).split(",")).contains(player.position))
                     .findFirst()
                     .orElse(-1);
             lineupWithWhiteListedPlayers.set(lineupIndex, player);
@@ -103,7 +103,8 @@ public class Optimizer {
         for (String position : lineupMatrix) {
             List<Player> playerPool = playerList.stream()
                     .filter(
-                            player -> Arrays.asList(position.split(",")).contains(player.position)
+                            player -> (position.equals("any") ||
+                                    Arrays.asList(position.split(",")).contains(player.position))
                                     && !blackList.contains(player)
                     )
                     .sorted((player1, player2) -> Double.compare(player2.projection, player1.projection))

@@ -24,7 +24,8 @@ class App extends Component {
     super(props);
     this.state = {isLoading: false, isOptimizing: false, site: '', sport: '', contest: '', gameType: '',
         date: new Date(), fanduelData: {}, dfsData: {}, projectionsData: {}, contests: [], sports: [],
-        lineup: [], salaryCap: 0, playerPool: [], filteredPool: null, searchText: '', whiteList: [], blackList: []};
+        lineup: [], lineupMatrix: [], displayMatrix: [], salaryCap: 0, playerPool: [], filteredPool: null,
+        searchText: '', whiteList: [], blackList: []};
   }
 
   getFanduelData = (date) => {
@@ -99,7 +100,6 @@ class App extends Component {
                           if (data.length === 0) {
                               alert('No ' + sport.toUpperCase() + ' data is available at this time.');
                           } else {
-                              console.log('hello');
                               this.setState({
                                   isLoading: false,
                                   projectionsData: data
@@ -154,6 +154,9 @@ class App extends Component {
   setContest = (contest) => {
       let {site, sport, projectionsData} = this.state;
       let gameType = contest.includes('@') || contest.includes('vs') ? 'Single Game' : 'Classic';
+      let lineupMatrix = lineupStructures[site][sport][gameType].lineupMatrix;
+      let displayMatrix = lineupStructures[site][sport][gameType].displayMatrix;
+      let salaryCap = lineupStructures[site][sport][gameType].salaryCap;
       let dfsPlayers = this.state.dfsData
           .filter(contestJson => contestJson.contest === contest)[0]['players'];
       this.setState({
@@ -163,9 +166,10 @@ class App extends Component {
           filteredPool: null,
           whiteList: [],
           blackList: [],
-          lineup: createEmptyLineup(lineupStructures[site][sport][gameType].lineupMatrix,
-              lineupStructures[site][sport][gameType].displayMatrix),
-          salaryCap: lineupStructures[site][sport][gameType].salaryCap
+          lineup: createEmptyLineup(lineupMatrix, displayMatrix),
+          lineupMatrix: lineupMatrix,
+          displayMatrix: displayMatrix,
+          salaryCap: salaryCap
       });
   };
 
@@ -189,10 +193,9 @@ class App extends Component {
   };
 
   clearLineup = () => {
-      let {site, sport, gameType} = this.state;
+      let {lineupMatrix, displayMatrix} = this.state;
       this.setState({
-          lineup: createEmptyLineup(lineupStructures[site][sport][gameType].lineupMatrix,
-              lineupStructures[site][sport][gameType].displayMatrix),
+          lineup: createEmptyLineup(lineupMatrix, displayMatrix),
           whiteList: [],
           blackList: []
       })
@@ -201,6 +204,48 @@ class App extends Component {
   toggleBlackList = (playerIndex) => {
     let newState = getToggleBlackListState(playerIndex, this.state);
     this.setState(newState);
+  };
+
+  generateOptimalLineup = () => {
+      let {playerPool, whiteList, blackList, lineupMatrix, displayMatrix, salaryCap} = this.state;
+      this.setState({
+          isOptimizing: true
+      });
+      fetch(apiRoot + '/optimize', {
+          method: 'POST',
+          headers: {
+              'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+              'players': playerPool,
+              'whiteList': whiteList,
+              'blackList': blackList,
+              'lineupMatrix': lineupMatrix,
+              'salaryCap': salaryCap
+          })
+      }).then(response => {
+          if (response.status !== 200) {
+              alert('An error occurred.');
+          } else {
+              response.json()
+                  .then((playerIds) => {
+                      if (playerIds.every(playerId => playerId === 0)) {
+                          alert('Optimal lineup could not be found.');
+                          this.setState({
+                              isOptimizing: false
+                          })
+                      } else {
+                          let optimalLineup = playerIds
+                              .map(playerId => playerPool.find(player => player.playerId === playerId));
+                          optimalLineup.forEach((player, index) => player.displayPosition = displayMatrix[index]);
+                          this.setState({
+                              isOptimizing: false,
+                              lineup: optimalLineup
+                          })
+                      }
+                  });
+          }
+      });
   };
 
   render() {
@@ -294,9 +339,9 @@ class App extends Component {
             {contestButtons}
             <div style={{display: 'flex', margin: '2%'}}>
                 {sport && contest && site && <button style={{marginTop: '10px'}}
-                >Optimize Lineup</button>}
+                                                     onClick={this.generateOptimalLineup}>Optimize Lineup</button>}
               {sport && contest && site && <button style={{marginTop: '10px'}}
-                                                   onClick={() => this.clearLineup()}>Clear Lineup</button>}
+                                                   onClick={this.clearLineup}>Clear Lineup</button>}
             </div>
           </div>
           {isLoading ? Loading : (site && sport && contest && gridSection)}

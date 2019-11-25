@@ -14,10 +14,23 @@ interface playerAttributes {
 interface playerProps {
     player: playerAttributes,
     onRemove: () => void,
-    whiteList: playerAttributes[]
+    whiteList: playerAttributes[],
+    site: string
 }
 
 const Player = (props: playerProps) => {
+    let isCaptain = props.player.displayPosition.includes('x Points)');
+    let roundedProjection = props.player.projection ? parseFloat(props.player.projection.toFixed(1)) : null;
+    let formattedSalary;
+    if (props.player.salary) {
+        let salary = props.player.salary;
+        if (isCaptain && props.site === 'dk') {
+            let multiplier = (parseFloat(props.player.displayPosition.split('(')[1].substring(0, 3)));
+            salary *= multiplier;
+        }
+        formattedSalary ='$'.concat(salary.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","))
+    }
+
     return (
         <tr style={{backgroundColor: (
             props.player.name && props.whiteList
@@ -26,12 +39,9 @@ const Player = (props: playerProps) => {
                 .includes(props.player.name)) ? 'lightgreen' : 'white'}}>
             <td>{props.player.displayPosition}</td>
             <td>{props.player.team}</td>
-            <td style={{fontWeight: (props.player.position) ? 'normal' : 'bold'}}>
-                {props.player.name}</td>
-            <td style={{fontWeight: (props.player.position) ? 'normal' : 'bold'}}>
-                {props.player.projection ? props.player.projection.toFixed(1) : null}</td>
-            <td style={{fontWeight: (props.player.position) ? 'normal' : 'bold'}}>
-                {props.player.salary && '$'.concat(props.player.salary.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","))}</td>
+            <td style={{fontWeight: (props.player.position) ? 'normal' : 'bold'}}>{props.player.name}</td>
+            <td style={{fontWeight: (props.player.position) ? 'normal' : 'bold'}}>{roundedProjection}</td>
+            <td style={{fontWeight: (props.player.position) ? 'normal' : 'bold'}}>{formattedSalary}</td>
             <td>{props.player.opponent}</td>
             <td>{props.player.gameDate}</td>
             <td>
@@ -66,6 +76,7 @@ export const Lineup = (props: {
                     <Player player={player}
                             onRemove={() => props.removePlayer(playerIndex)}
                             whiteList={props.whiteList}
+                            site={props.site}
                     />
                 )
             )}

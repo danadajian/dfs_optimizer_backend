@@ -6,7 +6,7 @@ import optimize.Player;
 import java.util.*;
 
 public class OptimizerHandler {
-    public Map<Integer, String> handleRequest(Map<String, Object> input) {
+    public List<Integer> handleRequest(Map<String, Object> input) {
         List<Player> playerList = new ArrayList<>();
         List<Player> whiteList = new ArrayList<>();
         List<Player> blackList = new ArrayList<>();
@@ -15,7 +15,7 @@ public class OptimizerHandler {
             Map playerMap = (Map) object;
             int playerId = (int) playerMap.get("playerId");
             String position = (String) playerMap.get("position");
-            double projection = (double) playerMap.get("projection");
+            double projection = ((Number) playerMap.get("projection")).doubleValue();
             int salary = (int) playerMap.get("salary");
             playerList.add(new Player(playerId, position, projection, salary));
         }
@@ -35,8 +35,8 @@ public class OptimizerHandler {
         }
         int salaryCap = (int) input.get("salaryCap");
         List<Player> optimalLineup = new Optimizer(playerList, whiteList, blackList, lineupMatrix, salaryCap).optimize();
-        Map<Integer, String> lineupResponse = new HashMap<>();
-        optimalLineup.forEach(player -> lineupResponse.put(player.playerId, player.position));
+        List<Integer> lineupResponse = new ArrayList<>();
+        optimalLineup.forEach(player -> lineupResponse.add(player.playerId));
         return lineupResponse;
     }
 }

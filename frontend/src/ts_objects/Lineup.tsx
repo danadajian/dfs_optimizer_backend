@@ -1,6 +1,7 @@
 import * as React from 'react';
 
 interface playerAttributes {
+    playerId: number,
     position: string,
     displayPosition: string,
     team: string,
@@ -14,29 +15,26 @@ interface playerAttributes {
 interface playerProps {
     player: playerAttributes,
     onRemove: () => void,
-    whiteList: playerAttributes[],
+    whiteList: number[],
     site: string
 }
 
 const Player = (props: playerProps) => {
-    let isCaptain = props.player.displayPosition.includes('x Points)');
     let roundedProjection = props.player.projection ? parseFloat(props.player.projection.toFixed(1)) : null;
     let formattedSalary;
     if (props.player.salary) {
         let salary = props.player.salary;
+        let isCaptain = props.player.displayPosition.includes('x Points)');
         if (isCaptain && props.site === 'dk') {
             let multiplier = (parseFloat(props.player.displayPosition.split('(')[1].substring(0, 3)));
             salary *= multiplier;
         }
-        formattedSalary ='$'.concat(salary.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","))
+        formattedSalary = '$'.concat(salary.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","))
     }
 
     return (
         <tr style={{backgroundColor: (
-            props.player.name && props.whiteList
-                .filter((player) => player.name)
-                .map((player) => (player.name))
-                .includes(props.player.name)) ? 'lightgreen' : 'white'}}>
+            props.player.name && props.whiteList.includes(props.player.playerId)) ? 'lightgreen' : 'white'}}>
             <td>{props.player.displayPosition}</td>
             <td>{props.player.team}</td>
             <td style={{fontWeight: (props.player.position) ? 'normal' : 'bold'}}>{props.player.name}</td>
@@ -55,7 +53,7 @@ export const Lineup = (props: {
     dfsLineup: playerAttributes[],
     removePlayer: (playerIndex: number) => void,
     site: string,
-    whiteList: playerAttributes[],
+    whiteList: number[],
     pointSum: number,
     salarySum: number,
     cap: number}) =>

@@ -10,12 +10,7 @@ describe('adds player to lineup', () => {
         {name: 'Player5', playerId: 5, position: 'RB'}
         ];
     let whiteList = [];
-    let blackList = [
-        {name: 'Player0', playerId: 0, position: 'QB'},
-        {name: 'Player2', playerId: 2, position: 'RB'},
-        {name: 'Player3', playerId: 3, position: 'RB'},
-        {name: 'Player4', playerId: 4, position: 'RB'}
-        ];
+    let blackList = [0, 2, 3, 4];
     test('player already added', () => {
         let lineup = [
             {name: 'Player0', playerId: 0, position: 'QB'},
@@ -56,12 +51,7 @@ describe('adds player to lineup', () => {
         {name: 'Player5', playerId: 5, position: 'RB'}
         ];
         let whiteList = [];
-        let blackList = [
-            {name: 'Player0', playerId: 0, position: 'QB'},
-            {name: 'Player2', playerId: 2, position: 'RB'},
-            {name: 'Player3', playerId: 3, position: 'RB'},
-            {name: 'Player4', playerId: 4, position: 'RB'}
-            ];
+        let blackList = [0, 2, 3, 4];
         let lineup = [
             {name: '', playerId: '', position: 'QB'},
             {name: '', playerId: '', position: 'RB'},
@@ -71,17 +61,13 @@ describe('adds player to lineup', () => {
         let state = {playerPool, lineup, whiteList, blackList};
         expect(getAddToLineupState(0, state)).toMatchObject({
             lineup: [
-                {name: 'Player0', position: 'QB'},
+                {name: 'Player0', playerId: 0, position: 'QB'},
                 {name: '', playerId: '', position: 'RB'},
                 {name: '', playerId: '', position: 'RB'},
                 {name: '', playerId: '', position: 'RB,WR,TE'}
             ],
-            whiteList: [{name: 'Player0', position: 'QB'}],
-            blackList: [
-                {name: 'Player2', playerId: 2, position: 'RB'},
-                {name: 'Player3', playerId: 3, position: 'RB'},
-                {name: 'Player4', playerId: 4, position: 'RB'}
-                ],
+            whiteList: [0],
+            blackList: [2, 3, 4],
             filteredPool: null,
             searchText: ''
         });
@@ -102,12 +88,7 @@ describe('adds player to lineup', () => {
             {name: 'Player5', playerId: 5, position: 'RB'}
             ];
         let whiteList = [];
-        let blackList = [
-            {name: 'Player0', playerId: 0, position: 'QB'},
-            {name: 'Player2', playerId: 2, position: 'RB'},
-            {name: 'Player3', playerId: 3, position: 'RB'},
-            {name: 'Player4', playerId: 4, position: 'RB'}
-            ];
+        let blackList = [0, 2, 3, 4];
         let state = {playerPool, lineup, whiteList, blackList};
         expect(getAddToLineupState(3, state)).toMatchObject({
             lineup: [
@@ -116,12 +97,8 @@ describe('adds player to lineup', () => {
                 {name: 'Player3', playerId: 3, position: 'RB'},
                 {name: '', playerId: '', position: 'RB,WR,TE'}
             ],
-            whiteList: [{name: 'Player3', position: 'RB'}],
-            blackList: [
-                {name: 'Player0', playerId: 0, position: 'QB'},
-                {name: 'Player2', playerId: 2, position: 'RB'},
-                {name: 'Player4', playerId: 4, position: 'RB'}
-                ],
+            whiteList: [3],
+            blackList: [0, 2, 4],
             filteredPool: null,
             searchText: ''
         });
@@ -142,12 +119,7 @@ describe('adds player to lineup', () => {
             {name: 'Player5', playerId: 5, position: 'RB'}
             ];
         let whiteList = [];
-        let blackList = [
-            {name: 'Player0', playerId: 0, position: 'QB'},
-            {name: 'Player2', playerId: 2, position: 'RB'},
-            {name: 'Player3', playerId: 3, position: 'RB'},
-            {name: 'Player4', playerId: 4, position: 'RB'}
-            ];
+        let blackList = [0, 2, 3, 4];
         let state = {playerPool, lineup, whiteList, blackList};
         expect(playerPool[4]).toMatchObject({name: 'Player4', position: 'RB'});
         expect(getAddToLineupState(4, state)).toMatchObject({
@@ -157,12 +129,8 @@ describe('adds player to lineup', () => {
                 {name: 'Player3', playerId: 3, position: 'RB'},
                 {name: 'Player4', playerId: 4, position: 'RB,WR,TE'}
             ],
-            whiteList: [{name: 'Player4', playerId: 4, position: 'RB'}],
-            blackList: [
-                {name: 'Player0', playerId: 0, position: 'QB'},
-                {name: 'Player2', playerId: 2, position: 'RB'},
-                {name: 'Player3', playerId: 3, position: 'RB'}
-            ],
+            whiteList: [4],
+            blackList: [0, 2, 3],
             filteredPool: null,
             searchText: ''
         });
@@ -192,7 +160,7 @@ describe('adds player to lineup', () => {
                 {name: 'Player3', playerId: 3, position: 'RB'},
                 {name: 'Player5', playerId: 5, position: 'RB/WR'}
             ],
-            whiteList: [{name: 'Player5', playerId: 5, position: 'WR'}],
+            whiteList: [5],
             blackList: [],
             filteredPool: null,
             searchText: ''
@@ -223,7 +191,7 @@ describe('adds player to lineup', () => {
                 {name: 'Player3', playerId: 3, position: 'RB'},
                 {name: 'Player5', playerId: 5, position: 'WR'}
             ],
-            whiteList: [{name: 'Player5', playerId: 5, position: 'RB/WR'}],
+            whiteList: [5],
             blackList: [],
             filteredPool: null,
             searchText: ''

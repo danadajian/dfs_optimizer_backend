@@ -1,6 +1,7 @@
 import * as React from 'react';
 
 interface playerAttributes {
+    playerId: number,
     position: string,
     team: string,
     name: string,
@@ -23,7 +24,8 @@ const Player = (props: playerProps) =>
     </tr>;
 
 export const BlackList = (props: {
-    blackList: playerAttributes[]
+    blackList: number[],
+    playerPool: playerAttributes[]
     }) =>
         <table style={{ borderCollapse: 'collapse'}} className={'Draft-grid'}>
             <tbody>
@@ -31,10 +33,10 @@ export const BlackList = (props: {
                 <th>Player</th>
                 <th>Salary</th>
             </tr>
-            {props.blackList.sort((a, b) => b.salary - a.salary).map(
-                (player) => {
+            {props.blackList.map(
+                (playerId) => {
                     return (
-                        <Player player={player}/>
+                        <Player player={props.playerPool.filter(player => player.playerId === playerId)[0]}/>
                     )
                 }
             )}

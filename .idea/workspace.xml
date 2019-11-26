@@ -2,21 +2,22 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="352060b1-b9b3-400c-8051-85a2b23146fe" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_annotations_2_10_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_core_2_10_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_databind_2_10_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/optimizer/optimize/OptimizerHandlerTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DFS-Optimizer-Web.iml" beforeDir="false" afterPath="$PROJECT_DIR$/DFS-Optimizer-Web.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/__tests__/getAddToLineupState.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/__tests__/getAddToLineupState.test.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/__tests__/getRemoveFromLineupState.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/__tests__/getRemoveFromLineupState.test.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/__tests__/getToggleBlackListState.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/__tests__/getToggleBlackListState.test.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/functions/getAddToLineupState.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/functions/getAddToLineupState.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/functions/getRemoveFromLineupState.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/functions/getRemoveFromLineupState.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/functions/getToggleBlackListState.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/functions/getToggleBlackListState.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/ts_objects/BlackList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/ts_objects/BlackList.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/ts_objects/Lineup.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/ts_objects/Lineup.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/ts_objects/PlayerPool.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/ts_objects/PlayerPool.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/handler/OptimizerHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/handler/OptimizerHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/optimize/Optimizer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/optimize/Optimizer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/swagger.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/swagger.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/optimizer/handler/OptimizerHandlerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/optimizer/handler/OptimizerHandlerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/optimizer/optimize/OptimizerHandlerTest.java" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -31,8 +32,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/frontend/src/App.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-52">
-              <caret line="212" column="9" selection-start-line="212" selection-start-column="9" selection-end-line="212" selection-end-column="9" />
+            <state relative-caret-position="54">
+              <caret line="224" column="43" selection-start-line="224" selection-start-column="43" selection-end-line="224" selection-end-column="43" />
               <folding>
                 <element signature="e#0#40#0" expanded="true" />
               </folding>
@@ -41,40 +42,19 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/frontend/src/ts_objects/Lineup.tsx">
+        <entry file="file://$PROJECT_DIR$/frontend/src/ts_objects/BlackList.tsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="241">
-              <caret line="72" column="17" lean-forward="true" selection-start-line="72" selection-start-column="17" selection-end-line="72" selection-end-column="17" />
+            <state relative-caret-position="357">
+              <caret line="38" column="93" selection-start-line="38" selection-start-column="93" selection-end-line="38" selection-end-column="93" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/handler/OptimizerHandler.java">
+        <entry file="file://$PROJECT_DIR$/frontend/src/functions/getAddToLineupState.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="51">
-              <caret line="3" column="23" selection-start-line="3" selection-start-column="23" selection-end-line="3" selection-end-column="23" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/com/optimizer/optimize/OptimizerHandlerTest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="9" column="22" lean-forward="true" selection-start-line="9" selection-start-column="22" selection-end-line="9" selection-end-column="22" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/optimize/Optimizer.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="288">
-              <caret line="96" column="9" selection-start-line="96" selection-start-column="9" selection-end-line="96" selection-end-column="9" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="374">
+              <caret line="29" column="16" selection-start-line="29" selection-start-column="16" selection-end-line="29" selection-end-column="16" />
             </state>
           </provider>
         </entry>
@@ -82,8 +62,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/deploy.sh">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="19" column="2" lean-forward="true" selection-start-line="19" selection-start-column="2" selection-end-line="19" selection-end-column="2" />
+            <state relative-caret-position="111">
+              <caret line="24" selection-start-line="24" selection-end-line="24" />
             </state>
           </provider>
         </entry>
@@ -102,25 +82,11 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>dateoperations.</find>
-      <find>getEasternTime</find>
-      <find>startDate</find>
-      <find>gameDate</find>
-      <find>site</find>
-      <find>toggleBlackList</find>
-      <find>clearLineup</find>
-      <find>removeFromLineup</find>
-      <find>addToLineup</find>
-      <find>playerPool</find>
-      <find>getDraftKingsData</find>
-      <find>id</find>
-      <find>position: 'RB,WR,TE'</find>
       <find>position: 'WR'</find>
       <find>position: 'RB/WR'</find>
       <find>can add mul</find>
       <find>displayPosition</find>
       <find>salaryCap</find>
-      <find>combineData</find>
       <find>dfsPlayers</find>
       <find>lineup</find>
       <find>lineup:</find>
@@ -132,6 +98,20 @@
       <find>K</find>
       <find>tucker</find>
       <find>greg</find>
+      <find>playerPoo</find>
+      <find>combineData</find>
+      <find>playerpool</find>
+      <find>multi-position pla</find>
+      <find>DfsPlayerBox</find>
+      <find>whiteLIst</find>
+      <find>whitelist</find>
+      <find>black</find>
+      <find>flex position to fl</find>
+      <find>can add non-</find>
+      <find>removes player</find>
+      <find>whiteList</find>
+      <find>BlackList</find>
+      <find>salary.toString()</find>
     </findStrings>
     <replaceStrings>
       <replace>MyApi</replace>
@@ -163,9 +143,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/frontend/src/__tests__/getTodaysDate.test.js" />
-        <option value="$PROJECT_DIR$/src/main/java/api/ApiCaller.java" />
-        <option value="$PROJECT_DIR$/src/test/java/com/optimizer/collect/FanduelDataTest.java" />
         <option value="$PROJECT_DIR$/template.yaml" />
         <option value="$PROJECT_DIR$/frontend/src/config.js" />
         <option value="$PROJECT_DIR$/frontend/src/functions/getFilterPlayersState.js" />
@@ -176,14 +153,11 @@
         <option value="$PROJECT_DIR$/frontend/src/lineup-structures.json" />
         <option value="$PROJECT_DIR$/frontend/src/__tests__/sumAttribute.test.js" />
         <option value="$PROJECT_DIR$/frontend/src/__tests__/getFilterPlayersState.test.js" />
-        <option value="$PROJECT_DIR$/frontend/src/__tests__/getToggleBlackListState.test.js" />
-        <option value="$PROJECT_DIR$/frontend/src/functions/getRemoveFromLineupState.js" />
         <option value="$PROJECT_DIR$/frontend/src/lineupStructures.js" />
         <option value="$PROJECT_DIR$/frontend/src/App.css" />
         <option value="$PROJECT_DIR$/frontend/src/getGridSection.js" />
         <option value="$PROJECT_DIR$/src/test/java/com/optimizer/collect/DraftKingsDataTest.java" />
         <option value="$PROJECT_DIR$/frontend/src/Lineup.tsx" />
-        <option value="$PROJECT_DIR$/frontend/src/functions/getToggleBlackListState.js" />
         <option value="$PROJECT_DIR$/frontend/src/PlayerPool.tsx" />
         <option value="$PROJECT_DIR$/frontend/src/BlackList.tsx" />
         <option value="$PROJECT_DIR$/frontend/.gitignore" />
@@ -199,21 +173,27 @@
         <option value="$PROJECT_DIR$/frontend/src/functions/toggleBlackList.js" />
         <option value="$PROJECT_DIR$/frontend/src/LineupBuilder.js" />
         <option value="$PROJECT_DIR$/frontend/src/__tests__/createEmptyLineup.test.js" />
-        <option value="$PROJECT_DIR$/frontend/src/__tests__/getRemoveFromLineupState.test.js" />
-        <option value="$PROJECT_DIR$/frontend/src/functions/getAddToLineupState.js" />
-        <option value="$PROJECT_DIR$/frontend/src/__tests__/getAddToLineupState.test.js" />
-        <option value="$PROJECT_DIR$/src/main/java/handler/OptimizerHandler.java" />
         <option value="$APPLICATION_CONFIG_DIR$/scratches/scratch.sh" />
-        <option value="$PROJECT_DIR$/frontend/src/resources/config.js" />
         <option value="$PROJECT_DIR$/swagger.yaml" />
         <option value="$PROJECT_DIR$/src/test/java/com/optimizer/optimize/OptimizerTest.java" />
         <option value="$PROJECT_DIR$/src/test/java/com/optimizer/optimize/MockOptimizerInputs.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/optimize/Optimizer.java" />
         <option value="$PROJECT_DIR$/frontend/src/functions/createEmptyLineup.js" />
-        <option value="$PROJECT_DIR$/frontend/src/App.js" />
         <option value="$PROJECT_DIR$/src/test/java/com/optimizer/optimize/OptimizerHandlerTest.java" />
+        <option value="$PROJECT_DIR$/frontend/src/resources/config.js" />
+        <option value="$PROJECT_DIR$/frontend/src/ts_objects/PlayerPool.tsx" />
+        <option value="$PROJECT_DIR$/frontend/src/__tests__/getAddToLineupState.test.js" />
+        <option value="$PROJECT_DIR$/frontend/src/functions/getRemoveFromLineupState.js" />
+        <option value="$PROJECT_DIR$/frontend/src/__tests__/getRemoveFromLineupState.test.js" />
+        <option value="$PROJECT_DIR$/frontend/src/functions/getToggleBlackListState.js" />
+        <option value="$PROJECT_DIR$/frontend/src/__tests__/getToggleBlackListState.test.js" />
+        <option value="$PROJECT_DIR$/frontend/src/functions/getAddToLineupState.js" />
         <option value="$PROJECT_DIR$/frontend/src/ts_objects/Lineup.tsx" />
+        <option value="$PROJECT_DIR$/src/main/java/handler/OptimizerHandler.java" />
+        <option value="$PROJECT_DIR$/frontend/src/App.js" />
+        <option value="$PROJECT_DIR$/src/test/java/com/optimizer/handler/OptimizerHandlerTest.java" />
+        <option value="$PROJECT_DIR$/frontend/src/ts_objects/BlackList.tsx" />
       </list>
     </option>
   </component>
@@ -254,7 +234,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -278,20 +257,58 @@
               <item name="DFS-Optimizer-Web" type="462c0819:PsiDirectoryNode" />
               <item name="frontend" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="functions" type="462c0819:PsiDirectoryNode" />
+              <item name="ts_objects" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="DFS-Optimizer-Web" type="b2602c69:ProjectViewProjectNode" />
               <item name="DFS-Optimizer-Web" type="462c0819:PsiDirectoryNode" />
-              <item name="frontend" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="ts_objects" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="DFS-Optimizer-Web" type="b2602c69:ProjectViewProjectNode" />
+              <item name="DFS-Optimizer-Web" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="DFS-Optimizer-Web" type="b2602c69:ProjectViewProjectNode" />
+              <item name="DFS-Optimizer-Web" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="DFS-Optimizer-Web" type="b2602c69:ProjectViewProjectNode" />
+              <item name="DFS-Optimizer-Web" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="optimizer" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="DFS-Optimizer-Web" type="b2602c69:ProjectViewProjectNode" />
+              <item name="DFS-Optimizer-Web" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="optimizer" type="462c0819:PsiDirectoryNode" />
+              <item name="handler" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="DFS-Optimizer-Web" type="b2602c69:ProjectViewProjectNode" />
+              <item name="DFS-Optimizer-Web" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="optimizer" type="462c0819:PsiDirectoryNode" />
+              <item name="optimize" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
       <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -301,7 +318,7 @@
     <property name="Repository.Attach.Sources" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1574719427973" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1574739554811" />
     <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/New Scratch File" value="Bash" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit5" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
@@ -359,7 +376,20 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Bash.deploy.sh">
+  <component name="RunManager" selected="Bash.deploy.sh (1)">
+    <configuration name="deploy.sh (1)" type="BashConfigurationType" factoryName="Bash" temporary="true">
+      <module name="DFS-Optimizer-Web" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="INTERPRETER_PATH" value="C:\Program Files\Git\bin\sh.exe" />
+      <option name="PROJECT_INTERPRETER" value="false" />
+      <option name="WORKING_DIRECTORY" value="C:\Users\Dan\Documents\DFS-Optimizer-Web" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SCRIPT_NAME" value="C:\Users\Dan\Documents\DFS-Optimizer-Web\deploy.sh" />
+      <option name="PARAMETERS" value="" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="deploy.sh" type="BashConfigurationType" factoryName="Bash" temporary="true">
       <module name="DFS-Optimizer-Web" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -368,19 +398,6 @@
       <option name="WORKING_DIRECTORY" value="C:\Users\dadajian\Documents\Personal\DFS-Optimizer-Web" />
       <option name="PARENT_ENVS" value="true" />
       <option name="SCRIPT_NAME" value="C:\Users\dadajian\Documents\Personal\DFS-Optimizer-Web\deploy.sh" />
-      <option name="PARAMETERS" value="" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="scratch.sh (2)" type="BashConfigurationType" factoryName="Bash" temporary="true">
-      <module name="DFS-Optimizer-Web" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="INTERPRETER_PATH" value="C:\Program Files\Git\bin\sh.exe" />
-      <option name="PROJECT_INTERPRETER" value="false" />
-      <option name="WORKING_DIRECTORY" value="C:\Users\dadajian\Documents\Personal\DFS-Optimizer-Web" />
-      <option name="PARENT_ENVS" value="true" />
-      <option name="SCRIPT_NAME" value="C:\Users\dadajian\Documents\Personal\DFS-Optimizer-Web\scratch.sh" />
       <option name="PARAMETERS" value="" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -398,46 +415,45 @@
       <module name="DFS-Optimizer-Web" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.optimizer.optimize.*" />
+          <option name="PATTERN" value="com.optimizer.handler.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.optimizer.optimize" />
-      <option name="MAIN_CLASS_NAME" value="com.optimizer.optimize.OptimizerHandlerTest" />
+      <option name="PACKAGE_NAME" value="com.optimizer.handler" />
+      <option name="MAIN_CLASS_NAME" value="com.optimizer.handler.OptimizerHandlerTest" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="OptimizerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="DFS-Optimizer-Web" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.optimizer.optimize.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.optimizer.optimize" />
-      <option name="MAIN_CLASS_NAME" value="com.optimizer.optimize.OptimizerTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
+    <configuration name="adds player to lineup.can add non-flex position" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+      <node-interpreter value="project" />
+      <node-options value="" />
+      <jest-package value="$PROJECT_DIR$/frontend/node_modules/react-scripts" />
+      <working-dir value="$PROJECT_DIR$/frontend" />
+      <envs />
+      <scope-kind value="TEST" />
+      <test-file value="$PROJECT_DIR$/frontend/src/__tests__/getAddToLineupState.test.js" />
+      <test-names>
+        <test-name value="adds player to lineup" />
+        <test-name value="can add non-flex position" />
+      </test-names>
+      <method v="2" />
     </configuration>
     <list>
       <item itemvalue="Bash.deploy.sh" />
-      <item itemvalue="Bash.scratch.sh (2)" />
+      <item itemvalue="Bash.deploy.sh (1)" />
+      <item itemvalue="Jest.adds player to lineup.can add non-flex position" />
       <item itemvalue="JUnit.OptimizerHandlerTest" />
-      <item itemvalue="JUnit.OptimizerTest" />
       <item itemvalue="JUnit.All in DFS-Optimizer-Web" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Bash.deploy.sh (1)" />
+        <item itemvalue="JUnit.All in DFS-Optimizer-Web" />
+        <item itemvalue="Jest.adds player to lineup.can add non-flex position" />
         <item itemvalue="Bash.deploy.sh" />
         <item itemvalue="JUnit.OptimizerHandlerTest" />
-        <item itemvalue="JUnit.All in DFS-Optimizer-Web" />
-        <item itemvalue="JUnit.OptimizerTest" />
-        <item itemvalue="Bash.scratch.sh (2)" />
       </list>
     </recent_temporary>
   </component>
@@ -480,12 +496,6 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="OptimizerHandlerTest - 2019.11.25 at 14h 41m 20s.xml">
-      <configuration name="OptimizerHandlerTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="OptimizerHandlerTest - 2019.11.25 at 14h 47m 52s.xml">
-      <configuration name="OptimizerHandlerTest" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="OptimizerHandlerTest - 2019.11.25 at 14h 50m 06s.xml">
       <configuration name="OptimizerHandlerTest" configurationId="JUnit" />
     </history-entry>
@@ -510,9 +520,15 @@
     <history-entry file="OptimizerHandlerTest - 2019.11.25 at 15h 10m 34s.xml">
       <configuration name="OptimizerHandlerTest" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="adds_player_to_lineup_can_add_non-flex_position - 2019.11.25 at 19h 40m 39s.xml">
+      <configuration name="adds player to lineup.can add non-flex position" configurationId="JavaScriptTestRunnerJest" />
+    </history-entry>
+    <history-entry file="All_in_DFS-Optimizer-Web - 2019.11.25 at 21h 36m 54s.xml">
+      <configuration name="All in DFS-Optimizer-Web" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="288270000" />
+    <option name="totallyTimeSpent" value="299738000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -525,9 +541,8 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.15724947" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.16684435" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -536,7 +551,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32936078" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.30010834" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.30010834" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3997833" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -544,7 +559,7 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
-      <window_info anchor="bottom" id="Terminal" order="10" weight="0.2383532" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="10" visible="true" weight="0.34019503" />
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
       <window_info anchor="bottom" id="Messages" order="12" weight="0.21018419" />
       <window_info anchor="bottom" id="TypeScript" order="13" />
@@ -600,7 +615,6 @@
     </ignored-roots>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/frontend/src/App.test.js" />
     <entry file="file://$PROJECT_DIR$/frontend/src/react-app-env.d.ts">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -625,13 +639,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/src/functions/getFilterPlayersState.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="16" lean-forward="true" selection-start-line="4" selection-start-column="16" selection-end-line="4" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/frontend/src/functions/sumAttribute.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
@@ -639,21 +646,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/src/App.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2262">
-          <caret line="14" column="1" selection-start-line="14" selection-start-column="1" selection-end-line="14" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/frontend/src/getGridSection.js" />
-    <entry file="file://$PROJECT_DIR$/frontend/src/functions/getToggleBlackListState.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="230">
-          <caret line="18" column="29" selection-start-line="18" selection-start-column="29" selection-end-line="18" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/frontend/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
@@ -773,24 +766,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/frontend/src/functions/toggleBlackList.js" />
     <entry file="file://$PROJECT_DIR$/frontend/src/LineupBuilder.js" />
-    <entry file="file://$PROJECT_DIR$/frontend/src/ts_objects/BlackList.tsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/frontend/src/__tests__/getFilterPlayersState.test.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="143">
           <caret line="58" column="11" lean-forward="true" selection-start-line="58" selection-start-column="11" selection-end-line="58" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/src/__tests__/getToggleBlackListState.test.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="500">
-          <caret line="81" column="38" selection-start-line="81" selection-start-column="38" selection-end-line="81" selection-end-column="38" />
         </state>
       </provider>
     </entry>
@@ -808,34 +787,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/src/__tests__/getRemoveFromLineupState.test.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="90" selection-start-line="5" selection-start-column="90" selection-end-line="5" selection-end-column="90" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/src/functions/getRemoveFromLineupState.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="5" lean-forward="true" selection-start-line="6" selection-start-column="5" selection-end-line="6" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/src/functions/getAddToLineupState.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="26" column="70" lean-forward="true" selection-start-line="26" selection-start-column="70" selection-end-line="26" selection-end-column="70" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/src/__tests__/getAddToLineupState.test.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="113">
-          <caret line="133" column="81" selection-start-line="133" selection-start-column="81" selection-end-line="133" selection-end-column="81" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/frontend/tsconfig.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
@@ -843,27 +794,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/src/ts_objects/PlayerPool.tsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="20" lean-forward="true" selection-start-line="20" selection-end-line="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/scratch.sh">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="14" selection-start-column="14" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/src/resources/config.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="83" selection-start-column="83" selection-end-column="83" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/scratch.sh" />
     <entry file="file://$PROJECT_DIR$/template.yaml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="587">
@@ -878,13 +809,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/com/optimizer/optimize/MockOptimizerInputs.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="4" lean-forward="true" selection-start-line="5" selection-start-column="4" selection-end-line="6" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/optimizer/optimize/MockOptimizerInputs.java" />
     <entry file="file://$PROJECT_DIR$/src/test/java/com/optimizer/optimize/OptimizerTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
@@ -895,20 +820,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/src/functions/createEmptyLineup.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" column="1" lean-forward="true" selection-start-line="12" selection-start-column="1" selection-end-line="12" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/deploy.sh">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="19" column="2" lean-forward="true" selection-start-line="19" selection-start-column="2" selection-end-line="19" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
@@ -916,9 +827,86 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/optimizer/handler/OptimizerHandlerTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="22" lean-forward="true" selection-start-line="9" selection-start-column="22" selection-end-line="9" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend/src/resources/config.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="83" selection-start-column="83" selection-end-column="83" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend/src/App.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="14" column="1" selection-start-line="14" selection-start-column="1" selection-end-line="14" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend/src/functions/createEmptyLineup.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="12" column="1" lean-forward="true" selection-start-line="12" selection-start-column="1" selection-end-line="12" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend/src/__tests__/getAddToLineupState.test.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="428">
+          <caret line="63" column="46" selection-start-line="63" selection-start-column="46" selection-end-line="63" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend/src/functions/getFilterPlayersState.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="16" lean-forward="true" selection-start-line="4" selection-start-column="16" selection-end-line="4" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend/src/__tests__/getRemoveFromLineupState.test.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="58" lean-forward="true" selection-start-line="11" selection-start-column="58" selection-end-line="11" selection-end-column="58" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend/src/functions/getRemoveFromLineupState.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="27" lean-forward="true" selection-start-line="7" selection-start-column="27" selection-end-line="7" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend/src/__tests__/getToggleBlackListState.test.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="17" column="53" lean-forward="true" selection-start-line="17" selection-start-column="53" selection-end-line="17" selection-end-column="53" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend/src/functions/getToggleBlackListState.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="15" column="60" selection-start-line="15" selection-start-column="60" selection-end-line="15" selection-end-column="60" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend/src/ts_objects/PlayerPool.tsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="160">
+          <caret line="32" column="40" selection-start-line="32" selection-start-column="40" selection-end-line="32" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/optimize/Optimizer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
+        <state relative-caret-position="883">
           <caret line="96" column="9" selection-start-line="96" selection-start-column="9" selection-end-line="96" selection-end-column="9" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -926,34 +914,61 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/com/optimizer/optimize/OptimizerHandlerTest.java">
+    <entry file="file://$PROJECT_DIR$/frontend/src/ts_objects/Lineup.tsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="22" lean-forward="true" selection-start-line="9" selection-start-column="22" selection-end-line="9" selection-end-column="22" />
+        <state relative-caret-position="190">
+          <caret line="30" column="9" lean-forward="true" selection-start-line="30" selection-start-column="9" selection-end-line="30" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend/src/functions/getAddToLineupState.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="29" column="16" selection-start-line="29" selection-start-column="16" selection-end-line="29" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/deploy.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="111">
+          <caret line="24" selection-start-line="24" selection-end-line="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/optimizer/handler/OptimizerHandlerTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="33" lean-forward="true" selection-start-line="33" selection-end-line="33" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/handler/OptimizerHandler.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="23" selection-start-line="3" selection-start-column="23" selection-end-line="3" selection-end-column="23" />
+        <state relative-caret-position="442">
+          <caret line="26" column="40" selection-start-line="26" selection-start-column="40" selection-end-line="26" selection-end-column="40" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/frontend/src/App.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-52">
-          <caret line="212" column="9" selection-start-line="212" selection-start-column="9" selection-end-line="212" selection-end-column="9" />
+        <state relative-caret-position="54">
+          <caret line="224" column="43" selection-start-line="224" selection-start-column="43" selection-end-line="224" selection-end-column="43" />
           <folding>
             <element signature="e#0#40#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/src/ts_objects/Lineup.tsx">
+    <entry file="file://$PROJECT_DIR$/frontend/src/ts_objects/BlackList.tsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="241">
-          <caret line="72" column="17" lean-forward="true" selection-start-line="72" selection-start-column="17" selection-end-line="72" selection-end-column="17" />
+        <state relative-caret-position="357">
+          <caret line="38" column="93" selection-start-line="38" selection-start-column="93" selection-end-line="38" selection-end-column="93" />
         </state>
       </provider>
     </entry>

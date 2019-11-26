@@ -1,6 +1,7 @@
 import * as React from 'react';
 
 interface playerAttributes {
+    playerId: number,
     position: string,
     team: string,
     name: string,
@@ -13,8 +14,8 @@ interface playerProps {
     player: playerAttributes,
     onPlusClick: () => void,
     onMinusClick: () => void,
-    whiteList: playerAttributes[],
-    blackList: playerAttributes[],
+    whiteList: number[],
+    blackList: number[],
     salarySum: number,
     cap: number
 }
@@ -23,7 +24,8 @@ const plus = require("../resources/plus.ico") as any;
 const minus = require("../resources/minus.ico") as any;
 
 const Player = (props: playerProps) =>
-    <tr style={{backgroundColor: (props.whiteList.includes(props.player)) ? 'lightgreen' : (props.blackList.includes(props.player)) ? 'indianred' : 'white'}}>
+    <tr style={{backgroundColor: (props.whiteList.includes(props.player.playerId)) ? 'lightgreen' :
+            (props.blackList.includes(props.player.playerId)) ? 'indianred' : 'white'}}>
         <td>
             <tr style={{fontWeight: 'bold'}}>{props.player.name}</tr>
             <tr>{props.player.team} {props.player.position}</tr>
@@ -40,13 +42,13 @@ const Player = (props: playerProps) =>
         </td>
     </tr>;
 
-export const DfsPlayerBox = (props: {
+export const PlayerPool = (props: {
     playerList: playerAttributes[],
     filterList: playerAttributes[],
     whiteListFunction: (index: number) => void,
     blackListFunction: (index: number) => void,
-    whiteList: playerAttributes[],
-    blackList: playerAttributes[],
+    whiteList: number[],
+    blackList: number[],
     salarySum: number,
     cap: number}) =>
         <table style={{ borderCollapse: 'collapse'}} className={'Draft-grid'}>

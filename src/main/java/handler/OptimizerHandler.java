@@ -20,13 +20,11 @@ public class OptimizerHandler {
             playerList.add(new Player(playerId, position, projection, salary));
         }
         for (Object object : (List) input.get("whiteList")) {
-            Map playerMap = (Map) object;
-            int playerId = (int) playerMap.get("playerId");
+            int playerId = (int) object;
             whiteList.add(new Player(playerId));
         }
         for (Object object : (List) input.get("blackList")) {
-            Map playerMap = (Map) object;
-            int playerId = (int) playerMap.get("playerId");
+            int playerId = (int) object;
             blackList.add(new Player(playerId));
         }
         for (Object object : (List) input.get("lineupMatrix")) {

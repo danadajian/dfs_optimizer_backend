@@ -11,7 +11,7 @@ import {formatDate} from "./functions/formatDate"
 import { sumAttribute } from './functions/sumAttribute'
 import { lineupStructures } from './resources/lineupStructures'
 import { Lineup } from './ts_objects/Lineup.tsx'
-import { DfsPlayerBox } from './ts_objects/PlayerPool.tsx'
+import {PlayerPool} from "./ts_objects/PlayerPool";
 import { BlackList } from './ts_objects/BlackList.tsx'
 import search from "./resources/search.ico"
 import { apiRoot } from './resources/config.js'
@@ -25,7 +25,7 @@ class App extends Component {
     this.state = {isLoading: false, isOptimizing: false, site: '', sport: '', contest: '', gameType: '',
         date: new Date(), fanduelData: {}, dfsData: {}, projectionsData: {}, contests: [], sports: [],
         lineup: [], lineupMatrix: [], displayMatrix: [], salaryCap: 0, playerPool: [], filteredPool: null,
-        searchText: '', whiteList: [], blackList: []};
+        playerPoolData: [], searchText: '', whiteList: [], blackList: []};
   }
 
   getFanduelData = (date) => {
@@ -159,11 +159,13 @@ class App extends Component {
       let salaryCap = lineupStructures[site][sport][gameType].salaryCap;
       let dfsPlayers = this.state.dfsData
           .filter(contestJson => contestJson.contest === contest)[0]['players'];
+      let playerPoolData = this.combineData(dfsPlayers, projectionsData);
       this.setState({
           contest: contest,
           gameType: gameType,
-          playerPool: this.combineData(dfsPlayers, projectionsData),
+          playerPool: playerPoolData,
           filteredPool: null,
+          playerPoolData: playerPoolData,
           whiteList: [],
           blackList: [],
           lineup: createEmptyLineup(lineupMatrix, displayMatrix),
@@ -207,7 +209,7 @@ class App extends Component {
   };
 
   generateOptimalLineup = () => {
-      let {playerPool, whiteList, blackList, lineupMatrix, displayMatrix, salaryCap} = this.state;
+      let {playerPool, whiteList, blackList, lineupMatrix, displayMatrix, salaryCap, playerPoolData} = this.state;
       this.setState({
           isOptimizing: true
       });
@@ -229,7 +231,7 @@ class App extends Component {
           } else {
               response.json()
                   .then((playerIds) => {
-                      if (playerIds.every(playerId => playerId === 0)) {
+                      if (!playerIds || playerIds.every(playerId => playerId === 0)) {
                           alert('Optimal lineup could not be found.');
                           this.setState({
                               isOptimizing: false
@@ -240,7 +242,8 @@ class App extends Component {
                           optimalLineup.forEach((player, index) => player.displayPosition = displayMatrix[index]);
                           this.setState({
                               isOptimizing: false,
-                              lineup: optimalLineup
+                              lineup: optimalLineup,
+                              playerPool: playerPoolData,
                           })
                       }
                   });
@@ -278,7 +281,7 @@ class App extends Component {
         <div className={"Dfs-grid-section"}>
             <div className={"Player-list-box"}>
                 <h2 className={"Dfs-header"}>Blacklist</h2>
-                <BlackList blackList={blackList}/>
+                <BlackList blackList={blackList} playerPool={playerPool}/>
             </div>
             <div>
               <h2 className={"Dfs-header"}>Players</h2>
@@ -304,7 +307,7 @@ class App extends Component {
                 </select>
               </div>
               <div className={"Player-list-box"}>
-                <DfsPlayerBox playerList={playerPool} filterList={filteredPool}
+                <PlayerPool playerList={playerPool} filterList={filteredPool}
                               whiteListFunction={this.addToLineup} blackListFunction={this.toggleBlackList}
                               whiteList={whiteList} blackList={blackList}
                               salarySum={sumAttribute(lineup, 'salary')} cap={salaryCap}/>

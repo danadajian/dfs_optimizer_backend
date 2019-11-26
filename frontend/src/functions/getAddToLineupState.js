@@ -17,14 +17,14 @@ function getAddToLineupState(playerIndex, state) {
     if (spotsToReplace.length === 0) {
         return 'Not enough positions available to add player.'
     } else {
-        whiteList.push(playerToAdd);
-        let playerInBlackList = blackList.find((player) => player.playerId === playerToAdd.playerId, null);
-        if (playerInBlackList) {
-            blackList.splice(blackList.indexOf(playerInBlackList), 1);
+        whiteList.push(playerToAdd.playerId);
+        if (blackList.includes(playerToAdd.playerId)) {
+            blackList.splice(blackList.indexOf(playerToAdd.playerId), 1);
         }
         let spotToReplace = spotsToReplace[0];
         let lineupIndex = lineup.indexOf(spotToReplace);
         let playerToAddCopy = JSON.parse(JSON.stringify(playerToAdd));
+        playerToAddCopy.position = spotToReplace.position;
         playerToAddCopy.displayPosition = spotToReplace.displayPosition;
         lineup[lineupIndex] = playerToAddCopy;
         return {

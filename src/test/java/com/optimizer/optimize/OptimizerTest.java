@@ -30,15 +30,17 @@ class OptimizerTest {
             qb1, qb2, rb1, rb2, rb3, rb4, rb5, rb6, wr1, wr2, wr3, wr4, te1, te2, dst1, dst2
     );
 
-    private List<Player> whiteList = Arrays.asList(qb2, wr2);
+    private List<Player> whiteList = Arrays.asList(new Player(2), new Player(10));
 
-    private List<Player> blackList = Arrays.asList(rb2);
+    private List<Player> blackList = Arrays.asList(new Player(4));
 
     private List<String> lineupMatrix = Arrays.asList(
             "QB", "RB", "RB", "WR", "WR", "WR", "TE", "RB,WR,TE", "D/ST"
     );
 
-    private Optimizer optimizer = new Optimizer(playerList, whiteList, blackList, lineupMatrix, 55000);
+    private int salaryCap = 55000;
+
+    private Optimizer optimizer = new Optimizer(playerList, whiteList, blackList, lineupMatrix, salaryCap);
 
     @Test
     void shouldConsiderTwoListsOfSamePlayersEqual() {
@@ -86,7 +88,7 @@ class OptimizerTest {
     @Test
     void shouldSelectCorrectPlayerToDowngrade() {
         List<Player> lineup = Arrays.asList(qb2, rb1, rb3, wr2, wr1, wr4, te1, rb6, dst2);
-        List<Player> result = optimizer.downgradeLowestCostPlayer(lineup);
+        List<Player> result = optimizer.downgradeLowestCostNonWhiteListPlayer(lineup);
         List<Player> expected = Arrays.asList(qb2, rb1, rb3, wr2, wr1, wr4, te2, rb6, dst2);
         assertEquals(expected, result);
     }
@@ -103,7 +105,7 @@ class OptimizerTest {
     void shouldDowngradeLineupToWithinCap() {
         List<Player> lineup = Arrays.asList(qb2, rb1, rb3, wr2, wr1, wr4, te1, rb6, dst2);
         List<Player> result = optimizer.downgradePlayersUntilUnderCap(lineup);
-        assertTrue(optimizer.totalSalary(result) <= 55000);
+        assertTrue(optimizer.totalSalary(result) <= salaryCap);
     }
 
     @Test
@@ -112,5 +114,15 @@ class OptimizerTest {
         List<Player> result = new Optimizer(playerList, whiteList, blackList, lineupMatrix, 40000)
                 .downgradePlayersUntilUnderCap(lineup);
         assertEquals(new ArrayList<>(), result);
+    }
+
+    @Test
+    void shouldGenerateOptimalLineupWithinCap() {
+        List<Player> result = optimizer.optimize();
+        assertTrue(result.contains(qb2));
+        assertTrue(result.contains(wr2));
+        assertTrue(!result.contains(rb2));
+        assertEquals(result.size(), new HashSet<>(result).size());
+        assertTrue(optimizer.totalSalary(result) <= salaryCap);
     }
 }

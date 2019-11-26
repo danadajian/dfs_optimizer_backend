@@ -42,5 +42,4 @@ public class Player {
         playerMap.put("salary", salary);
         return playerMap.toString();
     }
-
 }

@@ -20,9 +20,10 @@ interface playerProps {
 }
 
 const Player = (props: playerProps) => {
-    let roundedProjection = props.player.projection ? parseFloat(props.player.projection.toFixed(1)) : null;
+    let roundedProjection;
     let formattedSalary;
     if (props.player.salary) {
+        roundedProjection = parseFloat(props.player.projection.toFixed(1));
         let salary = props.player.salary;
         let isCaptain = props.player.displayPosition.includes('x Points)');
         if (isCaptain && props.site === 'dk') {

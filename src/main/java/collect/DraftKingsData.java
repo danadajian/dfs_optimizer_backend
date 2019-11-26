@@ -9,7 +9,7 @@ import java.util.*;
 
 public class DraftKingsData {
     private final List<String> supportedGameTypes = Arrays.asList("Classic", "Showdown Captain Mode", "Showdown");
-    private final List<String> supportedContests = Arrays.asList(" (Thu-Mon)", " (Sun-Mon)");
+    private final List<String> supportedContests = Arrays.asList(" (Thu)", " (Thu-Mon)", " (Sun-Mon)");
     private ApiClient apiClient;
     private String sport;
 

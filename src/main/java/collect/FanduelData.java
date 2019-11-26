@@ -9,7 +9,7 @@ import java.util.*;
 
 public class FanduelData {
     private final List<String> supportedSports = Arrays.asList("NFL", "MLB", "NBA", "NHL");
-    private final List<String> supportedContests = Arrays.asList("Thu-Mon", "Main", "Sun-Mon");
+    private final List<String> supportedContests = Arrays.asList("Thu Only", "Thu-Mon", "Main", "Sun-Mon");
     private ApiClient apiClient;
     private String dateString;
 

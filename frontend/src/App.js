@@ -25,7 +25,7 @@ class App extends Component {
     this.state = {isLoading: false, isOptimizing: false, site: '', sport: '', contest: '', gameType: '',
         date: new Date(), fanduelData: {}, dfsData: {}, projectionsData: {}, contests: [], sports: [],
         lineup: [], lineupMatrix: [], displayMatrix: [], salaryCap: 0, playerPool: [], filteredPool: null,
-        playerPoolData: [], searchText: '', whiteList: [], blackList: []};
+        playerPoolData: [], sortAttribute: 'salary', sortSign: 1, searchText: '', whiteList: [], blackList: []};
   }
 
   getFanduelData = (date) => {
@@ -157,9 +157,9 @@ class App extends Component {
       let lineupMatrix = lineupStructures[site][sport][gameType].lineupMatrix;
       let displayMatrix = lineupStructures[site][sport][gameType].displayMatrix;
       let salaryCap = lineupStructures[site][sport][gameType].salaryCap;
-      let dfsPlayers = this.state.dfsData
-          .filter(contestJson => contestJson.contest === contest)[0]['players'];
+      let dfsPlayers = this.state.dfsData.filter(contestJson => contestJson.contest === contest)[0]['players'];
       let playerPoolData = this.combineData(dfsPlayers, projectionsData);
+      let emptyLineup = createEmptyLineup(lineupMatrix, displayMatrix);
       this.setState({
           contest: contest,
           gameType: gameType,
@@ -168,7 +168,7 @@ class App extends Component {
           playerPoolData: playerPoolData,
           whiteList: [],
           blackList: [],
-          lineup: createEmptyLineup(lineupMatrix, displayMatrix),
+          lineup: emptyLineup,
           lineupMatrix: lineupMatrix,
           displayMatrix: displayMatrix,
           salaryCap: salaryCap
@@ -208,6 +208,22 @@ class App extends Component {
     this.setState(newState);
   };
 
+  sortAttribute = (a, b) => {
+      let {sortAttribute, sortSign} = this.state;
+      if (sortAttribute === 'pricePerPoint')
+          return sortSign * (b.salary / b.projection - a.salary / a.projection);
+      else
+          return sortSign*(b[sortAttribute] - a[sortAttribute])
+  };
+  
+  toggleSort = (attribute) => {
+      if (attribute === this.state.sortAttribute) {
+          this.setState({sortSign: -this.state.sortSign})
+      } else {
+          this.setState({sortAttribute: attribute})
+      }
+  };
+
   generateOptimalLineup = () => {
       let {playerPool, whiteList, blackList, lineupMatrix, displayMatrix, salaryCap, playerPoolData} = this.state;
       this.setState({
@@ -231,8 +247,8 @@ class App extends Component {
           } else {
               response.json()
                   .then((playerIds) => {
-                      if (!playerIds || playerIds.every(playerId => playerId === 0)) {
-                          alert('Optimal lineup could not be found.');
+                      if (!Array.isArray(playerIds) || playerIds.every(playerId => playerId === 0)) {
+                          alert('Optimal lineup could not be found.\n' + JSON.stringify(playerIds));
                           this.setState({
                               isOptimizing: false
                           })
@@ -253,7 +269,7 @@ class App extends Component {
 
   render() {
     const {isLoading, isOptimizing, sport, site, contest, date, contests, lineup, salaryCap, playerPool, filteredPool,
-      searchText, whiteList, blackList} = this.state;
+      sortAttribute, sortSign, searchText, whiteList, blackList} = this.state;
 
     let sports = ['mlb', 'nfl', 'nba', 'nhl'];
     let sportSection = isLoading || !site ? null : <h3>Choose a sport:</h3>;
@@ -309,6 +325,8 @@ class App extends Component {
               <div className={"Player-list-box"}>
                 <PlayerPool playerList={playerPool} filterList={filteredPool}
                               whiteListFunction={this.addToLineup} blackListFunction={this.toggleBlackList}
+                              sortFunction={this.sortAttribute} toggleSort={this.toggleSort}
+                              sortAttribute={sortAttribute} sortSign={sortSign}
                               whiteList={whiteList} blackList={blackList}
                               salarySum={sumAttribute(lineup, 'salary')} cap={salaryCap}/>
               </div>

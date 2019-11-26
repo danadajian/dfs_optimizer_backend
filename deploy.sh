@@ -8,7 +8,8 @@ MINOR_VERSION=${MVN_VERSION:2:2}
 mvn replacer:replace -Dccih.origin="<version>${MVN_VERSION}</version>" -Dccih.target="<version>${MAJOR_VERSION}"."$((MINOR_VERSION + 1))</version>"
 mvn clean package
 
-BUCKET_NAME=dfs-optimizer-stack
+BUCKET_NAME="dfsoptimizer.app"
+STACK_NAME="dfs-optimizer-stack"
 
 if aws s3api head-bucket --bucket ${BUCKET_NAME} 2>/dev/null
 then
@@ -17,6 +18,7 @@ else
     echo "Bucket does not exist, creating: ${BUCKET_NAME}"
     aws s3 mb s3://${BUCKET_NAME}
     aws s3api put-bucket-policy --bucket ${BUCKET_NAME} --policy file://./bucket-policy.json
+    aws s3 website "s3://${BUCKET_NAME}" --index-document index.html
 fi
 
 PATH_TO_FILE=$(find . -name *-jar-with-dependencies.jar* | head -n 1)
@@ -31,12 +33,12 @@ aws s3 cp ./swagger.yaml "s3://${BUCKET_NAME}/"
 
 if [[ "$OSTYPE" == "msys" ]]; then
     sam.cmd --version
-    sam.cmd deploy --template-file ./template.yaml --stack-name ${BUCKET_NAME} --capabilities CAPABILITY_IAM \
+    sam.cmd deploy --template-file ./template.yaml --stack-name ${STACK_NAME} --capabilities CAPABILITY_IAM \
      --parameter-overrides BucketName=${BUCKET_NAME} CodeKey=${FILE_NAME} ApiKey=${API_KEY} ApiSecret=${API_SECRET} \
       --no-fail-on-empty-changeset
 else
     sam --version
-    sam deploy --template-file ./template.yaml --stack-name ${BUCKET_NAME} --capabilities CAPABILITY_IAM \
+    sam deploy --template-file ./template.yaml --stack-name ${STACK_NAME} --capabilities CAPABILITY_IAM \
      --parameter-overrides BucketName=${BUCKET_NAME} CodeKey=${FILE_NAME} ApiKey=${API_KEY} ApiSecret=${API_SECRET} \
       --no-fail-on-empty-changeset
 fi
@@ -46,4 +48,5 @@ cd frontend
 npm test
 npm run build
 aws s3 cp ./build/ "s3://${BUCKET_NAME}/" --recursive --exclude "precache-manifest.*"
-aws s3 website "s3://${BUCKET_NAME}" --index-document index.html
+
+echo "BUILD COMPLETE!"

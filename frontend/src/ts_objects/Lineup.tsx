@@ -1,4 +1,5 @@
 import * as React from 'react';
+import {getOrdinalString} from "../functions/getOrdinalString";
 
 interface playerAttributes {
     playerId: number,
@@ -9,6 +10,7 @@ interface playerAttributes {
     projection: number,
     salary: number,
     opponent: string,
+    opponentRank: number,
     gameDate: string
 }
 
@@ -42,6 +44,9 @@ const Player = (props: playerProps) => {
             <td style={{fontWeight: (props.player.position) ? 'normal' : 'bold'}}>{roundedProjection}</td>
             <td style={{fontWeight: (props.player.position) ? 'normal' : 'bold'}}>{formattedSalary}</td>
             <td>{props.player.opponent}</td>
+            <td style={{fontWeight: 'bold',
+                'color': props.player.opponentRank < 9 ? 'red' : props.player.opponentRank > 22 ? 'green' : 'black'}}>
+                {getOrdinalString(props.player.opponentRank)}</td>
             <td>{props.player.gameDate}</td>
             <td>
                 {props.player.position && props.player.name && <button onClick={props.onRemove} style={{fontWeight: 'bold'}}>X</button>}
@@ -67,6 +72,7 @@ export const Lineup = (props: {
                 <th>Projection</th>
                 <th>Salary</th>
                 <th>Opponent</th>
+                <th>Opp Rank</th>
                 <th>Game Date</th>
                 <th>Remove</th>
             </tr>

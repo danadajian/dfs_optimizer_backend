@@ -1,4 +1,5 @@
 import * as React from 'react';
+import {getOrdinalString} from "../functions/getOrdinalString";
 
 interface playerAttributes {
     playerId: number,
@@ -7,7 +8,8 @@ interface playerAttributes {
     name: string,
     projection: number,
     salary: number,
-    opponent: string
+    opponent: string,
+    opponentRank: number
 }
 
 interface playerProps {
@@ -33,6 +35,9 @@ const Player = (props: playerProps) =>
             <tr>{props.player.team} {props.player.position}</tr>
         </td>
         <td>{props.player.opponent}</td>
+        <td style={{fontWeight: 'bold',
+            color: props.player.opponentRank < 9 ? 'red' : props.player.opponentRank > 22 ? 'green' : 'black'}}>
+            {getOrdinalString(props.player.opponentRank)}</td>
         <td>{props.player.projection.toFixed(1)}</td>
         <td style={{color: (props.salarySum + props.player.salary > props.cap) ? 'red' : 'black'}}>
             ${props.player.salary.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
@@ -67,6 +72,7 @@ export const PlayerPool = (props: {
             <tr style={{backgroundColor: 'lightgray'}}>
                 <th>Player</th>
                 <th>Opponent</th>
+                <th>Opp Rank</th>
                 <th>Projection
                         <img src={props.sortSign === 1 ? down : up} alt={"sort"}
                              onClick={() => props.toggleSort('projection')}

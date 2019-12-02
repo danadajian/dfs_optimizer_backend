@@ -24,4 +24,8 @@ public class ApiCaller extends MakeHttpRequest {
     public String callDraftKingsApi(String sport) {
         return super.HttpRequest("https://api.draftkings.com/partners/v1/draftpool/sports/" + sport);
     }
+
+    public String scrapeFantasyProsSite() {
+        return super.HttpRequest("https://www.fantasypros.com/nfl/points-allowed.php");
+    }
 }

@@ -17,6 +17,7 @@ import search from "./resources/search.ico"
 import { apiRoot } from './resources/config.js'
 import {Loading} from "./Loading";
 import {Optimizing} from "./Optimizing";
+import {teamAbbreviations} from "./resources/teamAbbreviations";
 
 class App extends Component {
 
@@ -25,7 +26,8 @@ class App extends Component {
     this.state = {isLoading: false, isOptimizing: false, site: '', sport: '', contest: '', gameType: '',
         date: new Date(), fanduelData: {}, dfsData: {}, projectionsData: {}, contests: [], sports: [],
         lineup: [], lineupMatrix: [], displayMatrix: [], salaryCap: 0, playerPool: [], filteredPool: null,
-        playerPoolData: [], sortAttribute: 'salary', sortSign: 1, searchText: '', whiteList: [], blackList: []};
+        playerPoolData: [], sortAttribute: 'salary', sortSign: 1, searchText: '', whiteList: [], blackList: [],
+        opponentRanks: {}};
   }
 
   getFanduelData = (date) => {
@@ -74,7 +76,7 @@ class App extends Component {
                   response.json()
                       .then((data) => {
                           if (data.length === 0) {
-                              alert('There are no upcoming ' + sport.toUpperCase() + ' games at this time.');
+                              this.setState({sport: sport})
                           } else {
                               this.setState({
                                   isLoading: false,
@@ -120,6 +122,10 @@ class App extends Component {
               player.opponent = playerData.opponent;
               player.gameDate = playerData.gameDate;
               player.projection = playerData[this.state.site + 'Projection'];
+              if (this.state.sport === 'nfl') {
+                  let opposingTeam = playerData.opponent.split(' ')[1];
+                  player.opponentRank = this.state.opponentRanks[teamAbbreviations[opposingTeam]][player.position];
+              }
               combinedData.push(player);
           }
       });
@@ -132,23 +138,52 @@ class App extends Component {
       return contestArray;
   };
 
+  getOpponentRanksData = () => {
+      if (this.state.sport === 'nfl') {
+          fetch(apiRoot + '/opponentRanks')
+              .then(response => {
+                  if (response.status !== 200) {
+                      alert('An error occurred.');
+                  } else {
+                      response.json()
+                          .then((data) => {
+                              if (data.length === 0) {
+                                  alert('No opponent ranks data is available at this time.');
+                              } else {
+                                  this.setState({opponentRanks: data})
+                              }
+                          });
+                  }
+              });
+      }
+  };
+
   setSite = (site) => {
-      this.setState({site: site});
+      this.setState({
+          site: site,
+          sport: '',
+          contest: '',
+          playerPool: [],
+          filteredPool: null,
+          whiteList: [],
+          blackList: []
+
+      });
       if (site === 'fd')
           this.getFanduelData(this.state.date);
   };
 
   setSport = async (sport) => {
+      await this.appendProjectionsData(sport);
+      await this.state.site === 'fd' ? this.filterFanduelDataBySport(sport) : this.getDraftKingsData(sport);
       this.setState({
           sport: sport,
           contest: '',
           playerPool: [],
           filteredPool: null,
           whiteList: [],
-          blackList: [],
-      });
-      await this.appendProjectionsData(sport);
-      this.state.site === 'fd' ? this.filterFanduelDataBySport(sport) : this.getDraftKingsData(sport);
+          blackList: []
+      }, this.getOpponentRanksData);
   };
 
   setContest = (contest) => {
@@ -284,7 +319,8 @@ class App extends Component {
       </div>;
 
       let contestSection = isLoading || (!site || !sport) ? null : <h3>Choose a game contest:</h3>;
-      let contestButtons = isLoading || (!site || !sport) ? null :
+      let contestButtons = isLoading || (!site || !sport) ? null : contests.length === 0 ?
+          <p>No contests are available.</p> :
       <div style={{display: 'flex'}}>
           {contests.map(
               contestName => <button style={{backgroundColor: (contestName === contest) ? 'dodgerblue' : 'white'}}
@@ -310,7 +346,7 @@ class App extends Component {
               <div style={{display: 'flex'}}>
                 <button onClick={() => this.filterPlayers('position', 'All')}>All</button>
                 {
-                  [...new Set(playerPool.map((player) => player.position.split('/')[0]))]
+                  [...new Set(playerPool.map((player) => player.position))]
                       .map((position) =>
                           <button onClick={() => this.filterPlayers('position', position)}>{position}</button>
                       )

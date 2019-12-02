@@ -70,7 +70,6 @@ public class OptimizerHandlerTest {
     @Test
     void shouldHandleOptimizerWithWhiteAndBlackListInput() {
         List<Integer> result = optimizerHandler.handleRequest(whiteAndBlackListTest);
-        System.out.println(result);
         assertTrue(result.contains(694641));
         assertTrue(!result.contains(448132));
         assertTrue(!result.contains(558684));

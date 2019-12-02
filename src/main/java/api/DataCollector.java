@@ -40,6 +40,11 @@ public class DataCollector implements ApiClient {
         return apiCaller.callDraftKingsApi(sport);
     }
 
+    @Override
+    public String getFantasyProsData() {
+        return apiCaller.scrapeFantasyProsSite();
+    }
+
     private String getSportName(String sport) {
         switch (sport) {
             case "nfl":

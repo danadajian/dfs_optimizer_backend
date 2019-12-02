@@ -18,9 +18,6 @@ const Player = (props: playerProps) =>
             <tr style={{fontWeight: 'bold'}}>{props.player.name}</tr>
             <tr>{props.player.team} {props.player.position}</tr>
         </td>
-        <td>
-            {'$'.concat(props.player.salary.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","))}
-        </td>
     </tr>;
 
 export const BlackList = (props: {
@@ -31,7 +28,6 @@ export const BlackList = (props: {
             <tbody>
             <tr style={{backgroundColor: 'indianred'}}>
                 <th>Player</th>
-                <th>Salary</th>
             </tr>
             {props.blackList.map(
                 (playerId) => {

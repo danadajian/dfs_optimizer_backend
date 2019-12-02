@@ -27,7 +27,7 @@ class OtherProjectionsDataTest implements MockResponses {
     @Test
     void shouldGetEventDataFromThisWeek() {
         Map<Integer, Map<Object, Object>> result = projectionsData.getEventData();
-        assertEquals("Tue 8:00PM EST", result.get(2177431).get("gameDate"));
+        assertEquals("Tue 11/19 8:00PM EST", result.get(2177431).get("gameDate"));
         assertEquals("v. GS", result.get(2177431).get(29));
         assertEquals("@ Mem", result.get(2177431).get(9));
     }
@@ -49,7 +49,7 @@ class OtherProjectionsDataTest implements MockResponses {
         assertEquals("Stephen Curry", result.get(338365).get("name"));
         assertEquals("GS", result.get(338365).get("team"));
         assertEquals("@ Mem", result.get(338365).get("opponent"));
-        assertEquals("Tue 8:00PM EST", result.get(338365).get("gameDate"));
+        assertEquals("Tue 11/19 8:00PM EST", result.get(338365).get("gameDate"));
         assertEquals(0.0, result.get(338365).get("dkProjection"));
         assertEquals(0.0, result.get(338365).get("fdProjection"));
     }

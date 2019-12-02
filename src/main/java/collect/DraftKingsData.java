@@ -1,7 +1,7 @@
 package collect;
 
 import api.ApiClient;
-import api.DateOperations;
+import util.DateOperations;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -40,7 +40,9 @@ public class DraftKingsData {
                 if (!playerObject.get("rosterSlots").toString().equals("[\"CPT\"]")) {
                     Map<String, Object> infoMap = new HashMap<>();
                     infoMap.put("playerId", playerObject.getInt("playerId"));
-                    infoMap.put("position", playerObject.getString("position"));
+                    infoMap.put("position", playerObject.getString("position").equals("DST") &&
+                            event.getString("sport").equals("NFL") ? "D/ST" :
+                            playerObject.getString("position"));
                     infoMap.put("salary", playerObject.getInt("salary"));
                     playerList.add(infoMap);
                 }

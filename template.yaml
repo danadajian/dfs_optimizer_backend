@@ -73,6 +73,21 @@ Resources:
             Path: /projections
             Method: get
             RestApiId: !Ref MyApi
+  GetOpponentRanksDataFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri:
+        Bucket: !Ref BucketName
+        Key: !Ref CodeKey
+      Handler: handler.OpponentRanksHandler::handleRequest
+      Runtime: java8
+      Events:
+        GetOpponentRanksData:
+          Type: Api
+          Properties:
+            Path: /opponentRanks
+            Method: get
+            RestApiId: !Ref MyApi
   GetOptimalLineupFunction:
     Type: AWS::Serverless::Function
     Properties:
@@ -81,10 +96,6 @@ Resources:
         Key: !Ref CodeKey
       Handler: handler.OptimizerHandler::handleRequest
       Runtime: java8
-      Environment:
-        Variables:
-          key: !Ref ApiKey
-          secret: !Ref ApiSecret
       Events:
         GetOptimalLineup:
           Type: Api
@@ -108,6 +119,10 @@ Outputs:
   GetProjectionsDataFunction:
     Description: "GetProjectionsDataFunction Lambda Function ARN"
     Value: !GetAtt GetProjectionsDataFunction.Arn
+
+  GetOpponentRanksDataFunction:
+    Description: "GetOpponentRanksDataFunction Lambda Function ARN"
+    Value: !GetAtt GetOpponentRanksDataFunction.Arn
 
   GetOptimalLineupFunction:
     Description: "GetOptimalLineupFunction Lambda Function ARN"

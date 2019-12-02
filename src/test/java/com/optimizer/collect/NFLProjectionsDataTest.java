@@ -38,19 +38,19 @@ class NFLProjectionsDataTest implements MockResponses {
         assertEquals("Dak Prescott", result.get(591816).get("name"));
         assertEquals("Dal", result.get(591816).get("team"));
         assertEquals("@ Det", result.get(591816).get("opponent"));
-        assertEquals("Sun 1:00PM EST", result.get(347).get("gameDate"));
+        assertEquals("Sun 11/17 1:00PM EST", result.get(347).get("gameDate"));
         assertEquals(26.0332570149543679641473708950911299307, result.get(591816).get("dkProjection"));
         assertEquals(23.8622262095728403380510578974536722008, result.get(591816).get("fdProjection"));
         assertEquals("Vikings D/ST", result.get(347).get("name"));
         assertEquals("Min", result.get(347).get("team"));
         assertEquals("v. Den", result.get(347).get("opponent"));
-        assertEquals("Sun 1:00PM EST", result.get(347).get("gameDate"));
+        assertEquals("Sun 11/17 1:00PM EST", result.get(347).get("gameDate"));
         assertEquals(11.07, result.get(347).get("dkProjection"));
         assertEquals(11.07, result.get(347).get("fdProjection"));
         assertEquals("49ers D/ST", result.get(359).get("name"));
         assertEquals("SF", result.get(359).get("team"));
         assertEquals("v. Ari", result.get(359).get("opponent"));
-        assertEquals("Sun 4:05PM EST", result.get(359).get("gameDate"));
+        assertEquals("Sun 11/17 4:05PM EST", result.get(359).get("gameDate"));
         assertEquals(11.01, result.get(359).get("dkProjection"));
         assertEquals(11.01, result.get(359).get("fdProjection"));
     }

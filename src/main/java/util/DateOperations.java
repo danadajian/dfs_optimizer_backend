@@ -1,6 +1,4 @@
-package api;
-
-import org.json.JSONObject;
+package util;
 
 import java.text.*;
 import java.util.Calendar;
@@ -41,7 +39,7 @@ public class DateOperations {
         } catch (ParseException e) {
             e.printStackTrace();
         }
-        DateFormat format = new SimpleDateFormat("EEE h:mma z", Locale.US);
+        DateFormat format = new SimpleDateFormat("EEE MM/dd h:mma z", Locale.US);
         format.setTimeZone(TimeZone.getTimeZone("EST"));
         return format.format(cal.getTime());
     }

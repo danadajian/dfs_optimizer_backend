@@ -32,9 +32,10 @@ public class FanduelData {
                 if (playerObject.get("statsid").toString().length() > 0) {
                     Map<String, Object> infoMap = new HashMap<>();
                     infoMap.put("playerId", playerObject.getInt("statsid"));
-                    infoMap.put("position", playerObject.getString("position").equals("D") &&
-                            event.getString("sport").equals("NFL") ? "D/ST" :
-                            playerObject.getString("position"));
+                    infoMap.put("position",
+                            playerObject.getString("position").equals("D") &&
+                                    event.getString("sport").equals("NFL") ?
+                                    "D/ST" : playerObject.getString("position"));
                     infoMap.put("salary", playerObject.getInt("salary"));
                     playerList.add(infoMap);
                 }

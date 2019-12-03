@@ -10,48 +10,39 @@ import { getFilterPlayersState } from './functions/getFilterPlayersState'
 import {formatDate} from "./functions/formatDate"
 import { sumAttribute } from './functions/sumAttribute'
 import { lineupStructures } from './resources/lineupStructures'
-import { Lineup } from './ts_objects/Lineup.tsx'
-import {PlayerPool} from "./ts_objects/PlayerPool";
-import { BlackList } from './ts_objects/BlackList.tsx'
-import search from "./resources/search.ico"
 import { apiRoot } from './resources/config.js'
-import {Loading} from "./Loading";
-import {Optimizing} from "./Optimizing";
 import {teamAbbreviations} from "./resources/teamAbbreviations";
+import {GridSection} from "./ts_objects/GridSection";
+import {ContestSection} from "./ts_objects/ContestSection";
+import {SportSection} from "./ts_objects/SportSection";
 
 class App extends Component {
 
   constructor(props) {
     super(props);
-    this.state = {isLoading: false, isOptimizing: false, site: '', sport: '', contest: '', gameType: '',
+    this.state = {isLoading: false, isOptimizing: false, site: '', sport: '', contest: '',
         date: new Date(), fanduelData: {}, dfsData: {}, projectionsData: {}, contests: [], sports: [],
         lineup: [], lineupMatrix: [], displayMatrix: [], salaryCap: 0, playerPool: [], filteredPool: null,
         playerPoolData: [], sortAttribute: 'salary', sortSign: 1, searchText: '', whiteList: [], blackList: [],
-        opponentRanks: {}};
+        opponentRanks: {}, highestPointTotal: null, betterLineupFound: false};
   }
 
   getFanduelData = (date) => {
-      this.setState({
-          isLoading: true,
-          site: 'fd',
-          sport: '',
-          contest: '',
-          date: date
-      });
-    fetch(apiRoot + '/fanduel?date=' + formatDate(date))
-        .then(response => {
-            if (response.status !== 200) {
-                alert('An error occurred.');
-            } else {
-                response.json()
-                    .then((data) => {
-                        this.setState({
-                            isLoading: false,
-                            fanduelData: data
-                        });
-                    });
-            }
-        });
+      this.setState({isLoading: true, site: 'fd', sport: '', contest: '', date: date});
+      fetch(apiRoot + '/fanduel?date=' + formatDate(date))
+          .then(response => {
+              if (response.status !== 200) {
+                  alert('An error occurred.');
+              } else {
+                  response.json()
+                      .then((data) => {
+                          this.setState({
+                              isLoading: false,
+                              fanduelData: data
+                          });
+                      });
+              }
+          });
   };
 
   filterFanduelDataBySport = (sport) => {
@@ -63,11 +54,7 @@ class App extends Component {
   };
 
   getDraftKingsData = (sport) => {
-      this.setState({
-          isLoading: true,
-          sport: '',
-          contest: ''
-      });
+      this.setState({isLoading: true, sport: '', contest: ''});
       fetch(apiRoot + '/draftkings?sport=' + sport)
           .then(response => {
               if (response.status !== 200) {
@@ -113,6 +100,7 @@ class App extends Component {
   };
 
   combineData = (dfsPlayers, projectionsData) => {
+      let {site, sport, opponentRanks} = this.state;
       let combinedData = [];
       dfsPlayers.forEach(player => {
           let playerData = projectionsData[player.playerId];
@@ -121,14 +109,15 @@ class App extends Component {
               player.team = playerData.team;
               player.opponent = playerData.opponent;
               player.gameDate = playerData.gameDate;
-              player.projection = playerData[this.state.site + 'Projection'];
-              if (this.state.sport === 'nfl') {
+              player.projection = playerData[site + 'Projection'];
+              if (sport === 'nfl') {
                   let opposingTeam = playerData.opponent.split(' ')[1];
-                  player.opponentRank = this.state.opponentRanks[teamAbbreviations[opposingTeam]][player.position];
+                  player.opponentRank = opponentRanks[teamAbbreviations[opposingTeam]][player.position];
               }
               combinedData.push(player);
           }
       });
+      console.log(combinedData);
       return combinedData;
   };
 
@@ -150,7 +139,9 @@ class App extends Component {
                               if (data.length === 0) {
                                   alert('No opponent ranks data is available at this time.');
                               } else {
-                                  this.setState({opponentRanks: data})
+                                  this.setState({
+                                      opponentRanks: data
+                                  })
                               }
                           });
                   }
@@ -159,16 +150,8 @@ class App extends Component {
   };
 
   setSite = (site) => {
-      this.setState({
-          site: site,
-          sport: '',
-          contest: '',
-          playerPool: [],
-          filteredPool: null,
-          whiteList: [],
-          blackList: []
-
-      });
+      this.setState({site: site, sport: '', contest: '', playerPool: [], filteredPool: null, whiteList: [],
+          blackList: []});
       if (site === 'fd')
           this.getFanduelData(this.state.date);
   };
@@ -187,17 +170,16 @@ class App extends Component {
   };
 
   setContest = (contest) => {
-      let {site, sport, projectionsData} = this.state;
+      let {site, sport, dfsData, projectionsData} = this.state;
       let gameType = contest.includes('@') || contest.includes('vs') ? 'Single Game' : 'Classic';
       let lineupMatrix = lineupStructures[site][sport][gameType].lineupMatrix;
       let displayMatrix = lineupStructures[site][sport][gameType].displayMatrix;
       let salaryCap = lineupStructures[site][sport][gameType].salaryCap;
-      let dfsPlayers = this.state.dfsData.filter(contestJson => contestJson.contest === contest)[0]['players'];
+      let dfsPlayers = dfsData.filter(contestJson => contestJson.contest === contest)[0]['players'];
       let playerPoolData = this.combineData(dfsPlayers, projectionsData);
       let emptyLineup = createEmptyLineup(lineupMatrix, displayMatrix);
       this.setState({
           contest: contest,
-          gameType: gameType,
           playerPool: playerPoolData,
           filteredPool: null,
           playerPoolData: playerPoolData,
@@ -260,10 +242,10 @@ class App extends Component {
   };
 
   generateOptimalLineup = () => {
-      let {playerPool, whiteList, blackList, lineupMatrix, displayMatrix, salaryCap, playerPoolData} = this.state;
-      this.setState({
-          isOptimizing: true
-      });
+      let {playerPool, whiteList, blackList, lineupMatrix, displayMatrix, salaryCap, playerPoolData,
+          highestPointTotal} = this.state;
+      this.setState({isOptimizing: true});
+      console.log(lineupMatrix);
       fetch(apiRoot + '/optimize', {
           method: 'POST',
           headers: {
@@ -282,19 +264,25 @@ class App extends Component {
           } else {
               response.json()
                   .then((playerIds) => {
-                      if (!Array.isArray(playerIds) || playerIds.every(playerId => playerId === 0)) {
+                      if (!Array.isArray(playerIds) || playerIds.includes(0)) {
                           alert('Optimal lineup could not be found.\n' + JSON.stringify(playerIds));
                           this.setState({
                               isOptimizing: false
                           })
                       } else {
-                          let optimalLineup = playerIds
-                              .map(playerId => playerPool.find(player => player.playerId === playerId));
+                          let optimalLineup = playerIds.map(
+                              playerId =>
+                                  playerPool.find(player => player.playerId === playerId));
                           optimalLineup.forEach((player, index) => player.displayPosition = displayMatrix[index]);
+                          let pointSum = sumAttribute(optimalLineup, 'projection');
+                          if (highestPointTotal && pointSum > highestPointTotal)
+                              alert('You have found a better lineup!');
                           this.setState({
                               isOptimizing: false,
                               lineup: optimalLineup,
                               playerPool: playerPoolData,
+                              highestPointTotal: pointSum > highestPointTotal ? pointSum : highestPointTotal,
+                              betterLineupFound: pointSum > highestPointTotal
                           })
                       }
                   });
@@ -304,76 +292,7 @@ class App extends Component {
 
   render() {
     const {isLoading, isOptimizing, sport, site, contest, date, contests, lineup, salaryCap, playerPool, filteredPool,
-      sortAttribute, sortSign, searchText, whiteList, blackList} = this.state;
-
-    let sports = ['mlb', 'nfl', 'nba', 'nhl'];
-    let sportSection = isLoading || !site ? null : <h3>Choose a sport:</h3>;
-    let sportButtons = isLoading || !site ? null :
-      <div style={{display: 'flex'}}>
-          {sports.map(
-              thisSport => <button
-                  key={thisSport}
-                  style={{backgroundColor: (sport === thisSport) ? 'dodgerblue' : 'white'}}
-                  onClick={() => this.setSport(thisSport)}>{thisSport.toUpperCase()}</button>
-          )}
-      </div>;
-
-      let contestSection = isLoading || (!site || !sport) ? null : <h3>Choose a game contest:</h3>;
-      let contestButtons = isLoading || (!site || !sport) ? null : contests.length === 0 ?
-          <p>No contests are available.</p> :
-      <div style={{display: 'flex'}}>
-          {contests.map(
-              contestName => <button style={{backgroundColor: (contestName === contest) ? 'dodgerblue' : 'white'}}
-                                     key={contestName}
-                                     onClick={() => this.setContest(contestName)}>{contestName}</button>
-          )}
-      </div>;
-
-    let gridSection = isLoading ? Loading : isOptimizing ? Optimizing :
-        <div className={"Dfs-grid-section"}>
-            <div className={"Player-list-box"}>
-                <h2 className={"Dfs-header"}>Blacklist</h2>
-                <BlackList blackList={blackList} playerPool={playerPool}/>
-            </div>
-            <div>
-              <h2 className={"Dfs-header"}>Players</h2>
-              <div style={{display: 'flex', flexDirection: 'column'}}>
-                {!filteredPool && <img src={search} style={{height: '3vmin', position: 'absolute'}} alt="search"/>}
-                <input type="text" style={{height: '25px', width: '90%'}}
-                       value={searchText}
-                       onChange={(event) => this.filterPlayers('name', event.target.value)}>{null}</input>
-              </div>
-              <div style={{display: 'flex'}}>
-                <button onClick={() => this.filterPlayers('position', 'All')}>All</button>
-                {
-                  [...new Set(playerPool.map((player) => player.position))]
-                      .map((position) =>
-                          <button onClick={() => this.filterPlayers('position', position)}>{position}</button>
-                      )
-                }
-                <select onChange={(event) => this.filterPlayers('team', event.target.value)}>
-                  <option defaultValue={'All'}>All</option>
-                  {[...new Set(playerPool.map((player) => player.team))].sort().map((team) =>
-                      <option value={team}>{team}</option>
-                  )}
-                </select>
-              </div>
-              <div className={"Player-list-box"}>
-                <PlayerPool playerList={playerPool} filterList={filteredPool}
-                              whiteListFunction={this.addToLineup} blackListFunction={this.toggleBlackList}
-                              sortFunction={this.sortAttribute} toggleSort={this.toggleSort}
-                              sortAttribute={sortAttribute} sortSign={sortSign}
-                              whiteList={whiteList} blackList={blackList}
-                              salarySum={sumAttribute(lineup, 'salary')} cap={salaryCap}/>
-              </div>
-            </div>
-            <div>
-              <h2 className={"Dfs-header"}>Lineup</h2>
-              <Lineup dfsLineup={lineup} removePlayer={this.removeFromLineup} site={site}
-                      whiteList={whiteList} pointSum={sumAttribute(lineup, 'projection')}
-                      salarySum={sumAttribute(lineup, 'salary')} cap={salaryCap}/>
-            </div>
-        </div>;
+      sortAttribute, sortSign, searchText, whiteList, blackList, betterLineupFound} = this.state;
 
     return (
         <Container fluid={true}>
@@ -386,22 +305,24 @@ class App extends Component {
               <button style={{backgroundColor: (site === 'dk') ? 'dodgerblue' : 'white'}}
                       onClick={() => this.setSite('dk')}>Draftkings</button>
             </div>
-            {site === 'fd' &&
-            <div>
-                <DatePicker onChange={(date) => this.getFanduelData(date)} value={date}/>
-            </div>}
-            {sportSection}
-            {sportButtons}
-            {contestSection}
-            {contestButtons}
+            {site === 'fd' && <DatePicker onChange={(date) => this.getFanduelData(date)} value={date}/>}
+            <SportSection isLoading={isLoading} site={site} sport={sport} setSport={this.setSport}/>
+            <ContestSection isLoading={isLoading} site={site} sport={sport} contest={contest} contests={contests}
+                            setContest={this.setContest}/>
             <div style={{display: 'flex', margin: '2%'}}>
                 {sport && contest && site && <button style={{marginTop: '10px'}}
-                                                     onClick={this.generateOptimalLineup}>Optimize Lineup</button>}
+                                                     onClick={this.generateOptimalLineup}>Generate Lineup</button>}
               {sport && contest && site && <button style={{marginTop: '10px'}}
                                                    onClick={this.clearLineup}>Clear Lineup</button>}
             </div>
           </div>
-          {isLoading ? Loading : (site && sport && contest && gridSection)}
+          <GridSection isLoading={isLoading} isOptimizing={isOptimizing} site={site} sport={sport} contest={contest}
+                       lineup={lineup} playerPool={playerPool} filteredPool={filteredPool} whiteList={whiteList}
+                       blackList={blackList} searchText={searchText} filterPlayers={this.filterPlayers}
+                       addToLineup={this.addToLineup} removeFromLineup={this.removeFromLineup}
+                       toggleBlackList={this.toggleBlackList} sortAttributeFunction={this.sortAttribute}
+                       sortAttribute={sortAttribute} sortSign={sortSign} toggleSort={this.toggleSort}
+                       salaryCap={salaryCap} betterLineupFound={betterLineupFound}/>
         </Container>
     )
   }

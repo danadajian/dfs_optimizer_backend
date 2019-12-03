@@ -25,17 +25,17 @@ public class Optimizer {
     }
 
     public List<Player> bestLineupWithWhiteList() {
-        List<Player> initialLineup = lineupWithWhiteList();
+        List<Player> bestLineup = lineupWithWhiteList();
         for (int i = 0; i < lineupMatrix.size(); i++) {
-            if (initialLineup.get(i).playerId == 0) {
+            if (bestLineup.get(i).playerId == 0) {
                 Player bestPlayer = playerPools.get(i).stream()
-                        .filter(player -> !initialLineup.contains(player))
+                        .filter(player -> !bestLineup.contains(player))
                         .findFirst()
                         .orElse(new Player());
-                initialLineup.set(i, bestPlayer);
+                bestLineup.set(i, bestPlayer);
             }
         }
-        return initialLineup;
+        return bestLineup;
     }
 
     public List<Player> downgradePlayersUntilUnderCap(List<Player> lineup) {

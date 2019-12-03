@@ -8,7 +8,7 @@ MINOR_VERSION=${MVN_VERSION:2:2}
 mvn replacer:replace -Dccih.origin="<version>${MVN_VERSION}</version>" -Dccih.target="<version>${MAJOR_VERSION}"."$((MINOR_VERSION + 1))</version>"
 mvn clean package
 
-BUCKET_NAME="www.dfsoptimizer.app"
+BUCKET_NAME="dfsoptimizer.app"
 STACK_NAME="dfs-optimizer-stack"
 
 if aws s3api head-bucket --bucket ${BUCKET_NAME} 2>/dev/null
@@ -22,8 +22,6 @@ else
 fi
 
 PATH_TO_FILE=$(find . -name *-jar-with-dependencies.jar* | head -n 1)
-echo PATH_TO_FILE:
-echo ${PATH_TO_FILE}
 
 echo "### SAM Deploy"
 
@@ -47,6 +45,6 @@ echo "### Building frontend"
 cd frontend
 npm test
 npm run build
-aws s3 cp ./build/ "s3://${BUCKET_NAME}/" --recursive --exclude "precache-manifest.*"
+aws s3 sync ./build/ "s3://${BUCKET_NAME}/" --exclude "precache-manifest.*"
 
 echo "BUILD COMPLETE!"

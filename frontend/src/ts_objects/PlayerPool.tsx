@@ -1,15 +1,22 @@
 import * as React from 'react';
 import {getOrdinalString} from "../functions/getOrdinalString";
 
+const plus = require("../icons/plus.ico") as any;
+const minus = require("../icons/minus.ico") as any;
+const up = require("../icons/up.svg") as any;
+const down = require("../icons/down.svg") as any;
+
 interface playerAttributes {
     playerId: number,
     position: string,
+    displayPosition: string,
     team: string,
     name: string,
     projection: number,
     salary: number,
     opponent: string,
-    opponentRank: number
+    opponentRank: number,
+    gameDate: string
 }
 
 interface playerProps {
@@ -21,11 +28,6 @@ interface playerProps {
     salarySum: number,
     cap: number
 }
-
-const plus = require("../resources/plus.ico") as any;
-const minus = require("../resources/minus.ico") as any;
-const up = require("../resources/up.svg") as any;
-const down = require("../resources/down.svg") as any;
 
 const Player = (props: playerProps) =>
     <tr style={{backgroundColor: (props.whiteList.includes(props.player.playerId)) ? 'lightgreen' :

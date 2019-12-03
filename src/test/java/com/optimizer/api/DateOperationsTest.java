@@ -118,7 +118,8 @@ class DateOperationsTest {
     @Test
     void shouldGetEasternTime() {
         dateOperations.getTodaysDate();
-        String result = dateOperations.getEasternTime("2019-11-17T18:00:00", "utc");
-        assertEquals("Sun 11/17 1:00PM EST", result);
+        String result = dateOperations.getEasternTime("2019-11-17T18:00:00", "utc",
+                "EEE h:mma z");
+        assertEquals("Sun 1:00PM EST", result);
     }
 }

@@ -3,9 +3,14 @@ import * as React from 'react';
 interface playerAttributes {
     playerId: number,
     position: string,
+    displayPosition: string,
     team: string,
     name: string,
-    salary: number
+    projection: number,
+    salary: number,
+    opponent: string,
+    opponentRank: number,
+    gameDate: string
 }
 
 interface playerProps {

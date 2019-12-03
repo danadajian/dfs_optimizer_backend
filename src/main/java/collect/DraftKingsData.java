@@ -23,14 +23,13 @@ public class DraftKingsData {
         getValidContests().forEach((JSONObject event) -> {
             Map<String, Object> contestMap = new HashMap<>();
             String contest;
+            String gameDate = event.getJSONArray("competitions").getJSONObject(0).getString("startTime");
+            String easternTime = new DateOperations().getEasternTime(gameDate, "UTC", "MM/dd");
             if (event.has("suffix")) {
-                contest = event.getString("suffix").substring(2, event.getString("suffix").length() - 1);
+                String contestName = event.getString("suffix").substring(2, event.getString("suffix").length() - 1);
+                contest = contestName + " (" + easternTime + ")";
             } else {
-                String gameDate = event.getJSONArray("competitions").getJSONObject(0)
-                        .getString("startTime");
-                contest = "Main ("
-                        + new DateOperations().getEasternTime(gameDate, "UTC")
-                        + ")";
+                contest = "Main (" + easternTime + ")";
             }
             contestMap.put("contest", contest);
             JSONArray playerPool = event.getJSONArray("draftPool");

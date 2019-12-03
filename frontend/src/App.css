@@ -133,10 +133,6 @@ body {
   padding: 0 16px 0 16px;
 }
 
-.Draft-grid tr:hover {
-  background-color: indianred;
-}
-
 .Dfs-grid table {
   border-spacing: 0;
   margin: 0 auto 0 auto;

@@ -2,44 +2,31 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="352060b1-b9b3-400c-8051-85a2b23146fe" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/frontend/src/__tests__/arrayToSet.test.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/functions/arrayToSet.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/ts_objects/ContestSection.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/ts_objects/GridSection.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/ts_objects/Loading.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/ts_objects/Optimizing.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/ts_objects/SportSection.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/collect/EventData.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/collect/NFLProjectionsData.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/resources/injuryAbbreviations.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/collect/InjuryData.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/collect/ParticipantsData.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/handler/InjuryHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/optimizer/collect/InjuryDataTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/optimizer/handler/InjuryHandlerTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bucket-policy.json" beforeDir="false" afterPath="$PROJECT_DIR$/bucket-policy.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/deploy.sh" beforeDir="false" afterPath="$PROJECT_DIR$/deploy.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/App.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/Loading.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/Optimizing.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/resources/down.svg" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/icons/down.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/resources/football.ico" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/icons/football.ico" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/resources/football2.svg" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/icons/football2.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/resources/minus.ico" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/icons/minus.ico" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/resources/plus.ico" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/icons/plus.ico" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/resources/search.ico" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/icons/search.ico" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/resources/up.svg" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/icons/up.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/ts_objects/BlackList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/ts_objects/BlackList.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/ts_objects/GridSection.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/ts_objects/GridSection.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/ts_objects/Lineup.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/ts_objects/Lineup.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/ts_objects/Loading.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/ts_objects/Loading.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/ts_objects/PlayerPool.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/ts_objects/PlayerPool.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/collect/DraftKingsData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/collect/DraftKingsData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/collect/FanduelData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/collect/FanduelData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/collect/ProjectionsData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/collect/StandardProjectionsData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/api/ApiCaller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/api/ApiCaller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/api/ApiClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/api/ApiClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/api/DataCollector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/api/DataCollector.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/collect/NFLProjectionsData.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/collect/OpponentRanksData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/collect/OpponentRanksData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/collect/StandardProjectionsData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/collect/ProjectionsData.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/handler/ProjectionsHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/handler/ProjectionsHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/optimize/Optimizer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/optimize/Optimizer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/util/DateOperations.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/util/DateOperations.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/optimizer/api/DateOperationsTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/optimizer/api/DateOperationsTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/optimizer/collect/DraftKingsDataTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/optimizer/collect/DraftKingsDataTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/optimizer/collect/NFLProjectionsDataTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/optimizer/collect/NFLProjectionsDataTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/optimizer/collect/OtherProjectionsDataTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/optimizer/collect/StandardProjectionsDataTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/optimizer/handler/ProjectionsHandlerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/optimizer/handler/ProjectionsHandlerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/optimizer/collect/MockResponses.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/optimizer/collect/MockResponses.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/optimizer/collect/NFLProjectionsDataTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/optimizer/collect/OpponentRanksDataTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/optimizer/collect/OpponentRanksDataTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/optimizer/collect/StandardProjectionsDataTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/optimizer/collect/ProjectionsDataTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/swagger.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/swagger.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/template.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/template.yaml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -55,8 +42,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/frontend/src/App.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="99" column="4" lean-forward="true" selection-start-line="99" selection-start-column="4" selection-end-line="99" selection-end-column="4" />
+            <state relative-caret-position="-669">
+              <caret line="55" column="4" lean-forward="true" selection-start-line="55" selection-start-column="4" selection-end-line="55" selection-end-column="4" />
               <folding>
                 <element signature="e#0#40#0" expanded="true" />
               </folding>
@@ -65,51 +52,22 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/template.yaml">
+        <entry file="file://$PROJECT_DIR$/src/main/java/collect/OpponentRanksData.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="14" column="15" selection-start-line="14" selection-start-column="15" selection-end-line="14" selection-end-column="15" />
+            <state relative-caret-position="51">
+              <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/collect/StandardProjectionsData.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/api/DataCollector.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="612">
-              <caret line="36" column="13" lean-forward="true" selection-start-line="36" selection-start-column="13" selection-end-line="36" selection-end-column="13" />
+            <state relative-caret-position="433">
+              <caret line="47" column="13" lean-forward="true" selection-start-line="47" selection-start-column="13" selection-end-line="47" selection-end-column="13" />
               <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/frontend/src/resources/lineupStructures.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="39" column="18" lean-forward="true" selection-start-line="39" selection-start-column="18" selection-end-line="39" selection-end-column="18" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/handler/ProjectionsHandler.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
-              <caret line="1" selection-start-line="1" selection-end-line="1" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/optimize/Optimizer.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="99">
-              <caret line="58" column="44" selection-start-line="58" selection-start-column="44" selection-end-line="58" selection-end-column="44" />
-              <folding>
-                <element signature="imports" expanded="true" />
+                <element signature="e#1478#1479#0" expanded="true" />
+                <element signature="e#1540#1541#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -122,43 +80,43 @@
       <list>
         <option value="JavaScript File" />
         <option value="Interface" />
-        <option value="JUnit5 Test Class" />
         <option value="Class" />
+        <option value="JUnit5 Test Class" />
       </list>
     </option>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>new Player</find>
-      <find>any</find>
-      <find>pointSum</find>
-      <find>pointTotal</find>
-      <find>highestPointTotal</find>
-      <find>football.ico</find>
-      <find>Loading.js</find>
-      <find>loading</find>
-      <find>Loading</find>
-      <find>Player</find>
-      <find>gridSection</find>
-      <find>clearLi</find>
-      <find>filterPlayers</find>
-      <find>sortAttribute</find>
-      <find>search</find>
-      <find>createEmptyLineup</find>
-      <find>gameType</find>
-      <find>this</find>
-      <find>appendProjectionsData</find>
-      <find>supportedContests</find>
-      <find>getEasternTime</find>
-      <find>getParticipantsData</find>
-      <find>currentevents</find>
-      <find>NFL</find>
-      <find>eventData</find>
-      <find>System.out.</find>
-      <find>dfsPlayers</find>
-      <find>dfsData</find>
-      <find>G</find>
-      <find>15</find>
+      <find>no cont</find>
+      <find>cnoontest</find>
+      <find>getDraftKingsData</find>
+      <find>600119</find>
+      <find>team</find>
+      <find>621383</find>
+      <find>Persson</find>
+      <find>goalies</find>
+      <find>596662</find>
+      <find>2154390</find>
+      <find>172862</find>
+      <find>2154418</find>
+      <find>v.</find>
+      <find>opponent=v. Ott</find>
+      <find>301959</find>
+      <find>opponent</find>
+      <find>player</find>
+      <find>playerId</find>
+      <find>eventId</find>
+      <find>thisweek</find>
+      <find>getOpponentRanks</find>
+      <find>quinn</find>
+      <find>engram</find>
+      <find>hooper</find>
+      <find>getInjuryData</find>
+      <find>&lt;table</find>
+      <find>d</find>
+      <find>name</find>
+      <find>getFanduelData</find>
+      <find>anyString</find>
     </findStrings>
     <replaceStrings>
       <replace>MyApi</replace>
@@ -198,37 +156,17 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/collect/FantasyProsData.java" />
-        <option value="$PROJECT_DIR$/src/main/java/handler/FantasyProsHandler.java" />
-        <option value="$PROJECT_DIR$/src/main/java/handler/OpponentRanksHandler.java" />
-        <option value="$PROJECT_DIR$/src/test/java/com/optimizer/handler/FantasyProsHandlerTest.java" />
-        <option value="$PROJECT_DIR$/swagger.yaml" />
-        <option value="$PROJECT_DIR$/src/test/java/com/optimizer/collect/OpponentRanksDataTest.java" />
-        <option value="$PROJECT_DIR$/frontend/src/resources/teamAbbreviations.js" />
-        <option value="$PROJECT_DIR$/src/main/java/collect/OpponentRanksData.java" />
-        <option value="$PROJECT_DIR$/frontend/src/__tests__/getOrdinalString.test.js" />
-        <option value="$PROJECT_DIR$/frontend/src/functions/getOrdinalString.js" />
-        <option value="$PROJECT_DIR$/frontend/src/resources/lineupStructures.js" />
-        <option value="$PROJECT_DIR$/bucket-policy.json" />
-        <option value="$PROJECT_DIR$/src/test/java/com/optimizer/optimize/OptimizerTest.java" />
-        <option value="$PROJECT_DIR$/src/main/java/optimize/Optimizer.java" />
-        <option value="$PROJECT_DIR$/src/main/java/handler/OptimizerHandler.java" />
-        <option value="$PROJECT_DIR$/src/main/java/optimize/Player.java" />
-        <option value="$PROJECT_DIR$/src/test/java/com/optimizer/optimize/OptimizerTeamTest.java" />
         <option value="$PROJECT_DIR$/src/test/java/com/optimizer/optimize/PlayerTest.java" />
         <option value="$PROJECT_DIR$/deploy.sh" />
-        <option value="$PROJECT_DIR$/frontend/src/ts_objects/Lineup.tsx" />
         <option value="$PROJECT_DIR$/frontend/src/App.css" />
         <option value="$PROJECT_DIR$/frontend/src/Loading.js" />
         <option value="$PROJECT_DIR$/frontend/src/Optimizing.tsx" />
         <option value="$PROJECT_DIR$/frontend/src/Loading.tsx" />
         <option value="$PROJECT_DIR$/frontend/src/ts_objects/BlackList.tsx" />
-        <option value="$PROJECT_DIR$/frontend/src/ts_objects/PlayerPool.tsx" />
         <option value="$PROJECT_DIR$/frontend/tsconfig.json" />
         <option value="$PROJECT_DIR$/frontend/src/__tests__/arrayToSet.test.js" />
         <option value="$PROJECT_DIR$/frontend/src/functions/arrayToSet.js" />
         <option value="$PROJECT_DIR$/frontend/src/GridSection.tsx" />
-        <option value="$PROJECT_DIR$/frontend/src/ts_objects/GridSection.tsx" />
         <option value="$PROJECT_DIR$/frontend/src/ts_objects/ContestSection.tsx" />
         <option value="$PROJECT_DIR$/frontend/src/ts_objects/SportsSection.tsx" />
         <option value="$PROJECT_DIR$/frontend/src/ts_objects/SportSection.tsx" />
@@ -238,17 +176,37 @@
         <option value="$PROJECT_DIR$/src/test/java/com/optimizer/collect/DraftKingsDataTest.java" />
         <option value="$PROJECT_DIR$/src/test/java/com/optimizer/collect/OtherProjectionsDataTest.java" />
         <option value="$PROJECT_DIR$/src/test/java/com/optimizer/api/DateOperationsTest.java" />
-        <option value="$PROJECT_DIR$/src/main/java/collect/ProjectionsData.java" />
         <option value="$PROJECT_DIR$/src/main/java/collect/EventData.java" />
+        <option value="$PROJECT_DIR$/frontend/src/ts_objects/Loading.tsx" />
+        <option value="$PROJECT_DIR$/src/main/java/collect/ParticipantsData.java" />
         <option value="$PROJECT_DIR$/src/test/java/com/optimizer/collect/StandardProjectionsDataTest.java" />
-        <option value="$PROJECT_DIR$/src/main/java/collect/NFLProjectionsData.java" />
         <option value="$PROJECT_DIR$/src/main/java/collect/NHLProjectionsData.java" />
-        <option value="$PROJECT_DIR$/src/test/java/com/optimizer/collect/NFLProjectionsDataTest.java" />
-        <option value="$PROJECT_DIR$/src/main/java/handler/ProjectionsHandler.java" />
         <option value="$PROJECT_DIR$/src/test/java/com/optimizer/handler/ProjectionsHandlerTest.java" />
-        <option value="$PROJECT_DIR$/frontend/src/App.js" />
+        <option value="$PROJECT_DIR$/src/test/java/com/optimizer/collect/MockResponses.java" />
+        <option value="$PROJECT_DIR$/src/main/java/collect/NFLInjuryData.java" />
+        <option value="$PROJECT_DIR$/src/test/java/com/optimizer/collect/NFLInjuryDataTest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/handler/InjuryHandler.java" />
+        <option value="$PROJECT_DIR$/src/test/java/com/optimizer/collect/InjuryDataTest.java" />
         <option value="$PROJECT_DIR$/template.yaml" />
+        <option value="$PROJECT_DIR$/swagger.yaml" />
+        <option value="$PROJECT_DIR$/frontend/src/ts_objects/Lineup.tsx" />
+        <option value="$PROJECT_DIR$/frontend/src/ts_objects/GridSection.tsx" />
+        <option value="$PROJECT_DIR$/frontend/src/resources/injuryAbbreviations.js" />
+        <option value="$PROJECT_DIR$/frontend/src/ts_objects/PlayerPool.tsx" />
+        <option value="$PROJECT_DIR$/src/main/java/collect/InjuryData.java" />
+        <option value="$PROJECT_DIR$/src/main/java/api/ApiCaller.java" />
+        <option value="$PROJECT_DIR$/src/test/java/com/optimizer/handler/InjuryHandlerTest.java" />
+        <option value="$PROJECT_DIR$/frontend/src/App.js" />
+        <option value="$PROJECT_DIR$/src/main/java/collect/NFLProjectionsData.java" />
         <option value="$PROJECT_DIR$/src/main/java/collect/StandardProjectionsData.java" />
+        <option value="$PROJECT_DIR$/src/main/java/handler/ProjectionsHandler.java" />
+        <option value="$PROJECT_DIR$/src/main/java/collect/ProjectionsData.java" />
+        <option value="$PROJECT_DIR$/src/test/java/com/optimizer/collect/NFLProjectionsDataTest.java" />
+        <option value="$PROJECT_DIR$/src/test/java/com/optimizer/collect/NHLProjectionsDataTest.java" />
+        <option value="$PROJECT_DIR$/src/test/java/com/optimizer/collect/ProjectionsDataTest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/collect/OpponentRanksData.java" />
+        <option value="$PROJECT_DIR$/src/main/java/api/ApiClient.java" />
+        <option value="$PROJECT_DIR$/src/main/java/api/DataCollector.java" />
       </list>
     </option>
   </component>
@@ -300,31 +258,6 @@
             <path>
               <item name="DFS-Optimizer-Web" type="b2602c69:ProjectViewProjectNode" />
               <item name="DFS-Optimizer-Web" type="462c0819:PsiDirectoryNode" />
-              <item name="frontend" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="DFS-Optimizer-Web" type="b2602c69:ProjectViewProjectNode" />
-              <item name="DFS-Optimizer-Web" type="462c0819:PsiDirectoryNode" />
-              <item name="frontend" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="DFS-Optimizer-Web" type="b2602c69:ProjectViewProjectNode" />
-              <item name="DFS-Optimizer-Web" type="462c0819:PsiDirectoryNode" />
-              <item name="frontend" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="DFS-Optimizer-Web" type="b2602c69:ProjectViewProjectNode" />
-              <item name="DFS-Optimizer-Web" type="462c0819:PsiDirectoryNode" />
-              <item name="frontend" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="ts_objects" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="DFS-Optimizer-Web" type="b2602c69:ProjectViewProjectNode" />
-              <item name="DFS-Optimizer-Web" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -339,6 +272,14 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="DFS-Optimizer-Web" type="b2602c69:ProjectViewProjectNode" />
+              <item name="DFS-Optimizer-Web" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="api" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="DFS-Optimizer-Web" type="b2602c69:ProjectViewProjectNode" />
@@ -354,7 +295,46 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="optimize" type="462c0819:PsiDirectoryNode" />
+              <item name="handler" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="DFS-Optimizer-Web" type="b2602c69:ProjectViewProjectNode" />
+              <item name="DFS-Optimizer-Web" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="DFS-Optimizer-Web" type="b2602c69:ProjectViewProjectNode" />
+              <item name="DFS-Optimizer-Web" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="DFS-Optimizer-Web" type="b2602c69:ProjectViewProjectNode" />
+              <item name="DFS-Optimizer-Web" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="optimizer" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="DFS-Optimizer-Web" type="b2602c69:ProjectViewProjectNode" />
+              <item name="DFS-Optimizer-Web" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="optimizer" type="462c0819:PsiDirectoryNode" />
+              <item name="collect" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="DFS-Optimizer-Web" type="b2602c69:ProjectViewProjectNode" />
+              <item name="DFS-Optimizer-Web" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="optimizer" type="462c0819:PsiDirectoryNode" />
+              <item name="handler" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -370,7 +350,7 @@
     <property name="Repository.Attach.Sources" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1575412372896" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1575497103648" />
     <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/New Scratch File" value="Bash" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit5" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
@@ -389,10 +369,10 @@
   <component name="RecentsManager">
     <key name="CreateTestDialog.RecentsKey">
       <recent name="com.optimizer.handler" />
+      <recent name="com.optimizer.collect" />
       <recent name="collect" />
       <recent name="optimize" />
       <recent name="com.optimizer.optimize" />
-      <recent name="com.optimizer.collect" />
     </key>
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
@@ -450,39 +430,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="OptimizerTeamTest.shouldGetBestLineupWithWhiteListedPlayers" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="DFS-Optimizer-Web" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.optimizer.optimize.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.optimizer.optimize" />
-      <option name="MAIN_CLASS_NAME" value="com.optimizer.optimize.OptimizerTeamTest" />
-      <option name="METHOD_NAME" value="shouldGetBestLineupWithWhiteListedPlayers" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="OptimizerTest.shouldGenerateOptimalLineupWithinCap" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="DFS-Optimizer-Web" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.optimizer.optimize.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.optimizer.optimize" />
-      <option name="MAIN_CLASS_NAME" value="com.optimizer.optimize.OptimizerTest" />
-      <option name="METHOD_NAME" value="shouldGenerateOptimalLineupWithinCap" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ProjectionsHandlerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="InjuryHandlerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="DFS-Optimizer-Web" />
       <extension name="coverage">
         <pattern>
@@ -491,13 +439,13 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="com.optimizer.handler" />
-      <option name="MAIN_CLASS_NAME" value="com.optimizer.handler.ProjectionsHandlerTest" />
+      <option name="MAIN_CLASS_NAME" value="com.optimizer.handler.InjuryHandlerTest" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ProjectionsHandlerTest.shouldHandleRequestForOtherProjections" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="InjuryHandlerTest.handleNFLRequest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="DFS-Optimizer-Web" />
       <extension name="coverage">
         <pattern>
@@ -506,8 +454,39 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="com.optimizer.handler" />
-      <option name="MAIN_CLASS_NAME" value="com.optimizer.handler.ProjectionsHandlerTest" />
-      <option name="METHOD_NAME" value="shouldHandleRequestForOtherProjections" />
+      <option name="MAIN_CLASS_NAME" value="com.optimizer.handler.InjuryHandlerTest" />
+      <option name="METHOD_NAME" value="handleNFLRequest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ProjectionsDataTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="DFS-Optimizer-Web" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.optimizer.collect.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.optimizer.collect" />
+      <option name="MAIN_CLASS_NAME" value="com.optimizer.collect.ProjectionsDataTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ProjectionsDataTest.shouldGetHomeOrAwayMapFromNFLEvents" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="DFS-Optimizer-Web" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.optimizer.collect.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.optimizer.collect" />
+      <option name="MAIN_CLASS_NAME" value="com.optimizer.collect.ProjectionsDataTest" />
+      <option name="METHOD_NAME" value="shouldGetHomeOrAwayMapFromNFLEvents" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -516,18 +495,18 @@
     <list>
       <item itemvalue="Bash.deploy.sh" />
       <item itemvalue="JUnit.All in DFS-Optimizer-Web" />
-      <item itemvalue="JUnit.OptimizerTest.shouldGenerateOptimalLineupWithinCap" />
-      <item itemvalue="JUnit.OptimizerTeamTest.shouldGetBestLineupWithWhiteListedPlayers" />
-      <item itemvalue="JUnit.ProjectionsHandlerTest.shouldHandleRequestForOtherProjections" />
-      <item itemvalue="JUnit.ProjectionsHandlerTest" />
+      <item itemvalue="JUnit.InjuryHandlerTest" />
+      <item itemvalue="JUnit.InjuryHandlerTest.handleNFLRequest" />
+      <item itemvalue="JUnit.ProjectionsDataTest" />
+      <item itemvalue="JUnit.ProjectionsDataTest.shouldGetHomeOrAwayMapFromNFLEvents" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.ProjectionsHandlerTest" />
         <item itemvalue="JUnit.All in DFS-Optimizer-Web" />
-        <item itemvalue="JUnit.ProjectionsHandlerTest.shouldHandleRequestForOtherProjections" />
-        <item itemvalue="JUnit.OptimizerTeamTest.shouldGetBestLineupWithWhiteListedPlayers" />
-        <item itemvalue="JUnit.OptimizerTest.shouldGenerateOptimalLineupWithinCap" />
+        <item itemvalue="JUnit.ProjectionsDataTest" />
+        <item itemvalue="JUnit.ProjectionsDataTest.shouldGetHomeOrAwayMapFromNFLEvents" />
+        <item itemvalue="JUnit.InjuryHandlerTest" />
+        <item itemvalue="JUnit.InjuryHandlerTest.handleNFLRequest" />
       </list>
     </recent_temporary>
   </component>
@@ -567,44 +546,45 @@
       <workItem from="1574608635530" duration="15489000" />
       <workItem from="1574693258700" duration="20513000" />
       <workItem from="1575382574884" duration="12850000" />
-      <workItem from="1575403836493" duration="8347000" />
+      <workItem from="1575403836493" duration="8796000" />
+      <workItem from="1575468151406" duration="25795000" />
     </task>
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="OptimizerTeamTest_shouldGetBestLineupWithWhiteListedPlayers - 2019.12.03 at 08h 58m 16s.xml">
-      <configuration name="OptimizerTeamTest.shouldGetBestLineupWithWhiteListedPlayers" configurationId="JUnit" />
+    <history-entry file="InjuryHandlerTest - 2019.12.04 at 15h 22m 06s.xml">
+      <configuration name="InjuryHandlerTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="All_in_DFS-Optimizer-Web - 2019.12.03 at 09h 53m 30s.xml">
+    <history-entry file="All_in_DFS-Optimizer-Web - 2019.12.04 at 15h 22m 27s.xml">
       <configuration name="All in DFS-Optimizer-Web" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="All_in_DFS-Optimizer-Web - 2019.12.03 at 15h 10m 44s.xml">
+    <history-entry file="All_in_DFS-Optimizer-Web - 2019.12.04 at 15h 53m 40s.xml">
       <configuration name="All in DFS-Optimizer-Web" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="All_in_DFS-Optimizer-Web - 2019.12.03 at 15h 12m 02s.xml">
+    <history-entry file="All_in_DFS-Optimizer-Web - 2019.12.04 at 15h 54m 44s.xml">
       <configuration name="All in DFS-Optimizer-Web" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="All_in_DFS-Optimizer-Web - 2019.12.03 at 15h 39m 39s.xml">
-      <configuration name="All in DFS-Optimizer-Web" configurationId="JUnit" />
+    <history-entry file="ProjectionsDataTest - 2019.12.04 at 15h 56m 05s.xml">
+      <configuration name="ProjectionsDataTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="ProjectionsHandlerTest_shouldHandleRequestForOtherProjections - 2019.12.03 at 15h 42m 22s.xml">
-      <configuration name="ProjectionsHandlerTest.shouldHandleRequestForOtherProjections" configurationId="JUnit" />
+    <history-entry file="ProjectionsDataTest_shouldGetHomeOrAwayMapFromNFLEvents - 2019.12.04 at 15h 56m 53s.xml">
+      <configuration name="ProjectionsDataTest.shouldGetHomeOrAwayMapFromNFLEvents" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="ProjectionsHandlerTest_shouldHandleRequestForOtherProjections - 2019.12.03 at 15h 43m 44s.xml">
-      <configuration name="ProjectionsHandlerTest.shouldHandleRequestForOtherProjections" configurationId="JUnit" />
+    <history-entry file="ProjectionsDataTest_shouldGetHomeOrAwayMapFromNFLEvents - 2019.12.04 at 15h 57m 23s.xml">
+      <configuration name="ProjectionsDataTest.shouldGetHomeOrAwayMapFromNFLEvents" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="ProjectionsHandlerTest_shouldHandleRequestForOtherProjections - 2019.12.03 at 15h 44m 09s.xml">
-      <configuration name="ProjectionsHandlerTest.shouldHandleRequestForOtherProjections" configurationId="JUnit" />
+    <history-entry file="ProjectionsDataTest_shouldGetHomeOrAwayMapFromNFLEvents - 2019.12.04 at 15h 58m 11s.xml">
+      <configuration name="ProjectionsDataTest.shouldGetHomeOrAwayMapFromNFLEvents" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="ProjectionsHandlerTest - 2019.12.03 at 15h 46m 01s.xml">
-      <configuration name="ProjectionsHandlerTest" configurationId="JUnit" />
+    <history-entry file="ProjectionsDataTest - 2019.12.04 at 15h 58m 27s.xml">
+      <configuration name="ProjectionsDataTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="All_in_DFS-Optimizer-Web - 2019.12.03 at 15h 53m 45s.xml">
+    <history-entry file="All_in_DFS-Optimizer-Web - 2019.12.04 at 15h 58m 34s.xml">
       <configuration name="All in DFS-Optimizer-Web" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="360893000" />
+    <option name="totallyTimeSpent" value="387137000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -617,9 +597,8 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1652452" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.16684435" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -628,7 +607,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32936078" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.32719395" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.2611051" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3997833" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -636,7 +615,7 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
-      <window_info anchor="bottom" id="Terminal" order="10" visible="true" weight="0.24160346" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="10" visible="true" weight="0.24160346" />
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
       <window_info anchor="bottom" id="Messages" order="12" weight="0.21018419" />
       <window_info anchor="bottom" id="TypeScript" order="13" />
@@ -692,152 +671,6 @@
     </ignored-roots>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/test/java/com/optimizer/handler/OpponentRanksHandlerTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="36" selection-start-line="5" selection-start-column="36" selection-end-line="5" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/handler/OpponentRanksHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" selection-start-line="5" selection-end-line="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/com/optimizer/collect/OpponentRanksDataTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="29" column="51" selection-start-line="29" selection-start-column="51" selection-end-line="29" selection-end-column="51" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/src/functions/formatDate.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret selection-end-line="7" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/collect/OpponentRanksData.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="34" column="46" lean-forward="true" selection-start-line="34" selection-start-column="46" selection-end-line="34" selection-end-column="46" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/src/resources/teamAbbreviations.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="476">
-          <caret line="28" column="28" selection-start-line="28" selection-start-column="28" selection-end-line="28" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/src/functions/getOrdinalString.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="13" column="5" lean-forward="true" selection-start-line="13" selection-start-column="5" selection-end-line="13" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/src/__tests__/getOrdinalString.test.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="15" column="48" selection-start-line="15" selection-start-column="48" selection-end-line="15" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bucket-policy.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="1" lean-forward="true" selection-start-line="11" selection-start-column="1" selection-end-line="11" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/optimize/Player.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="25" column="33" lean-forward="true" selection-start-line="25" selection-start-column="33" selection-end-line="25" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/com/optimizer/optimize/OptimizerTeamTest.java" />
-    <entry file="file://$PROJECT_DIR$/src/test/java/com/optimizer/handler/OptimizerHandlerTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="45" column="46" lean-forward="true" selection-start-line="45" selection-start-column="46" selection-end-line="45" selection-end-column="46" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/com/optimizer/optimize/PlayerTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="14" column="45" lean-forward="true" selection-start-line="14" selection-start-column="45" selection-end-line="14" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/com/optimizer/optimize/OptimizerTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="26" lean-forward="true" selection-start-line="2" selection-start-column="26" selection-end-line="2" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/handler/OptimizerHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="19" lean-forward="true" selection-start-line="5" selection-start-column="19" selection-end-line="5" selection-end-column="19" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/src/ts_objects/BlackList.tsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" selection-start-line="14" selection-end-line="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/src/App.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2261">
-          <caret line="133" column="1" selection-start-line="133" selection-start-column="1" selection-end-line="133" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/tsconfig.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="14" lean-forward="true" selection-start-line="7" selection-start-column="14" selection-end-line="7" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/src/__tests__/createEmptyLineup.test.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="6" column="23" lean-forward="true" selection-start-line="6" selection-start-column="23" selection-end-line="6" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/src/__tests__/formatDate.test.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="7" lean-forward="true" selection-start-line="6" selection-start-column="7" selection-end-line="6" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/frontend/src/__tests__/arrayToSet.test.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
@@ -849,13 +682,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
           <caret line="10" column="21" selection-start-line="10" selection-start-column="21" selection-end-line="10" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/src/ts_objects/Loading.tsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="13" column="52" lean-forward="true" selection-start-line="13" selection-start-column="52" selection-end-line="13" selection-end-column="52" />
         </state>
       </provider>
     </entry>
@@ -873,16 +699,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="289">
           <caret line="17" column="11" lean-forward="true" selection-start-line="17" selection-start-column="11" selection-end-line="17" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/src/ts_objects/PlayerPool.tsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1235">
-          <caret line="6" column="53" selection-start-line="6" selection-start-column="53" selection-end-line="6" selection-end-column="53" />
-          <folding>
-            <element signature="e#0#31#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -914,26 +730,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/src/ts_objects/Lineup.tsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="21" lean-forward="true" selection-start-line="11" selection-start-column="21" selection-end-line="11" selection-end-column="21" />
-          <folding>
-            <element signature="e#0#31#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/src/ts_objects/GridSection.tsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="497">
-          <caret line="95" column="11" lean-forward="true" selection-start-line="95" selection-start-column="11" selection-end-line="95" selection-end-column="11" />
-          <folding>
-            <element signature="e#0#34#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/com/optimizer/collect/DraftKingsDataTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="352">
@@ -944,70 +740,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/collect/DraftKingsData.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="30" column="20" lean-forward="true" selection-start-line="30" selection-start-column="20" selection-end-line="30" selection-end-column="20" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/collect/EventData.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="561">
-          <caret line="33" column="20" selection-start-line="33" selection-start-column="20" selection-end-line="33" selection-end-column="20" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/com/optimizer/collect/NFLProjectionsDataTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="17" column="82" selection-start-line="17" selection-start-column="82" selection-end-line="17" selection-end-column="82" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/collect/NFLProjectionsData.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="80">
-          <caret line="8" column="21" lean-forward="true" selection-start-line="8" selection-start-column="21" selection-end-line="8" selection-end-column="21" />
-          <folding>
-            <element signature="e#451#452#0" expanded="true" />
-            <element signature="e#493#494#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/collect/NHLProjectionsData.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="16" column="50" selection-start-line="16" selection-start-column="50" selection-end-line="16" selection-end-column="50" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#293#294#0" expanded="true" />
-            <element signature="e#335#336#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/com/optimizer/handler/ProjectionsHandlerTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/com/optimizer/collect/StandardProjectionsDataTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-13">
-          <caret line="27" lean-forward="true" selection-start-line="27" selection-end-line="27" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/deploy.sh">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="52">
@@ -1015,17 +747,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/src/resources/config.js">
+    <entry file="file://$PROJECT_DIR$/src/main/java/collect/FanduelData.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="85" lean-forward="true" selection-start-column="85" selection-end-column="85" />
+        <state relative-caret-position="221">
+          <caret line="18" column="5" lean-forward="true" selection-start-line="18" selection-start-column="5" selection-end-line="18" selection-end-column="5" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/handler/ProjectionsHandler.java">
+    <entry file="file://$PROJECT_DIR$/frontend/src/resources/lineupStructures.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" selection-start-line="1" selection-end-line="1" />
+        <state relative-caret-position="357">
+          <caret line="39" column="18" lean-forward="true" selection-start-line="39" selection-start-column="18" selection-end-line="39" selection-end-column="18" />
         </state>
       </provider>
     </entry>
@@ -1039,50 +771,303 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/src/resources/lineupStructures.js">
+    <entry file="file://$PROJECT_DIR$/frontend/src/resources/config.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="39" column="18" lean-forward="true" selection-start-line="39" selection-start-column="18" selection-end-line="39" selection-end-column="18" />
+        <state>
+          <caret column="85" lean-forward="true" selection-start-column="85" selection-end-column="85" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend/src/ts_objects/Loading.tsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="17" column="11" lean-forward="true" selection-start-line="17" selection-start-column="11" selection-end-line="17" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend/src/App.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="641">
+          <caret line="133" column="1" selection-start-line="133" selection-start-column="1" selection-end-line="133" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/collect/ParticipantsData.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/collect/EventData.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="477">
+          <caret line="38" column="42" selection-start-line="38" selection-start-column="42" selection-end-line="38" selection-end-column="42" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/json/json/20190722/json-20190722.jar!/org/json/JSONObject.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="176">
+          <caret line="53" column="96" selection-start-line="53" selection-start-column="96" selection-end-line="53" selection-end-column="96" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/handler/FanduelHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/handler/OpponentRanksHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/optimizer/handler/DraftKingsHandlerTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="19" column="6" selection-start-line="19" selection-start-column="6" selection-end-line="19" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/optimizer/collect/MockResponses.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="30" selection-start-column="30" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/optimizer/handler/OpponentRanksHandlerTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="6" selection-start-line="2" selection-start-column="6" selection-end-line="2" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/optimizer/collect/OpponentRanksDataTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="13" column="54" lean-forward="true" selection-start-line="13" selection-start-column="54" selection-end-line="13" selection-end-column="54" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_202/src.zip!/java/lang/String.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="219">
+          <caret line="110" column="19" selection-start-line="110" selection-start-column="19" selection-end-line="110" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/optimizer/collect/InjuryDataTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="816">
+          <caret line="48" column="37" selection-start-line="48" selection-start-column="37" selection-end-line="48" selection-end-column="37" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/swagger.yaml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="207">
-          <caret line="29" column="70" selection-start-line="29" selection-start-column="68" selection-end-line="29" selection-end-column="70" />
+        <state relative-caret-position="357">
+          <caret line="269" column="12" lean-forward="true" selection-start-line="269" selection-start-column="12" selection-end-line="269" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/template.yaml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="481">
+          <caret line="144" lean-forward="true" selection-start-line="144" selection-end-line="144" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend/src/ts_objects/GridSection.tsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="226">
+          <caret line="78" column="25" lean-forward="true" selection-start-line="78" selection-start-column="25" selection-end-line="78" selection-end-column="25" />
+          <folding>
+            <element signature="e#0#34#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/collect/InjuryData.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="13" lean-forward="true" selection-start-line="13" selection-end-line="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/optimizer/handler/InjuryHandlerTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="498">
+          <caret line="41" column="7" lean-forward="true" selection-start-line="41" selection-start-column="7" selection-end-line="41" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend/src/ts_objects/PlayerPool.tsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
+          <folding>
+            <element signature="e#0#31#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend/src/ts_objects/Lineup.tsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="21" lean-forward="true" selection-start-line="5" selection-start-column="21" selection-end-line="5" selection-end-column="21" />
+          <folding>
+            <element signature="e#0#31#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend/src/resources/injuryAbbreviations.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="2" lean-forward="true" selection-start-line="5" selection-start-column="2" selection-end-line="5" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/handler/InjuryHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="15" column="12" selection-start-line="15" selection-start-column="12" selection-end-line="15" selection-end-column="12" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/collect/NHLProjectionsData.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="113">
+          <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#357#358#0" expanded="true" />
+            <element signature="e#399#400#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/collect/NFLProjectionsData.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="27" lean-forward="true" selection-start-line="4" selection-start-column="27" selection-end-line="4" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/optimizer/collect/NFLProjectionsDataTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="25" column="4" selection-start-line="25" selection-start-column="4" selection-end-line="25" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/optimizer/collect/NHLProjectionsDataTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="29" column="4" selection-start-line="29" selection-start-column="4" selection-end-line="29" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/optimizer/handler/ProjectionsHandlerTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="10" column="30" lean-forward="true" selection-start-line="10" selection-start-column="30" selection-end-line="10" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/collect/ProjectionsData.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="19" lean-forward="true" selection-start-line="19" selection-end-line="19" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/optimizer/collect/ProjectionsDataTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="37" column="5" lean-forward="true" selection-start-line="37" selection-start-column="5" selection-end-line="37" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/handler/ProjectionsHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="6" column="21" lean-forward="true" selection-start-line="6" selection-start-column="21" selection-end-line="6" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/collect/DraftKingsData.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="30" column="20" lean-forward="true" selection-start-line="30" selection-start-column="20" selection-end-line="30" selection-end-column="20" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/frontend/src/App.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="99" column="4" lean-forward="true" selection-start-line="99" selection-start-column="4" selection-end-line="99" selection-end-column="4" />
+        <state relative-caret-position="-669">
+          <caret line="55" column="4" lean-forward="true" selection-start-line="55" selection-start-column="4" selection-end-line="55" selection-end-column="4" />
           <folding>
             <element signature="e#0#40#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/collect/FanduelData.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/api/ApiClient.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="18" column="5" lean-forward="true" selection-start-line="18" selection-start-column="5" selection-end-line="18" selection-end-column="5" />
+        <state relative-caret-position="153">
+          <caret line="9" column="44" selection-start-line="9" selection-start-column="44" selection-end-line="9" selection-end-column="44" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/template.yaml">
+    <entry file="file://$PROJECT_DIR$/src/main/java/api/ApiCaller.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" column="15" selection-start-line="14" selection-start-column="15" selection-end-line="14" selection-end-column="15" />
+        <state relative-caret-position="544">
+          <caret line="34" column="1" lean-forward="true" selection-start-line="34" selection-start-column="1" selection-end-line="34" selection-end-column="1" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/collect/StandardProjectionsData.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/collect/OpponentRanksData.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="612">
-          <caret line="36" column="13" lean-forward="true" selection-start-line="36" selection-start-column="13" selection-end-line="36" selection-end-column="13" />
+        <state relative-caret-position="51">
+          <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/api/DataCollector.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="433">
+          <caret line="47" column="13" lean-forward="true" selection-start-line="47" selection-start-column="13" selection-end-line="47" selection-end-column="13" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="e#1478#1479#0" expanded="true" />
+            <element signature="e#1540#1541#0" expanded="true" />
           </folding>
         </state>
       </provider>

@@ -17,7 +17,7 @@ public class OpponentRanksData {
 
     public Map<String, Map<String, Integer>> getNFLOpponentRanks() {
         Map<String, Map<String, Integer>> opponentRanksMap = new HashMap<>();
-        String scrapedResponse = apiClient.getFantasyProsData();
+        String scrapedResponse = apiClient.getOpponentRanksData();
         int startIndex = scrapedResponse.indexOf("<tbody>");
         int endIndex = scrapedResponse.indexOf("</tbody>") + "</tbody>".length();
         String responseSubstring = scrapedResponse.substring(startIndex, endIndex);

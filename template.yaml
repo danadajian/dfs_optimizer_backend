@@ -88,6 +88,21 @@ Resources:
             Path: /opponentRanks
             Method: get
             RestApiId: !Ref MyApi
+  GetInjuryDataFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri:
+        Bucket: !Ref BucketName
+        Key: !Ref CodeKey
+      Handler: handler.InjuryHandler::handleRequest
+      Runtime: java8
+      Events:
+        GetFanduelData:
+          Type: Api
+          Properties:
+            Path: /injuries
+            Method: get
+            RestApiId: !Ref MyApi
   GetOptimalLineupFunction:
     Type: AWS::Serverless::Function
     Properties:
@@ -123,6 +138,10 @@ Outputs:
   GetOpponentRanksDataFunction:
     Description: "GetOpponentRanksDataFunction Lambda Function ARN"
     Value: !GetAtt GetOpponentRanksDataFunction.Arn
+
+  GetInjuryDataFunction:
+    Description: "GetInjuryDataFunction Lambda Function ARN"
+    Value: !GetAtt GetInjuryDataFunction.Arn
 
   GetOptimalLineupFunction:
     Description: "GetOptimalLineupFunction Lambda Function ARN"

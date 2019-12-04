@@ -28,4 +28,8 @@ public class ApiCaller extends MakeHttpRequest {
     public String scrapeFantasyProsSite() {
         return super.HttpRequest("https://www.fantasypros.com/nfl/points-allowed.php");
     }
+
+    public String scrapeESPNInjuriesSite(String sport) {
+        return super.HttpRequest("http" + (sport.equals("nfl") ? "s" : "") + "://www.espn.com/" + sport + "/injuries");
+    }
 }

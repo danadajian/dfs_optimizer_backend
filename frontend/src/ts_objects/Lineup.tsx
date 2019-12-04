@@ -7,6 +7,7 @@ interface playerAttributes {
     displayPosition: string,
     team: string,
     name: string,
+    status: string,
     projection: number,
     salary: number,
     opponent: string,
@@ -40,7 +41,9 @@ const Player = (props: playerProps) => {
             props.player.name && props.whiteList.includes(props.player.playerId)) ? 'lightgreen' : 'white'}}>
             <td>{props.player.displayPosition}</td>
             <td>{props.player.team}</td>
-            <td style={{fontWeight: (props.player.position) ? 'normal' : 'bold'}}>{props.player.name}</td>
+            <td style={{fontWeight: (props.player.position) ? 'normal' : 'bold'}}>
+                {props.player.name} <b style={{color: 'red'}}>{props.player.status}</b>
+            </td>
             <td style={{fontWeight: (props.player.position) ? 'normal' : 'bold'}}>{roundedProjection}</td>
             <td style={{fontWeight: (props.player.position) ? 'normal' : 'bold'}}>{formattedSalary}</td>
             <td>{props.player.opponent}</td>

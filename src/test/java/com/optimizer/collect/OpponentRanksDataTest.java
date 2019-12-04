@@ -17,7 +17,7 @@ class OpponentRanksDataTest implements MockResponses {
 
     @BeforeEach
     void setUp() {
-        when(mockApi.getFantasyProsData()).thenReturn(fakeFantasyProsData);
+        when(mockApi.getOpponentRanksData()).thenReturn(fakeFantasyProsData);
     }
 
     @Test

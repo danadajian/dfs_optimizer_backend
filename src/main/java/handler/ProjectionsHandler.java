@@ -2,8 +2,7 @@ package handler;
 
 import api.ApiCaller;
 import api.DataCollector;
-import collect.NFLProjectionsData;
-import collect.StandardProjectionsData;
+import collect.ProjectionsData;
 
 import java.util.Map;
 
@@ -11,12 +10,13 @@ public class ProjectionsHandler {
     public Map<Integer, Map<String, Object>> handleRequest(Map<String, String> input) {
         String sport = input.get("sport");
         DataCollector dataCollector = new DataCollector(new ApiCaller());
+        ProjectionsData projectionsData = new ProjectionsData(dataCollector, sport);
         if (sport.equals("nfl")) {
-            NFLProjectionsData nflProjectionsData = new NFLProjectionsData(dataCollector);
-            return nflProjectionsData.getFantasyProjections();
+            return projectionsData.getNFLFantasyProjections();
+        } else if (sport.equals("nhl")) {
+            return projectionsData.getNHLFantasyProjections();
         } else {
-            StandardProjectionsData standardProjectionsData = new StandardProjectionsData(dataCollector, sport);
-            return standardProjectionsData.getFantasyProjections();
+            return projectionsData.getStandardFantasyProjections();
         }
     }
 }

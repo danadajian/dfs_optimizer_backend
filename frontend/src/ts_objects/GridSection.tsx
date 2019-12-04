@@ -15,6 +15,7 @@ interface playerAttributes {
     displayPosition: string,
     team: string,
     name: string,
+    status: string,
     projection: number,
     salary: number,
     opponent: string,

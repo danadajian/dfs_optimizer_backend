@@ -15,6 +15,7 @@ import {teamAbbreviations} from "./resources/teamAbbreviations";
 import {GridSection} from "./ts_objects/GridSection";
 import {ContestSection} from "./ts_objects/ContestSection";
 import {SportSection} from "./ts_objects/SportSection";
+import {injuryAbbreviations} from "./resources/injuryAbbreviations";
 
 class App extends Component {
 
@@ -24,149 +25,61 @@ class App extends Component {
         date: new Date(), fanduelData: {}, dfsData: {}, projectionsData: {}, contests: [], sports: [],
         lineup: [], lineupMatrix: [], displayMatrix: [], salaryCap: 0, playerPool: [], filteredPool: null,
         playerPoolData: [], sortAttribute: 'salary', sortSign: 1, searchText: '', whiteList: [], blackList: [],
-        opponentRanks: {}, highestPointTotal: null, betterLineupFound: false};
+        opponentRanks: {}, injuries: {}, highestPointTotal: null, betterLineupFound: false};
   }
 
-  getFanduelData = (date) => {
-      this.setState({isLoading: true, site: 'fd', sport: '', contest: '', date: date});
-      fetch(apiRoot + '/fanduel?date=' + formatDate(date))
-          .then(response => {
-              if (response.status !== 200) {
-                  alert('An error occurred.');
-              } else {
-                  response.json()
-                      .then((data) => {
-                          this.setState({
-                              isLoading: false,
-                              fanduelData: data
-                          });
-                      });
-              }
-          });
-  };
-
-  filterFanduelDataBySport = (sport) => {
-      let filteredDfsData = this.state.fanduelData.filter(contest => contest.sport === sport.toUpperCase());
-      this.setState({
-          dfsData: filteredDfsData,
-          contests: this.extractContestsFromData(filteredDfsData)
-      });
-  };
-
-  getDraftKingsData = (sport) => {
-      this.setState({isLoading: true, sport: '', contest: ''});
-      fetch(apiRoot + '/draftkings?sport=' + sport)
-          .then(response => {
-              if (response.status !== 200) {
-                  alert('An error occurred.');
-              } else {
-                  response.json()
-                      .then((data) => {
-                          if (data.length === 0) {
-                              this.setState({sport: sport})
-                          } else {
-                              this.setState({
-                                  isLoading: false,
-                                  sport: sport,
-                                  dfsData: data,
-                                  contests: this.extractContestsFromData(data)
-                              });
-                          }
-                      });
-              }
-          });
-  };
-
-  appendProjectionsData = (sport) => {
+  getFanduelData = async (date) => {
       this.setState({isLoading: true});
-      fetch(apiRoot + '/projections?sport=' + sport)
-          .then(response => {
-              if (response.status !== 200) {
-                  alert('An error occurred.');
-              } else {
-                  response.json()
-                      .then((data) => {
-                          if (data.length === 0) {
-                              alert('No ' + sport.toUpperCase() + ' data is available at this time.');
-                          } else {
-                              this.setState({
-                                  isLoading: false,
-                                  projectionsData: data
-                              });
-                          }
-                      });
-              }
-          });
-  };
-
-  combineData = (dfsPlayers, projectionsData) => {
-      let {site, sport, opponentRanks} = this.state;
-      let combinedData = [];
-      dfsPlayers.forEach(player => {
-          let playerData = projectionsData[player.playerId];
-          if (playerData) {
-              player.name = playerData.name;
-              player.team = playerData.team;
-              player.opponent = playerData.opponent;
-              player.gameDate = playerData.gameDate;
-              player.projection = playerData[site + 'Projection'];
-              if (sport === 'nfl') {
-                  let opposingTeam = playerData.opponent.split(' ')[1];
-                  player.opponentRank = opponentRanks[teamAbbreviations[opposingTeam]][player.position];
-              }
-              combinedData.push(player);
-          }
-      });
-      console.log(combinedData);
-      return combinedData;
-  };
-
-  extractContestsFromData = (dataArray) => {
-      let contestArray = [];
-      dataArray.forEach(contestJson => contestArray.push(contestJson.contest));
-      return contestArray;
-  };
-
-  getOpponentRanksData = () => {
-      if (this.state.sport === 'nfl') {
-          fetch(apiRoot + '/opponentRanks')
-              .then(response => {
-                  if (response.status !== 200) {
-                      alert('An error occurred.');
-                  } else {
-                      response.json()
-                          .then((data) => {
-                              if (data.length === 0) {
-                                  alert('No opponent ranks data is available at this time.');
-                              } else {
-                                  this.setState({
-                                      opponentRanks: data
-                                  })
-                              }
-                          });
-                  }
-              });
-      }
-  };
-
-  setSite = (site) => {
-      this.setState({site: site, sport: '', contest: '', playerPool: [], filteredPool: null, whiteList: [],
-          blackList: []});
-      if (site === 'fd')
-          this.getFanduelData(this.state.date);
-  };
-
-  setSport = async (sport) => {
-      await this.appendProjectionsData(sport);
-      await this.state.site === 'fd' ? this.filterFanduelDataBySport(sport) : this.getDraftKingsData(sport);
+      const fanduelData = await fetch(apiRoot + '/fanduel?date=' + formatDate(date))
+          .then(response => response.json());
       this.setState({
-          sport: sport,
+          isLoading: false,
+          date: date,
+          fanduelData: fanduelData,
+          sport: ''
+      });
+  };
+
+  setSite = async (site) => {
+      if (site === 'fd')
+          await this.getFanduelData(this.state.date);
+      this.setState({
+          site: site,
+          sport: '',
           contest: '',
+          contests: [],
           playerPool: [],
           filteredPool: null,
           whiteList: [],
           blackList: []
-      }, this.getOpponentRanksData);
+      });
+  };
+
+  setSport = async (sport) => {
+      let {site, fanduelData} = this.state;
+      this.setState({isLoading: true, sport: sport, contest: ''});
+      const projectionsData = await fetch(apiRoot + '/projections?sport=' + sport)
+          .then(response => response.json());
+      const dfsData = site === 'fd' ?
+          fanduelData.filter(contest => contest.sport === sport.toUpperCase()) :
+          await fetch(apiRoot + '/draftkings?sport=' + sport).then(response => response.json());
+      const contests = dfsData.length > 0 ? this.extractContestsFromData(dfsData) : [];
+      const opponentRanks = sport === 'nfl' ?
+          await fetch(apiRoot + '/opponentRanks').then(response => response.json()) : {};
+      const injuries = await fetch(apiRoot + '/injuries?sport=' + sport)
+          .then(response => response.json());
+      this.setState({
+          isLoading: false,
+          projectionsData: projectionsData,
+          dfsData: dfsData,
+          contests: contests,
+          opponentRanks: opponentRanks,
+          injuries: injuries,
+          playerPool: [],
+          filteredPool: null,
+          whiteList: [],
+          blackList: []
+      });
   };
 
   setContest = (contest) => {
@@ -190,6 +103,35 @@ class App extends Component {
           displayMatrix: displayMatrix,
           salaryCap: salaryCap
       });
+  };
+
+  combineData = (dfsPlayers, projectionsData) => {
+      let {site, sport, opponentRanks, injuries} = this.state;
+      let combinedData = [];
+      dfsPlayers.forEach(player => {
+          let playerData = projectionsData[player.playerId];
+          if (playerData) {
+              player.name = playerData.name;
+              player.team = playerData.team;
+              player.opponent = playerData.opponent;
+              player.gameDate = playerData.gameDate;
+              player.projection = playerData[site + 'Projection'];
+              if (sport === 'nfl') {
+                  let opposingTeam = playerData.opponent.split(' ')[1];
+                  player.opponentRank = opponentRanks[teamAbbreviations[opposingTeam]][player.position];
+              }
+              let status = injuries[playerData.name] ? injuries[playerData.name].toLowerCase() : '';
+              player.status = injuryAbbreviations[status];
+              combinedData.push(player);
+          }
+      });
+      return combinedData;
+  };
+
+  extractContestsFromData = (dataArray) => {
+      let contestArray = [];
+      dataArray.forEach(contestJson => contestArray.push(contestJson.contest));
+      return contestArray;
   };
 
   filterPlayers = (attribute, value) => {
@@ -241,16 +183,13 @@ class App extends Component {
       }
   };
 
-  generateOptimalLineup = () => {
+  generateOptimalLineup = async () => {
       let {playerPool, whiteList, blackList, lineupMatrix, displayMatrix, salaryCap, playerPoolData,
           highestPointTotal} = this.state;
       this.setState({isOptimizing: true});
-      console.log(lineupMatrix);
-      fetch(apiRoot + '/optimize', {
+      const playerIds = await fetch(apiRoot + '/optimize', {
           method: 'POST',
-          headers: {
-              'Content-Type': 'application/json'
-          },
+          headers: {'Content-Type': 'application/json'},
           body: JSON.stringify({
               'players': playerPool,
               'whiteList': whiteList,
@@ -258,36 +197,24 @@ class App extends Component {
               'lineupMatrix': lineupMatrix,
               'salaryCap': salaryCap
           })
-      }).then(response => {
-          if (response.status !== 200) {
-              alert('An error occurred.');
-          } else {
-              response.json()
-                  .then((playerIds) => {
-                      if (!Array.isArray(playerIds) || playerIds.includes(0)) {
-                          alert('Optimal lineup could not be found.\n' + JSON.stringify(playerIds));
-                          this.setState({
-                              isOptimizing: false
-                          })
-                      } else {
-                          let optimalLineup = playerIds.map(
-                              playerId =>
-                                  playerPool.find(player => player.playerId === playerId));
-                          optimalLineup.forEach((player, index) => player.displayPosition = displayMatrix[index]);
-                          let pointSum = sumAttribute(optimalLineup, 'projection');
-                          if (highestPointTotal && pointSum > highestPointTotal)
-                              alert('You have found a better lineup!');
-                          this.setState({
-                              isOptimizing: false,
-                              lineup: optimalLineup,
-                              playerPool: playerPoolData,
-                              highestPointTotal: pointSum > highestPointTotal ? pointSum : highestPointTotal,
-                              betterLineupFound: pointSum > highestPointTotal
-                          })
-                      }
-                  });
-          }
-      });
+      }).then(response => response.json());
+      if (!Array.isArray(playerIds) || playerIds.includes(0)) {
+          alert('Optimal lineup could not be found.\n' + JSON.stringify(playerIds));
+          this.setState({isOptimizing: false})
+      } else {
+          let optimalLineup = playerIds.map(playerId => playerPool.find(player => player.playerId === playerId));
+          optimalLineup.forEach((player, index) => player.displayPosition = displayMatrix[index]);
+          let pointSum = sumAttribute(optimalLineup, 'projection');
+          if (highestPointTotal && pointSum > highestPointTotal)
+              alert('You have found a better lineup!');
+          this.setState({
+              isOptimizing: false,
+              lineup: optimalLineup,
+              playerPool: playerPoolData,
+              highestPointTotal: pointSum > highestPointTotal ? pointSum : highestPointTotal,
+              betterLineupFound: pointSum > highestPointTotal
+          })
+      }
   };
 
   render() {

@@ -20,7 +20,7 @@ class App extends Component {
 
   constructor(props) {
     super(props);
-    this.state = {isLoading: false, isOptimizing: false, site: '', sport: '', contest: '',
+    this.state = {isLoading: false, isOptimizing: false, loadingText: '', site: '', sport: '', contest: '',
         date: new Date(), fanduelData: {}, dfsData: {}, projectionsData: {}, contests: [], sports: [],
         lineup: [], lineupMatrix: [], displayMatrix: [], salaryCap: 0, playerPool: [], filteredPool: null,
         playerPoolData: [], sortAttribute: 'salary', sortSign: 1, searchText: '', whiteList: [], blackList: [],
@@ -28,7 +28,7 @@ class App extends Component {
   }
 
   getFanduelData = async (date) => {
-      this.setState({isLoading: true});
+      this.setState({isLoading: true, loadingText: 'Fanduel data'});
       const fanduelData = await fetch(apiRoot + '/fanduel?date=' + formatDate(date))
           .then(response => response.json());
       this.setState({
@@ -40,8 +40,6 @@ class App extends Component {
   };
 
   setSite = async (site) => {
-      if (site === 'fd')
-          await this.getFanduelData(this.state.date);
       this.setState({
           site: site,
           sport: '',
@@ -52,19 +50,28 @@ class App extends Component {
           whiteList: [],
           blackList: []
       });
+      if (site === 'fd')
+          await this.getFanduelData(this.state.date);
   };
 
   setSport = async (sport) => {
       let {site, fanduelData} = this.state;
       this.setState({isLoading: true, sport: sport, contest: ''});
+      let dfsData;
+      if (site === 'fd') {
+          dfsData = fanduelData.filter(contest => contest.sport === sport.toUpperCase());
+      } else {
+          this.setState({loadingText: 'Draftkings data'});
+          dfsData = await fetch(apiRoot + '/draftkings?sport=' + sport).then(response => response.json());
+      }
+      this.setState({loadingText: sport.toUpperCase() + ' projections'});
       const projectionsData = await fetch(apiRoot + '/projections?sport=' + sport)
           .then(response => response.json());
-      const dfsData = site === 'fd' ?
-          fanduelData.filter(contest => contest.sport === sport.toUpperCase()) :
-          await fetch(apiRoot + '/draftkings?sport=' + sport).then(response => response.json());
       const contests = dfsData.length > 0 ? this.extractContestsFromData(dfsData) : [];
+      this.setState({loadingText: sport.toUpperCase() + ' opponent ranks'});
       const opponentRanks = sport === 'nfl' ?
           await fetch(apiRoot + '/opponentRanks').then(response => response.json()) : {};
+      this.setState({loadingText: 'injury data'});
       const injuries = await fetch(apiRoot + '/injuries?sport=' + sport)
           .then(response => response.json());
       this.setState({
@@ -117,7 +124,9 @@ class App extends Component {
               player.projection = playerData[site + 'Projection'];
               if (sport === 'nfl') {
                   let opposingTeam = playerData.opponent.split(' ')[1];
-                  player.opponentRank = opponentRanks[teamAbbreviations[opposingTeam]][player.position];
+                  let teamRanks = opponentRanks[teamAbbreviations[opposingTeam]];
+                  let opponentRankPosition = Object.keys(teamRanks).find(position => position.includes(player.position));
+                  player.opponentRank = teamRanks[opponentRankPosition];
               }
               let status = injuries[playerData.name] ? injuries[playerData.name].toLowerCase() : '';
               player.status = injuryAbbreviations[status];
@@ -217,8 +226,8 @@ class App extends Component {
   };
 
   render() {
-    const {isLoading, isOptimizing, sport, site, contest, date, contests, lineup, salaryCap, playerPool, filteredPool,
-      sortAttribute, sortSign, searchText, whiteList, blackList} = this.state;
+    const {isLoading, isOptimizing, loadingText, sport, site, contest, date, contests, lineup, salaryCap, playerPool,
+        filteredPool, sortAttribute, sortSign, searchText, whiteList, blackList} = this.state;
 
     return (
         <Container fluid={true}>
@@ -242,13 +251,13 @@ class App extends Component {
                                                    onClick={this.clearLineup}>Clear Lineup</button>}
             </div>
           </div>
-          <GridSection isLoading={isLoading} isOptimizing={isOptimizing} site={site} sport={sport} contest={contest}
-                       lineup={lineup} playerPool={playerPool} filteredPool={filteredPool} whiteList={whiteList}
-                       blackList={blackList} searchText={searchText} filterPlayers={this.filterPlayers}
-                       addToLineup={this.addToLineup} removeFromLineup={this.removeFromLineup}
-                       toggleBlackList={this.toggleBlackList} sortAttributeFunction={this.sortAttribute}
-                       sortAttribute={sortAttribute} sortSign={sortSign} toggleSort={this.toggleSort}
-                       salaryCap={salaryCap}/>
+          <GridSection isLoading={isLoading} isOptimizing={isOptimizing} loadingText={loadingText} site={site}
+                       sport={sport} contest={contest} lineup={lineup} playerPool={playerPool}
+                       filteredPool={filteredPool} whiteList={whiteList} blackList={blackList} searchText={searchText}
+                       filterPlayers={this.filterPlayers} addToLineup={this.addToLineup}
+                       removeFromLineup={this.removeFromLineup} toggleBlackList={this.toggleBlackList}
+                       sortAttributeFunction={this.sortAttribute} sortAttribute={sortAttribute} sortSign={sortSign}
+                       toggleSort={this.toggleSort} salaryCap={salaryCap}/>
         </Container>
     )
   }

@@ -6,9 +6,9 @@ const football = require("../icons/football.ico") as any;
 const basketball = require("../icons/basketball.svg") as any;
 const hockey = require("../icons/hockey.svg") as any;
 
-export const Loading = (props: {sport: string}) =>
+export const Loading = (props: {sport: string, loadingText: string}) =>
     <div className={"Loading"}>
-        <div><p className={"Loading-text"}>Loading . . .</p></div>
+        <div><p className={"Loading-text"}>{'Loading ' + props.loadingText + ' . . .'}</p></div>
         <div><img src={props.sport === 'mlb' ? baseball :
             props.sport === 'nfl' ? football :
                 props.sport === 'nba' ? basketball :

@@ -26,6 +26,7 @@ interface playerAttributes {
 export const GridSection = (props: {
     isLoading: boolean,
     isOptimizing: boolean,
+    loadingText: string,
     site: string,
     sport: string,
     contest: string,
@@ -45,7 +46,8 @@ export const GridSection = (props: {
     toggleSort: (attribute: string) => void,
     salaryCap: number
 }) =>
-    props.isLoading ? <Loading sport={props.sport}/> : props.isOptimizing ? <Optimizing sport={props.sport}/> :
+    props.isLoading ? <Loading sport={props.sport} loadingText={props.loadingText}/> :
+        props.isOptimizing ? <Optimizing sport={props.sport}/> :
     props.site && props.sport && props.contest &&
     <div className={"Dfs-grid-section"}>
         <div className={"Player-list-box"}>

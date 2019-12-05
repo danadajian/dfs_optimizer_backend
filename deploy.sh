@@ -25,7 +25,7 @@ PATH_TO_FILE=$(find . -name *-jar-with-dependencies.jar* | head -n 1)
 
 echo "### SAM Deploy"
 
-aws s3 rm "s3://${BUCKET_NAME}" --recursive --include "DFS-Optimizer-Web-*"
+aws s3 rm "s3://${BUCKET_NAME}" --recursive --exclude "*" --include "*.jar"
 aws s3 cp ${PATH_TO_FILE} "s3://${BUCKET_NAME}/"
 FILE_NAME="${PATH_TO_FILE:9}"
 aws s3 cp ./swagger.yaml "s3://${BUCKET_NAME}/"
@@ -46,18 +46,8 @@ echo "### Building frontend"
 cd frontend
 npm test
 npm run build
+
 cd build
-
-FILES=()
-for i in $( git status . -s | sed 's/\s*[a-zA-Z?]\+ \(.*\)/\1/' ); do
-    FILES+=( "$i" )
-done
-
-CMDS=()
-for i in "${FILES[@]}"; do
-    CMDS+=("--include=$i""*")
-done
-
-echo "${CMDS[@]}" | xargs aws s3 sync . "s3://${BUCKET_NAME}/" --delete --exclude "*"
+aws s3 sync . "s3://dfsoptimizer.app/" --exclude "precache-manifest*"
 
 echo "BUILD COMPLETE!"

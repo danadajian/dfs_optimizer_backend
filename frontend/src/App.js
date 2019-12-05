@@ -8,7 +8,6 @@ import { getRemoveFromLineupState } from './functions/getRemoveFromLineupState'
 import { getToggleBlackListState } from './functions/getToggleBlackListState'
 import { getFilterPlayersState } from './functions/getFilterPlayersState'
 import {formatDate} from "./functions/formatDate"
-import { sumAttribute } from './functions/sumAttribute'
 import { lineupStructures } from './resources/lineupStructures'
 import { apiRoot } from './resources/config.js'
 import {teamAbbreviations} from "./resources/teamAbbreviations";
@@ -25,7 +24,7 @@ class App extends Component {
         date: new Date(), fanduelData: {}, dfsData: {}, projectionsData: {}, contests: [], sports: [],
         lineup: [], lineupMatrix: [], displayMatrix: [], salaryCap: 0, playerPool: [], filteredPool: null,
         playerPoolData: [], sortAttribute: 'salary', sortSign: 1, searchText: '', whiteList: [], blackList: [],
-        opponentRanks: {}, injuries: {}, highestPointTotal: null, betterLineupFound: false};
+        opponentRanks: {}, injuries: {}};
   }
 
   getFanduelData = async (date) => {
@@ -184,8 +183,7 @@ class App extends Component {
   };
 
   generateOptimalLineup = async () => {
-      let {playerPool, whiteList, blackList, lineupMatrix, displayMatrix, salaryCap, playerPoolData,
-          highestPointTotal} = this.state;
+      let {playerPool, whiteList, blackList, lineupMatrix, displayMatrix, salaryCap, playerPoolData} = this.state;
       this.setState({isOptimizing: true});
       const playerIds = await fetch(apiRoot + '/optimize', {
           method: 'POST',
@@ -199,27 +197,28 @@ class App extends Component {
           })
       }).then(response => response.json());
       if (!Array.isArray(playerIds) || playerIds.includes(0)) {
-          alert('Optimal lineup could not be found.\n' + JSON.stringify(playerIds));
+          let positionsWithIssue = [];
+          playerIds.forEach((id, index) => {
+              if (id === 0)
+                  positionsWithIssue.push(displayMatrix[index]);
+          });
+          alert('Optimal lineup could not be found.\nThe optimizer had a problem finding the following positions: ' +
+              JSON.stringify(positionsWithIssue));
           this.setState({isOptimizing: false})
       } else {
           let optimalLineup = playerIds.map(playerId => playerPool.find(player => player.playerId === playerId));
           optimalLineup.forEach((player, index) => player.displayPosition = displayMatrix[index]);
-          let pointSum = sumAttribute(optimalLineup, 'projection');
-          if (highestPointTotal && pointSum > highestPointTotal)
-              alert('You have found a better lineup!');
           this.setState({
               isOptimizing: false,
               lineup: optimalLineup,
-              playerPool: playerPoolData,
-              highestPointTotal: pointSum > highestPointTotal ? pointSum : highestPointTotal,
-              betterLineupFound: pointSum > highestPointTotal
+              playerPool: playerPoolData
           })
       }
   };
 
   render() {
     const {isLoading, isOptimizing, sport, site, contest, date, contests, lineup, salaryCap, playerPool, filteredPool,
-      sortAttribute, sortSign, searchText, whiteList, blackList, betterLineupFound} = this.state;
+      sortAttribute, sortSign, searchText, whiteList, blackList} = this.state;
 
     return (
         <Container fluid={true}>
@@ -249,7 +248,7 @@ class App extends Component {
                        addToLineup={this.addToLineup} removeFromLineup={this.removeFromLineup}
                        toggleBlackList={this.toggleBlackList} sortAttributeFunction={this.sortAttribute}
                        sortAttribute={sortAttribute} sortSign={sortSign} toggleSort={this.toggleSort}
-                       salaryCap={salaryCap} betterLineupFound={betterLineupFound}/>
+                       salaryCap={salaryCap}/>
         </Container>
     )
   }

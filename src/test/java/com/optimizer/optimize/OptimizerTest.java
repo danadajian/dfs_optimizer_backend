@@ -23,8 +23,8 @@ class OptimizerTest {
     private Player wr4 = new Player(12, "WR", 7.9, 3700);
     private Player te1 = new Player(13, "TE", 10.1, 6700);
     private Player te2 = new Player(14, "TE", 8.1, 5200);
-    private Player dst1 = new Player(15, "D/ST", 6.0, 4600);
-    private Player dst2 = new Player(16, "D/ST", 9.0, 5300);
+    private Player dst1 = new Player(15, "DST", 6.0, 4600);
+    private Player dst2 = new Player(16, "DST", 9.0, 5300);
 
     private List<Player> playerList = Arrays.asList(
             qb1, qb2, rb1, rb2, rb3, rb4, rb5, rb6, wr1, wr2, wr3, wr4, te1, te2, dst1, dst2
@@ -35,10 +35,10 @@ class OptimizerTest {
     private List<Player> blackList = Arrays.asList(new Player(4));
 
     private List<String> lineupMatrix = Arrays.asList(
-            "QB", "RB", "RB", "WR", "WR", "WR", "TE", "RB,WR,TE", "D/ST"
+            "QB", "RB", "RB", "WR", "WR", "WR", "TE", "RB,WR,TE", "DST"
     );
 
-    private int salaryCap = 55000;
+    private int salaryCap = 55200;
 
     private Optimizer optimizer = new Optimizer(playerList, whiteList, blackList, lineupMatrix, salaryCap);
 
@@ -50,8 +50,8 @@ class OptimizerTest {
     }
 
     @Test
-    void shouldGetSortedPlayerPools() {
-        List<List<Player>> result = optimizer.getSortedPlayerPoolsWithoutBlackList();
+    void shouldGetSortedPlayerPoolsByDescendingProjection() {
+        List<List<Player>> result = optimizer.sortPlayerPoolsByDescendingProjectionWithoutBlackList();
         List<List<Player>> expected = Arrays.asList(
                 Arrays.asList(qb2, qb1),
                 Arrays.asList(rb1, rb3, rb4, rb6, rb5),
@@ -61,6 +61,23 @@ class OptimizerTest {
                 Arrays.asList(wr1, wr2, wr4, wr3),
                 Arrays.asList(te1, te2),
                 Arrays.asList(wr1, rb1, rb3, rb4, wr2, te1, rb6, te2, wr4, rb5, wr3),
+                Arrays.asList(dst2, dst1)
+        );
+        assertEquals(expected, result);
+    }
+
+    @Test
+    void shouldGetSortedPlayerPoolsByAscendingPricePerPoint() {
+        List<List<Player>> result = optimizer.sortPlayerPoolsByAscendingPricePerPointWithoutBlackList();
+        List<List<Player>> expected = Arrays.asList(
+                Arrays.asList(qb2, qb1),
+                Arrays.asList(rb1, rb3, rb6, rb4, rb5),
+                Arrays.asList(rb1, rb3, rb6, rb4, rb5),
+                Arrays.asList(wr1, wr4, wr2, wr3),
+                Arrays.asList(wr1, wr4, wr2, wr3),
+                Arrays.asList(wr1, wr4, wr2, wr3),
+                Arrays.asList(te2, te1),
+                Arrays.asList(rb1, wr1, wr4, rb3, rb6, rb4, te2, te1, wr2, rb5, wr3),
                 Arrays.asList(dst2, dst1)
         );
         assertEquals(expected, result);
@@ -77,12 +94,22 @@ class OptimizerTest {
     }
 
     @Test
-    void shouldGetBestLineupWithWhiteListedPlayers() {
-        List<Player> result = optimizer.bestLineupWithWhiteList();
+    void shouldGetBestLineupByProjectionWithWhiteListedPlayers() {
+        List<List<Player>> playerPools = optimizer.sortPlayerPoolsByDescendingProjectionWithoutBlackList();
+        List<Player> result = optimizer.bestLineupWithWhiteList(playerPools);
         List<Player> expected = Arrays.asList(
                 qb2, rb1, rb3, wr2, wr1, wr4, te1, rb4, dst2
         );
         assertEquals(expected, result);
+    }
+
+    @Test
+    void shouldGetBestLineupByPricePerPointWithWhiteListedPlayers() {
+        List<List<Player>> playerPools = optimizer.sortPlayerPoolsByAscendingPricePerPointWithoutBlackList();
+        List<Player> result = optimizer.bestLineupWithWhiteList(playerPools);
+        List<Player> expected = Arrays.asList(qb2, rb1, rb3, wr2, wr1, wr4, te2, rb6, dst2);
+        assertEquals(expected, result);
+        assertTrue(optimizer.totalSalary(result) > salaryCap);
     }
 
     @Test
@@ -91,6 +118,14 @@ class OptimizerTest {
         List<Player> result = optimizer.downgradeLowestCostNonWhiteListPlayer(lineup);
         List<Player> expected = Arrays.asList(qb2, rb1, rb3, wr2, wr1, wr4, te2, rb6, dst2);
         assertEquals(expected, result);
+    }
+
+    @Test
+    void shouldCalculateTotalProjectionOfLineup() {
+        List<Player> lineup = Arrays.asList(qb2, rb1, rb3, wr2, wr1, wr4, te1, rb6, dst2);
+        double result = optimizer.totalProjection(lineup);
+        assertEquals(qb2.projection + rb1.projection + rb3.projection + wr2.projection + wr1.projection +
+                wr4.projection + te1.projection + rb6.projection + dst2.projection, result);
     }
 
     @Test
@@ -117,8 +152,32 @@ class OptimizerTest {
     }
 
     @Test
+    void shouldUpgradeWherePossible() {
+        List<Player> result = optimizer.upgradeWherePossible(Arrays.asList(qb2, rb1, rb5, wr2, wr1, wr4, te2, rb6, dst2));
+        assertEquals(Arrays.asList(qb2, rb1, rb5, wr2, wr1, wr4, te1, rb6, dst2), result);
+    }
+
+    @Test
+    void shouldChooseLineupWithBetterMethod() {
+        List<Player> downgradeMethod = Arrays.asList(qb2, rb1, rb5, wr2, wr1, wr4, te2, rb6, dst2);
+        List<Player> pricePerPointMethod = Arrays.asList(qb2, rb1, rb5, wr2, wr1, wr4, te1, rb6, dst2);
+        List<Player> result = optimizer.chooseLineupWithBetterMethod(downgradeMethod, pricePerPointMethod);
+        assertEquals(pricePerPointMethod, result);
+    }
+
+    @Test
+    void shouldChooseLineupWithBetterMethodIfPricePerPointOverCap() {
+        List<Player> downgradeMethod = Arrays.asList(qb2, rb1, rb5, wr2, wr1, wr4, te2, rb6, dst2);
+        List<Player> pricePerPointMethod = Arrays.asList(qb2, rb1, rb3, wr2, wr1, wr4, te2, rb6, dst2);
+        List<Player> result = optimizer.chooseLineupWithBetterMethod(downgradeMethod, pricePerPointMethod);
+        assertEquals(downgradeMethod, result);
+    }
+
+    @Test
     void shouldGenerateOptimalLineupWithinCap() {
         List<Player> result = optimizer.optimize();
+        List<Player> expected = Arrays.asList(qb2, rb1, rb5, wr2, wr1, wr4, te1, rb6, dst2);
+        assertEquals(expected, result);
         assertTrue(result.contains(qb2));
         assertTrue(result.contains(wr2));
         assertTrue(!result.contains(rb2));

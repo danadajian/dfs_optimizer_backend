@@ -1,0 +1,38 @@
+{
+  "files": {
+    "main.css": "/static/css/main.5b57f003.chunk.css",
+    "main.js": "/static/js/main.dcb92b09.chunk.js",
+    "main.js.map": "/static/js/main.dcb92b09.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.aceb3e35.js",
+    "runtime-main.js.map": "/static/js/runtime-main.aceb3e35.js.map",
+    "static/css/2.06f32ede.chunk.css": "/static/css/2.06f32ede.chunk.css",
+    "static/js/2.9d974cf8.chunk.js": "/static/js/2.9d974cf8.chunk.js",
+    "static/js/2.9d974cf8.chunk.js.map": "/static/js/2.9d974cf8.chunk.js.map",
+    "index.html": "/index.html",
+    "precache-manifest.069810ff52dab1ac9445b5f753d147c7.js": "/precache-manifest.069810ff52dab1ac9445b5f753d147c7.js",
+    "service-worker.js": "/service-worker.js",
+    "static/css/2.06f32ede.chunk.css.map": "/static/css/2.06f32ede.chunk.css.map",
+    "static/css/main.5b57f003.chunk.css.map": "/static/css/main.5b57f003.chunk.css.map",
+    "static/media/baseball.svg": "/static/media/baseball.39b3b8a5.svg",
+    "static/media/baseball2.svg": "/static/media/baseball2.73927c98.svg",
+    "static/media/basketball.svg": "/static/media/basketball.c4945260.svg",
+    "static/media/basketball2.svg": "/static/media/basketball2.48122637.svg",
+    "static/media/down.svg": "/static/media/down.3d7d7d4a.svg",
+    "static/media/football.ico": "/static/media/football.c5005feb.ico",
+    "static/media/football2.svg": "/static/media/football2.fac02615.svg",
+    "static/media/hockey.svg": "/static/media/hockey.a76c5594.svg",
+    "static/media/hockey2.svg": "/static/media/hockey2.1b8cf5ce.svg",
+    "static/media/loading.svg": "/static/media/loading.9435ae14.svg",
+    "static/media/minus.ico": "/static/media/minus.5edbe473.ico",
+    "static/media/plus.ico": "/static/media/plus.220c44df.ico",
+    "static/media/search.ico": "/static/media/search.04c89f3b.ico",
+    "static/media/up.svg": "/static/media/up.7dc058f5.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.aceb3e35.js",
+    "static/css/2.06f32ede.chunk.css",
+    "static/js/2.9d974cf8.chunk.js",
+    "static/css/main.5b57f003.chunk.css",
+    "static/js/main.dcb92b09.chunk.js"
+  ]
+}

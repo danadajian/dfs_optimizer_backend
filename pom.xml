@@ -6,7 +6,7 @@
 
     <groupId>com.optimizer</groupId>
     <artifactId>DFS-Optimizer-Web</artifactId>
-    <version>1.42</version>
+    <version>1.50</version>
 
     <dependencies>
         <dependency>

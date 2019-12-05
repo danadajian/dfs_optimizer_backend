@@ -51,7 +51,7 @@ public class OptimizerHandlerTest {
     @Test
     void shouldHandleOptimizerInput() {
         List<Integer> result = optimizerHandler.handleRequest(optimizeTest);
-        assertEquals(Arrays.asList(877745, 694641, 558684, 448132, 976220), result);
+        assertEquals(Arrays.asList(877745, 820699, 558684, 448132, 976220), result);
     }
 
     @Test

@@ -14,7 +14,7 @@ export const lineupStructures = {
     },
     'nfl': {
       'Classic': {
-        'lineupMatrix': ['QB', 'RB', 'RB', 'WR', 'WR', 'WR', 'TE', 'RB,WR,TE', 'D/ST'],
+        'lineupMatrix': ['QB', 'RB', 'RB', 'WR', 'WR', 'WR', 'TE', 'RB,WR,TE', 'D'],
         'displayMatrix': ['QB', 'RB', 'RB', 'WR', 'WR', 'WR', 'TE', 'FLEX', 'D/ST'],
         'salaryCap': 60000
       },
@@ -64,7 +64,7 @@ export const lineupStructures = {
     },
     'nfl': {
       'Classic': {
-        'lineupMatrix': ['QB', 'RB', 'RB', 'WR', 'WR', 'WR', 'TE', 'RB,WR,TE', 'D/ST'],
+        'lineupMatrix': ['QB', 'RB', 'RB', 'WR', 'WR', 'WR', 'TE', 'RB,WR,TE', 'DST'],
         'displayMatrix': ['QB', 'RB', 'RB', 'WR', 'WR', 'WR', 'TE', 'FLEX', 'D/ST'],
         'salaryCap': 50000
       },

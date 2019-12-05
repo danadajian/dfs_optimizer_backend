@@ -12,7 +12,7 @@ src/resources/config.js
 /coverage
 
 # production
-/build
+/build/precache-manifest*.js
 
 # misc
 .DS_Store

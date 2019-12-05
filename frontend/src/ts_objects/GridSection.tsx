@@ -43,8 +43,7 @@ export const GridSection = (props: {
     sortAttribute: string,
     sortSign: number,
     toggleSort: (attribute: string) => void,
-    salaryCap: number,
-    betterLineupFound: boolean
+    salaryCap: number
 }) =>
     props.isLoading ? <Loading sport={props.sport}/> : props.isOptimizing ? <Optimizing sport={props.sport}/> :
     props.site && props.sport && props.contest &&
@@ -91,7 +90,6 @@ export const GridSection = (props: {
             <h2 className={"Dfs-header"}>Lineup</h2>
             <Lineup dfsLineup={props.lineup} removePlayer={props.removeFromLineup} site={props.site}
                     whiteList={props.whiteList} pointSum={sumAttribute(props.lineup, 'projection')}
-                    salarySum={sumAttribute(props.lineup, 'salary')} cap={props.salaryCap}
-                    betterLineupFound={props.betterLineupFound}/>
+                    salarySum={sumAttribute(props.lineup, 'salary')} cap={props.salaryCap}/>
         </div>
     </div>;

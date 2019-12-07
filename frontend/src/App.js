@@ -125,7 +125,10 @@ class App extends Component {
               if (sport === 'nfl') {
                   let opposingTeam = playerData.opponent.split(' ')[1];
                   let teamRanks = opponentRanks[teamAbbreviations[opposingTeam]];
-                  let opponentRankPosition = Object.keys(teamRanks).find(position => position.includes(player.position));
+                  let opponentRankPosition =
+                      Object
+                      .keys(teamRanks)
+                      .find(position => position.replace('/', '').includes(player.position));
                   player.opponentRank = teamRanks[opponentRankPosition];
               }
               let status = injuries[playerData.name] ? injuries[playerData.name].toLowerCase() : '';

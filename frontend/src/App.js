@@ -49,7 +49,8 @@ class App extends Component {
           playerPool: [],
           filteredPool: null,
           whiteList: [],
-          blackList: []
+          blackList: [],
+          lineup: []
       });
       if (site === 'fd')
           await this.getFanduelData(this.state.date);
@@ -85,7 +86,8 @@ class App extends Component {
           playerPool: [],
           filteredPool: null,
           whiteList: [],
-          blackList: []
+          blackList: [],
+          lineup: []
       });
   };
 
@@ -198,13 +200,6 @@ class App extends Component {
   generateOptimalLineup = async () => {
       let {playerPool, whiteList, blackList, lineupMatrix, displayMatrix, salaryCap, playerPoolData} = this.state;
       this.setState({isOptimizing: true});
-      console.log(JSON.stringify({
-          'players': playerPool,
-          'whiteList': whiteList,
-          'blackList': blackList,
-          'lineupMatrix': lineupMatrix,
-          'salaryCap': salaryCap
-      }));
       const playerIds = await fetch(apiRoot + '/optimize', {
           method: 'POST',
           headers: {'Content-Type': 'application/json'},

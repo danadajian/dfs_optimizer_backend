@@ -6,13 +6,18 @@
 
     <groupId>com.optimizer</groupId>
     <artifactId>DFS-Optimizer-Web</artifactId>
-    <version>1.57</version>
+    <version>1.58</version>
 
     <dependencies>
         <dependency>
             <groupId>org.json</groupId>
             <artifactId>json</artifactId>
             <version>20190722</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-math3</artifactId>
+            <version>3.6.1</version>
         </dependency>
         <dependency>
             <groupId>org.junit.jupiter</groupId>

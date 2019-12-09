@@ -48,7 +48,7 @@ public class OptimizerHandlerTest {
     @Test
     void shouldHandleOptimizerInputSingleGame() {
         List<Integer> result = optimizerHandler.handleRequest(optimizeSingleGameTest);
-        assertEquals(Arrays.asList(877745, 473742, 448132, 820699, 976220), result);
+        assertEquals(Arrays.asList(877745, 868199, 473742, 448132, 608753), result);
     }
 
     @Test

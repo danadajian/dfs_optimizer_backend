@@ -2,9 +2,12 @@ package com.optimizer.optimize;
 
 import optimize.Optimizer;
 import optimize.Player;
+import org.apache.commons.math3.util.CombinatoricsUtils;
 import org.junit.jupiter.api.Test;
 
 import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -148,5 +151,26 @@ class OptimizerTest {
         List<List<Player>> playerPools = optimizerWithWhiteList.getCheapestPlayersPerProjectionByPositionWithoutWhiteOrBlackList();
         List<Player> result = optimizerWithWhiteList.getLineupFromIndexList(Arrays.asList(1, 0, 2, 1, 0, 4, 2, 0), playerPools);
         assertEquals(Arrays.asList(qb2, rb1, rb3, wr2, wr1, wr5, rb2, dst1), result);
+    }
+
+    @Test
+    void shouldGenerateAllLineupPermutations() {
+        optimizer.permuteLineups(IntStream.rangeClosed(0, 4).boxed().collect(Collectors.toList()), 9,
+                Collections.singletonList(0), optimizer.getCheapestPlayersPerProjectionByPositionWithoutWhiteOrBlackList());
+        assertEquals(Math.pow(5, 8), optimizer.getPermutationCounter());
+    }
+
+    @Test
+    void shouldGenerateAllLineupPermutationsSingleGame() {
+        optimizer.permuteSingleGameLineups(Arrays.asList(qb1, qb2, qb3, qb4, qb5), 2);
+        assertEquals(CombinatoricsUtils.binomialCoefficient(5, 2), optimizer.getPermutationCounter());
+    }
+
+    @Test
+    void shouldCombineOptimalPlayersWithWhiteList() {
+        List<Player> lineupWithWhiteList = optimizerWithWhiteList.getLineupWithWhiteList();
+        List<Player> optimalPlayers = Arrays.asList(qb1, rb1, rb2, wr1, wr2, wr3, rb3, dst1);
+        List<Player> result = optimizerWithWhiteList.combineOptimalPlayersWithWhiteList(optimalPlayers, lineupWithWhiteList);
+        assertEquals(Arrays.asList(qb1, rb1, rb2, wr1, wr2, wr3, te1, rb3, dst1), result);
     }
 }

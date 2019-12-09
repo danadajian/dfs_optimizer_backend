@@ -1,5 +1,7 @@
 package optimize;
 
+import org.apache.commons.math3.util.CombinatoricsUtils;
+
 import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -9,6 +11,7 @@ public class Optimizer {
     private List<String> lineupMatrix;
     private int salaryCap, poolThreshold;
     private double maxPoints;
+    private long permutationCounter;
 
     public Optimizer(List<Player> playerList, List<Player> whiteList, List<Player> blackList,
                      List<String> lineupMatrix, int salaryCap, int poolThreshold) {
@@ -20,6 +23,7 @@ public class Optimizer {
         this.poolThreshold = poolThreshold;
         this.maxPoints = 0;
         this.optimalLineup = new ArrayList<>();
+        this.permutationCounter = 0;
     }
 
     public List<Player> getOptimalLineup() {
@@ -28,12 +32,15 @@ public class Optimizer {
             lineupMatrix = removeWhiteListedPositionsFromLineupMatrix(lineupMatrix, lineupWithWhiteList);
         List<List<Player>> playerPools = getCheapestPlayersPerProjectionByPositionWithoutWhiteOrBlackList();
         List<Integer> startingIndices = IntStream.rangeClosed(0, 4).boxed().collect(Collectors.toList());
-        for (int i = 0; i < poolThreshold; i++) {
-            permuteLineups(startingIndices, lineupMatrix.size(), Collections.singletonList(i), playerPools);
+        if (lineupMatrix.stream().allMatch(position -> position.equals("any")))
+            permuteSingleGameLineups(getPlayerListWithoutWhiteOrBlackList(), lineupMatrix.size());
+        else {
+            for (int i = 0; i < poolThreshold; i++)
+                permuteLineups(startingIndices, lineupMatrix.size(), Collections.singletonList(i), playerPools);
         }
         if (lineupMatrix.stream().allMatch(position -> position.equals("any")))
             optimalLineup.sort((player1, player2) -> Double.compare(player2.projection, player1.projection));
-        return combineOptimalPlayersWithWhiteList(lineupWithWhiteList);
+        return combineOptimalPlayersWithWhiteList(optimalLineup, lineupWithWhiteList);
     }
 
     public List<Player> getLineupWithWhiteList() {
@@ -84,6 +91,10 @@ public class Optimizer {
         return playerPools;
     }
 
+    private List<Player> getPlayerListWithoutWhiteOrBlackList() {
+        return playerList.stream().filter(player -> !whiteList.contains(player) && !blackList.contains(player)).collect(Collectors.toList());
+    }
+
     public void permuteLineups(List<Integer> indexList, int lineupSize, List<Integer> baseList,
                                List<List<Player>> playerPools) {
         if (baseList.size() < lineupSize) {
@@ -93,21 +104,43 @@ public class Optimizer {
                 permuteLineups(indexList, lineupSize, listCopy, playerPools);
             }
         } else {
+            permutationCounter += 1;
             List<Player> lineup = getLineupFromIndexList(baseList, playerPools);
-            if (isValidLineup(lineup)) {
-                double totalPoints = totalProjection(lineup);
-                int totalSalary = totalSalary(lineup);
-                if (totalSalary <= salaryCap && totalPoints > maxPoints) {
-                    maxPoints = totalPoints;
-                    optimalLineup = lineup;
-                }
-            }
+            if (isValidLineup(lineup))
+                saveLineupIfBetter(lineup);
         }
     }
 
-    public List<Player> combineOptimalPlayersWithWhiteList(List<Player> lineupWithWhiteList) {
+    public void permuteSingleGameLineups(List<Player> playerList, int lineupSize) {
+        Iterator<int[]> iterator = CombinatoricsUtils.combinationsIterator(playerList.size(), lineupSize);
+        while (iterator.hasNext()) {
+            final int[] combination = iterator.next();
+            permutationCounter += 1;
+            List<Player> lineup = getLineupFromIndexList(combination, playerList);
+            saveLineupIfBetter(lineup);
+        }
+    }
+
+    private void saveLineupIfBetter(List<Player> lineup) {
+        double totalPoints = totalProjection(lineup);
+        int totalSalary = totalSalary(lineup);
+        if (totalSalary <= salaryCap && totalPoints > maxPoints) {
+            maxPoints = totalPoints;
+            optimalLineup = lineup;
+        }
+    }
+
+    public List<Player> getLineupFromIndexList(int[] combination, List<Player> playerList) {
+        List<Player> lineup = new ArrayList<>();
+        for (int index : combination) {
+            lineup.add(playerList.get(index));
+        }
+        return lineup;
+    }
+
+    public List<Player> combineOptimalPlayersWithWhiteList(List<Player> optimalPlayers, List<Player> lineupWithWhiteList) {
         List<Player> optimalLineupWithWhiteList = new ArrayList<>(lineupWithWhiteList);
-        for (Player player : optimalLineup) {
+        for (Player player : optimalPlayers) {
             int emptySpotIndex = IntStream.range(0, optimalLineupWithWhiteList.size())
                     .filter(index -> optimalLineupWithWhiteList.get(index).playerId == 0)
                     .findFirst()
@@ -136,11 +169,11 @@ public class Optimizer {
         return lineup;
     }
 
-    private double totalProjection(List<Player> lineup) {
+    public double totalProjection(List<Player> lineup) {
         return lineup.stream().mapToDouble(player -> player.projection).sum();
     }
 
-    private int totalSalary(List<Player> lineup) {
+    public int totalSalary(List<Player> lineup) {
         return lineup.stream().mapToInt(player -> player.salary).sum();
     }
 
@@ -150,5 +183,9 @@ public class Optimizer {
                         Arrays.asList(lineupMatrix.get(i).split(",")).contains(player.position))
                 .findFirst()
                 .orElse(-1);
+    }
+
+    public long getPermutationCounter() {
+        return permutationCounter;
     }
 }

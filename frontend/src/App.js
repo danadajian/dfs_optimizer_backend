@@ -15,6 +15,7 @@ import {GridSection} from "./ts_objects/GridSection";
 import {ContestSection} from "./ts_objects/ContestSection";
 import {SportSection} from "./ts_objects/SportSection";
 import {injuryAbbreviations} from "./resources/injuryAbbreviations";
+import { CSVLink } from "react-csv";
 
 class App extends Component {
 
@@ -197,6 +198,13 @@ class App extends Component {
   generateOptimalLineup = async () => {
       let {playerPool, whiteList, blackList, lineupMatrix, displayMatrix, salaryCap, playerPoolData} = this.state;
       this.setState({isOptimizing: true});
+      console.log(JSON.stringify({
+          'players': playerPool,
+          'whiteList': whiteList,
+          'blackList': blackList,
+          'lineupMatrix': lineupMatrix,
+          'salaryCap': salaryCap
+      }));
       const playerIds = await fetch(apiRoot + '/optimize', {
           method: 'POST',
           headers: {'Content-Type': 'application/json'},
@@ -230,7 +238,12 @@ class App extends Component {
 
   render() {
     const {isLoading, isOptimizing, loadingText, sport, site, contest, date, contests, lineup, salaryCap, playerPool,
-        filteredPool, sortAttribute, sortSign, searchText, whiteList, blackList} = this.state;
+        filteredPool, sortAttribute, sortSign, searchText, whiteList, blackList, displayMatrix} = this.state;
+
+    const csvData = [
+        displayMatrix,
+        lineup.map(player => player.name)
+    ];
 
     return (
         <Container fluid={true}>
@@ -249,10 +262,12 @@ class App extends Component {
                             setContest={this.setContest}/>
             <div style={{display: 'flex', margin: '2%'}}>
                 {sport && contest && site && <button style={{marginTop: '10px'}}
-                                                     onClick={this.generateOptimalLineup}>Generate Lineup</button>}
+                                                     onClick={this.generateOptimalLineup}>Optimize Lineup</button>}
               {sport && contest && site && <button style={{marginTop: '10px'}}
                                                    onClick={this.clearLineup}>Clear Lineup</button>}
             </div>
+            {lineup.length > 0 && lineup.every(player => player.name.length > 0) &&
+            <CSVLink data={csvData} filename={site + '-' + sport + '-lineup.csv'}>Download Lineup CSV</CSVLink>}
           </div>
           <GridSection isLoading={isLoading} isOptimizing={isOptimizing} loadingText={loadingText} site={site}
                        sport={sport} contest={contest} lineup={lineup} playerPool={playerPool}

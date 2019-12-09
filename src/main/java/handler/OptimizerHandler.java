@@ -32,7 +32,7 @@ public class OptimizerHandler {
             lineupMatrix.add(position);
         }
         int salaryCap = (int) input.get("salaryCap");
-        List<Player> optimalLineup = new Optimizer(playerList, whiteList, blackList, lineupMatrix, salaryCap).optimize();
+        List<Player> optimalLineup = new Optimizer(playerList, whiteList, blackList, lineupMatrix, salaryCap, 10).getOptimalLineup();
         List<Integer> lineupResponse = new ArrayList<>();
         optimalLineup.forEach(player -> lineupResponse.add(player.playerId));
         return lineupResponse;

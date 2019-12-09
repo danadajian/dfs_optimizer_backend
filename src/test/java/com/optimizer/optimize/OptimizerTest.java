@@ -8,7 +8,7 @@ import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class OptimizerTestWithFDData {
+class OptimizerTest {
     private Player qb1 = new Player(828743, "QB", 20.81280187343307, 7700);
     private Player qb2 = new Player(691536, "QB", 20.542557435922102, 7700);
     private Player qb3 = new Player(822350, "QB", 18.88529138049285, 7100);
@@ -45,26 +45,19 @@ class OptimizerTestWithFDData {
     );
 
     private List<Player> whiteList = new ArrayList<>();
-
-    private List<Player> blackList = Arrays.asList(badPlayer);
-
+    private List<Player> blackList = Collections.singletonList(badPlayer);
     private List<String> lineupMatrix = new LinkedList<>(Arrays.asList("QB", "RB", "RB", "WR", "WR", "WR", "TE", "RB,WR,TE", "DST"));
-
     private int salaryCap = 60000;
 
-    private Optimizer optimizer = new Optimizer(playerList, whiteList, blackList, lineupMatrix, salaryCap);
+    private Optimizer optimizer = new Optimizer(playerList, whiteList, blackList, lineupMatrix, salaryCap, 5);
+    private Optimizer optimizerWithWhiteList = new Optimizer(playerList, Collections.singletonList(te1), blackList, lineupMatrix, salaryCap, 5);
 
     @Test
     void shouldReturnOptimalLineup() {
-        List<Player> result = optimizer.optimize();
+        List<Player> result = optimizer.getOptimalLineup();
         List<Player> expected = Arrays.asList(qb1, rb1, rb3, wr1, wr3, wr4, te1, rb5, dst1);
         Set resultSet = new HashSet<>(result);
         Set expectedSet = new HashSet<>(expected);
-        System.out.println("Expected projection: " + optimizer.totalProjection(expected));
-        System.out.println("Expected salary: " + optimizer.totalSalary(expected));
-
-        System.out.println("Actual projection: " + optimizer.totalProjection(result));
-        System.out.println("Actual salary: " + optimizer.totalSalary(result));
         assertEquals(expectedSet, resultSet);
     }
 
@@ -83,13 +76,12 @@ class OptimizerTestWithFDData {
                 Arrays.asList(dst1, dst2, dst3, dst4, dst5)
         );
         assertEquals(expected, result);
-        assertTrue(!result.contains(badPlayer));
     }
 
     @Test
     void shouldGetLineupFromIntList() {
         List<List<Player>> playerPools = optimizer.getCheapestPlayersPerProjectionByPositionWithoutWhiteOrBlackList();
-        List<Player> result = optimizer.getLineupFromIntList(Arrays.asList(0, 0, 2, 1, 0, 4, 2, 2, 0), playerPools);
+        List<Player> result = optimizer.getLineupFromIndexList(Arrays.asList(0, 0, 2, 1, 0, 4, 2, 2, 0), playerPools);
         assertEquals(Arrays.asList(qb1, rb1, rb3, wr2, wr1, wr5, te3, rb2, dst1), result);
     }
 
@@ -99,5 +91,62 @@ class OptimizerTestWithFDData {
         assertTrue(isValid);
         boolean isHopefullyNotValid = optimizer.isValidLineup(Arrays.asList(qb1, rb1, rb3, wr1, wr3, wr4, te1, wr3, dst1));
         assertFalse(isHopefullyNotValid);
+        Optimizer singleGameOptimizer = new Optimizer(playerList, whiteList, blackList,
+                new LinkedList<>(Arrays.asList("any", "any", "any", "any", "any")), salaryCap, 5);
+        boolean isValidSingleGameMatrix = singleGameOptimizer.isValidLineup(Arrays.asList(qb1, qb2, rb3, wr1, fillerPLayer2));
+        assertTrue(isValidSingleGameMatrix);
+    }
+
+    @Test
+    void shouldGetLineupWithWhiteListedPlayers() {
+        Player emptyPlayer = new Player();
+        List<Player> result = optimizerWithWhiteList.getLineupWithWhiteList();
+        List<Player> expected = Arrays.asList(
+                emptyPlayer, emptyPlayer, emptyPlayer, emptyPlayer, emptyPlayer, emptyPlayer, te1, emptyPlayer, emptyPlayer
+        );
+        assertEquals(expected, result);
+    }
+
+    @Test
+    void shouldRemoveWhiteListedPositionsFromLineupMatrix() {
+        lineupMatrix = optimizerWithWhiteList.removeWhiteListedPositionsFromLineupMatrix(lineupMatrix, optimizerWithWhiteList.getLineupWithWhiteList());
+        assertEquals(Arrays.asList("QB", "RB", "RB", "WR", "WR", "WR", "RB,WR,TE", "DST"), lineupMatrix);
+        assertEquals(8, optimizerWithWhiteList.getCheapestPlayersPerProjectionByPositionWithoutWhiteOrBlackList().size());
+    }
+
+    @Test
+    void shouldReturnOptimalLineupWithWhiteList() {
+        List<Player> result = optimizerWithWhiteList.getOptimalLineup();
+        List<Player> expected = Arrays.asList(qb1, rb1, rb3, wr1, wr3, wr4, te1, rb5, dst1);
+        Set resultSet = new HashSet<>(result);
+        Set expectedSet = new HashSet<>(expected);
+        assertEquals(expectedSet, resultSet);
+        assertEquals("QB", result.get(0).position);
+        assertEquals("DST", result.get(result.size() - 1).position);
+    }
+
+    @Test
+    void shouldGetCheapestPlayersPerProjectionByPositionWithoutWhiteOrBlackList() {
+        List<List<Player>> result = optimizerWithWhiteList.getCheapestPlayersPerProjectionByPositionWithoutWhiteOrBlackList();
+        List<List<Player>> expected = Arrays.asList(
+                Arrays.asList(qb1, qb2, qb3, qb4, qb5),
+                Arrays.asList(rb1, rb2, rb3, rb4, rb5),
+                Arrays.asList(rb1, rb2, rb3, rb4, rb5),
+                Arrays.asList(wr1, wr2, wr3, wr4, wr5),
+                Arrays.asList(wr1, wr2, wr3, wr4, wr5),
+                Arrays.asList(wr1, wr2, wr3, wr4, wr5),
+                Arrays.asList(te2, te3, te4, te5, goodPlayer),
+                Arrays.asList(wr1, rb1, rb2, rb3, rb4),
+                Arrays.asList(dst1, dst2, dst3, dst4, dst5)
+        );
+        assertEquals(expected, result);
+    }
+
+    @Test
+    void shouldGetLineupFromIntListWithWhiteList() {
+        lineupMatrix = optimizerWithWhiteList.removeWhiteListedPositionsFromLineupMatrix(lineupMatrix, optimizerWithWhiteList.getLineupWithWhiteList());
+        List<List<Player>> playerPools = optimizerWithWhiteList.getCheapestPlayersPerProjectionByPositionWithoutWhiteOrBlackList();
+        List<Player> result = optimizerWithWhiteList.getLineupFromIndexList(Arrays.asList(1, 0, 2, 1, 0, 4, 2, 0), playerPools);
+        assertEquals(Arrays.asList(qb2, rb1, rb3, wr2, wr1, wr5, rb2, dst1), result);
     }
 }

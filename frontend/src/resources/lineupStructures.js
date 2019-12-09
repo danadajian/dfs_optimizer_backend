@@ -8,7 +8,7 @@ export const lineupStructures = {
       },
       'Single Game': {
         'lineupMatrix': ['any', 'any', 'any', 'any', 'any'],
-        'displayMatrix': ['MVP (1.5x Points)', 'FLEX', 'FLEX', 'FLEX', 'FLEX'],
+        'displayMatrix': ['MVP - 1.5X Points', 'AnyFLEX', 'AnyFLEX', 'AnyFLEX', 'AnyFLEX'],
         'salaryCap': 35000
       }
     },
@@ -20,7 +20,7 @@ export const lineupStructures = {
       },
       'Single Game': {
         'lineupMatrix': ['any', 'any', 'any', 'any', 'any'],
-        'displayMatrix': ['MVP (1.5x Points)', 'FLEX', 'FLEX', 'FLEX', 'FLEX'],
+        'displayMatrix': ['MVP - 1.5X Points', 'AnyFLEX', 'AnyFLEX', 'AnyFLEX', 'AnyFLEX'],
         'salaryCap': 60000
       }
     },
@@ -32,7 +32,7 @@ export const lineupStructures = {
       },
       'Single Game': {
         'lineupMatrix': ['any', 'any', 'any', 'any', 'any'],
-        'displayMatrix': ['MVP (2x Points)', 'STAR (1.5x Points)', 'PRO (1.2x Points)', 'UTIL', 'UTIL'],
+        'displayMatrix': ['MVP - 2x Points', 'STAR - 1.5x Points', 'PRO (1.2x Points)', 'UTIL', 'UTIL'],
         'salaryCap': 60000
       }
     },
@@ -44,7 +44,7 @@ export const lineupStructures = {
       },
       'Single Game': {
         'lineupMatrix': ['any', 'any', 'any', 'any', 'any', 'any'],
-        'displayMatrix': ['Captain (1.5x Points)', 'UTIL', 'UTIL', 'UTIL', 'UTIL', 'UTIL'],
+        'displayMatrix': ['Captain - 1.5x Points', 'UTIL', 'UTIL', 'UTIL', 'UTIL', 'UTIL'],
         'salaryCap': 55000
       }
     }

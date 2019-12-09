@@ -115,7 +115,7 @@ Resources:
         GetOptimalLineup:
           Type: Api
           Properties:
-            Path: /optimize
+            Path: /getOptimalLineup
             Method: post
             RestApiId: !Ref MyApi
 Outputs:

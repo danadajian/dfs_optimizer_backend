@@ -20,7 +20,9 @@ interface playerAttributes {
     salary: number,
     opponent: string,
     opponentRank: number,
-    gameDate: string
+    gameDate: string,
+    spread: string,
+    overUnder: number
 }
 
 export const GridSection = (props: {

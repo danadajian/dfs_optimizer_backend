@@ -12,6 +12,8 @@ public class ProjectionsData {
     private ApiClient apiClient;
     private String sport;
     private Map<Integer, Map<Object, Object>> eventData;
+    private Map<Integer, Map<String, String>> participantsData;
+    private Map<Integer, Map<String, Number>> oddsData;
 
     public ProjectionsData(ApiClient apiClient, String sport) {
         this.apiClient = apiClient;
@@ -20,18 +22,21 @@ public class ProjectionsData {
 
     public Map<Integer, Map<String, Object>> getStandardFantasyProjections() {
         Map<Integer, Map<String, Object>> projectionsData = new HashMap<>();
-        Map<Integer, Map<Object, Object>> eventData = new EventData(apiClient, sport).getEventData();
+        eventData = new EventData(apiClient, sport).getEventData();
         Set<Integer> eventIds = eventData.keySet();
-        Map<Integer, Map<String, String>> participantsData = new ParticipantsData(apiClient, sport).getParticipantsData();
+        participantsData = new ParticipantsData(apiClient, sport).getParticipantsData();
+        oddsData = new OddsData(apiClient, sport).getOddsData();
         for (int eventId : eventIds) {
             String apiResponse = apiClient.getProjectionsFromEvent(sport, eventId);
-            JSONObject projectionsJson = new JSONObject(apiResponse).getJSONArray("apiResults").getJSONObject(0)
-                    .getJSONObject("league").getJSONObject("season").getJSONArray("eventType").getJSONObject(0)
-                    .getJSONObject("fantasyProjections");
-            for (Object object : projectionsJson.getJSONArray("teams")) {
-                int teamId = ((JSONObject) object).getInt("teamId");
-                JSONArray playerArray = ((JSONObject) object).getJSONArray("players");
-                collectProjectionsData(playerArray, projectionsData, eventData, participantsData, eventId, teamId);
+            if (apiResponse != null) {
+                JSONObject projectionsJson = new JSONObject(apiResponse).getJSONArray("apiResults").getJSONObject(0)
+                        .getJSONObject("league").getJSONObject("season").getJSONArray("eventType").getJSONObject(0)
+                        .getJSONObject("fantasyProjections");
+                for (Object object : projectionsJson.getJSONArray("teams")) {
+                    int teamId = ((JSONObject) object).getInt("teamId");
+                    JSONArray playerArray = ((JSONObject) object).getJSONArray("players");
+                    collectProjectionsData(playerArray, projectionsData, eventId, teamId);
+                }
             }
         }
         return projectionsData;
@@ -39,20 +44,23 @@ public class ProjectionsData {
 
     public Map<Integer, Map<String, Object>> getNHLFantasyProjections() {
         Map<Integer, Map<String, Object>> projectionsData = new HashMap<>();
-        Map<Integer, Map<Object, Object>> eventData = new EventData(apiClient, "nhl").getEventData();
+        eventData = new EventData(apiClient, "nhl").getEventData();
         Set<Integer> eventIds = eventData.keySet();
-        Map<Integer, Map<String, String>> participantsData = new ParticipantsData(apiClient, "nhl").getParticipantsData();
+        participantsData = new ParticipantsData(apiClient, "nhl").getParticipantsData();
+        oddsData = new OddsData(apiClient, sport).getOddsData();
         for (int eventId : eventIds) {
             String apiResponse = apiClient.getProjectionsFromEvent("nhl", eventId);
-            JSONObject projectionsJson = new JSONObject(apiResponse).getJSONArray("apiResults").getJSONObject(0)
-                    .getJSONObject("league").getJSONObject("season").getJSONArray("eventType").getJSONObject(0)
-                    .getJSONObject("fantasyProjections");
-            for (Object object : projectionsJson.getJSONArray("teams")) {
-                int teamId = ((JSONObject) object).getInt("teamId");
-                JSONArray playerArray = ((JSONObject) object).getJSONArray("skaters");
-                collectProjectionsData(playerArray, projectionsData, eventData, participantsData, eventId, teamId);
-                JSONArray goalieArray = ((JSONObject) object).getJSONArray("goalies");
-                collectProjectionsData(goalieArray, projectionsData, eventData, participantsData, eventId, teamId);
+            if (apiResponse != null) {
+                JSONObject projectionsJson = new JSONObject(apiResponse).getJSONArray("apiResults").getJSONObject(0)
+                        .getJSONObject("league").getJSONObject("season").getJSONArray("eventType").getJSONObject(0)
+                        .getJSONObject("fantasyProjections");
+                for (Object object : projectionsJson.getJSONArray("teams")) {
+                    int teamId = ((JSONObject) object).getInt("teamId");
+                    JSONArray playerArray = ((JSONObject) object).getJSONArray("skaters");
+                    collectProjectionsData(playerArray, projectionsData, eventId, teamId);
+                    JSONArray goalieArray = ((JSONObject) object).getJSONArray("goalies");
+                    collectProjectionsData(goalieArray, projectionsData, eventId, teamId);
+                }
             }
         }
         return projectionsData;
@@ -61,14 +69,17 @@ public class ProjectionsData {
     public Map<Integer, Map<String, Object>> getNFLFantasyProjections() {
         Map<Integer, Map<String, Object>> projectionsData = new HashMap<>();
         eventData = new EventData(apiClient, "nfl").getEventData();
+        oddsData = new OddsData(apiClient, sport).getOddsData();
         String apiResponse = apiClient.getProjectionsFromThisWeek("nfl");
-        JSONObject projectionsJson = new JSONObject(apiResponse).getJSONArray("apiResults").getJSONObject(0)
-                .getJSONObject("league").getJSONObject("season").getJSONArray("eventType").getJSONObject(0)
-                .getJSONObject("fantasyProjections");
-        JSONArray offensiveJson = projectionsJson.getJSONArray("offensiveProjections");
-        JSONArray defensiveJson = projectionsJson.getJSONArray("defensiveProjections");
-        projectionsData.putAll(getOffensiveProjections(offensiveJson));
-        projectionsData.putAll(getDefensiveProjections(defensiveJson));
+        if (apiResponse.length() > 0) {
+            JSONObject projectionsJson = new JSONObject(apiResponse).getJSONArray("apiResults").getJSONObject(0)
+                    .getJSONObject("league").getJSONObject("season").getJSONArray("eventType").getJSONObject(0)
+                    .getJSONObject("fantasyProjections");
+            JSONArray offensiveJson = projectionsJson.getJSONArray("offensiveProjections");
+            JSONArray defensiveJson = projectionsJson.getJSONArray("defensiveProjections");
+            projectionsData.putAll(getOffensiveProjections(offensiveJson));
+            projectionsData.putAll(getDefensiveProjections(defensiveJson));
+        }
         return projectionsData;
     }
 
@@ -99,18 +110,18 @@ public class ProjectionsData {
 
     private void addInfoToPlayerMap(Map<Integer, Map<String, Object>> playerMap, JSONObject playerObject,
                                     int id, Map<String, Object> statMap) {
+        int eventId = playerObject.getInt("eventId");
+        int teamId = playerObject.getJSONObject("team").getInt("teamId");
         statMap.put("team", playerObject.getJSONObject("team").getString("abbreviation"));
-        statMap.put("opponent", eventData.get(playerObject.getInt("eventId"))
-                .get(playerObject.getJSONObject("team").getInt("teamId")));
+        statMap.put("opponent", eventData.get(eventId).get(teamId));
         statMap.put("gameDate",
                 new DateOperations().getEasternTime(playerObject.getJSONObject("gameDate").getString("full"),
                         playerObject.getJSONObject("gameDate").getString("dateType"), "EEE h:mma z"));
-        addProjectionsToMap(playerMap, playerObject, statMap, id);
+        addOddsDataToMap(playerMap, playerObject, statMap, eventId, teamId, id);
     }
 
-    private void collectProjectionsData(JSONArray playerArray, Map<Integer, Map<String, Object>> projectionsData,
-                                       Map<Integer, Map<Object, Object>> eventData,
-                                       Map<Integer, Map<String, String>> participantsData, int eventId, int teamId) {
+    private void collectProjectionsData(JSONArray playerArray,
+                                        Map<Integer, Map<String, Object>> projectionsData, int eventId, int teamId) {
         for (Object thing : playerArray) {
             JSONObject playerObject = (JSONObject) thing;
             Map<String, Object> statMap = new HashMap<>();
@@ -120,9 +131,19 @@ public class ProjectionsData {
                 statMap.put("team", participantsData.get(playerId).get("team"));
                 statMap.put("opponent", eventData.get(eventId).get(teamId));
                 statMap.put("gameDate", eventData.get(eventId).get("gameDate"));
-                addProjectionsToMap(projectionsData, playerObject, statMap, playerId);
+                addOddsDataToMap(projectionsData, playerObject, statMap, eventId, teamId, playerId);
             }
         }
+    }
+
+    private void addOddsDataToMap(Map<Integer, Map<String, Object>> projectionsData,
+                                  JSONObject playerObject, Map<String, Object> statMap,
+                                  int eventId, int teamId, int playerId) {
+        int spreadMultiplier = (int) oddsData.get(eventId).get("favoriteTeamId") == teamId ? 1 : -1;
+        String spreadSign = (int) oddsData.get(eventId).get("favoriteTeamId") == teamId ? "" : "+";
+        statMap.put("spread", spreadSign + (spreadMultiplier * (double) oddsData.get(eventId).get("spread")));
+        statMap.put("overUnder", oddsData.get(eventId).get("overUnder"));
+        addProjectionsToMap(projectionsData, playerObject, statMap, playerId);
     }
 
     private void addProjectionsToMap(Map<Integer, Map<String, Object>> projectionsData, JSONObject playerObject,

@@ -58,7 +58,7 @@ class App extends Component {
 
   setSport = async (sport) => {
       let {site, fanduelData} = this.state;
-      this.setState({isLoading: true, sport: sport, contest: ''});
+      this.setState({isLoading: true, sport: sport, contest: '', lineup: []});
       let dfsData;
       if (site === 'fd') {
           dfsData = fanduelData.filter(contest => contest.sport === sport.toUpperCase());
@@ -71,8 +71,8 @@ class App extends Component {
           .then(response => response.json());
       const contests = dfsData.length > 0 ? this.extractContestsFromData(dfsData) : [];
       this.setState({loadingText: sport.toUpperCase() + ' opponent ranks'});
-      const opponentRanks = sport === 'nfl' ?
-          await fetch(apiRoot + '/opponentRanks').then(response => response.json()) : {};
+      const opponentRanks = await fetch(apiRoot + '/opponentRanks?sport=' + sport)
+          .then(response => response.json());
       this.setState({loadingText: 'injury data'});
       const injuries = await fetch(apiRoot + '/injuries?sport=' + sport)
           .then(response => response.json());
@@ -86,13 +86,16 @@ class App extends Component {
           playerPool: [],
           filteredPool: null,
           whiteList: [],
-          blackList: [],
-          lineup: []
+          blackList: []
       });
   };
 
   setContest = (contest) => {
       let {site, sport, dfsData, projectionsData} = this.state;
+      if (dfsData.length === 0)
+          alert('There was a problem obtaining DFS data.');
+      if (Object.keys(projectionsData).length === 0)
+          alert('There was a problem obtaining projections data.');
       let gameType = contest.includes('@') || contest.includes('vs') ? 'Single Game' : 'Classic';
       let lineupMatrix = lineupStructures[site][sport][gameType].lineupMatrix;
       let displayMatrix = lineupStructures[site][sport][gameType].displayMatrix;
@@ -115,7 +118,7 @@ class App extends Component {
   };
 
   combineData = (dfsPlayers, projectionsData) => {
-      let {site, sport, opponentRanks, injuries} = this.state;
+      let {site, opponentRanks, injuries} = this.state;
       let combinedData = [];
       dfsPlayers.forEach(player => {
           let playerData = projectionsData[player.playerId];
@@ -124,14 +127,15 @@ class App extends Component {
               player.team = playerData.team;
               player.opponent = playerData.opponent;
               player.gameDate = playerData.gameDate;
+              player.spread = playerData['spread'];
+              player.overUnder = playerData.overUnder;
               player.projection = playerData[site + 'Projection'];
-              if (sport === 'nfl') {
+              if (Object.keys(opponentRanks).length > 0) {
                   let opposingTeam = playerData.opponent.split(' ')[1];
                   let teamRanks = opponentRanks[teamAbbreviations[opposingTeam]];
                   let opponentRankPosition =
-                      Object
-                      .keys(teamRanks)
-                      .find(position => position.replace('/', '').includes(player.position));
+                      Object.keys(teamRanks)
+                          .find(position => position.replace('/', '').includes(player.position));
                   player.opponentRank = teamRanks[opponentRankPosition];
               }
               let status = injuries[playerData.name] ? injuries[playerData.name].toLowerCase() : '';

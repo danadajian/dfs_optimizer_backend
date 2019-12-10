@@ -1,7 +1,9 @@
 package optimize;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public class Player {
     public int playerId, salary;
@@ -26,6 +28,18 @@ public class Player {
         this.position = position;
         this.projection = projection;
         this.salary = salary;
+    }
+
+    public Player(String playerString) {
+        Map<String, Object> map = Arrays.stream(playerString.replace("{", "")
+                .replace("}", "").replace(" ", "").split(","))
+                .map(s -> s.split("="))
+                .collect(Collectors.toMap(s -> s[0], s -> s[1]));
+        System.out.println(map);
+        this.playerId = Integer.parseInt((String) map.get("playerId"));
+        this.position = (String) map.get("position");
+        this.projection = Double.parseDouble((String) map.get("projection"));
+        this.salary = Integer.parseInt((String) map.get("salary"));
     }
 
     @Override

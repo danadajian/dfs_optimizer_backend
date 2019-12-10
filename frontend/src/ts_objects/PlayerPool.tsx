@@ -17,7 +17,9 @@ interface playerAttributes {
     salary: number,
     opponent: string,
     opponentRank: number,
-    gameDate: string
+    gameDate: string,
+    spread: string,
+    overUnder: number
 }
 
 interface playerProps {
@@ -39,10 +41,6 @@ const Player = (props: playerProps) =>
             </tr>
             <tr>{props.player.team} {props.player.position}</tr>
         </td>
-        <td>{props.player.opponent}</td>
-        <td style={{fontWeight: 'bold',
-            color: props.player.opponentRank < 9 ? 'red' : props.player.opponentRank > 22 ? 'green' : 'black'}}>
-            {getOrdinalString(props.player.opponentRank)}</td>
         <td>{props.player.projection.toFixed(1)}</td>
         <td style={{color: (props.salarySum + props.player.salary > props.cap) ? 'red' : 'black'}}>
             ${props.player.salary.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
@@ -51,6 +49,16 @@ const Player = (props: playerProps) =>
             ${(props.player.salary / props.player.projection).toFixed(0)
             .toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
         </td>
+        <td>
+            {props.player.opponent + ' '}
+            <b style={{'color': props.player.opponentRank < 9 ?
+                    'red' : props.player.opponentRank > 22 ? 'green' : 'black'}}>
+                {getOrdinalString(props.player.opponentRank)}
+            </b>
+        </td>
+        <td>{props.player.spread}</td>
+        <td>{props.player.overUnder}</td>
+        <td>{props.player.gameDate}</td>
         <td>
             <img src={plus} alt={"add"} onClick={props.onPlusClick} style={{height: '3vmin'}}/>
         </td>
@@ -76,8 +84,6 @@ export const PlayerPool = (props: {
             <tbody>
             <tr style={{backgroundColor: 'lightgray'}}>
                 <th>Player</th>
-                <th>Opponent</th>
-                <th>Opp Rank</th>
                 <th>Projection
                         <img src={props.sortSign === 1 ? down : up} alt={"sort"}
                              onClick={() => props.toggleSort('projection')}
@@ -96,6 +102,10 @@ export const PlayerPool = (props: {
                          style={{marginLeft: '1vmin', height: '2vmin',
                              backgroundColor: props.sortAttribute === 'pricePerPoint' ? 'red' : 'white'}}/>
                 </th>
+                <th>Opponent</th>
+                <th>Spread</th>
+                <th>O/U</th>
+                <th>Game Date</th>
                 <th>Add</th>
                 <th>Blacklist</th>
             </tr>

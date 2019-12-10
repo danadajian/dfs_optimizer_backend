@@ -10,37 +10,41 @@ import java.util.Map;
 
 public class OpponentRanksData {
     private ApiClient apiClient;
+    private String sport;
 
-    public OpponentRanksData(ApiClient apiClient) {
+    public OpponentRanksData(ApiClient apiClient, String sport) {
         this.apiClient = apiClient;
+        this.sport = sport;
     }
 
-    public Map<String, Map<String, Integer>> getNFLOpponentRanks() {
+    public Map<String, Map<String, Integer>> getOpponentRanks() {
         Map<String, Map<String, Integer>> opponentRanksMap = new HashMap<>();
-        String scrapedResponse = apiClient.getOpponentRanksData();
-        int startIndex = scrapedResponse.indexOf("<tbody>");
-        int endIndex = scrapedResponse.indexOf("</tbody>") + "</tbody>".length();
-        String responseSubstring = scrapedResponse.substring(startIndex, endIndex);
-        String adjustedResponse = responseSubstring.replace("</td><tr>", "</td></tr>");
-        JSONObject rankingsJson = XML.toJSONObject(adjustedResponse).getJSONObject("tbody");
-        JSONArray rankingsArray = rankingsJson.getJSONArray("tr");
-        for (Object object : rankingsArray) {
-            Map<String, Integer> rankMap = new HashMap<>();
-            JSONArray teamArray = ((JSONObject) object).getJSONArray("td");
-            String teamName = teamArray.getJSONObject(0).getJSONObject("a").getString("content");
-            int qbRank = getRank(teamArray, 1);
-            int rbRank = getRank(teamArray, 3);
-            int wrRank = getRank(teamArray, 5);
-            int teRank = getRank(teamArray, 7);
-            int kRank = getRank(teamArray, 9);
-            int dstRank = getRank(teamArray, 11);
-            rankMap.put("QB", 33 - qbRank);
-            rankMap.put("RB", 33 - rbRank);
-            rankMap.put("WR", 33 - wrRank);
-            rankMap.put("TE", 33 -  teRank);
-            rankMap.put("K", 33 -  kRank);
-            rankMap.put("D/ST", 33 - dstRank);
-            opponentRanksMap.put(teamName, rankMap);
+        String scrapedResponse = apiClient.getOpponentRanksData(sport);
+        if (scrapedResponse.length() > 0) {
+            int startIndex = scrapedResponse.indexOf("<tbody>");
+            int endIndex = scrapedResponse.indexOf("</tbody>") + "</tbody>".length();
+            String responseSubstring = scrapedResponse.substring(startIndex, endIndex);
+            String adjustedResponse = responseSubstring.replace("</td><tr>", "</td></tr>");
+            JSONObject rankingsJson = XML.toJSONObject(adjustedResponse).getJSONObject("tbody");
+            JSONArray rankingsArray = rankingsJson.getJSONArray("tr");
+            for (Object object : rankingsArray) {
+                Map<String, Integer> rankMap = new HashMap<>();
+                JSONArray teamArray = ((JSONObject) object).getJSONArray("td");
+                String teamName = teamArray.getJSONObject(0).getJSONObject("a").getString("content");
+                int qbRank = getRank(teamArray, 1);
+                int rbRank = getRank(teamArray, 3);
+                int wrRank = getRank(teamArray, 5);
+                int teRank = getRank(teamArray, 7);
+                int kRank = getRank(teamArray, 9);
+                int dstRank = getRank(teamArray, 11);
+                rankMap.put("QB", 33 - qbRank);
+                rankMap.put("RB", 33 - rbRank);
+                rankMap.put("WR", 33 - wrRank);
+                rankMap.put("TE", 33 - teRank);
+                rankMap.put("K", 33 - kRank);
+                rankMap.put("D/ST", 33 - dstRank);
+                opponentRanksMap.put(teamName, rankMap);
+            }
         }
         return opponentRanksMap;
     }

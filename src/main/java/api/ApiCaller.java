@@ -25,8 +25,11 @@ public class ApiCaller extends MakeHttpRequest {
         return super.HttpRequest("https://api.draftkings.com/partners/v1/draftpool/sports/" + sport);
     }
 
-    public String scrapeFantasyProsSite() {
-        return super.HttpRequest("https://www.fantasypros.com/nfl/points-allowed.php");
+    public String scrapeFantasyProsSite(String sport) {
+        if (sport.equals("nfl"))
+            return super.HttpRequest("https://www.fantasypros.com/nfl/points-allowed.php");
+        else
+            return "";
     }
 
     public String scrapeESPNInjuriesSite(String sport) {

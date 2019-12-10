@@ -46,14 +46,17 @@ public class FanduelData {
     public List<JSONObject> getValidContests() {
         String apiResponse = apiClient.getFanduelData(dateString);
         List<JSONObject> validContests = new ArrayList<>();
-        JSONArray contests = XML.toJSONObject(apiResponse).getJSONObject("data").getJSONArray("fixturelist");
-        for (Object object : contests) {
-            JSONObject contest = (JSONObject) object;
-            String contestName = contest.getJSONObject("game").getString("label");
-            if (supportedSports.contains(contest.getString("sport")) &&
-                    (supportedContests.contains(contestName) ||
-                            (contestName.split(" ").length == 3 && contestName.contains("@")))) {
-                validContests.add(contest);
+        JSONObject xmlResponse = XML.toJSONObject(apiResponse);
+        if (xmlResponse.has("data")) {
+            JSONArray contests = xmlResponse.getJSONObject("data").getJSONArray("fixturelist");
+            for (Object object : contests) {
+                JSONObject contest = (JSONObject) object;
+                String contestName = contest.getJSONObject("game").getString("label");
+                if (supportedSports.contains(contest.getString("sport")) &&
+                        (supportedContests.contains(contestName) ||
+                                (contestName.split(" ").length == 3 && contestName.contains("@")))) {
+                    validContests.add(contest);
+                }
             }
         }
         return validContests;

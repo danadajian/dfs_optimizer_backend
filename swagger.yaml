@@ -198,6 +198,11 @@ paths:
         - "application/json"
       produces:
         - "application/json"
+      parameters:
+        - name: "sport"
+          in: "query"
+          required: false
+          type: "string"
       responses:
         200:
           description: "200 response"
@@ -216,6 +221,8 @@ paths:
               method.response.header.Access-Control-Allow-Origin: "'*'"
         passthroughBehavior: "when_no_templates"
         httpMethod: "POST"
+        requestTemplates:
+          application/json: "{\n\"sport\": \"$input.params('sport')\"\n}"
         contentHandling: "CONVERT_TO_TEXT"
         type: "aws"
     options:

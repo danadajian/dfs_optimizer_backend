@@ -1,5 +1,4 @@
 import * as React from 'react';
-import {getOrdinalString} from "../functions/getOrdinalString";
 
 interface playerAttributes {
     playerId: number,
@@ -40,17 +39,13 @@ const Player = (props: playerProps) => {
         <tr style={{backgroundColor: (
             props.player.name && props.whiteList.includes(props.player.playerId)) ? 'lightgreen' : 'white'}}>
             <td>{props.player.displayPosition}</td>
-            <td>{props.player.team}</td>
-            <td style={{fontWeight: (props.player.position) ? 'normal' : 'bold'}}>
-                {props.player.name} <b style={{color: 'red'}}>{props.player.status}</b>
+            <td>
+                <tr>{props.player.name} <b style={{color: 'red'}}>{props.player.status}</b></tr>
+                <tr><b>{props.player.team + ' '}</b> <text style={{'color': props.player.opponentRank < 9 ?
+                        'red' : props.player.opponentRank > 22 ? 'green' : 'black'}}>{props.player.opponent}</text></tr>
             </td>
             <td style={{fontWeight: (props.player.position) ? 'normal' : 'bold'}}>{roundedProjection}</td>
             <td style={{fontWeight: (props.player.position) ? 'normal' : 'bold'}}>{formattedSalary}</td>
-            <td>{props.player.opponent}</td>
-            <td style={{fontWeight: 'bold',
-                'color': props.player.opponentRank < 9 ? 'red' : props.player.opponentRank > 22 ? 'green' : 'black'}}>
-                {getOrdinalString(props.player.opponentRank)}</td>
-            <td>{props.player.gameDate}</td>
             <td>
                 {props.player.position && props.player.name && <button onClick={props.onRemove} style={{fontWeight: 'bold'}}>X</button>}
             </td>
@@ -70,13 +65,9 @@ export const Lineup = (props: {
             <tbody>
             <tr style={{backgroundColor: (props.site === 'fd') ? 'dodgerblue' : 'black'}}>
                 <th>Position</th>
-                <th>Team</th>
                 <th>Player</th>
                 <th>Projection</th>
                 <th>Salary</th>
-                <th>Opponent</th>
-                <th>Opp Rank</th>
-                <th>Game Date</th>
                 <th>Remove</th>
             </tr>
             {props.dfsLineup.map(
@@ -90,14 +81,11 @@ export const Lineup = (props: {
             )}
             <tr style={{fontWeight: 'bold'}}>
                 <td>{null}</td>
-                <td>{null}</td>
                 <td>Total</td>
                 <td>{props.pointSum.toFixed(1)}</td>
                 <td style={{color: (props.salarySum > props.cap) ? 'indianred' : 'black'}}>
                     {'$'.concat(props.salarySum.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","))}
                 </td>
-                <td>{null}</td>
-                <td>{null}</td>
                 <td>{null}</td>
             </tr>
             </tbody>

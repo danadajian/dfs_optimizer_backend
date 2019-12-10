@@ -4,6 +4,7 @@ import optimize.Optimizer;
 import optimize.Player;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class OptimizerHandler {
     public List<Integer> handleRequest(Map<String, Object> input) {
@@ -32,9 +33,8 @@ public class OptimizerHandler {
             lineupMatrix.add(position);
         }
         int salaryCap = (int) input.get("salaryCap");
-        List<Player> optimalLineup = new Optimizer(playerList, whiteList, blackList, lineupMatrix, salaryCap, 10).getOptimalLineup();
-        List<Integer> lineupResponse = new ArrayList<>();
-        optimalLineup.forEach(player -> lineupResponse.add(player.playerId));
-        return lineupResponse;
+        List<Player> optimalLineup = new Optimizer(playerList, whiteList, blackList, lineupMatrix, salaryCap,
+                10).getOptimalLineup();
+        return optimalLineup.stream().map(player -> player.playerId).collect(Collectors.toList());
     }
 }

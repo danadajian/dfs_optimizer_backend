@@ -11,6 +11,15 @@ import static org.junit.jupiter.api.Assertions.*;
 class ProjectionsHandlerTest {
 
 //    @Test
+//    void shouldHandleRequestForMLBProjections() {
+//        Map<String, String> testMap = new HashMap<>();
+//        testMap.put("sport", "mlb");
+//        Map<Integer, Map<String, Object>> result = new ProjectionsHandler().handleRequest(testMap);
+//        System.out.println(result);
+//        assertEquals(0, result.size());
+//    }
+//
+//    @Test
 //    void shouldHandleRequestForNFLProjections() {
 //        Map<String, String> testMap = new HashMap<>();
 //        testMap.put("sport", "nfl");

@@ -30,13 +30,16 @@ public class Optimizer {
         List<Player> lineupWithWhiteList = getLineupWithWhiteList();
         if (whiteList.size() > 0)
             lineupMatrix = removeWhiteListedPositionsFromLineupMatrix(lineupMatrix, lineupWithWhiteList);
-        List<List<Player>> playerPools = getCheapestPlayersPerProjectionByPositionWithoutWhiteOrBlackList();
-        List<Integer> startingIndices = IntStream.rangeClosed(0, 4).boxed().collect(Collectors.toList());
         if (lineupMatrix.stream().allMatch(position -> position.equals("any")))
             permuteSingleGameLineups(getPlayerListWithoutWhiteOrBlackList(), lineupMatrix.size());
         else {
-            for (int i = 0; i < poolThreshold; i++)
-                permuteLineups(startingIndices, lineupMatrix.size(), Collections.singletonList(i), playerPools);
+            List<List<Player>> playerPools = getCheapestPlayersPerProjectionByPositionWithoutWhiteOrBlackList();
+            List<Integer> startingPlayerIndices = IntStream
+                    .rangeClosed(0, 4)
+                    .boxed()
+                    .collect(Collectors.toList());
+            for (int i = 0; i < 4; i++)
+                permuteLineups(startingPlayerIndices, lineupMatrix.size(), Collections.singletonList(i), playerPools);
         }
         if (lineupMatrix.stream().allMatch(position -> position.equals("any")))
             optimalLineup.sort((player1, player2) -> Double.compare(player2.projection, player1.projection));
@@ -80,6 +83,7 @@ public class Optimizer {
                     .filter(
                             player -> (position.equals("any") ||
                                     Arrays.asList(position.split(",")).contains(player.position))
+                                    && player.projection > 0
                                     && !whiteList.contains(player)
                                     && !blackList.contains(player)
                     )
@@ -101,13 +105,14 @@ public class Optimizer {
             for (int index : indexList) {
                 List<Integer> listCopy = new ArrayList<>(baseList);
                 listCopy.add(index);
-                permuteLineups(indexList, lineupSize, listCopy, playerPools);
+                List<Player> lineup = getLineupFromIndexList(baseList, playerPools);
+                if (isValidLineup(lineup) && lineupCouldBeBetter(lineup, playerPools))
+                    permuteLineups(indexList, lineupSize, listCopy, playerPools);
             }
         } else {
             permutationCounter += 1;
             List<Player> lineup = getLineupFromIndexList(baseList, playerPools);
-            if (isValidLineup(lineup))
-                saveLineupIfBetter(lineup);
+            saveLineupIfBetter(lineup);
         }
     }
 
@@ -116,9 +121,32 @@ public class Optimizer {
         while (iterator.hasNext()) {
             final int[] combination = iterator.next();
             permutationCounter += 1;
-            List<Player> lineup = getLineupFromIndexList(combination, playerList);
+            List<Player> lineup = getLineupFromIndexArray(combination, playerList);
             saveLineupIfBetter(lineup);
         }
+    }
+
+    public boolean lineupCouldBeBetter(List<Player> lineup, List<List<Player>> playerPools) {
+        List<Player> highestProjectionList = new ArrayList<>();
+        List<Player> lowestSalaryList = new ArrayList<>();
+        for (int i = lineup.size(); i < lineupMatrix.size(); i++) {
+            Player highestProjectionPlayer = playerPools.get(i)
+                    .stream()
+                    .sorted((player1, player2) -> Double.compare(player2.projection, player1.projection))
+                    .filter(player -> !lineup.contains(player))
+                    .findFirst()
+                    .orElse(new Player());
+            Player lowestSalaryPlayer = playerPools.get(i)
+                    .stream()
+                    .sorted(Comparator.comparingDouble(player -> player.salary))
+                    .filter(player -> !lineup.contains(player))
+                    .findFirst()
+                    .orElse(new Player());
+            highestProjectionList.add(highestProjectionPlayer);
+            lowestSalaryList.add(lowestSalaryPlayer);
+        }
+        return totalProjection(lineup) + totalProjection(highestProjectionList) > maxPoints &&
+                totalSalary(lineup) + totalSalary(lowestSalaryList) <= salaryCap;
     }
 
     private void saveLineupIfBetter(List<Player> lineup) {
@@ -130,7 +158,7 @@ public class Optimizer {
         }
     }
 
-    public List<Player> getLineupFromIndexList(int[] combination, List<Player> playerList) {
+    public List<Player> getLineupFromIndexArray(int[] combination, List<Player> playerList) {
         List<Player> lineup = new ArrayList<>();
         for (int index : combination) {
             lineup.add(playerList.get(index));
@@ -151,7 +179,7 @@ public class Optimizer {
     }
 
     public boolean isValidLineup(List<Player> lineup) {
-        int lineupSize = lineupMatrix.size();
+        int lineupSize = lineup.size();
         for (int i = 0; i < lineupSize - 1; i++) {
             for (int j = i + 1; j < lineupSize; j++) {
                 if (lineupMatrix.get(j).contains(lineupMatrix.get(i)) && lineup.get(i).equals(lineup.get(j)))
@@ -187,5 +215,44 @@ public class Optimizer {
 
     public long getPermutationCounter() {
         return permutationCounter;
+    }
+
+    public int positionThreshold(String position) {
+        if (position.contains(","))
+            return 10;
+        int positionCount = Collections.frequency(lineupMatrix, position);
+        switch (positionCount) {
+            case 1:
+                return 5;
+            case 2:
+                return 16;
+            case 3:
+                return 10;
+            case 4:
+                return 9;
+            default:
+                return -1;
+        }
+    }
+
+    public List<List<Player>> truncatedPlayerPoolsByPosition() {
+        List<List<Player>> truncatedPlayerPools = new ArrayList<>();
+        Set<String> positionSet = new HashSet<>(lineupMatrix);
+        for (String position : positionSet) {
+            List<Player> playerPool = playerList.stream()
+                    .filter(
+                            player -> Arrays.asList(position.split(",")).contains(player.position)
+                                    && player.projection > 0
+                                    && !whiteList.contains(player)
+                                    && !blackList.contains(player)
+                    )
+                    .sorted(Comparator.comparingDouble(player -> player.salary / player.projection))
+                    .collect(Collectors.toList());
+            List<Player> playerPoolSublist = playerPool
+                    .subList(0,
+                            positionThreshold(position) == -1 ? playerPool.size() - 1 : positionThreshold(position));
+            truncatedPlayerPools.add(playerPoolSublist);
+        }
+        return truncatedPlayerPools;
     }
 }

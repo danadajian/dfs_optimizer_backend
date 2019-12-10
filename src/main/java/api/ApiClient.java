@@ -7,6 +7,7 @@ public interface ApiClient {
     String getParticipants(String sport);
     String getFanduelData(String dateString);
     String getDraftKingsData(String sport);
-    String getOpponentRanksData();
+    String getOpponentRanksData(String sport);
     String getInjuryData(String sport);
+    String getOddsData(String sport);
 }

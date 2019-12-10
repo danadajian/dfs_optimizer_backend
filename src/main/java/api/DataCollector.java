@@ -41,13 +41,19 @@ public class DataCollector implements ApiClient {
     }
 
     @Override
-    public String getOpponentRanksData() {
-        return apiCaller.scrapeFantasyProsSite();
+    public String getOpponentRanksData(String sport) {
+        return apiCaller.scrapeFantasyProsSite(sport);
     }
 
     @Override
     public String getInjuryData(String sport) {
         return apiCaller.scrapeESPNInjuriesSite(sport);
+    }
+
+    @Override
+    public String getOddsData(String sport) {
+        String baseCall = "stats/" + getSportName(sport) + "/" + sport + "/odds/";
+        return apiCaller.callStatsApi(baseCall);
     }
 
     private String getSportName(String sport) {

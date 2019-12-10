@@ -82,22 +82,33 @@ class OptimizerTest {
     }
 
     @Test
-    void shouldGetLineupFromIntList() {
+    void shouldGetLineupFromIndexList() {
         List<List<Player>> playerPools = optimizer.getCheapestPlayersPerProjectionByPositionWithoutWhiteOrBlackList();
         List<Player> result = optimizer.getLineupFromIndexList(Arrays.asList(0, 0, 2, 1, 0, 4, 2, 2, 0), playerPools);
         assertEquals(Arrays.asList(qb1, rb1, rb3, wr2, wr1, wr5, te3, rb2, dst1), result);
     }
 
     @Test
+    void shouldGetLineupFromIndexArray() {
+        int[] combination = {2, 3, 0, 1, 4};
+        List<Player> result = optimizer.getLineupFromIndexArray(combination, playerList);
+        assertEquals(Arrays.asList(qb3, qb4, qb1, qb2, qb5), result);
+    }
+
+    @Test
     void shouldCheckForValidLineup() {
-        boolean isValid = optimizer.isValidLineup(Arrays.asList(qb1, rb1, rb3, wr1, wr3, wr4, te1, rb5, dst1));
-        assertTrue(isValid);
-        boolean isHopefullyNotValid = optimizer.isValidLineup(Arrays.asList(qb1, rb1, rb3, wr1, wr3, wr4, te1, wr3, dst1));
-        assertFalse(isHopefullyNotValid);
+        boolean result1 = optimizer.isValidLineup(Arrays.asList(qb1, rb1, rb3, wr1, wr3, wr4, te1, rb5, dst1));
+        assertTrue(result1);
+        boolean result2 = optimizer.isValidLineup(Arrays.asList(qb1, rb1, rb3, wr1));
+        assertTrue(result2);
+        boolean result3 = optimizer.isValidLineup(Arrays.asList(qb1, rb1, rb3, rb4));
+        assertTrue(result3);
+        boolean result4 = optimizer.isValidLineup(Arrays.asList(qb1, rb1, rb3, wr1, wr3, wr4, te1, wr3, dst1));
+        assertFalse(result4);
         Optimizer singleGameOptimizer = new Optimizer(playerList, whiteList, blackList,
                 new LinkedList<>(Arrays.asList("any", "any", "any", "any", "any")), salaryCap, 5);
-        boolean isValidSingleGameMatrix = singleGameOptimizer.isValidLineup(Arrays.asList(qb1, qb2, rb3, wr1, fillerPLayer2));
-        assertTrue(isValidSingleGameMatrix);
+        boolean result5 = singleGameOptimizer.isValidLineup(Arrays.asList(qb1, qb2, rb3, wr1, fillerPLayer2));
+        assertTrue(result5);
     }
 
     @Test
@@ -146,7 +157,7 @@ class OptimizerTest {
     }
 
     @Test
-    void shouldGetLineupFromIntListWithWhiteList() {
+    void shouldGetLineupFromIndexListWithWhiteList() {
         lineupMatrix = optimizerWithWhiteList.removeWhiteListedPositionsFromLineupMatrix(lineupMatrix, optimizerWithWhiteList.getLineupWithWhiteList());
         List<List<Player>> playerPools = optimizerWithWhiteList.getCheapestPlayersPerProjectionByPositionWithoutWhiteOrBlackList();
         List<Player> result = optimizerWithWhiteList.getLineupFromIndexList(Arrays.asList(1, 0, 2, 1, 0, 4, 2, 0), playerPools);
@@ -154,10 +165,10 @@ class OptimizerTest {
     }
 
     @Test
-    void shouldGenerateAllLineupPermutations() {
+    void shouldGenerateLineupPermutations() {
         optimizer.permuteLineups(IntStream.rangeClosed(0, 4).boxed().collect(Collectors.toList()), 9,
                 Collections.singletonList(0), optimizer.getCheapestPlayersPerProjectionByPositionWithoutWhiteOrBlackList());
-        assertEquals(Math.pow(5, 8), optimizer.getPermutationCounter());
+        assertEquals(1182, optimizer.getPermutationCounter());
     }
 
     @Test
@@ -172,5 +183,24 @@ class OptimizerTest {
         List<Player> optimalPlayers = Arrays.asList(qb1, rb1, rb2, wr1, wr2, wr3, rb3, dst1);
         List<Player> result = optimizerWithWhiteList.combineOptimalPlayersWithWhiteList(optimalPlayers, lineupWithWhiteList);
         assertEquals(Arrays.asList(qb1, rb1, rb2, wr1, wr2, wr3, te1, rb3, dst1), result);
+    }
+
+    @Test
+    void shouldDetermineIfLineupCouldBeBetter() {
+        List<List<Player>> playerPools = optimizer.getCheapestPlayersPerProjectionByPositionWithoutWhiteOrBlackList();
+        List<Player> lineup1 = Arrays.asList(qb1, rb1, rb3, wr1, wr3, wr4);
+        assertTrue(optimizer.lineupCouldBeBetter(lineup1, playerPools));
+        List<Player> lineup2 = Arrays.asList(qb5, rb2, rb5, wr1, wr3, wr5);
+        assertFalse(optimizer.lineupCouldBeBetter(lineup2, playerPools));
+    }
+
+    @Test
+    void shouldReturnPositionThreshold() {
+        int result1 = optimizer.positionThreshold("RB,WR,TE");
+        assertEquals(10, result1);
+        int result2 = optimizer.positionThreshold("WR");
+        assertEquals(10, result2);
+        int result3 = optimizer.positionThreshold("QB");
+        assertEquals(5, result3);
     }
 }

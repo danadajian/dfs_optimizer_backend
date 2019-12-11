@@ -6,7 +6,7 @@
 
     <groupId>com.optimizer</groupId>
     <artifactId>DFS-Optimizer-Web</artifactId>
-    <version>1.64</version>
+    <version>1.68</version>
 
     <dependencies>
         <dependency>
@@ -18,6 +18,11 @@
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-math3</artifactId>
             <version>3.6.1</version>
+        </dependency>
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>r05</version>
         </dependency>
         <dependency>
             <groupId>org.junit.jupiter</groupId>

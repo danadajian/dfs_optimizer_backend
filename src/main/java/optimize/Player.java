@@ -35,7 +35,6 @@ public class Player {
                 .replace("}", "").replace(" ", "").split(","))
                 .map(s -> s.split("="))
                 .collect(Collectors.toMap(s -> s[0], s -> s[1]));
-        System.out.println(map);
         this.playerId = Integer.parseInt((String) map.get("playerId"));
         this.position = (String) map.get("position");
         this.projection = Double.parseDouble((String) map.get("projection"));

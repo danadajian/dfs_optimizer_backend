@@ -2,7 +2,7 @@ export const lineupStructures = {
   'fd': {
     'mlb': {
       'Classic': {
-        'lineupMatrix': ['P', 'C 1B', '2B', '3B', 'SS', 'OF', 'OF', 'OF', 'C,1B,2B,3B,SS,OF'],
+        'lineupMatrix': ['P', 'C,1B', '2B', '3B', 'SS', 'OF', 'OF', 'OF', 'C,1B,2B,3B,SS,OF'],
         'displayMatrix': ['P', 'C/1B', '2B', '3B', 'SS', 'OF', 'OF', 'OF', 'Util'],
         'salaryCap': 35000
       },

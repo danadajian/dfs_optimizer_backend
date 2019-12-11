@@ -14,9 +14,9 @@ import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class OptimizerHandlerTest {
+class OptimizerHandlerTest {
 
-    public OptimizerHandlerTest() throws IOException {
+    OptimizerHandlerTest() throws IOException {
     }
 
     private String fakeOptimizerBody = new String(Files.readAllBytes(Paths.get("src/main/resources/optimizerHandlerBody.txt")));
@@ -33,7 +33,7 @@ public class OptimizerHandlerTest {
     @Test
     void shouldHandleOptimizerInput() {
         List<Integer> result = optimizerHandler.handleRequest(optimizeTest);
-        assertEquals(Arrays.asList(828743, 747861, 592914, 877790, 884013, 653699, 600191, 750846, 323), result);
+        assertEquals(Arrays.asList(828743, 747861, 750846, 877790, 653699, 884013, 600191, 592914, 323), result);
     }
 
     @Test

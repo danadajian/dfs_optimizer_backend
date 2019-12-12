@@ -26,9 +26,9 @@ class OptimizerTest {
         List<Player> whiteList = new ArrayList<>();
         List<Player> blackList = new ArrayList<>();
         int salaryCap = 60000;
-        optimizer = new Optimizer(playerList, whiteList, blackList, lineupMatrix, salaryCap);
+        optimizer = new Optimizer(playerList, whiteList, blackList, lineupMatrix, salaryCap, 3000000);
         List<Player> testBlackList = Collections.singletonList(new Player(868199));
-        optimizerWithWhiteList = new Optimizer(playerList, testWhiteList, testBlackList, lineupMatrix, salaryCap);
+        optimizerWithWhiteList = new Optimizer(playerList, testWhiteList, testBlackList, lineupMatrix, salaryCap, 3000000);
     }
 
     @Test
@@ -49,44 +49,34 @@ class OptimizerTest {
     }
 
     @Test
-    void shouldReturnPositionThreshold() {
-        int result1 = optimizer.positionThreshold("RB,WR,TE");
-        assertEquals(10, result1);
-        int result2 = optimizer.positionThreshold("WR");
-        assertEquals(9, result2);
-        int result3 = optimizer.positionThreshold("QB");
-        assertEquals(5, result3);
-    }
-
-    @Test
     void shouldReturnTruncatedPools() {
         List<List<Player>> result = optimizer.getTruncatedPlayerPoolsByPosition();
         assertEquals(6, result.size());
-        assertEquals(5, result.get(0).size());
-        assertEquals(8, result.get(1).size());
-        assertEquals(9, result.get(2).size());
-        assertEquals(5, result.get(3).size());
-        assertEquals(10, result.get(4).size());
-        assertEquals(5, result.get(5).size());
+        assertEquals(7, result.get(0).size());
+        assertEquals(7, result.get(1).size());
+        assertEquals(7, result.get(2).size());
+        assertEquals(7, result.get(3).size());
+        assertEquals(11, result.get(4).size());
+        assertEquals(7, result.get(5).size());
     }
 
     @Test
     void shouldReturnEachSetOfCombinations() {
         List<Set<List<Player>>> result = optimizer.permutePlayerPools(optimizer.getTruncatedPlayerPoolsByPosition());
         assertEquals(6, result.size());
-        assertEquals(5, result.get(0).size());
-        assertEquals(28, result.get(1).size());
-        assertEquals(84, result.get(2).size());
-        assertEquals(5, result.get(3).size());
-        assertEquals(10, result.get(4).size());
-        assertEquals(5, result.get(5).size());
+        assertEquals(7, result.get(0).size());
+        assertEquals(21, result.get(1).size());
+        assertEquals(35, result.get(2).size());
+        assertEquals(7, result.get(3).size());
+        assertEquals(11, result.get(4).size());
+        assertEquals(7, result.get(5).size());
     }
 
     @Test
     void shouldGetCorrectCartesianProductSize() {
         List<Set<List<Player>>> playerPools = optimizer.permutePlayerPools(optimizer.getTruncatedPlayerPoolsByPosition());
         Set<List<List<Player>>> result = Sets.cartesianProduct(playerPools);
-        assertEquals(5*28*84*5*10*5, result.size());
+        assertEquals(7*21*35*7*11*7, result.size());
     }
 
     @Test
@@ -113,31 +103,31 @@ class OptimizerTest {
     void shouldReturnTruncatedPoolsWithWhiteList() {
         List<List<Player>> result = optimizerWithWhiteList.getTruncatedPlayerPoolsByPosition();
         assertEquals(6, result.size());
-        assertEquals(5, result.get(0).size());
-        assertEquals(5, result.get(1).size());
-        assertEquals(9, result.get(2).size());
-        assertEquals(5, result.get(3).size());
-        assertEquals(10, result.get(4).size());
-        assertEquals(5, result.get(5).size());
+        assertEquals(8, result.get(0).size());
+        assertEquals(8, result.get(1).size());
+        assertEquals(8, result.get(2).size());
+        assertEquals(8, result.get(3).size());
+        assertEquals(13, result.get(4).size());
+        assertEquals(8, result.get(5).size());
     }
 
     @Test
     void shouldReturnEachSetOfCombinationsWithWhiteList() {
         List<Set<List<Player>>> result = optimizerWithWhiteList.permutePlayerPools(optimizerWithWhiteList.getTruncatedPlayerPoolsByPosition());
         assertEquals(6, result.size());
-        assertEquals(5, result.get(0).size());
-        assertEquals(5, result.get(1).size());
-        assertEquals(84, result.get(2).size());
-        assertEquals(5, result.get(3).size());
-        assertEquals(10, result.get(4).size());
-        assertEquals(5, result.get(5).size());
+        assertEquals(8, result.get(0).size());
+        assertEquals(8, result.get(1).size());
+        assertEquals(56, result.get(2).size());
+        assertEquals(8, result.get(3).size());
+        assertEquals(13, result.get(4).size());
+        assertEquals(8, result.get(5).size());
     }
 
     @Test
     void shouldGetCorrectCartesianProductSizeWithWhiteList() {
         List<Set<List<Player>>> playerPools = optimizerWithWhiteList.permutePlayerPools(optimizerWithWhiteList.getTruncatedPlayerPoolsByPosition());
         Set<List<List<Player>>> result = Sets.cartesianProduct(playerPools);
-        assertEquals(5*5*84*5*10*5, result.size());
+        assertEquals(8*8*56*8*13*8, result.size());
     }
 
     @Test
@@ -228,5 +218,37 @@ class OptimizerTest {
                 new Player(592914),
                 new Player(323)
         ), result);
+    }
+
+    @Test
+    void shouldReturnPositionFrequencyMatrix() {
+        List<Integer> result = optimizer.positionFrequencyMatrix();
+        assertEquals(Arrays.asList(-1, 1, 1, 1, 2, 3), result);
+        List<Integer> result2 = optimizerWithWhiteList.positionFrequencyMatrix();
+        assertEquals(Arrays.asList(-1, 1, 1, 1, 1, 3), result2);
+    }
+
+    @Test
+    void shouldReturnValidPositionThresholds() {
+        List<Integer> result = optimizer.positionThresholds(3000000);
+        assertEquals(Arrays.asList(11, 7, 7, 7, 7, 7), result);
+        List<Integer> result2 = optimizerWithWhiteList.positionThresholds(3000000);
+        assertEquals(Arrays.asList(13, 8, 8, 8, 8, 8), result2);
+    }
+
+    @Test
+    void shouldReturnPositionThreshold() {
+        int result1 = optimizer.getPositionThreshold("QB");
+        assertEquals(7, result1);
+        int result2 = optimizer.getPositionThreshold("RB");
+        assertEquals(7, result2);
+        int result3 = optimizer.getPositionThreshold("WR");
+        assertEquals(7, result3);
+        int result4 = optimizer.getPositionThreshold("TE");
+        assertEquals(7, result4);
+        int result5 = optimizer.getPositionThreshold("RB,WR,TE");
+        assertEquals(11, result5);
+        int result6 = optimizer.getPositionThreshold("D");
+        assertEquals(7, result6);
     }
 }

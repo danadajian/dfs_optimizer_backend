@@ -33,7 +33,8 @@ public class OptimizerHandler {
             lineupMatrix.add(position);
         }
         int salaryCap = (int) input.get("salaryCap");
-        List<Player> optimalLineup = new Optimizer(playerList, whiteList, blackList, lineupMatrix, salaryCap).getOptimalLineup();
+        Optimizer optimizer = new Optimizer(playerList, whiteList, blackList, lineupMatrix, salaryCap, 3000000);
+        List<Player> optimalLineup = optimizer.getOptimalLineup();
         return optimalLineup.stream().map(player -> player.playerId).collect(Collectors.toList());
     }
 }

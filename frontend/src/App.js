@@ -223,7 +223,7 @@ class App extends Component {
           })
       }).then(response => response.json());
       if (!Array.isArray(playerIds) || playerIds.includes(0)) {
-          alert('Optimal lineup could not be found.');
+          alert('Optimal lineup could not be found.' + playerIds['errorMessage'] ? '\n' + playerIds['errorMessage'] : '');
           this.setState({isOptimizing: false})
       } else {
           let optimalLineup = playerIds.map(playerId => playerPool.find(player => player.playerId === playerId));

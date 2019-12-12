@@ -8,22 +8,26 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class Optimizer {
-    private List<Player> playerList, whiteList, blackList, lineupWithWhiteList, optimalLineup;
+    private List<Player> playerList, listToOptimize, lineupWithWhiteList, optimalLineup;
     private List<String> lineupMatrix, uniquePositions;
+    private List<Integer> positionThresholds;
     private int salaryCap;
     private double maxPoints;
 
     public Optimizer(List<Player> playerList, List<Player> whiteList, List<Player> blackList,
-                     List<String> lineupMatrix, int salaryCap) {
+                     List<String> lineupMatrix, int salaryCap, long maxCombinations) {
         this.playerList = playerList;
-        this.whiteList = whiteList;
-        this.blackList = blackList;
         this.salaryCap = salaryCap;
         this.maxPoints = 0;
         this.optimalLineup = new ArrayList<>();
+        this.listToOptimize = playerList
+                .stream()
+                .filter(player -> player.projection > 0 && !whiteList.contains(player) && !blackList.contains(player))
+                .collect(Collectors.toList());
         this.lineupWithWhiteList = getLineupWithWhiteList(whiteList, lineupMatrix);
         this.lineupMatrix = lineupMatrixWithoutWhiteListedPositions(lineupWithWhiteList, lineupMatrix);
         this.uniquePositions = lineupMatrix.stream().distinct().collect(Collectors.toList());
+        this.positionThresholds = positionThresholds(maxCombinations);
     }
 
     public List<Player> getOptimalLineup() {
@@ -36,19 +40,16 @@ public class Optimizer {
     public List<List<Player>> getTruncatedPlayerPoolsByPosition() {
         List<List<Player>> truncatedPlayerPools = new ArrayList<>();
         for (String position : uniquePositions) {
-            List<Player> playerPool = playerList.stream()
-                    .filter(
-                            player -> (position.equals("any") ||
+            List<Player> playerPool = listToOptimize.stream()
+                    .filter(player ->
+                                    position.equals("any") ||
                                     Arrays.asList(position.split(",")).contains(player.position) ||
-                                    Arrays.asList(player.position.split("/")).contains(position))
-                                    && player.projection > 0
-                                    && !whiteList.contains(player)
-                                    && !blackList.contains(player)
+                                    Arrays.asList(player.position.split("/")).contains(position)
                     )
                     .sorted(Comparator.comparingDouble(player -> player.salary / player.projection))
                     .collect(Collectors.toList());
-            List<Player> playerPoolSublist = playerPool
-                    .subList(0, positionThreshold(position) == -1 ? playerPool.size() : positionThreshold(position));
+            List<Player> playerPoolSublist = playerPool.subList(0,
+                    Math.min(getPositionThreshold(position), playerPool.size()));
             truncatedPlayerPools.add(playerPoolSublist);
         }
         return truncatedPlayerPools;
@@ -59,8 +60,9 @@ public class Optimizer {
         for (int i = 0; i < playerPools.size(); i++) {
             Set<List<Player>> positionPermutations = new HashSet<>();
             String position = uniquePositions.get(i);
-            Iterator<int[]> iterator = CombinatoricsUtils
-                    .combinationsIterator(playerPools.get(i).size(), positionCount(position));
+            int n = playerPools.get(i).size();
+            int k = Math.abs(positionCount(position));
+            Iterator<int[]> iterator = CombinatoricsUtils.combinationsIterator(n, k);
             while (iterator.hasNext()) {
                 final int[] combination = iterator.next();
                 int poolsIndex = i;
@@ -75,13 +77,12 @@ public class Optimizer {
         return listOfPermutations;
     }
 
-    public void findBestLineupInCartesianProduct(List<Set<List<Player>>> playerPools) {
+    private void findBestLineupInCartesianProduct(List<Set<List<Player>>> playerPools) {
         Set<List<List<Player>>> cartesianProduct = Sets.cartesianProduct(playerPools);
         for (List<List<Player>> comboList : cartesianProduct) {
             List<Player> lineup = comboList.stream().flatMap(List::stream).collect(Collectors.toList());
             if (isValidLineup(lineup)) {
                 saveLineupIfBetter(lineup);
-                // permutationCounter += 1;
             }
         }
     }
@@ -165,27 +166,53 @@ public class Optimizer {
     }
 
     private int positionCount(String position) {
-        return Collections.frequency(lineupMatrix, position);
+        return position.contains(",") ? -1 : Collections.frequency(lineupMatrix, position);
     }
 
-    public int positionThreshold(String position) {
-        if (position.contains(","))
-            return 10;
-        int positionCount = positionCount(position);
-        if (positionCount == lineupMatrix.size())
-            return -1;
-        switch (positionCount) {
-            case 1:
-                return 5;
-            case 2:
-                return 8;
-            case 3:
-                return 9;
-            case 4:
-                return 13;
-            default:
-                return -1;
+    public List<Integer> positionFrequencyMatrix() {
+        return uniquePositions
+                .stream()
+                .map(this::positionCount)
+                .sorted()
+                .collect(Collectors.toList());
+    }
+
+    public List<Integer> positionThresholds(long maxCombinations) {
+        List<Integer> frequencyMatrix = positionFrequencyMatrix();
+        List<Integer> positionThresholds = frequencyMatrix
+                .stream()
+                .map(threshold -> threshold == -1 ? 10 : 5)
+                .collect(Collectors.toList());
+        boolean continueIncrement = true;
+        int positionIndex = positionThresholds.size() - 1;
+        while (continueIncrement) {
+            long product = 1;
+            for (int i = 0; i < positionThresholds.size(); i++) {
+                int n = positionThresholds.get(i);
+                int k = Math.abs(frequencyMatrix.get(i));
+                long combinations = CombinatoricsUtils.binomialCoefficient(Math.max(n, k), k);
+                product *= combinations;
+            }
+            int currentThreshold = positionThresholds.get(positionIndex);
+            if (product < maxCombinations) {
+                positionThresholds.set(positionIndex, currentThreshold + 1);
+            } else {
+                int lastPositionIndex = (positionIndex + 1) % positionThresholds.size();
+                positionThresholds.set(lastPositionIndex, positionThresholds.get(lastPositionIndex) - 1);
+                continueIncrement = false;
+            }
+            positionIndex = (positionIndex == 0) ? positionThresholds.size() - 1 : positionIndex - 1;
         }
+        return positionThresholds;
+    }
+
+    public int getPositionThreshold(String position) {
+        List<Integer> frequencyMatrix = positionFrequencyMatrix();
+        return IntStream.range(0, frequencyMatrix.size())
+                .filter(index -> frequencyMatrix.get(index) == positionCount(position))
+                .map(positionThresholds::get)
+                .findFirst()
+                .orElse(-1);
     }
 
     public List<String> getLineupMatrix() {

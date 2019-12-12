@@ -27,8 +27,8 @@ class OptimizerSingleGameTest {
         List<Player> blackList = new ArrayList<>();
         List<String> lineupMatrix = new LinkedList<>(Arrays.asList("any", "any", "any", "any", "any"));
         int salaryCap = 60000;
-        singleGameOptimizer = new Optimizer(singleGamePlayerList, whiteList, blackList, lineupMatrix, salaryCap);
-        singleGameOptimizerWithWhiteList = new Optimizer(singleGamePlayerList, singleGameWhiteList, singleGameBlackList, lineupMatrix, salaryCap);
+        singleGameOptimizer = new Optimizer(singleGamePlayerList, whiteList, blackList, lineupMatrix, salaryCap, 3000000);
+        singleGameOptimizerWithWhiteList = new Optimizer(singleGamePlayerList, singleGameWhiteList, singleGameBlackList, lineupMatrix, salaryCap, 3000000);
     }
 
     @Test
@@ -46,8 +46,8 @@ class OptimizerSingleGameTest {
 
     @Test
     void shouldReturnPositionThresholdSingleGame() {
-        int result = singleGameOptimizer.positionThreshold("any");
-        assertEquals(-1, result);
+        int result = singleGameOptimizer.getPositionThreshold("any");
+        assertEquals(53, result);
     }
 
     @Test
@@ -131,5 +131,29 @@ class OptimizerSingleGameTest {
                 new Player(877790)
         ));
         assertFalse(result2);
+    }
+
+    @Test
+    void shouldReturnPositionFrequencyMatrix() {
+        List<Integer> result = singleGameOptimizer.positionFrequencyMatrix();
+        assertEquals(Collections.singletonList(5), result);
+        List<Integer> result2 = singleGameOptimizerWithWhiteList.positionFrequencyMatrix();
+        assertEquals(Collections.singletonList(4), result2);
+    }
+
+    @Test
+    void shouldReturnValidPositionThresholds() {
+        List<Integer> result = singleGameOptimizer.positionThresholds(3000000);
+        assertEquals(Collections.singletonList(53), result);
+        List<Integer> result2 = singleGameOptimizerWithWhiteList.positionThresholds(3000000);
+        assertEquals(Collections.singletonList(93), result2);
+    }
+
+    @Test
+    void shouldReturnPositionThreshold() {
+        int result1 = singleGameOptimizer.getPositionThreshold("any");
+        assertEquals(53, result1);
+        int result2 = singleGameOptimizerWithWhiteList.getPositionThreshold("any");
+        assertEquals(93, result2);
     }
 }

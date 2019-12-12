@@ -30,8 +30,6 @@ public class Optimizer {
         List<List<Player>> truncatedPlayerPools = getTruncatedPlayerPoolsByPosition();
         List<Set<List<Player>>> permutedPlayerPools = permutePlayerPools(truncatedPlayerPools);
         findBestLineupInCartesianProduct(permutedPlayerPools);
-        if (lineupMatrix.stream().allMatch(position -> position.equals("any")))
-            optimalLineup.sort((player1, player2) -> Double.compare(player2.projection, player1.projection));
         return combineOptimalPlayersWithWhiteList(optimalLineup, lineupWithWhiteList);
     }
 
@@ -41,7 +39,8 @@ public class Optimizer {
             List<Player> playerPool = playerList.stream()
                     .filter(
                             player -> (position.equals("any") ||
-                                    Arrays.asList(position.split(",")).contains(player.position))
+                                    Arrays.asList(position.split(",")).contains(player.position) ||
+                                    Arrays.asList(player.position.split("/")).contains(position))
                                     && player.projection > 0
                                     && !whiteList.contains(player)
                                     && !blackList.contains(player)
@@ -64,7 +63,11 @@ public class Optimizer {
                     .combinationsIterator(playerPools.get(i).size(), positionCount(position));
             while (iterator.hasNext()) {
                 final int[] combination = iterator.next();
-                List<Player> players = getLineupFromIndexArray(combination, playerPools.get(i));
+                int poolsIndex = i;
+                List<Player> players = Arrays.stream(combination)
+                        .mapToObj(index -> playerPools.get(poolsIndex).get(index))
+                        .sorted((player1, player2) -> Double.compare(player2.projection, player1.projection))
+                        .collect(Collectors.toList());
                 positionPermutations.add(players);
             }
             listOfPermutations.add(positionPermutations);
@@ -113,14 +116,6 @@ public class Optimizer {
             optimalLineupWithWhiteList.set(emptySpotIndex, player);
         }
         return optimalLineupWithWhiteList;
-    }
-
-    public List<Player> getLineupFromIndexArray(int[] combination, List<Player> playerList) {
-        List<Player> lineup = new ArrayList<>();
-        for (int index : combination) {
-            lineup.add(playerList.get(index));
-        }
-        return lineup;
     }
 
     public List<Player> getLineupWithWhiteList(List<Player> whiteList, List<String> lineupMatrix) {
@@ -191,5 +186,9 @@ public class Optimizer {
             default:
                 return -1;
         }
+    }
+
+    public List<String> getLineupMatrix() {
+        return lineupMatrix;
     }
 }

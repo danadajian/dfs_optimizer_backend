@@ -71,17 +71,6 @@ class OptimizerTest {
     }
 
     @Test
-    void shouldGetLineupFromIndexArray() {
-        int[] combination = {2, 3, 0};
-        List<Player> result = optimizer.getLineupFromIndexArray(combination, playerList);
-        assertEquals(Arrays.asList(
-                new Player(877745),
-                new Player(824080),
-                new Player(830517)
-        ), result);
-    }
-
-    @Test
     void shouldReturnEachSetOfCombinations() {
         List<Set<List<Player>>> result = optimizer.permutePlayerPools(optimizer.getTruncatedPlayerPoolsByPosition());
         assertEquals(6, result.size());

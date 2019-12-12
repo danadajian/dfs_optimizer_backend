@@ -8,9 +8,8 @@ import org.junit.jupiter.api.Test;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
+import java.util.stream.Collectors;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -32,14 +31,16 @@ class OptimizerHandlerTest {
 
     @Test
     void shouldHandleOptimizerInput() {
-        List<Integer> result = optimizerHandler.handleRequest(optimizeTest);
-        assertEquals(Arrays.asList(828743, 747861, 750846, 877790, 653699, 884013, 600191, 592914, 323), result);
+        Set<Integer> result = new HashSet<>(optimizerHandler.handleRequest(optimizeTest));
+        assertEquals(new HashSet<>(Arrays.asList(828743, 750846, 747861, 653699, 877790, 884013, 600191, 592914, 323)),
+                result);
     }
 
     @Test
     void shouldHandleOptimizerWhiteAndBlackListInput() {
-        List<Integer> result = optimizerHandler.handleRequest(whiteAndBlackListTest);
-        assertEquals(Arrays.asList(828743, 456613, 592914, 877790, 821389, 653699, 600191, 750846, 323), result);
+        Set<Integer> result = new HashSet<>(optimizerHandler.handleRequest(whiteAndBlackListTest));
+        assertEquals(new HashSet<>(Arrays.asList(828743, 456613, 750846, 653699, 877790, 821389, 600191, 592914, 323)),
+                result);
         assertTrue(result.contains(456613));
         assertTrue(!result.contains(868199));
         assertTrue(!result.contains(0));

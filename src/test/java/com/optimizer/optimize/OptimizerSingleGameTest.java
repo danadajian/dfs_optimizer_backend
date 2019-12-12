@@ -3,6 +3,7 @@ package com.optimizer.optimize;
 import com.google.common.collect.Sets;
 import optimize.Optimizer;
 import optimize.Player;
+import org.apache.commons.math3.util.CombinatoricsUtils;
 import org.junit.jupiter.api.Test;
 
 import java.util.*;
@@ -60,14 +61,18 @@ class OptimizerSingleGameTest {
     void shouldReturnEachSetOfCombinationsSingleGame() {
         List<Set<List<Player>>> result = singleGameOptimizer.permutePlayerPools(singleGameOptimizer.getTruncatedPlayerPoolsByPosition());
         assertEquals(1, result.size());
-        assertEquals(80730, result.get(0).size());
+        assertEquals(CombinatoricsUtils.binomialCoefficient(
+                singleGamePlayerList.size(),
+                singleGameOptimizer.getLineupMatrix().size()), result.get(0).size());
     }
 
     @Test
     void shouldGetCorrectCartesianProductSizeSingleGame() {
         List<Set<List<Player>>> playerPools = singleGameOptimizer.permutePlayerPools(singleGameOptimizer.getTruncatedPlayerPoolsByPosition());
         Set<List<List<Player>>> result = Sets.cartesianProduct(playerPools);
-        assertEquals(80730, result.size());
+        assertEquals(CombinatoricsUtils.binomialCoefficient(
+                singleGamePlayerList.size(),
+                singleGameOptimizer.getLineupMatrix().size()), result.size());
     }
 
     @Test
@@ -95,14 +100,18 @@ class OptimizerSingleGameTest {
     void shouldReturnEachSetOfCombinationsSingleGameWithWhiteList() {
         List<Set<List<Player>>> result = singleGameOptimizerWithWhiteList.permutePlayerPools(singleGameOptimizerWithWhiteList.getTruncatedPlayerPoolsByPosition());
         assertEquals(1, result.size());
-        assertEquals(10626, result.get(0).size());
+        assertEquals(CombinatoricsUtils.binomialCoefficient(
+                singleGamePlayerList.size() - singleGameWhiteList.size() - singleGameBlackList.size(),
+                singleGameOptimizerWithWhiteList.getLineupMatrix().size()), result.get(0).size());
     }
 
     @Test
     void shouldGetCorrectCartesianProductSizeSingleGameWithWhiteList() {
         List<Set<List<Player>>> playerPools = singleGameOptimizerWithWhiteList.permutePlayerPools(singleGameOptimizerWithWhiteList.getTruncatedPlayerPoolsByPosition());
         Set<List<List<Player>>> result = Sets.cartesianProduct(playerPools);
-        assertEquals(10626, result.size());
+        assertEquals(CombinatoricsUtils.binomialCoefficient(
+                singleGamePlayerList.size() - singleGameWhiteList.size() - singleGameBlackList.size(),
+                singleGameOptimizerWithWhiteList.getLineupMatrix().size()), result.size());
     }
 
     @Test

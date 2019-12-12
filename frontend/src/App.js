@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import './App.css'
 import { Container } from 'react-bootstrap'
-import DatePicker from 'react-date-picker'
 import {createEmptyLineup} from './functions/createEmptyLineup'
 import { getAddToLineupState } from './functions/getAddToLineupState'
 import { getRemoveFromLineupState } from './functions/getRemoveFromLineupState'
@@ -16,31 +15,20 @@ import {ContestSection} from "./ts_objects/ContestSection";
 import {SportSection} from "./ts_objects/SportSection";
 import {injuryAbbreviations} from "./resources/injuryAbbreviations";
 import { CSVLink } from "react-csv";
+import {DateSection} from "./ts_objects/DateSection";
 
 class App extends Component {
 
   constructor(props) {
     super(props);
     this.state = {isLoading: false, isOptimizing: false, loadingText: '', site: '', sport: '', contest: '',
-        date: new Date(), fanduelData: {}, dfsData: {}, projectionsData: {}, contests: [], sports: [],
-        lineup: [], lineupMatrix: [], displayMatrix: [], salaryCap: 0, playerPool: [], filteredPool: null,
-        playerPoolData: [], sortAttribute: 'salary', sortSign: 1, searchText: '', whiteList: [], blackList: [],
+        date: new Date(), dfsData: {}, projectionsData: {}, contests: [], lineup: [], lineupMatrix: [],
+        displayMatrix: [], salaryCap: 0, playerPool: [], filteredPool: null, playerPoolData: [],
+        sortAttribute: 'salary', sortSign: 1, searchText: '', whiteList: [], blackList: [],
         opponentRanks: {}, injuries: {}};
   }
 
-  getFanduelData = async (date) => {
-      this.setState({isLoading: true, loadingText: 'Fanduel data'});
-      const fanduelData = await fetch(apiRoot + '/fanduel?date=' + formatDate(date))
-          .then(response => response.json());
-      this.setState({
-          isLoading: false,
-          date: date,
-          fanduelData: fanduelData,
-          sport: ''
-      });
-  };
-
-  setSite = async (site) => {
+  setSite = (site) => {
       this.setState({
           site: site,
           sport: '',
@@ -52,15 +40,22 @@ class App extends Component {
           blackList: [],
           lineup: []
       });
-      if (site === 'fd')
-          await this.getFanduelData(this.state.date);
+  };
+
+  setDate = async (date) => {
+      await this.setState({date: date});
+      if (this.state.sport)
+          await this.setSport(this.state.sport);
   };
 
   setSport = async (sport) => {
-      let {site, fanduelData} = this.state;
+      let {site, date} = this.state;
       this.setState({isLoading: true, sport: sport, contest: '', lineup: []});
       let dfsData;
       if (site === 'fd') {
+          this.setState({loadingText: 'Fanduel data'});
+          const fanduelData = await fetch(apiRoot + '/fanduel?date=' + formatDate(date))
+              .then(response => response.json());
           dfsData = fanduelData.filter(contest => contest.sport === sport.toUpperCase());
       } else {
           this.setState({loadingText: 'Draftkings data'});
@@ -69,7 +64,7 @@ class App extends Component {
       this.setState({loadingText: sport.toUpperCase() + ' projections'});
       const projectionsData = await fetch(apiRoot + '/projections?sport=' + sport)
           .then(response => response.json());
-      const contests = dfsData.length > 0 ? this.extractContestsFromData(dfsData) : [];
+      const contests = this.extractContestsFromData(dfsData);
       this.setState({loadingText: sport.toUpperCase() + ' opponent ranks'});
       const opponentRanks = await fetch(apiRoot + '/opponentRanks?sport=' + sport)
           .then(response => response.json());
@@ -147,8 +142,20 @@ class App extends Component {
   };
 
   extractContestsFromData = (dataArray) => {
+      let {site, date} = this.state;
       let contestArray = [];
-      dataArray.forEach(contestJson => contestArray.push(contestJson.contest));
+      if (site === 'fd')
+          dataArray.forEach(contestJson => contestArray.push(contestJson.contest));
+      else
+          dataArray
+              .filter(contestJson => {
+                  let contestName = contestJson.contest;
+                  let contestDate = contestName.split(' ')[contestName.split(' ').length - 1].slice(1, -1);
+                  let month = parseInt(contestDate.split('/')[0]);
+                  let day = parseInt(contestDate.split('/')[1]);
+                  return date.getMonth() + 1 === month && date.getDate() === day;
+              })
+              .forEach(contestJson => contestArray.push(contestJson.contest));
       return contestArray;
   };
 
@@ -216,13 +223,7 @@ class App extends Component {
           })
       }).then(response => response.json());
       if (!Array.isArray(playerIds) || playerIds.includes(0)) {
-          let positionsWithIssue = [];
-          playerIds.forEach((id, index) => {
-              if (id === 0)
-                  positionsWithIssue.push(displayMatrix[index]);
-          });
-          alert('Optimal lineup could not be found.\nThe optimizer had a problem finding the following positions: ' +
-              JSON.stringify(positionsWithIssue));
+          alert('Optimal lineup could not be found.');
           this.setState({isOptimizing: false})
       } else {
           let optimalLineup = playerIds.map(playerId => playerPool.find(player => player.playerId === playerId));
@@ -255,7 +256,7 @@ class App extends Component {
               <button style={{backgroundColor: (site === 'dk') ? 'dodgerblue' : 'white'}}
                       onClick={() => this.setSite('dk')}>Draftkings</button>
             </div>
-            {site === 'fd' && <DatePicker onChange={(date) => this.getFanduelData(date)} value={date}/>}
+            <DateSection site={site} date={date} setDate={this.setDate}/>
             <SportSection isLoading={isLoading} site={site} sport={sport} setSport={this.setSport}/>
             <ContestSection isLoading={isLoading} site={site} sport={sport} contest={contest} contests={contests}
                             setContest={this.setContest}/>

@@ -8,10 +8,10 @@ export const ContestSection = (props: {
     contests: string[],
     setContest: (contest: string) => void
 }) =>
-    props.isLoading || (!props.site || !props.sport) ? null : props.contests.length === 0 ?
+    props.isLoading || !props.site || !props.sport ? null : props.contests.length === 0 ?
         <p>No contests are available.</p> :
         <div>
-            <h3>Choose a game contest:</h3>
+            <h3>Choose a contest:</h3>
             <div style={{display: 'flex'}}>
                 {props.contests.map(
                     contestName =>

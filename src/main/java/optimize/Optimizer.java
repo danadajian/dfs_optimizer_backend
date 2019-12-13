@@ -10,6 +10,7 @@ import java.util.stream.IntStream;
 public class Optimizer {
     private List<Player> playerList, listToOptimize, lineupWithWhiteList, optimalLineup;
     private List<String> lineupMatrix, uniquePositions;
+
     private List<Integer> positionThresholds;
     private int salaryCap;
     private double maxPoints;
@@ -26,11 +27,11 @@ public class Optimizer {
                 .collect(Collectors.toList());
         this.lineupWithWhiteList = getLineupWithWhiteList(whiteList, lineupMatrix);
         this.lineupMatrix = lineupMatrixWithoutWhiteListedPositions(lineupWithWhiteList, lineupMatrix);
-        this.uniquePositions = lineupMatrix.stream().distinct().collect(Collectors.toList());
+        this.uniquePositions = this.lineupMatrix.stream().distinct().collect(Collectors.toList());
         this.positionThresholds = positionThresholds(maxCombinations);
     }
 
-    public List<Player> getOptimalLineup() {
+    public List<Player> optimize() {
         List<List<Player>> truncatedPlayerPools = getTruncatedPlayerPoolsByPosition();
         List<Set<List<Player>>> permutedPlayerPools = permutePlayerPools(truncatedPlayerPools);
         findBestLineupInCartesianProduct(permutedPlayerPools);
@@ -39,17 +40,16 @@ public class Optimizer {
 
     public List<List<Player>> getTruncatedPlayerPoolsByPosition() {
         List<List<Player>> truncatedPlayerPools = new ArrayList<>();
-        for (String position : uniquePositions) {
+        for (String lineupPosition : uniquePositions) {
             List<Player> playerPool = listToOptimize.stream()
-                    .filter(player ->
-                                    position.equals("any") ||
-                                    Arrays.asList(position.split(",")).contains(player.position) ||
-                                    Arrays.asList(player.position.split("/")).contains(position)
+                    .filter(player -> lineupPosition.equals("any") ||
+                                    Arrays.asList(lineupPosition.split(",")).contains(player.position) ||
+                                    Arrays.asList(player.position.split("/")).contains(lineupPosition)
                     )
                     .sorted(Comparator.comparingDouble(player -> player.salary / player.projection))
                     .collect(Collectors.toList());
             List<Player> playerPoolSublist = playerPool.subList(0,
-                    Math.min(getPositionThreshold(position), playerPool.size()));
+                    Math.min(getPositionThreshold(lineupPosition), playerPool.size()));
             truncatedPlayerPools.add(playerPoolSublist);
         }
         return truncatedPlayerPools;
@@ -77,7 +77,7 @@ public class Optimizer {
         return listOfPermutations;
     }
 
-    private void findBestLineupInCartesianProduct(List<Set<List<Player>>> playerPools) {
+    public void findBestLineupInCartesianProduct(List<Set<List<Player>>> playerPools) {
         Set<List<List<Player>>> cartesianProduct = Sets.cartesianProduct(playerPools);
         for (List<List<Player>> comboList : cartesianProduct) {
             List<Player> lineup = comboList.stream().flatMap(List::stream).collect(Collectors.toList());
@@ -98,7 +98,7 @@ public class Optimizer {
         return true;
     }
 
-    private void saveLineupIfBetter(List<Player> lineup) {
+    public void saveLineupIfBetter(List<Player> lineup) {
         double totalPoints = totalProjection(lineup);
         int totalSalary = totalSalary(lineup);
         if (totalSalary <= salaryCap && totalPoints > maxPoints) {
@@ -149,11 +149,11 @@ public class Optimizer {
         return newLineupMatrix;
     }
 
-    private double totalProjection(List<Player> lineup) {
+    public double totalProjection(List<Player> lineup) {
         return lineup.stream().mapToDouble(player -> player.projection).sum();
     }
 
-    private int totalSalary(List<Player> lineup) {
+    public int totalSalary(List<Player> lineup) {
         return lineup.stream().mapToInt(player -> player.salary).sum();
     }
 
@@ -217,5 +217,37 @@ public class Optimizer {
 
     public List<String> getLineupMatrix() {
         return lineupMatrix;
+    }
+
+    public void setListToOptimize(List<Player> listToOptimize) {
+        this.listToOptimize = listToOptimize;
+    }
+
+    public void setLineupMatrix(List<String> lineupMatrix) {
+        this.lineupMatrix = lineupMatrix;
+    }
+
+    public void setUniquePositions(List<String> uniquePositions) {
+        this.uniquePositions = uniquePositions;
+    }
+
+    public void setPositionThresholds(List<Integer> positionThresholds) {
+        this.positionThresholds = positionThresholds;
+    }
+
+    public void setOptimalLineup(List<Player> optimalLineup) {
+        this.optimalLineup = optimalLineup;
+    }
+
+    public void setMaxPoints(double maxPoints) {
+        this.maxPoints = maxPoints;
+    }
+
+    public void setSalaryCap(int salaryCap) {
+        this.salaryCap = salaryCap;
+    }
+
+    public List<Player> getOptimalLineup() {
+        return this.optimalLineup;
     }
 }

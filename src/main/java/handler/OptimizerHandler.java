@@ -1,17 +1,27 @@
 package handler;
 
-import optimize.Optimizer;
-import optimize.Player;
+import optimize.*;
 
 import java.util.*;
 import java.util.stream.Collectors;
 
 public class OptimizerHandler {
     public List<Integer> handleRequest(Map<String, Object> input) {
+        List<Player> lineup = new ArrayList<>();
         List<Player> playerList = new ArrayList<>();
-        List<Player> whiteList = new ArrayList<>();
         List<Player> blackList = new ArrayList<>();
-        List<String> lineupMatrix = new ArrayList<>();
+        List<String> lineupPositions = new ArrayList<>();
+        for (Object object : (List) input.get("lineup")) {
+            Map playerMap = (Map) object;
+            int playerId = (int) playerMap.get("playerId");
+            if (playerId > 0) {
+                String position = (String) playerMap.get("position");
+                double projection = ((Number) playerMap.get("projection")).doubleValue();
+                int salary = (int) playerMap.get("salary");
+                lineup.add(new Player(playerId, position, projection, salary));
+            } else
+                lineup.add(new Player(playerId));
+        }
         for (Object object : (List) input.get("players")) {
             Map playerMap = (Map) object;
             int playerId = (int) playerMap.get("playerId");
@@ -20,21 +30,22 @@ public class OptimizerHandler {
             int salary = (int) playerMap.get("salary");
             playerList.add(new Player(playerId, position, projection, salary));
         }
-        for (Object object : (List) input.get("whiteList")) {
-            int playerId = (int) object;
-            whiteList.add(new Player(playerId));
+        for (Object object : (List) input.get("lineupPositions")) {
+            String position = (String) object;
+            lineupPositions.add(position);
         }
         for (Object object : (List) input.get("blackList")) {
             int playerId = (int) object;
             blackList.add(new Player(playerId));
         }
-        for (Object object : (List) input.get("lineupMatrix")) {
-            String position = (String) object;
-            lineupMatrix.add(position);
-        }
         int salaryCap = (int) input.get("salaryCap");
-        Optimizer optimizer = new Optimizer(playerList, whiteList, blackList, lineupMatrix, salaryCap, 3000000);
-        List<Player> optimalLineup = optimizer.optimize();
-        return optimalLineup.stream().map(player -> player.playerId).collect(Collectors.toList());
+        ParameterAdjuster parameterAdjuster = new ParameterAdjuster(lineup, playerList, blackList, lineupPositions, salaryCap);
+        List<Player> newPlayerList = parameterAdjuster.adjustPlayerList();
+        List<String> newLineupPositions = parameterAdjuster.adjustLineupPositions();
+        int newSalaryCap = parameterAdjuster.adjustSalaryCap();
+        LineupMatrix lineupMatrix = new LineupMatrix(newLineupPositions, 3000000);
+        Optimizer optimizer = new Optimizer(newPlayerList, lineupMatrix, newSalaryCap);
+        List<Player> optimalPlayers = optimizer.optimize();
+        return new LineupCompiler(lineup, optimalPlayers).outputLineup();
     }
 }

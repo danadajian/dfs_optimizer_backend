@@ -22,7 +22,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {isLoading: false, isOptimizing: false, loadingText: '', site: '', sport: '', contest: '',
-        date: new Date(), dfsData: {}, projectionsData: {}, contests: [], lineup: [], lineupMatrix: [],
+        date: new Date(), dfsData: {}, projectionsData: {}, contests: [], lineup: [], lineupPositions: [],
         displayMatrix: [], salaryCap: 0, playerPool: [], filteredPool: null, playerPoolData: [],
         sortAttribute: 'salary', sortSign: 1, searchText: '', whiteList: [], blackList: [],
         opponentRanks: {}, injuries: {}};
@@ -92,12 +92,12 @@ class App extends Component {
       if (Object.keys(projectionsData).length === 0)
           alert('There was a problem obtaining projections data.');
       let gameType = contest.includes('@') || contest.includes('vs') ? 'Single Game' : 'Classic';
-      let lineupMatrix = lineupStructures[site][sport][gameType].lineupMatrix;
+      let lineupPositions = lineupStructures[site][sport][gameType].lineupPositions;
       let displayMatrix = lineupStructures[site][sport][gameType].displayMatrix;
       let salaryCap = lineupStructures[site][sport][gameType].salaryCap;
       let dfsPlayers = dfsData.filter(contestJson => contestJson.contest === contest)[0]['players'];
       let playerPoolData = this.combineData(dfsPlayers, projectionsData);
-      let emptyLineup = createEmptyLineup(lineupMatrix, displayMatrix);
+      let emptyLineup = createEmptyLineup(lineupPositions, displayMatrix);
       this.setState({
           contest: contest,
           playerPool: playerPoolData,
@@ -106,7 +106,7 @@ class App extends Component {
           whiteList: [],
           blackList: [],
           lineup: emptyLineup,
-          lineupMatrix: lineupMatrix,
+          lineupPositions: lineupPositions,
           displayMatrix: displayMatrix,
           salaryCap: salaryCap
       });
@@ -179,9 +179,9 @@ class App extends Component {
   };
 
   clearLineup = () => {
-      let {lineupMatrix, displayMatrix} = this.state;
+      let {lineupPositions, displayMatrix} = this.state;
       this.setState({
-          lineup: createEmptyLineup(lineupMatrix, displayMatrix),
+          lineup: createEmptyLineup(lineupPositions, displayMatrix),
           whiteList: [],
           blackList: []
       })
@@ -209,16 +209,16 @@ class App extends Component {
   };
 
   generateOptimalLineup = async () => {
-      let {playerPool, whiteList, blackList, lineupMatrix, displayMatrix, salaryCap, playerPoolData} = this.state;
+      let {lineup, playerPool, blackList, lineupPositions, displayMatrix, salaryCap, playerPoolData} = this.state;
       this.setState({isOptimizing: true});
       const playerIds = await fetch(apiRoot + '/optimize', {
           method: 'POST',
           headers: {'Content-Type': 'application/json'},
           body: JSON.stringify({
+              'lineup': lineup,
               'players': playerPool,
-              'whiteList': whiteList,
               'blackList': blackList,
-              'lineupMatrix': lineupMatrix,
+              'lineupPositions': lineupPositions,
               'salaryCap': salaryCap
           })
       }).then(response => response.json());

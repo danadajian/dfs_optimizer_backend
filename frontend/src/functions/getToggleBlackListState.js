@@ -1,5 +1,5 @@
 function getToggleBlackListState(playerIndex, state) {
-    let {playerPool, lineup, whiteList, blackList, lineupMatrix, displayMatrix} = state;
+    let {playerPool, lineup, whiteList, blackList, lineupPositions, displayMatrix} = state;
     let blackListedPlayer = playerPool[playerIndex];
     if (blackList.includes(blackListedPlayer.playerId)) {
         blackList.splice(blackList.indexOf(blackListedPlayer.playerId), 1);
@@ -12,7 +12,7 @@ function getToggleBlackListState(playerIndex, state) {
         if (playerInLineup) {
             let lineupIndex = lineup.indexOf(playerInLineup);
             lineup[lineupIndex] = {
-                position: lineupMatrix[lineupIndex],
+                position: lineupPositions[lineupIndex],
                 displayPosition: displayMatrix[lineupIndex],
                 team: '',
                 name: '',

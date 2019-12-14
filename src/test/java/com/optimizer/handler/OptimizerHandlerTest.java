@@ -9,7 +9,6 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.*;
-import java.util.stream.Collectors;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -42,8 +41,8 @@ class OptimizerHandlerTest {
         assertEquals(new HashSet<>(Arrays.asList(828743, 456613, 750846, 653699, 877790, 821389, 600191, 592914, 323)),
                 result);
         assertTrue(result.contains(456613));
-        assertTrue(!result.contains(868199));
-        assertTrue(!result.contains(0));
+        assertFalse(result.contains(868199));
+        assertFalse(result.contains(0));
     }
 
     @Test
@@ -57,7 +56,7 @@ class OptimizerHandlerTest {
         List<Integer> result = optimizerHandler.handleRequest(singleGameWhiteAndBlackListTest);
         assertEquals(Arrays.asList(456613, 877745, 473742, 448132, 591586), result);
         assertTrue(result.contains(456613));
-        assertTrue(!result.contains(868199));
-        assertTrue(!result.contains(406186));
+        assertFalse(result.contains(868199));
+        assertFalse(result.contains(406186));
     }
 }

@@ -18,9 +18,9 @@ describe('can toggle blacklist', () => {
             {name: '', playerId: '', position: 'RB'},
             {name: '', playerId: '', position: 'RB,WR,TE', displayPosition: 'FLEX'}
         ];
-        let lineupMatrix = ['QB', 'RB', 'RB', 'RB,WR,TE'];
+        let lineupPositions = ['QB', 'RB', 'RB', 'RB,WR,TE'];
         let displayMatrix = ['QB', 'RB', 'RB', 'FLEX'];
-        let state = {playerPool, lineup, whiteList, blackList, lineupMatrix, displayMatrix};
+        let state = {playerPool, lineup, whiteList, blackList, lineupPositions, displayMatrix};
         expect(getToggleBlackListState(5, state)).toMatchObject({
             lineup: [
                 {name: '', playerId: '', position: 'QB'},
@@ -51,9 +51,9 @@ describe('can toggle blacklist', () => {
             {name: '', playerId: '', position: 'RB'},
             {name: '', playerId: '', position: 'RB,WR,TE', displayPosition: 'FLEX'}
         ];
-        let lineupMatrix = ['QB', 'RB', 'RB', 'RB,WR,TE'];
+        let lineupPositions = ['QB', 'RB', 'RB', 'RB,WR,TE'];
         let displayMatrix = ['QB', 'RB', 'RB', 'FLEX'];
-        let state = {playerPool, lineup, whiteList, blackList, lineupMatrix, displayMatrix};
+        let state = {playerPool, lineup, whiteList, blackList, lineupPositions, displayMatrix};
         expect(getToggleBlackListState(5, state)).toMatchObject({
             lineup: [
                 {name: '', playerId: '', position: 'QB'},

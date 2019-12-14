@@ -1,6 +1,6 @@
-function createEmptyLineup(lineupMatrix, displayMatrix) {
-    return lineupMatrix.map((position, index) => ({
-        'playerId': '',
+function createEmptyLineup(lineupPositions, displayMatrix) {
+    return lineupPositions.map((position, index) => ({
+        'playerId': 0,
         'position': position,
         'displayPosition': displayMatrix[index],
         'team': '',

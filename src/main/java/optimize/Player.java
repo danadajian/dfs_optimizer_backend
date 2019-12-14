@@ -30,17 +30,6 @@ public class Player {
         this.salary = salary;
     }
 
-    public Player(String playerString) {
-        Map<String, Object> map = Arrays.stream(playerString.replace("{", "")
-                .replace("}", "").replace(" ", "").split(","))
-                .map(s -> s.split("="))
-                .collect(Collectors.toMap(s -> s[0], s -> s[1]));
-        this.playerId = Integer.parseInt((String) map.get("playerId"));
-        this.position = (String) map.get("position");
-        this.projection = Double.parseDouble((String) map.get("projection"));
-        this.salary = Integer.parseInt((String) map.get("salary"));
-    }
-
     @Override
     public boolean equals(Object object) {
         return object instanceof Player && this.playerId == ((Player) object).playerId;

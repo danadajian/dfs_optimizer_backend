@@ -2,11 +2,11 @@ import { createEmptyLineup } from '../functions/createEmptyLineup'
 
 describe('gets empty lineup from matrix', () => {
     test('gets empty lineup', () => {
-        let lineupMatrix = ['QB', 'RB', 'RB', 'WR', 'WR', 'WR', 'TE', 'RB,WR,TE', 'D/ST'];
+        let lineupPositions = ['QB', 'RB', 'RB', 'WR', 'WR', 'WR', 'TE', 'RB,WR,TE', 'D/ST'];
         let displayMatrix = ['QB', 'RB', 'RB', 'WR', 'WR', 'WR', 'TE', 'FLEX', 'D/ST'];
         let expectedJson = [
             {
-                'playerId': '',
+                'playerId': 0,
                 'position': 'QB',
                 'displayPosition': 'QB',
                 'team': '',
@@ -17,7 +17,7 @@ describe('gets empty lineup from matrix', () => {
                 'gameDate': ''
             },
             {
-                'playerId': '',
+                'playerId': 0,
                 'position': 'RB',
                 'displayPosition': 'RB',
                 'team': '',
@@ -28,7 +28,7 @@ describe('gets empty lineup from matrix', () => {
                 'gameDate': ''
             },
             {
-                'playerId': '',
+                'playerId': 0,
                 'position': 'RB',
                 'displayPosition': 'RB',
                 'team': '',
@@ -39,7 +39,7 @@ describe('gets empty lineup from matrix', () => {
                 'gameDate': ''
             },
             {
-                'playerId': '',
+                'playerId': 0,
                 'position': 'WR',
                 'displayPosition': 'WR',
                 'team': '',
@@ -50,7 +50,7 @@ describe('gets empty lineup from matrix', () => {
                 'gameDate': ''
             },
             {
-                'playerId': '',
+                'playerId': 0,
                 'position': 'WR',
                 'displayPosition': 'WR',
                 'team': '',
@@ -61,7 +61,7 @@ describe('gets empty lineup from matrix', () => {
                 'gameDate': ''
             },
             {
-                'playerId': '',
+                'playerId': 0,
                 'position': 'WR',
                 'displayPosition': 'WR',
                 'team': '',
@@ -72,7 +72,7 @@ describe('gets empty lineup from matrix', () => {
                 'gameDate': ''
             },
             {
-                'playerId': '',
+                'playerId': 0,
                 'position': 'TE',
                 'displayPosition': 'TE',
                 'team': '',
@@ -83,7 +83,7 @@ describe('gets empty lineup from matrix', () => {
                 'gameDate': ''
             },
             {
-                'playerId': '',
+                'playerId': 0,
                 'position': 'RB,WR,TE',
                 'displayPosition': 'FLEX',
                 'team': '',
@@ -94,7 +94,7 @@ describe('gets empty lineup from matrix', () => {
                 'gameDate': ''
             },
             {
-                'playerId': '',
+                'playerId': 0,
                 'position': 'D/ST',
                 'displayPosition': 'D/ST',
                 'team': '',
@@ -105,6 +105,6 @@ describe('gets empty lineup from matrix', () => {
                 'gameDate': ''
             }
         ];
-        expect(createEmptyLineup(lineupMatrix, displayMatrix)).toEqual(expectedJson);
+        expect(createEmptyLineup(lineupPositions, displayMatrix)).toEqual(expectedJson);
     });
 });

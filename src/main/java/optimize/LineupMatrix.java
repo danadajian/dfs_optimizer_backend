@@ -39,7 +39,7 @@ public class LineupMatrix {
                 .filter(index -> frequencyMatrix.get(index) == positionFrequency(position))
                 .map(positionThresholds::get)
                 .findFirst()
-                .orElse(-1);
+                .orElse(0);
     }
 
     public List<Integer> positionThresholds() {
@@ -49,6 +49,8 @@ public class LineupMatrix {
                 .collect(Collectors.toList());
         boolean continueIncrement = true;
         int positionIndex = positionThresholds.size() - 1;
+        if (positionIndex < 0)
+            return positionThresholds;
         while (continueIncrement) {
             long product = 1;
             for (int i = 0; i < positionThresholds.size(); i++) {

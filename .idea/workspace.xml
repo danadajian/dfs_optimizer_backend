@@ -2,35 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="352060b1-b9b3-400c-8051-85a2b23146fe" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/optimize/LineupCompiler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/optimize/LineupMatrix.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/optimize/ParameterAdjuster.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/optimizer/optimize/LineupCompilerTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/optimizer/optimize/LineupMatrixTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/optimizer/optimize/ParameterAdjusterTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/deploy.sh" beforeDir="false" afterPath="$PROJECT_DIR$/deploy.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/__tests__/createEmptyLineup.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/__tests__/createEmptyLineup.test.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/__tests__/getRemoveFromLineupState.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/__tests__/getRemoveFromLineupState.test.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/__tests__/getToggleBlackListState.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/__tests__/getToggleBlackListState.test.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/functions/createEmptyLineup.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/functions/createEmptyLineup.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/functions/getRemoveFromLineupState.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/functions/getRemoveFromLineupState.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/functions/getToggleBlackListState.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/functions/getToggleBlackListState.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/resources/lineupStructures.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/resources/lineupStructures.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/handler/OptimizerHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/handler/OptimizerHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/optimize/LineupCompiler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/optimize/LineupCompiler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/optimize/LineupMatrix.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/optimize/LineupMatrix.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/optimize/Optimizer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/optimize/Optimizer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/optimize/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/optimize/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/optimizerHandlerBody.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/optimizerHandlerBody.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/optimizerHandlerSingleGameBody.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/optimizerHandlerSingleGameBody.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/optimizerHandlerSingleGameWhiteAndBlackListBody.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/optimizerHandlerSingleGameWhiteAndBlackListBody.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/optimizerHandlerWhiteAndBlackListBody.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/optimizerHandlerWhiteAndBlackListBody.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/optimizer/handler/OptimizerHandlerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/optimizer/handler/OptimizerHandlerTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/optimizer/optimize/OptimizerIntegrationTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/optimizer/optimize/OptimizerSingleGameIntegrationTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/optimizer/optimize/OptimizerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/optimizer/optimize/OptimizerTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/optimizer/optimize/PlayerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/optimizer/optimize/PlayerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/optimizer/optimize/LineupCompilerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/optimizer/optimize/LineupCompilerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/optimizer/optimize/LineupMatrixTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/optimizer/optimize/LineupMatrixTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -142,22 +121,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="OptimizerHandlerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="DFS-Optimizer-Web" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.optimizer.handler.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.optimizer.handler" />
-      <option name="MAIN_CLASS_NAME" value="com.optimizer.handler.OptimizerHandlerTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="OptimizerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="LineupCompilerTest.shouldReturnFullWhiteListedLineup" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="DFS-Optimizer-Web" />
       <extension name="coverage">
         <pattern>
@@ -166,13 +130,14 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="com.optimizer.optimize" />
-      <option name="MAIN_CLASS_NAME" value="com.optimizer.optimize.OptimizerTest" />
-      <option name="TEST_OBJECT" value="class" />
+      <option name="MAIN_CLASS_NAME" value="com.optimizer.optimize.LineupCompilerTest" />
+      <option name="METHOD_NAME" value="shouldReturnFullWhiteListedLineup" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="com.optimizer.optimize in DFS-Optimizer-Web" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="LineupMatrixTest.shouldReturnPositionThreshold" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="DFS-Optimizer-Web" />
       <extension name="coverage">
         <pattern>
@@ -181,7 +146,25 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="com.optimizer.optimize" />
-      <option name="TEST_OBJECT" value="package" />
+      <option name="MAIN_CLASS_NAME" value="com.optimizer.optimize.LineupMatrixTest" />
+      <option name="METHOD_NAME" value="shouldReturnPositionThreshold" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="LineupMatrixTest.shouldReturnValidPositionThresholds" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="DFS-Optimizer-Web" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.optimizer.optimize.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.optimizer.optimize" />
+      <option name="MAIN_CLASS_NAME" value="com.optimizer.optimize.LineupMatrixTest" />
+      <option name="METHOD_NAME" value="shouldReturnValidPositionThresholds" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -195,10 +178,9 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Bash.deploy.sh" />
-      <item itemvalue="JUnit.OptimizerTest" />
-      <item itemvalue="JUnit.com.optimizer.optimize in DFS-Optimizer-Web" />
-      <item itemvalue="JUnit.OptimizerHandlerTest" />
+      <item itemvalue="JUnit.LineupMatrixTest.shouldReturnValidPositionThresholds" />
+      <item itemvalue="JUnit.LineupMatrixTest.shouldReturnPositionThreshold" />
+      <item itemvalue="JUnit.LineupCompilerTest.shouldReturnFullWhiteListedLineup" />
       <item itemvalue="JUnit.All in DFS-Optimizer-Web" />
       <item itemvalue="Shell Script.deploy.sh" />
     </list>
@@ -206,9 +188,9 @@
       <list>
         <item itemvalue="Shell Script.deploy.sh" />
         <item itemvalue="JUnit.All in DFS-Optimizer-Web" />
-        <item itemvalue="JUnit.OptimizerTest" />
-        <item itemvalue="JUnit.com.optimizer.optimize in DFS-Optimizer-Web" />
-        <item itemvalue="JUnit.OptimizerHandlerTest" />
+        <item itemvalue="JUnit.LineupCompilerTest.shouldReturnFullWhiteListedLineup" />
+        <item itemvalue="JUnit.LineupMatrixTest.shouldReturnPositionThreshold" />
+        <item itemvalue="JUnit.LineupMatrixTest.shouldReturnValidPositionThresholds" />
       </list>
     </recent_temporary>
   </component>
@@ -269,7 +251,9 @@
       <workItem from="1576282117460" duration="13706000" />
       <workItem from="1576334253743" duration="6779000" />
       <workItem from="1576341134457" duration="19000" />
-      <workItem from="1576341169323" duration="579000" />
+      <workItem from="1576341169323" duration="814000" />
+      <workItem from="1576420838193" duration="4217000" />
+      <workItem from="1576427927915" duration="2030000" />
     </task>
     <servers />
   </component>
@@ -285,6 +269,9 @@
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
+  <component name="UnknownFeatures">
+    <option featureType="com.intellij.configurationType" implementationName="BashConfigurationType" />
+  </component>
   <component name="VcsManagerConfiguration">
     <ignored-roots>
       <path value="$PROJECT_DIR$/DFS-Optimizer-Web" />
@@ -295,10 +282,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="552" y="178" key="#Plugins/0.0.1920.1040/1920.0.1280.680@0.0.1920.1040" timestamp="1576341150188" />
-    <state x="414" y="174" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1576341750789">
+    <state x="414" y="174" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1576427985245">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="414" y="174" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040/1920.0.1280.680@0.0.1920.1040" timestamp="1576341750789" />
+    <state x="414" y="174" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040/1920.0.1280.680@0.0.1920.1040" timestamp="1576427985245" />
     <state x="765" y="220" key="#com.intellij.ide.util.MemberChooser" timestamp="1576259601735">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -307,26 +294,30 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="808" y="408" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/0.0.1920.1040/1920.0.1280.680@0.0.1920.1040" timestamp="1576255288293" />
-    <state x="740" y="274" key="FileChooserDialogImpl" timestamp="1576341749804">
+    <state x="737" y="350" key="#com.intellij.refactoring.move.moveInstanceMethod.MoveInstanceMethodDialog" timestamp="1576424927717">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="740" y="274" key="FileChooserDialogImpl/0.0.1920.1040/1920.0.1280.680@0.0.1920.1040" timestamp="1576341749804" />
-    <state width="1877" height="195" key="GridCell.Tab.0.bottom" timestamp="1576341312283">
+    <state x="737" y="350" key="#com.intellij.refactoring.move.moveInstanceMethod.MoveInstanceMethodDialog/0.0.1920.1040/1920.0.1280.680@0.0.1920.1040" timestamp="1576424927717" />
+    <state x="740" y="274" key="FileChooserDialogImpl" timestamp="1576427984341">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="195" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1280.680@0.0.1920.1040" timestamp="1576341312283" />
-    <state width="1877" height="195" key="GridCell.Tab.0.center" timestamp="1576341312283">
+    <state x="740" y="274" key="FileChooserDialogImpl/0.0.1920.1040/1920.0.1280.680@0.0.1920.1040" timestamp="1576427984341" />
+    <state width="1877" height="195" key="GridCell.Tab.0.bottom" timestamp="1576427913435">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="195" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1280.680@0.0.1920.1040" timestamp="1576341312283" />
-    <state width="1877" height="195" key="GridCell.Tab.0.left" timestamp="1576341312283">
+    <state width="1877" height="195" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1280.680@0.0.1920.1040" timestamp="1576427913435" />
+    <state width="1877" height="195" key="GridCell.Tab.0.center" timestamp="1576427913434">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="195" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1280.680@0.0.1920.1040" timestamp="1576341312283" />
-    <state width="1877" height="195" key="GridCell.Tab.0.right" timestamp="1576341312283">
+    <state width="1877" height="195" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1280.680@0.0.1920.1040" timestamp="1576427913434" />
+    <state width="1877" height="195" key="GridCell.Tab.0.left" timestamp="1576427913434">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="195" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1280.680@0.0.1920.1040" timestamp="1576341312283" />
+    <state width="1877" height="195" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1280.680@0.0.1920.1040" timestamp="1576427913434" />
+    <state width="1877" height="195" key="GridCell.Tab.0.right" timestamp="1576427913434">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="195" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1280.680@0.0.1920.1040" timestamp="1576427913434" />
     <state width="1877" height="278" key="GridCell.Tab.1.bottom" timestamp="1576341121195">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

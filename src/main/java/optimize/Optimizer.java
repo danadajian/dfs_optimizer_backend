@@ -9,7 +9,6 @@ import java.util.stream.Collectors;
 public class Optimizer {
     private List<Player> playerList;
     private LineupMatrix lineupMatrix;
-
     private int salaryCap;
 
     public Optimizer(List<Player> playerList, LineupMatrix lineupMatrix, int salaryCap) {

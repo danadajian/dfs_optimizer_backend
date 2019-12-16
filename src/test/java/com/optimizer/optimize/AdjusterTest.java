@@ -1,13 +1,13 @@
 package com.optimizer.optimize;
 
-import optimize.ParameterAdjuster;
+import optimize.Adjuster;
 import optimize.Player;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 import java.util.Arrays;
 import java.util.List;
 
-public class ParameterAdjusterTest {
+public class AdjusterTest {
     private Player qb1 = new Player(1, "QB", 6.9, 6900);
     private Player qb2 = new Player(2, "QB", 17.0, 6100);
     private Player rb1 = new Player(3, "RB", 15.0, 5000);
@@ -43,23 +43,23 @@ public class ParameterAdjusterTest {
 
     private List<String> startingPositions = Arrays.asList("QB", "RB", "WR", "TE", "D");
 
-    ParameterAdjuster parameterAdjuster = new ParameterAdjuster(lineup, playerList, blackList, startingPositions, 60000);
+    Adjuster adjuster = new Adjuster(lineup, playerList, blackList, startingPositions, 60000);
 
     @Test
     void shouldAdjustPlayerList() {
-        List<Player> result = parameterAdjuster.adjustPlayerList();
+        List<Player> result = adjuster.adjustedPlayerList();
         assertEquals(Arrays.asList(qb1, qb2, rb1, rb6, wr1, wr2, wr3, wr4, te1, te2, dst1, dst2), result);
     }
 
     @Test
     void shouldAdjustLineupPositions() {
-        List<String> result = parameterAdjuster.adjustLineupPositions();
+        List<String> result = adjuster.adjustedLineupPositions();
         assertEquals(Arrays.asList("QB", "WR", "D"), result);
     }
 
     @Test
     void shouldAdjustSalaryCap() {
-        int result = parameterAdjuster.adjustSalaryCap();
+        int result = adjuster.adjustedSalaryCap();
         assertEquals(60000 - rb2.salary - rb3.salary, result);
 
     }

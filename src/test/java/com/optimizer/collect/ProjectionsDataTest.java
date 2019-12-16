@@ -23,13 +23,13 @@ class ProjectionsDataTest implements MockResponses {
 
     private ApiClient mockApi = mock(ApiClient.class);
     private EventData nflEventData = new EventData(mockApi, "nfl");
-    private ProjectionsData nflProjectionsData = new ProjectionsData(mockApi, "nfl");
+    private ProjectionsData nflProjectionsData = new ProjectionsData(mockApi);
     private EventData nhlEventData = new EventData(mockApi, "nhl");
     private ParticipantsData nhlParticipantsData = new ParticipantsData(mockApi, "nhl");
-    private ProjectionsData nhlProjectionsData = new ProjectionsData(mockApi, "nhl");
+    private ProjectionsData nhlProjectionsData = new ProjectionsData(mockApi);
     private EventData nbaEventData = new EventData(mockApi, "nba");
     private ParticipantsData nbaParticipantsData = new ParticipantsData(mockApi, "nba");
-    private ProjectionsData projectionsData = new ProjectionsData(mockApi, "nba");
+    private ProjectionsData projectionsData = new ProjectionsData(mockApi);
     private String fakeNFLProjectionsResponse = new String(Files.readAllBytes(Paths.get("src/main/resources/nflProjectionsResponse.txt")));
     private String fakeNFLEventsResponse = new String(Files.readAllBytes(Paths.get("src/main/resources/nflEventsResponse.txt")));
     private String fakeNFLOddsResponse = new String(Files.readAllBytes(Paths.get("src/main/resources/nflOddsResponse.txt")));
@@ -147,7 +147,7 @@ class ProjectionsDataTest implements MockResponses {
 
     @Test
     void shouldGetNBAProjectionsFromThisWeek() {
-        Map<Integer, Map<String, Object>> result = projectionsData.getStandardFantasyProjections();
+        Map<Integer, Map<String, Object>> result = projectionsData.getStandardFantasyProjections("nba");
         verify(mockApi, times(1)).getCurrentEvents("nba");
         verify(mockApi, times(1)).getParticipants("nba");
         assertEquals("Al Horford", result.get(280587).get("name"));

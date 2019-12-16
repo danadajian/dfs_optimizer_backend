@@ -11,16 +11,14 @@ public class DraftKingsData {
     private final List<String> supportedGameTypes = Arrays.asList("Classic", "Showdown Captain Mode", "Showdown");
     private final List<String> supportedContests = Arrays.asList(" (Thu)", " (Thu-Mon)", " (Sun-Mon)");
     private ApiClient apiClient;
-    private String sport;
 
-    public DraftKingsData(ApiClient apiClient, String sport) {
+    public DraftKingsData(ApiClient apiClient) {
         this.apiClient = apiClient;
-        this.sport = sport;
     }
 
-    public List<Map<String, Object>> getAllContestData() {
+    public List<Map<String, Object>> getAllContestData(String sport) {
         List<Map<String, Object>> allContestInfo = new ArrayList<>();
-        getValidContests().forEach((JSONObject event) -> {
+        getValidContests(sport).forEach((JSONObject event) -> {
             Map<String, Object> contestMap = new HashMap<>();
             String contest;
             String gameDate = event.getJSONArray("competitions").getJSONObject(0).getString("startTime");
@@ -50,7 +48,7 @@ public class DraftKingsData {
         return allContestInfo;
     }
 
-    public List<JSONObject> getValidContests() {
+    public List<JSONObject> getValidContests(String sport) {
         String apiResponse = apiClient.getDraftKingsData(sport);
         List<JSONObject> validContests = new ArrayList<>();
         JSONArray contests = new JSONObject(apiResponse).getJSONArray("draftPool");

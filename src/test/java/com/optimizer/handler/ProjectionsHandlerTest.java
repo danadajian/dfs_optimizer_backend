@@ -1,48 +1,60 @@
 package com.optimizer.handler;
 
+import collect.ProjectionsData;
 import handler.ProjectionsHandler;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
 
 import java.util.HashMap;
 import java.util.Map;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.*;
 
 class ProjectionsHandlerTest {
 
-//    @Test
-//    void shouldHandleRequestForMLBProjections() {
-//        Map<String, String> testMap = new HashMap<>();
-//        testMap.put("sport", "mlb");
-//        Map<Integer, Map<String, Object>> result = new ProjectionsHandler().handleRequest(testMap);
-//        System.out.println(result);
-//        assertEquals(0, result.size());
-//    }
-//
-//    @Test
-//    void shouldHandleRequestForNFLProjections() {
-//        Map<String, String> testMap = new HashMap<>();
-//        testMap.put("sport", "nfl");
-//        Map<Integer, Map<String, Object>> result = new ProjectionsHandler().handleRequest(testMap);
-//        System.out.println(result);
-//        assertTrue(result.size() > 0);
-//    }
-//
-//    @Test
-//    void shouldHandleRequestForNBAProjections() {
-//        Map<String, String> testMap = new HashMap<>();
-//        testMap.put("sport", "nba");
-//        Map<Integer, Map<String, Object>> result = new ProjectionsHandler().handleRequest(testMap);
-//        System.out.println(result);
-//        assertTrue(result.size() > 0);
-//    }
-//
-//    @Test
-//    void shouldHandleRequestForNHLProjections() {
-//        Map<String, String> testMap = new HashMap<>();
-//        testMap.put("sport", "nhl");
-//        Map<Integer, Map<String, Object>> result = new ProjectionsHandler().handleRequest(testMap);
-//        System.out.println(result);
-//        assertTrue(result.size() > 0);
-//    }
+    @Mock
+    ProjectionsData projectionsData;
+
+    @InjectMocks
+    ProjectionsHandler projectionsHandler;
+
+    @BeforeEach
+    void setUp() {
+        MockitoAnnotations.initMocks(this);
+    }
+
+    @Test
+    void shouldHandleRequestForMLBProjections() {
+        Map<String, String> testMap = new HashMap<>();
+        testMap.put("sport", "mlb");
+        projectionsHandler.handleRequest(testMap);
+        verify(projectionsData).getStandardFantasyProjections("mlb");
+    }
+
+    @Test
+    void shouldHandleRequestForNFLProjections() {
+        Map<String, String> testMap = new HashMap<>();
+        testMap.put("sport", "nfl");
+        projectionsHandler.handleRequest(testMap);
+        verify(projectionsData).getNFLFantasyProjections();
+    }
+
+    @Test
+    void shouldHandleRequestForNBAProjections() {
+        Map<String, String> testMap = new HashMap<>();
+        testMap.put("sport", "nba");
+        projectionsHandler.handleRequest(testMap);
+        verify(projectionsData).getStandardFantasyProjections("nba");
+    }
+
+    @Test
+    void shouldHandleRequestForNHLProjections() {
+        Map<String, String> testMap = new HashMap<>();
+        testMap.put("sport", "nhl");
+        projectionsHandler.handleRequest(testMap);
+        verify(projectionsData).getNHLFantasyProjections();
+    }
 }

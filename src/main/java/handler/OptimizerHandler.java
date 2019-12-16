@@ -3,48 +3,49 @@ package handler;
 import optimize.*;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 public class OptimizerHandler {
+    @SuppressWarnings("unchecked")
     public List<Integer> handleRequest(Map<String, Object> input) {
+        List<Map<String, Object>> lineupInput = (List<Map<String, Object>>) input.get("lineup");
+        List<Map<String, Object>> playersInput = (List<Map<String, Object>>) input.get("players");
+        List<Integer> blackListInput = (List<Integer>) input.get("blackList");
+        List<String> lineupPositionsInput = (List<String>) input.get("lineupPositions");
         List<Player> lineup = new ArrayList<>();
         List<Player> playerList = new ArrayList<>();
         List<Player> blackList = new ArrayList<>();
-        List<String> lineupPositions = new ArrayList<>();
-        for (Object object : (List) input.get("lineup")) {
-            Map playerMap = (Map) object;
+        for (Map<String, Object> playerMap : lineupInput) {
             int playerId = (int) playerMap.get("playerId");
-            if (playerId > 0) {
-                String position = (String) playerMap.get("position");
-                double projection = ((Number) playerMap.get("projection")).doubleValue();
-                int salary = (int) playerMap.get("salary");
-                lineup.add(new Player(playerId, position, projection, salary));
-            } else
-                lineup.add(new Player(playerId));
+            if (playerId == 0)
+                lineup.add(new Player());
+            else
+                lineup.add(
+                        new Player(
+                                playerId,
+                                (String) playerMap.get("position"),
+                                ((Number) playerMap.get("projection")).doubleValue(),
+                                (int) playerMap.get("salary")
+                        )
+                );
         }
-        for (Object object : (List) input.get("players")) {
-            Map playerMap = (Map) object;
-            int playerId = (int) playerMap.get("playerId");
-            String position = (String) playerMap.get("position");
-            double projection = ((Number) playerMap.get("projection")).doubleValue();
-            int salary = (int) playerMap.get("salary");
-            playerList.add(new Player(playerId, position, projection, salary));
-        }
-        for (Object object : (List) input.get("lineupPositions")) {
-            String position = (String) object;
-            lineupPositions.add(position);
-        }
-        for (Object object : (List) input.get("blackList")) {
-            int playerId = (int) object;
+        for (Map<String, Object> playerMap : playersInput)
+            playerList.add(
+                    new Player(
+                            (int) playerMap.get("playerId"),
+                            (String) playerMap.get("position"),
+                            ((Number) playerMap.get("projection")).doubleValue(),
+                            (int) playerMap.get("salary")
+                    )
+            );
+        for (int playerId : blackListInput)
             blackList.add(new Player(playerId));
-        }
         int salaryCap = (int) input.get("salaryCap");
-        ParameterAdjuster parameterAdjuster = new ParameterAdjuster(lineup, playerList, blackList, lineupPositions, salaryCap);
-        List<Player> newPlayerList = parameterAdjuster.adjustPlayerList();
-        List<String> newLineupPositions = parameterAdjuster.adjustLineupPositions();
-        int newSalaryCap = parameterAdjuster.adjustSalaryCap();
-        LineupMatrix lineupMatrix = new LineupMatrix(newLineupPositions, 3000000);
-        Optimizer optimizer = new Optimizer(newPlayerList, lineupMatrix, newSalaryCap);
+        Adjuster adjuster = new Adjuster(lineup, playerList, blackList, lineupPositionsInput, salaryCap);
+        List<Player> adjustedPlayerList = adjuster.adjustedPlayerList();
+        List<String> adjustedLineupPositions = adjuster.adjustedLineupPositions();
+        int adjustedSalaryCap = adjuster.adjustedSalaryCap();
+        LineupMatrix lineupMatrix = new LineupMatrix(adjustedLineupPositions, 3000000);
+        Optimizer optimizer = new Optimizer(adjustedPlayerList, lineupMatrix, adjustedSalaryCap);
         List<Player> optimalPlayers = optimizer.optimize();
         return new LineupCompiler(lineup, optimalPlayers).outputLineup();
     }

@@ -2,14 +2,36 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="352060b1-b9b3-400c-8051-85a2b23146fe" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/optimize/LineupCompiler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/optimize/LineupCompiler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/collect/DraftKingsData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/collect/DraftKingsData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/collect/FanduelData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/collect/FanduelData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/collect/InjuryData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/collect/InjuryData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/collect/OpponentRanksData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/collect/OpponentRanksData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/collect/ProjectionsData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/collect/ProjectionsData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/handler/DraftKingsHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/handler/DraftKingsHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/handler/FanduelHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/handler/FanduelHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/handler/InjuryHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/handler/InjuryHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/handler/OpponentRanksHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/handler/OpponentRanksHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/handler/OptimizerHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/handler/OptimizerHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/handler/ProjectionsHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/handler/ProjectionsHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/optimize/LineupMatrix.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/optimize/LineupMatrix.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/optimize/Optimizer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/optimize/Optimizer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/optimize/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/optimize/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/optimizer/optimize/LineupCompilerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/optimizer/optimize/LineupCompilerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/optimize/ParameterAdjuster.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/optimize/Adjuster.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/optimizer/collect/DraftKingsDataTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/optimizer/collect/DraftKingsDataTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/optimizer/collect/FanduelDataTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/optimizer/collect/FanduelDataTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/optimizer/collect/InjuryDataTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/optimizer/collect/InjuryDataTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/optimizer/collect/OpponentRanksDataTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/optimizer/collect/OpponentRanksDataTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/optimizer/collect/ProjectionsDataTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/optimizer/collect/ProjectionsDataTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/optimizer/handler/DraftKingsHandlerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/optimizer/handler/DraftKingsHandlerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/optimizer/handler/FanduelHandlerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/optimizer/handler/FanduelHandlerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/optimizer/handler/InjuryHandlerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/optimizer/handler/InjuryHandlerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/optimizer/handler/OpponentRanksHandlerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/optimizer/handler/OpponentRanksHandlerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/optimizer/handler/OptimizerHandlerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/optimizer/handler/OptimizerHandlerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/optimizer/handler/ProjectionsHandlerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/optimizer/handler/ProjectionsHandlerTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/com/optimizer/optimize/LineupMatrixTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/optimizer/optimize/LineupMatrixTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/optimizer/optimize/OptimizerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/optimizer/optimize/OptimizerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/optimizer/optimize/ParameterAdjusterTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/optimizer/optimize/AdjusterTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,9 +42,9 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="JavaScript File" />
-        <option value="Interface" />
-        <option value="Class" />
         <option value="JUnit5 Test Class" />
+        <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -53,7 +75,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1576185169320" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1576507183827" />
     <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/New Scratch File" value="Bash" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit5" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
@@ -67,7 +89,7 @@
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="restartRequiresConfirmation" value="false" />
     <property name="settings.editor.selected.configurable" value="reference.settings.project.maven.importing" />
-    <property name="ts.external.directory.path" value="C:\Users\Dan\Documents\DFS-Optimizer-Web\frontend\node_modules\typescript\lib" />
+    <property name="ts.external.directory.path" value="C:\Users\dadajian\Documents\Personal\DFS-Optimizer-Web\frontend\node_modules\typescript\lib" />
   </component>
   <component name="RecentsManager">
     <key name="CreateTestDialog.RecentsKey">
@@ -99,7 +121,7 @@
       <recent name="collect" />
     </key>
   </component>
-  <component name="RunManager" selected="Shell Script.deploy.sh">
+  <component name="RunManager" selected="JUnit.All in DFS-Optimizer-Web">
     <configuration name="deploy.sh" type="BashConfigurationType" factoryName="Bash">
       <module name="DFS-Optimizer-Web" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -121,76 +143,81 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="LineupCompilerTest.shouldReturnFullWhiteListedLineup" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="FanduelHandlerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="DFS-Optimizer-Web" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.optimizer.optimize.*" />
+          <option name="PATTERN" value="com.optimizer.handler.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.optimizer.optimize" />
-      <option name="MAIN_CLASS_NAME" value="com.optimizer.optimize.LineupCompilerTest" />
-      <option name="METHOD_NAME" value="shouldReturnFullWhiteListedLineup" />
-      <option name="TEST_OBJECT" value="method" />
+      <option name="PACKAGE_NAME" value="com.optimizer.handler" />
+      <option name="MAIN_CLASS_NAME" value="com.optimizer.handler.FanduelHandlerTest" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="LineupMatrixTest.shouldReturnPositionThreshold" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="OpponentRanksDataTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="DFS-Optimizer-Web" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.optimizer.optimize.*" />
+          <option name="PATTERN" value="com.optimizer.collect.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.optimizer.optimize" />
-      <option name="MAIN_CLASS_NAME" value="com.optimizer.optimize.LineupMatrixTest" />
-      <option name="METHOD_NAME" value="shouldReturnPositionThreshold" />
-      <option name="TEST_OBJECT" value="method" />
+      <option name="PACKAGE_NAME" value="com.optimizer.collect" />
+      <option name="MAIN_CLASS_NAME" value="com.optimizer.collect.OpponentRanksDataTest" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="LineupMatrixTest.shouldReturnValidPositionThresholds" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="OpponentRanksHandlerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="DFS-Optimizer-Web" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.optimizer.optimize.*" />
+          <option name="PATTERN" value="com.optimizer.handler.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.optimizer.optimize" />
-      <option name="MAIN_CLASS_NAME" value="com.optimizer.optimize.LineupMatrixTest" />
-      <option name="METHOD_NAME" value="shouldReturnValidPositionThresholds" />
-      <option name="TEST_OBJECT" value="method" />
+      <option name="PACKAGE_NAME" value="com.optimizer.handler" />
+      <option name="MAIN_CLASS_NAME" value="com.optimizer.handler.OpponentRanksHandlerTest" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="deploy.sh" type="ShConfigurationType" temporary="true">
-      <option name="SCRIPT_PATH" value="$PROJECT_DIR$/deploy.sh" />
-      <option name="SCRIPT_OPTIONS" value="" />
-      <option name="SCRIPT_WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="INTERPRETER_PATH" value="C:/Program Files/Git/bin/sh.exe" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <method v="2" />
+    <configuration name="OptimizerHandlerTest.shouldHandleOptimizerInputSingleGame" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="DFS-Optimizer-Web" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.optimizer.handler.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.optimizer.handler" />
+      <option name="MAIN_CLASS_NAME" value="com.optimizer.handler.OptimizerHandlerTest" />
+      <option name="METHOD_NAME" value="shouldHandleOptimizerInputSingleGame" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
     </configuration>
     <list>
-      <item itemvalue="JUnit.LineupMatrixTest.shouldReturnValidPositionThresholds" />
-      <item itemvalue="JUnit.LineupMatrixTest.shouldReturnPositionThreshold" />
-      <item itemvalue="JUnit.LineupCompilerTest.shouldReturnFullWhiteListedLineup" />
+      <item itemvalue="JUnit.OpponentRanksHandlerTest" />
+      <item itemvalue="JUnit.FanduelHandlerTest" />
       <item itemvalue="JUnit.All in DFS-Optimizer-Web" />
-      <item itemvalue="Shell Script.deploy.sh" />
+      <item itemvalue="JUnit.OpponentRanksDataTest" />
+      <item itemvalue="JUnit.OptimizerHandlerTest.shouldHandleOptimizerInputSingleGame" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Shell Script.deploy.sh" />
         <item itemvalue="JUnit.All in DFS-Optimizer-Web" />
-        <item itemvalue="JUnit.LineupCompilerTest.shouldReturnFullWhiteListedLineup" />
-        <item itemvalue="JUnit.LineupMatrixTest.shouldReturnPositionThreshold" />
-        <item itemvalue="JUnit.LineupMatrixTest.shouldReturnValidPositionThresholds" />
+        <item itemvalue="JUnit.OptimizerHandlerTest.shouldHandleOptimizerInputSingleGame" />
+        <item itemvalue="JUnit.OpponentRanksDataTest" />
+        <item itemvalue="JUnit.FanduelHandlerTest" />
+        <item itemvalue="JUnit.OpponentRanksHandlerTest" />
       </list>
     </recent_temporary>
   </component>
@@ -254,6 +281,7 @@
       <workItem from="1576341169323" duration="814000" />
       <workItem from="1576420838193" duration="4217000" />
       <workItem from="1576427927915" duration="2030000" />
+      <workItem from="1576507423353" duration="19924000" />
     </task>
     <servers />
   </component>
@@ -286,10 +314,11 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="414" y="174" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040/1920.0.1280.680@0.0.1920.1040" timestamp="1576427985245" />
-    <state x="765" y="220" key="#com.intellij.ide.util.MemberChooser" timestamp="1576259601735">
+    <state x="765" y="220" key="#com.intellij.ide.util.MemberChooser" timestamp="1576515227455">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="765" y="220" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040/1920.0.1280.680@0.0.1920.1040" timestamp="1576259601735" />
+    <state x="765" y="220" key="#com.intellij.ide.util.MemberChooser/1920.8.1920.1040/0.0.1920.1040/0.1080.1280.680@0.0.1920.1040" timestamp="1576515227455" />
     <state x="808" y="408" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog" timestamp="1576255288293">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -298,50 +327,71 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="737" y="350" key="#com.intellij.refactoring.move.moveInstanceMethod.MoveInstanceMethodDialog/0.0.1920.1040/1920.0.1280.680@0.0.1920.1040" timestamp="1576424927717" />
+    <state x="497" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1576508903004">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="497" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/1920.8.1920.1040/0.0.1920.1040/0.1080.1280.680@0.0.1920.1040" timestamp="1576508903004" />
     <state x="740" y="274" key="FileChooserDialogImpl" timestamp="1576427984341">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="740" y="274" key="FileChooserDialogImpl/0.0.1920.1040/1920.0.1280.680@0.0.1920.1040" timestamp="1576427984341" />
-    <state width="1877" height="195" key="GridCell.Tab.0.bottom" timestamp="1576427913435">
+    <state width="1877" height="204" key="GridCell.Tab.0.bottom" timestamp="1576533394447">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="195" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1280.680@0.0.1920.1040" timestamp="1576427913435" />
-    <state width="1877" height="195" key="GridCell.Tab.0.center" timestamp="1576427913434">
+    <state width="1877" height="204" key="GridCell.Tab.0.bottom/1920.8.1920.1040/0.0.1920.1040/0.1080.1280.680@0.0.1920.1040" timestamp="1576533394447" />
+    <state width="1877" height="204" key="GridCell.Tab.0.center" timestamp="1576533394447">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="195" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1280.680@0.0.1920.1040" timestamp="1576427913434" />
-    <state width="1877" height="195" key="GridCell.Tab.0.left" timestamp="1576427913434">
+    <state width="1877" height="204" key="GridCell.Tab.0.center/1920.8.1920.1040/0.0.1920.1040/0.1080.1280.680@0.0.1920.1040" timestamp="1576533394447" />
+    <state width="1877" height="204" key="GridCell.Tab.0.left" timestamp="1576533394447">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="195" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1280.680@0.0.1920.1040" timestamp="1576427913434" />
-    <state width="1877" height="195" key="GridCell.Tab.0.right" timestamp="1576427913434">
+    <state width="1877" height="204" key="GridCell.Tab.0.left/1920.8.1920.1040/0.0.1920.1040/0.1080.1280.680@0.0.1920.1040" timestamp="1576533394447" />
+    <state width="1877" height="204" key="GridCell.Tab.0.right" timestamp="1576533394447">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="195" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1280.680@0.0.1920.1040" timestamp="1576427913434" />
-    <state width="1877" height="278" key="GridCell.Tab.1.bottom" timestamp="1576341121195">
+    <state width="1877" height="204" key="GridCell.Tab.0.right/1920.8.1920.1040/0.0.1920.1040/0.1080.1280.680@0.0.1920.1040" timestamp="1576533394447" />
+    <state width="1877" height="235" key="GridCell.Tab.1.bottom" timestamp="1576514922684">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="278" key="GridCell.Tab.1.bottom/0.0.1920.1040/1920.0.1280.680@0.0.1920.1040" timestamp="1576341121195" />
-    <state width="1877" height="278" key="GridCell.Tab.1.center" timestamp="1576341121195">
+    <state width="1877" height="235" key="GridCell.Tab.1.bottom/1920.8.1920.1040/0.0.1920.1040/0.1080.1280.680@0.0.1920.1040" timestamp="1576514922684" />
+    <state width="1877" height="235" key="GridCell.Tab.1.center" timestamp="1576514922684">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="278" key="GridCell.Tab.1.center/0.0.1920.1040/1920.0.1280.680@0.0.1920.1040" timestamp="1576341121195" />
-    <state width="1877" height="278" key="GridCell.Tab.1.left" timestamp="1576341121195">
+    <state width="1877" height="235" key="GridCell.Tab.1.center/1920.8.1920.1040/0.0.1920.1040/0.1080.1280.680@0.0.1920.1040" timestamp="1576514922684" />
+    <state width="1877" height="235" key="GridCell.Tab.1.left" timestamp="1576514922684">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="278" key="GridCell.Tab.1.left/0.0.1920.1040/1920.0.1280.680@0.0.1920.1040" timestamp="1576341121195" />
-    <state width="1877" height="278" key="GridCell.Tab.1.right" timestamp="1576341121195">
+    <state width="1877" height="235" key="GridCell.Tab.1.left/1920.8.1920.1040/0.0.1920.1040/0.1080.1280.680@0.0.1920.1040" timestamp="1576514922684" />
+    <state width="1877" height="235" key="GridCell.Tab.1.right" timestamp="1576514922684">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="278" key="GridCell.Tab.1.right/0.0.1920.1040/1920.0.1280.680@0.0.1920.1040" timestamp="1576341121195" />
+    <state width="1877" height="235" key="GridCell.Tab.1.right/1920.8.1920.1040/0.0.1920.1040/0.1080.1280.680@0.0.1920.1040" timestamp="1576514922684" />
+    <state x="607" y="134" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1576515588446">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="607" y="134" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/1920.8.1920.1040/0.0.1920.1040/0.1080.1280.680@0.0.1920.1040" timestamp="1576515588446" />
     <state x="731" y="238" key="com.intellij.testIntegration.createTest.CreateTestDialog" timestamp="1576335225621">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="731" y="238" key="com.intellij.testIntegration.createTest.CreateTestDialog/0.0.1920.1040/1920.0.1280.680@0.0.1920.1040" timestamp="1576335225621" />
-    <state x="656" y="257" width="607" height="526" key="find.popup" timestamp="1576340450011">
+    <state x="656" y="257" width="607" height="526" key="find.popup" timestamp="1576515319621">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="656" y="257" width="607" height="526" key="find.popup/0.0.1920.1040/1920.0.1280.680@0.0.1920.1040" timestamp="1576340450011" />
+    <state x="656" y="257" width="607" height="526" key="find.popup/1920.8.1920.1040/0.0.1920.1040/0.1080.1280.680@0.0.1920.1040" timestamp="1576515319621" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1576529191905">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/1920.8.1920.1040/0.0.1920.1040/0.1080.1280.680@0.0.1920.1040" timestamp="1576529191905" />
   </component>
   <component name="masterDetails">
     <states>

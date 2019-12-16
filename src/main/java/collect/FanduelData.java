@@ -11,16 +11,14 @@ public class FanduelData {
     private final List<String> supportedSports = Arrays.asList("NFL", "MLB", "NBA", "NHL");
     private final List<String> supportedContests = Arrays.asList("Thu Only", "Thu-Mon", "Main", "Sun-Mon");
     private ApiClient apiClient;
-    private String dateString;
 
-    public FanduelData(ApiClient apiClient, String dateString) {
+    public FanduelData(ApiClient apiClient) {
         this.apiClient = apiClient;
-        this.dateString = dateString;
     }
 
-    public List<Map<String, Object>> getAllContestData() {
+    public List<Map<String, Object>> getAllContestData(String date) {
         List<Map<String, Object>> allContestInfo = new ArrayList<>();
-        getValidContests().forEach((JSONObject event) -> {
+        getValidContests(date).forEach((JSONObject event) -> {
             Map<String, Object> contestMap = new HashMap<>();
             contestMap.put("sport", event.getString("sport"));
             String contest = event.getJSONObject("game").getString("label");
@@ -43,8 +41,8 @@ public class FanduelData {
         return allContestInfo;
     }
 
-    public List<JSONObject> getValidContests() {
-        String apiResponse = apiClient.getFanduelData(dateString);
+    public List<JSONObject> getValidContests(String date) {
+        String apiResponse = apiClient.getFanduelData(date);
         List<JSONObject> validContests = new ArrayList<>();
         JSONObject xmlResponse = XML.toJSONObject(apiResponse);
         if (xmlResponse.has("data")) {

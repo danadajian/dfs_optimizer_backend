@@ -10,17 +10,15 @@ import java.util.*;
 
 public class ProjectionsData {
     private ApiClient apiClient;
-    private String sport;
     private Map<Integer, Map<Object, Object>> eventData;
     private Map<Integer, Map<String, String>> participantsData;
     private Map<Integer, Map<String, Number>> oddsData;
 
-    public ProjectionsData(ApiClient apiClient, String sport) {
+    public ProjectionsData(ApiClient apiClient) {
         this.apiClient = apiClient;
-        this.sport = sport;
     }
 
-    public Map<Integer, Map<String, Object>> getStandardFantasyProjections() {
+    public Map<Integer, Map<String, Object>> getStandardFantasyProjections(String sport) {
         Map<Integer, Map<String, Object>> projectionsData = new HashMap<>();
         eventData = new EventData(apiClient, sport).getEventData();
         Set<Integer> eventIds = eventData.keySet();
@@ -47,7 +45,7 @@ public class ProjectionsData {
         eventData = new EventData(apiClient, "nhl").getEventData();
         Set<Integer> eventIds = eventData.keySet();
         participantsData = new ParticipantsData(apiClient, "nhl").getParticipantsData();
-        oddsData = new OddsData(apiClient, sport).getOddsData();
+        oddsData = new OddsData(apiClient, "nhl").getOddsData();
         for (int eventId : eventIds) {
             String apiResponse = apiClient.getProjectionsFromEvent("nhl", eventId);
             if (apiResponse != null) {
@@ -69,7 +67,7 @@ public class ProjectionsData {
     public Map<Integer, Map<String, Object>> getNFLFantasyProjections() {
         Map<Integer, Map<String, Object>> projectionsData = new HashMap<>();
         eventData = new EventData(apiClient, "nfl").getEventData();
-        oddsData = new OddsData(apiClient, sport).getOddsData();
+        oddsData = new OddsData(apiClient, "nfl").getOddsData();
         String apiResponse = apiClient.getProjectionsFromThisWeek("nfl");
         if (apiResponse.length() > 0) {
             JSONObject projectionsJson = new JSONObject(apiResponse).getJSONArray("apiResults").getJSONObject(0)
@@ -126,7 +124,7 @@ public class ProjectionsData {
             JSONObject playerObject = (JSONObject) thing;
             Map<String, Object> statMap = new HashMap<>();
             int playerId = playerObject.getInt("playerId");
-            if (participantsData.keySet().contains(playerId)) {
+            if (participantsData.containsKey(playerId)) {
                 statMap.put("name", participantsData.get(playerId).get("name"));
                 statMap.put("team", participantsData.get(playerId).get("team"));
                 statMap.put("opponent", eventData.get(eventId).get(teamId));

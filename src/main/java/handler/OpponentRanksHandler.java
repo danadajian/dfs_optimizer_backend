@@ -7,9 +7,11 @@ import collect.OpponentRanksData;
 import java.util.Map;
 
 public class OpponentRanksHandler {
+    private DataCollector dataCollector = new DataCollector(new ApiCaller());
+    OpponentRanksData opponentRanksData = new OpponentRanksData(dataCollector);
+
     public Map<String, Map<String, Integer>> handleRequest(Map<String, String> input) {
-        DataCollector dataCollector = new DataCollector(new ApiCaller());
-        OpponentRanksData opponentRanksData = new OpponentRanksData(dataCollector, input.get("sport"));
-        return opponentRanksData.getOpponentRanks();
+        String sport = input.get("sport");
+        return opponentRanksData.getOpponentRanks(sport);
     }
 }

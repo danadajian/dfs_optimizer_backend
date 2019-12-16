@@ -10,14 +10,12 @@ import java.util.Map;
 
 public class OpponentRanksData {
     private ApiClient apiClient;
-    private String sport;
 
-    public OpponentRanksData(ApiClient apiClient, String sport) {
+    public OpponentRanksData(ApiClient apiClient) {
         this.apiClient = apiClient;
-        this.sport = sport;
     }
 
-    public Map<String, Map<String, Integer>> getOpponentRanks() {
+    public Map<String, Map<String, Integer>> getOpponentRanks(String sport) {
         Map<String, Map<String, Integer>> opponentRanksMap = new HashMap<>();
         String scrapedResponse = apiClient.getOpponentRanksData(sport);
         if (scrapedResponse.length() > 0) {

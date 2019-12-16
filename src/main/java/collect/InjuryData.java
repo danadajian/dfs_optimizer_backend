@@ -10,16 +10,14 @@ import java.util.Map;
 
 public class InjuryData {
     private ApiClient apiClient;
-    private String sport;
 
-    public InjuryData(ApiClient apiClient, String sport) {
+    public InjuryData(ApiClient apiClient) {
         this.apiClient = apiClient;
-        this.sport = sport;
     }
 
     public Map<String, String> getNFLInjuryData() {
         Map<String, String> injuryData = new HashMap<>();
-        String scrapedResponse = apiClient.getInjuryData(sport);
+        String scrapedResponse = apiClient.getInjuryData("nfl");
         int startIndex = scrapedResponse.indexOf("<section class=\"Card\">");
         int endIndex = scrapedResponse.indexOf("</section></div></section>") + "</section></div></section>".length();
         String responseSubstring = scrapedResponse.substring(startIndex, endIndex);
@@ -42,7 +40,7 @@ public class InjuryData {
         return injuryData;
     }
 
-    public Map<String, String> getStandardInjuryData() {
+    public Map<String, String> getStandardInjuryData(String sport) {
         Map<String, String> injuryData = new HashMap<>();
         String scrapedResponse = apiClient.getInjuryData(sport);
         int startIndex = scrapedResponse.indexOf("<table");
@@ -56,7 +54,7 @@ public class InjuryData {
                 String playerName = ((JSONObject) object).getJSONArray("td").getJSONObject(0)
                         .getJSONObject("a").getString("content");
                 String status = ((JSONObject) object).getJSONArray("td").getString(1);
-                if (!injuryData.keySet().contains(playerName)) {
+                if (!injuryData.containsKey(playerName)) {
                     injuryData.put(playerName, status);
                 }
             }

@@ -16,7 +16,7 @@ import static org.mockito.Mockito.*;
 class FanduelDataTest implements MockResponses {
 
     private ApiClient mockApi = mock(ApiClient.class);
-    private FanduelData fanduelData = new FanduelData(mockApi, "testDateString");
+    private FanduelData fanduelData = new FanduelData(mockApi);
 
     @BeforeEach
     void setUp() {
@@ -25,27 +25,28 @@ class FanduelDataTest implements MockResponses {
 
     @Test
     void shouldGetValidContests() {
-        List<JSONObject> result = fanduelData.getValidContests();
+        List<JSONObject> result = fanduelData.getValidContests("testDateString");
         verify(mockApi).getFanduelData(anyString());
         assertEquals(1, result.size());
     }
 
+    @SuppressWarnings("unchecked")
     @Test
     void shouldGetAllContestData() {
-        List<Map<String, Object>> result = fanduelData.getAllContestData();
+        List<Map<String, Object>> result = fanduelData.getAllContestData("testDateString");
         verify(mockApi).getFanduelData(anyString());
         assertEquals("NFL", result.get(0).get("sport"));
         assertEquals("PIT @ CLE", result.get(0).get("contest"));
-        List players = (List) result.get(0).get("players");
-        HashMap playerInfo1 = (HashMap) players.get(0);
+        List<Map<String, Object>> players = (List<Map<String, Object>>) result.get(0).get("players");
+        Map<String, Object> playerInfo1 = players.get(0);
         assertEquals(748070, playerInfo1.get("playerId"));
         assertEquals("QB", playerInfo1.get("position"));
         assertEquals(15500, playerInfo1.get("salary"));
-        HashMap playerInfo2 = (HashMap) players.get(1);
+        Map<String, Object> playerInfo2 = players.get(1);
         assertEquals(742390, playerInfo2.get("playerId"));
         assertEquals("RB", playerInfo2.get("position"));
         assertEquals(14500, playerInfo2.get("salary"));
-        assertEquals(44, ((List) result.get(0).get("players")).size());
+        assertEquals(44, players.size());
     }
 
 }

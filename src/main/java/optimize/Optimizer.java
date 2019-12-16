@@ -18,14 +18,14 @@ public class Optimizer {
     }
 
     public List<Player> optimize() {
-        List<List<Player>> truncatedPlayerPools = truncatePlayerPoolsByPosition();
-        List<Set<List<Player>>> permutedPlayerPools = permutePlayerPools(truncatedPlayerPools);
+        List<List<Player>> truncatedPlayerPools = truncatedPlayerPoolsByPosition();
+        List<Set<List<Player>>> permutedPlayerPools = playerPoolCombinations(truncatedPlayerPools);
         return bestLineupInCartesianProduct(permutedPlayerPools);
     }
 
-    public List<List<Player>> truncatePlayerPoolsByPosition() {
+    public List<List<Player>> truncatedPlayerPoolsByPosition() {
         List<List<Player>> truncatedPlayerPools = new ArrayList<>();
-        for (String lineupPosition : lineupMatrix.uniquePositions()) {
+        for (String lineupPosition : lineupMatrix.getUniquePositions()) {
             List<Player> playerPool = playerList.stream()
                     .filter(player -> lineupPosition.equals("any") ||
                                     Arrays.asList(lineupPosition.split(",")).contains(player.position) ||
@@ -40,35 +40,35 @@ public class Optimizer {
         return truncatedPlayerPools;
     }
 
-    public List<Set<List<Player>>> permutePlayerPools(List<List<Player>> playerPools) {
-        List<Set<List<Player>>> listOfPermutations = new ArrayList<>();
-        List<String> uniquePositions = lineupMatrix.uniquePositions();
+    public List<Set<List<Player>>> playerPoolCombinations(List<List<Player>> playerPools) {
+        List<Set<List<Player>>> playerPoolCombinations = new ArrayList<>();
+        List<String> uniquePositions = lineupMatrix.getUniquePositions();
         for (int i = 0; i < playerPools.size(); i++) {
-            Set<List<Player>> positionPermutations = new HashSet<>();
+            List<Player> playerPool = playerPools.get(i);
             String position = uniquePositions.get(i);
             int n = playerPools.get(i).size();
             int k = Math.abs(lineupMatrix.positionFrequency(position));
             Iterator<int[]> iterator = CombinatoricsUtils.combinationsIterator(n, k);
+            Set<List<Player>> playerCombinations = new HashSet<>();
             while (iterator.hasNext()) {
                 final int[] combination = iterator.next();
-                int poolsIndex = i;
-                List<Player> players = Arrays.stream(combination)
-                        .mapToObj(index -> playerPools.get(poolsIndex).get(index))
+                List<Player> playerCombination = Arrays.stream(combination)
+                        .mapToObj(playerPool::get)
                         .sorted((player1, player2) -> Double.compare(player2.projection, player1.projection))
                         .collect(Collectors.toList());
-                positionPermutations.add(players);
+                playerCombinations.add(playerCombination);
             }
-            listOfPermutations.add(positionPermutations);
+            playerPoolCombinations.add(playerCombinations);
         }
-        return listOfPermutations;
+        return playerPoolCombinations;
     }
 
     public List<Player> bestLineupInCartesianProduct(List<Set<List<Player>>> playerPools) {
         List<Player> optimalLineup = new ArrayList<>();
         double maxPoints = 0;
         Set<List<List<Player>>> cartesianProduct = Sets.cartesianProduct(playerPools);
-        for (List<List<Player>> comboList : cartesianProduct) {
-            List<Player> lineup = comboList.stream().flatMap(List::stream).collect(Collectors.toList());
+        for (List<List<Player>> tuple : cartesianProduct) {
+            List<Player> lineup = tuple.stream().flatMap(List::stream).collect(Collectors.toList());
             if (areNoDuplicates(lineup) && lineupIsBetter(lineup, salaryCap, maxPoints)) {
                 maxPoints = totalProjection(lineup);
                 optimalLineup = lineup;

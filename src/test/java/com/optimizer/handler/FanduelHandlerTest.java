@@ -1,13 +1,37 @@
 package com.optimizer.handler;
 
-class FanduelHandlerTest {
+import collect.FanduelData;
+import com.optimizer.collect.MockResponses;
+import handler.FanduelHandler;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
 
-//    @Test
-//    void shouldHandleRequestForFanduelData() {
-//        Map<String, String> testMap = new HashMap<>();
-//        testMap.put("date", new DateOperations().getTodaysDateString());
-//        List<Map<String, Object>> result = new FanduelHandler().handleRequest(testMap);
-//        System.out.println(result);
-//        assertTrue(result.size() > 0);
-//    }
+import java.util.HashMap;
+import java.util.Map;
+
+import static org.mockito.Mockito.verify;
+
+class FanduelHandlerTest implements MockResponses {
+
+    @Mock
+    FanduelData fanduelData;
+
+    @InjectMocks
+    FanduelHandler fanduelHandler;
+
+    @BeforeEach
+    void setUp() {
+        MockitoAnnotations.initMocks(this);
+    }
+
+    @Test
+    void shouldHandleRequestForDraftKingsData() {
+        Map<String, String> testMap = new HashMap<>();
+        testMap.put("date", "2019-12-16");
+        fanduelHandler.handleRequest(testMap);
+        verify(fanduelData).getAllContestData("2019-12-16");
+    }
 }

@@ -13,16 +13,16 @@ import static org.mockito.Mockito.when;
 
 class OpponentRanksDataTest implements MockResponses {
     private ApiClient mockApi = mock(ApiClient.class);
-    private OpponentRanksData opponentRanksData = new OpponentRanksData(mockApi, "sport");
+    private OpponentRanksData opponentRanksData = new OpponentRanksData(mockApi);
 
     @BeforeEach
     void setUp() {
-        when(mockApi.getOpponentRanksData("sport")).thenReturn(fakeFantasyProsData);
+        when(mockApi.getOpponentRanksData("nfl")).thenReturn(fakeFantasyProsData);
     }
 
     @Test
     void shouldGetNFLOpponentRanks() {
-        Map<String, Map<String, Integer>> result = opponentRanksData.getOpponentRanks();
+        Map<String, Map<String, Integer>> result = opponentRanksData.getOpponentRanks("nfl");
         assertEquals(32, result.get("Arizona Cardinals").get("QB"));
         assertEquals(23, result.get("Arizona Cardinals").get("RB"));
         assertEquals(17, result.get("Miami Dolphins").get("TE"));

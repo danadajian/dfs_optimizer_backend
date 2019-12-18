@@ -17,7 +17,7 @@ public class Optimizer {
         this.salaryCap = salaryCap;
     }
 
-    public List<Player> optimize() {
+    public List<Player> generateOptimalPlayers() {
         List<List<Player>> truncatedPlayerPools = truncatedPlayerPoolsByPosition();
         List<Set<List<Player>>> permutedPlayerPools = playerPoolCombinations(truncatedPlayerPools);
         return bestLineupInCartesianProduct(permutedPlayerPools);

@@ -7,25 +7,16 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class Optimizer {
-    private List<Player> playerList;
-    private LineupMatrix lineupMatrix;
-    private int salaryCap;
 
-    public Optimizer(List<Player> playerList, LineupMatrix lineupMatrix, int salaryCap) {
-        this.playerList = playerList;
-        this.lineupMatrix = lineupMatrix;
-        this.salaryCap = salaryCap;
+    public List<Player> generateOptimalPlayers(List<Player> playerList, LineupMatrix lineupMatrix, int salaryCap) {
+        List<List<Player>> truncatedPlayerPools = truncatedPlayerPoolsByPosition(playerList, lineupMatrix);
+        List<Set<List<Player>>> permutedPlayerPools = playerPoolCombinations(truncatedPlayerPools, lineupMatrix);
+        return bestLineupInCartesianProduct(permutedPlayerPools, salaryCap);
     }
 
-    public List<Player> generateOptimalPlayers() {
-        List<List<Player>> truncatedPlayerPools = truncatedPlayerPoolsByPosition();
-        List<Set<List<Player>>> permutedPlayerPools = playerPoolCombinations(truncatedPlayerPools);
-        return bestLineupInCartesianProduct(permutedPlayerPools);
-    }
-
-    public List<List<Player>> truncatedPlayerPoolsByPosition() {
+    public List<List<Player>> truncatedPlayerPoolsByPosition(List<Player> playerList, LineupMatrix lineupMatrix) {
         List<List<Player>> truncatedPlayerPools = new ArrayList<>();
-        for (String lineupPosition : lineupMatrix.getUniquePositions()) {
+        for (String lineupPosition : lineupMatrix.uniquePositions()) {
             List<Player> playerPool = playerList.stream()
                     .filter(player -> lineupPosition.equals("any") ||
                                     Arrays.asList(lineupPosition.split(",")).contains(player.position) ||
@@ -40,9 +31,9 @@ public class Optimizer {
         return truncatedPlayerPools;
     }
 
-    public List<Set<List<Player>>> playerPoolCombinations(List<List<Player>> playerPools) {
+    public List<Set<List<Player>>> playerPoolCombinations(List<List<Player>> playerPools, LineupMatrix lineupMatrix) {
         List<Set<List<Player>>> playerPoolCombinations = new ArrayList<>();
-        List<String> uniquePositions = lineupMatrix.getUniquePositions();
+        List<String> uniquePositions = lineupMatrix.uniquePositions();
         for (int i = 0; i < playerPools.size(); i++) {
             List<Player> playerPool = playerPools.get(i);
             String position = uniquePositions.get(i);
@@ -63,7 +54,7 @@ public class Optimizer {
         return playerPoolCombinations;
     }
 
-    public List<Player> bestLineupInCartesianProduct(List<Set<List<Player>>> playerPools) {
+    public List<Player> bestLineupInCartesianProduct(List<Set<List<Player>>> playerPools, int salaryCap) {
         List<Player> optimalLineup = new ArrayList<>();
         double maxPoints = 0;
         Set<List<List<Player>>> cartesianProduct = Sets.cartesianProduct(playerPools);

@@ -3,8 +3,17 @@
   <component name="ChangeListManager">
     <list default="true" id="352060b1-b9b3-400c-8051-85a2b23146fe" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/deploy.sh" beforeDir="false" afterPath="$PROJECT_DIR$/deploy.sh" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/handler/OptimizerHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/handler/OptimizerHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/optimize/Adjuster.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/optimize/Adjuster.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/optimize/LineupCompiler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/optimize/LineupCompiler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/optimize/LineupMatrix.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/optimize/LineupMatrix.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/optimize/Optimizer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/optimize/Optimizer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/optimizer/handler/OptimizerHandlerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/optimizer/handler/OptimizerHandlerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/optimizer/optimize/AdjusterTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/optimizer/optimize/AdjusterTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/optimizer/optimize/LineupCompilerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/optimizer/optimize/LineupCompilerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/optimizer/optimize/LineupMatrixTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/optimizer/optimize/LineupMatrixTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/optimizer/optimize/OptimizerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/optimizer/optimize/OptimizerTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,6 +37,7 @@
     <option name="importingSettings">
       <MavenImportingSettings>
         <option name="importAutomatically" value="true" />
+        <option name="vmOptionsForImporter" value="-Xmx768m" />
       </MavenImportingSettings>
     </option>
   </component>
@@ -61,7 +71,7 @@
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="restartRequiresConfirmation" value="false" />
-    <property name="settings.editor.selected.configurable" value="reference.settings.project.maven.importing" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="ts.external.directory.path" value="C:\Users\dadajian\Documents\Personal\DFS-Optimizer-Web\frontend\node_modules\typescript\lib" />
   </component>
   <component name="RecentsManager">
@@ -94,7 +104,7 @@
       <recent name="collect" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.OptimizerHandlerTest">
+  <component name="RunManager" selected="JUnit.All in DFS-Optimizer-Web">
     <configuration name="deploy.sh" type="BashConfigurationType" factoryName="Bash">
       <module name="DFS-Optimizer-Web" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -112,36 +122,6 @@
       <module name="DFS-Optimizer-Web" />
       <option name="PACKAGE_NAME" value="" />
       <option name="TEST_OBJECT" value="package" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="FanduelHandlerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="DFS-Optimizer-Web" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.optimizer.handler.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.optimizer.handler" />
-      <option name="MAIN_CLASS_NAME" value="com.optimizer.handler.FanduelHandlerTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="OpponentRanksDataTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="DFS-Optimizer-Web" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.optimizer.collect.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.optimizer.collect" />
-      <option name="MAIN_CLASS_NAME" value="com.optimizer.collect.OpponentRanksDataTest" />
-      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -177,20 +157,50 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="OptimizerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="DFS-Optimizer-Web" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.optimizer.optimize.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.optimizer.optimize" />
+      <option name="MAIN_CLASS_NAME" value="com.optimizer.optimize.OptimizerTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="com.optimizer.optimize in DFS-Optimizer-Web" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="DFS-Optimizer-Web" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.optimizer.optimize.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.optimizer.optimize" />
+      <option name="TEST_OBJECT" value="package" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <list>
-      <item itemvalue="JUnit.FanduelHandlerTest" />
+      <item itemvalue="Bash.deploy.sh" />
       <item itemvalue="JUnit.All in DFS-Optimizer-Web" />
-      <item itemvalue="JUnit.OpponentRanksDataTest" />
       <item itemvalue="JUnit.OptimizerHandlerTest.shouldHandleOptimizerInputSingleGame" />
       <item itemvalue="JUnit.OptimizerHandlerTest" />
+      <item itemvalue="JUnit.com.optimizer.optimize in DFS-Optimizer-Web" />
+      <item itemvalue="JUnit.OptimizerTest" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.OptimizerHandlerTest" />
         <item itemvalue="JUnit.All in DFS-Optimizer-Web" />
+        <item itemvalue="JUnit.OptimizerHandlerTest" />
+        <item itemvalue="JUnit.OptimizerTest" />
         <item itemvalue="JUnit.OptimizerHandlerTest.shouldHandleOptimizerInputSingleGame" />
-        <item itemvalue="JUnit.OpponentRanksDataTest" />
-        <item itemvalue="JUnit.FanduelHandlerTest" />
+        <item itemvalue="JUnit.com.optimizer.optimize in DFS-Optimizer-Web" />
       </list>
     </recent_temporary>
   </component>
@@ -256,7 +266,9 @@
       <workItem from="1576427927915" duration="2030000" />
       <workItem from="1576507423353" duration="19978000" />
       <workItem from="1576592142765" duration="1904000" />
-      <workItem from="1576694022740" duration="995000" />
+      <workItem from="1576694022740" duration="6178000" />
+      <workItem from="1576765127962" duration="36000" />
+      <workItem from="1576765193533" duration="3771000" />
     </task>
     <servers />
   </component>
@@ -281,6 +293,10 @@
     </ignored-roots>
   </component>
   <component name="WindowStateProjectService">
+    <state x="552" y="177" key="#Notifications" timestamp="1576765142070">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="552" y="177" key="#Notifications/1920.8.1920.1040/0.0.1920.1040/0.1080.1280.680@0.0.1920.1040" timestamp="1576765142070" />
     <state x="552" y="178" key="#Plugins" timestamp="1576341150188">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -311,26 +327,26 @@
     </state>
     <state x="740" y="274" key="FileChooserDialogImpl/0.0.1920.1040/1920.0.1280.680@0.0.1920.1040" timestamp="1576427984341" />
     <state x="740" y="274" key="FileChooserDialogImpl/1920.8.1920.1040/0.0.1920.1040/0.1080.1280.680@0.0.1920.1040" timestamp="1576593447542" />
-    <state width="1877" height="235" key="GridCell.Tab.0.bottom" timestamp="1576533756328">
+    <state width="1877" height="204" key="GridCell.Tab.0.bottom" timestamp="1576700455377">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="195" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1280.680@0.0.1920.1040" timestamp="1576427913435" />
-    <state width="1877" height="235" key="GridCell.Tab.0.bottom/1920.8.1920.1040/0.0.1920.1040/0.1080.1280.680@0.0.1920.1040" timestamp="1576533756328" />
-    <state width="1877" height="235" key="GridCell.Tab.0.center" timestamp="1576533756328">
+    <state width="1877" height="204" key="GridCell.Tab.0.bottom/1920.8.1920.1040/0.0.1920.1040/0.1080.1280.680@0.0.1920.1040" timestamp="1576700455377" />
+    <state width="1877" height="204" key="GridCell.Tab.0.center" timestamp="1576700455376">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="195" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1280.680@0.0.1920.1040" timestamp="1576427913434" />
-    <state width="1877" height="235" key="GridCell.Tab.0.center/1920.8.1920.1040/0.0.1920.1040/0.1080.1280.680@0.0.1920.1040" timestamp="1576533756328" />
-    <state width="1877" height="235" key="GridCell.Tab.0.left" timestamp="1576533756328">
+    <state width="1877" height="204" key="GridCell.Tab.0.center/1920.8.1920.1040/0.0.1920.1040/0.1080.1280.680@0.0.1920.1040" timestamp="1576700455376" />
+    <state width="1877" height="204" key="GridCell.Tab.0.left" timestamp="1576700455376">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="195" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1280.680@0.0.1920.1040" timestamp="1576427913434" />
-    <state width="1877" height="235" key="GridCell.Tab.0.left/1920.8.1920.1040/0.0.1920.1040/0.1080.1280.680@0.0.1920.1040" timestamp="1576533756328" />
-    <state width="1877" height="235" key="GridCell.Tab.0.right" timestamp="1576533756328">
+    <state width="1877" height="204" key="GridCell.Tab.0.left/1920.8.1920.1040/0.0.1920.1040/0.1080.1280.680@0.0.1920.1040" timestamp="1576700455376" />
+    <state width="1877" height="204" key="GridCell.Tab.0.right" timestamp="1576700455376">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="195" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1280.680@0.0.1920.1040" timestamp="1576427913434" />
-    <state width="1877" height="235" key="GridCell.Tab.0.right/1920.8.1920.1040/0.0.1920.1040/0.1080.1280.680@0.0.1920.1040" timestamp="1576533756328" />
+    <state width="1877" height="204" key="GridCell.Tab.0.right/1920.8.1920.1040/0.0.1920.1040/0.1080.1280.680@0.0.1920.1040" timestamp="1576700455376" />
     <state width="1877" height="235" key="GridCell.Tab.1.bottom" timestamp="1576533756328">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -351,6 +367,10 @@
     </state>
     <state width="1877" height="278" key="GridCell.Tab.1.right/0.0.1920.1040/1920.0.1280.680@0.0.1920.1040" timestamp="1576341121195" />
     <state width="1877" height="235" key="GridCell.Tab.1.right/1920.8.1920.1040/0.0.1920.1040/0.1080.1280.680@0.0.1920.1040" timestamp="1576533756328" />
+    <state x="440" y="93" key="SettingsEditor" timestamp="1576765166848">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="440" y="93" key="SettingsEditor/1920.8.1920.1040/0.0.1920.1040/0.1080.1280.680@0.0.1920.1040" timestamp="1576765166848" />
     <state x="607" y="134" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1576515588446">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -364,97 +384,13 @@
     </state>
     <state x="656" y="257" width="607" height="526" key="find.popup/0.0.1920.1040/1920.0.1280.680@0.0.1920.1040" timestamp="1576340450011" />
     <state x="656" y="257" width="607" height="526" key="find.popup/1920.8.1920.1040/0.0.1920.1040/0.1080.1280.680@0.0.1920.1040" timestamp="1576515319621" />
+    <state x="342" y="139" key="new project wizard" timestamp="1576767540458">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="342" y="139" key="new project wizard/1920.8.1920.1040/0.0.1920.1040/0.1080.1280.680@0.0.1920.1040" timestamp="1576767540458" />
     <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1576529191905">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/1920.8.1920.1040/0.0.1920.1040/0.1080.1280.680@0.0.1920.1040" timestamp="1576529191905" />
-  </component>
-  <component name="masterDetails">
-    <states>
-      <state key="ArtifactsStructureConfigurable.UI">
-        <settings>
-          <artifact-editor />
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="FacetStructureConfigurable.UI">
-        <settings>
-          <last-edited>No facets are configured</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="GlobalLibrariesConfigurable.UI">
-        <settings>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="JdkListConfigurable.UI">
-        <settings>
-          <last-edited>1.8</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="ModuleStructureConfigurable.UI">
-        <settings>
-          <last-edited>DFS-Optimizer-Web</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-                <option value="0.6" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="ProjectJDKs.UI">
-        <settings>
-          <last-edited>11</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="ProjectLibrariesConfigurable.UI">
-        <settings>
-          <last-edited>Maven: net.bytebuddy:byte-buddy-agent:1.9.10</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-    </states>
   </component>
 </project>

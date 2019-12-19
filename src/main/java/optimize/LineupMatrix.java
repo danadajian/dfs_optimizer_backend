@@ -19,7 +19,7 @@ public class LineupMatrix {
         this.positionThresholds = positionThresholds();
     }
 
-    public List<String> getUniquePositions() {
+    public List<String> uniquePositions() {
         return uniquePositions;
     }
 

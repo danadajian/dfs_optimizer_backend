@@ -28,11 +28,11 @@ public class LineupMatrixTest {
 
     @Test
     void shouldReturnUniquePositions() {
-        List<String> result = lineupMatrix.getUniquePositions();
+        List<String> result = lineupMatrix.uniquePositions();
         assertEquals(Arrays.asList("QB", "RB", "WR", "TE", "RB,WR,TE", "D"), result);
-        List<String> result2 = singleGameMatrix.getUniquePositions();
+        List<String> result2 = singleGameMatrix.uniquePositions();
         assertEquals(Collections.singletonList("any"), result2);
-        List<String> result3 = emptyMatrix.getUniquePositions();
+        List<String> result3 = emptyMatrix.uniquePositions();
         assertEquals(Collections.emptyList(), result3);
     }
 

@@ -5,7 +5,7 @@ source config.sh
 MVN_VERSION=$(mvn org.apache.maven.plugins:maven-help-plugin:3.1.0:evaluate -Dexpression=project.version -q -DforceStdout)
 MAJOR_VERSION=${MVN_VERSION:0:1}
 MINOR_VERSION=${MVN_VERSION:2:2}
-mvn replacer:replace -Dccih.origin="<version>${MVN_VERSION}</version>" -Dccih.target="<version>${MAJOR_VERSION}"."$((MINOR_VERSION + 1))</version>"
+mvn replacer:replace -Dccih.origin="<version>${MVN_VERSION}</version>" -Dccih.target="<version>${MAJOR_VERSION}.$((MINOR_VERSION + 1))</version>"
 mvn clean package
 
 BUCKET_NAME="dfsoptimizer.app"
@@ -33,12 +33,12 @@ aws s3 cp ./swagger.yaml "s3://${BUCKET_NAME}/"
 if [[ "$OSTYPE" == "msys" ]]; then
     sam.cmd --version
     sam.cmd deploy --template-file ./template.yaml --stack-name ${STACK_NAME} --capabilities CAPABILITY_IAM \
-     --parameter-overrides BucketName=${BUCKET_NAME} CodeKey=${FILE_NAME} ApiKey=${API_KEY} ApiSecret=${API_SECRET} \
+     --parameter-overrides BucketName=${BUCKET_NAME} CodeKey="${FILE_NAME}" ApiKey="${API_KEY}" ApiSecret="${API_SECRET}" \
       --no-fail-on-empty-changeset
 else
     sam --version
     sam deploy --template-file ./template.yaml --stack-name ${STACK_NAME} --capabilities CAPABILITY_IAM \
-     --parameter-overrides BucketName=${BUCKET_NAME} CodeKey=${FILE_NAME} ApiKey=${API_KEY} ApiSecret=${API_SECRET} \
+     --parameter-overrides BucketName=${BUCKET_NAME} CodeKey="${FILE_NAME}" ApiKey="${API_KEY}" ApiSecret="${API_SECRET}" \
       --no-fail-on-empty-changeset
 fi
 

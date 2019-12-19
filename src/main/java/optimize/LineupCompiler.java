@@ -7,15 +7,7 @@ import java.util.stream.IntStream;
 
 public class LineupCompiler {
 
-    private final List<Player> lineup;
-    private final List<Player> optimalPlayers;
-
-    public LineupCompiler(List<Player> lineup, List<Player> optimalPlayers) {
-        this.lineup = lineup;
-        this.optimalPlayers = optimalPlayers;
-    }
-
-    public List<Integer> outputLineup() {
+    public List<Integer> outputLineup(List<Player> lineup, List<Player> optimalPlayers) {
         List<Player> lineupToOutput = new ArrayList<>(lineup);
         for (Player player : optimalPlayers) {
             int emptySpotIndex = IntStream.range(0, lineupToOutput.size())

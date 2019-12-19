@@ -43,23 +43,29 @@ public class AdjusterTest {
 
     private List<String> startingPositions = Arrays.asList("QB", "RB", "WR", "TE", "D");
 
-    Adjuster adjuster = new Adjuster(lineup, playerList, blackList, startingPositions, 60000);
+    Adjuster adjuster = new Adjuster();
+
+    @Test
+    void shouldGetWhiteList() {
+        List<Player> result = adjuster.getWhiteList(lineup);
+        assertEquals(Arrays.asList(rb2, rb3), result);
+    }
 
     @Test
     void shouldAdjustPlayerList() {
-        List<Player> result = adjuster.adjustedPlayerList();
+        List<Player> result = adjuster.adjustedPlayerList(playerList, Arrays.asList(rb2, rb3), blackList);
         assertEquals(Arrays.asList(qb1, qb2, rb1, rb6, wr1, wr2, wr3, wr4, te1, te2, dst1, dst2), result);
     }
 
     @Test
     void shouldAdjustLineupPositions() {
-        List<String> result = adjuster.adjustedLineupPositions();
+        List<String> result = adjuster.adjustedLineupPositions(lineup, startingPositions);
         assertEquals(Arrays.asList("QB", "WR", "D"), result);
     }
 
     @Test
     void shouldAdjustSalaryCap() {
-        int result = adjuster.adjustedSalaryCap();
+        int result = adjuster.adjustedSalaryCap(Arrays.asList(rb2, rb3), 60000);
         assertEquals(60000 - rb2.salary - rb3.salary, result);
 
     }

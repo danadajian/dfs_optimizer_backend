@@ -32,18 +32,17 @@ public class LineupCompilerTest {
             new Player(3)
     );
 
-    LineupCompiler lineupCompiler = new LineupCompiler(lineup, optimalPlayers);
-    LineupCompiler fullLineupCompiler = new LineupCompiler(fullLineup, new ArrayList<>());
+    LineupCompiler lineupCompiler = new LineupCompiler();
 
     @Test
     void shouldCombineOptimalPlayersWithWhiteList() {
-        List<Integer> result = lineupCompiler.outputLineup();
+        List<Integer> result = lineupCompiler.outputLineup(lineup, optimalPlayers);
         assertEquals(Arrays.asList(1, 4, 2, 5, 3), result);
     }
 
     @Test
     void shouldReturnFullWhiteListedLineup() {
-        List<Integer> result = fullLineupCompiler.outputLineup();
+        List<Integer> result = lineupCompiler.outputLineup(fullLineup, new ArrayList<>());
         assertEquals(Arrays.asList(1, 2, 3, 4, 5), result);
     }
 }

@@ -5,6 +5,10 @@ import optimize.*;
 import java.util.*;
 
 public class OptimizerHandler {
+    Adjuster adjuster = new Adjuster();
+    Optimizer optimizer = new Optimizer();
+    LineupCompiler lineupCompiler = new LineupCompiler();
+
     @SuppressWarnings("unchecked")
     public List<Integer> handleRequest(Map<String, Object> input) {
         List<Player> lineup = new ArrayList<>();
@@ -19,15 +23,14 @@ public class OptimizerHandler {
                 playerList.add(new Player((int) playerMap.get("playerId"), (String) playerMap.get("position"),
                         ((Number) playerMap.get("projection")).doubleValue(), (int) playerMap.get("salary"))));
         ((List<Integer>) input.get("blackList")).forEach(playerId -> blackList.add(new Player(playerId)));
-        List<String> lineupPositionsInput = (List<String>) input.get("lineupPositions");
+        List<String> lineupPositions = (List<String>) input.get("lineupPositions");
         int salaryCap = (int) input.get("salaryCap");
-        Adjuster adjuster = new Adjuster(lineup, playerList, blackList, lineupPositionsInput, salaryCap);
-        List<Player> adjustedPlayerList = adjuster.adjustedPlayerList();
-        List<String> adjustedLineupPositions = adjuster.adjustedLineupPositions();
-        int adjustedSalaryCap = adjuster.adjustedSalaryCap();
+        List<Player> whiteList = adjuster.getWhiteList(lineup);
+        List<Player> adjustedPlayerList = adjuster.adjustedPlayerList(playerList, whiteList, blackList);
+        List<String> adjustedLineupPositions = adjuster.adjustedLineupPositions(lineup, lineupPositions);
+        int adjustedSalaryCap = adjuster.adjustedSalaryCap(whiteList, salaryCap);
         LineupMatrix lineupMatrix = new LineupMatrix(adjustedLineupPositions, 3000000);
-        Optimizer optimizer = new Optimizer(adjustedPlayerList, lineupMatrix, adjustedSalaryCap);
-        List<Player> optimalPlayers = optimizer.generateOptimalPlayers();
-        return new LineupCompiler(lineup, optimalPlayers).outputLineup();
+        List<Player> optimalPlayers = optimizer.generateOptimalPlayers(adjustedPlayerList, lineupMatrix, adjustedSalaryCap);
+        return lineupCompiler.outputLineup(lineup, optimalPlayers);
     }
 }

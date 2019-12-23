@@ -59,15 +59,6 @@ class OptimizerHandlerTest {
         when(lineupCompiler.outputLineup(anyList(), anyList())).thenReturn(Arrays.asList(1, 2, 3, 4, 5));
     }
 
-    @Captor
-    ArgumentCaptor<List<Player>> playerArgCaptor;
-
-    @Test
-    void testCaptor() {
-        verify(optimizer).areNoDuplicates(playerArgCaptor.capture());
-        List<Player> value = playerArgCaptor.getValue();
-    }
-
     @Test
     void shouldHandleOptimizerInput() {
         List<Integer> result = optimizerHandler.handleRequest(optimizerInput);

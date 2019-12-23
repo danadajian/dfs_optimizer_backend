@@ -3,17 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="352060b1-b9b3-400c-8051-85a2b23146fe" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/deploy.sh" beforeDir="false" afterPath="$PROJECT_DIR$/deploy.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/handler/OptimizerHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/handler/OptimizerHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/optimize/Adjuster.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/optimize/Adjuster.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/optimize/LineupCompiler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/optimize/LineupCompiler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/optimize/LineupMatrix.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/optimize/LineupMatrix.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/optimize/Optimizer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/optimize/Optimizer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/collect/DraftKingsData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/collect/DraftKingsData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/collect/FanduelData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/collect/FanduelData.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/com/optimizer/handler/OptimizerHandlerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/optimizer/handler/OptimizerHandlerTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/optimizer/optimize/AdjusterTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/optimizer/optimize/AdjusterTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/optimizer/optimize/LineupCompilerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/optimizer/optimize/LineupCompilerTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/optimizer/optimize/LineupMatrixTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/optimizer/optimize/LineupMatrixTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/optimizer/optimize/OptimizerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/optimizer/optimize/OptimizerTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -72,7 +65,7 @@
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="restartRequiresConfirmation" value="false" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
-    <property name="ts.external.directory.path" value="C:\Users\dadajian\Documents\Personal\DFS-Optimizer-Web\frontend\node_modules\typescript\lib" />
+    <property name="ts.external.directory.path" value="$PROJECT_DIR$/frontend/node_modules/typescript/lib" />
   </component>
   <component name="RecentsManager">
     <key name="CreateTestDialog.RecentsKey">
@@ -104,7 +97,7 @@
       <recent name="collect" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.All in DFS-Optimizer-Web">
+  <component name="RunManager" selected="Shell Script.deploy.sh">
     <configuration name="deploy.sh" type="BashConfigurationType" factoryName="Bash">
       <module name="DFS-Optimizer-Web" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -172,35 +165,28 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="com.optimizer.optimize in DFS-Optimizer-Web" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="DFS-Optimizer-Web" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.optimizer.optimize.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.optimizer.optimize" />
-      <option name="TEST_OBJECT" value="package" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
+    <configuration name="deploy.sh" type="ShConfigurationType" temporary="true">
+      <option name="SCRIPT_PATH" value="$PROJECT_DIR$/deploy.sh" />
+      <option name="SCRIPT_OPTIONS" value="" />
+      <option name="SCRIPT_WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="INTERPRETER_PATH" value="/bin/zsh" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Bash.deploy.sh" />
       <item itemvalue="JUnit.All in DFS-Optimizer-Web" />
       <item itemvalue="JUnit.OptimizerHandlerTest.shouldHandleOptimizerInputSingleGame" />
       <item itemvalue="JUnit.OptimizerHandlerTest" />
-      <item itemvalue="JUnit.com.optimizer.optimize in DFS-Optimizer-Web" />
       <item itemvalue="JUnit.OptimizerTest" />
+      <item itemvalue="Shell Script.deploy.sh" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.All in DFS-Optimizer-Web" />
+        <item itemvalue="Shell Script.deploy.sh" />
         <item itemvalue="JUnit.OptimizerHandlerTest" />
+        <item itemvalue="JUnit.All in DFS-Optimizer-Web" />
         <item itemvalue="JUnit.OptimizerTest" />
         <item itemvalue="JUnit.OptimizerHandlerTest.shouldHandleOptimizerInputSingleGame" />
-        <item itemvalue="JUnit.com.optimizer.optimize in DFS-Optimizer-Web" />
       </list>
     </recent_temporary>
   </component>
@@ -269,6 +255,8 @@
       <workItem from="1576694022740" duration="6178000" />
       <workItem from="1576765127962" duration="36000" />
       <workItem from="1576765193533" duration="3771000" />
+      <workItem from="1577029162181" duration="471000" />
+      <workItem from="1577117812466" duration="1293000" />
     </task>
     <servers />
   </component>
@@ -327,25 +315,29 @@
     </state>
     <state x="740" y="274" key="FileChooserDialogImpl/0.0.1920.1040/1920.0.1280.680@0.0.1920.1040" timestamp="1576427984341" />
     <state x="740" y="274" key="FileChooserDialogImpl/1920.8.1920.1040/0.0.1920.1040/0.1080.1280.680@0.0.1920.1040" timestamp="1576593447542" />
-    <state width="1877" height="204" key="GridCell.Tab.0.bottom" timestamp="1576700455377">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1398" height="212" key="GridCell.Tab.0.bottom" timestamp="1577118361567">
+      <screen x="0" y="23" width="1440" height="821" />
     </state>
     <state width="1877" height="195" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1280.680@0.0.1920.1040" timestamp="1576427913435" />
+    <state width="1398" height="212" key="GridCell.Tab.0.bottom/0.23.1440.821@0.23.1440.821" timestamp="1577118361567" />
     <state width="1877" height="204" key="GridCell.Tab.0.bottom/1920.8.1920.1040/0.0.1920.1040/0.1080.1280.680@0.0.1920.1040" timestamp="1576700455377" />
-    <state width="1877" height="204" key="GridCell.Tab.0.center" timestamp="1576700455376">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1398" height="212" key="GridCell.Tab.0.center" timestamp="1577118361566">
+      <screen x="0" y="23" width="1440" height="821" />
     </state>
     <state width="1877" height="195" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1280.680@0.0.1920.1040" timestamp="1576427913434" />
+    <state width="1398" height="212" key="GridCell.Tab.0.center/0.23.1440.821@0.23.1440.821" timestamp="1577118361566" />
     <state width="1877" height="204" key="GridCell.Tab.0.center/1920.8.1920.1040/0.0.1920.1040/0.1080.1280.680@0.0.1920.1040" timestamp="1576700455376" />
-    <state width="1877" height="204" key="GridCell.Tab.0.left" timestamp="1576700455376">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1398" height="212" key="GridCell.Tab.0.left" timestamp="1577118361565">
+      <screen x="0" y="23" width="1440" height="821" />
     </state>
     <state width="1877" height="195" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1280.680@0.0.1920.1040" timestamp="1576427913434" />
+    <state width="1398" height="212" key="GridCell.Tab.0.left/0.23.1440.821@0.23.1440.821" timestamp="1577118361565" />
     <state width="1877" height="204" key="GridCell.Tab.0.left/1920.8.1920.1040/0.0.1920.1040/0.1080.1280.680@0.0.1920.1040" timestamp="1576700455376" />
-    <state width="1877" height="204" key="GridCell.Tab.0.right" timestamp="1576700455376">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1398" height="212" key="GridCell.Tab.0.right" timestamp="1577118361566">
+      <screen x="0" y="23" width="1440" height="821" />
     </state>
     <state width="1877" height="195" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1280.680@0.0.1920.1040" timestamp="1576427913434" />
+    <state width="1398" height="212" key="GridCell.Tab.0.right/0.23.1440.821@0.23.1440.821" timestamp="1577118361566" />
     <state width="1877" height="204" key="GridCell.Tab.0.right/1920.8.1920.1040/0.0.1920.1040/0.1080.1280.680@0.0.1920.1040" timestamp="1576700455376" />
     <state width="1877" height="235" key="GridCell.Tab.1.bottom" timestamp="1576533756328">
       <screen x="0" y="0" width="1920" height="1040" />
@@ -379,10 +371,11 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="731" y="238" key="com.intellij.testIntegration.createTest.CreateTestDialog/0.0.1920.1040/1920.0.1280.680@0.0.1920.1040" timestamp="1576335225621" />
-    <state x="656" y="257" width="607" height="526" key="find.popup" timestamp="1576515319621">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="492" y="226" width="639" height="476" key="find.popup" timestamp="1577118324174">
+      <screen x="0" y="23" width="1440" height="821" />
     </state>
     <state x="656" y="257" width="607" height="526" key="find.popup/0.0.1920.1040/1920.0.1280.680@0.0.1920.1040" timestamp="1576340450011" />
+    <state x="492" y="226" width="639" height="476" key="find.popup/0.23.1440.821@0.23.1440.821" timestamp="1577118324174" />
     <state x="656" y="257" width="607" height="526" key="find.popup/1920.8.1920.1040/0.0.1920.1040/0.1080.1280.680@0.0.1920.1040" timestamp="1576515319621" />
     <state x="342" y="139" key="new project wizard" timestamp="1576767540458">
       <screen x="0" y="0" width="1920" height="1040" />

@@ -28,19 +28,11 @@ class OptimizerHandlerTest {
 
     private String fakeOptimizerBody = new String(Files.readAllBytes(Paths.get("src/main/resources/optimizerHandlerBody.txt")));
     private String fakeOptimizerWhiteAndBlackListBody = new String(Files.readAllBytes(Paths.get("src/main/resources/optimizerHandlerWhiteAndBlackListBody.txt")));
-    private String fakeOptimizerSingleGameBody = new String(Files.readAllBytes(Paths.get("src/main/resources/optimizerHandlerSingleGameBody.txt")));
-    private String fakeOptimizerSingleGameWhiteAndBlackListBody = new String(Files.readAllBytes(Paths.get("src/main/resources/optimizerHandlerSingleGameWhiteAndBlackListBody.txt")));
-
     private Map<String, Object> optimizerInput = new ObjectMapper().readValue(fakeOptimizerBody, new TypeReference<Map<String, Object>>(){});
     private Map<String, Object> optimizerWithWhiteAndBlackListInput = new ObjectMapper().readValue(fakeOptimizerWhiteAndBlackListBody, new TypeReference<Map<String, Object>>(){});
-    private Map<String, Object> optimizerSingleGameInput = new ObjectMapper().readValue(fakeOptimizerSingleGameBody, new TypeReference<Map<String, Object>>(){});
-    private Map<String, Object> optimizerSingleGameWhiteAndBlackListInput = new ObjectMapper().readValue(fakeOptimizerSingleGameWhiteAndBlackListBody, new TypeReference<Map<String, Object>>(){});
 
     @Mock
     Adjuster adjuster;
-
-    @Mock
-    Optimizer optimizer;
 
     @Mock
     LineupCompiler lineupCompiler;
@@ -48,38 +40,69 @@ class OptimizerHandlerTest {
     @InjectMocks
     OptimizerHandler optimizerHandler;
 
+    @Captor
+    ArgumentCaptor<List<Player>> playerListCaptor1;
+
+    @Captor
+    ArgumentCaptor<List<Player>> playerListCaptor2;
+
+    @Captor
+    ArgumentCaptor<List<String>> stringListCaptor;
+
+    @Captor
+    ArgumentCaptor<Integer> intCaptor;
+
+    Player emptyPlayer = new Player();
+    List<Player> emptyLineup = Arrays.asList(emptyPlayer, emptyPlayer, emptyPlayer, emptyPlayer, emptyPlayer,
+            emptyPlayer, emptyPlayer, emptyPlayer, emptyPlayer);
+    List<Player> whiteListLineup = Arrays.asList(emptyPlayer, new Player(456613), emptyPlayer, emptyPlayer,
+            emptyPlayer, emptyPlayer, emptyPlayer, emptyPlayer, emptyPlayer);
+
     @BeforeEach
     void setUp() {
         MockitoAnnotations.initMocks(this);
-        when(adjuster.getWhiteList(anyList())).thenReturn(Collections.emptyList());
-        when(adjuster.adjustedPlayerList(anyList(), anyList(), anyList())).thenReturn(Collections.emptyList());
-        when(adjuster.adjustedLineupPositions(anyList(), anyList())).thenReturn(Collections.emptyList());
-        when(adjuster.adjustedSalaryCap(anyList(), anyInt())).thenReturn(0);
-        when(optimizer.generateOptimalPlayers(anyList(), any(), anyInt())).thenReturn(Collections.emptyList());
         when(lineupCompiler.outputLineup(anyList(), anyList())).thenReturn(Arrays.asList(1, 2, 3, 4, 5));
+    }
+
+    void shouldCollectLineup(List<Player> expectedLineup) {
+        verify(adjuster).getWhiteList(playerListCaptor1.capture());
+        assertEquals(expectedLineup, playerListCaptor1.getValue());
+    }
+
+    void shouldCollectPlayerListAndBlackList(List<Player> expectedBlackList) {
+        verify(adjuster).adjustedPlayerList(playerListCaptor2.capture(), playerListCaptor2.capture(), playerListCaptor2.capture());
+        List<List<Player>> arguments = playerListCaptor2.getAllValues();
+        assertEquals(344, arguments.get(0).size());
+        assertEquals(expectedBlackList, arguments.get(2));
+    }
+
+    void shouldCollectLineupPositions() {
+        verify(adjuster).adjustedLineupPositions(playerListCaptor2.capture(), stringListCaptor.capture());
+        assertEquals(Arrays.asList("QB", "RB", "RB", "WR", "WR", "WR", "TE", "RB,WR,TE", "D"), stringListCaptor.getValue());
+    }
+
+    void shouldCollectSalaryCap() {
+        verify(adjuster).adjustedSalaryCap(playerListCaptor2.capture(), intCaptor.capture());
+        assertEquals(60000, intCaptor.getValue());
     }
 
     @Test
     void shouldHandleOptimizerInput() {
         List<Integer> result = optimizerHandler.handleRequest(optimizerInput);
+        shouldCollectLineup(emptyLineup);
+        shouldCollectPlayerListAndBlackList(Collections.emptyList());
+        shouldCollectLineupPositions();
+        shouldCollectSalaryCap();
         assertEquals(Arrays.asList(1, 2, 3, 4, 5), result);
     }
 
     @Test
     void shouldHandleOptimizerWhiteAndBlackListInput() {
         List<Integer> result = optimizerHandler.handleRequest(optimizerWithWhiteAndBlackListInput);
-        assertEquals(Arrays.asList(1, 2, 3, 4, 5), result);
-    }
-
-    @Test
-    void shouldHandleOptimizerInputSingleGame() {
-        List<Integer> result = optimizerHandler.handleRequest(optimizerSingleGameInput);
-        assertEquals(Arrays.asList(1, 2, 3, 4, 5), result);
-    }
-
-    @Test
-    void shouldHandleOptimizerSingleGameWhiteAndBlackListInput() {
-        List<Integer> result = optimizerHandler.handleRequest(optimizerSingleGameWhiteAndBlackListInput);
+        shouldCollectLineup(whiteListLineup);
+        shouldCollectPlayerListAndBlackList(Collections.singletonList(new Player(868199)));
+        shouldCollectLineupPositions();
+        shouldCollectSalaryCap();
         assertEquals(Arrays.asList(1, 2, 3, 4, 5), result);
     }
 }

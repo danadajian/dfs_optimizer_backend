@@ -18,55 +18,55 @@ public class LineupMatrixTest {
 
     @Test
     void shouldReturnFrequencyOfPosition() {
-        int result = lineupMatrix.positionFrequency("WR");
+        int result = lineupMatrix.getPositionFrequency("WR");
         assertEquals(3, result);
-        int result2 = singleGameMatrix.positionFrequency("any");
+        int result2 = singleGameMatrix.getPositionFrequency("any");
         assertEquals(6, result2);
-        int result3 = emptyMatrix.positionFrequency("WR");
+        int result3 = emptyMatrix.getPositionFrequency("WR");
         assertEquals(0, result3);
     }
 
     @Test
     void shouldReturnUniquePositions() {
-        List<String> result = lineupMatrix.uniquePositions();
+        List<String> result = lineupMatrix.getUniquePositions();
         assertEquals(Arrays.asList("QB", "RB", "WR", "TE", "RB,WR,TE", "D"), result);
-        List<String> result2 = singleGameMatrix.uniquePositions();
+        List<String> result2 = singleGameMatrix.getUniquePositions();
         assertEquals(Collections.singletonList("any"), result2);
-        List<String> result3 = emptyMatrix.uniquePositions();
+        List<String> result3 = emptyMatrix.getUniquePositions();
         assertEquals(Collections.emptyList(), result3);
     }
 
     @Test
     void shouldCalculateTotalCombinations() {
-        long result = lineupMatrix.totalCombinations(Arrays.asList(5, 5, 5, 5, 10, 5));
+        long result = lineupMatrix.getAllCombinations(Arrays.asList(5, 5, 5, 5, 10, 5));
         assertEquals(125000, result);
     }
 
     @Test
     void shouldReturnValidPositionThresholds() {
-        List<Integer> result = lineupMatrix.positionThresholds();
+        List<Integer> result = lineupMatrix.getPositionThresholds();
         assertEquals(Arrays.asList(7, 7, 7, 7, 12, 6), result);
-        List<Integer> result2 = singleGameMatrix.positionThresholds();
+        List<Integer> result2 = singleGameMatrix.getPositionThresholds();
         assertEquals(Collections.singletonList(38), result2);
-        List<Integer> result3 = emptyMatrix.positionThresholds();
+        List<Integer> result3 = emptyMatrix.getPositionThresholds();
         assertEquals(Collections.emptyList(), result3);
     }
 
     @Test
     void shouldReturnPositionThreshold() {
-        int result1 = lineupMatrix.positionThreshold("QB");
+        int result1 = lineupMatrix.getPositionThreshold("QB");
         assertEquals(7, result1);
-        int result2 = lineupMatrix.positionThreshold("RB");
+        int result2 = lineupMatrix.getPositionThreshold("RB");
         assertEquals(7, result2);
-        int result3 = lineupMatrix.positionThreshold("WR");
+        int result3 = lineupMatrix.getPositionThreshold("WR");
         assertEquals(7, result3);
-        int result4 = lineupMatrix.positionThreshold("TE");
+        int result4 = lineupMatrix.getPositionThreshold("TE");
         assertEquals(7, result4);
-        int result5 = lineupMatrix.positionThreshold("RB,WR,TE");
+        int result5 = lineupMatrix.getPositionThreshold("RB,WR,TE");
         assertEquals(12, result5);
-        int result6 = lineupMatrix.positionThreshold("D");
+        int result6 = lineupMatrix.getPositionThreshold("D");
         assertEquals(6, result6);
-        int result7 = singleGameMatrix.positionThreshold("any");
+        int result7 = singleGameMatrix.getPositionThreshold("any");
         assertEquals(38, result7);
     }
 }

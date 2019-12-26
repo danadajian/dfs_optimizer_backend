@@ -48,14 +48,14 @@ class OptimizerTest {
     @BeforeEach
     void setUp() {
         MockitoAnnotations.initMocks(this);
-        when(lineupMatrix.uniquePositions()).thenReturn(Arrays.asList("RB", "WR"));
-        when(lineupMatrix.positionThreshold(anyString())).thenReturn(1);
-        when(lineupMatrix.positionFrequency(anyString())).thenReturn(2);
+        when(lineupMatrix.getUniquePositions()).thenReturn(Arrays.asList("RB", "WR"));
+        when(lineupMatrix.getPositionThreshold(anyString())).thenReturn(1);
+        when(lineupMatrix.getPositionFrequency(anyString())).thenReturn(2);
     }
 
     @Test
     void shouldReturnTruncatedPools() {
-        List<List<Player>> result = optimizer.truncatedPlayerPoolsByPosition(playerList, lineupMatrix);
+        List<List<Player>> result = optimizer.truncatePlayerPoolsByPosition(playerList, lineupMatrix);
         assertEquals(2, result.size());
         assertEquals(1, result.get(0).size());
         assertEquals(1, result.get(1).size());
@@ -67,7 +67,7 @@ class OptimizerTest {
                 Arrays.asList(rb1, rb2, rb3, rb4),
                 Arrays.asList(wr1, wr2, wr3, wr4)
         );
-        List<Set<List<Player>>> result = optimizer.playerPoolCombinations(playerPools, lineupMatrix);
+        List<Set<List<Player>>> result = optimizer.getPlayerPoolCombinations(playerPools, lineupMatrix);
         assertEquals(2, result.size());
         assertEquals(CombinatoricsUtils.binomialCoefficient(4, 2), result.get(0).size());
         assertEquals(CombinatoricsUtils.binomialCoefficient(4, 2), result.get(1).size());
@@ -102,7 +102,7 @@ class OptimizerTest {
 
     @Test
     void shouldReturnBestLineupInCartesianProduct() {
-        List<Player> result = optimizer.bestLineupInCartesianProduct(mockPermutedPlayerPools, salaryCap);
+        List<Player> result = optimizer.getBestLineupInCartesianProduct(mockPermutedPlayerPools, salaryCap);
         assertEquals(Arrays.asList(rb1, wr2, wr4), result);
     }
 }

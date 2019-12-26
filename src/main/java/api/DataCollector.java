@@ -47,7 +47,7 @@ public class DataCollector implements ApiClient {
 
     @Override
     public String getInjuryData(String sport) {
-        return apiCaller.scrapeESPNInjuriesSite(sport);
+        return apiCaller.scrapeEspnInjuriesSite(sport);
     }
 
     @Override

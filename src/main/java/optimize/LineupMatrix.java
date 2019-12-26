@@ -16,33 +16,33 @@ public class LineupMatrix {
         this.lineupPositions = lineupPositions;
         this.maxCombinations = maxCombinations;
         this.uniquePositions = lineupPositions.stream().distinct().collect(Collectors.toList());
-        this.positionThresholds = positionThresholds();
+        this.positionThresholds = getPositionThresholds();
     }
 
-    public List<String> uniquePositions() {
+    public List<String> getUniquePositions() {
         return uniquePositions;
     }
 
-    public int positionFrequency(String position) {
+    public int getPositionFrequency(String position) {
         return Collections.frequency(lineupPositions, position);
     }
 
-    public int positionThreshold(String position) {
+    public int getPositionThreshold(String position) {
         int positionIndex = uniquePositions.indexOf(position);
         return positionThresholds.get(positionIndex);
     }
 
-    public List<Integer> positionThresholds() {
+    public List<Integer> getPositionThresholds() {
         List<Integer> positionThresholds = uniquePositions
                 .stream()
-                .map(position -> position.contains(",") ? 10 : Math.max(5, positionFrequency(position)))
+                .map(position -> position.contains(",") ? 10 : Math.max(5, getPositionFrequency(position)))
                 .collect(Collectors.toList());
         int positionCount = positionThresholds.size();
         if (positionCount > 0) {
             boolean continueIncrement = true;
             int positionIndex = 0;
             while (continueIncrement) {
-                if (totalCombinations(positionThresholds) < maxCombinations)
+                if (getAllCombinations(positionThresholds) < maxCombinations)
                     positionThresholds.set(positionIndex, positionThresholds.get(positionIndex) + 1);
                 else {
                     int lastPositionIndex = (positionIndex + positionCount - 1) % positionCount;
@@ -55,12 +55,12 @@ public class LineupMatrix {
         return positionThresholds;
     }
 
-    public long totalCombinations(List<Integer> positionThresholds) {
+    public long getAllCombinations(List<Integer> positionThresholds) {
         return uniquePositions
                 .stream()
                 .mapToLong(position -> {
                     int n = positionThresholds.get(uniquePositions.indexOf(position));
-                    int k = positionFrequency(position);
+                    int k = getPositionFrequency(position);
                     return CombinatoricsUtils.binomialCoefficient(n, k);
                 })
                 .reduce(1, (a, b) -> a * b);

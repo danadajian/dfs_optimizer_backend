@@ -6,10 +6,10 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-public class MakeHttpRequest {
+public class HttpRequest {
     private int statusCode;
 
-    public MakeHttpRequest() {
+    public HttpRequest() {
         this.statusCode = 200;
     }
 
@@ -17,7 +17,7 @@ public class MakeHttpRequest {
         return statusCode;
     }
 
-    public String HttpRequest(String url) {
+    public String makeHttpRequest(String url) {
         StringBuilder response = new StringBuilder();
         try {
             URL obj = new URL(url);

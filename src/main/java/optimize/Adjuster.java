@@ -10,14 +10,14 @@ public class Adjuster {
         return lineup.stream().filter(player -> player.playerId > 0).collect(Collectors.toList());
     }
 
-    public List<Player> adjustedPlayerList(List<Player> playerList, List<Player> whiteList, List<Player> blackList) {
+    public List<Player> adjustPlayerList(List<Player> playerList, List<Player> whiteList, List<Player> blackList) {
         return playerList
                 .stream()
                 .filter(player -> player.projection > 0 && !whiteList.contains(player) && !blackList.contains(player))
                 .collect(Collectors.toList());
     }
 
-    public List<String> adjustedLineupPositions(List<Player> lineup, List<String> startingPositions) {
+    public List<String> adjustLineupPositions(List<Player> lineup, List<String> startingPositions) {
         List<String> newLineupMatrix = new ArrayList<>();
         for (int i = 0; i < startingPositions.size(); i++) {
             if (lineup.get(i).playerId == 0) {
@@ -27,7 +27,7 @@ public class Adjuster {
         return newLineupMatrix;
     }
 
-    public int adjustedSalaryCap(List<Player> whiteList, int startingSalaryCap) {
+    public int adjustSalaryCap(List<Player> whiteList, int startingSalaryCap) {
         return startingSalaryCap - whiteList.stream().mapToInt(player -> player.salary).sum();
     }
 }

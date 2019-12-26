@@ -5,7 +5,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import handler.OptimizerHandler;
 import optimize.Adjuster;
 import optimize.LineupCompiler;
-import optimize.Optimizer;
 import optimize.Player;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -70,19 +69,19 @@ class OptimizerHandlerTest {
     }
 
     void shouldCollectPlayerListAndBlackList(List<Player> expectedBlackList) {
-        verify(adjuster).adjustedPlayerList(playerListCaptor2.capture(), playerListCaptor2.capture(), playerListCaptor2.capture());
+        verify(adjuster).adjustPlayerList(playerListCaptor2.capture(), playerListCaptor2.capture(), playerListCaptor2.capture());
         List<List<Player>> arguments = playerListCaptor2.getAllValues();
         assertEquals(344, arguments.get(0).size());
         assertEquals(expectedBlackList, arguments.get(2));
     }
 
     void shouldCollectLineupPositions() {
-        verify(adjuster).adjustedLineupPositions(playerListCaptor2.capture(), stringListCaptor.capture());
+        verify(adjuster).adjustLineupPositions(playerListCaptor2.capture(), stringListCaptor.capture());
         assertEquals(Arrays.asList("QB", "RB", "RB", "WR", "WR", "WR", "TE", "RB,WR,TE", "D"), stringListCaptor.getValue());
     }
 
     void shouldCollectSalaryCap() {
-        verify(adjuster).adjustedSalaryCap(playerListCaptor2.capture(), intCaptor.capture());
+        verify(adjuster).adjustSalaryCap(playerListCaptor2.capture(), intCaptor.capture());
         assertEquals(60000, intCaptor.getValue());
     }
 

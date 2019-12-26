@@ -9,7 +9,6 @@ public class Player {
     public double projection;
 
     public Player() {
-
     }
 
     public Player(int playerId) {

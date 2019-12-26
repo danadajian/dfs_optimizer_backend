@@ -53,19 +53,19 @@ public class AdjusterTest {
 
     @Test
     void shouldAdjustPlayerList() {
-        List<Player> result = adjuster.adjustedPlayerList(playerList, Arrays.asList(rb2, rb3), blackList);
+        List<Player> result = adjuster.adjustPlayerList(playerList, Arrays.asList(rb2, rb3), blackList);
         assertEquals(Arrays.asList(qb1, qb2, rb1, rb6, wr1, wr2, wr3, wr4, te1, te2, dst1, dst2), result);
     }
 
     @Test
     void shouldAdjustLineupPositions() {
-        List<String> result = adjuster.adjustedLineupPositions(lineup, startingPositions);
+        List<String> result = adjuster.adjustLineupPositions(lineup, startingPositions);
         assertEquals(Arrays.asList("QB", "WR", "D"), result);
     }
 
     @Test
     void shouldAdjustSalaryCap() {
-        int result = adjuster.adjustedSalaryCap(Arrays.asList(rb2, rb3), 60000);
+        int result = adjuster.adjustSalaryCap(Arrays.asList(rb2, rb3), 60000);
         assertEquals(60000 - rb2.salary - rb3.salary, result);
 
     }

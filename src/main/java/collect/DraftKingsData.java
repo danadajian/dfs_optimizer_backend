@@ -7,7 +7,7 @@ import org.json.JSONObject;
 
 import java.util.*;
 
-public class DraftKingsData {
+public class DraftKingsData extends DfsData {
     private final List<String> supportedGameTypes = Arrays.asList("Classic", "Showdown Captain Mode", "Showdown");
     private final List<String> supportedContests = Arrays.asList(" (Thu-Mon)", " (Sun-Mon)", " (Thu)", " (Sat)");
     private ApiClient apiClient;

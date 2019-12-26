@@ -1,13 +1,13 @@
 package com.optimizer.api;
 
-import api.MakeHttpRequest;
+import api.HttpRequest;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class MakeHttpRequestTest {
+class httpRequestTest {
 
-    private MakeHttpRequest httpRequest = new MakeHttpRequest();
+    private HttpRequest httpRequest = new HttpRequest();
 
     @Test
     void shouldReturnErrorCodeMessage() {

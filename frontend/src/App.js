@@ -242,7 +242,7 @@ class App extends Component {
         filteredPool, sortAttribute, sortSign, searchText, whiteList, blackList, displayMatrix} = this.state;
 
     const csvData = [
-        displayMatrix,
+        displayMatrix.toString(),
         lineup.map(player => player.name)
     ];
 

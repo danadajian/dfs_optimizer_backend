@@ -81,6 +81,14 @@ class OptimizerTest {
     }
 
     @Test
+    void shouldCheckIfPlayerHasValidLineupPosition() {
+        assertTrue(optimizer.playerHasValidPosition(new Player(0, "G"), "any"));
+        assertTrue(optimizer.playerHasValidPosition(new Player(0, "C/1B"), "1B"));
+        assertTrue(optimizer.playerHasValidPosition(new Player(0, "SF"), "SF,PF"));
+        assertFalse(optimizer.playerHasValidPosition(new Player(0, "RB"), "WR"));
+    }
+
+    @Test
     void shouldCorrectlyCheckForDuplicates() {
         boolean result1 = optimizer.areNoDuplicates(Arrays.asList(rb1, rb2, wr2, wr3, te1, rb3, dst1));
         assertTrue(result1);

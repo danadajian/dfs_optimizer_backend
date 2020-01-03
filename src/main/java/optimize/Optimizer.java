@@ -17,16 +17,14 @@ public class Optimizer {
     public List<List<Player>> truncatePlayerPoolsByPosition(List<Player> playerList, LineupMatrix lineupMatrix) {
         List<List<Player>> truncatedPlayerPools = new ArrayList<>();
         for (String lineupPosition : lineupMatrix.getUniquePositions()) {
-            List<Player> playerPool = playerList.stream()
-                    .filter(player -> lineupPosition.equals("any") ||
-                                    Arrays.asList(lineupPosition.split(",")).contains(player.position) ||
-                                    Arrays.asList(player.position.split("/")).contains(lineupPosition)
-                    )
+            List<Player> playerPool = playerList
+                    .stream()
+                    .filter(player -> playerHasValidPosition(player, lineupPosition))
                     .sorted(Comparator.comparingDouble(player -> player.salary / player.projection))
                     .collect(Collectors.toList());
-            List<Player> playerPoolSublist = playerPool.subList(0,
-                    Math.min(lineupMatrix.getPositionThreshold(lineupPosition), playerPool.size()));
-            truncatedPlayerPools.add(playerPoolSublist);
+            List<Player> truncatedPlayerPool = playerPool
+                    .subList(0, Math.min(lineupMatrix.getPositionThreshold(lineupPosition), playerPool.size()));
+            truncatedPlayerPools.add(truncatedPlayerPool);
         }
         return truncatedPlayerPools;
     }
@@ -43,7 +41,8 @@ public class Optimizer {
             Set<List<Player>> playerCombinations = new HashSet<>();
             while (iterator.hasNext()) {
                 final int[] combination = iterator.next();
-                List<Player> playerCombination = Arrays.stream(combination)
+                List<Player> playerCombination = Arrays
+                        .stream(combination)
                         .mapToObj(playerPool::get)
                         .sorted((player1, player2) -> Double.compare(player2.projection, player1.projection))
                         .collect(Collectors.toList());
@@ -66,6 +65,12 @@ public class Optimizer {
             }
         }
         return optimalLineup;
+    }
+
+    public boolean playerHasValidPosition(Player player, String lineupPosition) {
+        return lineupPosition.equals("any") ||
+                Arrays.asList(lineupPosition.split(",")).contains(player.position) ||
+                Arrays.asList(player.position.split("/")).contains(lineupPosition);
     }
 
     public boolean areNoDuplicates(List<Player> lineup) {

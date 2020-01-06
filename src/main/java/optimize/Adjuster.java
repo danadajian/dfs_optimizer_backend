@@ -10,8 +10,8 @@ public class Adjuster {
         return lineup.stream().filter(player -> player.playerId > 0).collect(Collectors.toList());
     }
 
-    public List<Player> adjustPlayerList(List<Player> playerList, List<Player> whiteList, List<Player> blackList) {
-        return playerList
+    public List<Player> adjustPlayerPool(List<Player> playerPool, List<Player> whiteList, List<Player> blackList) {
+        return playerPool
                 .stream()
                 .filter(player -> player.projection > 0 && !whiteList.contains(player) && !blackList.contains(player))
                 .collect(Collectors.toList());

@@ -35,7 +35,7 @@ public class AdjusterTest {
             emptyPlayer
     );
 
-    private List<Player> playerList = Arrays.asList(
+    private List<Player> playerPool = Arrays.asList(
             qb1, qb2, rb1, rb2, rb3, rb4, rb5, rb6, wr1, wr2, wr3, wr4, te1, te2, dst1, dst2, zeroPlayer
     );
 
@@ -52,8 +52,8 @@ public class AdjusterTest {
     }
 
     @Test
-    void shouldAdjustPlayerList() {
-        List<Player> result = adjuster.adjustPlayerList(playerList, Arrays.asList(rb2, rb3), blackList);
+    void shouldAdjustPlayerPool() {
+        List<Player> result = adjuster.adjustPlayerPool(playerPool, Arrays.asList(rb2, rb3), blackList);
         assertEquals(Arrays.asList(qb1, qb2, rb1, rb6, wr1, wr2, wr3, wr4, te1, te2, dst1, dst2), result);
     }
 

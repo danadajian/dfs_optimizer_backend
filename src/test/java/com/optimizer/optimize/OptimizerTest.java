@@ -29,7 +29,7 @@ class OptimizerTest {
     private Player te1 = new Player(13, "TE", 10.1, 6700);
     private Player dst1 = new Player(15, "D", 6.0, 4600);
 
-    private List<Player> playerList = Arrays.asList(rb1, rb2, rb3, rb4, wr1, wr2, wr3, wr4);
+    private List<Player> playerPool = Arrays.asList(rb1, rb2, rb3, rb4, wr1, wr2, wr3, wr4);
     int salaryCap = 18000;
     private List<Set<List<Player>>> mockPermutedPlayerPools = Arrays.asList(
             new HashSet<>(Arrays.asList(Collections.singletonList(rb1), Collections.singletonList(rb2),
@@ -55,7 +55,7 @@ class OptimizerTest {
 
     @Test
     void shouldReturnTruncatedPools() {
-        List<List<Player>> result = optimizer.truncatePlayerPoolsByPosition(playerList, lineupMatrix);
+        List<List<Player>> result = optimizer.truncatePlayerPoolsByPosition(playerPool, lineupMatrix);
         assertEquals(2, result.size());
         assertEquals(1, result.get(0).size());
         assertEquals(1, result.get(1).size());

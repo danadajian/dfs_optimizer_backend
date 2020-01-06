@@ -40,10 +40,10 @@ class OptimizerHandlerTest {
     OptimizerHandler optimizerHandler;
 
     @Captor
-    ArgumentCaptor<List<Player>> playerListCaptor1;
+    ArgumentCaptor<List<Player>> playerPoolCaptor1;
 
     @Captor
-    ArgumentCaptor<List<Player>> playerListCaptor2;
+    ArgumentCaptor<List<Player>> playerPoolCaptor2;
 
     @Captor
     ArgumentCaptor<List<String>> stringListCaptor;
@@ -64,24 +64,24 @@ class OptimizerHandlerTest {
     }
 
     void shouldCollectLineup(List<Player> expectedLineup) {
-        verify(adjuster).getWhiteList(playerListCaptor1.capture());
-        assertEquals(expectedLineup, playerListCaptor1.getValue());
+        verify(adjuster).getWhiteList(playerPoolCaptor1.capture());
+        assertEquals(expectedLineup, playerPoolCaptor1.getValue());
     }
 
-    void shouldCollectPlayerListAndBlackList(List<Player> expectedBlackList) {
-        verify(adjuster).adjustPlayerList(playerListCaptor2.capture(), playerListCaptor2.capture(), playerListCaptor2.capture());
-        List<List<Player>> arguments = playerListCaptor2.getAllValues();
+    void shouldCollectPlayerPoolAndBlackList(List<Player> expectedBlackList) {
+        verify(adjuster).adjustPlayerPool(playerPoolCaptor2.capture(), playerPoolCaptor2.capture(), playerPoolCaptor2.capture());
+        List<List<Player>> arguments = playerPoolCaptor2.getAllValues();
         assertEquals(344, arguments.get(0).size());
         assertEquals(expectedBlackList, arguments.get(2));
     }
 
     void shouldCollectLineupPositions() {
-        verify(adjuster).adjustLineupPositions(playerListCaptor2.capture(), stringListCaptor.capture());
+        verify(adjuster).adjustLineupPositions(playerPoolCaptor2.capture(), stringListCaptor.capture());
         assertEquals(Arrays.asList("QB", "RB", "RB", "WR", "WR", "WR", "TE", "RB,WR,TE", "D"), stringListCaptor.getValue());
     }
 
     void shouldCollectSalaryCap() {
-        verify(adjuster).adjustSalaryCap(playerListCaptor2.capture(), intCaptor.capture());
+        verify(adjuster).adjustSalaryCap(playerPoolCaptor2.capture(), intCaptor.capture());
         assertEquals(60000, intCaptor.getValue());
     }
 
@@ -89,7 +89,7 @@ class OptimizerHandlerTest {
     void shouldHandleOptimizerInput() {
         List<Integer> result = optimizerHandler.handleRequest(optimizerInput);
         shouldCollectLineup(emptyLineup);
-        shouldCollectPlayerListAndBlackList(Collections.emptyList());
+        shouldCollectPlayerPoolAndBlackList(Collections.emptyList());
         shouldCollectLineupPositions();
         shouldCollectSalaryCap();
         assertEquals(Arrays.asList(1, 2, 3, 4, 5), result);
@@ -99,7 +99,7 @@ class OptimizerHandlerTest {
     void shouldHandleOptimizerWhiteAndBlackListInput() {
         List<Integer> result = optimizerHandler.handleRequest(optimizerWithWhiteAndBlackListInput);
         shouldCollectLineup(whiteListLineup);
-        shouldCollectPlayerListAndBlackList(Collections.singletonList(new Player(868199)));
+        shouldCollectPlayerPoolAndBlackList(Collections.singletonList(new Player(868199)));
         shouldCollectLineupPositions();
         shouldCollectSalaryCap();
         assertEquals(Arrays.asList(1, 2, 3, 4, 5), result);

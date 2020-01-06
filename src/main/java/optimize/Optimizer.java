@@ -8,21 +8,21 @@ import java.util.stream.Collectors;
 
 public class Optimizer {
 
-    public List<Player> generateOptimalPlayers(List<Player> playerList, LineupMatrix lineupMatrix, int salaryCap) {
-        List<List<Player>> truncatedPlayerPools = truncatePlayerPoolsByPosition(playerList, lineupMatrix);
+    public List<Player> generateOptimalPlayers(List<Player> playerPool, LineupMatrix lineupMatrix, int salaryCap) {
+        List<List<Player>> truncatedPlayerPools = truncatePlayerPoolsByPosition(playerPool, lineupMatrix);
         List<Set<List<Player>>> permutedPlayerPools = getPlayerPoolCombinations(truncatedPlayerPools, lineupMatrix);
         return getBestLineupInCartesianProduct(permutedPlayerPools, salaryCap);
     }
 
-    public List<List<Player>> truncatePlayerPoolsByPosition(List<Player> playerList, LineupMatrix lineupMatrix) {
+    public List<List<Player>> truncatePlayerPoolsByPosition(List<Player> playerPool, LineupMatrix lineupMatrix) {
         List<List<Player>> truncatedPlayerPools = new ArrayList<>();
         for (String lineupPosition : lineupMatrix.getUniquePositions()) {
-            List<Player> playerPool = playerList
+            List<Player> sortedValidPlayerPool = playerPool
                     .stream()
                     .filter(player -> playerHasValidPosition(player, lineupPosition))
                     .sorted(Comparator.comparingDouble(player -> player.salary / player.projection))
                     .collect(Collectors.toList());
-            List<Player> truncatedPlayerPool = playerPool
+            List<Player> truncatedPlayerPool = sortedValidPlayerPool
                     .subList(0, Math.min(lineupMatrix.getPositionThreshold(lineupPosition), playerPool.size()));
             truncatedPlayerPools.add(truncatedPlayerPool);
         }
@@ -36,7 +36,7 @@ public class Optimizer {
             List<Player> playerPool = playerPools.get(i);
             String position = uniquePositions.get(i);
             int n = playerPools.get(i).size();
-            int k = Math.abs(lineupMatrix.getPositionFrequency(position));
+            int k = lineupMatrix.getPositionFrequency(position);
             Iterator<int[]> iterator = CombinatoricsUtils.combinationsIterator(n, k);
             Set<List<Player>> playerCombinations = new HashSet<>();
             while (iterator.hasNext()) {

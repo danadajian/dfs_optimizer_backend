@@ -211,13 +211,15 @@ class App extends Component {
 
   generateOptimalLineup = async () => {
       let {lineup, playerPool, blackList, lineupPositions, displayMatrix, salaryCap, playerPoolData} = this.state;
+      if (playerPool.length === 0)
+          alert('Insufficient player data to optimize.');
       this.setState({isOptimizing: true});
       const playerIds = await fetch(apiRoot + '/optimize', {
           method: 'POST',
           headers: {'Content-Type': 'application/json'},
           body: JSON.stringify({
               'lineup': lineup,
-              'players': playerPool,
+              'playerPool': playerPool,
               'blackList': blackList,
               'lineupPositions': lineupPositions,
               'salaryCap': salaryCap

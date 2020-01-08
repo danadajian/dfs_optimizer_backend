@@ -1,22 +1,21 @@
 package com.optimizer.collect;
 
 import api.ApiClient;
-import collect.FanduelData;
+import collect.dfs.Fanduel;
 import org.json.JSONObject;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
-class FanduelDataTest implements MockResponses {
+class FanduelTest implements MockResponses {
 
     private ApiClient mockApi = mock(ApiClient.class);
-    private FanduelData fanduelData = new FanduelData(mockApi);
+    private Fanduel fanduel = new Fanduel(mockApi);
 
     @BeforeEach
     void setUp() {
@@ -25,7 +24,7 @@ class FanduelDataTest implements MockResponses {
 
     @Test
     void shouldGetValidContests() {
-        List<JSONObject> result = fanduelData.getValidContests("testDateString");
+        List<JSONObject> result = fanduel.getValidContests("testDateString");
         verify(mockApi).getFanduelData(anyString());
         assertEquals(1, result.size());
     }
@@ -33,7 +32,7 @@ class FanduelDataTest implements MockResponses {
     @SuppressWarnings("unchecked")
     @Test
     void shouldGetAllContestData() {
-        List<Map<String, Object>> result = fanduelData.getAllContestData("testDateString");
+        List<Map<String, Object>> result = fanduel.getAllContestData("testDateString");
         verify(mockApi).getFanduelData(anyString());
         assertEquals("NFL", result.get(0).get("sport"));
         assertEquals("PIT @ CLE", result.get(0).get("contest"));

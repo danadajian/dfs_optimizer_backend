@@ -1,22 +1,21 @@
 package com.optimizer.collect;
 
 import api.ApiClient;
-import collect.DraftKingsData;
+import collect.dfs.DraftKings;
 import org.json.JSONObject;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
-class DraftKingsDataTest implements MockResponses {
+class DraftKingsTest implements MockResponses {
 
     private ApiClient mockApi = mock(ApiClient.class);
-    private DraftKingsData draftKingsData = new DraftKingsData(mockApi);
+    private DraftKings draftKings = new DraftKings(mockApi);
 
     @BeforeEach
     void setUp() {
@@ -25,7 +24,7 @@ class DraftKingsDataTest implements MockResponses {
 
     @Test
     void shouldGetFixtureLists() {
-        List<JSONObject> result = draftKingsData.getValidContests("nfl");
+        List<JSONObject> result = draftKings.getValidContests("nfl");
         verify(mockApi).getDraftKingsData(anyString());
         assertEquals(1, result.size());
     }
@@ -33,7 +32,7 @@ class DraftKingsDataTest implements MockResponses {
     @SuppressWarnings("unchecked")
     @Test
     void shouldGetAllContestData() {
-        List<Map<String, Object>> result = draftKingsData.getAllContestData("nfl");
+        List<Map<String, Object>> result = draftKings.getAllContestData("nfl");
         verify(mockApi).getDraftKingsData(anyString());
         assertEquals("PIT vs CLE (11/14)", result.get(0).get("contest"));
         List<Map<String, Object>> players = (List<Map<String, Object>>) result.get(0).get("players");

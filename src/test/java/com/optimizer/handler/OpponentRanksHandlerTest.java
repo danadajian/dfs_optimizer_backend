@@ -1,6 +1,6 @@
 package com.optimizer.handler;
 
-import collect.OpponentRanksData;
+import collect.misc.OpponentRanks;
 import handler.OpponentRanksHandler;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -16,7 +16,7 @@ import static org.mockito.Mockito.verify;
 class OpponentRanksHandlerTest {
 
     @Mock
-    OpponentRanksData opponentRanksData;
+    OpponentRanks opponentRanks;
 
     @InjectMocks
     OpponentRanksHandler opponentRanksHandler;
@@ -31,7 +31,7 @@ class OpponentRanksHandlerTest {
         Map<String, String> testMap = new HashMap<>();
         testMap.put("sport", "nfl");
         opponentRanksHandler.handleRequest(testMap);
-        verify(opponentRanksData).getOpponentRanks("nfl");
+        verify(opponentRanks).getOpponentRanks("nfl");
     }
 
     @Test
@@ -39,6 +39,6 @@ class OpponentRanksHandlerTest {
         Map<String, String> testMap = new HashMap<>();
         testMap.put("sport", "nba");
         opponentRanksHandler.handleRequest(testMap);
-        verify(opponentRanksData).getOpponentRanks("nba");
+        verify(opponentRanks).getOpponentRanks("nba");
     }
 }

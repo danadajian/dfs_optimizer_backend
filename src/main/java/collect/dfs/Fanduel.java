@@ -1,4 +1,4 @@
-package collect;
+package collect.dfs;
 
 import api.ApiClient;
 import org.json.JSONArray;
@@ -7,12 +7,12 @@ import org.json.XML;
 
 import java.util.*;
 
-public class FanduelData extends DfsData {
+public class Fanduel extends DFS {
     private final List<String> supportedSports = Arrays.asList("NFL", "MLB", "NBA", "NHL");
     private final List<String> supportedContests = Arrays.asList("Thu-Mon", "Main", "Sun-Mon", "Thu Only", "Sat Only");
     private ApiClient apiClient;
 
-    public FanduelData(ApiClient apiClient) {
+    public Fanduel(ApiClient apiClient) {
         this.apiClient = apiClient;
     }
 

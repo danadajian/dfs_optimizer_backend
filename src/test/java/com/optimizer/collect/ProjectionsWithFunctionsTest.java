@@ -1,9 +1,7 @@
 package com.optimizer.collect;
 
 import api.ApiClient;
-import collect.EventData;
-import collect.ParticipantsData;
-import collect.ProjectionsData;
+import collect.stats.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -16,20 +14,20 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 import static org.mockito.Mockito.verify;
 
-class ProjectionsDataTest implements MockResponses {
+class ProjectionsWithFunctionsTest implements MockResponses {
 
-    ProjectionsDataTest() throws IOException {
+    ProjectionsWithFunctionsTest() throws IOException {
     }
 
     private ApiClient mockApi = mock(ApiClient.class);
-    private EventData nflEventData = new EventData(mockApi, "nfl");
-    private ProjectionsData nflProjectionsData = new ProjectionsData(mockApi);
-    private EventData nhlEventData = new EventData(mockApi, "nhl");
-    private ParticipantsData nhlParticipantsData = new ParticipantsData(mockApi, "nhl");
-    private ProjectionsData nhlProjectionsData = new ProjectionsData(mockApi);
-    private EventData nbaEventData = new EventData(mockApi, "nba");
-    private ParticipantsData nbaParticipantsData = new ParticipantsData(mockApi, "nba");
-    private ProjectionsData projectionsData = new ProjectionsData(mockApi);
+    private Events nflEvents = new Events(mockApi, "nfl");
+    private NFLProjections nflProjections = new NFLProjections(mockApi);
+    private Events nhlEvents = new Events(mockApi, "nhl");
+    private Participants nhlParticipants = new Participants(mockApi, "nhl");
+    private NHLProjections nhlProjections = new NHLProjections(mockApi);
+    private Events nbaEvents = new Events(mockApi, "nba");
+    private Participants nbaParticipants = new Participants(mockApi, "nba");
+    private StandardProjections standardProjectionsData = new StandardProjections(mockApi);
     private String fakeNFLProjectionsResponse = new String(Files.readAllBytes(Paths.get("src/main/resources/nflProjectionsResponse.txt")));
     private String fakeNFLEventsResponse = new String(Files.readAllBytes(Paths.get("src/main/resources/nflEventsResponse.txt")));
     private String fakeNFLOddsResponse = new String(Files.readAllBytes(Paths.get("src/main/resources/nflOddsResponse.txt")));
@@ -59,7 +57,7 @@ class ProjectionsDataTest implements MockResponses {
 
     @Test
     void shouldGetHomeOrAwayMapFromNFLEvents() {
-        Map<Integer, Map<Object, Object>> result = nflEventData.getEventData();
+        Map<Integer, Map<Object, Object>> result = nflEvents.getEventData();
         verify(mockApi).getCurrentEvents("nfl");
         assertEquals("v. NYJ", result.get(2142041).get(366));
         assertEquals("@ Bal", result.get(2142041).get(352));
@@ -67,7 +65,7 @@ class ProjectionsDataTest implements MockResponses {
 
     @Test
     void shouldGetNFLProjectionsFromThisWeek() {
-        Map<Integer, Map<String, Object>> result = nflProjectionsData.getNFLFantasyProjections();
+        Map<Integer, Map<String, Object>> result = nflProjections.getProjectionsData();
         verify(mockApi, times(1)).getCurrentEvents("nfl");
         verify(mockApi).getProjectionsFromThisWeek("nfl");
         assertEquals("Lamar Jackson", result.get(877745).get("name"));
@@ -90,7 +88,7 @@ class ProjectionsDataTest implements MockResponses {
 
     @Test
     void shouldGetNHLEventDataFromThisWeek() {
-        Map<Integer, Map<Object, Object>> result = nhlEventData.getEventData();
+        Map<Integer, Map<Object, Object>> result = nhlEvents.getEventData();
         assertEquals("Tue 7:00PM EST", result.get(2154769).get("gameDate"));
         assertEquals("v. Mon", result.get(2154769).get(4969));
         assertEquals("@ Pit", result.get(2154769).get(4963));
@@ -98,7 +96,7 @@ class ProjectionsDataTest implements MockResponses {
 
     @Test
     void shouldGetNHLParticipantsData() {
-        Map<Integer, Map<String, String>> result = nhlParticipantsData.getParticipantsData();
+        Map<Integer, Map<String, String>> result = nhlParticipants.getParticipantsData();
         assertEquals("Chad Ruhwedel", result.get(732552).get("name"));
         assertEquals("Pit", result.get(732552).get("team"));
         assertEquals("Christian Folin", result.get(824587).get("name"));
@@ -107,7 +105,7 @@ class ProjectionsDataTest implements MockResponses {
 
     @Test
     void shouldGetNHLProjectionsFromThisWeek() {
-        Map<Integer, Map<String, Object>> result = nhlProjectionsData.getNHLFantasyProjections();
+        Map<Integer, Map<String, Object>> result = nhlProjections.getProjectionsData();
         verify(mockApi, times(1)).getCurrentEvents("nhl");
         verify(mockApi, times(1)).getParticipants("nhl");
         assertEquals("Chad Ruhwedel", result.get(732552).get("name"));
@@ -130,7 +128,7 @@ class ProjectionsDataTest implements MockResponses {
 
     @Test
     void shouldGetNBAEventDataFromThisWeek() {
-        Map<Integer, Map<Object, Object>> result = nbaEventData.getEventData();
+        Map<Integer, Map<Object, Object>> result = nbaEvents.getEventData();
         assertEquals("Tue 8:00PM EST", result.get(2177081).get("gameDate"));
         assertEquals("v. Den", result.get(2177081).get(20));
         assertEquals("@ Phi", result.get(2177081).get(7));
@@ -138,7 +136,7 @@ class ProjectionsDataTest implements MockResponses {
 
     @Test
     void shouldGetNBAParticipantsData() {
-        Map<Integer, Map<String, String>> result = nbaParticipantsData.getParticipantsData();
+        Map<Integer, Map<String, String>> result = nbaParticipants.getParticipantsData();
         assertEquals("Al Horford", result.get(280587).get("name"));
         assertEquals("Phi", result.get(280587).get("team"));
         assertEquals("Paul Millsap", result.get(237675).get("name"));
@@ -147,7 +145,7 @@ class ProjectionsDataTest implements MockResponses {
 
     @Test
     void shouldGetNBAProjectionsFromThisWeek() {
-        Map<Integer, Map<String, Object>> result = projectionsData.getStandardFantasyProjections("nba");
+        Map<Integer, Map<String, Object>> result = standardProjectionsData.getProjectionsData("nba");
         verify(mockApi, times(1)).getCurrentEvents("nba");
         verify(mockApi, times(1)).getParticipants("nba");
         assertEquals("Al Horford", result.get(280587).get("name"));

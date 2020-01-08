@@ -1,4 +1,4 @@
-package collect;
+package collect.dfs;
 
 import api.ApiClient;
 import util.DateOperations;
@@ -7,12 +7,12 @@ import org.json.JSONObject;
 
 import java.util.*;
 
-public class DraftKingsData extends DfsData {
+public class DraftKings extends DFS {
     private final List<String> supportedGameTypes = Arrays.asList("Classic", "Showdown Captain Mode", "Showdown");
     private final List<String> supportedContests = Arrays.asList(" (Thu-Mon)", " (Sun-Mon)", " (Thu)", " (Sat)");
     private ApiClient apiClient;
 
-    public DraftKingsData(ApiClient apiClient) {
+    public DraftKings(ApiClient apiClient) {
         this.apiClient = apiClient;
     }
 

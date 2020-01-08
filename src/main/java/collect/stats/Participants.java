@@ -1,4 +1,4 @@
-package collect;
+package collect.stats;
 
 import api.ApiClient;
 import org.json.JSONArray;
@@ -7,11 +7,11 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
-public class ParticipantsData {
+public class Participants {
     private ApiClient apiClient;
     private String sport;
 
-    public ParticipantsData(ApiClient apiClient, String sport) {
+    public Participants(ApiClient apiClient, String sport) {
         this.apiClient = apiClient;
         this.sport = sport;
     }

@@ -1,6 +1,6 @@
 package com.optimizer.handler;
 
-import collect.DraftKingsData;
+import collect.dfs.DraftKings;
 import com.optimizer.collect.MockResponses;
 import handler.DraftKingsHandler;
 import org.junit.jupiter.api.BeforeEach;
@@ -17,7 +17,7 @@ import static org.mockito.Mockito.*;
 class DraftKingsHandlerTest implements MockResponses {
 
     @Mock
-    DraftKingsData draftKingsData;
+    DraftKings draftKings;
 
     @InjectMocks
     DraftKingsHandler draftKingsHandler;
@@ -32,6 +32,6 @@ class DraftKingsHandlerTest implements MockResponses {
         Map<String, String> testMap = new HashMap<>();
         testMap.put("sport", "nfl");
         draftKingsHandler.handleRequest(testMap);
-        verify(draftKingsData).getAllContestData("nfl");
+        verify(draftKings).getAllContestData("nfl");
     }
 }

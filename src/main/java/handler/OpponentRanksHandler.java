@@ -2,16 +2,16 @@ package handler;
 
 import api.ApiCaller;
 import api.DataCollector;
-import collect.OpponentRanksData;
+import collect.misc.OpponentRanks;
 
 import java.util.Map;
 
 public class OpponentRanksHandler {
     private DataCollector dataCollector = new DataCollector(new ApiCaller());
-    OpponentRanksData opponentRanksData = new OpponentRanksData(dataCollector);
+    OpponentRanks opponentRanks = new OpponentRanks(dataCollector);
 
     public Map<String, Map<String, Integer>> handleRequest(Map<String, String> input) {
         String sport = input.get("sport");
-        return opponentRanksData.getOpponentRanks(sport);
+        return opponentRanks.getOpponentRanks(sport);
     }
 }

@@ -1,6 +1,6 @@
 package com.optimizer.handler;
 
-import collect.FanduelData;
+import collect.dfs.Fanduel;
 import com.optimizer.collect.MockResponses;
 import handler.FanduelHandler;
 import org.junit.jupiter.api.BeforeEach;
@@ -17,7 +17,7 @@ import static org.mockito.Mockito.verify;
 class FanduelHandlerTest implements MockResponses {
 
     @Mock
-    FanduelData fanduelData;
+    Fanduel fanduel;
 
     @InjectMocks
     FanduelHandler fanduelHandler;
@@ -32,6 +32,6 @@ class FanduelHandlerTest implements MockResponses {
         Map<String, String> testMap = new HashMap<>();
         testMap.put("date", "2019-12-16");
         fanduelHandler.handleRequest(testMap);
-        verify(fanduelData).getAllContestData("2019-12-16");
+        verify(fanduel).getAllContestData("2019-12-16");
     }
 }

@@ -1,6 +1,8 @@
 package com.optimizer.handler;
 
-import collect.ProjectionsData;
+import collect.stats.NFLProjections;
+import collect.stats.NHLProjections;
+import collect.stats.StandardProjections;
 import handler.ProjectionsHandler;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -16,7 +18,13 @@ import static org.mockito.Mockito.*;
 class ProjectionsHandlerTest {
 
     @Mock
-    ProjectionsData projectionsData;
+    StandardProjections standardProjectionsData;
+
+    @Mock
+    NFLProjections nflProjections;
+
+    @Mock
+    NHLProjections nhlProjections;
 
     @InjectMocks
     ProjectionsHandler projectionsHandler;
@@ -31,7 +39,7 @@ class ProjectionsHandlerTest {
         Map<String, String> testMap = new HashMap<>();
         testMap.put("sport", "mlb");
         projectionsHandler.handleRequest(testMap);
-        verify(projectionsData).getStandardFantasyProjections("mlb");
+        verify(standardProjectionsData).getProjectionsData("mlb");
     }
 
     @Test
@@ -39,7 +47,7 @@ class ProjectionsHandlerTest {
         Map<String, String> testMap = new HashMap<>();
         testMap.put("sport", "nfl");
         projectionsHandler.handleRequest(testMap);
-        verify(projectionsData).getNFLFantasyProjections();
+        verify(nflProjections).getProjectionsData();
     }
 
     @Test
@@ -47,7 +55,7 @@ class ProjectionsHandlerTest {
         Map<String, String> testMap = new HashMap<>();
         testMap.put("sport", "nba");
         projectionsHandler.handleRequest(testMap);
-        verify(projectionsData).getStandardFantasyProjections("nba");
+        verify(standardProjectionsData).getProjectionsData("nba");
     }
 
     @Test
@@ -55,6 +63,6 @@ class ProjectionsHandlerTest {
         Map<String, String> testMap = new HashMap<>();
         testMap.put("sport", "nhl");
         projectionsHandler.handleRequest(testMap);
-        verify(projectionsData).getNHLFantasyProjections();
+        verify(nhlProjections).getProjectionsData();
     }
 }

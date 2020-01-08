@@ -1,4 +1,4 @@
-package collect;
+package collect.misc;
 
 import api.ApiClient;
 import org.json.JSONArray;
@@ -8,10 +8,10 @@ import org.json.XML;
 import java.util.HashMap;
 import java.util.Map;
 
-public class InjuryData {
+public class Injuries {
     private ApiClient apiClient;
 
-    public InjuryData(ApiClient apiClient) {
+    public Injuries(ApiClient apiClient) {
         this.apiClient = apiClient;
     }
 

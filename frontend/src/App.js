@@ -88,9 +88,9 @@ class App extends Component {
   setContest = (contest) => {
       let {site, sport, dfsData, projectionsData} = this.state;
       if (dfsData.length === 0)
-          alert('There was a problem obtaining DFS data.');
-      if (Object.keys(projectionsData).length === 0)
-          alert('There was a problem obtaining projections data.');
+          alert(site + ' data is currently unavailable.');
+      if (Object.keys(projectionsData).length === 0 || projectionsData['errorMessage'])
+          alert('Player projection data is currently unavailable.');
       let gameType = contest.includes('@') || contest.includes('vs') ? 'Single Game' : 'Classic';
       let lineupPositions = lineupStructures[site][sport][gameType].lineupPositions;
       let displayMatrix = lineupStructures[site][sport][gameType].displayMatrix;

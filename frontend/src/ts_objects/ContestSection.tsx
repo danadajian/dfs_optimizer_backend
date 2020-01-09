@@ -12,7 +12,7 @@ export const ContestSection = (props: {
         <p>No contests are available.</p> :
         <div>
             <h3>Choose a contest:</h3>
-            <div style={{display: 'flex'}}>
+            <div style={{display: 'flex', justifyContent: 'center'}}>
                 {props.contests.map(
                     contestName =>
                         <button style={{backgroundColor: (contestName === props.contest) ? 'dodgerblue' : 'white'}}

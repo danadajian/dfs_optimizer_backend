@@ -9,7 +9,7 @@ import java.util.*;
 
 public class DraftKings extends DFS {
     private final List<String> supportedGameTypes = Arrays.asList("Classic", "Showdown Captain Mode", "Showdown");
-    private final List<String> supportedContests = Arrays.asList(" (Thu-Mon)", " (Sun-Mon)", " (Thu)", " (Sat)");
+    private final List<String> supportedContests = Arrays.asList("Main", "Thu", "Sat", "Sun");
     private ApiClient apiClient;
 
     public DraftKings(ApiClient apiClient) {
@@ -56,7 +56,7 @@ public class DraftKings extends DFS {
             JSONObject event = (JSONObject) object;
             if (supportedGameTypes.contains(event.getString("gameType")) &&
                     (!event.has("suffix") ||
-                            supportedContests.contains(event.getString("suffix")) ||
+                            supportedContests.stream().anyMatch(event.getString("suffix")::contains) ||
                             event.getString("gameType").contains("Showdown")) &&
                     event.getJSONArray("draftPool").length() > 0) {
                 validContests.add(event);

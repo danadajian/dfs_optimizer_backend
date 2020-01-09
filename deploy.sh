@@ -48,6 +48,6 @@ npm test
 npm run build
 
 cd build
-aws s3 sync . "s3://dfsoptimizer.app/" --exclude "precache-manifest*"
+aws s3 sync . "s3://${BUCKET_NAME}" --exclude "precache-manifest*"
 
 echo "BUILD COMPLETE!"

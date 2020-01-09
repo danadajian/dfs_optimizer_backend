@@ -23,7 +23,8 @@ public class Optimizer {
                     .sorted(Comparator.comparingDouble(player -> player.salary / player.projection))
                     .collect(Collectors.toList());
             List<Player> truncatedPlayerPool = sortedValidPlayerPool
-                    .subList(0, Math.min(lineupMatrix.getPositionThreshold(lineupPosition), playerPool.size()));
+                    .subList(0,
+                            Math.min(lineupMatrix.getPositionThreshold(lineupPosition), sortedValidPlayerPool.size()));
             truncatedPlayerPools.add(truncatedPlayerPool);
         }
         return truncatedPlayerPools;

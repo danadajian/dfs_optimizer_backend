@@ -2,37 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="352060b1-b9b3-400c-8051-85a2b23146fe" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/collect/stats/MapAdder.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/collect/stats/NHLProjections.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/collect/stats/Projections.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/collect/stats/StandardProjections.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/deploy.sh" beforeDir="false" afterPath="$PROJECT_DIR$/deploy.sh" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/ts_objects/ContestSection.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/ts_objects/ContestSection.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/collect/DfsData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/collect/dfs/DFS.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/collect/DraftKingsData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/collect/dfs/DraftKings.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/collect/EventData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/collect/stats/Events.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/collect/FanduelData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/collect/dfs/Fanduel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/collect/InjuryData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/collect/misc/Injuries.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/collect/OddsData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/collect/misc/Odds.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/collect/OpponentRanksData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/collect/misc/OpponentRanks.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/collect/ParticipantsData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/collect/stats/Participants.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/collect/ProjectionsData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/collect/stats/NFLProjections.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/handler/DraftKingsHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/handler/DraftKingsHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/handler/FanduelHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/handler/FanduelHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/handler/InjuryHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/handler/InjuryHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/handler/OpponentRanksHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/handler/OpponentRanksHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/handler/ProjectionsHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/handler/ProjectionsHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/optimizer/collect/DraftKingsDataTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/optimizer/collect/DraftKingsTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/optimizer/collect/FanduelDataTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/optimizer/collect/FanduelTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/optimizer/collect/InjuryDataTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/optimizer/collect/InjuriesTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/optimizer/collect/OpponentRanksDataTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/optimizer/collect/OpponentRanksTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/optimizer/collect/ProjectionsDataTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/optimizer/collect/ProjectionsWithFunctionsTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/optimizer/handler/DraftKingsHandlerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/optimizer/handler/DraftKingsHandlerTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/optimizer/handler/FanduelHandlerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/optimizer/handler/FanduelHandlerTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/optimizer/handler/InjuryHandlerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/optimizer/handler/InjuryHandlerTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/optimizer/handler/OpponentRanksHandlerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/optimizer/handler/OpponentRanksHandlerTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/optimizer/handler/ProjectionsHandlerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/optimizer/handler/ProjectionsHandlerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/collect/dfs/DraftKings.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/collect/dfs/DraftKings.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/collect/dfs/Fanduel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/collect/dfs/Fanduel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/optimize/Optimizer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/optimize/Optimizer.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -145,6 +122,22 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="OptimizerHandlerTest.shouldTellMeWhatsGoingOn" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="DFS-Optimizer-Web" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.optimizer.handler.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.optimizer.handler" />
+      <option name="MAIN_CLASS_NAME" value="com.optimizer.handler.OptimizerHandlerTest" />
+      <option name="METHOD_NAME" value="shouldTellMeWhatsGoingOn" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="OptimizerTest.shouldReturnEmptyPlayerCombinationListIfPlayerPoolIsEmpty" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="DFS-Optimizer-Web" />
       <extension name="coverage">
@@ -185,29 +178,21 @@
       <option name="INTERPRETER_OPTIONS" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="deploy.sh" type="ShConfigurationType" temporary="true">
-      <option name="SCRIPT_PATH" value="$PROJECT_DIR$/deploy.sh" />
-      <option name="SCRIPT_OPTIONS" value="" />
-      <option name="SCRIPT_WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="INTERPRETER_PATH" value="/bin/zsh" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <method v="2" />
-    </configuration>
     <list>
       <item itemvalue="Bash.deploy.sh" />
       <item itemvalue="JUnit.All in DFS-Optimizer-Web" />
       <item itemvalue="JUnit.OptimizerTest.shouldReturnEmptyPlayerCombinationListIfPlayerPoolIsEmpty" />
       <item itemvalue="JUnit.OptimizerTest.shouldReturnEmptyTruncatedPoolsListIfPlayerPoolIsEmpty" />
-      <item itemvalue="Shell Script.deploy.sh" />
       <item itemvalue="Shell Script.deploy.sh (1)" />
+      <item itemvalue="JUnit.OptimizerHandlerTest.shouldTellMeWhatsGoingOn" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="JUnit.All in DFS-Optimizer-Web" />
+        <item itemvalue="JUnit.OptimizerHandlerTest.shouldTellMeWhatsGoingOn" />
         <item itemvalue="Shell Script.deploy.sh (1)" />
         <item itemvalue="JUnit.OptimizerTest.shouldReturnEmptyPlayerCombinationListIfPlayerPoolIsEmpty" />
         <item itemvalue="JUnit.OptimizerTest.shouldReturnEmptyTruncatedPoolsListIfPlayerPoolIsEmpty" />
-        <item itemvalue="Shell Script.deploy.sh" />
       </list>
     </recent_temporary>
   </component>
@@ -285,7 +270,8 @@
       <workItem from="1578079379757" duration="312000" />
       <workItem from="1578344559453" duration="225000" />
       <workItem from="1578414596576" duration="3554000" />
-      <workItem from="1578493339950" duration="4712000" />
+      <workItem from="1578493339950" duration="4949000" />
+      <workItem from="1578587945445" duration="5790000" />
     </task>
     <servers />
   </component>
@@ -358,50 +344,50 @@
     </state>
     <state x="740" y="274" key="FileChooserDialogImpl/0.0.1920.1040/1920.0.1280.680@0.0.1920.1040" timestamp="1576427984341" />
     <state x="740" y="274" key="FileChooserDialogImpl/1920.8.1920.1040/0.0.1920.1040/0.1080.1280.680@0.0.1920.1040" timestamp="1576593447542" />
-    <state width="1877" height="204" key="GridCell.Tab.0.bottom" timestamp="1578498030246">
+    <state width="1877" height="204" key="GridCell.Tab.0.bottom" timestamp="1578593737192">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="195" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1280.680@0.0.1920.1040" timestamp="1576427913435" />
     <state width="1398" height="156" key="GridCell.Tab.0.bottom/0.23.1440.821@0.23.1440.821" timestamp="1577375577337" />
-    <state width="1877" height="204" key="GridCell.Tab.0.bottom/1920.8.1920.1040/0.0.1920.1040/0.1080.1280.680@0.0.1920.1040" timestamp="1578498030246" />
-    <state width="1877" height="204" key="GridCell.Tab.0.center" timestamp="1578498030246">
+    <state width="1877" height="204" key="GridCell.Tab.0.bottom/1920.8.1920.1040/0.0.1920.1040/0.1080.1280.680@0.0.1920.1040" timestamp="1578593737192" />
+    <state width="1877" height="204" key="GridCell.Tab.0.center" timestamp="1578593737192">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="195" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1280.680@0.0.1920.1040" timestamp="1576427913434" />
     <state width="1398" height="156" key="GridCell.Tab.0.center/0.23.1440.821@0.23.1440.821" timestamp="1577375577335" />
-    <state width="1877" height="204" key="GridCell.Tab.0.center/1920.8.1920.1040/0.0.1920.1040/0.1080.1280.680@0.0.1920.1040" timestamp="1578498030246" />
-    <state width="1877" height="204" key="GridCell.Tab.0.left" timestamp="1578498030246">
+    <state width="1877" height="204" key="GridCell.Tab.0.center/1920.8.1920.1040/0.0.1920.1040/0.1080.1280.680@0.0.1920.1040" timestamp="1578593737192" />
+    <state width="1877" height="204" key="GridCell.Tab.0.left" timestamp="1578593737192">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="195" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1280.680@0.0.1920.1040" timestamp="1576427913434" />
     <state width="1398" height="156" key="GridCell.Tab.0.left/0.23.1440.821@0.23.1440.821" timestamp="1577375577335" />
-    <state width="1877" height="204" key="GridCell.Tab.0.left/1920.8.1920.1040/0.0.1920.1040/0.1080.1280.680@0.0.1920.1040" timestamp="1578498030246" />
-    <state width="1877" height="204" key="GridCell.Tab.0.right" timestamp="1578498030246">
+    <state width="1877" height="204" key="GridCell.Tab.0.left/1920.8.1920.1040/0.0.1920.1040/0.1080.1280.680@0.0.1920.1040" timestamp="1578593737192" />
+    <state width="1877" height="204" key="GridCell.Tab.0.right" timestamp="1578593737192">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="195" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1280.680@0.0.1920.1040" timestamp="1576427913434" />
     <state width="1398" height="156" key="GridCell.Tab.0.right/0.23.1440.821@0.23.1440.821" timestamp="1577375577336" />
-    <state width="1877" height="204" key="GridCell.Tab.0.right/1920.8.1920.1040/0.0.1920.1040/0.1080.1280.680@0.0.1920.1040" timestamp="1578498030246" />
-    <state width="1877" height="235" key="GridCell.Tab.1.bottom" timestamp="1578344499346">
+    <state width="1877" height="204" key="GridCell.Tab.0.right/1920.8.1920.1040/0.0.1920.1040/0.1080.1280.680@0.0.1920.1040" timestamp="1578593737192" />
+    <state width="1877" height="235" key="GridCell.Tab.1.bottom" timestamp="1578592702782">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="278" key="GridCell.Tab.1.bottom/0.0.1920.1040/1920.0.1280.680@0.0.1920.1040" timestamp="1576341121195" />
-    <state width="1877" height="235" key="GridCell.Tab.1.bottom/1920.8.1920.1040/0.0.1920.1040/0.1080.1280.680@0.0.1920.1040" timestamp="1578344499346" />
-    <state width="1877" height="235" key="GridCell.Tab.1.center" timestamp="1578344499346">
+    <state width="1877" height="235" key="GridCell.Tab.1.bottom/1920.8.1920.1040/0.0.1920.1040/0.1080.1280.680@0.0.1920.1040" timestamp="1578592702782" />
+    <state width="1877" height="235" key="GridCell.Tab.1.center" timestamp="1578592702781">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="278" key="GridCell.Tab.1.center/0.0.1920.1040/1920.0.1280.680@0.0.1920.1040" timestamp="1576341121195" />
-    <state width="1877" height="235" key="GridCell.Tab.1.center/1920.8.1920.1040/0.0.1920.1040/0.1080.1280.680@0.0.1920.1040" timestamp="1578344499346" />
-    <state width="1877" height="235" key="GridCell.Tab.1.left" timestamp="1578344499346">
+    <state width="1877" height="235" key="GridCell.Tab.1.center/1920.8.1920.1040/0.0.1920.1040/0.1080.1280.680@0.0.1920.1040" timestamp="1578592702781" />
+    <state width="1877" height="235" key="GridCell.Tab.1.left" timestamp="1578592702781">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="278" key="GridCell.Tab.1.left/0.0.1920.1040/1920.0.1280.680@0.0.1920.1040" timestamp="1576341121195" />
-    <state width="1877" height="235" key="GridCell.Tab.1.left/1920.8.1920.1040/0.0.1920.1040/0.1080.1280.680@0.0.1920.1040" timestamp="1578344499346" />
-    <state width="1877" height="235" key="GridCell.Tab.1.right" timestamp="1578344499346">
+    <state width="1877" height="235" key="GridCell.Tab.1.left/1920.8.1920.1040/0.0.1920.1040/0.1080.1280.680@0.0.1920.1040" timestamp="1578592702781" />
+    <state width="1877" height="235" key="GridCell.Tab.1.right" timestamp="1578592702782">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="278" key="GridCell.Tab.1.right/0.0.1920.1040/1920.0.1280.680@0.0.1920.1040" timestamp="1576341121195" />
-    <state width="1877" height="235" key="GridCell.Tab.1.right/1920.8.1920.1040/0.0.1920.1040/0.1080.1280.680@0.0.1920.1040" timestamp="1578344499346" />
+    <state width="1877" height="235" key="GridCell.Tab.1.right/1920.8.1920.1040/0.0.1920.1040/0.1080.1280.680@0.0.1920.1040" timestamp="1578592702782" />
     <state x="440" y="93" key="SettingsEditor" timestamp="1576765166848">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

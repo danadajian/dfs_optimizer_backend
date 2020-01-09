@@ -86,6 +86,8 @@ class App extends Component {
   };
 
   setContest = (contest) => {
+      if (!contest)
+          return;
       let {site, sport, dfsData, projectionsData} = this.state;
       if (dfsData.length === 0)
           alert(site + ' data is currently unavailable.');
@@ -228,7 +230,8 @@ class App extends Component {
           })
       }).then(response => response.json());
       if (!Array.isArray(playerIds) || playerIds.includes(0)) {
-          alert('Optimal lineup could not be found.' + playerIds['errorMessage'] ? '\n' + playerIds['errorMessage'] : '');
+          alert('Optimal lineup could not be found.' + playerIds['errorMessage'] ?
+              playerIds['errorType'] + '\n' + playerIds['errorMessage'] + '\n' + playerIds['stackTrace'].slice(0, 4) : '');
           this.setState({isOptimizing: false})
       } else {
           let optimalLineup = playerIds.map(playerId => playerPool.find(player => player.playerId === playerId));

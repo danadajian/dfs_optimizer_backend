@@ -72,7 +72,6 @@ export const PlayerPool = (props: {
     filterList: playerAttributes[],
     whiteListFunction: (index: number) => void,
     blackListFunction: (index: number) => void,
-    sortFunction: (a: playerAttributes, b: playerAttributes) => number,
     toggleSort: (attribute: string) => void,
     sortAttribute: string,
     sortSign: number,
@@ -109,7 +108,12 @@ export const PlayerPool = (props: {
                 <th>Add</th>
                 <th>Blacklist</th>
             </tr>
-            {props.playerList.sort((a, b) => props.sortFunction(a, b)).map(
+            {props.playerList.sort((a, b) => {
+                return (props.sortAttribute === 'pricePerPoint') ?
+                    props.sortSign * (b.salary / b.projection - a.salary / a.projection) :
+                    // @ts-ignore
+                    props.sortSign*(b[props.sortAttribute] - a[props.sortAttribute])
+            }).map(
                 (player, index) => {
                     if (!props.filterList || props.filterList.includes(player)) {
                         return (

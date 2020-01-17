@@ -42,7 +42,6 @@ export const GridSection = (props: {
     addToLineup: (playerIndex: number) => void,
     removeFromLineup: (playerIndex: number) => void,
     toggleBlackList: (playerIndex: number) => void,
-    sortAttributeFunction: (a: playerAttributes, b: playerAttributes) => number,
     sortAttribute: string,
     sortSign: number,
     toggleSort: (attribute: string) => void,
@@ -84,8 +83,7 @@ export const GridSection = (props: {
             <div className={"Player-list-box"}>
                 <PlayerPool playerList={props.playerPool} filterList={props.filteredPool}
                             whiteListFunction={props.addToLineup} blackListFunction={props.toggleBlackList}
-                            sortFunction={props.sortAttributeFunction} toggleSort={props.toggleSort}
-                            sortAttribute={props.sortAttribute} sortSign={props.sortSign}
+                            toggleSort={props.toggleSort} sortAttribute={props.sortAttribute} sortSign={props.sortSign}
                             whiteList={props.whiteList} blackList={props.blackList}
                             salarySum={sumAttribute(props.lineup, 'salary')} cap={props.salaryCap}/>
             </div>

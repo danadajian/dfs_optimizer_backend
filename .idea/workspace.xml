@@ -4,12 +4,16 @@
     <list default="true" id="352060b1-b9b3-400c-8051-85a2b23146fe" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/deploy.sh" beforeDir="false" afterPath="$PROJECT_DIR$/deploy.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/ts_objects/ContestSection.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/ts_objects/ContestSection.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/resources/lineupStructures.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/ts_objects/GridSection.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/ts_objects/GridSection.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/ts_objects/PlayerPool.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/ts_objects/PlayerPool.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/collect/dfs/DraftKings.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/collect/dfs/DraftKings.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/collect/dfs/Fanduel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/collect/dfs/Fanduel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/optimize/Optimizer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/optimize/Optimizer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/handler/OptimizerHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/handler/OptimizerHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/optimizerHandlerBody.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/optimizerHandlerBody.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/optimizerHandlerWhiteAndBlackListBody.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/optimizerHandlerWhiteAndBlackListBody.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/template.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/template.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -100,7 +104,7 @@
       <recent name="collect" />
     </key>
   </component>
-  <component name="RunManager" selected="Bash.deploy.sh">
+  <component name="RunManager" selected="JUnit.All in DFS-Optimizer-Web">
     <configuration name="deploy.sh" type="BashConfigurationType" factoryName="Bash">
       <module name="DFS-Optimizer-Web" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -179,12 +183,11 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Bash.deploy.sh" />
       <item itemvalue="JUnit.All in DFS-Optimizer-Web" />
       <item itemvalue="JUnit.OptimizerTest.shouldReturnEmptyPlayerCombinationListIfPlayerPoolIsEmpty" />
       <item itemvalue="JUnit.OptimizerTest.shouldReturnEmptyTruncatedPoolsListIfPlayerPoolIsEmpty" />
-      <item itemvalue="Shell Script.deploy.sh (1)" />
       <item itemvalue="JUnit.OptimizerHandlerTest.shouldTellMeWhatsGoingOn" />
+      <item itemvalue="Shell Script.deploy.sh (1)" />
     </list>
     <recent_temporary>
       <list>
@@ -272,6 +275,8 @@
       <workItem from="1578414596576" duration="3554000" />
       <workItem from="1578493339950" duration="4949000" />
       <workItem from="1578587945445" duration="5790000" />
+      <workItem from="1579132848533" duration="4000" />
+      <workItem from="1579132930134" duration="599000" />
     </task>
     <servers />
   </component>
@@ -312,15 +317,20 @@
       <screen x="0" y="23" width="1440" height="821" />
     </state>
     <state x="100" y="123" width="1240" height="621" key="#com.intellij.execution.junit2.states.ComparisonFailureState$DiffDialog/0.23.1440.821@0.23.1440.821" timestamp="1577146421269" />
+    <state x="483" y="243" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1579280880093">
+      <screen x="0" y="23" width="1440" height="821" />
+    </state>
+    <state x="483" y="243" key="#com.intellij.fileTypes.FileTypeChooser/0.23.1440.821@0.23.1440.821" timestamp="1579280880093" />
     <state x="765" y="220" key="#com.intellij.ide.util.MemberChooser" timestamp="1578495102576">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="765" y="220" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040/1920.0.1280.680@0.0.1920.1040" timestamp="1576259601735" />
     <state x="765" y="220" key="#com.intellij.ide.util.MemberChooser/1920.8.1920.1040/0.0.1920.1040/0.1080.1280.680@0.0.1920.1040" timestamp="1578495102576" />
-    <state x="808" y="408" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog" timestamp="1576255288293">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="606" y="345" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog" timestamp="1579281419105">
+      <screen x="0" y="23" width="1440" height="821" />
     </state>
-    <state x="808" y="408" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/0.0.1920.1040/1920.0.1280.680@0.0.1920.1040" timestamp="1576255288293" />
+    <state x="808" y="408" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/0.0.1920.1040/1920.0.1280.680@0.0.1920.1040" timestamp="1578857717561" />
+    <state x="606" y="345" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/0.23.1440.821@0.23.1440.821" timestamp="1579281419105" />
     <state x="737" y="350" key="#com.intellij.refactoring.move.moveInstanceMethod.MoveInstanceMethodDialog" timestamp="1576424927717">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -339,34 +349,38 @@
       <screen x="0" y="23" width="1440" height="821" />
     </state>
     <state x="458" y="187" key="#com.intellij.refactoring.typeMigration.ui.FailedConversionsDialog/0.23.1440.821@0.23.1440.821" timestamp="1577145703430" />
+    <state x="331" y="36" key="CommitChangelistDialog2" timestamp="1579281154078">
+      <screen x="0" y="23" width="1440" height="821" />
+    </state>
+    <state x="331" y="36" key="CommitChangelistDialog2/0.23.1440.821@0.23.1440.821" timestamp="1579281154078" />
     <state x="740" y="274" key="FileChooserDialogImpl" timestamp="1576593447542">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="740" y="274" key="FileChooserDialogImpl/0.0.1920.1040/1920.0.1280.680@0.0.1920.1040" timestamp="1576427984341" />
     <state x="740" y="274" key="FileChooserDialogImpl/1920.8.1920.1040/0.0.1920.1040/0.1080.1280.680@0.0.1920.1040" timestamp="1576593447542" />
-    <state width="1877" height="204" key="GridCell.Tab.0.bottom" timestamp="1578593737192">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1398" height="156" key="GridCell.Tab.0.bottom" timestamp="1579285149358">
+      <screen x="0" y="23" width="1440" height="821" />
     </state>
-    <state width="1877" height="195" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1280.680@0.0.1920.1040" timestamp="1576427913435" />
-    <state width="1398" height="156" key="GridCell.Tab.0.bottom/0.23.1440.821@0.23.1440.821" timestamp="1577375577337" />
+    <state width="1877" height="195" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1280.680@0.0.1920.1040" timestamp="1578881590182" />
+    <state width="1398" height="156" key="GridCell.Tab.0.bottom/0.23.1440.821@0.23.1440.821" timestamp="1579285149358" />
     <state width="1877" height="204" key="GridCell.Tab.0.bottom/1920.8.1920.1040/0.0.1920.1040/0.1080.1280.680@0.0.1920.1040" timestamp="1578593737192" />
-    <state width="1877" height="204" key="GridCell.Tab.0.center" timestamp="1578593737192">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1398" height="156" key="GridCell.Tab.0.center" timestamp="1579285149357">
+      <screen x="0" y="23" width="1440" height="821" />
     </state>
-    <state width="1877" height="195" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1280.680@0.0.1920.1040" timestamp="1576427913434" />
-    <state width="1398" height="156" key="GridCell.Tab.0.center/0.23.1440.821@0.23.1440.821" timestamp="1577375577335" />
+    <state width="1877" height="195" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1280.680@0.0.1920.1040" timestamp="1578881590182" />
+    <state width="1398" height="156" key="GridCell.Tab.0.center/0.23.1440.821@0.23.1440.821" timestamp="1579285149357" />
     <state width="1877" height="204" key="GridCell.Tab.0.center/1920.8.1920.1040/0.0.1920.1040/0.1080.1280.680@0.0.1920.1040" timestamp="1578593737192" />
-    <state width="1877" height="204" key="GridCell.Tab.0.left" timestamp="1578593737192">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1398" height="156" key="GridCell.Tab.0.left" timestamp="1579285149356">
+      <screen x="0" y="23" width="1440" height="821" />
     </state>
-    <state width="1877" height="195" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1280.680@0.0.1920.1040" timestamp="1576427913434" />
-    <state width="1398" height="156" key="GridCell.Tab.0.left/0.23.1440.821@0.23.1440.821" timestamp="1577375577335" />
+    <state width="1877" height="195" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1280.680@0.0.1920.1040" timestamp="1578881590182" />
+    <state width="1398" height="156" key="GridCell.Tab.0.left/0.23.1440.821@0.23.1440.821" timestamp="1579285149356" />
     <state width="1877" height="204" key="GridCell.Tab.0.left/1920.8.1920.1040/0.0.1920.1040/0.1080.1280.680@0.0.1920.1040" timestamp="1578593737192" />
-    <state width="1877" height="204" key="GridCell.Tab.0.right" timestamp="1578593737192">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1398" height="156" key="GridCell.Tab.0.right" timestamp="1579285149358">
+      <screen x="0" y="23" width="1440" height="821" />
     </state>
-    <state width="1877" height="195" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1280.680@0.0.1920.1040" timestamp="1576427913434" />
-    <state width="1398" height="156" key="GridCell.Tab.0.right/0.23.1440.821@0.23.1440.821" timestamp="1577375577336" />
+    <state width="1877" height="195" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1280.680@0.0.1920.1040" timestamp="1578881590182" />
+    <state width="1398" height="156" key="GridCell.Tab.0.right/0.23.1440.821@0.23.1440.821" timestamp="1579285149358" />
     <state width="1877" height="204" key="GridCell.Tab.0.right/1920.8.1920.1040/0.0.1920.1040/0.1080.1280.680@0.0.1920.1040" timestamp="1578593737192" />
     <state width="1877" height="235" key="GridCell.Tab.1.bottom" timestamp="1578592702782">
       <screen x="0" y="0" width="1920" height="1040" />

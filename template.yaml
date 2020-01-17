@@ -12,7 +12,7 @@ Parameters:
 Globals:
   Function:
     MemorySize: 512
-    Timeout: 60
+    Timeout: 900
 Resources:
   MyApi:
     Type: AWS::Serverless::Api

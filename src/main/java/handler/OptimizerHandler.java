@@ -29,7 +29,7 @@ public class OptimizerHandler {
         List<Player> adjustedPlayerPool = adjuster.adjustPlayerPool(playerPool, whiteList, blackList);
         List<String> adjustedLineupPositions = adjuster.adjustLineupPositions(lineup, lineupPositions);
         int adjustedSalaryCap = adjuster.adjustSalaryCap(whiteList, salaryCap);
-        LineupMatrix lineupMatrix = new LineupMatrix(adjustedLineupPositions, 3000000);
+        LineupMatrix lineupMatrix = new LineupMatrix(adjustedLineupPositions, (int) input.get("maxCombinations"));
         List<Player> optimalPlayers = optimizer.generateOptimalPlayers(adjustedPlayerPool, lineupMatrix, adjustedSalaryCap);
         return lineupCompiler.outputLineup(lineup, optimalPlayers);
     }

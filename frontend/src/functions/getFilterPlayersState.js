@@ -1,4 +1,4 @@
-function getFilterPlayersState(attribute, value, state) {
+export function getFilterPlayersState(attribute, value, state) {
     let {playerPool, text} = state;
     let filteredPool;
     if (value === 'All') {
@@ -21,5 +21,3 @@ function getFilterPlayersState(attribute, value, state) {
         filteredPool: filteredPool
     }
 }
-
-export { getFilterPlayersState }

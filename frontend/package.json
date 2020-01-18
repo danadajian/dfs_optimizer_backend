@@ -5,6 +5,9 @@
   "dependencies": {
     "@types/node": "^12.12.12",
     "@types/react": "^16.9.13",
+    "aws-sdk": "latest",
+    "aws-sdk-mock": "^5.0.0",
+    "dotenv": "latest",
     "react": "^16.12.0",
     "react-bootstrap": "^1.0.0-beta.16",
     "react-csv": "^1.1.2",
@@ -12,9 +15,7 @@
     "react-dom": "^16.12.0",
     "react-scripts": "3.2.0",
     "serialize-javascript": "^2.1.1",
-    "typescript": "^3.7.2",
-    "dotenv": "latest",
-    "aws-sdk": "latest"
+    "typescript": "^3.7.2"
   },
   "scripts": {
     "start": "react-scripts start",

@@ -1,4 +1,4 @@
-function getRemoveFromLineupState(lineupIndex, state) {
+export function getRemoveFromLineupState(lineupIndex, state) {
     let {lineup, whiteList, lineupPositions, displayMatrix} = state;
     let playerToRemove = lineup[lineupIndex];
     let playerInWhiteList = whiteList.find((playerId) => playerId === playerToRemove.playerId, null);
@@ -20,5 +20,3 @@ function getRemoveFromLineupState(lineupIndex, state) {
         whiteList: whiteList
     }
 }
-
-export { getRemoveFromLineupState }

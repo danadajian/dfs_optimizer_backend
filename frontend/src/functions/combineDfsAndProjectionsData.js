@@ -1,7 +1,7 @@
 import {teamAbbreviations} from "../resources/teamAbbreviations";
 import {injuryAbbreviations} from "../resources/injuryAbbreviations";
 
-function combineDfsAndProjectionsData(dfsPlayers, projectionsData, site, opponentRanks, injuries) {
+export function combineDfsAndProjectionsData(dfsPlayers, projectionsData, site, opponentRanks, injuries) {
   let combinedData = [];
   dfsPlayers.forEach(player => {
     let playerData = projectionsData[player.playerId];
@@ -29,5 +29,3 @@ function combineDfsAndProjectionsData(dfsPlayers, projectionsData, site, opponen
   });
   return combinedData;
 }
-
-export { combineDfsAndProjectionsData }

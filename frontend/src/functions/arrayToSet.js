@@ -1,4 +1,4 @@
-function arrayToSet(array) {
+export function arrayToSet(array) {
     let set = [];
     for (let i = 0; i < array.length; i++) {
         if (!set.includes(array[i])) {
@@ -7,5 +7,3 @@ function arrayToSet(array) {
     }
     return set;
 }
-
-export { arrayToSet }

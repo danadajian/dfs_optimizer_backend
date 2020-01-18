@@ -1,4 +1,4 @@
-function getToggleBlackListState(playerIndex, state) {
+export function getToggleBlackListState(playerIndex, state) {
     let {playerPool, lineup, whiteList, blackList, lineupPositions, displayMatrix} = state;
     let blackListedPlayer = playerPool[playerIndex];
     if (blackList.includes(blackListedPlayer.playerId)) {
@@ -31,5 +31,3 @@ function getToggleBlackListState(playerIndex, state) {
         searchText: ''
     }
 }
-
-export { getToggleBlackListState }

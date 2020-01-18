@@ -1,4 +1,4 @@
-function extractContestsFromData(dataArray, site, date) {
+export function extractContestsFromData(dataArray, site, date) {
   let contestArray = [];
   if (site === 'fd')
     dataArray.forEach(contestJson => contestArray.push(contestJson.contest));
@@ -14,5 +14,3 @@ function extractContestsFromData(dataArray, site, date) {
       .forEach(contestJson => contestArray.push(contestJson.contest));
   return contestArray;
 }
-
-export { extractContestsFromData }

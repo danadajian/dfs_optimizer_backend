@@ -1,4 +1,4 @@
-function getOrdinalString(number) {
+export function getOrdinalString(number) {
     if (!number) {
         return ''
     }
@@ -13,5 +13,3 @@ function getOrdinalString(number) {
         return '(' + numString + 'th)'
     }
 }
-
-export { getOrdinalString }

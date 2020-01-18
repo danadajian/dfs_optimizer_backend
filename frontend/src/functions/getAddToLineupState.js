@@ -1,4 +1,4 @@
-function getAddToLineupState(playerIndex, state) {
+export function getAddToLineupState(playerIndex, state) {
     let {playerPool, lineup, whiteList, blackList} = state;
     let playerToAdd = playerPool[playerIndex];
     let playerInLineup = lineup.find((player) => player.playerId === playerToAdd.playerId, null);
@@ -36,5 +36,3 @@ function getAddToLineupState(playerIndex, state) {
         }
     }
 }
-
-export { getAddToLineupState }

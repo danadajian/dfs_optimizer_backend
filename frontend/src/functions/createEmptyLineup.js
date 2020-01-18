@@ -1,4 +1,4 @@
-function createEmptyLineup(lineupPositions, displayMatrix) {
+export function createEmptyLineup(lineupPositions, displayMatrix) {
     return lineupPositions.map((position, index) => ({
         'playerId': 0,
         'position': position,
@@ -11,5 +11,3 @@ function createEmptyLineup(lineupPositions, displayMatrix) {
         'gameDate': ''
     }))
 }
-
-export { createEmptyLineup }

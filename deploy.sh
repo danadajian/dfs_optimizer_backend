@@ -28,18 +28,17 @@ echo "### SAM Deploy"
 aws s3 rm "s3://${BUCKET_NAME}" --recursive --exclude "*" --include "*.jar"
 aws s3 cp "${PATH_TO_FILE}" "s3://${BUCKET_NAME}/"
 FILE_NAME="${PATH_TO_FILE:9}"
-aws s3 cp ./swagger.yaml "s3://${BUCKET_NAME}/"
 
 if [[ "$OSTYPE" == "msys" ]]; then
     sam.cmd --version
     sam.cmd deploy --template-file ./template.yaml --stack-name ${STACK_NAME} --capabilities CAPABILITY_IAM \
-     --parameter-overrides BucketName=${BUCKET_NAME} CodeKey="${FILE_NAME}" ApiKey="${API_KEY}" ApiSecret="${API_SECRET}" \
-      --no-fail-on-empty-changeset
+     --parameter-overrides BucketName=${BUCKET_NAME} CodeKey="${FILE_NAME}" ApiKey="${API_KEY}" \
+     ApiSecret="${API_SECRET}" --no-fail-on-empty-changeset
 else
     sam --version
     sam deploy --template-file ./template.yaml --stack-name ${STACK_NAME} --capabilities CAPABILITY_IAM \
-     --parameter-overrides BucketName=${BUCKET_NAME} CodeKey="${FILE_NAME}" ApiKey="${API_KEY}" ApiSecret="${API_SECRET}" \
-      --no-fail-on-empty-changeset
+     --parameter-overrides BucketName=${BUCKET_NAME} CodeKey="${FILE_NAME}" ApiKey="${API_KEY}" \
+      ApiSecret="${API_SECRET}" --no-fail-on-empty-changeset
 fi
 
 echo "### Building frontend"

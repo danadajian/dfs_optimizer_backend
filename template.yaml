@@ -1,5 +1,7 @@
-AWSTemplateFormatVersion: '2010-09-09'
+AWSTemplateFormatVersion : '2010-09-09'
 Transform: AWS::Serverless-2016-10-31
+Description: A sample SAM template for deploying Lambda functions.
+
 Parameters:
   BucketName:
     Type: String
@@ -13,17 +15,8 @@ Globals:
   Function:
     MemorySize: 512
     Timeout: 900
+
 Resources:
-  MyApi:
-    Type: AWS::Serverless::Api
-    Properties:
-      StageName: prod
-      Cors: "'*'"
-      DefinitionBody:
-        'Fn::Transform':
-          Name: 'AWS::Include'
-          Parameters:
-            Location: !Sub "s3://${BucketName}/swagger.yaml"
   GetDraftKingsDataFunction:
     Type: AWS::Serverless::Function
     Properties:
@@ -32,13 +25,7 @@ Resources:
         Key: !Ref CodeKey
       Handler: handler.DraftKingsHandler::handleRequest
       Runtime: java8
-      Events:
-        GetDraftKingsData:
-          Type: Api
-          Properties:
-            Path: /draftkings
-            Method: get
-            RestApiId: !Ref MyApi
+
   GetFanduelDataFunction:
     Type: AWS::Serverless::Function
     Properties:
@@ -47,13 +34,7 @@ Resources:
         Key: !Ref CodeKey
       Handler: handler.FanduelHandler::handleRequest
       Runtime: java8
-      Events:
-        GetFanduelData:
-          Type: Api
-          Properties:
-            Path: /fanduel
-            Method: get
-            RestApiId: !Ref MyApi
+
   GetProjectionsDataFunction:
     Type: AWS::Serverless::Function
     Properties:
@@ -66,13 +47,7 @@ Resources:
         Variables:
           key: !Ref ApiKey
           secret: !Ref ApiSecret
-      Events:
-        GetProjectionsData:
-          Type: Api
-          Properties:
-            Path: /projections
-            Method: get
-            RestApiId: !Ref MyApi
+
   GetOpponentRanksDataFunction:
     Type: AWS::Serverless::Function
     Properties:
@@ -81,13 +56,7 @@ Resources:
         Key: !Ref CodeKey
       Handler: handler.OpponentRanksHandler::handleRequest
       Runtime: java8
-      Events:
-        GetOpponentRanksData:
-          Type: Api
-          Properties:
-            Path: /opponentRanks
-            Method: get
-            RestApiId: !Ref MyApi
+
   GetInjuryDataFunction:
     Type: AWS::Serverless::Function
     Properties:
@@ -96,13 +65,7 @@ Resources:
         Key: !Ref CodeKey
       Handler: handler.InjuryHandler::handleRequest
       Runtime: java8
-      Events:
-        GetFanduelData:
-          Type: Api
-          Properties:
-            Path: /injuries
-            Method: get
-            RestApiId: !Ref MyApi
+
   GetOptimalLineupFunction:
     Type: AWS::Serverless::Function
     Properties:
@@ -111,38 +74,3 @@ Resources:
         Key: !Ref CodeKey
       Handler: handler.OptimizerHandler::handleRequest
       Runtime: java8
-      Events:
-        GetOptimalLineup:
-          Type: Api
-          Properties:
-            Path: /optimize
-            Method: post
-            RestApiId: !Ref MyApi
-Outputs:
-  MyApi:
-    Description: "API Gateway endpoint URL"
-    Value: !Sub "https://${MyApi}.execute-api.${AWS::Region}.amazonaws.com/prod"
-
-  GetDraftKingsDataFunction:
-    Description: "GetDraftKingsDataFunction Lambda Function ARN"
-    Value: !GetAtt GetDraftKingsDataFunction.Arn
-
-  GetFanduelDataFunction:
-    Description: "GetFanduelDataFunction Lambda Function ARN"
-    Value: !GetAtt GetFanduelDataFunction.Arn
-
-  GetProjectionsDataFunction:
-    Description: "GetProjectionsDataFunction Lambda Function ARN"
-    Value: !GetAtt GetProjectionsDataFunction.Arn
-
-  GetOpponentRanksDataFunction:
-    Description: "GetOpponentRanksDataFunction Lambda Function ARN"
-    Value: !GetAtt GetOpponentRanksDataFunction.Arn
-
-  GetInjuryDataFunction:
-    Description: "GetInjuryDataFunction Lambda Function ARN"
-    Value: !GetAtt GetInjuryDataFunction.Arn
-
-  GetOptimalLineupFunction:
-    Description: "GetOptimalLineupFunction Lambda Function ARN"
-    Value: !GetAtt GetOptimalLineupFunction.Arn

@@ -6,7 +6,7 @@
 
     <groupId>com.optimizer</groupId>
     <artifactId>DFS-Optimizer-Web</artifactId>
-    <version>1.96</version>
+    <version>1.97</version>
 
     <dependencies>
         <dependency>
@@ -95,7 +95,7 @@
                 <version>1.5.3</version>
                 <executions>
                     <execution>
-                        <phase>pre-package</phase>
+                        <phase>post-clean</phase>
                         <goals>
                             <goal>replace</goal>
                         </goals>
@@ -105,7 +105,9 @@
                     <file>pom.xml</file>
                     <replacements>
                         <replacement>
+                            <!--suppress UnresolvedMavenProperty -->
                             <token>${ccih.origin}</token>
+                            <!--suppress UnresolvedMavenProperty -->
                             <value>${ccih.target}</value>
                         </replacement>
                     </replacements>

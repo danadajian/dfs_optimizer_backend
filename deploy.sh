@@ -23,7 +23,7 @@ fi
 
 PATH_TO_FILE=$(find . -name "*-jar-with-dependencies.jar*" | head -n 1)
 
-echo "### SAM Deploy"
+echo "### Initiating SAM Deploy..."
 
 aws s3 rm "s3://${BUCKET_NAME}" --recursive --exclude "*" --include "*.jar"
 aws s3 cp "${PATH_TO_FILE}" "s3://${BUCKET_NAME}/"
@@ -41,12 +41,20 @@ else
       ApiSecret="${API_SECRET}" --no-fail-on-empty-changeset
 fi
 
-echo "### Building frontend"
+echo "### Building frontend..."
+
 cd frontend
-npm test
+if ! npm test
+then
+  echo "Failed frontend tests!"
+  exit
+fi
 npm run build
 
+echo "### Deploying frontend..."
+
+aws cloudfront create-invalidation --distribution-id "${CDN_DISTRIBUTION_ID}" --paths /\*
 cd build
 aws s3 sync . "s3://${BUCKET_NAME}" --exclude "precache-manifest*"
 
-echo "BUILD COMPLETE!"
+echo "Build complete! :)"

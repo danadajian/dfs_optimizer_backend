@@ -17,12 +17,6 @@ import {ContestSection} from "./ts_objects/ContestSection";
 import {SportSection} from "./ts_objects/SportSection";
 import {DateSection} from "./ts_objects/DateSection";
 
-require('dotenv').config();
-let AWS = require('aws-sdk');
-AWS.config.region = 'us-east-2';
-AWS.config.credentials = new AWS.Credentials(process.env.REACT_APP_AWS_KEY, process.env.REACT_APP_AWS_SECRET);
-let lambda = new AWS.Lambda();
-
 class App extends Component {
 
   constructor(props) {
@@ -30,7 +24,7 @@ class App extends Component {
     this.state = {isLoading: false, isOptimizing: false, loadingText: '', site: '', sport: '', contest: '',
         date: new Date(), dfsData: {}, projectionsData: {}, contests: [], lineup: [], lineupPositions: [],
         displayMatrix: [], salaryCap: 0, lineupRestrictions: {}, playerPool: [], filteredPool: null,
-        playerPoolData: [], sortAttribute: 'salary', sortSign: 1, searchText: '', whiteList: [], blackList: [],
+        sortAttribute: 'salary', sortSign: 1, searchText: '', whiteList: [], blackList: [],
         opponentRanks: {}, injuries: {}, maxCombinations: 3000000};
   }
 
@@ -60,23 +54,22 @@ class App extends Component {
       let dfsData;
       if (site === 'fd') {
           this.setState({loadingText: 'Fanduel data'});
-          let fanduelData = await invokeLambdaFunction(lambda, process.env.REACT_APP_FANDUEL_LAMBDA,
-            {"date": formatDate(date)});
+          let fanduelData = await invokeLambdaFunction(process.env.REACT_APP_FANDUEL_LAMBDA, {"date": formatDate(date)});
           dfsData = fanduelData.filter(contest => contest.sport === sport.toUpperCase());
       } else {
           this.setState({loadingText: 'Draftkings data'});
-          dfsData = await invokeLambdaFunction(lambda, process.env.REACT_APP_DRAFTKINGS_LAMBDA,
+          dfsData = await invokeLambdaFunction(process.env.REACT_APP_DRAFTKINGS_LAMBDA,
             {"sport": sport});
       }
       const contests = extractContestsFromData(dfsData, site, date);
       this.setState({loadingText: sport.toUpperCase() + ' projections'});
-      const projectionsData = await invokeLambdaFunction(lambda, process.env.REACT_APP_PROJECTIONS_LAMBDA,
+      const projectionsData = await invokeLambdaFunction(process.env.REACT_APP_PROJECTIONS_LAMBDA,
         {"sport": sport});
       this.setState({loadingText: sport.toUpperCase() + ' opponent ranks'});
-      const opponentRanks = await invokeLambdaFunction(lambda, process.env.REACT_APP_OPPONENT_RANKS_LAMBDA,
+      const opponentRanks = await invokeLambdaFunction(process.env.REACT_APP_OPPONENT_RANKS_LAMBDA,
         {"sport": sport});
       this.setState({loadingText: 'injury data'});
-      const injuries = await invokeLambdaFunction(lambda, process.env.REACT_APP_INJURIES_LAMBDA,
+      const injuries = await invokeLambdaFunction(process.env.REACT_APP_INJURIES_LAMBDA,
         {"sport": sport});
       this.setState({
           isLoading: false,
@@ -106,25 +99,20 @@ class App extends Component {
       }
       let gameType = contest.includes('@') || contest.includes('vs') ? 'Single Game' : 'Classic';
       let contestRules = lineupRules[site][sport][gameType];
-      let lineupPositions = contestRules.lineupPositions;
-      let displayMatrix = contestRules.displayMatrix;
-      let salaryCap = contestRules.salaryCap;
-      let lineupRestrictions = contestRules.lineupRestrictions;
       let dfsPlayers = dfsData.filter(contestJson => contestJson.contest === contest)[0]['players'];
       let playerPoolData = combineDfsAndProjectionsData(dfsPlayers, projectionsData, site, opponentRanks, injuries);
-      let emptyLineup = createEmptyLineup(lineupPositions, displayMatrix);
+      let emptyLineup = createEmptyLineup(contestRules.lineupPositions, contestRules.displayMatrix);
       this.setState({
           contest: contest,
           playerPool: playerPoolData,
           filteredPool: null,
-          playerPoolData: playerPoolData,
           whiteList: [],
           blackList: [],
           lineup: emptyLineup,
-          lineupPositions: lineupPositions,
-          displayMatrix: displayMatrix,
-          salaryCap: salaryCap,
-          lineupRestrictions: lineupRestrictions
+          lineupPositions: contestRules.lineupPositions,
+          displayMatrix: contestRules.displayMatrix,
+          salaryCap: contestRules.salaryCap,
+          lineupRestrictions: contestRules.lineupRestrictions
       });
   };
 
@@ -169,7 +157,7 @@ class App extends Component {
 
   generateOptimalLineup = async () => {
     this.setState({isOptimizing: true});
-    let playerIds = await invokeLambdaFunction(lambda, process.env.REACT_APP_OPTIMAL_LINEUP_LAMBDA, this.state);
+    let playerIds = await invokeLambdaFunction(process.env.REACT_APP_OPTIMAL_LINEUP_LAMBDA, this.state);
     if (playerIds['errorMessage'] || playerIds.includes(0)) {
       alert('Optimal lineup could not be found.' +
       playerIds['errorType'] + '\n' + playerIds['errorMessage'] + '\n' +

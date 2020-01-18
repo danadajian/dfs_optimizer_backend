@@ -17,7 +17,7 @@ export const lineupRules = {
         'salaryCap': 35000,
         'lineupRestrictions': {
           'distinctTeamsRequired': 2,
-          'maxPlayersPerTeam': 0,
+          'maxPlayersPerTeam': 4,
           'teamAgnosticPosition': ''
         }
       }
@@ -39,7 +39,7 @@ export const lineupRules = {
         'salaryCap': 60000,
         'lineupRestrictions': {
           'distinctTeamsRequired': 2,
-          'maxPlayersPerTeam': 0,
+          'maxPlayersPerTeam': 4,
           'teamAgnosticPosition': ''
         }
       }
@@ -61,7 +61,7 @@ export const lineupRules = {
         'salaryCap': 60000,
         'lineupRestrictions': {
           'distinctTeamsRequired': 2,
-          'maxPlayersPerTeam': 0,
+          'maxPlayersPerTeam': 4,
           'teamAgnosticPosition': ''
         }
       }
@@ -83,7 +83,7 @@ export const lineupRules = {
         'salaryCap': 55000,
         'lineupRestrictions': {
           'distinctTeamsRequired': 2,
-          'maxPlayersPerTeam': 0,
+          'maxPlayersPerTeam': 5,
           'teamAgnosticPosition': ''
         }
       }
@@ -107,7 +107,7 @@ export const lineupRules = {
         'salaryCap': 50000,
         'lineupRestrictions': {
           'distinctTeamsRequired': 2,
-          'maxPlayersPerTeam': 0,
+          'maxPlayersPerTeam': 5,
           'teamAgnosticPosition': ''
         }
       }
@@ -119,7 +119,7 @@ export const lineupRules = {
         'salaryCap': 50000,
         'lineupRestrictions': {
           'distinctTeamsRequired': 3,
-          'maxPlayersPerTeam': 0,
+          'maxPlayersPerTeam': 8,
           'teamAgnosticPosition': ''
         }
       },
@@ -129,7 +129,7 @@ export const lineupRules = {
         'salaryCap': 50000,
         'lineupRestrictions': {
           'distinctTeamsRequired': 2,
-          'maxPlayersPerTeam': 0,
+          'maxPlayersPerTeam': 5,
           'teamAgnosticPosition': ''
         }
       }
@@ -141,7 +141,7 @@ export const lineupRules = {
         'salaryCap': 50000,
         'lineupRestrictions': {
           'distinctTeamsRequired': 3,
-          'maxPlayersPerTeam': 0,
+          'maxPlayersPerTeam': 7,
           'teamAgnosticPosition': ''
         }
       },
@@ -151,7 +151,7 @@ export const lineupRules = {
         'salaryCap': 50000,
         'lineupRestrictions': {
           'distinctTeamsRequired': 2,
-          'maxPlayersPerTeam': 0,
+          'maxPlayersPerTeam': 5,
           'teamAgnosticPosition': ''
         }
       }
@@ -163,7 +163,7 @@ export const lineupRules = {
         'salaryCap': 50000,
         'lineupRestrictions': {
           'distinctTeamsRequired': 3,
-          'maxPlayersPerTeam': 0,
+          'maxPlayersPerTeam': 8,
           'teamAgnosticPosition': 'G'
         }
       },
@@ -173,7 +173,7 @@ export const lineupRules = {
         'salaryCap': 50000,
         'lineupRestrictions': {
           'distinctTeamsRequired': 2,
-          'maxPlayersPerTeam': 0,
+          'maxPlayersPerTeam': 5,
           'teamAgnosticPosition': ''
         }
       }

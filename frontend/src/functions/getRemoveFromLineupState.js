@@ -10,7 +10,7 @@ export function getRemoveFromLineupState(lineupIndex, state) {
         displayPosition: displayMatrix[lineupIndex],
         team: '',
         name: '',
-        playerId: '',
+        playerId: 0,
         projected: '',
         salary: '',
         opponent: ''

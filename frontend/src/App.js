@@ -163,21 +163,22 @@ class App extends Component {
 
   generateOptimalLineup = async () => {
     this.setState({isOptimizing: true});
+    let optimalLineup = this.state.lineup;
     let playerIds = await invokeLambdaFunction(lambda, process.env.REACT_APP_OPTIMAL_LINEUP_LAMBDA, this.state);
-    if (playerIds['errorMessage'] || playerIds.includes(0)) {
-      alert('Optimal lineup could not be found.' +
+    if (playerIds['errorMessage']) {
+      alert('An error occurred.' +
       playerIds['errorType'] + '\n' + playerIds['errorMessage'] + '\n' +
-      playerIds['stackTrace'] !== undefined ? playerIds['stackTrace'].slice(0, 4) : '');
-      this.setState({isOptimizing: false})
+      playerIds['stackTrace'] !== undefined ? playerIds['stackTrace'].slice(0, 7) : '');
+    } else if (playerIds.includes(0)) {
+        alert('The whitelisted salary was too high to optimize around.')
     } else {
-      let optimalLineup = playerIds
-        .map(playerId => this.state.playerPool.find(player => player.playerId === playerId));
-      optimalLineup.forEach((player, index) => player.displayPosition = this.state.displayMatrix[index]);
-      this.setState({
+        optimalLineup = playerIds.map(playerId => this.state.playerPool.find(player => player.playerId === playerId));
+        optimalLineup.forEach((player, index) => player.displayPosition = this.state.displayMatrix[index]);
+    }
+    this.setState({
         isOptimizing: false,
         lineup: optimalLineup
-      })
-    }
+    })
   };
 
   render() {

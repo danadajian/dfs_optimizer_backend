@@ -30,7 +30,7 @@ class App extends Component {
         date: new Date(), dfsData: {}, projectionsData: {}, contests: [], lineup: [], lineupPositions: [],
         displayMatrix: [], salaryCap: 0, lineupRestrictions: {}, playerPool: [], filteredPool: null,
         sortAttribute: 'salary', sortSign: 1, searchText: '', whiteList: [], blackList: [],
-        opponentRanks: {}, injuries: {}, maxCombinations: 3000000};
+        opponentRanks: {}, injuries: {}, maxCombinations: 5000000};
   }
 
   setSite = (site) => {

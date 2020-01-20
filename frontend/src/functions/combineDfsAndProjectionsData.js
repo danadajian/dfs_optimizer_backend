@@ -21,10 +21,8 @@ export function combineDfsAndProjectionsData(dfsPlayers, projectionsData, site, 
         player.opponentRank = teamRanks[opponentRankPosition];
       }
       let status = injuries[playerData.name] ? injuries[playerData.name].toLowerCase() : '';
-      if (status !== 'out') {
-        player.status = injuryAbbreviations[status];
-        combinedData.push(player);
-      }
+      player.status = injuryAbbreviations[status];
+      combinedData.push(player);
     }
   });
   return combinedData;

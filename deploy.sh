@@ -6,7 +6,11 @@ MVN_VERSION=$(mvn org.apache.maven.plugins:maven-help-plugin:3.1.0:evaluate -Dex
 MAJOR_VERSION=${MVN_VERSION:0:1}
 MINOR_VERSION=${MVN_VERSION:2:2}
 mvn replacer:replace -Dccih.origin="<version>${MVN_VERSION}</version>" -Dccih.target="<version>${MAJOR_VERSION}.$((MINOR_VERSION + 1))</version>"
-mvn clean package
+if ! mvn clean package
+then
+  echo "Failed backend tests!"
+  exit
+fi
 
 BUCKET_NAME="dfsoptimizer.app"
 STACK_NAME="dfs-optimizer-stack"

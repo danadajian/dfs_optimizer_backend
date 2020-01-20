@@ -63,9 +63,9 @@ public class Optimizer {
         for (List<List<Player>> tuple : cartesianProduct) {
             List<Player> lineup = tuple.stream().flatMap(List::stream).collect(Collectors.toList());
             if (areNoDuplicates(lineup) &&
+                    lineupIsBetter(lineup, salaryCap, maxPoints) &&
                     satisfiesDistinctTeamsRequired(lineup, lineupRestrictions) &&
-                    satisfiesMaxPlayersPerTeam(lineup, lineupRestrictions) &&
-                    lineupIsBetter(lineup, salaryCap, maxPoints)) {
+                    satisfiesMaxPlayersPerTeam(lineup, lineupRestrictions)) {
                 maxPoints = totalProjection(lineup);
                 optimalLineup = lineup;
             }

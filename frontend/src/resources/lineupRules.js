@@ -57,7 +57,7 @@ export const lineupRules = {
       },
       'Single Game': {
         'lineupPositions': ['any', 'any', 'any', 'any', 'any'],
-        'displayMatrix': ['MVP - 2x Points', 'STAR - 1.5x Points', 'PRO (1.2x Points)', 'UTIL', 'UTIL'],
+        'displayMatrix': ['MVP - 2x Points', 'STAR - 1.5x Points', 'PRO - 1.2x Points', 'UTIL', 'UTIL'],
         'salaryCap': 60000,
         'lineupRestrictions': {
           'distinctTeamsRequired': 2,

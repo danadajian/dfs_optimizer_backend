@@ -29,7 +29,7 @@ export const BlackList = (props: {
     blackList: number[],
     playerPool: playerAttributes[]
     }) =>
-        <table style={{ borderCollapse: 'collapse'}} className={'Draft-grid'}>
+        <table style={{ borderCollapse: 'collapse'}} className={'Dfs-grid'}>
             <tbody>
             <tr style={{backgroundColor: 'indianred'}}>
                 <th>Player</th>

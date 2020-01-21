@@ -38,17 +38,23 @@ const Player = (props: playerProps) => {
     return (
         <tr style={{backgroundColor: (
             props.player.name && props.whiteList.includes(props.player.playerId)) ? 'lightgreen' : 'white'}}>
-            <td>{props.player.displayPosition}</td>
-            <td>
-                <tr>{props.player.name} <b style={{color: 'red'}}>{props.player.status}</b></tr>
-                <tr><b>{props.player.team + ' '}</b> <text style={{'color': props.player.opponentRank < 9 ?
-                        'red' : props.player.opponentRank > 22 ? 'green' : 'black'}}>{props.player.opponent}</text></tr>
-            </td>
-            <td style={{fontWeight: (props.player.position) ? 'normal' : 'bold'}}>{roundedProjection}</td>
-            <td style={{fontWeight: (props.player.position) ? 'normal' : 'bold'}}>{formattedSalary}</td>
             <td>
                 {props.player.position && props.player.name && <button onClick={props.onRemove} style={{fontWeight: 'bold'}}>X</button>}
             </td>
+            <td>{props.player.displayPosition}</td>
+            <td>
+                <tr>
+                    <b>{props.player.name + ' '}</b>
+                    <b style={{color: 'red'}}>{props.player.status}</b>
+                </tr>
+                <tr>
+                    <b style={{color: 'blue'}}>{props.player.team + ' '}</b>
+                    <text style={{'color': props.player.opponentRank < 9 ?
+                        'red' : props.player.opponentRank > 22 ? 'green' : 'black'}}>{props.player.opponent}</text>
+                </tr>
+            </td>
+            <td style={{fontWeight: (props.player.position) ? 'normal' : 'bold'}}>{roundedProjection}</td>
+            <td style={{fontWeight: (props.player.position) ? 'normal' : 'bold'}}>{formattedSalary}</td>
         </tr>
     );
 };
@@ -61,14 +67,14 @@ export const Lineup = (props: {
     pointSum: number,
     salarySum: number,
     cap: number}) =>
-        <table className={'Dfs-grid'}>
+        <table style={{borderCollapse: "collapse"}} className={'Dfs-grid'}>
             <tbody>
             <tr style={{backgroundColor: (props.site === 'fd') ? 'dodgerblue' : 'black'}}>
+                <th>{}</th>
                 <th>Position</th>
                 <th>Player</th>
                 <th>Projection</th>
                 <th>Salary</th>
-                <th>Remove</th>
             </tr>
             {props.dfsLineup.map(
                 (player, playerIndex) => (

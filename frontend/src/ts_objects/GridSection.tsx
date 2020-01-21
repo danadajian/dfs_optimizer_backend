@@ -51,11 +51,13 @@ export const GridSection = (props: {
         props.isOptimizing ? <Optimizing sport={props.sport}/> :
     props.site && props.sport && props.contest &&
     <div className={"Dfs-grid-section"}>
-        <div className={"Player-list-box"}>
-            <h2 className={"Dfs-header"}>Blacklist</h2>
-            <BlackList blackList={props.blackList} playerPool={props.playerPool}/>
+        <div className={"Lineup"}>
+            <h2 className={"Dfs-header"}>Lineup</h2>
+            <Lineup dfsLineup={props.lineup} removePlayer={props.removeFromLineup} site={props.site}
+                    whiteList={props.whiteList} pointSum={sumAttribute(props.lineup, 'projection')}
+                    salarySum={sumAttribute(props.lineup, 'salary')} cap={props.salaryCap}/>
         </div>
-        <div>
+        <div className={"Player-pool"}>
             <h2 className={"Dfs-header"}>Players</h2>
             <div style={{display: 'flex', flexDirection: 'column'}}>
                 {!props.filteredPool && <img src={search} style={{height: '3vmin', position: 'absolute'}} alt="search"/>}
@@ -80,7 +82,7 @@ export const GridSection = (props: {
                     )}
                 </select>
             </div>
-            <div className={"Player-list-box"}>
+            <div className={"Players"}>
                 <PlayerPool playerList={props.playerPool} filterList={props.filteredPool}
                             whiteListFunction={props.addToLineup} blackListFunction={props.toggleBlackList}
                             toggleSort={props.toggleSort} sortAttribute={props.sortAttribute} sortSign={props.sortSign}
@@ -88,10 +90,8 @@ export const GridSection = (props: {
                             salarySum={sumAttribute(props.lineup, 'salary')} cap={props.salaryCap}/>
             </div>
         </div>
-        <div>
-            <h2 className={"Dfs-header"}>Lineup</h2>
-            <Lineup dfsLineup={props.lineup} removePlayer={props.removeFromLineup} site={props.site}
-                    whiteList={props.whiteList} pointSum={sumAttribute(props.lineup, 'projection')}
-                    salarySum={sumAttribute(props.lineup, 'salary')} cap={props.salaryCap}/>
+        <div className={"Blacklist"}>
+            <h2 className={"Dfs-header"}>Blacklist</h2>
+            <BlackList blackList={props.blackList} playerPool={props.playerPool}/>
         </div>
     </div>;

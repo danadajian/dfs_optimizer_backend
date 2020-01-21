@@ -36,6 +36,12 @@ const Player = (props: playerProps) =>
     <tr style={{backgroundColor: (props.whiteList.includes(props.player.playerId)) ? 'lightgreen' :
             (props.blackList.includes(props.player.playerId)) ? 'indianred' : 'white'}}>
         <td>
+            <img src={plus} alt={"add"} onClick={props.onPlusClick} style={{height: '3vmin'}}/>
+        </td>
+        <td>
+            <img src={minus} alt={"remove"} onClick={props.onMinusClick} style={{height: '3vmin'}}/>
+        </td>
+        <td>
             <tr style={{fontWeight: 'bold'}}>
                 {props.player.name} <b style={{color: 'red'}}>{props.player.status}</b>
             </tr>
@@ -59,12 +65,6 @@ const Player = (props: playerProps) =>
         <td>{props.player.spread}</td>
         <td>{props.player.overUnder}</td>
         <td>{props.player.gameDate}</td>
-        <td>
-            <img src={plus} alt={"add"} onClick={props.onPlusClick} style={{height: '3vmin'}}/>
-        </td>
-        <td>
-            <img src={minus} alt={"remove"} onClick={props.onMinusClick} style={{height: '3vmin'}}/>
-        </td>
     </tr>;
 
 export const PlayerPool = (props: {
@@ -79,56 +79,58 @@ export const PlayerPool = (props: {
     blackList: number[],
     salarySum: number,
     cap: number}) =>
-        <table style={{ borderCollapse: 'collapse'}} className={'Draft-grid'}>
-            <tbody>
-            <tr style={{backgroundColor: 'lightgray'}}>
-                <th>Player</th>
-                <th>Projection
+        <table style={{borderCollapse: "collapse"}} className={'Dfs-grid'}>
+            <thead>
+                <tr className={"Dfs-grid-header"}>
+                    <th>{}</th>
+                    <th>{}</th>
+                    <th>Player</th>
+                    <th>Projection
                         <img src={props.sortSign === 1 ? down : up} alt={"sort"}
                              onClick={() => props.toggleSort('projection')}
                              style={{marginLeft: '1vmin', height: '2vmin',
                                  backgroundColor: props.sortAttribute === 'projection' ? 'red' : 'white'}}/>
-                </th>
-                <th>Salary
-                    <img src={props.sortSign === 1 ? down : up} alt={"sort"}
-                         onClick={() => props.toggleSort('salary')}
-                         style={{marginLeft: '1vmin', height: '2vmin',
-                             backgroundColor: props.sortAttribute === 'salary' ? 'red' : 'white'}}/>
-                </th>
-                <th>Price Per Point
-                    <img src={props.sortSign === 1 ? down : up} alt={"sort"}
-                         onClick={() => props.toggleSort('pricePerPoint')}
-                         style={{marginLeft: '1vmin', height: '2vmin',
-                             backgroundColor: props.sortAttribute === 'pricePerPoint' ? 'red' : 'white'}}/>
-                </th>
-                <th>Opponent</th>
-                <th>Spread</th>
-                <th>O/U</th>
-                <th>Game Date</th>
-                <th>Add</th>
-                <th>Blacklist</th>
-            </tr>
-            {props.playerList.sort((a, b) => {
-                return (props.sortAttribute === 'pricePerPoint') ?
-                    props.sortSign * (b.salary / b.projection - a.salary / a.projection) :
-                    // @ts-ignore
-                    props.sortSign*(b[props.sortAttribute] - a[props.sortAttribute])
-            }).map(
-                (player, index) => {
-                    if (!props.filterList || props.filterList.includes(player)) {
-                        return (
-                            <Player key={index}
-                                    player={player}
-                                    onPlusClick={() => props.whiteListFunction(index)}
-                                    onMinusClick={() => props.blackListFunction(index)}
-                                    whiteList={props.whiteList}
-                                    blackList={props.blackList}
-                                    salarySum={props.salarySum}
-                                    cap={props.cap}
-                            />
-                        )
-                    } else return null;
-                }
-            )}
+                    </th>
+                    <th>Salary
+                        <img src={props.sortSign === 1 ? down : up} alt={"sort"}
+                             onClick={() => props.toggleSort('salary')}
+                             style={{marginLeft: '1vmin', height: '2vmin',
+                                 backgroundColor: props.sortAttribute === 'salary' ? 'red' : 'white'}}/>
+                    </th>
+                    <th>$/Point
+                        <img src={props.sortSign === 1 ? down : up} alt={"sort"}
+                             onClick={() => props.toggleSort('pricePerPoint')}
+                             style={{marginLeft: '1vmin', height: '2vmin',
+                                 backgroundColor: props.sortAttribute === 'pricePerPoint' ? 'red' : 'white'}}/>
+                    </th>
+                    <th>Opponent</th>
+                    <th>Spread</th>
+                    <th>O/U</th>
+                    <th>Game Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                {props.playerList.sort((a, b) => {
+                    return (props.sortAttribute === 'pricePerPoint') ?
+                        props.sortSign * (b.salary / b.projection - a.salary / a.projection) :
+                        // @ts-ignore
+                        props.sortSign*(b[props.sortAttribute] - a[props.sortAttribute])
+                }).map(
+                    (player, index) => {
+                        if (!props.filterList || props.filterList.includes(player)) {
+                            return (
+                                <Player key={index}
+                                        player={player}
+                                        onPlusClick={() => props.whiteListFunction(index)}
+                                        onMinusClick={() => props.blackListFunction(index)}
+                                        whiteList={props.whiteList}
+                                        blackList={props.blackList}
+                                        salarySum={props.salarySum}
+                                        cap={props.cap}
+                                />
+                            )
+                        } else return null;
+                    }
+                )}
             </tbody>
         </table>;

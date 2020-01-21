@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import './App.css'
-import { Container } from 'react-bootstrap'
 import { CSVLink } from "react-csv";
 import {createEmptyLineup} from './functions/createEmptyLineup'
 import { getAddToLineupState } from './functions/getAddToLineupState'
@@ -191,7 +190,7 @@ class App extends Component {
     ];
 
     return (
-        <Container fluid={true}>
+        <div>
           <h1 className={"App-header"}>DFS Optimizer</h1>
           <div className={"Dfs-sport"}>
             <h3>Choose a site:</h3>
@@ -221,7 +220,7 @@ class App extends Component {
                        removeFromLineup={this.removeFromLineup} toggleBlackList={this.toggleBlackList}
                        sortAttribute={sortAttribute} sortSign={sortSign} toggleSort={this.toggleSort}
                        salaryCap={salaryCap}/>
-        </Container>
+        </div>
     )
   }
 }

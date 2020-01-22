@@ -162,7 +162,7 @@ class ProjectionsWithFunctionsTest implements MockResponses {
         assertEquals("Tue 8:00PM EST", result.get(237675).get("gameDate"));
         assertEquals("+4.0", result.get(237675).get("spread"));
         assertEquals(207.0, result.get(237675).get("overUnder"));
-        assertEquals(21.20313, result.get(237675).get("dkProjection"));
+        assertEquals(0, result.get(237675).get("dkProjection"));
         assertEquals(21.28275, result.get(237675).get("fdProjection"));
     }
 }

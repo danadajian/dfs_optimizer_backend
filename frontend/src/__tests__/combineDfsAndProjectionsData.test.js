@@ -3,8 +3,8 @@ import { combineDfsAndProjectionsData } from '../functions/combineDfsAndProjecti
 describe('test', () => {
     test('combines data correctly', () => {
         let dfsPlayers = [
-            {"position":"RB","salary":4900,"playerId":397945},
-            {"position":"RB","salary":4500,"playerId":400947}
+            {"position":"RB","salary":4900,"name":"LeSean McCoy"},
+            {"position":"RB","salary":4500,"playerId":400947,"name":"Anthony Sherman"}
         ];
         let projectionsData = {
             "397945":{"overUnder":53,"gameDate":"Sun 3:05PM EST","opponent":"v. Ten",

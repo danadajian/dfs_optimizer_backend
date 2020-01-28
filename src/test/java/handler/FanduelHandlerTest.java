@@ -1,8 +1,6 @@
 package handler;
 
 import collect.dfs.Fanduel;
-import collect.MockResponses;
-import handler.FanduelHandler;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
@@ -14,7 +12,7 @@ import java.util.Map;
 
 import static org.mockito.Mockito.verify;
 
-class FanduelHandlerTest implements MockResponses {
+class FanduelHandlerTest {
 
     @Mock
     Fanduel fanduel;

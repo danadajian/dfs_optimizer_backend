@@ -1,4 +1,4 @@
-package collect;
+package collect.misc;
 
 import api.ApiClient;
 import collect.misc.Injuries;

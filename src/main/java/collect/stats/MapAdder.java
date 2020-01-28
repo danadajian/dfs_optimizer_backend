@@ -29,12 +29,12 @@ public class MapAdder {
     public static void addOddsDataToMap(Map<Integer, Map<String, Object>> projectionsData,
                                         Map<Integer, Map<String, Number>> oddsData, JSONObject playerObject,
                                         Map<String, Object> statMap, int eventId, int teamId, int playerId) {
-        if (oddsData.size() > 0) {
-            int spreadMultiplier = (int) oddsData.get(eventId).get("favoriteTeamId") == teamId ? 1 : -1;
-            String spreadSign = (int) oddsData.get(eventId).get("favoriteTeamId") == teamId ? "" : "+";
-            statMap.put("spread", spreadSign + (spreadMultiplier * (double) oddsData.get(eventId).get("spread")));
-            statMap.put("overUnder", oddsData.get(eventId).get("overUnder"));
-        }
+        Map<String, Number> defaultMap = new HashMap<>();
+        Map<String, Number> eventOddsData = oddsData.getOrDefault(eventId, defaultMap);
+        int spreadMultiplier = (int) eventOddsData.getOrDefault("favoriteTeamId", 0) == teamId ? 1 : -1;
+        String spreadSign = (int) eventOddsData.getOrDefault("favoriteTeamId", 0) == teamId ? "" : "+";
+        statMap.put("spread", spreadSign + (spreadMultiplier * (double) eventOddsData.getOrDefault("spread", 0.0)));
+        statMap.put("overUnder", eventOddsData.getOrDefault("overUnder", 0));
         addProjectionsToMap(projectionsData, playerObject, statMap, playerId);
     }
 

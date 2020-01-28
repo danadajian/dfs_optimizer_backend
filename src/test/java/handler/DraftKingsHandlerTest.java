@@ -1,8 +1,6 @@
 package handler;
 
 import collect.dfs.DraftKings;
-import collect.MockResponses;
-import handler.DraftKingsHandler;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
@@ -14,7 +12,7 @@ import java.util.Map;
 
 import static org.mockito.Mockito.*;
 
-class DraftKingsHandlerTest implements MockResponses {
+class DraftKingsHandlerTest {
 
     @Mock
     DraftKings draftKings;

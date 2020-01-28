@@ -31,6 +31,7 @@ public class Fanduel extends DFS {
                 if (playerObject.get("statsid").toString().length() > 0)
                     infoMap.put("playerId", playerObject.getInt("statsid"));
                 infoMap.put("name", playerObject.getString("name"));
+                infoMap.put("team", playerObject.getString("team"));
                 infoMap.put("position", playerObject.getString("position"));
                 infoMap.put("salary", playerObject.getInt("salary"));
                 playerList.add(infoMap);

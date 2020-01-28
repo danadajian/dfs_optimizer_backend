@@ -40,11 +40,13 @@ class FanduelTest implements MockResponses {
         Map<String, Object> playerInfo1 = players.get(0);
         assertEquals(748070, playerInfo1.get("playerId"));
         assertEquals("Baker Mayfield", playerInfo1.get("name"));
+        assertEquals("CLE", playerInfo1.get("team"));
         assertEquals("QB", playerInfo1.get("position"));
         assertEquals(15500, playerInfo1.get("salary"));
         Map<String, Object> playerInfo2 = players.get(1);
         assertNull(playerInfo2.get("playerId"));
         assertEquals("James Conner", playerInfo2.get("name"));
+        assertEquals("PIT", playerInfo2.get("team"));
         assertEquals("RB", playerInfo2.get("position"));
         assertEquals(14500, playerInfo2.get("salary"));
         assertEquals(44, players.size());

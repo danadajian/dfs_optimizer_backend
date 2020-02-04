@@ -12,9 +12,9 @@ public class PlayerPool {
         this.playerPool = new ArrayList<>();
         ((List<Map<String, Object>>) input.get("playerPool")).forEach(playerMap ->
                 playerPool.add(
-                        new Player((int) playerMap.get("playerId"), (String) playerMap.get("position"),
-                                (String) playerMap.get("team"), ((Number) playerMap.get("projection")).doubleValue(),
-                                (int) playerMap.get("salary"))));
+                        new Player((int) playerMap.get("playerId"), (String) playerMap.get("name"),
+                                (String) playerMap.get("position"), (String) playerMap.get("team"),
+                                ((Number) playerMap.get("projection")).doubleValue(), (int) playerMap.get("salary"))));
     }
 
     public List<Player> getPlayerPool() {

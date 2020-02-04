@@ -45,7 +45,7 @@ class FanduelHandlerTest {
     void shouldHandlePipelineRequestForFanduelData() {
         Map<String, String> testMap = new HashMap<>();
         testMap.put("date", "2019-12-16");
-        testMap.put("invokeType", "pipeline");
+        testMap.put("invocationType", "pipeline");
         fanduelHandler.handleRequest(testMap);
         verify(fanduel).getAllContestData("2019-12-16");
         verify(s3Upload, times(1)).uploadToS3(anyString(), any());

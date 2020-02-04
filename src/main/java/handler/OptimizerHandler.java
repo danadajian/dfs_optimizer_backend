@@ -1,6 +1,7 @@
 package handler;
 
 import optimize.*;
+import util.S3Upload;
 
 import java.util.*;
 
@@ -8,8 +9,10 @@ public class OptimizerHandler {
     Adjuster adjuster = new Adjuster();
     Optimizer optimizer = new Optimizer();
     LineupCompiler lineupCompiler = new LineupCompiler();
+    private S3Upload s3Upload = new S3Upload();
 
     public List<Integer> handleRequest(Map<String, Object> input) {
+        String invocationType = (String) input.getOrDefault("invocationType", "web");
         List<Player> lineup = new Lineup(input).getLineup();
         List<Player> playerPool = new PlayerPool(input).getPlayerPool();
         List<Player> blackList = new BlackList(input).getBlackList();
@@ -25,6 +28,12 @@ public class OptimizerHandler {
         int adjustedSalaryCap = adjuster.adjustSalaryCap(whiteList, salaryCap);
         List<Player> optimalPlayers = optimizer.generateOptimalPlayers(adjustedPlayerPool, lineupMatrix,
                 adjustedSalaryCap, lineupRestrictions);
-        return lineupCompiler.outputLineup(lineup, optimalPlayers);
+
+        if (invocationType.equals("pipeline")) {
+            List<String> namesInLineup = lineupCompiler.outputLineupPlayerNames(lineup, optimalPlayers, playerPool);
+            s3Upload.uploadToS3("optimalLineup.json", namesInLineup);
+            return new ArrayList<>();
+        } else
+            return lineupCompiler.outputLineupPlayerIds(lineup, optimalPlayers);
     }
 }

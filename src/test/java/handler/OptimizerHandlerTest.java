@@ -8,6 +8,7 @@ import optimize.Player;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.*;
+import util.S3Upload;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -16,8 +17,7 @@ import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.*;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 class OptimizerHandlerTest {
 
@@ -25,8 +25,10 @@ class OptimizerHandlerTest {
     }
 
     private String fakeOptimizerBody = new String(Files.readAllBytes(Paths.get("src/main/resources/optimizerHandlerBody.txt")));
+    private String fakeOptimizerWithPipelineInvocationBody = new String(Files.readAllBytes(Paths.get("src/main/resources/optimizerHandlerBodyWithPipelineInvocation.txt")));
     private String fakeOptimizerWhiteAndBlackListBody = new String(Files.readAllBytes(Paths.get("src/main/resources/optimizerHandlerWhiteAndBlackListBody.txt")));
     private Map<String, Object> optimizerInput = new ObjectMapper().readValue(fakeOptimizerBody, new TypeReference<Map<String, Object>>(){});
+    private Map<String, Object> optimizerInputWithPipelineInvocation = new ObjectMapper().readValue(fakeOptimizerWithPipelineInvocationBody, new TypeReference<Map<String, Object>>(){});
     private Map<String, Object> optimizerWithWhiteAndBlackListInput = new ObjectMapper().readValue(fakeOptimizerWhiteAndBlackListBody, new TypeReference<Map<String, Object>>(){});
 
     @Mock
@@ -34,6 +36,9 @@ class OptimizerHandlerTest {
 
     @Mock
     LineupCompiler lineupCompiler;
+
+    @Mock
+    S3Upload s3Upload;
 
     @InjectMocks
     OptimizerHandler optimizerHandler;
@@ -59,7 +64,7 @@ class OptimizerHandlerTest {
     @BeforeEach
     void setUp() {
         MockitoAnnotations.initMocks(this);
-        when(lineupCompiler.outputLineup(anyList(), anyList())).thenReturn(Arrays.asList(1, 2, 3, 4, 5));
+        when(lineupCompiler.outputLineupPlayerIds(anyList(), anyList())).thenReturn(Arrays.asList(1, 2, 3, 4, 5));
     }
 
     void shouldCollectLineup(List<Player> expectedLineup) {
@@ -92,6 +97,7 @@ class OptimizerHandlerTest {
         shouldCollectLineupPositions();
         shouldCollectSalaryCap();
         assertEquals(Arrays.asList(1, 2, 3, 4, 5), result);
+        verify(s3Upload, never()).uploadToS3(anyString(), any());
     }
 
     @Test
@@ -102,5 +108,17 @@ class OptimizerHandlerTest {
         shouldCollectLineupPositions();
         shouldCollectSalaryCap();
         assertEquals(Arrays.asList(1, 2, 3, 4, 5), result);
+        verify(s3Upload, never()).uploadToS3(anyString(), any());
+    }
+
+    @Test
+    void shouldHandleOptimizerInputWithPipelineInvocation() {
+        List<Integer> result = optimizerHandler.handleRequest(optimizerInputWithPipelineInvocation);
+        shouldCollectLineup(emptyLineup);
+        shouldCollectPlayerPoolAndBlackList(Collections.emptyList());
+        shouldCollectLineupPositions();
+        shouldCollectSalaryCap();
+        assertEquals(Collections.emptyList(), result);
+        verify(s3Upload, times(1)).uploadToS3(anyString(), any());
     }
 }

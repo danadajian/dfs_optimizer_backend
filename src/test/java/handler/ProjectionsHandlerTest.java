@@ -76,7 +76,7 @@ class ProjectionsHandlerTest {
     void shouldHandlePipelineRequestForProjections() {
         Map<String, String> testMap = new HashMap<>();
         testMap.put("sport", "nba");
-        testMap.put("invokeType", "pipeline");
+        testMap.put("invocationType", "pipeline");
         projectionsHandler.handleRequest(testMap);
         verify(s3Upload, times(1))
                 .uploadToS3("nbaProjectionsData.json", new HashMap<>());

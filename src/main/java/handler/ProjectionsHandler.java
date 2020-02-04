@@ -19,12 +19,12 @@ public class ProjectionsHandler {
 
     public Map<Integer, Map<String, Object>> handleRequest(Map<String, String> input) {
         String sport = input.get("sport");
-        String invokeType = input.getOrDefault("invokeType", "web");
+        String invocationType = input.getOrDefault("invocationType", "web");
         Map<Integer, Map<String, Object>> result =
                 sport.equals("nfl") ? nflProjections.getProjectionsData() :
                         (sport.equals("nhl")) ? nhlProjections.getProjectionsData() :
                                 standardProjectionsData.getProjectionsData(sport);
-        if (invokeType.equals("pipeline")) {
+        if (invocationType.equals("pipeline")) {
             s3Upload.uploadToS3(sport + "ProjectionsData.json", result);
             return new HashMap<>();
         }

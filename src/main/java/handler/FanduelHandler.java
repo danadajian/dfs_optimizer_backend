@@ -16,9 +16,9 @@ public class FanduelHandler {
 
     public List<Map<String, Object>> handleRequest(Map<String, String> input) {
         String date = input.get("date");
-        String invokeType = input.getOrDefault("invokeType", "web");
+        String invocationType = input.getOrDefault("invocationType", "web");
         List<Map<String, Object>> result = fanduel.getAllContestData(date);
-        if (invokeType.equals("pipeline")) {
+        if (invocationType.equals("pipeline")) {
             s3Upload.uploadToS3("fanduelData.json", result);
             return new ArrayList<>();
         } else

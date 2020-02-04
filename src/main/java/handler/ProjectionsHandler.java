@@ -5,7 +5,9 @@ import api.DataCollector;
 import collect.stats.NFLProjections;
 import collect.stats.NHLProjections;
 import collect.stats.StandardProjections;
+import util.S3Upload;
 
+import java.util.HashMap;
 import java.util.Map;
 
 public class ProjectionsHandler {
@@ -13,15 +15,20 @@ public class ProjectionsHandler {
     private StandardProjections standardProjectionsData = new StandardProjections(dataCollector);
     private NFLProjections nflProjections = new NFLProjections(dataCollector);
     private NHLProjections nhlProjections = new NHLProjections(dataCollector);
+    private S3Upload s3Upload = new S3Upload();
 
     public Map<Integer, Map<String, Object>> handleRequest(Map<String, String> input) {
         String sport = input.get("sport");
-        if (sport.equals("nfl")) {
-            return nflProjections.getProjectionsData();
-        } else if (sport.equals("nhl")) {
-            return nhlProjections.getProjectionsData();
-        } else {
-            return standardProjectionsData.getProjectionsData(sport);
+        String invokeType = input.getOrDefault("invokeType", "web");
+        Map<Integer, Map<String, Object>> result =
+                sport.equals("nfl") ? nflProjections.getProjectionsData() :
+                        (sport.equals("nhl")) ? nhlProjections.getProjectionsData() :
+                                standardProjectionsData.getProjectionsData(sport);
+        if (invokeType.equals("pipeline")) {
+            s3Upload.uploadToS3(sport + "ProjectionsData.json", result);
+            return new HashMap<>();
         }
+        else
+            return result;
     }
 }

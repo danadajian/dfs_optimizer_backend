@@ -10,6 +10,10 @@ Parameters:
     Type: String
   ApiSecret:
     Type: String
+  AwsKey:
+    Type: String
+  AwsSecret:
+    Type: String
 Globals:
   Function:
     MemorySize: 512
@@ -33,6 +37,10 @@ Resources:
         Key: !Ref CodeKey
       Handler: handler.FanduelHandler::handleRequest
       Runtime: java8
+      Environment:
+        Variables:
+          aws_key: !Ref AwsKey
+          aws_secret: !Ref AwsSecret
 
   GetProjectionsDataFunction:
     Type: AWS::Serverless::Function
@@ -46,6 +54,8 @@ Resources:
         Variables:
           key: !Ref ApiKey
           secret: !Ref ApiSecret
+          aws_key: !Ref AwsKey
+          aws_secret: !Ref AwsSecret
 
   GetOpponentRanksDataFunction:
     Type: AWS::Serverless::Function

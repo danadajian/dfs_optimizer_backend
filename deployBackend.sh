@@ -37,10 +37,10 @@ if [[ "$OSTYPE" == "msys" ]]; then
     sam.cmd --version
     sam.cmd deploy --template-file ./template.yaml --stack-name "${STACK_NAME}" --capabilities CAPABILITY_IAM \
      --parameter-overrides BucketName="${BUCKET_NAME}" CodeKey="${FILE_NAME}" ApiKey="${API_KEY}" \
-     ApiSecret="${API_SECRET}" --no-fail-on-empty-changeset
+     ApiSecret="${API_SECRET}" AwsKey="${AWS_KEY}" AwsSecret="${AWS_SECRET}" --no-fail-on-empty-changeset
 else
     sam --version
     sam deploy --template-file ./template.yaml --stack-name "${STACK_NAME}" --capabilities CAPABILITY_IAM \
      --parameter-overrides BucketName="${BUCKET_NAME}" CodeKey="${FILE_NAME}" ApiKey="${API_KEY}" \
-      ApiSecret="${API_SECRET}" --no-fail-on-empty-changeset
+      ApiSecret="${API_SECRET}" AwsKey="${AWS_KEY}" AwsSecret="${AWS_SECRET}" --no-fail-on-empty-changeset
 fi

@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-import util.S3Upload;
+import util.AWSClient;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -27,7 +27,7 @@ class ProjectionsHandlerTest {
     NHLProjections nhlProjections;
 
     @Mock
-    S3Upload s3Upload;
+    AWSClient AWSClient;
 
     @InjectMocks
     ProjectionsHandler projectionsHandler;
@@ -78,7 +78,7 @@ class ProjectionsHandlerTest {
         testMap.put("sport", "nba");
         testMap.put("invocationType", "pipeline");
         projectionsHandler.handleRequest(testMap);
-        verify(s3Upload, times(1))
+        verify(AWSClient, times(1))
                 .uploadToS3("nbaProjectionsData.json", new HashMap<>());
     }
 }

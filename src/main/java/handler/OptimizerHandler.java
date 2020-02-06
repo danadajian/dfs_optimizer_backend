@@ -1,7 +1,7 @@
 package handler;
 
 import optimize.*;
-import util.S3Upload;
+import util.AWSClient;
 
 import java.util.*;
 
@@ -9,7 +9,7 @@ public class OptimizerHandler {
     Adjuster adjuster = new Adjuster();
     Optimizer optimizer = new Optimizer();
     LineupCompiler lineupCompiler = new LineupCompiler();
-    private S3Upload s3Upload = new S3Upload();
+    private AWSClient AWSClient = new AWSClient();
 
     public List<Integer> handleRequest(Map<String, Object> input) {
         String invocationType = (String) input.getOrDefault("invocationType", "web");
@@ -31,7 +31,8 @@ public class OptimizerHandler {
 
         if (invocationType.equals("pipeline")) {
             List<String> namesInLineup = lineupCompiler.outputLineupPlayerNames(lineup, optimalPlayers, playerPool);
-            s3Upload.uploadToS3("optimalLineup.json", namesInLineup);
+            AWSClient.uploadToS3("optimalLineup.json", namesInLineup);
+            AWSClient.sendTextMessage(namesInLineup);
             return new ArrayList<>();
         } else
             return lineupCompiler.outputLineupPlayerIds(lineup, optimalPlayers);

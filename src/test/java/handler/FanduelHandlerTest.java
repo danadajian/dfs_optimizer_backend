@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-import util.S3Upload;
+import util.AWSClient;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -21,7 +21,7 @@ class FanduelHandlerTest {
     Fanduel fanduel;
 
     @Mock
-    S3Upload s3Upload;
+    AWSClient AWSClient;
 
     @InjectMocks
     FanduelHandler fanduelHandler;
@@ -38,7 +38,7 @@ class FanduelHandlerTest {
         testMap.put("date", "2019-12-16");
         fanduelHandler.handleRequest(testMap);
         verify(fanduel).getAllContestData("2019-12-16");
-        verify(s3Upload, never()).uploadToS3(anyString(), any());
+        verify(AWSClient, never()).uploadToS3(anyString(), any());
     }
 
     @Test
@@ -48,6 +48,6 @@ class FanduelHandlerTest {
         testMap.put("invocationType", "pipeline");
         fanduelHandler.handleRequest(testMap);
         verify(fanduel).getAllContestData("2019-12-16");
-        verify(s3Upload, times(1)).uploadToS3(anyString(), any());
+        verify(AWSClient, times(1)).uploadToS3(anyString(), any());
     }
 }

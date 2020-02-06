@@ -5,7 +5,7 @@ import api.DataCollector;
 import collect.stats.NFLProjections;
 import collect.stats.NHLProjections;
 import collect.stats.StandardProjections;
-import util.S3Upload;
+import util.AWSClient;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -15,7 +15,7 @@ public class ProjectionsHandler {
     private StandardProjections standardProjectionsData = new StandardProjections(dataCollector);
     private NFLProjections nflProjections = new NFLProjections(dataCollector);
     private NHLProjections nhlProjections = new NHLProjections(dataCollector);
-    private S3Upload s3Upload = new S3Upload();
+    private AWSClient AWSClient = new AWSClient();
 
     public Map<Integer, Map<String, Object>> handleRequest(Map<String, String> input) {
         String sport = input.get("sport");
@@ -25,7 +25,7 @@ public class ProjectionsHandler {
                         (sport.equals("nhl")) ? nhlProjections.getProjectionsData() :
                                 standardProjectionsData.getProjectionsData(sport);
         if (invocationType.equals("pipeline")) {
-            s3Upload.uploadToS3(sport + "ProjectionsData.json", result);
+            AWSClient.uploadToS3(sport + "ProjectionsData.json", result);
             return new HashMap<>();
         }
         else

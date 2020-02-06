@@ -8,7 +8,7 @@ import optimize.Player;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.*;
-import util.S3Upload;
+import util.AWSClient;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -38,7 +38,7 @@ class OptimizerHandlerTest {
     LineupCompiler lineupCompiler;
 
     @Mock
-    S3Upload s3Upload;
+    AWSClient AWSClient;
 
     @InjectMocks
     OptimizerHandler optimizerHandler;
@@ -97,7 +97,8 @@ class OptimizerHandlerTest {
         shouldCollectLineupPositions();
         shouldCollectSalaryCap();
         assertEquals(Arrays.asList(1, 2, 3, 4, 5), result);
-        verify(s3Upload, never()).uploadToS3(anyString(), any());
+        verify(AWSClient, never()).uploadToS3(anyString(), any());
+        verify(AWSClient, never()).sendTextMessage(anyList());
     }
 
     @Test
@@ -108,7 +109,8 @@ class OptimizerHandlerTest {
         shouldCollectLineupPositions();
         shouldCollectSalaryCap();
         assertEquals(Arrays.asList(1, 2, 3, 4, 5), result);
-        verify(s3Upload, never()).uploadToS3(anyString(), any());
+        verify(AWSClient, never()).uploadToS3(anyString(), any());
+        verify(AWSClient, never()).sendTextMessage(anyList());
     }
 
     @Test
@@ -119,6 +121,7 @@ class OptimizerHandlerTest {
         shouldCollectLineupPositions();
         shouldCollectSalaryCap();
         assertEquals(Collections.emptyList(), result);
-        verify(s3Upload, times(1)).uploadToS3(anyString(), any());
+        verify(AWSClient, times(1)).uploadToS3(anyString(), any());
+        verify(AWSClient, times(1)).sendTextMessage(anyList());
     }
 }

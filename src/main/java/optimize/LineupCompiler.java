@@ -37,6 +37,8 @@ public class LineupCompiler {
                     .orElse(new Player());
             lineupWithNames.add(playerInPlayerPool);
         }
-        return lineupWithNames.stream().map(player -> player.name).collect(Collectors.toList());
+        return lineupWithNames.stream()
+                .map(player -> "\n" + player.name + " " + player.team + " " + player.position)
+                .collect(Collectors.toList());
     }
 }

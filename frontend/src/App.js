@@ -78,7 +78,7 @@ class App extends Component {
         {"sport": sport});
       this.setState({
           isLoading: false,
-          projectionsData: projectionsData,
+          projectionsData: projectionsData.body,
           dfsData: dfsData,
           contests: contests,
           opponentRanks: opponentRanks,

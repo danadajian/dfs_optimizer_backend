@@ -87,4 +87,6 @@ Resources:
       Runtime: java8
       Environment:
         Variables:
+          aws_key: !Ref AwsKey
+          aws_secret: !Ref AwsSecret
           phone_number: !Ref PhoneNumber

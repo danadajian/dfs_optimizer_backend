@@ -19,26 +19,30 @@ public class LineupCompiler {
         return lineupToOutput.stream().map(player -> player.playerId).collect(Collectors.toList());
     }
 
-    public List<String> outputLineupPlayerNames(List<Player> lineup, List<Player> optimalPlayers, List<Player> playerPool) {
-        List<Player> lineupWithoutNames = new ArrayList<>(lineup);
+    public List<Player> outputPlayersWithNames(List<Player> lineup, List<Player> optimalPlayers, List<Player> playerPool) {
+        List<Player> playersWithoutNames = new ArrayList<>(lineup);
         for (Player player : optimalPlayers) {
-            int emptySpotIndex = IntStream.range(0, lineupWithoutNames.size())
-                    .filter(index -> lineupWithoutNames.get(index).playerId == 0)
+            int emptySpotIndex = IntStream.range(0, playersWithoutNames.size())
+                    .filter(index -> playersWithoutNames.get(index).playerId == 0)
                     .findFirst()
                     .orElse(-1);
-            lineupWithoutNames.set(emptySpotIndex, player);
+            playersWithoutNames.set(emptySpotIndex, player);
         }
-        List<Player> lineupWithNames = new ArrayList<>();
-        for (Player player : lineupWithoutNames) {
+        List<Player> playersWithNames = new ArrayList<>();
+        for (Player player : playersWithoutNames) {
             Player playerInPlayerPool = playerPool
                     .stream()
                     .filter(playerInPool -> playerInPool.equals(player))
                     .findFirst()
                     .orElse(new Player());
-            lineupWithNames.add(playerInPlayerPool);
+            playersWithNames.add(playerInPlayerPool);
         }
-        return lineupWithNames.stream()
-                .map(player -> "\n" + player.name + " " + player.team + " " + player.position)
+        return playersWithNames;
+    }
+
+    public List<String> outputPlayerNamesOnly(List<Player> players) {
+        return players.stream()
+                .map(player -> player.name)
                 .collect(Collectors.toList());
     }
 }

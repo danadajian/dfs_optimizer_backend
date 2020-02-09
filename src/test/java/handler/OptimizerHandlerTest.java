@@ -38,7 +38,7 @@ class OptimizerHandlerTest {
     LineupCompiler lineupCompiler;
 
     @Mock
-    AWSClient AWSClient;
+    AWSClient awsClient;
 
     @InjectMocks
     OptimizerHandler optimizerHandler;
@@ -62,9 +62,11 @@ class OptimizerHandlerTest {
             emptyPlayer, emptyPlayer, emptyPlayer, emptyPlayer, emptyPlayer);
 
     @BeforeEach
+    @SuppressWarnings("unchecked")
     void setUp() {
         MockitoAnnotations.initMocks(this);
         when(lineupCompiler.outputLineupPlayerIds(anyList(), anyList())).thenReturn(Arrays.asList(1, 2, 3, 4, 5));
+        when(awsClient.downloadFromS3(anyString())).thenReturn((List<Map<String, Object>>) optimizerInput.get("playerPool"));
     }
 
     void shouldCollectLineup(List<Player> expectedLineup) {
@@ -97,8 +99,9 @@ class OptimizerHandlerTest {
         shouldCollectLineupPositions();
         shouldCollectSalaryCap();
         assertEquals(Arrays.asList(1, 2, 3, 4, 5), result);
-        verify(AWSClient, never()).uploadToS3(anyString(), any());
-        verify(AWSClient, never()).sendTextMessage(anyList());
+        verify(awsClient, never()).uploadToS3(anyString(), any());
+        verify(awsClient, never()).downloadFromS3(anyString());
+        verify(awsClient, never()).sendTextMessages(anyString(), anyList());
     }
 
     @Test
@@ -109,8 +112,9 @@ class OptimizerHandlerTest {
         shouldCollectLineupPositions();
         shouldCollectSalaryCap();
         assertEquals(Arrays.asList(1, 2, 3, 4, 5), result);
-        verify(AWSClient, never()).uploadToS3(anyString(), any());
-        verify(AWSClient, never()).sendTextMessage(anyList());
+        verify(awsClient, never()).uploadToS3(anyString(), any());
+        verify(awsClient, never()).downloadFromS3(anyString());
+        verify(awsClient, never()).sendTextMessages(anyString(), anyList());
     }
 
     @Test
@@ -121,7 +125,8 @@ class OptimizerHandlerTest {
         shouldCollectLineupPositions();
         shouldCollectSalaryCap();
         assertEquals(Collections.emptyList(), result);
-        verify(AWSClient, times(1)).uploadToS3(anyString(), any());
-        verify(AWSClient, times(1)).sendTextMessage(anyList());
+        verify(awsClient, times(1)).uploadToS3(anyString(), any());
+        verify(awsClient, times(1)).downloadFromS3(anyString());
+        verify(awsClient, times(1)).sendTextMessages(anyString(), anyList());
     }
 }

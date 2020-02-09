@@ -14,7 +14,9 @@ Parameters:
     Type: String
   AwsSecret:
     Type: String
-  PhoneNumber:
+  DanPhoneNumber:
+    Type: String
+  TonyPhoneNumber:
     Type: String
 Globals:
   Function:
@@ -89,4 +91,5 @@ Resources:
         Variables:
           aws_key: !Ref AwsKey
           aws_secret: !Ref AwsSecret
-          phone_number: !Ref PhoneNumber
+          dan_phone_number: !Ref DanPhoneNumber
+          tony_phone_number: !Ref TonyPhoneNumber

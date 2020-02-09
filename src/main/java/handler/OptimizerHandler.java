@@ -9,12 +9,15 @@ public class OptimizerHandler {
     Adjuster adjuster = new Adjuster();
     Optimizer optimizer = new Optimizer();
     LineupCompiler lineupCompiler = new LineupCompiler();
-    private AWSClient AWSClient = new AWSClient();
+    private AWSClient awsClient = new AWSClient();
 
     public List<Integer> handleRequest(Map<String, Object> input) {
         String invocationType = (String) input.getOrDefault("invocationType", "web");
+        String sport = (String) input.get("sport");
         List<Player> lineup = new Lineup(input).getLineup();
-        List<Player> playerPool = new PlayerPool(input).getPlayerPool();
+        List<Player> playerPool = invocationType.equals("pipeline") ?
+                new PlayerPool(awsClient.downloadFromS3(sport + "PlayerPool.json")).getPlayerPool() :
+                new PlayerPool(input).getPlayerPool();
         List<Player> blackList = new BlackList(input).getBlackList();
         List<String> lineupPositions = new LineupPositions(input).getLineupPositions();
         LineupRestrictions lineupRestrictions = new LineupRestrictions(input);
@@ -30,9 +33,10 @@ public class OptimizerHandler {
                 adjustedSalaryCap, lineupRestrictions);
 
         if (invocationType.equals("pipeline")) {
-            List<String> namesInLineup = lineupCompiler.outputLineupPlayerNames(lineup, optimalPlayers, playerPool);
-            AWSClient.uploadToS3("optimalLineup.json", namesInLineup);
-            AWSClient.sendTextMessage(namesInLineup);
+            List<Player> playersWithNames = lineupCompiler.outputPlayersWithNames(lineup, optimalPlayers, playerPool);
+            awsClient.uploadToS3(sport + "OptimalLineup.json",
+                    lineupCompiler.outputPlayerNamesOnly(playersWithNames));
+            awsClient.sendTextMessages(sport, playersWithNames);
             return new ArrayList<>();
         } else
             return lineupCompiler.outputLineupPlayerIds(lineup, optimalPlayers);

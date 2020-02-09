@@ -31,11 +31,11 @@ public class LineupCompilerTest {
     );
 
     private List<Player> playerPool = Arrays.asList(
-            new Player(1, "name1", "RB","team1", 0.0, 0),
-            new Player(2, "name2", "RB","team2", 0.0, 0),
-            new Player(3, "name3", "RB","team3", 0.0, 0),
-            new Player(4, "name4", "RB","team4", 0.0, 0),
-            new Player(5, "name5", "RB","team5", 0.0, 0)
+            new Player(1, "name1", "RB","team1", 0.0, 10),
+            new Player(2, "name2", "RB","team2", 0.0, 20),
+            new Player(3, "name3", "RB","team3", 0.0, 50),
+            new Player(4, "name4", "RB","team4", 0.0, 30),
+            new Player(5, "name5", "RB","team5", 0.0, 40)
     );
 
     LineupCompiler lineupCompiler = new LineupCompiler();
@@ -53,14 +53,20 @@ public class LineupCompilerTest {
     }
 
     @Test
-    void shouldReturnFullWhiteListedLineupNames() {
-        List<String> result = lineupCompiler.outputLineupPlayerNames(fullLineup, new ArrayList<>(), playerPool);
+    void shouldReturnPlayersWithNames() {
+        List<Player> result = lineupCompiler.outputPlayersWithNames(fullLineup, new ArrayList<>(), playerPool);
         assertEquals(Arrays.asList(
-                "\nname1 team1 RB",
-                "\nname2 team2 RB",
-                "\nname3 team3 RB",
-                "\nname4 team4 RB",
-                "\nname5 team5 RB"
+                new Player(1, "name1", "RB","team1", 0.0, 10),
+                new Player(2, "name2", "RB","team2", 0.0, 20),
+                new Player(3, "name3", "RB","team3", 0.0, 50),
+                new Player(4, "name4", "RB","team4", 0.0, 30),
+                new Player(5, "name5", "RB","team5", 0.0, 40)
         ), result);
+    }
+
+    @Test
+    void shouldReturnPlayerNamesOnly() {
+        List<String> result = lineupCompiler.outputPlayerNamesOnly(playerPool);
+        assertEquals(Arrays.asList("name1", "name2", "name3", "name4", "name5"), result);
     }
 }

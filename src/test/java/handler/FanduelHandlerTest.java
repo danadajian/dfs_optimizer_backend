@@ -24,9 +24,6 @@ class FanduelHandlerTest {
     @Mock
     AWSClient AWSClient;
 
-    @Mock
-    DateOperations dateOperations;
-
     @InjectMocks
     FanduelHandler fanduelHandler;
 
@@ -34,7 +31,6 @@ class FanduelHandlerTest {
     void setUp() {
         MockitoAnnotations.initMocks(this);
         when(fanduel.getAllContestData("2019-12-16")).thenReturn(new ArrayList<>());
-        when(dateOperations.getTodaysDateString()).thenReturn("2020-01-01");
     }
 
     @Test
@@ -51,7 +47,6 @@ class FanduelHandlerTest {
         Map<String, String> testMap = new HashMap<>();
         testMap.put("invocationType", "pipeline");
         fanduelHandler.handleRequest(testMap);
-        verify(fanduel).getAllContestData("2020-01-01");
         verify(AWSClient, times(1)).uploadToS3(anyString(), any());
     }
 }

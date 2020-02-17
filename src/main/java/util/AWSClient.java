@@ -24,8 +24,8 @@ public class AWSClient {
 
     public AWSClient() {
         BasicAWSCredentials awsCredentials = new BasicAWSCredentials(
-                getEnvironmentVariable("aws_key"),
-                getEnvironmentVariable("aws_secret")
+                getEnvironmentVariable("AWS_KEY"),
+                getEnvironmentVariable("AWS_SECRET")
         );
         this.s3Client = AmazonS3ClientBuilder.standard()
                 .withRegion("us-east-2")
@@ -65,16 +65,20 @@ public class AWSClient {
                 "Good evening, Tony. Here is the optimal " + sport.toUpperCase() + " lineup for tonight:" + textOutput;
         snsClient.publish(new PublishRequest()
                 .withMessage(stringToSendAsText)
-                .withPhoneNumber(getEnvironmentVariable("dan_phone_number")));
+                .withPhoneNumber(getEnvironmentVariable("DAN_PHONE_NUMBER")));
         snsClient.publish(new PublishRequest()
                 .withMessage(stringToSendAsText)
-                .withPhoneNumber(getEnvironmentVariable("tony_phone_number")));
+                .withPhoneNumber(getEnvironmentVariable("TONY_PHONE_NUMBER")));
     }
 
     public String convertToTextOutput(List<Player> optimalPlayerNames) {
         List<String> outputForText = optimalPlayerNames.stream()
                 .map(player -> "\n" + player.name + " " + player.team + " " + player.position)
                 .collect(Collectors.toList());
+        outputForText.add("\nTotal projected points: " +
+                optimalPlayerNames.stream()
+                        .mapToDouble(player -> player.projection)
+                        .sum());
         outputForText.add("\nTotal salary: $" +
                 optimalPlayerNames.stream()
                         .mapToInt(player -> player.salary)

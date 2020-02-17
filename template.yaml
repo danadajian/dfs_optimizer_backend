@@ -43,8 +43,8 @@ Resources:
       Runtime: java8
       Environment:
         Variables:
-          aws_key: !Ref AwsKey
-          aws_secret: !Ref AwsSecret
+          AWS_KEY: !Ref AwsKey
+          AWS_SECRET: !Ref AwsSecret
 
   GetProjectionsDataFunction:
     Type: AWS::Serverless::Function
@@ -58,8 +58,8 @@ Resources:
         Variables:
           key: !Ref ApiKey
           secret: !Ref ApiSecret
-          aws_key: !Ref AwsKey
-          aws_secret: !Ref AwsSecret
+          AWS_KEY: !Ref AwsKey
+          AWS_SECRET: !Ref AwsSecret
 
   GetOpponentRanksDataFunction:
     Type: AWS::Serverless::Function
@@ -89,7 +89,7 @@ Resources:
       Runtime: java8
       Environment:
         Variables:
-          aws_key: !Ref AwsKey
-          aws_secret: !Ref AwsSecret
-          dan_phone_number: !Ref DanPhoneNumber
-          tony_phone_number: !Ref TonyPhoneNumber
+          AWS_KEY: !Ref AwsKey
+          AWS_SECRET: !Ref AwsSecret
+          DAN_PHONE_NUMBER: !Ref DanPhoneNumber
+          TONY_PHONE_NUMBER: !Ref TonyPhoneNumber

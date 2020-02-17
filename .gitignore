@@ -1,5 +1,5 @@
 # Config files
 src/main/resources/config.properties
 config.sh
-
+runDocker.sh
 target/

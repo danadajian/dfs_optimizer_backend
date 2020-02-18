@@ -18,15 +18,27 @@ public class Optimizer {
     public List<List<Player>> truncatePlayerPoolsByPosition(List<Player> playerPool, LineupMatrix lineupMatrix) {
         List<List<Player>> truncatedPlayerPools = new ArrayList<>();
         for (String lineupPosition : lineupMatrix.getUniquePositions()) {
-            List<Player> sortedValidPlayerPool = playerPool
+            List<Player> validPlayerPoolSortedByPricePerPoint = playerPool
                     .stream()
                     .filter(player -> playerHasValidPosition(player, lineupPosition))
                     .sorted(Comparator.comparingDouble(player -> player.salary / player.projection))
                     .collect(Collectors.toList());
-            List<Player> truncatedPlayerPool = sortedValidPlayerPool
-                    .subList(0,
-                            Math.min(lineupMatrix.getPositionThreshold(lineupPosition), sortedValidPlayerPool.size()));
-            truncatedPlayerPools.add(truncatedPlayerPool);
+            List<Player> truncatedPlayerPool = validPlayerPoolSortedByPricePerPoint
+                    .subList(0, Math.min(
+                            lineupMatrix.getPositionThreshold(lineupPosition),
+                            validPlayerPoolSortedByPricePerPoint.size()
+                    ));
+            List<Player> validPlayerPoolSortedByDescendingProjection = playerPool
+                    .stream()
+                    .filter(player -> playerHasValidPosition(player, lineupPosition))
+                    .sorted((player1, player2) -> Double.compare(player2.projection, player1.projection))
+                    .collect(Collectors.toList());
+            List<Player> topTenProjectedPlayers = validPlayerPoolSortedByDescendingProjection
+                    .subList(0, Math.min(10, validPlayerPoolSortedByDescendingProjection.size()));
+            Set<Player> pricePerPointSet = new LinkedHashSet<>(truncatedPlayerPool);
+            pricePerPointSet.addAll(topTenProjectedPlayers);
+            List<Player> finalTruncatedPool = new ArrayList<>(pricePerPointSet);
+            truncatedPlayerPools.add(finalTruncatedPool);
         }
         return truncatedPlayerPools;
     }

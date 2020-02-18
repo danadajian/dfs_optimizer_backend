@@ -62,7 +62,10 @@ class OptimizerTest {
     void shouldReturnTruncatedPools() {
         List<List<Player>> result = optimizer.truncatePlayerPoolsByPosition(playerPool, lineupMatrix);
         assertEquals(4, result.size());
-        assertTrue(result.stream().allMatch(playerPool -> playerPool.size() == mockPositionThreshold));
+        assertEquals(result.get(0).size(), 4);
+        assertEquals(result.get(1).size(), 4);
+        assertEquals(result.get(2).size(), 1);
+        assertEquals(result.get(3).size(), 1);
     }
 
     @Test

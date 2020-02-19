@@ -33,8 +33,12 @@ public class Optimizer {
                     .filter(player -> playerHasValidPosition(player, lineupPosition))
                     .sorted((player1, player2) -> Double.compare(player2.projection, player1.projection))
                     .collect(Collectors.toList());
-            List<Player> topTenProjectedPlayers = validPlayerPoolSortedByDescendingProjection
-                    .subList(0, Math.min(10, validPlayerPoolSortedByDescendingProjection.size()));
+            List<Player> playerPoolWithoutTruncatedPool = validPlayerPoolSortedByDescendingProjection
+                    .stream()
+                    .filter(player -> !truncatedPlayerPool.contains(player))
+                    .collect(Collectors.toList());
+            List<Player> topTenProjectedPlayers = playerPoolWithoutTruncatedPool
+                    .subList(0, Math.min(3, playerPoolWithoutTruncatedPool.size()));
             Set<Player> pricePerPointSet = new LinkedHashSet<>(truncatedPlayerPool);
             pricePerPointSet.addAll(topTenProjectedPlayers);
             List<Player> finalTruncatedPool = new ArrayList<>(pricePerPointSet);

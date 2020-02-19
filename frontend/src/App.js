@@ -29,7 +29,7 @@ class App extends Component {
         date: new Date(), dfsData: {}, projectionsData: {}, contests: [], lineup: [], lineupPositions: [],
         displayMatrix: [], salaryCap: 0, lineupRestrictions: {}, playerPool: [], filteredPool: null,
         sortAttribute: 'salary', sortSign: 1, searchText: '', whiteList: [], blackList: [],
-        opponentRanks: {}, injuries: {}, maxCombinations: 10000000};
+        opponentRanks: {}, injuries: {}, maxCombinations: 500000};
   }
 
   setSite = (site) => {

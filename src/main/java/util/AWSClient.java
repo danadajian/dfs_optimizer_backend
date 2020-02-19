@@ -19,27 +19,18 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class AWSClient {
-    AmazonS3 s3Client;
-    AmazonSNS snsClient;
-
-    public AWSClient() {
-        BasicAWSCredentials awsCredentials = new BasicAWSCredentials(
-                getEnvironmentVariable("AWS_KEY"),
-                getEnvironmentVariable("AWS_SECRET")
-        );
-        this.s3Client = AmazonS3ClientBuilder.standard()
-                .withRegion("us-east-2")
-                .withCredentials(new AWSStaticCredentialsProvider(awsCredentials))
-                .build();
-        this.snsClient = AmazonSNSClientBuilder.standard()
-                .withRegion("us-east-1")
-                .withCredentials(new AWSStaticCredentialsProvider(awsCredentials))
-                .build();
-    }
 
     public void uploadToS3(String fileName, Object objectToUpload) {
         try {
             String jsonString = new ObjectMapper().writeValueAsString(objectToUpload);
+            BasicAWSCredentials awsCredentials = new BasicAWSCredentials(
+                    getEnvironmentVariable("AWS_KEY"),
+                    getEnvironmentVariable("AWS_SECRET")
+            );
+            AmazonS3 s3Client = AmazonS3ClientBuilder.standard()
+                    .withRegion("us-east-2")
+                    .withCredentials(new AWSStaticCredentialsProvider(awsCredentials))
+                    .build();
             s3Client.putObject("dfs-pipeline", fileName, jsonString);
         } catch (JsonProcessingException e) {
             e.printStackTrace();
@@ -47,6 +38,14 @@ public class AWSClient {
     }
 
     public List<Map<String, Object>> downloadFromS3(String fileName) {
+        BasicAWSCredentials awsCredentials = new BasicAWSCredentials(
+                getEnvironmentVariable("AWS_KEY"),
+                getEnvironmentVariable("AWS_SECRET")
+        );
+        AmazonS3 s3Client = AmazonS3ClientBuilder.standard()
+                .withRegion("us-east-2")
+                .withCredentials(new AWSStaticCredentialsProvider(awsCredentials))
+                .build();
         InputStream s3Object = s3Client.getObject("dfs-pipeline", fileName).getObjectContent();
         Scanner s = new Scanner(s3Object).useDelimiter("\\A");
         String s3ObjectString = s.hasNext() ? s.next() : "";
@@ -60,6 +59,14 @@ public class AWSClient {
     }
 
     public void sendTextMessages(String sport, List<Player> optimalPlayersWithNames) {
+        BasicAWSCredentials awsCredentials = new BasicAWSCredentials(
+                getEnvironmentVariable("AWS_KEY"),
+                getEnvironmentVariable("AWS_SECRET")
+        );
+        AmazonSNS snsClient = AmazonSNSClientBuilder.standard()
+                .withRegion("us-east-1")
+                .withCredentials(new AWSStaticCredentialsProvider(awsCredentials))
+                .build();
         String textOutput = convertToTextOutput(optimalPlayersWithNames);
         String stringToSendAsText =
                 "Good evening, Tony. Here is the optimal " + sport.toUpperCase() + " lineup for tonight:" + textOutput;

@@ -1,7 +1,6 @@
 package optimize;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -40,9 +39,26 @@ public class LineupCompiler {
         return playersWithNames;
     }
 
-    public List<String> outputPlayerNamesOnly(List<Player> players) {
-        return players.stream()
-                .map(player -> player.name)
+    public Map<String, Object> generateFileOutput(List<Player> optimalPlayers) {
+        Map<String, Object> fileOutput = new HashMap<>();
+        List<Map<String, String>> optimalPlayerNames = optimalPlayers.stream()
+                .map(player -> {
+                    Map<String, String> playerMap = new HashMap<>();
+                    playerMap.put("name", player.name);
+                    playerMap.put("team", player.team);
+                    playerMap.put("position", player.position);
+                    return playerMap;
+                })
                 .collect(Collectors.toList());
+        double totalProjection = optimalPlayers.stream()
+                .mapToDouble(player -> player.projection)
+                .sum();
+        int totalSalary = optimalPlayers.stream()
+                .mapToInt(player -> player.salary)
+                .sum();
+        fileOutput.put("lineup", optimalPlayerNames);
+        fileOutput.put("totalProjection", totalProjection);
+        fileOutput.put("totalSalary", totalSalary);
+        return fileOutput;
     }
 }

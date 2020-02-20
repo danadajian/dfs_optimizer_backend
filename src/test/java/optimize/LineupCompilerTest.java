@@ -2,9 +2,7 @@ package optimize;
 
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -56,17 +54,39 @@ public class LineupCompilerTest {
     void shouldReturnPlayersWithNames() {
         List<Player> result = lineupCompiler.outputPlayersWithNames(fullLineup, new ArrayList<>(), playerPool);
         assertEquals(Arrays.asList(
-                new Player(1, "name1", "RB","team1", 0.0, 10),
-                new Player(2, "name2", "RB","team2", 0.0, 20),
-                new Player(3, "name3", "RB","team3", 0.0, 50),
-                new Player(4, "name4", "RB","team4", 0.0, 30),
-                new Player(5, "name5", "RB","team5", 0.0, 40)
+                new Player(1, "name1", "RB","team1", 1.0, 10),
+                new Player(2, "name2", "RB","team2", 2.0, 20),
+                new Player(3, "name3", "RB","team3", 3.0, 50),
+                new Player(4, "name4", "RB","team4", 4.0, 30),
+                new Player(5, "name5", "RB","team5", 5.0, 40)
         ), result);
     }
 
     @Test
-    void shouldReturnPlayerNamesOnly() {
-        List<String> result = lineupCompiler.outputPlayerNamesOnly(playerPool);
-        assertEquals(Arrays.asList("name1", "name2", "name3", "name4", "name5"), result);
+    void shouldGenerateCorrectFileOutput() {
+        List<Player> playersWithNames = Arrays.asList(
+                new Player(1, "name1", "RB","team1", 1.0, 10),
+                new Player(2, "name2", "RB","team2", 2.0, 20),
+                new Player(3, "name3", "RB","team3", 3.0, 50)
+        );
+        Map<String, String> playerMap1 = new HashMap<>();
+        playerMap1.put("name", "name1");
+        playerMap1.put("team", "team1");
+        playerMap1.put("position", "RB");
+        Map<String, String> playerMap2 = new HashMap<>();
+        playerMap2.put("name", "name2");
+        playerMap2.put("team", "team2");
+        playerMap2.put("position", "RB");
+        Map<String, String> playerMap3 = new HashMap<>();
+        playerMap3.put("name", "name3");
+        playerMap3.put("team", "team3");
+        playerMap3.put("position", "RB");
+        List<Map<String, String>> expectedListOfPlayerMaps = Arrays.asList(playerMap1, playerMap2, playerMap3);
+        Map<String, Object> result = lineupCompiler.generateFileOutput(playersWithNames);
+        Map<String, Object> resultMap = new HashMap<>();
+        resultMap.put("lineup", expectedListOfPlayerMaps);
+        resultMap.put("totalProjection", 6.0);
+        resultMap.put("totalSalary", 80);
+        assertEquals(resultMap, result);
     }
 }

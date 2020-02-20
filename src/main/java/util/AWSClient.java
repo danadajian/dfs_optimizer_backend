@@ -58,42 +58,6 @@ public class AWSClient {
         return result;
     }
 
-    public void sendTextMessages(String sport, List<Player> optimalPlayersWithNames) {
-        BasicAWSCredentials awsCredentials = new BasicAWSCredentials(
-                getEnvironmentVariable("AWS_KEY"),
-                getEnvironmentVariable("AWS_SECRET")
-        );
-        AmazonSNS snsClient = AmazonSNSClientBuilder.standard()
-                .withRegion("us-east-1")
-                .withCredentials(new AWSStaticCredentialsProvider(awsCredentials))
-                .build();
-        String textOutput = convertToTextOutput(optimalPlayersWithNames);
-        String stringToSendAsText =
-                "Good evening, Tony. Here is the optimal " + sport.toUpperCase() + " lineup for tonight:" + textOutput;
-        snsClient.publish(new PublishRequest()
-                .withMessage(stringToSendAsText)
-                .withPhoneNumber(getEnvironmentVariable("DAN_PHONE_NUMBER")));
-        snsClient.publish(new PublishRequest()
-                .withMessage(stringToSendAsText)
-                .withPhoneNumber(getEnvironmentVariable("TONY_PHONE_NUMBER")));
-    }
-
-    public String convertToTextOutput(List<Player> optimalPlayerNames) {
-        List<String> outputForText = optimalPlayerNames.stream()
-                .map(player -> "\n" + player.name + " " + player.team + " " + player.position)
-                .collect(Collectors.toList());
-        outputForText.add("\nTotal projected points: " +
-                optimalPlayerNames.stream()
-                        .mapToDouble(player -> player.projection)
-                        .sum());
-        outputForText.add("\nTotal salary: $" +
-                optimalPlayerNames.stream()
-                        .mapToInt(player -> player.salary)
-                        .sum());
-        return outputForText.toString().substring(1, outputForText.toString().length() - 1);
-
-    }
-
     public String getEnvironmentVariable(String varName) {
         String environmentVariable = "";
         try (InputStream input = new FileInputStream("src/main/resources/config.properties")) {

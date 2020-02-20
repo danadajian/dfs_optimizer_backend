@@ -93,7 +93,7 @@ class OptimizerHandlerTest {
 
     @Test
     void shouldHandleOptimizerInput() {
-        List<Integer> result = optimizerHandler.handleRequest(optimizerInput);
+        List<?> result = optimizerHandler.handleRequest(optimizerInput);
         shouldCollectLineup(emptyLineup);
         shouldCollectPlayerPoolAndBlackList(Collections.emptyList());
         shouldCollectLineupPositions();
@@ -101,12 +101,11 @@ class OptimizerHandlerTest {
         assertEquals(Arrays.asList(1, 2, 3, 4, 5), result);
         verify(awsClient, never()).uploadToS3(anyString(), any());
         verify(awsClient, never()).downloadFromS3(anyString());
-        verify(awsClient, never()).sendTextMessages(anyString(), anyList());
     }
 
     @Test
     void shouldHandleOptimizerWhiteAndBlackListInput() {
-        List<Integer> result = optimizerHandler.handleRequest(optimizerWithWhiteAndBlackListInput);
+        List<?> result = optimizerHandler.handleRequest(optimizerWithWhiteAndBlackListInput);
         shouldCollectLineup(whiteListLineup);
         shouldCollectPlayerPoolAndBlackList(Collections.singletonList(new Player(868199)));
         shouldCollectLineupPositions();
@@ -114,19 +113,17 @@ class OptimizerHandlerTest {
         assertEquals(Arrays.asList(1, 2, 3, 4, 5), result);
         verify(awsClient, never()).uploadToS3(anyString(), any());
         verify(awsClient, never()).downloadFromS3(anyString());
-        verify(awsClient, never()).sendTextMessages(anyString(), anyList());
     }
 
     @Test
     void shouldHandleOptimizerInputWithPipelineInvocation() {
-        List<Integer> result = optimizerHandler.handleRequest(optimizerInputWithPipelineInvocation);
+        List<?> result = optimizerHandler.handleRequest(optimizerInputWithPipelineInvocation);
         shouldCollectLineup(emptyLineup);
         shouldCollectPlayerPoolAndBlackList(Collections.emptyList());
         shouldCollectLineupPositions();
         shouldCollectSalaryCap();
-        assertEquals(Collections.emptyList(), result);
+        assertEquals(Collections.singletonList("nfl"), result);
         verify(awsClient, times(1)).uploadToS3(anyString(), any());
         verify(awsClient, times(1)).downloadFromS3(anyString());
-        verify(awsClient, times(1)).sendTextMessages(anyString(), anyList());
     }
 }

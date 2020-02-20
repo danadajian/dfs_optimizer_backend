@@ -11,7 +11,7 @@ public class OptimizerHandler {
     LineupCompiler lineupCompiler = new LineupCompiler();
     private AWSClient awsClient = new AWSClient();
 
-    public List<Integer> handleRequest(Map<String, Object> input) {
+    public List<?> handleRequest(Map<String, Object> input) {
         String invocationType = (String) input.getOrDefault("invocationType", "web");
         String sport = (String) input.get("sport");
         List<Player> lineup = new Lineup(input).getLineup();
@@ -35,9 +35,8 @@ public class OptimizerHandler {
         if (invocationType.equals("pipeline")) {
             List<Player> playersWithNames = lineupCompiler.outputPlayersWithNames(lineup, optimalPlayers, playerPool);
             awsClient.uploadToS3(sport + "OptimalLineup.json",
-                    lineupCompiler.outputPlayerNamesOnly(playersWithNames));
-            awsClient.sendTextMessages(sport, playersWithNames);
-            return new ArrayList<>();
+                    lineupCompiler.generateFileOutput(playersWithNames));
+            return Collections.singletonList(sport);
         } else
             return lineupCompiler.outputLineupPlayerIds(lineup, optimalPlayers);
     }

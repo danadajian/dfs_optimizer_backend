@@ -28,23 +28,33 @@ public class Optimizer {
                             lineupMatrix.getPositionThreshold(lineupPosition),
                             validPlayerPoolSortedByPricePerPoint.size()
                     ));
-            List<Player> validPlayerPoolSortedByDescendingProjection = playerPool
-                    .stream()
-                    .filter(player -> playerHasValidPosition(player, lineupPosition))
-                    .sorted((player1, player2) -> Double.compare(player2.projection, player1.projection))
-                    .collect(Collectors.toList());
-            List<Player> playerPoolWithoutTruncatedPool = validPlayerPoolSortedByDescendingProjection
-                    .stream()
-                    .filter(player -> !truncatedPlayerPool.contains(player))
-                    .collect(Collectors.toList());
-            List<Player> topTenProjectedPlayers = playerPoolWithoutTruncatedPool
-                    .subList(0, Math.min(3, playerPoolWithoutTruncatedPool.size()));
-            Set<Player> pricePerPointSet = new LinkedHashSet<>(truncatedPlayerPool);
-            pricePerPointSet.addAll(topTenProjectedPlayers);
-            List<Player> finalTruncatedPool = new ArrayList<>(pricePerPointSet);
+            List<Player> finalTruncatedPool = addTopProjectedPlayersToTruncatedPool(truncatedPlayerPool, playerPool,
+                    lineupPosition, 3);
+            System.out.println("Opty will include " + truncatedPlayerPool.size() +
+                    " + " + (finalTruncatedPool.size() - truncatedPlayerPool.size()) + " = "
+                    + finalTruncatedPool.size() + " players for position: " + lineupPosition);
             truncatedPlayerPools.add(finalTruncatedPool);
         }
         return truncatedPlayerPools;
+    }
+
+    public List<Player> addTopProjectedPlayersToTruncatedPool(List<Player> truncatedPlayerPool,
+                                                              List<Player> playerPool, String lineupPosition,
+                                                              int numberOfPlayersToAdd) {
+        List<Player> validPlayerPoolSortedByDescendingProjection = playerPool
+                .stream()
+                .filter(player -> playerHasValidPosition(player, lineupPosition))
+                .sorted((player1, player2) -> Double.compare(player2.projection, player1.projection))
+                .collect(Collectors.toList());
+        List<Player> playerPoolWithoutTruncatedPool = validPlayerPoolSortedByDescendingProjection
+                .stream()
+                .filter(player -> !truncatedPlayerPool.contains(player))
+                .collect(Collectors.toList());
+        List<Player> topProjectedPlayersToAdd = playerPoolWithoutTruncatedPool
+                .subList(0, Math.min(numberOfPlayersToAdd, playerPoolWithoutTruncatedPool.size()));
+        Set<Player> pricePerPointSet = new LinkedHashSet<>(truncatedPlayerPool);
+        pricePerPointSet.addAll(topProjectedPlayersToAdd);
+        return new ArrayList<>(pricePerPointSet);
     }
 
     public List<Set<List<Player>>> getPlayerPoolCombinations(List<List<Player>> playerPools, LineupMatrix lineupMatrix) {

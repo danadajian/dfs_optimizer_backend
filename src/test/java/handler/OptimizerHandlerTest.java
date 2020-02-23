@@ -93,7 +93,7 @@ class OptimizerHandlerTest {
 
     @Test
     void shouldHandleOptimizerInput() {
-        List<?> result = optimizerHandler.handleRequest(optimizerInput);
+        List<Integer> result = optimizerHandler.handleRequest(optimizerInput);
         shouldCollectLineup(emptyLineup);
         shouldCollectPlayerPoolAndBlackList(Collections.emptyList());
         shouldCollectLineupPositions();
@@ -105,7 +105,7 @@ class OptimizerHandlerTest {
 
     @Test
     void shouldHandleOptimizerWhiteAndBlackListInput() {
-        List<?> result = optimizerHandler.handleRequest(optimizerWithWhiteAndBlackListInput);
+        List<Integer> result = optimizerHandler.handleRequest(optimizerWithWhiteAndBlackListInput);
         shouldCollectLineup(whiteListLineup);
         shouldCollectPlayerPoolAndBlackList(Collections.singletonList(new Player(868199)));
         shouldCollectLineupPositions();
@@ -117,12 +117,12 @@ class OptimizerHandlerTest {
 
     @Test
     void shouldHandleOptimizerInputWithPipelineInvocation() {
-        List<?> result = optimizerHandler.handleRequest(optimizerInputWithPipelineInvocation);
+        List<Integer> result = optimizerHandler.handleRequest(optimizerInputWithPipelineInvocation);
         shouldCollectLineup(emptyLineup);
         shouldCollectPlayerPoolAndBlackList(Collections.emptyList());
         shouldCollectLineupPositions();
         shouldCollectSalaryCap();
-        assertEquals(Collections.singletonList("nfl"), result);
+        assertEquals(Collections.emptyList(), result);
         verify(awsClient, times(1)).uploadToS3(anyString(), any());
         verify(awsClient, times(1)).downloadFromS3(anyString());
     }

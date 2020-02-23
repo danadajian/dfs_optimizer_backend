@@ -29,7 +29,7 @@ class App extends Component {
         date: new Date(), dfsData: {}, projectionsData: {}, contests: [], lineup: [], lineupPositions: [],
         displayMatrix: [], salaryCap: 0, lineupRestrictions: {}, playerPool: [], filteredPool: null,
         sortAttribute: 'salary', sortSign: 1, searchText: '', whiteList: [], blackList: [],
-        opponentRanks: {}, injuries: {}, maxCombinations: 500000};
+        opponentRanks: {}, injuries: {}, maxCombinations: 100000000};
   }
 
   setSite = (site) => {
@@ -162,21 +162,21 @@ class App extends Component {
 
   generateOptimalLineup = async () => {
     this.setState({isOptimizing: true});
-    let optimalLineup = this.state.lineup;
+    let {lineup} = this.state;
     let playerIds = await invokeLambdaFunction(lambda, process.env.REACT_APP_OPTIMAL_LINEUP_LAMBDA, this.state);
     if (playerIds['errorMessage']) {
       alert('An error occurred.' +
       playerIds['errorType'] + '\n' + playerIds['errorMessage'] + '\n' +
       playerIds['stackTrace'] !== undefined ? playerIds['stackTrace'].slice(0, 7) : '');
-    } else if (playerIds.includes(0)) {
-        alert('The whitelisted salary was too high to optimize around.')
+    } else if (playerIds.length === 0) {
+        alert('Failed to generate optimal lineup.')
     } else {
-        optimalLineup = playerIds.map(playerId => this.state.playerPool.find(player => player.playerId === playerId));
-        optimalLineup.forEach((player, index) => player.displayPosition = this.state.displayMatrix[index]);
+        lineup = playerIds.map(playerId => this.state.playerPool.find(player => player.playerId === playerId));
+        lineup.forEach((player, index) => player.displayPosition = this.state.displayMatrix[index]);
     }
     this.setState({
         isOptimizing: false,
-        lineup: optimalLineup
+        lineup: lineup
     })
   };
 

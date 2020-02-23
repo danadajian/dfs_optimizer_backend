@@ -1,7 +1,5 @@
 package optimize;
 
-import com.google.common.collect.Sets;
-import org.apache.commons.math3.util.CombinatoricsUtils;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
@@ -9,9 +7,10 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
 import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.when;
 
 class OptimizerTest {
@@ -26,20 +25,14 @@ class OptimizerTest {
     private Player wr4 = new Player(12, "WR", "team1", 7.9, 3700);
     private Player te1 = new Player(13, "TE", "team1", 10.1, 6700);
     private Player dst1 = new Player(15, "D", "team1", 6.0, 4600);
-    private List<Player> playerPool = Arrays.asList(rb1, rb2, rb3, rb4, wr1, wr2, wr3, wr4, te1, dst1);
-    int salaryCap = 22700;
-    private List<Set<List<Player>>> mockPermutedPlayerPools = Arrays.asList(
-            new HashSet<>(Arrays.asList(Collections.singletonList(rb1), Collections.singletonList(rb2),
-                    Collections.singletonList(rb3), Collections.singletonList(rb4))),
-            new HashSet<>(Arrays.asList(Arrays.asList(wr1, wr2), Arrays.asList(wr1, wr3),
-                    Arrays.asList(wr1, wr4), Arrays.asList(wr2, wr3), Arrays.asList(wr2, wr4),
-                    Arrays.asList(wr3, wr4)))
-    );
-    private int mockPositionThreshold = 1;
-    private int mockPositionFrequency = 2;
 
-    @Mock
-    LineupMatrix lineupMatrix;
+    private List<Set<List<Player>>> playerPools = Arrays.asList(
+            Stream.of(Collections.singletonList(qb0)).collect(Collectors.toSet()),
+            Stream.of(Arrays.asList(rb1, rb2), Arrays.asList(rb1, rb3), Arrays.asList(rb1, rb4), Arrays.asList(rb2, rb3), Arrays.asList(rb2, rb4), Arrays.asList(rb3, rb4)).collect(Collectors.toSet()),
+            Stream.of(Arrays.asList(wr1, wr2, wr3), Arrays.asList(wr1, wr2, wr4), Arrays.asList(wr1, wr3, wr4), Arrays.asList(wr2, wr3, wr4)).collect(Collectors.toSet()),
+            Stream.of(Collections.singletonList(te1)).collect(Collectors.toSet()),
+            Stream.of(Collections.singletonList(dst1)).collect(Collectors.toSet())
+    );
 
     @Mock
     LineupRestrictions lineupRestrictions;
@@ -50,49 +43,63 @@ class OptimizerTest {
     @BeforeEach
     void setUp() {
         MockitoAnnotations.initMocks(this);
-        when(lineupMatrix.getUniquePositions()).thenReturn(Arrays.asList("RB", "WR", "TE", "D"));
-        when(lineupMatrix.getPositionThreshold(anyString())).thenReturn(mockPositionThreshold);
-        when(lineupMatrix.getPositionFrequency(anyString())).thenReturn(mockPositionFrequency);
         when(lineupRestrictions.getDistinctTeamsRequired()).thenReturn(3);
         when(lineupRestrictions.getMaxPlayersPerTeam()).thenReturn(4);
         when(lineupRestrictions.getTeamAgnosticPosition()).thenReturn("QB");
     }
 
     @Test
-    void shouldReturnTruncatedPools() {
-        List<List<Player>> result = optimizer.truncatePlayerPoolsByPosition(playerPool, lineupMatrix);
-        assertEquals(4, result.size());
-        assertEquals(result.get(0).size(), 4);
-        assertEquals(result.get(1).size(), 4);
-        assertEquals(result.get(2).size(), 1);
-        assertEquals(result.get(3).size(), 1);
+    void shouldDetermineBetterLineupCanBeFound() {
+        List<Player> currentLineup = Arrays.asList(qb0, rb2, rb3, wr1, wr2, wr4);
+        assertTrue(optimizer.canFindABetterLineup(currentLineup, playerPools, 70, 50000));
     }
 
     @Test
-    void shouldReturnEachSetOfCombinations() {
-        List<List<Player>> playerPools = Arrays.asList(
-                Arrays.asList(rb1, rb2, rb3, rb4),
-                Arrays.asList(wr1, wr2, wr3, wr4)
+    void shouldDetermineBetterLineupCannotBeFoundDueToMaxPoints() {
+        List<Player> currentLineup = Arrays.asList(qb0, rb2, rb3, wr1, wr2, wr4);
+        assertFalse(optimizer.canFindABetterLineup(currentLineup, playerPools, 91.5, 50000));
+    }
+
+    @Test
+    void shouldDetermineBetterLineupCannotBeFoundDueToSalary() {
+        List<Player> currentLineup = Arrays.asList(qb0, rb2, rb3, wr1, wr2, wr3);
+        assertFalse(optimizer.canFindABetterLineup(currentLineup, playerPools, 0, 53000));
+    }
+
+    @Test
+    void shouldGetDistinctNumberOfPositionTypesFilled() {
+        List<Player> currentLineup = Arrays.asList(rb1, rb2, rb3, wr1, wr2, wr3, wr4, te1);
+        int result = optimizer.getDistinctNumberOfPositionTypesFilled(currentLineup);
+        assertEquals(result, 3);
+    }
+
+    @Test
+    void shouldGetDistinctNumberOfPositionTypesFilledWithFlex() {
+        List<Player> currentLineup = Arrays.asList(qb0, rb2, rb3, wr1, wr2, wr3, te1, rb1, dst1);
+        int result = optimizer.getDistinctNumberOfPositionTypesFilled(currentLineup);
+        assertEquals(result, 6);
+    }
+
+    @Test
+    void shouldGetMaxPointsToAdd() {
+        List<Set<List<Player>>> remainingPlayerPools = Arrays.asList(
+                Stream.of(Arrays.asList(wr1, wr2, wr3), Arrays.asList(wr1, wr2, wr4), Arrays.asList(wr1, wr3, wr4), Arrays.asList(wr2, wr3, wr4)).collect(Collectors.toSet()),
+                Stream.of(Collections.singletonList(te1)).collect(Collectors.toSet()),
+                Stream.of(Collections.singletonList(dst1)).collect(Collectors.toSet())
         );
-        List<Set<List<Player>>> result = optimizer.getPlayerPoolCombinations(playerPools, lineupMatrix);
-        assertEquals(2, result.size());
-        assertEquals(CombinatoricsUtils.binomialCoefficient(4, mockPositionFrequency), result.get(0).size());
-        assertEquals(CombinatoricsUtils.binomialCoefficient(4, mockPositionFrequency), result.get(1).size());
+        double result = optimizer.getMaxPointsToAdd(remainingPlayerPools);
+        assertEquals(result, 58.5);
     }
 
     @Test
-    void shouldGetCorrectCartesianProductSize() {
-        Set<List<List<Player>>> result = Sets.cartesianProduct(mockPermutedPlayerPools);
-        assertEquals(CombinatoricsUtils.binomialCoefficient(4, 1) *
-                        CombinatoricsUtils.binomialCoefficient(4, 2), result.size());
-    }
-
-    @Test
-    void shouldCheckIfPlayerHasValidLineupPosition() {
-        assertTrue(optimizer.playerHasValidPosition(new Player(0, "G"), "any"));
-        assertTrue(optimizer.playerHasValidPosition(new Player(0, "C/1B"), "1B"));
-        assertTrue(optimizer.playerHasValidPosition(new Player(0, "SF"), "SF,PF"));
-        assertFalse(optimizer.playerHasValidPosition(new Player(0, "RB"), "WR"));
+    void shouldGetMinSalaryToAdd() {
+        List<Set<List<Player>>> remainingPlayerPools = Arrays.asList(
+                Stream.of(Arrays.asList(wr1, wr2, wr3), Arrays.asList(wr1, wr2, wr4), Arrays.asList(wr1, wr3, wr4), Arrays.asList(wr2, wr3, wr4)).collect(Collectors.toSet()),
+                Stream.of(Collections.singletonList(te1)).collect(Collectors.toSet()),
+                Stream.of(Collections.singletonList(dst1)).collect(Collectors.toSet())
+        );
+        int result = optimizer.getMinSalaryToAdd(remainingPlayerPools);
+        assertEquals(result, 31300);
     }
 
     @Test
@@ -140,8 +147,20 @@ class OptimizerTest {
     }
 
     @Test
-    void shouldReturnBestLineupInCartesianProduct() {
-        List<Player> result = optimizer.getBestLineupInCartesianProduct(mockPermutedPlayerPools, salaryCap, lineupRestrictions);
-        assertEquals(Arrays.asList(rb3, wr2, wr4), result);
+    void shouldCalculateTotalProjection() {
+        double result = optimizer.totalProjection(Arrays.asList(rb1, rb2, rb3));
+        assertEquals(result, 47.9);
+    }
+
+    @Test
+    void shouldCalculateTotalSalary() {
+        int result = optimizer.totalSalary(Arrays.asList(rb1, rb2, rb3));
+        assertEquals(result, 20500);
+    }
+
+    @Test
+    void shouldGenerateOptimalLineup() {
+        List<Player> result = optimizer.generateOptimalLineup(playerPools, 50000, lineupRestrictions);
+        assertEquals(result, Arrays.asList(qb0, rb2, rb3, wr1, wr2, wr4, te1, dst1));
     }
 }

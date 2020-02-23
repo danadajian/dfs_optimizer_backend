@@ -7,11 +7,12 @@ import java.util.*;
 
 public class OptimizerHandler {
     Adjuster adjuster = new Adjuster();
+    PlayerSelector playerSelector = new PlayerSelector();
     Optimizer optimizer = new Optimizer();
     LineupCompiler lineupCompiler = new LineupCompiler();
     private AWSClient awsClient = new AWSClient();
 
-    public List<?> handleRequest(Map<String, Object> input) {
+    public List<Integer> handleRequest(Map<String, Object> input) {
         String invocationType = (String) input.getOrDefault("invocationType", "web");
         String sport = (String) input.get("sport");
         List<Player> lineup = new Lineup(input).getLineup();
@@ -22,22 +23,25 @@ public class OptimizerHandler {
         List<String> lineupPositions = new LineupPositions(input).getLineupPositions();
         LineupRestrictions lineupRestrictions = new LineupRestrictions(input);
         int salaryCap = (int) input.get("salaryCap");
-        int maxCombinations = (int) input.get("maxCombinations");
+        Object maxCombinationsObject = input.get("maxCombinations");
+        long maxCombinations = maxCombinationsObject instanceof Integer ? (int) maxCombinationsObject : (long) maxCombinationsObject;
 
         List<Player> whiteList = adjuster.getWhiteList(lineup);
         List<Player> adjustedPlayerPool = adjuster.adjustPlayerPool(playerPool, whiteList, blackList);
         List<String> adjustedLineupPositions = adjuster.adjustLineupPositions(lineup, lineupPositions);
         LineupMatrix lineupMatrix = new LineupMatrix(adjustedLineupPositions, maxCombinations);
         int adjustedSalaryCap = adjuster.adjustSalaryCap(whiteList, salaryCap);
-        List<Player> optimalPlayers = optimizer.generateOptimalPlayers(adjustedPlayerPool, lineupMatrix,
-                adjustedSalaryCap, lineupRestrictions);
+        List<List<Player>> truncatedPlayerPools = playerSelector.truncatePlayerPoolsByPosition(adjustedPlayerPool, lineupMatrix);
+        List<Set<List<Player>>> permutedPlayerPools = playerSelector.getPlayerPoolCombinations(truncatedPlayerPools, lineupMatrix);
+        List<Player> optimalPlayers = optimizer.generateOptimalLineup(permutedPlayerPools, adjustedSalaryCap, lineupRestrictions);
 
         if (invocationType.equals("pipeline")) {
             List<Player> playersWithNames = lineupCompiler.outputPlayersWithNames(lineup, optimalPlayers, playerPool);
             awsClient.uploadToS3(sport + "OptimalLineup.json",
                     lineupCompiler.generateFileOutput(playersWithNames));
-            return Collections.singletonList(sport);
-        } else
+            return Collections.emptyList();
+        } else {
             return lineupCompiler.outputLineupPlayerIds(lineup, optimalPlayers);
+        }
     }
 }

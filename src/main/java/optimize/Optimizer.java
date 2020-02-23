@@ -1,93 +1,28 @@
 package optimize;
 
-import com.google.common.collect.Sets;
-import org.apache.commons.math3.util.CombinatoricsUtils;
-
 import java.util.*;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class Optimizer {
+    List<Set<List<Player>>> playerPools;
+    List<Player> optimalLineup;
+    double maxPoints;
+    int salaryCap;
+    LineupRestrictions lineupRestrictions;
 
-    public List<Player> generateOptimalPlayers(List<Player> playerPool, LineupMatrix lineupMatrix, int salaryCap,
-                                               LineupRestrictions lineupRestrictions) {
-        List<List<Player>> truncatedPlayerPools = truncatePlayerPoolsByPosition(playerPool, lineupMatrix);
-        List<Set<List<Player>>> permutedPlayerPools = getPlayerPoolCombinations(truncatedPlayerPools, lineupMatrix);
-        return getBestLineupInCartesianProduct(permutedPlayerPools, salaryCap, lineupRestrictions);
+    public List<Player> generateOptimalLineup(List<Set<List<Player>>> playerPools, int salaryCap, LineupRestrictions lineupRestrictions) {
+        this.optimalLineup = Collections.emptyList();
+        this.maxPoints = 0;
+        this.playerPools = playerPools;
+        this.salaryCap = salaryCap;
+        this.lineupRestrictions = lineupRestrictions;
+        optimize(Collections.emptyList(), -1);
+        return optimalLineup;
     }
 
-    public List<List<Player>> truncatePlayerPoolsByPosition(List<Player> playerPool, LineupMatrix lineupMatrix) {
-        List<List<Player>> truncatedPlayerPools = new ArrayList<>();
-        for (String lineupPosition : lineupMatrix.getUniquePositions()) {
-            List<Player> validPlayerPoolSortedByPricePerPoint = playerPool
-                    .stream()
-                    .filter(player -> playerHasValidPosition(player, lineupPosition))
-                    .sorted(Comparator.comparingDouble(player -> player.salary / player.projection))
-                    .collect(Collectors.toList());
-            List<Player> truncatedPlayerPool = validPlayerPoolSortedByPricePerPoint
-                    .subList(0, Math.min(
-                            lineupMatrix.getPositionThreshold(lineupPosition),
-                            validPlayerPoolSortedByPricePerPoint.size()
-                    ));
-            List<Player> finalTruncatedPool = addTopProjectedPlayersToTruncatedPool(truncatedPlayerPool, playerPool,
-                    lineupPosition, 3);
-            System.out.println("Opty will include " + truncatedPlayerPool.size() +
-                    " + " + (finalTruncatedPool.size() - truncatedPlayerPool.size()) + " = "
-                    + finalTruncatedPool.size() + " players for position: " + lineupPosition);
-            truncatedPlayerPools.add(finalTruncatedPool);
-        }
-        return truncatedPlayerPools;
-    }
-
-    public List<Player> addTopProjectedPlayersToTruncatedPool(List<Player> truncatedPlayerPool,
-                                                              List<Player> playerPool, String lineupPosition,
-                                                              int numberOfPlayersToAdd) {
-        List<Player> validPlayerPoolSortedByDescendingProjection = playerPool
-                .stream()
-                .filter(player -> playerHasValidPosition(player, lineupPosition))
-                .sorted((player1, player2) -> Double.compare(player2.projection, player1.projection))
-                .collect(Collectors.toList());
-        List<Player> playerPoolWithoutTruncatedPool = validPlayerPoolSortedByDescendingProjection
-                .stream()
-                .filter(player -> !truncatedPlayerPool.contains(player))
-                .collect(Collectors.toList());
-        List<Player> topProjectedPlayersToAdd = playerPoolWithoutTruncatedPool
-                .subList(0, Math.min(numberOfPlayersToAdd, playerPoolWithoutTruncatedPool.size()));
-        Set<Player> pricePerPointSet = new LinkedHashSet<>(truncatedPlayerPool);
-        pricePerPointSet.addAll(topProjectedPlayersToAdd);
-        return new ArrayList<>(pricePerPointSet);
-    }
-
-    public List<Set<List<Player>>> getPlayerPoolCombinations(List<List<Player>> playerPools, LineupMatrix lineupMatrix) {
-        List<Set<List<Player>>> playerPoolCombinations = new ArrayList<>();
-        List<String> uniquePositions = lineupMatrix.getUniquePositions();
-        for (int i = 0; i < playerPools.size(); i++) {
-            List<Player> playerPool = playerPools.get(i);
-            String position = uniquePositions.get(i);
-            int n = playerPools.get(i).size();
-            int k = lineupMatrix.getPositionFrequency(position);
-            Iterator<int[]> iterator = CombinatoricsUtils.combinationsIterator(n, k);
-            Set<List<Player>> playerCombinations = new HashSet<>();
-            while (iterator.hasNext()) {
-                final int[] combination = iterator.next();
-                List<Player> playerCombination = Arrays
-                        .stream(combination)
-                        .mapToObj(playerPool::get)
-                        .sorted((player1, player2) -> Double.compare(player2.projection, player1.projection))
-                        .collect(Collectors.toList());
-                playerCombinations.add(playerCombination);
-            }
-            playerPoolCombinations.add(playerCombinations);
-        }
-        return playerPoolCombinations;
-    }
-
-    public List<Player> getBestLineupInCartesianProduct(List<Set<List<Player>>> playerPools, int salaryCap,
-                                                        LineupRestrictions lineupRestrictions) {
-        List<Player> optimalLineup = new ArrayList<>();
-        double maxPoints = 0;
-        Set<List<List<Player>>> cartesianProduct = Sets.cartesianProduct(playerPools);
-        for (List<List<Player>> tuple : cartesianProduct) {
-            List<Player> lineup = tuple.stream().flatMap(List::stream).collect(Collectors.toList());
+    private void optimize(List<Player> lineup, int poolsIndex) {
+        if (++poolsIndex >= playerPools.size()) {
             if (areNoDuplicates(lineup) &&
                     lineupIsBetter(lineup, salaryCap, maxPoints) &&
                     satisfiesDistinctTeamsRequired(lineup, lineupRestrictions) &&
@@ -95,14 +30,55 @@ public class Optimizer {
                 maxPoints = totalProjection(lineup);
                 optimalLineup = lineup;
             }
+        } else {
+            Set<List<Player>> nextPlayerList = playerPools.get(poolsIndex);
+            for (List<Player> players : nextPlayerList) {
+                List<Player> concatenatedLineup = Stream.of(lineup, players)
+                        .flatMap(List::stream)
+                        .collect(Collectors.toList());
+                if (canFindABetterLineup(concatenatedLineup, playerPools, maxPoints, salaryCap))
+                    optimize(concatenatedLineup, poolsIndex);
+            }
         }
-        return optimalLineup;
     }
 
-    public boolean playerHasValidPosition(Player player, String lineupPosition) {
-        return lineupPosition.equals("any") ||
-                Arrays.asList(lineupPosition.split(",")).contains(player.position) ||
-                Arrays.asList(player.position.split("/")).contains(lineupPosition);
+    public boolean canFindABetterLineup(List<Player> currentLineup, List<Set<List<Player>>> playerPools,
+                                        double maxPoints, int salaryCap) {
+        int numberOfPositionsFilled = getDistinctNumberOfPositionTypesFilled(currentLineup);
+        List<Set<List<Player>>> remainingPlayerPools = playerPools.subList(numberOfPositionsFilled, playerPools.size());
+        double maxPointsToAdd = getMaxPointsToAdd(remainingPlayerPools);
+        int minSalaryToAdd = getMinSalaryToAdd(remainingPlayerPools);
+        return totalProjection(currentLineup) + maxPointsToAdd > maxPoints &&
+                totalSalary(currentLineup) + minSalaryToAdd <= salaryCap;
+    }
+
+    public int getDistinctNumberOfPositionTypesFilled(List<Player> currentLineup) {
+        int numberOfPositionsFilled = 1;
+        for (int i = 1; i < currentLineup.size(); i++) {
+            if (!currentLineup.get(i - 1).position.equals(currentLineup.get(i).position))
+                numberOfPositionsFilled++;
+        }
+        return numberOfPositionsFilled;
+    }
+
+    public double getMaxPointsToAdd(List<Set<List<Player>>> remainingPlayerPools) {
+        return remainingPlayerPools.stream()
+                .mapToDouble(playerPool -> playerPool.stream()
+                        .mapToDouble(this::totalProjection)
+                        .max()
+                        .orElse(0)
+                )
+                .sum();
+    }
+
+    public int getMinSalaryToAdd(List<Set<List<Player>>> remainingPlayerPools) {
+        return remainingPlayerPools.stream()
+                .mapToInt(playerPool -> playerPool.stream()
+                        .mapToInt(this::totalSalary)
+                        .min()
+                        .orElse(0)
+                )
+                .sum();
     }
 
     public boolean areNoDuplicates(List<Player> lineup) {
@@ -134,11 +110,11 @@ public class Optimizer {
         return totalSalary(lineup) <= salaryCap && totalProjection(lineup) > maxPoints;
     }
 
-    private double totalProjection(List<Player> lineup) {
+    public double totalProjection(List<Player> lineup) {
         return lineup.stream().mapToDouble(player -> player.projection).sum();
     }
 
-    private double totalSalary(List<Player> lineup) {
+    public int totalSalary(List<Player> lineup) {
         return lineup.stream().mapToInt(player -> player.salary).sum();
     }
 }

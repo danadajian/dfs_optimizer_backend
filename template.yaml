@@ -16,7 +16,7 @@ Parameters:
     Type: String
 Globals:
   Function:
-    MemorySize: 512
+    MemorySize: 3000
     Timeout: 900
 
 Resources:

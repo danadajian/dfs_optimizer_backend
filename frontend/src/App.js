@@ -29,7 +29,7 @@ class App extends Component {
         date: new Date(), dfsData: {}, projectionsData: {}, contests: [], lineup: [], lineupPositions: [],
         displayMatrix: [], salaryCap: 0, lineupRestrictions: {}, playerPool: [], filteredPool: null,
         sortAttribute: 'salary', sortSign: 1, searchText: '', whiteList: [], blackList: [],
-        opponentRanks: {}, injuries: {}, maxCombinations: 10000000};
+        opponentRanks: {}, injuries: {}, playerStatuses: [], maxCombinations: 10000000};
   }
 
   setSite = (site) => {
@@ -76,13 +76,19 @@ class App extends Component {
       this.setState({loadingText: 'injury data'});
       const injuries = await invokeLambdaFunction(lambda, process.env.REACT_APP_INJURIES_LAMBDA,
         {"sport": sport});
+      let playerStatuses = [];
+      if (sport === 'nhl') {
+          this.setState({loadingText: 'player statuses'});
+          playerStatuses = await invokeLambdaFunction(lambda, process.env.REACT_APP_GOALIE_SCRAPER_LAMBDA, {});
+      }
       this.setState({
           isLoading: false,
           projectionsData: projectionsData.body,
-          dfsData: dfsData,
-          contests: contests,
-          opponentRanks: opponentRanks,
-          injuries: injuries,
+          dfsData,
+          contests,
+          opponentRanks,
+          injuries,
+          playerStatuses,
           playerPool: [],
           filteredPool: null,
           whiteList: [],
@@ -93,7 +99,7 @@ class App extends Component {
   setContest = (contest) => {
       if (!contest)
         return;
-      let {site, sport, dfsData, projectionsData, opponentRanks, injuries} = this.state;
+      let {site, sport, dfsData, projectionsData, opponentRanks, injuries, playerStatuses} = this.state;
       if (dfsData.length === 0) {
         alert(site + ' data is currently unavailable.');
         return
@@ -105,7 +111,8 @@ class App extends Component {
       let gameType = contest.includes('@') || contest.includes('vs') ? 'Single Game' : 'Classic';
       let contestRules = lineupRules[site][sport][gameType];
       let dfsPlayers = dfsData.filter(contestJson => contestJson.contest === contest)[0]['players'];
-      let playerPoolData = combineDfsAndProjectionsData(dfsPlayers, projectionsData, site, opponentRanks, injuries);
+      let playerPoolData = combineDfsAndProjectionsData(dfsPlayers, projectionsData, site, opponentRanks, injuries,
+          playerStatuses);
       let emptyLineup = createEmptyLineup(contestRules.lineupPositions, contestRules.displayMatrix);
       this.setState({
           contest: contest,

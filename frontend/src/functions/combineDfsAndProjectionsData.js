@@ -1,7 +1,7 @@
 import {teamAbbreviations} from "../resources/teamAbbreviations";
 import {injuryAbbreviations} from "../resources/injuryAbbreviations";
 
-export function combineDfsAndProjectionsData(dfsPlayers, projectionsData, site, opponentRanks, injuries) {
+export function combineDfsAndProjectionsData(dfsPlayers, projectionsData, site, opponentRanks, injuries, playerStatuses) {
   let combinedData = [];
   dfsPlayers.forEach(player => {
     if (!player.playerId)
@@ -25,9 +25,11 @@ export function combineDfsAndProjectionsData(dfsPlayers, projectionsData, site, 
           .find(position => position.replace('/', '').includes(player.position));
         player.opponentRank = teamRanks[opponentRankPosition];
       }
-      let status = injuries[playerData.name] ? injuries[playerData.name].toLowerCase() : '';
-      if (status)
-        player.status = injuryAbbreviations[status];
+      let playerStatus = playerStatuses.find(player => player.name === playerData.name) ?
+          playerStatuses.find(player => player.name === playerData.name).status : '';
+      let injuryStatus = injuries[playerData.name] ? injuries[playerData.name].toLowerCase() : '';
+      if (playerStatus || injuryStatus)
+        player.status = `${injuryAbbreviations[injuryStatus] || ''}${playerStatus ? ' ' : ''}${playerStatus}`;
       combinedData.push(player);
     }
   });

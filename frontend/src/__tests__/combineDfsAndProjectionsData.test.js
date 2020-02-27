@@ -17,7 +17,7 @@ describe('test', () => {
         let site = 'fd';
         let opponentRanks = {"Tennessee Titans":{"RB":16,"QB":18,"TE":27,"D/ST":8,"WR":15,"K":6}};
         let injuries = {"LeSean McCoy":"Questionable"};
-        expect(combineDfsAndProjectionsData(dfsPlayers, projectionsData, site, opponentRanks, injuries))
+        expect(combineDfsAndProjectionsData(dfsPlayers, projectionsData, site, opponentRanks, injuries, []))
             .toEqual([
                 {
                     "name":"LeSean McCoy",

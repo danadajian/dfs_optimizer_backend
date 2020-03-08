@@ -46,6 +46,7 @@ class OptimizerTest {
         when(lineupRestrictions.getDistinctTeamsRequired()).thenReturn(3);
         when(lineupRestrictions.getMaxPlayersPerTeam()).thenReturn(4);
         when(lineupRestrictions.getTeamAgnosticPosition()).thenReturn("QB");
+        when(lineupRestrictions.getWhiteListedTeams()).thenReturn(Collections.emptyList());
     }
 
     @Test
@@ -121,11 +122,25 @@ class OptimizerTest {
     }
 
     @Test
+    void shouldCorrectlyCheckIfSatisfiesDistinctTeamsRequiredWithWhiteListedTeams() {
+        when(lineupRestrictions.getWhiteListedTeams()).thenReturn(Collections.singletonList("team3"));
+        boolean result = optimizer.satisfiesDistinctTeamsRequired(Arrays.asList(rb1, rb2, wr1, wr2, te1, wr4, dst1), lineupRestrictions);
+        assertTrue(result);
+    }
+
+    @Test
     void shouldCorrectlyCheckIfSatisfiesMaxPlayersPerTeam() {
         boolean result1 = optimizer.satisfiesMaxPlayersPerTeam(Arrays.asList(rb1, rb2, wr2, wr3, te1, rb3, dst1), lineupRestrictions);
         assertTrue(result1);
         boolean result2 = optimizer.satisfiesMaxPlayersPerTeam(Arrays.asList(rb1, rb2, wr1, wr4, te1, rb3, dst1), lineupRestrictions);
         assertFalse(result2);
+    }
+
+    @Test
+    void shouldCorrectlyCheckIfSatisfiesMaxPlayersPerTeamWithWhiteListedTeams() {
+        when(lineupRestrictions.getWhiteListedTeams()).thenReturn(Collections.singletonList("team1"));
+        boolean result1 = optimizer.satisfiesMaxPlayersPerTeam(Arrays.asList(rb1, rb2, wr1, wr4, rb3, dst1), lineupRestrictions);
+        assertFalse(result1);
     }
 
     @Test

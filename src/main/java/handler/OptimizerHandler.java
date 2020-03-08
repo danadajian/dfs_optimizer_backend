@@ -32,11 +32,12 @@ public class OptimizerHandler {
         List<Player> whiteList = adjuster.getWhiteList(lineup);
         List<Player> adjustedPlayerPool = adjuster.adjustPlayerPool(playerPool, whiteList, blackList);
         List<String> adjustedLineupPositions = adjuster.adjustLineupPositions(lineup, lineupPositions);
+        LineupRestrictions adjustedLineupRestrictions = adjuster.adjustLineupRestrictions(lineupRestrictions, whiteList);
         LineupMatrix lineupMatrix = new LineupMatrix(adjustedLineupPositions, maxCombinations);
         int adjustedSalaryCap = adjuster.adjustSalaryCap(whiteList, salaryCap);
         List<List<Player>> truncatedPlayerPools = playerSelector.truncatePlayerPoolsByPosition(adjustedPlayerPool, lineupMatrix);
         List<Set<List<Player>>> permutedPlayerPools = playerSelector.getPlayerPoolCombinations(truncatedPlayerPools, lineupMatrix);
-        List<Player> optimalPlayers = optimizer.generateOptimalLineup(permutedPlayerPools, adjustedSalaryCap, lineupRestrictions);
+        List<Player> optimalPlayers = optimizer.generateOptimalLineup(permutedPlayerPools, adjustedSalaryCap, adjustedLineupRestrictions);
 
         if (invocationType.equals("pipeline")) {
             List<Player> playersWithNames = lineupCompiler.outputPlayersWithNames(lineup, optimalPlayers, playerPool);

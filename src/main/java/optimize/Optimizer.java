@@ -36,7 +36,8 @@ public class Optimizer {
                 List<Player> concatenatedLineup = Stream.of(lineup, players)
                         .flatMap(List::stream)
                         .collect(Collectors.toList());
-                if (canFindABetterLineup(concatenatedLineup, playerPools, maxPoints, salaryCap))
+                if (satisfiesMaxPlayersPerTeam(concatenatedLineup, lineupRestrictions) &&
+                        canFindABetterLineup(concatenatedLineup, playerPools, maxPoints, salaryCap))
                     optimize(concatenatedLineup, poolsIndex);
             }
         }
@@ -86,18 +87,19 @@ public class Optimizer {
     }
 
     public boolean satisfiesDistinctTeamsRequired(List<Player> lineup, LineupRestrictions lineupRestrictions) {
-        return lineup
-                .stream()
-                .map(player -> player.team)
+        return Stream
+                .concat(lineup.stream().map(player -> player.team), lineupRestrictions.getWhiteListedTeams().stream())
                 .distinct()
                 .count() >= lineupRestrictions.getDistinctTeamsRequired();
     }
 
     public boolean satisfiesMaxPlayersPerTeam(List<Player> lineup, LineupRestrictions lineupRestrictions) {
-        List<String> teamsList = lineup
+        Stream<String> teamsInLineup = lineup
                 .stream()
                 .filter(player -> !player.position.equals(lineupRestrictions.getTeamAgnosticPosition()))
-                .map(player -> player.team)
+                .map(player -> player.team);
+        List<String> teamsList = Stream
+                .concat(teamsInLineup, lineupRestrictions.getWhiteListedTeams().stream())
                 .collect(Collectors.toList());
         return lineup
                 .stream()

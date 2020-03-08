@@ -26,6 +26,16 @@ public class Adjuster {
         return newLineupMatrix;
     }
 
+    public LineupRestrictions adjustLineupRestrictions(LineupRestrictions lineupRestrictions, List<Player> whiteList) {
+        List<String> whiteListedTeams = whiteList
+                .stream()
+                .filter(player -> !player.position.equals(lineupRestrictions.getTeamAgnosticPosition()))
+                .map(player -> player.team)
+                .collect(Collectors.toList());
+        lineupRestrictions.setWhiteListedTeams(whiteListedTeams);
+        return lineupRestrictions;
+    }
+
     public int adjustSalaryCap(List<Player> whiteList, int startingSalaryCap) {
         return startingSalaryCap - whiteList.stream().mapToInt(player -> player.salary).sum();
     }

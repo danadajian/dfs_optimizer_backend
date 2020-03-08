@@ -87,12 +87,12 @@ export const Lineup = (props: {
             )}
             <tr style={{fontWeight: 'bold'}}>
                 <td>{null}</td>
+                <td>{null}</td>
                 <td>Total</td>
                 <td>{props.pointSum.toFixed(1)}</td>
                 <td style={{color: (props.salarySum > props.cap) ? 'indianred' : 'black'}}>
                     {'$'.concat(props.salarySum.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","))}
                 </td>
-                <td>{null}</td>
             </tr>
             </tbody>
         </table>;

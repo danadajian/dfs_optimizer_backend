@@ -24,7 +24,10 @@ public class OptimizerHandler {
         LineupRestrictions lineupRestrictions = new LineupRestrictions(input);
         int salaryCap = (int) input.get("salaryCap");
         Object maxCombinationsObject = input.get("maxCombinations");
-        long maxCombinations = maxCombinationsObject instanceof Integer ? (int) maxCombinationsObject : (long) maxCombinationsObject;
+        int maxCombinationsReductionFactor = input.containsKey("previouslyTimedOut") ? 2 : 1;
+        long maxCombinations =
+                (maxCombinationsObject instanceof Integer ? (int) maxCombinationsObject : (long) maxCombinationsObject)
+                        / maxCombinationsReductionFactor;
 
         List<Player> whiteList = adjuster.getWhiteList(lineup);
         List<Player> adjustedPlayerPool = adjuster.adjustPlayerPool(playerPool, whiteList, blackList);

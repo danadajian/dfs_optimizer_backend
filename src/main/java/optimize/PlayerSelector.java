@@ -6,6 +6,7 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class PlayerSelector {
+    private static final int NUMBER_OF_PLAYERS_TO_ADD = 3;
 
     public List<List<Player>> truncatePlayerPoolsByPosition(List<Player> playerPool, LineupMatrix lineupMatrix) {
         List<List<Player>> truncatedPlayerPools = new ArrayList<>();
@@ -21,7 +22,7 @@ public class PlayerSelector {
                             validPlayerPoolSortedByPricePerPoint.size()
                     ));
             List<Player> finalTruncatedPool = addTopProjectedPlayersToTruncatedPool(truncatedPlayerPool, playerPool,
-                    lineupPosition, 3);
+                    lineupPosition);
             System.out.println("Opty will include " + truncatedPlayerPool.size() +
                     " + " + (finalTruncatedPool.size() - truncatedPlayerPool.size()) + " = "
                     + finalTruncatedPool.size() + " players for position: " + lineupPosition);
@@ -31,8 +32,7 @@ public class PlayerSelector {
     }
 
     public List<Player> addTopProjectedPlayersToTruncatedPool(List<Player> truncatedPlayerPool,
-                                                              List<Player> playerPool, String lineupPosition,
-                                                              int numberOfPlayersToAdd) {
+                                                              List<Player> playerPool, String lineupPosition) {
         List<Player> validPlayerPoolSortedByDescendingProjection = playerPool
                 .stream()
                 .filter(player -> playerHasValidPosition(player, lineupPosition))
@@ -43,7 +43,7 @@ public class PlayerSelector {
                 .filter(player -> !truncatedPlayerPool.contains(player))
                 .collect(Collectors.toList());
         List<Player> topProjectedPlayersToAdd = playerPoolWithoutTruncatedPool
-                .subList(0, Math.min(numberOfPlayersToAdd, playerPoolWithoutTruncatedPool.size()));
+                .subList(0, Math.min(NUMBER_OF_PLAYERS_TO_ADD, playerPoolWithoutTruncatedPool.size()));
         Set<Player> pricePerPointSet = new LinkedHashSet<>(truncatedPlayerPool);
         pricePerPointSet.addAll(topProjectedPlayersToAdd);
         return new ArrayList<>(pricePerPointSet);

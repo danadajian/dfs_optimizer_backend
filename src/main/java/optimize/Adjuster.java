@@ -17,13 +17,13 @@ public class Adjuster {
     }
 
     public List<String> adjustLineupPositions(List<Player> lineup, List<String> startingPositions) {
-        List<String> newLineupMatrix = new ArrayList<>();
+        List<String> adjustedLineupPositions = new ArrayList<>();
         for (int i = 0; i < startingPositions.size(); i++) {
             if (lineup.get(i).playerId == 0) {
-                newLineupMatrix.add(startingPositions.get(i));
+                adjustedLineupPositions.add(startingPositions.get(i));
             }
         }
-        return newLineupMatrix;
+        return adjustedLineupPositions;
     }
 
     public LineupRestrictions adjustLineupRestrictions(LineupRestrictions lineupRestrictions, List<Player> whiteList) {

@@ -36,8 +36,8 @@ public class Optimizer {
                 List<Player> concatenatedLineup = Stream.of(lineup, players)
                         .flatMap(List::stream)
                         .collect(Collectors.toList());
-                if (satisfiesMaxPlayersPerTeam(concatenatedLineup, lineupRestrictions) &&
-                        canFindABetterLineup(concatenatedLineup, playerPools, maxPoints, salaryCap))
+                if (canFindABetterLineup(concatenatedLineup, playerPools, maxPoints, salaryCap) &&
+                        satisfiesMaxPlayersPerTeam(concatenatedLineup, lineupRestrictions))
                     optimize(concatenatedLineup, poolsIndex);
             }
         }

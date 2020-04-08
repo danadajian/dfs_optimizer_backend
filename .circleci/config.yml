@@ -16,7 +16,7 @@ jobs:
       - run:
           name: Test and Package Backend
           command: |
-            TIMESTAMP=$(date +%s)
+            TIMESTAMP=$( date +"%Y-%m-%d_%H-%M-%S" )
             mvn replacer:replace -Dccih.origin="<version>REPLACE_ME_WITH_TIMESTAMP</version>" -Dccih.target="<version>${TIMESTAMP}</version>"
             mvn clean package
       - persist_to_workspace:

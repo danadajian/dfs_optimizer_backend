@@ -22,7 +22,7 @@ jobs:
             mvn clean package
       - persist_to_workspace:
           root: ~/dfs-optimizer
-          paths: ./target
+          paths: .
   deploy_backend:
     <<: *container_config
     steps:

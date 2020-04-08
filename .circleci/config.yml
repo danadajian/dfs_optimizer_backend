@@ -53,12 +53,11 @@ jobs:
   install_frontend:
     <<: *container_config
     steps:
-      - checkout
       - run:
           name: Install Frontend Packages
           command: |
             apt install curl
-            curl -sL https://deb.nodesource.com/setup_10.x
+            curl -sL https://deb.nodesource.com/setup_10.x | -E bash -
             apt-get install -y -qq nodejs
             apt-get install -y -qq npm
             cd frontend

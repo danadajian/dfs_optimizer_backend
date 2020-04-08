@@ -53,12 +53,15 @@ jobs:
   install_frontend:
     <<: *container_config
     steps:
+      - checkout
       - run:
           name: Install Frontend Packages
           command: |
             curl -sL https://deb.nodesource.com/setup_10.x | bash -
-            apt-get install -y nodejs
+            apt-get install -y -qq nodejs
             curl -L https://www.npmjs.com/install.sh | sh
+            pwd
+            ls
             cd frontend
             npm install
       - persist_to_workspace:

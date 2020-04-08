@@ -5,7 +5,8 @@ container_config: &container_config
     - image: node:11.10.1
 jobs:
   install_backend:
-    <<: *container_config
+    docker:
+      - image: openjdk:8-jdk-stretch
     steps:
       - checkout
       - run:
@@ -45,8 +46,7 @@ jobs:
           root: ~/dfs-optimizer
           paths: ./target
   deploy_backend:
-    docker:
-      - image: openjdk:8-jdk-stretch
+    <<: *container_config
     steps:
       - attach_workspace:
           at: ~/dfs-optimizer

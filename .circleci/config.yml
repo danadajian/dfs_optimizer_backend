@@ -3,7 +3,6 @@ container_config: &container_config
   working_directory: ~/dfs-optimizer
   docker:
     - image: openjdk:8-jdk-stretch
-    - image: node:11.10.1
 jobs:
   install_backend:
     <<: *container_config
@@ -59,7 +58,7 @@ jobs:
           name: Install Frontend Packages
           command: |
             apt-get -y -qq update
-            apt-get install -y -qq nodejs
+            apt-get install -y -qq nodejs npm
             cd frontend
             npm install
       - persist_to_workspace:

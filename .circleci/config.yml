@@ -2,8 +2,7 @@ version: 2
 container_config: &container_config
   working_directory: ~/dfs-optimizer
   docker:
-    - image: node:11.10.1
-    - image: openjdk:8
+    - image: openjdk:latest
 jobs:
   deploy_backend:
     <<: *container_config
@@ -71,7 +70,7 @@ jobs:
             npm run build
       - persist_to_workspace:
           root: ~/dfs-optimizer
-          paths: ./build
+          paths: ./frontend/build
   deploy_frontend:
     <<: *container_config
     steps:

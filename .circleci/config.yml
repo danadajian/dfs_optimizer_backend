@@ -51,7 +51,7 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Install Dependencies
+          name: Install NPM
           command: |
             curl -sL https://deb.nodesource.com/setup_10.x | bash -
             apt-get install -y -qq nodejs
@@ -95,14 +95,13 @@ jobs:
       - run:
           name: Deploy to AWS
           command: |
-            aws cloudfront create-invalidation --distribution-id "${CDN_DISTRIBUTION_ID}" --paths /\*
-            aws s3 sync frontend/build "s3://${BUCKET_NAME}" --exclude "precache-manifest*"
+            chmod +x ./deployFrontend.sh
+            ./deployFrontend.sh
 workflows:
   version: 2
   deploy_dfs_optimizer:
     jobs:
-      - build_backend:
-          context: DFS_OPTIMIZER
+      - build_backend
       - deploy_backend:
           context: DFS_OPTIMIZER
           filters:
@@ -111,8 +110,7 @@ workflows:
                 - master
           requires:
             - build_backend
-      - build_frontend:
-          context: DFS_OPTIMIZER
+      - build_frontend
       - deploy_frontend:
           context: DFS_OPTIMIZER
           filters:

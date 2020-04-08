@@ -1,6 +1,5 @@
 package api;
 
-import api.ApiCredentials;
 import org.junit.jupiter.api.Test;
 import org.mockito.Spy;
 
@@ -10,12 +9,6 @@ class ApiCredentialsTest {
 
     @Spy
     ApiCredentials credentials = new ApiCredentials();
-
-    @Test
-    void shouldImportCredentialsFromPropertiesFile() {
-        String[] result = credentials.getPropValues("src/main/resources/config.properties");
-        assertTrue(result[0].length() > 0 & result[1].length() > 0);
-    }
 
     @Test
     void shouldTryToImportCredentialsFromEnvironmentVariables() {

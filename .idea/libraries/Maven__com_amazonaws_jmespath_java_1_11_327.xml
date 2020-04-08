@@ -3,9 +3,7 @@
     <CLASSES>
       <root url="jar://$MAVEN_REPOSITORY$/com/amazonaws/jmespath-java/1.11.327/jmespath-java-1.11.327.jar!/" />
     </CLASSES>
-    <JAVADOC>
-      <root url="jar://$MAVEN_REPOSITORY$/com/amazonaws/jmespath-java/1.11.327/jmespath-java-1.11.327-javadoc.jar!/" />
-    </JAVADOC>
+    <JAVADOC />
     <SOURCES>
       <root url="jar://$MAVEN_REPOSITORY$/com/amazonaws/jmespath-java/1.11.327/jmespath-java-1.11.327-sources.jar!/" />
     </SOURCES>

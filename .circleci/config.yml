@@ -54,7 +54,7 @@ jobs:
       - persist_to_workspace:
           root: ~/dfs-optimizer
           paths: .
-  test:
+  test_frontend:
     <<: *container_config
     steps:
       - attach_workspace:
@@ -64,7 +64,7 @@ jobs:
           command: |
             cd frontend
             npm run test
-  build:
+  build_frontend:
     <<: *container_config
     steps:
       - attach_workspace:
@@ -104,10 +104,12 @@ workflows:
             - install_backend
       - install_frontend:
           context: DFS_OPTIMIZER
-      - test:
+          requires:
+            - deploy_backend
+      - test_frontend:
           requires:
             - install_frontend
-      - build:
+      - build_frontend:
           requires:
             - install_frontend
       - deploy_frontend:
@@ -118,5 +120,5 @@ workflows:
                 - master
           requires:
             - install_frontend
-            - test
-            - build
+            - test_frontend
+            - build_frontend

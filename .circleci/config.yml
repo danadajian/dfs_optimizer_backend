@@ -3,21 +3,6 @@ container_config: &container_config
   working_directory: ~/dfs-optimizer
   docker:
     - image: openjdk:8-jdk-stretch
-install_aws_dependencies: &install_aws_dependencies
-  - run:
-      name: Install SAM CLI
-      command: |
-        apt-get -y -qq update
-        apt-get -y -qq install python-dev
-        apt-get -y -qq install python-pip
-        pip install --upgrade awscli
-        pip install --upgrade aws-sam-cli
-  - run:
-      name: Configure AWS
-      command: |
-        aws configure set aws_access_key_id AWS_ACCESS_KEY_ID
-        aws configure set aws_secret_access_key AWS_SECRET_ACCESS_KEY
-        aws configure set default.region us-east-2
 jobs:
   build_backend:
     <<: *container_config
@@ -42,15 +27,25 @@ jobs:
     steps:
       - attach_workspace:
           at: ~/dfs-optimizer
-      - *install_aws_dependencies
+      - run:
+          name: Install SAM CLI
+          command: |
+            apt-get -y -qq update
+            apt-get -y -qq install python-dev
+            apt-get -y -qq install python-pip
+            pip install --upgrade awscli
+            pip install --upgrade aws-sam-cli
+      - run:
+          name: Configure AWS
+          command: |
+            aws configure set aws_access_key_id AWS_ACCESS_KEY_ID
+            aws configure set aws_secret_access_key AWS_SECRET_ACCESS_KEY
+            aws configure set default.region us-east-2
       - run:
           name: Deploy to AWS
           command: |
             chmod +x ./deployBackend.sh
             ./deployBackend.sh
-      - persist_to_workspace:
-          root: ~/dfs-optimizer
-          paths: .
   build_frontend:
     <<: *container_config
     steps:
@@ -84,7 +79,19 @@ jobs:
     steps:
       - attach_workspace:
           at: ~/dfs-optimizer
-      - *install_aws_dependencies
+      - run:
+          name: Install AWS CLI
+          command: |
+            apt-get -y -qq update
+            apt-get -y -qq install python-dev
+            apt-get -y -qq install python-pip
+            pip install --upgrade awscli
+      - run:
+          name: Configure AWS
+          command: |
+            aws configure set aws_access_key_id AWS_ACCESS_KEY_ID
+            aws configure set aws_secret_access_key AWS_SECRET_ACCESS_KEY
+            aws configure set default.region us-east-2
       - run:
           name: Deploy to AWS
           command: |

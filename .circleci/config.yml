@@ -3,6 +3,7 @@ container_config: &container_config
   working_directory: ~/dfs-optimizer
   docker:
     - image: openjdk:8-jdk-stretch
+    - image: node:11.10.1
 jobs:
   install_backend:
     <<: *container_config
@@ -45,8 +46,6 @@ jobs:
       - run:
           name: Deploy to AWS
           command: |
-            pwd
-            ls
             chmod +x ./deployBackend.sh
             ./deployBackend.sh
       - persist_to_workspace:

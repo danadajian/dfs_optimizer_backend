@@ -30,5 +30,5 @@ FILE_NAME="${PATH_TO_FILE:9}"
 
 sam --version
 sam deploy --template-file ./template.yaml --stack-name "${STACK_NAME}" --capabilities CAPABILITY_IAM \
- --parameter-overrides BucketName="${BUCKET_NAME}" CodeKey="${FILE_NAME}" ApiKey="${API_KEY}" \
-  ApiSecret="${API_SECRET}" AwsKey="${AWS_KEY}" AwsSecret="${AWS_SECRET}" --no-fail-on-empty-changeset
+ --parameter-overrides BucketName="${BUCKET_NAME}" CodeKey="${FILE_NAME}" ApiKey="${AWS_ACCESS_KEY_ID}" \
+  ApiSecret="${AWS_SECRET_ACCESS_KEY}" AwsKey="${AWS_KEY}" AwsSecret="${AWS_SECRET}" --no-fail-on-empty-changeset

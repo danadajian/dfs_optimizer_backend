@@ -84,20 +84,24 @@ jobs:
 
 workflows:
   version: 2
-  install-test-build-deploy:
+  deploy_dfs_optimizer:
     jobs:
       - deploy_backend:
-          - context: DFS-OPTIMIZER
+          context: DFS_OPTIMIZER
+          filters:
+            branches:
+              only:
+                - master
       - install:
-          context: DFS-OPTIMIZER
+          context: DFS_OPTIMIZER
       - test:
           requires:
             - install
       - build:
           requires:
             - install
-      - deploy_aws:
-          context: DFS-OPTIMIZER
+      - deploy_frontend:
+          context: DFS_OPTIMIZER
           filters:
             branches:
               only:

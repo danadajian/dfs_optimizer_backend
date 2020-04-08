@@ -59,6 +59,7 @@ jobs:
       - run:
           name: Install Frontend Packages
           command: |
+            apt-get -y -qq update
             apt-get install -y -qq nodejs
             cd frontend
             npm install
@@ -94,6 +95,20 @@ jobs:
       - attach_workspace:
           at: ~/dfs-optimizer
       - run:
+          name: Install SAM CLI
+          command: |
+            apt-get -y -qq update
+            apt-get -y -qq install python-dev
+            apt-get -y -qq install python-pip
+            pip install --upgrade awscli
+            pip install --upgrade aws-sam-cli
+      - run:
+          name: Configure AWS
+          command: |
+            aws configure set aws_access_key_id AWS_ACCESS_KEY_ID
+            aws configure set aws_secret_access_key AWS_SECRET_ACCESS_KEY
+            aws configure set default.region us-east-2
+      - run:
           name: Deploy to AWS
           command: |
             aws cloudfront create-invalidation --distribution-id "${CDN_DISTRIBUTION_ID}" --paths /\*
@@ -115,8 +130,6 @@ workflows:
             - install_backend
       - install_frontend:
           context: DFS_OPTIMIZER
-          requires:
-            - deploy_backend
       - test_frontend:
           requires:
             - install_frontend

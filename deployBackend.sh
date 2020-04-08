@@ -1,15 +1,5 @@
 #!/bin/bash -e
 
-STACK_NAME="dfs-optimizer-stack"
-
-TIMESTAMP=$(date +%s)
-mvn replacer:replace -Dccih.origin="<version>REPLACE_ME_WITH_TIMESTAMP</version>" -Dccih.target="<version>${TIMESTAMP}</version>"
-if ! mvn clean package
-then
-  echo "Failed backend tests!"
-  exit
-fi
-
 if aws s3api head-bucket --bucket "${BUCKET_NAME}" 2>/dev/null
 then
     echo "Bucket exists: $BUCKET_NAME"
@@ -27,6 +17,8 @@ echo "### Initiating SAM Deploy..."
 aws s3 rm "s3://${BUCKET_NAME}" --recursive --exclude "*" --include "*.jar"
 aws s3 cp "${PATH_TO_FILE}" "s3://${BUCKET_NAME}/"
 FILE_NAME="${PATH_TO_FILE:9}"
+
+STACK_NAME="dfs-optimizer-stack"
 
 sam --version
 sam deploy --template-file ./template.yaml --stack-name "${STACK_NAME}" --capabilities CAPABILITY_IAM \

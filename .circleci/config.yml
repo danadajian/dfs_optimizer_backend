@@ -13,6 +13,8 @@ jobs:
           command: |
             apt-get -y -qq update
             apt-get -y -qq install maven
+            pwd
+            ls
       - run:
           name: Test and Package Backend
           command: |
@@ -35,7 +37,6 @@ jobs:
             apt-get -y -qq install python-pip
             pip install --upgrade awscli
             pip install --upgrade aws-sam-cli
-            ls
       - run:
           name: Configure AWS
           command: |

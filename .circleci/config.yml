@@ -64,16 +64,8 @@ jobs:
       - run:
           name: Prepare Environment Variables
           command: |
-            cd frontend
-            echo "REACT_APP_AWS_KEY=$REACT_APP_AWS_KEY" >> .env
-            echo "REACT_APP_AWS_SECRET=$REACT_APP_AWS_SECRET" >> .env
-            echo "REACT_APP_OPTIMAL_LINEUP_LAMBDA=$REACT_APP_OPTIMAL_LINEUP_LAMBDA" >> .env
-            echo "REACT_APP_FANDUEL_LAMBDA=$REACT_APP_FANDUEL_LAMBDA" >> .env
-            echo "REACT_APP_DRAFTKINGS_LAMBDA=$REACT_APP_DRAFTKINGS_LAMBDA" >> .env
-            echo "REACT_APP_PROJECTIONS_LAMBDA=$REACT_APP_PROJECTIONS_LAMBDA" >> .env
-            echo "REACT_APP_OPPONENT_RANKS_LAMBDA=$REACT_APP_OPPONENT_RANKS_LAMBDA" >> .env
-            echo "REACT_APP_INJURIES_LAMBDA=$REACT_APP_INJURIES_LAMBDA" >> .env
-            echo "REACT_APP_GOALIE_SCRAPER_LAMBDA=$REACT_APP_GOALIE_SCRAPER_LAMBDA" >> .env
+            chmod +x ./createFrontendEnvironmentVariables.sh
+            ./createFrontendEnvironmentVariables.sh
       - run:
           name: Run Frontend Tests
           command: |
@@ -124,6 +116,8 @@ workflows:
           requires:
             - build_backend
       - build_frontend
+          requires:
+            - deploy_backend
       - deploy_frontend:
           context: DFS_OPTIMIZER
           filters:

@@ -7,14 +7,9 @@ container_config: &container_config
     - image: openjdk:8-jdk-stretch
 jobs:
   build_backend:
-    <<: *container_config
+    executor: maven/default
     steps:
       - checkout
-      - run:
-          name: Install Maven
-          command: |
-            apt-get -y -qq update
-            apt-get -y -qq install maven
       - run:
           name: Test and Package Backend
           command: |
@@ -115,9 +110,7 @@ workflows:
   version: 2
   deploy_dfs_optimizer:
     jobs:
-      - maven/test:
-          command: clean package
-#      - build_backend
+      - build_backend
       - deploy_backend:
           context: DFS_OPTIMIZER
           filters:
@@ -125,7 +118,7 @@ workflows:
               only:
                 - master
           requires:
-            - maven/test
+            - build_backend
       - build_frontend:
           context: DFS_OPTIMIZER
           requires:

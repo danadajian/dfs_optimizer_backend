@@ -15,7 +15,7 @@ jobs:
             apt-get -y -qq install maven
       - persist_to_workspace:
           root: usr/bin
-          paths: ../../usr/bin
+          paths: .
   build_backend:
     <<: *container_config
     steps:

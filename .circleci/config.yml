@@ -4,7 +4,7 @@ container_config: &container_config
   docker:
     - image: openjdk:8-jdk-stretch
 jobs:
-  build_backend:
+  install_maven:
     <<: *container_config
     steps:
       - checkout
@@ -13,22 +13,20 @@ jobs:
           command: |
             apt-get -y -qq update
             apt-get -y -qq install maven
-            pwd
-            cd ..
-            pwd
-            ls
-            cd ..
-            pwd
-            ls
+      - persist_to_workspace:
+          root: usr/bin
+          paths: ../../usr/bin
+  build_backend:
+    <<: *container_config
+    steps:
+      - attach_workspace:
+          at: usr/bin
       - run:
           name: Test and Package Backend
           command: |
             TIMESTAMP=$( date +"%Y-%m-%d_%H-%M-%S" )
             mvn replacer:replace -Dccih.origin="<version>REPLACE_ME_WITH_TIMESTAMP</version>" -Dccih.target="<version>${TIMESTAMP}</version>"
             mvn clean package
-      - persist_to_workspace:
-          root: ~/dfs-optimizer
-          paths: .
   deploy_backend:
     <<: *container_config
     steps:
@@ -118,7 +116,10 @@ workflows:
   version: 2
   deploy_dfs_optimizer:
     jobs:
-      - build_backend
+      - install_maven
+      - build_backend:
+          requires:
+            - install_maven
       - deploy_backend:
           context: DFS_OPTIMIZER
           filters:

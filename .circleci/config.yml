@@ -115,7 +115,7 @@ workflows:
                 - master
           requires:
             - build_backend
-      - build_frontend
+      - build_frontend:
           requires:
             - deploy_backend
       - deploy_frontend:

@@ -52,7 +52,8 @@ jobs:
   build_frontend:
     <<: *container_config
     steps:
-      - checkout
+      - attach_workspace:
+          at: ~/dfs-optimizer
       - run:
           name: Install NPM
           command: |

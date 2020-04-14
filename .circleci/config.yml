@@ -19,7 +19,7 @@ jobs:
           name: Test and Package Backend
           command: |
             TIMESTAMP=$( date +"%Y-%m-%d_%H-%M-%S" )
-            mvn replacer:replace -Dccih.origin="<version>REPLACE_ME_WITH_TIMESTAMP</version>" -Dccih.target="<version>${TIMESTAMP}</version>"
+            sed -i 's/REPLACE_ME_WITH_TIMESTAMP/${TIMESTAMP}/g' pom.xml
             mvn clean package
       - persist_to_workspace:
           root: ~/dfs-optimizer
@@ -32,6 +32,8 @@ jobs:
       - run:
           name: Install SAM CLI
           command: |
+            ls
+            cd target
             apt-get -y -qq update
             apt-get -y -qq install python-dev
             apt-get -y -qq install python-pip
@@ -113,11 +115,15 @@ workflows:
   version: 2
   deploy_dfs_optimizer:
     jobs:
-      - maven/test:
+      - prepare:
           command: |
-            replacer:replace -Dccih.origin="<version>REPLACE_ME_WITH_TIMESTAMP</version>" -Dccih.target="<version>${TIMESTAMP}</version>"
-            mvn clean package
-      - build_backend
+            TIMESTAMP=$( date +"%Y-%m-%d_%H-%M-%S" )
+            sed -i 's/REPLACE_ME_WITH_TIMESTAMP/${TIMESTAMP}/g' pom.xml
+      - maven/test:
+          command: clean package
+          requires:
+            - prepare
+#      - build_backend
       - deploy_backend:
           context: DFS_OPTIMIZER
           filters:
@@ -125,7 +131,7 @@ workflows:
               only:
                 - master
           requires:
-            - build_backend
+            - maven/test
       - build_frontend:
           context: DFS_OPTIMIZER
           requires:

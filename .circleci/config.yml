@@ -62,6 +62,19 @@ jobs:
             cd frontend
             npm install
       - run:
+          name: Prepare Environment Variables
+          command: |
+            cd frontend
+            echo "REACT_APP_AWS_KEY=$REACT_APP_AWS_KEY" >> .env
+            echo "REACT_APP_AWS_SECRET=$REACT_APP_AWS_SECRET" >> .env
+            echo "REACT_APP_OPTIMAL_LINEUP_LAMBDA=$REACT_APP_OPTIMAL_LINEUP_LAMBDA" >> .env
+            echo "REACT_APP_FANDUEL_LAMBDA=$REACT_APP_FANDUEL_LAMBDA" >> .env
+            echo "REACT_APP_DRAFTKINGS_LAMBDA=$REACT_APP_DRAFTKINGS_LAMBDA" >> .env
+            echo "REACT_APP_PROJECTIONS_LAMBDA=$REACT_APP_PROJECTIONS_LAMBDA" >> .env
+            echo "REACT_APP_OPPONENT_RANKS_LAMBDA=$REACT_APP_OPPONENT_RANKS_LAMBDA" >> .env
+            echo "REACT_APP_INJURIES_LAMBDA=$REACT_APP_INJURIES_LAMBDA" >> .env
+            echo "REACT_APP_GOALIE_SCRAPER_LAMBDA=$REACT_APP_GOALIE_SCRAPER_LAMBDA" >> .env
+      - run:
           name: Run Frontend Tests
           command: |
             cd frontend

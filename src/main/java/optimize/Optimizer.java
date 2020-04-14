@@ -22,14 +22,9 @@ public class Optimizer {
     }
 
     private void optimize(List<Player> lineup, int poolsIndex) {
-        if (++poolsIndex >= playerPools.size()) {
-            if (areNoDuplicates(lineup) &&
-                    lineupIsBetter(lineup, salaryCap, maxPoints) &&
-                    satisfiesDistinctTeamsRequired(lineup, lineupRestrictions) &&
-                    satisfiesMaxPlayersPerTeam(lineup, lineupRestrictions)) {
-                maxPoints = totalProjection(lineup);
-                optimalLineup = lineup;
-            }
+        boolean isCompleteLineup = ++poolsIndex == playerPools.size();
+        if (isCompleteLineup) {
+            checkIfLineupIsBestYet(lineup);
         } else {
             Set<List<Player>> nextPlayerList = playerPools.get(poolsIndex);
             for (List<Player> players : nextPlayerList) {
@@ -37,9 +32,20 @@ public class Optimizer {
                         .flatMap(List::stream)
                         .collect(Collectors.toList());
                 if (canFindABetterLineup(concatenatedLineup, playerPools, maxPoints, salaryCap) &&
-                        satisfiesMaxPlayersPerTeam(concatenatedLineup, lineupRestrictions))
+                        satisfiesMaxPlayersPerTeam(concatenatedLineup, lineupRestrictions)) {
                     optimize(concatenatedLineup, poolsIndex);
+                }
             }
+        }
+    }
+
+    private void checkIfLineupIsBestYet(List<Player> lineup) {
+        if (areNoDuplicates(lineup) &&
+                lineupIsBetter(lineup, salaryCap, maxPoints) &&
+                satisfiesDistinctTeamsRequired(lineup, lineupRestrictions) &&
+                satisfiesMaxPlayersPerTeam(lineup, lineupRestrictions)) {
+            maxPoints = totalProjection(lineup);
+            optimalLineup = lineup;
         }
     }
 

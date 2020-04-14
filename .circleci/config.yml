@@ -115,14 +115,12 @@ workflows:
   version: 2
   deploy_dfs_optimizer:
     jobs:
-      - prepare:
+      - maven/test:
           command: |
+            --version
             TIMESTAMP=$( date +"%Y-%m-%d_%H-%M-%S" )
             sed -i 's/REPLACE_ME_WITH_TIMESTAMP/${TIMESTAMP}/g' pom.xml
-      - maven/test:
-          command: clean package
-          requires:
-            - prepare
+            mvn clean package
 #      - build_backend
       - deploy_backend:
           context: DFS_OPTIMIZER

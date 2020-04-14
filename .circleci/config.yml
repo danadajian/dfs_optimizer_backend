@@ -1,6 +1,4 @@
-version: 2.1
-orbs:
-  maven: circleci/maven@1.0.0
+version: 2.0
 container_config: &container_config
   working_directory: ~/dfs-optimizer
   docker:
@@ -68,15 +66,18 @@ jobs:
             cd frontend
             npm install
       - run:
-          name: Install Jq
-          command: apt-get install -y -qq jq
-      - run:
           name: Install AWS CLI
           command: |
             apt-get -y -qq update
             apt-get -y -qq install python-dev
             apt-get -y -qq install python-pip
             pip install --upgrade awscli
+      - run:
+          name: Configure AWS
+          command: |
+            aws configure set aws_access_key_id AWS_ACCESS_KEY_ID
+            aws configure set aws_secret_access_key AWS_SECRET_ACCESS_KEY
+            aws configure set default.region us-east-2
       - run:
           name: Prepare Environment Variables
           command: |

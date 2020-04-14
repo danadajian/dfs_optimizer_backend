@@ -12,7 +12,6 @@ REACT_APP_OPPONENT_RANKS_LAMBDA=$(echo "$LAMBDA_FUNCTIONS" | jq -r '.Functions[]
 REACT_APP_INJURIES_LAMBDA=$(echo "$LAMBDA_FUNCTIONS" | jq -r '.Functions[] | select(.FunctionName | contains("GetInjuryDataFunction"))' | jq '.FunctionName')
 REACT_APP_GOALIE_SCRAPER_LAMBDA=$(echo "$LAMBDA_FUNCTIONS" | jq -r '.Functions[] | select(.FunctionName | contains("GoalieScraperFunction"))' | jq '.FunctionName')
 
-cd frontend
 {
   echo "REACT_APP_AWS_KEY=$AWS_ACCESS_KEY_ID"
   echo "REACT_APP_AWS_SECRET=$AWS_SECRET_ACCESS_KEY"
@@ -23,6 +22,6 @@ cd frontend
   echo "REACT_APP_OPPONENT_RANKS_LAMBDA=$REACT_APP_OPPONENT_RANKS_LAMBDA"
   echo "REACT_APP_INJURIES_LAMBDA=$REACT_APP_INJURIES_LAMBDA"
   echo "REACT_APP_GOALIE_SCRAPER_LAMBDA=$REACT_APP_GOALIE_SCRAPER_LAMBDA"
-} >>.env
+} >> frontend/.env
 
-cat .env
+cat frontend/.env

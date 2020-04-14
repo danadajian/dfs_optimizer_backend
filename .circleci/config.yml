@@ -19,7 +19,7 @@ jobs:
           name: Test and Package Backend
           command: |
             TIMESTAMP=$( date +"%Y-%m-%d_%H-%M-%S" )
-            sed -i 's/REPLACE_ME_WITH_TIMESTAMP/${TIMESTAMP}/g' pom.xml
+            sed -i "s/REPLACE_ME_WITH_TIMESTAMP/$TIMESTAMP/g" pom.xml
             mvn clean package
       - persist_to_workspace:
           root: ~/dfs-optimizer
@@ -116,11 +116,7 @@ workflows:
   deploy_dfs_optimizer:
     jobs:
       - maven/test:
-          command: |
-            --version
-            TIMESTAMP=$( date +"%Y-%m-%d_%H-%M-%S" )
-            sed -i 's/REPLACE_ME_WITH_TIMESTAMP/${TIMESTAMP}/g' pom.xml
-            mvn clean package
+          command: clean package
 #      - build_backend
       - deploy_backend:
           context: DFS_OPTIMIZER

@@ -1,10 +1,12 @@
-version: 2
+version: 2.1
+orbs:
+  maven: circleci/maven@1.0.0
 container_config: &container_config
   working_directory: ~/dfs-optimizer
   docker:
     - image: openjdk:8-jdk-stretch
 jobs:
-  install_maven:
+  build_backend:
     <<: *container_config
     steps:
       - checkout
@@ -13,20 +15,15 @@ jobs:
           command: |
             apt-get -y -qq update
             apt-get -y -qq install maven
-      - persist_to_workspace:
-          root: ~/usr/bin
-          paths: .
-  build_backend:
-    <<: *container_config
-    steps:
-      - attach_workspace:
-          at: usr/bin
       - run:
           name: Test and Package Backend
           command: |
             TIMESTAMP=$( date +"%Y-%m-%d_%H-%M-%S" )
             mvn replacer:replace -Dccih.origin="<version>REPLACE_ME_WITH_TIMESTAMP</version>" -Dccih.target="<version>${TIMESTAMP}</version>"
             mvn clean package
+      - persist_to_workspace:
+          root: ~/dfs-optimizer
+          paths: .
   deploy_backend:
     <<: *container_config
     steps:
@@ -116,10 +113,11 @@ workflows:
   version: 2
   deploy_dfs_optimizer:
     jobs:
-      - install_maven
-      - build_backend:
-          requires:
-            - install_maven
+      - maven/test:
+          command: |
+            mvn replacer:replace -Dccih.origin="<version>REPLACE_ME_WITH_TIMESTAMP</version>" -Dccih.target="<version>${TIMESTAMP}</version>"
+            mvn clean package
+      - build_backend
       - deploy_backend:
           context: DFS_OPTIMIZER
           filters:

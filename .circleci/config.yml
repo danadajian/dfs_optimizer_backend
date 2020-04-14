@@ -8,9 +8,13 @@ container_config: &container_config
 jobs:
   build_backend:
     <<: *container_config
-    executor: maven/default
     steps:
       - checkout
+      - run:
+          name: Install Maven
+          command: |
+            apt-get -y -qq update
+            apt-get -y -qq install maven
       - run:
           name: Test and Package Backend
           command: |
@@ -28,8 +32,6 @@ jobs:
       - run:
           name: Install SAM CLI
           command: |
-            ls
-            cd target
             apt-get -y -qq update
             apt-get -y -qq install python-dev
             apt-get -y -qq install python-pip
@@ -65,7 +67,16 @@ jobs:
           command: |
             cd frontend
             npm install
-            apt-get install -y -qq jq
+      - run:
+          name: Install Jq
+          command: apt-get install -y -qq jq
+      - run:
+          name: Install AWS CLI
+          command: |
+            apt-get -y -qq update
+            apt-get -y -qq install python-dev
+            apt-get -y -qq install python-pip
+            pip install --upgrade awscli
       - run:
           name: Prepare Environment Variables
           command: |

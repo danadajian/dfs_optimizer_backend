@@ -13,5 +13,4 @@ cd frontend
   echo "REACT_APP_GOALIE_SCRAPER_LAMBDA=$REACT_APP_GOALIE_SCRAPER_LAMBDA";
 } >> .env
 
-ls
 cat .env

@@ -46,6 +46,9 @@ jobs:
           command: |
             chmod +x ./deployBackend.sh
             ./deployBackend.sh
+      - persist_to_workspace:
+          root: ~/dfs-optimizer
+          paths: .
   build_frontend:
     <<: *container_config
     steps:

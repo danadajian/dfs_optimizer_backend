@@ -11,4 +11,4 @@ else
 fi
 
 aws cloudfront create-invalidation --distribution-id "${CDN_DISTRIBUTION_ID}" --paths /\*
-aws s3 sync frontend/build "s3://${BUCKET_NAME}" --exclude "precache-manifest*"
+aws s3 sync ./frontend/build "s3://${BUCKET_NAME}" --exclude "precache-manifest*"

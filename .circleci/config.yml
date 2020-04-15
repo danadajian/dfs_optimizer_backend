@@ -44,8 +44,8 @@ jobs:
       - run:
           name: Deploy to AWS
           command: |
-            chmod +x ./deployBackend.sh
-            ./deployBackend.sh
+            chmod +x ./scripts/deployBackend.sh
+            ./scripts/deployBackend.sh
       - persist_to_workspace:
           root: ~/dfs-optimizer
           paths: .
@@ -84,8 +84,8 @@ jobs:
       - run:
           name: Prepare Environment Variables
           command: |
-            chmod +x ./createFrontendEnvironmentVariables.sh
-            ./createFrontendEnvironmentVariables.sh
+            chmod +x ./scripts/createFrontendEnvironmentVariables.sh
+            ./scripts/createFrontendEnvironmentVariables.sh
       - run:
           name: Run Frontend Tests
           command: |
@@ -120,8 +120,8 @@ jobs:
       - run:
           name: Deploy to AWS
           command: |
-            chmod +x ./deployFrontend.sh
-            ./deployFrontend.sh
+            chmod +x ./scripts/deployFrontend.sh
+            ./scripts/deployFrontend.sh
 workflows:
   version: 2
   deploy_dfs_optimizer:

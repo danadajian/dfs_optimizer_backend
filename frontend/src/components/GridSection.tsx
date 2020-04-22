@@ -2,15 +2,15 @@ import {Loading} from "./Loading";
 import {Optimizing} from "./Optimizing";
 import {BlackList} from "./BlackList";
 import {PlayerPool} from "./PlayerPool";
-import {sumAttribute} from "../resources/sumAttribute/sumAttribute";
-import {getSetFromArray} from "../resources/getSetFromArray/getSetFromArray";
+import {sumAttribute} from "../helpers/sumAttribute/sumAttribute";
+import {getSetFromArray} from "../helpers/getSetFromArray/getSetFromArray";
 import {Lineup} from "./Lineup";
 import React, {useState} from "react";
-import {filterPlayers} from "../resources/filterPlayers/filterPlayers";
-import {addPlayerToLineup} from "../resources/addPlayerToLineup/addPlayerToLineup";
-import {removePlayerFromLineup} from "../resources/removePlayerFromLineup/removePlayerFromLineup";
-import {addPlayerToBlackList} from "../resources/addPlayerToBlackList/addPlayerToBlackList";
-import {State} from "../State";
+import {filterPlayers} from "../helpers/filterPlayers/filterPlayers";
+import {addPlayerToLineup} from "../helpers/addPlayerToLineup/addPlayerToLineup";
+import {removePlayerFromLineup} from "../helpers/removePlayerFromLineup/removePlayerFromLineup";
+import {addPlayerToBlackList} from "../helpers/addPlayerToBlackList/addPlayerToBlackList";
+import {State} from "../interfaces";
 
 const search = require("../icons/search.ico") as any;
 

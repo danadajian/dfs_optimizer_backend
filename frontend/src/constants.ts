@@ -1,4 +1,4 @@
-import {State} from "./State";
+import {State} from "./interfaces";
 
 export const INITIAL_STATE: State = {
     isLoading: false,

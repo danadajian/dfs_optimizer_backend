@@ -1,5 +1,5 @@
-import {invokeLambdaFunction} from "./aws/aws";
-import {State} from "./State";
+import {invokeLambdaFunction} from "../aws/aws";
+import {State} from "../interfaces";
 
 export const handleGenerateOptimalLineup = async (state: State, setState: (state: State) => void) => {
     setState({
@@ -10,8 +10,8 @@ export const handleGenerateOptimalLineup = async (state: State, setState: (state
     let optimalPlayerIds = await invokeLambdaFunction(process.env.REACT_APP_OPTIMAL_LINEUP_LAMBDA, state);
     if (optimalPlayerIds['errorMessage']) {
         alert('An error occurred.' +
-        optimalPlayerIds['errorType'] + '\n' + optimalPlayerIds['errorMessage'] + '\n' +
-        optimalPlayerIds['stackTrace'] !== undefined ? optimalPlayerIds['stackTrace'].slice(0, 7) : '');
+        optimalPlayerIds.errorType + '\n' + optimalPlayerIds.errorMessage + '\n' +
+        optimalPlayerIds.stackTrace !== undefined ? optimalPlayerIds.stackTrace.slice(0, 7) : '');
     } else if (optimalPlayerIds.length === 0) {
         alert('Failed to generate optimal lineup.')
     } else {

@@ -1,10 +1,10 @@
-import {getDfsData} from "./getDfsData";
-import {extractContestsFromDfsData} from "./resources/extractContestsFromDfsData/extractContestsFromDfsData";
-import {invokeLambdaFunction} from "./aws/aws";
-import {State} from "./State";
-import {INITIAL_STATE} from "./constants";
+import {getDfsData} from "../helpers/getDfsData/getDfsData";
+import {extractContestsFromDfsData} from "../helpers/extractContestsFromDfsData/extractContestsFromDfsData";
+import {invokeLambdaFunction} from "../aws/aws";
+import {State} from "../interfaces";
+import {INITIAL_STATE} from "../constants";
 
-export const collectDataAndGetNewState = async (sport: string, state: State, setState: (state: State) => void) => {
+export const handleSportChange = async (sport: string, state: State, setState: (state: State) => void) => {
     const updateLoadingText = (loadingText: string) => {
         setState({
             ...INITIAL_STATE,
@@ -28,7 +28,7 @@ export const collectDataAndGetNewState = async (sport: string, state: State, set
         updateLoadingText('player statuses');
         playerStatuses = await invokeLambdaFunction(process.env.REACT_APP_GOALIE_SCRAPER_LAMBDA);
     }
-    return {
+    setState({
         ...state,
         isLoading: false,
         sport,
@@ -42,5 +42,5 @@ export const collectDataAndGetNewState = async (sport: string, state: State, set
         filteredPool: [],
         whiteList: [],
         blackList: []
-    };
+    });
 };

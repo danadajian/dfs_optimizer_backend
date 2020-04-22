@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {lineupAttributes} from "../LineupAttributes";
+import {lineupAttributes} from "../interfaces";
 
 interface playerProps {
     player: lineupAttributes,

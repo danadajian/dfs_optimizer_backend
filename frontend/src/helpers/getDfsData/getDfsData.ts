@@ -1,5 +1,5 @@
-import {invokeLambdaFunction} from "./aws/aws";
-import {formatDate} from "./resources/formateDate/formatDate";
+import {invokeLambdaFunction} from "../../aws/aws";
+import {formatDate} from "../formatDate/formatDate";
 
 export const getDfsData = async (site: string, sport: string, date: Date) => {
     let dfsData;

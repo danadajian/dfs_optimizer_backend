@@ -1,7 +1,7 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # config
-src/resources/config.js
+src/helpers/config.js
 .env
 
 # dependencies

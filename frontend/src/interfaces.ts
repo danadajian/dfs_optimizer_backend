@@ -29,3 +29,29 @@ export interface playerPoolAttributes {
     spread: string,
     overUnder: number
 }
+
+export interface State {
+    isLoading: boolean,
+    isOptimizing: boolean,
+    date: Date,
+    maxCombinations: number,
+    salaryCap: number,
+    whiteList: number[],
+    blackList: number[],
+    site: string,
+    sport: string,
+    contest: string,
+    loadingText: string,
+    playerPool: playerPoolAttributes[],
+    filteredPool: playerPoolAttributes[],
+    lineup: lineupAttributes[],
+    lineupPositions: string[],
+    displayMatrix: string[],
+    dfsData: any,
+    injuries: any,
+    lineupRestrictions: any,
+    opponentRanks: any,
+    projectionsData: any,
+    contests: any[],
+    playerStatuses: any[],
+}

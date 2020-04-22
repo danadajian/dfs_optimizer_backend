@@ -1,88 +1,30 @@
 import React, {useState} from 'react'
 import './App.css'
-import {CSVLink} from "react-csv";
-import {createEmptyLineup} from './resources/createEmptyLineup/createEmptyLineup'
-import {GridSection} from "./components/GridSection";
-import {ContestSection} from "./components/ContestSection";
-import {SportSection} from "./components/SportSection";
+import {SiteSection} from "./components/SiteSection";
 import {DateSection} from "./components/DateSection";
+import {SportSection} from "./components/SportSection";
+import {ContestSection} from "./components/ContestSection";
+import {ActionButtonSection} from "./components/ActionButtonSection";
+import {CsvSection} from "./components/CsvSection";
+import {GridSection} from "./components/GridSection";
 import {INITIAL_STATE} from "./constants";
 import './env'
-import {handleContestChange} from "./handleContestChange";
-import {handleGenerateOptimalLineup} from "./handleGenerateOptimalLineup";
-import {collectDataAndGetNewState} from "./handleSportChange";
 
 const App = () => {
 
     const [state, setState] = useState(INITIAL_STATE);
-
-    const {isLoading, site, sport, date, contest, lineup, lineupPositions, displayMatrix} = state;
-
-    const handleSiteChange = (site: string) => {
-        setState({
-            ...INITIAL_STATE,
-            site,
-        });
-    };
-
-    const handleSportChange = (sport: string) => {
-        return collectDataAndGetNewState(sport, state, setState)
-            .then(newState => {
-                setState({
-                    ...state,
-                    ...newState
-                })
-            })
-    };
-
-    const handleDateChange = (date: Date) => {
-        setState({
-            ...state,
-            date
-        })
-    };
-
-    const handleClearLineup = () => {
-        setState({
-            ...state,
-            lineup: createEmptyLineup(lineupPositions, displayMatrix),
-            whiteList: [],
-            blackList: []
-        });
-    };
-
-    const csvData = [
-        displayMatrix,
-        lineup.map((player: any) => player.name)
-    ];
 
     return (
         <div>
             <h1 className={"App-header"}>DFS Optimizer</h1>
             <div className={"Dfs-sport"}>
                 <h3>Choose a site:</h3>
-                <div style={{display: 'flex'}}>
-                    <button style={{backgroundColor: (site === 'Fanduel') ? 'dodgerblue' : 'white'}}
-                            onClick={() => handleSiteChange('Fanduel')}>Fanduel
-                    </button>
-                    <button style={{backgroundColor: (site === 'DraftKings') ? 'dodgerblue' : 'white'}}
-                            onClick={() => handleSiteChange('DraftKings')}>Draftkings
-                    </button>
-                </div>
-                {site && <DateSection date={date} handleDateChange={handleDateChange}/>}
-                {!isLoading && site &&
-                <SportSection sport={sport} handleSportChange={handleSportChange}/>}
-                {!isLoading && site && sport &&
-                <ContestSection state={state} setState={setState} handleContestChange={handleContestChange}/>}
-                <div style={{display: 'flex', margin: '2%'}}>
-                    {sport && contest && site && <button style={{marginTop: '10px'}}
-                                                         onClick={() => handleGenerateOptimalLineup(state, setState)}>Optimize
-                        Lineup</button>}
-                    {sport && contest && site && <button style={{marginTop: '10px'}}
-                                                         onClick={handleClearLineup}>Clear Lineup</button>}
-                </div>
-                {lineup.length > 0 && lineup.every((player: any) => player.name.length > 0) &&
-                <CSVLink data={csvData} filename={site + '-' + sport + '-lineup.csv'}>Download Lineup CSV</CSVLink>}
+                <SiteSection state={state} setState={setState}/>
+                <DateSection state={state} setState={setState}/>
+                <SportSection state={state} setState={setState}/>
+                <ContestSection state={state} setState={setState}/>
+                <ActionButtonSection state={state} setState={setState}/>
+                <CsvSection state={state}/>
             </div>
             <GridSection state={state} setState={setState}/>
         </div>

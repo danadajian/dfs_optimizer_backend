@@ -1,7 +1,7 @@
 import * as React from 'react';
-import {getOrdinalString} from "../resources/getOrdinalString/getOrdinalString";
+import {getOrdinalString} from "../helpers/getOrdinalString/getOrdinalString";
 import {useState} from "react";
-import {playerPoolAttributes} from "../LineupAttributes";
+import {playerPoolAttributes} from "../interfaces";
 
 const plus = require("../icons/plus.ico") as any;
 const minus = require("../icons/minus.ico") as any;

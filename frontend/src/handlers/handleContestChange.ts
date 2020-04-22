@@ -1,19 +1,16 @@
-import {LINEUP_RULES} from "./constants";
-import {combineDfsAndProjectionsData} from "./resources/combineDfsAndProjectionsData/combineDfsAndProjectionsData";
-import {createEmptyLineup} from "./resources/createEmptyLineup/createEmptyLineup";
-import {State} from "./State";
+import {LINEUP_RULES} from "../constants";
+import {combineDfsAndProjectionsData} from "../helpers/combineDfsAndProjectionsData/combineDfsAndProjectionsData";
+import {createEmptyLineup} from "../helpers/createEmptyLineup/createEmptyLineup";
+import {State} from "../interfaces";
 
-export const handleContestChange = (contest: string, state: State, setState: (state: State) => void) => {
+export const handleContestChange = async (contest: string, state: State, setState: (state: State) => void) => {
     const {site, sport, dfsData, projectionsData, opponentRanks, injuries, playerStatuses} = state;
-    if (!contest)
-        return;
     if (dfsData.length === 0) {
-        alert(site + ' data is currently unavailable.');
-        return
-    }
-    if (Object.keys(projectionsData).length === 0 || projectionsData['errorMessage']) {
+        alert(`${site} data is currently unavailable.`);
+        return {}
+    } else if (Object.keys(projectionsData).length === 0 || projectionsData['errorMessage']) {
         alert('Player projection data is currently unavailable.');
-        return
+        return {}
     }
     const gameType = contest.includes('@') || contest.includes('vs') ? 'Single Game' : 'Classic';
     const contestRules = LINEUP_RULES[site][sport][gameType];
@@ -21,7 +18,6 @@ export const handleContestChange = (contest: string, state: State, setState: (st
     const dfsPlayers = dfsData.filter((contestJson: any) => contestJson.contest === contest)[0]['players'];
     const playerPool = combineDfsAndProjectionsData(dfsPlayers, projectionsData, site, opponentRanks, injuries,
         playerStatuses);
-    const emptyLineup: any = createEmptyLineup(contestRules.lineupPositions, contestRules.displayMatrix);
     setState({
         ...state,
         contest,
@@ -29,7 +25,7 @@ export const handleContestChange = (contest: string, state: State, setState: (st
         filteredPool: [],
         whiteList: [],
         blackList: [],
-        lineup: emptyLineup,
+        lineup: createEmptyLineup(lineupPositions, displayMatrix),
         lineupPositions,
         displayMatrix,
         salaryCap,

@@ -1,0 +1,27 @@
+import {playerAttributes} from "./PlayerAttributes";
+
+export interface State {
+    isLoading: boolean,
+    isOptimizing: boolean,
+    date: Date,
+    maxCombinations: number,
+    salaryCap: number,
+    whiteList: number[],
+    blackList: number[],
+    site: string,
+    sport: string,
+    contest: string,
+    loadingText: string,
+    playerPool: playerAttributes[],
+    filteredPool: playerAttributes[],
+    lineup: playerAttributes[],
+    lineupPositions: string[],
+    displayMatrix: string[],
+    dfsData: any,
+    injuries: any,
+    lineupRestrictions: any,
+    opponentRanks: any,
+    projectionsData: any,
+    contests: any[],
+    playerStatuses: any[],
+}

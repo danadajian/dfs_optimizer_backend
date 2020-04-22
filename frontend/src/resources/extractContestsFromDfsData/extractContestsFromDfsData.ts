@@ -1,6 +1,6 @@
-export const extractContestsFromData = (dataArray: any[], site: string, date: Date) => {
+export const extractContestsFromDfsData = (dataArray: any[], site: string, date: Date) => {
     let contestArray: any[] = [];
-    if (site === 'fd')
+    if (site === 'Fanduel')
         dataArray.forEach((contestJson: any) => contestArray.push(contestJson.contest));
     else
         dataArray

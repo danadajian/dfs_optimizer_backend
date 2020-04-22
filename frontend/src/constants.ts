@@ -1,3 +1,30 @@
+import {State} from "./State";
+
+export const INITIAL_STATE: State = {
+    isLoading: false,
+    isOptimizing: false,
+    date: new Date(),
+    maxCombinations: 10000000,
+    salaryCap: 0,
+    site: '',
+    sport: '',
+    contest: '',
+    loadingText: '',
+    playerPool: [],
+    filteredPool: [],
+    whiteList: [],
+    blackList: [],
+    lineup: [],
+    lineupPositions: [],
+    displayMatrix: [],
+    contests: [],
+    playerStatuses: [],
+    dfsData: {},
+    injuries: {},
+    lineupRestrictions: {},
+    opponentRanks: {},
+    projectionsData: {}
+};
 export const INJURY_ABBREVIATIONS: any = {
     'questionable': 'Q',
     'out': 'O',
@@ -5,7 +32,7 @@ export const INJURY_ABBREVIATIONS: any = {
     'suspended': 'SUSP'
 };
 export const LINEUP_RULES: any = {
-    'fd': {
+    'Fanduel': {
         'mlb': {
             'Classic': {
                 'lineupPositions': ['P', 'C,1B', '2B', '3B', 'SS', 'OF', 'OF', 'OF', 'C,1B,2B,3B,SS,OF'],
@@ -95,7 +122,7 @@ export const LINEUP_RULES: any = {
             }
         }
     },
-    'dk': {
+    'DraftKings': {
         'mlb': {
             'Classic': {
                 'lineupPositions': ['P', 'P', 'C', '1B', '2B', '3B', 'SS', 'OF', 'OF', 'OF'],

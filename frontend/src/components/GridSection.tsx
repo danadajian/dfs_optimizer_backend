@@ -5,96 +5,116 @@ import {PlayerPool} from "./PlayerPool";
 import {sumAttribute} from "../resources/sumAttribute/sumAttribute";
 import {getSetFromArray} from "../resources/getSetFromArray/getSetFromArray";
 import {Lineup} from "./Lineup";
-import React from "react";
+import React, {useState} from "react";
+import {filterPlayers} from "../resources/filterPlayers/filterPlayers";
+import {addPlayerToLineup} from "../resources/addPlayerToLineup/addPlayerToLineup";
+import {removePlayerFromLineup} from "../resources/removePlayerFromLineup/removePlayerFromLineup";
+import {addPlayerToBlackList} from "../resources/addPlayerToBlackList/addPlayerToBlackList";
+import {State} from "../State";
 
 const search = require("../icons/search.ico") as any;
 
-interface playerAttributes {
-    playerId: number,
-    position: string,
-    displayPosition: string,
-    team: string,
-    name: string,
-    status: string,
-    projection: number,
-    salary: number,
-    opponent: string,
-    opponentRank: number,
-    gameDate: string,
-    spread: string,
-    overUnder: number
-}
-
 export const GridSection: any = (props: {
-    isLoading: boolean,
-    isOptimizing: boolean,
-    loadingText: string,
-    site: string,
-    sport: string,
-    contest: string,
-    lineup: playerAttributes[],
-    playerPool: playerAttributes[],
-    filteredPool: playerAttributes[],
-    whiteList: number[],
-    blackList: number[],
-    searchText: string,
-    filterPlayers: (attribute: string, value: string) => void,
-    addToLineup: (playerIndex: number) => void,
-    removeFromLineup: (playerIndex: number) => void,
-    toggleBlackList: (playerIndex: number) => void,
-    sortAttribute: string,
-    sortSign: number,
-    toggleSort: (attribute: string) => void,
-    salaryCap: number
-}) =>
-    props.isLoading ? <Loading sport={props.sport} loadingText={props.loadingText}/> :
-        props.isOptimizing ? <Optimizing sport={props.sport}/> :
-            props.site && props.sport && props.contest &&
-            <div className={"Dfs-grid-section"}>
-                <div className={"Lineup"}>
-                    <h2 className={"Dfs-header"}>Lineup</h2>
-                    <Lineup dfsLineup={props.lineup} removePlayer={props.removeFromLineup} site={props.site}
-                            whiteList={props.whiteList} pointSum={sumAttribute(props.lineup, 'projection')}
-                            salarySum={sumAttribute(props.lineup, 'salary')} cap={props.salaryCap}/>
-                </div>
-                <div className={"Player-pool"}>
-                    <h2 className={"Dfs-header"}>Players</h2>
-                    <div style={{display: 'flex', flexDirection: 'column'}}>
-                        {!props.filteredPool &&
-                        <img src={search} style={{height: '3vmin', position: 'absolute'}} alt="search"/>}
-                        <input type="text" style={{height: '25px', width: '90%'}}
-                               value={props.searchText}
-                               onChange={(event) => props.filterPlayers('name', event.target.value)}>{null}</input>
+    state: State,
+    setState: (state: State) => void
+}) => {
+    const {isLoading, isOptimizing, site, sport, contest, playerPool, lineup, whiteList, blackList, lineupPositions,
+        displayMatrix, loadingText, salaryCap} = props.state;
+
+    const [searchText, setSearchText] = useState('');
+    const [filteredPool, setFilteredPool] = useState(props.state.filteredPool);
+
+    const handleFilter = (attribute: string, value: string) => {
+        const {searchText, filteredPool} = filterPlayers(attribute, value, playerPool);
+        setSearchText(searchText);
+        setFilteredPool(filteredPool);
+    };
+
+    const handleAddPlayer = (playerIndex: number) => {
+        const {newLineup, newWhiteList, newBlackList}: any = addPlayerToLineup(playerIndex, playerPool, lineup, whiteList, blackList);
+        props.setState({
+            ...props.state,
+            lineup: newLineup,
+            whiteList: newWhiteList,
+            blackList: newBlackList,
+        });
+        setSearchText('');
+        setFilteredPool([]);
+    };
+
+    const handleRemovePlayer = (playerIndex: number) => {
+        const {newLineup, newWhiteList}: any = removePlayerFromLineup(playerIndex, lineup, whiteList, lineupPositions, displayMatrix);
+        props.setState({
+            ...props.state,
+            lineup: newLineup,
+            whiteList: newWhiteList
+        });
+        setSearchText('');
+        setFilteredPool([]);
+    };
+
+    const handleToggleBlackList = (playerIndex: number) => {
+        const {newLineup, newWhiteList, newBlackList}: any = addPlayerToBlackList(playerIndex, playerPool, lineup,
+            whiteList, blackList, lineupPositions, displayMatrix);
+        props.setState({
+            ...props.state,
+            lineup: newLineup,
+            whiteList: newWhiteList,
+            blackList: newBlackList,
+        });
+        setSearchText('');
+        setFilteredPool([]);
+    };
+
+    return (
+        isLoading ? <Loading sport={sport} loadingText={loadingText}/> :
+            isOptimizing ? <Optimizing sport={sport}/> :
+                site && sport && contest &&
+                <div className={"Dfs-grid-section"}>
+                    <div className={"Lineup"}>
+                        <h2 className={"Dfs-header"}>Lineup</h2>
+                        <Lineup dfsLineup={lineup} removePlayerFunction={handleRemovePlayer} site={site}
+                                whiteList={whiteList} pointSum={sumAttribute(lineup, 'projection')}
+                                salarySum={sumAttribute(lineup, 'salary')} cap={salaryCap}/>
                     </div>
-                    <div style={{display: 'flex'}}>
-                        <button onClick={() => props.filterPlayers('position', 'All')}>All</button>
-                        {
-                            getSetFromArray(props.playerPool.map((player) => player.position))
-                                .map((position) =>
-                                    <button
-                                        onClick={() => props.filterPlayers('position', position)}>{position}</button>
-                                )
-                        }
-                        <select onChange={(event) => props.filterPlayers('team', event.target.value)}>
-                            <option defaultValue={'All'}>All</option>
-                            {getSetFromArray(props.playerPool.map((player) => player.team))
-                                .sort()
-                                .map((team) =>
-                                    <option value={team}>{team}</option>
-                                )}
-                        </select>
+                    <div className={"Player-pool"}>
+                        <h2 className={"Dfs-header"}>Players</h2>
+                        <div style={{display: 'flex', flexDirection: 'column'}}>
+                            {!filteredPool &&
+                            <img src={search} style={{height: '3vmin', position: 'absolute'}} alt="search"/>}
+                            <input type="text" style={{height: '25px', width: '90%'}}
+                                   value={searchText}
+                                   onChange={(event) => handleFilter('name', event.target.value)}>{null}</input>
+                        </div>
+                        <div style={{display: 'flex'}}>
+                            <button onClick={() => handleFilter('position', 'All')}>All</button>
+                            {
+                                getSetFromArray(playerPool.map((player) => player.position))
+                                    .map((position) =>
+                                        <button
+                                            onClick={() => handleFilter('position', position)}>{position}</button>
+                                    )
+                            }
+                            <select onChange={(event) => handleFilter('team', event.target.value)}>
+                                <option defaultValue={'All'}>All</option>
+                                {getSetFromArray(playerPool.map((player) => player.team))
+                                    .sort()
+                                    .map((team) =>
+                                        <option value={team}>{team}</option>
+                                    )}
+                            </select>
+                        </div>
+                        <div className={"Players"}>
+                            <PlayerPool playerList={playerPool} filterList={filteredPool}
+                                        addPlayerFunction={handleAddPlayer} blackListFunction={handleToggleBlackList}
+                                        whiteList={whiteList} blackList={blackList}
+                                        salarySum={sumAttribute(lineup, 'salary')} cap={salaryCap}/>
+                        </div>
                     </div>
-                    <div className={"Players"}>
-                        <PlayerPool playerList={props.playerPool} filterList={props.filteredPool}
-                                    whiteListFunction={props.addToLineup} blackListFunction={props.toggleBlackList}
-                                    toggleSort={props.toggleSort} sortAttribute={props.sortAttribute}
-                                    sortSign={props.sortSign}
-                                    whiteList={props.whiteList} blackList={props.blackList}
-                                    salarySum={sumAttribute(props.lineup, 'salary')} cap={props.salaryCap}/>
+                    <div className={"Blacklist"}>
+                        <h2 className={"Dfs-header"}>Blacklist</h2>
+                        <BlackList blackList={blackList} playerPool={playerPool}/>
                     </div>
                 </div>
-                <div className={"Blacklist"}>
-                    <h2 className={"Dfs-header"}>Blacklist</h2>
-                    <BlackList blackList={props.blackList} playerPool={props.playerPool}/>
-                </div>
-            </div>;
+    );
+};

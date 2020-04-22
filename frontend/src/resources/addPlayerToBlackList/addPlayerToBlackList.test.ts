@@ -1,4 +1,4 @@
-import { getToggleBlackListState } from './getToggleBlackListState'
+import { addPlayerToBlackList } from './addPlayerToBlackList'
 
 describe('can toggle blacklist', () => {
     it('adds player to blacklist', () => {
@@ -20,8 +20,7 @@ describe('can toggle blacklist', () => {
         ];
         let lineupPositions = ['QB', 'RB', 'RB', 'RB,WR,TE'];
         let displayMatrix = ['QB', 'RB', 'RB', 'FLEX'];
-        let state = {playerPool, lineup, whiteList, blackList, lineupPositions, displayMatrix};
-        expect(getToggleBlackListState(5, state)).toMatchObject({
+        expect(addPlayerToBlackList(5, playerPool, lineup, whiteList, blackList, lineupPositions, displayMatrix)).toMatchObject({
             lineup: [
                 {name: '', playerId: '', position: 'QB'},
                 {name: '', playerId: '', position: 'RB'},
@@ -29,9 +28,7 @@ describe('can toggle blacklist', () => {
                 {name: '', playerId: '', position: 'RB,WR,TE', displayPosition: 'FLEX'}
             ],
             whiteList: [],
-            blackList: [0, 2, 3, 4, 5],
-            filteredPool: null,
-            searchText: ''
+            blackList: [0, 2, 3, 4, 5]
         });
     });
     it('removes player from blacklist', () => {
@@ -53,8 +50,7 @@ describe('can toggle blacklist', () => {
         ];
         let lineupPositions = ['QB', 'RB', 'RB', 'RB,WR,TE'];
         let displayMatrix = ['QB', 'RB', 'RB', 'FLEX'];
-        let state = {playerPool, lineup, whiteList, blackList, lineupPositions, displayMatrix};
-        expect(getToggleBlackListState(5, state)).toMatchObject({
+        expect(addPlayerToBlackList(5, playerPool, lineup, whiteList, blackList, lineupPositions, displayMatrix)).toMatchObject({
             lineup: [
                 {name: '', playerId: '', position: 'QB'},
                 {name: '', playerId: '', position: 'RB'},
@@ -62,9 +58,7 @@ describe('can toggle blacklist', () => {
                 {name: '', playerId: '', position: 'RB,WR,TE', displayPosition: 'FLEX'}
             ],
             whiteList: [],
-            blackList: [0, 2, 3, 4],
-            filteredPool: null,
-            searchText: ''
+            blackList: [0, 2, 3, 4]
         });
     });
 });

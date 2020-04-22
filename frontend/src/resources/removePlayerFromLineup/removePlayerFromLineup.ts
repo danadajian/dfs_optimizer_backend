@@ -1,5 +1,5 @@
-export const getRemoveFromLineupState = (lineupIndex: number, state: any) => {
-    let {lineup, whiteList, lineupPositions, displayMatrix} = state;
+export const removePlayerFromLineup = (lineupIndex: number, lineup: any[], whiteList: any[],
+                                       lineupPositions: string[], displayMatrix: string[]) => {
     let playerToRemove = lineup[lineupIndex];
     let playerInWhiteList = whiteList.find((playerId: number) => playerId === playerToRemove.playerId, null);
     if (playerInWhiteList) {

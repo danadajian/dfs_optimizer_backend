@@ -1,5 +1,5 @@
-export const getToggleBlackListState = (playerIndex: number, state: any) => {
-    let {playerPool, lineup, whiteList, blackList, lineupPositions, displayMatrix} = state;
+export const addPlayerToBlackList = (playerIndex: number, playerPool: any[], lineup: any[], whiteList: any[],
+                                     blackList: any[], lineupPositions: string[], displayMatrix: string[]) => {
     let blackListedPlayer = playerPool[playerIndex];
     if (blackList.includes(blackListedPlayer.playerId)) {
         blackList.splice(blackList.indexOf(blackListedPlayer.playerId), 1);
@@ -26,8 +26,6 @@ export const getToggleBlackListState = (playerIndex: number, state: any) => {
     return {
         lineup: lineup,
         whiteList: whiteList,
-        blackList: blackList,
-        filteredPool: null,
-        searchText: ''
+        blackList: blackList
     }
 };

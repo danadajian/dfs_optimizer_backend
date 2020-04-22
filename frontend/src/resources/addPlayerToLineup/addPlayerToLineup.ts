@@ -1,9 +1,10 @@
-export const getAddToLineupState = (playerIndex: number, state: any) => {
-    let {playerPool, lineup, whiteList, blackList} = state;
+export const addPlayerToLineup = (playerIndex: number, playerPool: any[], lineup: any[], whiteList: any[],
+                                  blackList: any[]) => {
     let playerToAdd = playerPool[playerIndex];
     let playerInLineup = lineup.find((player: any) => player.playerId === playerToAdd.playerId, null);
     if (playerInLineup) {
-        return 'Player already added to lineup.'
+        alert('Player already added to lineup.');
+        return {}
     }
     let spotsToReplace = lineup.filter(
         (player: any) =>
@@ -15,7 +16,8 @@ export const getAddToLineupState = (playerIndex: number, state: any) => {
             )
     );
     if (spotsToReplace.length === 0) {
-        return 'Not enough positions available to add player.'
+        alert('Not enough positions available to add player.');
+        return {}
     } else {
         whiteList.push(playerToAdd.playerId);
         if (blackList.includes(playerToAdd.playerId)) {
@@ -28,11 +30,9 @@ export const getAddToLineupState = (playerIndex: number, state: any) => {
         playerToAddCopy.displayPosition = spotToReplace.displayPosition;
         lineup[lineupIndex] = playerToAddCopy;
         return {
-            lineup: lineup,
-            whiteList: whiteList,
-            blackList: blackList,
-            filteredPool: null,
-            searchText: ''
+            lineup,
+            whiteList,
+            blackList
         }
     }
 };

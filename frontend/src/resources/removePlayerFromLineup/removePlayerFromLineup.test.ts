@@ -1,4 +1,4 @@
-import { getRemoveFromLineupState } from './getRemoveFromLineupState'
+import { removePlayerFromLineup } from './removePlayerFromLineup'
 
 describe('removes player to lineup', () => {
     it('can remove player', () => {
@@ -11,8 +11,7 @@ describe('removes player to lineup', () => {
         let whiteList = [2];
         let lineupPositions = ['QB', 'RB', 'RB', 'RB,WR,TE'];
         let displayMatrix = ['QB', 'RB', 'RB', 'FLEX'];
-        let state = {lineup, whiteList, lineupPositions, displayMatrix};
-        expect(getRemoveFromLineupState(1, state)).toMatchObject({
+        expect(removePlayerFromLineup(1, lineup, whiteList, lineupPositions, displayMatrix)).toMatchObject({
             lineup: [
                 {position: 'QB', displayPosition: 'QB', team: '', name: 'Player1', playerId: 1, projected: '', salary: '', opponent: ''},
                 {position: 'RB', displayPosition: 'RB', team: '', name: '', playerId: 0, projected: '', salary: '', opponent: ''},

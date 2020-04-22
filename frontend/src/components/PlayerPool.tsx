@@ -1,26 +1,12 @@
 import * as React from 'react';
 import {getOrdinalString} from "../resources/getOrdinalString/getOrdinalString";
+import {useState} from "react";
+import {playerAttributes} from "../PlayerAttributes";
 
 const plus = require("../icons/plus.ico") as any;
 const minus = require("../icons/minus.ico") as any;
 const up = require("../icons/up.svg") as any;
 const down = require("../icons/down.svg") as any;
-
-interface playerAttributes {
-    playerId: number,
-    position: string,
-    displayPosition: string,
-    team: string,
-    name: string,
-    status: string,
-    projection: number,
-    salary: number,
-    opponent: string,
-    opponentRank: number,
-    gameDate: string,
-    spread: string,
-    overUnder: number
-}
 
 interface playerProps {
     player: playerAttributes,
@@ -74,74 +60,85 @@ const Player = (props: playerProps) =>
 export const PlayerPool = (props: {
     playerList: playerAttributes[],
     filterList: playerAttributes[],
-    whiteListFunction: (index: number) => void,
+    addPlayerFunction: (index: number) => void,
     blackListFunction: (index: number) => void,
-    toggleSort: (attribute: string) => void,
-    sortAttribute: string,
-    sortSign: number,
     whiteList: number[],
     blackList: number[],
     salarySum: number,
     cap: number
-}) =>
-    <table style={{borderCollapse: "collapse"}} className={'Dfs-grid'}>
-        <thead>
-        <tr className={"Dfs-grid-header"}>
-            <th>{}</th>
-            <th>{}</th>
-            <th>Player</th>
-            <th>Projection
-                <img src={props.sortSign === 1 ? down : up} alt={"sort"}
-                     onClick={() => props.toggleSort('projection')}
-                     style={{
-                         marginLeft: '1vmin', height: '2vmin',
-                         backgroundColor: props.sortAttribute === 'projection' ? 'red' : 'white'
-                     }}/>
-            </th>
-            <th>Salary
-                <img src={props.sortSign === 1 ? down : up} alt={"sort"}
-                     onClick={() => props.toggleSort('salary')}
-                     style={{
-                         marginLeft: '1vmin', height: '2vmin',
-                         backgroundColor: props.sortAttribute === 'salary' ? 'red' : 'white'
-                     }}/>
-            </th>
-            <th>$/Point
-                <img src={props.sortSign === 1 ? down : up} alt={"sort"}
-                     onClick={() => props.toggleSort('pricePerPoint')}
-                     style={{
-                         marginLeft: '1vmin', height: '2vmin',
-                         backgroundColor: props.sortAttribute === 'pricePerPoint' ? 'red' : 'white'
-                     }}/>
-            </th>
-            <th>Opponent</th>
-            <th>Spread</th>
-            <th>O/U</th>
-            <th>Game Date</th>
-        </tr>
-        </thead>
-        <tbody>
-        {props.playerList.sort((a, b) => {
-            return (props.sortAttribute === 'pricePerPoint') ?
-                props.sortSign * (b.salary / b.projection - a.salary / a.projection) :
-                // @ts-ignore
-                props.sortSign * (b[props.sortAttribute] - a[props.sortAttribute])
-        }).map(
-            (player, index) => {
-                if (!props.filterList || props.filterList.includes(player)) {
-                    return (
-                        <Player key={index}
-                                player={player}
-                                onPlusClick={() => props.whiteListFunction(index)}
-                                onMinusClick={() => props.blackListFunction(index)}
-                                whiteList={props.whiteList}
-                                blackList={props.blackList}
-                                salarySum={props.salarySum}
-                                cap={props.cap}
-                        />
-                    )
-                } else return null;
-            }
-        )}
-        </tbody>
-    </table>;
+}) => {
+
+    const [sortAttribute, setSortAttribute] = useState('salary');
+    const [sortSign, setSortSign] = useState(1);
+
+    const sortBy = (attribute: string) => {
+        if (attribute === sortAttribute)
+            setSortSign(-sortSign);
+        else
+            setSortAttribute(attribute);
+    };
+
+    return (
+        <table style={{borderCollapse: "collapse"}} className={'Dfs-grid'}>
+            <thead>
+            <tr className={"Dfs-grid-header"}>
+                <th>{}</th>
+                <th>{}</th>
+                <th>Player</th>
+                <th>Projection
+                    <img src={sortSign === 1 ? down : up} alt={"sort"}
+                         onClick={() => sortBy('projection')}
+                         style={{
+                             marginLeft: '1vmin', height: '2vmin',
+                             backgroundColor: sortAttribute === 'projection' ? 'red' : 'white'
+                         }}/>
+                </th>
+                <th>Salary
+                    <img src={sortSign === 1 ? down : up} alt={"sort"}
+                         onClick={() => sortBy('salary')}
+                         style={{
+                             marginLeft: '1vmin', height: '2vmin',
+                             backgroundColor: sortAttribute === 'salary' ? 'red' : 'white'
+                         }}/>
+                </th>
+                <th>$/Point
+                    <img src={sortSign === 1 ? down : up} alt={"sort"}
+                         onClick={() => sortBy('pricePerPoint')}
+                         style={{
+                             marginLeft: '1vmin', height: '2vmin',
+                             backgroundColor: sortAttribute === 'pricePerPoint' ? 'red' : 'white'
+                         }}/>
+                </th>
+                <th>Opponent</th>
+                <th>Spread</th>
+                <th>O/U</th>
+                <th>Game Date</th>
+            </tr>
+            </thead>
+            <tbody>
+            {props.playerList.sort((a: playerAttributes, b: playerAttributes) => {
+                return (sortAttribute === 'pricePerPoint') ?
+                    sortSign * (b.salary / b.projection - a.salary / a.projection) :
+                    // @ts-ignore
+                    props.sortSign * (b[props.sortAttribute] - a[props.sortAttribute])
+            }).map(
+                (player, index) => {
+                    if (props.filterList.includes(player)) {
+                        return (
+                            <Player key={index}
+                                    player={player}
+                                    onPlusClick={() => props.addPlayerFunction(index)}
+                                    onMinusClick={() => props.blackListFunction(index)}
+                                    whiteList={props.whiteList}
+                                    blackList={props.blackList}
+                                    salarySum={props.salarySum}
+                                    cap={props.cap}
+                            />
+                        )
+                    } else return null;
+                }
+            )}
+            </tbody>
+        </table>
+    )
+};

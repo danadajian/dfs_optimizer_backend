@@ -20,4 +20,4 @@ new lineup it checks has the potential to be better (i.e. has a higher projected
 
 ### Support
 
-The app currently supports Fanduel and Draftkings contests, and scrapes data from multiple sources.
+The app currently supports Fanduel and DraftKings contests, and scrapes data from multiple sources.

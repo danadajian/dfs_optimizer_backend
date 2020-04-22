@@ -14,7 +14,7 @@ describe('test', () => {
                 "dkProjection":0.5435214312075175,"name":"Anthony Sherman","fdProjection":0.4296565759700945,
                 "team":"KC","spread":"-7.0"}
         };
-        let site = 'fd';
+        let site = 'Fanduel';
         let opponentRanks = {"Tennessee Titans":{"RB":16,"QB":18,"TE":27,"D/ST":8,"WR":15,"K":6}};
         let injuries = {"LeSean McCoy":"Questionable"};
         expect(combineDfsAndProjectionsData(dfsPlayers, projectionsData, site, opponentRanks, injuries, []))

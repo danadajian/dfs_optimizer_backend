@@ -28,7 +28,7 @@ const Player = (props: playerProps) => {
         roundedProjection = parseFloat(props.player.projection.toFixed(1));
         let salary = props.player.salary;
         let isCaptain = props.player.displayPosition.includes('x Points)');
-        if (isCaptain && props.site === 'dk') {
+        if (isCaptain && props.site === 'DraftKings') {
             let multiplier = (parseFloat(props.player.displayPosition.split('(')[1].substring(0, 3)));
             salary *= multiplier;
         }
@@ -66,7 +66,7 @@ const Player = (props: playerProps) => {
 
 export const Lineup = (props: {
     dfsLineup: playerAttributes[],
-    removePlayer: (playerIndex: number) => void,
+    removePlayerFunction: (playerIndex: number) => void,
     site: string,
     whiteList: number[],
     pointSum: number,
@@ -75,7 +75,7 @@ export const Lineup = (props: {
 }) =>
     <table style={{borderCollapse: "collapse"}} className={'Dfs-grid'}>
         <tbody>
-        <tr style={{backgroundColor: (props.site === 'fd') ? 'dodgerblue' : 'black'}}>
+        <tr style={{backgroundColor: (props.site === 'Fanduel') ? 'dodgerblue' : 'black'}}>
             <th>{}</th>
             <th>Position</th>
             <th>Player</th>
@@ -85,7 +85,7 @@ export const Lineup = (props: {
         {props.dfsLineup.map(
             (player, playerIndex) => (
                 <Player player={player}
-                        onRemove={() => props.removePlayer(playerIndex)}
+                        onRemove={() => props.removePlayerFunction(playerIndex)}
                         whiteList={props.whiteList}
                         site={props.site}
                 />

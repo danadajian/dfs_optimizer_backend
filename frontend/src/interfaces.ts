@@ -1,3 +1,30 @@
+export interface State {
+    isLoading: boolean,
+    isOptimizing: boolean,
+    date: Date,
+    maxCombinations: number,
+    salaryCap: number,
+    whiteList: number[],
+    blackList: number[],
+    site: string,
+    sport: string,
+    contest: string,
+    loadingText: string,
+    searchText: string,
+    playerPool: playerPoolAttributes[],
+    filteredPool: playerPoolAttributes[],
+    lineup: lineupAttributes[],
+    lineupPositions: string[],
+    displayMatrix: string[],
+    dfsData: any,
+    injuries: any,
+    lineupRestrictions: any,
+    opponentRanks: any,
+    projectionsData: any,
+    contests: any[],
+    playerStatuses: any[],
+}
+
 export interface lineupAttributes {
     playerId: number,
     displayPosition: string,
@@ -14,6 +41,13 @@ export interface lineupAttributes {
     overUnder?: number
 }
 
+export interface lineupPlayerProps {
+    player: lineupAttributes,
+    onRemove: () => void,
+    whiteList: number[],
+    site: string
+}
+
 export interface playerPoolAttributes {
     playerId: number,
     position: string,
@@ -28,30 +62,4 @@ export interface playerPoolAttributes {
     opponentRank: number,
     spread: string,
     overUnder: number
-}
-
-export interface State {
-    isLoading: boolean,
-    isOptimizing: boolean,
-    date: Date,
-    maxCombinations: number,
-    salaryCap: number,
-    whiteList: number[],
-    blackList: number[],
-    site: string,
-    sport: string,
-    contest: string,
-    loadingText: string,
-    playerPool: playerPoolAttributes[],
-    filteredPool: playerPoolAttributes[],
-    lineup: lineupAttributes[],
-    lineupPositions: string[],
-    displayMatrix: string[],
-    dfsData: any,
-    injuries: any,
-    lineupRestrictions: any,
-    opponentRanks: any,
-    projectionsData: any,
-    contests: any[],
-    playerStatuses: any[],
 }

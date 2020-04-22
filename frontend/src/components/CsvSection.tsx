@@ -18,5 +18,5 @@ export const CsvSection = (props: {
 
         );
     } else
-        return null;
+        return null
 };

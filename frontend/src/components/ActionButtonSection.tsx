@@ -8,14 +8,18 @@ export const ActionButtonSection = (props: {
     setState: (state: State) => void
 }) => {
     const {site, sport, contest} = props.state;
-    return (
-        <div style={{display: 'flex', margin: '2%'}}>
-            {sport && contest && site &&
-            <button style={{marginTop: '10px'}}
-                    onClick={() => handleGenerateOptimalLineup(props.state, props.setState)}>Optimize Lineup</button>}
-            {sport && contest && site &&
-            <button style={{marginTop: '10px'}}
-                    onClick={() => handleClearLineup(props.state, props.setState)}>Clear Lineup</button>}
-        </div>
-    )
+    const shouldRenderElement = sport && contest && site;
+
+    if (shouldRenderElement) {
+        return (
+            <div style={{display: 'flex', margin: '2%'}}>
+                <button style={{marginTop: '10px'}}
+                        onClick={() => handleGenerateOptimalLineup(props.state, props.setState)}>Optimize
+                    Lineup</button>
+                <button style={{marginTop: '10px'}}
+                        onClick={() => handleClearLineup(props.state, props.setState)}>Clear Lineup</button>
+            </div>
+        )
+    } else
+        return null
 };

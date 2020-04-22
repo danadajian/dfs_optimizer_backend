@@ -7,7 +7,8 @@ export const SiteSection = (props: {
     setState: (state: State) => void
 }) => {
     return (
-        <div style={{display: 'flex'}}>
+        <div>
+            <h3>Choose a site:</h3>
             {
                 ['Fanduel', 'DraftKings'].map((site: string, index: number) => {
                     return <button

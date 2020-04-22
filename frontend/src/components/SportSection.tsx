@@ -28,5 +28,5 @@ export const SportSection = (props: {
             </div>
         );
     } else
-        return null;
+        return null
 };

@@ -19,5 +19,5 @@ export const DateSection = (props: {
             </div>
         );
     } else
-        return null;
+        return null
 };

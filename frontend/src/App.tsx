@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import './App.css'
+import './css/App.css'
 import {SiteSection} from "./components/SiteSection";
 import {DateSection} from "./components/DateSection";
 import {SportSection} from "./components/SportSection";
@@ -18,7 +18,6 @@ const App = () => {
         <div>
             <h1 className={"App-header"}>DFS Optimizer</h1>
             <div className={"Dfs-sport"}>
-                <h3>Choose a site:</h3>
                 <SiteSection state={state} setState={setState}/>
                 <DateSection state={state} setState={setState}/>
                 <SportSection state={state} setState={setState}/>

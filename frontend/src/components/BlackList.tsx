@@ -16,18 +16,24 @@ const Player = (props: playerProps) =>
 export const BlackList = (props: {
     blackList: number[],
     playerPool: lineupAttributes[]
-}) =>
-    <table style={{borderCollapse: 'collapse'}} className={'Dfs-grid'}>
-        <tbody>
-        <tr style={{backgroundColor: 'indianred'}}>
-            <th>Player</th>
-        </tr>
-        {props.blackList.map(
-            (playerId) => {
-                return (
-                    <Player player={props.playerPool.filter(player => player.playerId === playerId)[0]}/>
-                )
-            }
-        )}
-        </tbody>
-    </table>;
+}) => {
+    return (
+        <div className={"Blacklist"}>
+            <h2 className={"Dfs-header"}>Blacklist</h2>
+            <table style={{borderCollapse: 'collapse'}} className={'Dfs-grid'}>
+                <tbody>
+                <tr style={{backgroundColor: 'indianred'}}>
+                    <th>Player</th>
+                </tr>
+                {props.blackList.map(
+                    (playerId) => {
+                        return (
+                            <Player player={props.playerPool.filter(player => player.playerId === playerId)[0]}/>
+                        )
+                    }
+                )}
+                </tbody>
+            </table>
+        </div>
+    )
+};

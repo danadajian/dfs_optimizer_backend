@@ -10,6 +10,7 @@ export const INITIAL_STATE: State = {
     sport: '',
     contest: '',
     loadingText: '',
+    searchText: '',
     playerPool: [],
     filteredPool: [],
     whiteList: [],

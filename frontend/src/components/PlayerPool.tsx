@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {getOrdinalString} from "../resources/getOrdinalString/getOrdinalString";
 import {useState} from "react";
-import {playerAttributes} from "../PlayerAttributes";
+import {playerPoolAttributes} from "../LineupAttributes";
 
 const plus = require("../icons/plus.ico") as any;
 const minus = require("../icons/minus.ico") as any;
@@ -9,63 +9,69 @@ const up = require("../icons/up.svg") as any;
 const down = require("../icons/down.svg") as any;
 
 interface playerProps {
-    player: playerAttributes,
+    player: playerPoolAttributes,
     onPlusClick: () => void,
     onMinusClick: () => void,
     whiteList: number[],
     blackList: number[],
     salarySum: number,
-    cap: number
+    salaryCap: number
 }
 
-const Player = (props: playerProps) =>
-    <tr style={{
-        backgroundColor: (props.whiteList.includes(props.player.playerId)) ? 'lightgreen' :
-            (props.blackList.includes(props.player.playerId)) ? 'indianred' : 'white'
-    }}>
-        <td>
-            <img src={plus} alt={"add"} onClick={props.onPlusClick} style={{height: '3vmin'}}/>
-        </td>
-        <td>
-            <img src={minus} alt={"remove"} onClick={props.onMinusClick} style={{height: '3vmin'}}/>
-        </td>
-        <td>
-            <tr style={{fontWeight: 'bold'}}>
-                {props.player.name} <b style={{color: 'red'}}>{props.player.status}</b>
-            </tr>
-            <tr>{props.player.team} {props.player.position}</tr>
-        </td>
-        <td>{props.player.projection.toFixed(1)}</td>
-        <td style={{color: (props.salarySum + props.player.salary > props.cap) ? 'red' : 'black'}}>
-            ${props.player.salary.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
-        </td>
-        <td>
-            ${(props.player.salary / props.player.projection).toFixed(0)
-            .toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
-        </td>
-        <td>
-            {props.player.opponent + ' '}
-            <b style={{
-                'color': props.player.opponentRank < 9 ?
-                    'red' : props.player.opponentRank > 22 ? 'green' : 'black'
-            }}>
-                {getOrdinalString(props.player.opponentRank)}
-            </b>
-        </td>
-        <td>{props.player.spread}</td>
-        <td>{props.player.overUnder}</td>
-        <td>{props.player.gameDate}</td>
-    </tr>;
+const Player = (props: playerProps) => {
+    const {playerId, name, status, team, position, projection, salary, opponentRank, opponent, spread, overUnder, gameDate} = props.player;
+    return (
+        <tr style={{
+            backgroundColor: (props.whiteList.includes(playerId)) ? 'lightgreen' :
+                (props.blackList.includes(playerId)) ? 'indianred' : 'white'
+        }}>
+            <td>
+                <img src={plus} alt={"add"} onClick={props.onPlusClick} style={{height: '3vmin'}}/>
+            </td>
+            <td>
+                <img src={minus} alt={"remove"} onClick={props.onMinusClick} style={{height: '3vmin'}}/>
+            </td>
+            <td>
+                <tr style={{fontWeight: 'bold'}}>
+                    {name} <b style={{color: 'red'}}>{status}</b>
+                </tr>
+                <tr>{team} {position}</tr>
+            </td>
+            <td>{projection.toFixed(1)}</td>
+            <td style={{color: (props.salarySum + salary > props.salaryCap) ? 'red' : 'black'}}>
+                ${salary.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+            </td>
+            <td>
+                ${(salary / projection)
+                .toFixed(0)
+                .toString()
+                .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+            </td>
+            <td>
+                {opponent + ' '}
+                <b style={{
+                    'color': opponentRank < 9 ?
+                        'red' : opponentRank > 22 ? 'green' : 'black'
+                }}>
+                    {getOrdinalString(opponentRank)}
+                </b>
+            </td>
+            <td>{spread}</td>
+            <td>{overUnder}</td>
+            <td>{gameDate}</td>
+        </tr>
+    )
+};
 
 export const PlayerPool = (props: {
-    playerList: playerAttributes[],
-    filterList: playerAttributes[],
+    playerList: playerPoolAttributes[],
+    filterList: playerPoolAttributes[],
     addPlayerFunction: (index: number) => void,
     blackListFunction: (index: number) => void,
     whiteList: number[],
     blackList: number[],
     salarySum: number,
-    cap: number
+    salaryCap: number
 }) => {
 
     const [sortAttribute, setSortAttribute] = useState('salary');
@@ -116,7 +122,7 @@ export const PlayerPool = (props: {
             </tr>
             </thead>
             <tbody>
-            {props.playerList.sort((a: playerAttributes, b: playerAttributes) => {
+            {props.playerList.sort((a: playerPoolAttributes, b: playerPoolAttributes) => {
                 return (sortAttribute === 'pricePerPoint') ?
                     sortSign * (b.salary / b.projection - a.salary / a.projection) :
                     // @ts-ignore
@@ -132,7 +138,7 @@ export const PlayerPool = (props: {
                                     whiteList={props.whiteList}
                                     blackList={props.blackList}
                                     salarySum={props.salarySum}
-                                    cap={props.cap}
+                                    salaryCap={props.salaryCap}
                             />
                         )
                     } else return null;

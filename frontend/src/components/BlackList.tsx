@@ -1,20 +1,8 @@
 import * as React from 'react';
-
-interface playerAttributes {
-    playerId: number,
-    position: string,
-    displayPosition: string,
-    team: string,
-    name: string,
-    projection: number,
-    salary: number,
-    opponent: string,
-    opponentRank: number,
-    gameDate: string
-}
+import {lineupAttributes} from "../LineupAttributes";
 
 interface playerProps {
-    player: playerAttributes
+    player: lineupAttributes
 }
 
 const Player = (props: playerProps) =>
@@ -27,7 +15,7 @@ const Player = (props: playerProps) =>
 
 export const BlackList = (props: {
     blackList: number[],
-    playerPool: playerAttributes[]
+    playerPool: lineupAttributes[]
 }) =>
     <table style={{borderCollapse: 'collapse'}} className={'Dfs-grid'}>
         <tbody>

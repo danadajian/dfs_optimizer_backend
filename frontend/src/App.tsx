@@ -10,7 +10,7 @@ import {INITIAL_STATE} from "./constants";
 import './env'
 import {handleContestChange} from "./handleContestChange";
 import {handleGenerateOptimalLineup} from "./handleGenerateOptimalLineup";
-import {loadAllDataAndGetNewState} from "./handleSportChange";
+import {collectDataAndGetNewState} from "./handleSportChange";
 
 const App = () => {
 
@@ -20,33 +20,19 @@ const App = () => {
 
     const handleSiteChange = (site: string) => {
         setState({
-            ...state,
+            ...INITIAL_STATE,
             site,
-            sport: '',
-            contest: '',
-            contests: [],
-            playerPool: [],
-            filteredPool: [],
-            whiteList: [],
-            blackList: [],
-            lineup: []
         });
     };
 
-    const handleSportChange = async (sport: string) => {
-        await setState({
-            ...state,
-            isLoading: true,
-            loadingText: `${state.site} data`,
-            sport,
-            contest: '',
-            lineup: []
-        });
-        const newState = await loadAllDataAndGetNewState(state.site, sport, state.date);
-        await setState({
-            ...state,
-            ...newState
-        });
+    const handleSportChange = (sport: string) => {
+        return collectDataAndGetNewState(sport, state, setState)
+            .then(newState => {
+                setState({
+                    ...state,
+                    ...newState
+                })
+            })
     };
 
     const handleDateChange = (date: Date) => {
@@ -57,10 +43,9 @@ const App = () => {
     };
 
     const handleClearLineup = () => {
-        const emptyLineup: any = createEmptyLineup(lineupPositions, displayMatrix);
         setState({
             ...state,
-            lineup: emptyLineup,
+            lineup: createEmptyLineup(lineupPositions, displayMatrix),
             whiteList: [],
             blackList: []
         });

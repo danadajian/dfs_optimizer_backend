@@ -1,4 +1,4 @@
-import {playerAttributes} from "./PlayerAttributes";
+import {lineupAttributes, playerPoolAttributes} from "./LineupAttributes";
 
 export interface State {
     isLoading: boolean,
@@ -12,9 +12,9 @@ export interface State {
     sport: string,
     contest: string,
     loadingText: string,
-    playerPool: playerAttributes[],
-    filteredPool: playerAttributes[],
-    lineup: playerAttributes[],
+    playerPool: playerPoolAttributes[],
+    filteredPool: playerPoolAttributes[],
+    lineup: lineupAttributes[],
     lineupPositions: string[],
     displayMatrix: string[],
     dfsData: any,

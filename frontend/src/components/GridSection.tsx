@@ -18,8 +18,10 @@ export const GridSection: any = (props: {
     state: State,
     setState: (state: State) => void
 }) => {
-    const {isLoading, isOptimizing, site, sport, contest, playerPool, lineup, whiteList, blackList, lineupPositions,
-        displayMatrix, loadingText, salaryCap} = props.state;
+    const {
+        isLoading, isOptimizing, site, sport, contest, playerPool, lineup, whiteList, blackList, lineupPositions,
+        displayMatrix, loadingText, salaryCap
+    } = props.state;
 
     const [searchText, setSearchText] = useState('');
     const [filteredPool, setFilteredPool] = useState(props.state.filteredPool);
@@ -75,7 +77,7 @@ export const GridSection: any = (props: {
                         <h2 className={"Dfs-header"}>Lineup</h2>
                         <Lineup dfsLineup={lineup} removePlayerFunction={handleRemovePlayer} site={site}
                                 whiteList={whiteList} pointSum={sumAttribute(lineup, 'projection')}
-                                salarySum={sumAttribute(lineup, 'salary')} cap={salaryCap}/>
+                                salarySum={sumAttribute(lineup, 'salary')} salaryCap={salaryCap}/>
                     </div>
                     <div className={"Player-pool"}>
                         <h2 className={"Dfs-header"}>Players</h2>
@@ -84,7 +86,8 @@ export const GridSection: any = (props: {
                             <img src={search} style={{height: '3vmin', position: 'absolute'}} alt="search"/>}
                             <input type="text" style={{height: '25px', width: '90%'}}
                                    value={searchText}
-                                   onChange={(event) => handleFilter('name', event.target.value)}>{null}</input>
+                                   onChange={(event) =>
+                                       handleFilter('name', event.target.value)}>{null}</input>
                         </div>
                         <div style={{display: 'flex'}}>
                             <button onClick={() => handleFilter('position', 'All')}>All</button>
@@ -92,7 +95,8 @@ export const GridSection: any = (props: {
                                 getSetFromArray(playerPool.map((player) => player.position))
                                     .map((position) =>
                                         <button
-                                            onClick={() => handleFilter('position', position)}>{position}</button>
+                                            onClick={() =>
+                                                handleFilter('position', position)}>{position}</button>
                                     )
                             }
                             <select onChange={(event) => handleFilter('team', event.target.value)}>
@@ -108,7 +112,7 @@ export const GridSection: any = (props: {
                             <PlayerPool playerList={playerPool} filterList={filteredPool}
                                         addPlayerFunction={handleAddPlayer} blackListFunction={handleToggleBlackList}
                                         whiteList={whiteList} blackList={blackList}
-                                        salarySum={sumAttribute(lineup, 'salary')} cap={salaryCap}/>
+                                        salarySum={sumAttribute(lineup, 'salary')} salaryCap={salaryCap}/>
                         </div>
                     </div>
                     <div className={"Blacklist"}>

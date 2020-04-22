@@ -1,77 +1,64 @@
 import * as React from 'react';
-
-interface playerAttributes {
-    playerId: number,
-    position: string,
-    displayPosition: string,
-    team: string,
-    name: string,
-    status: string,
-    projection: number,
-    salary: number,
-    opponent: string,
-    opponentRank: number,
-    gameDate: string
-}
+import {lineupAttributes} from "../LineupAttributes";
 
 interface playerProps {
-    player: playerAttributes,
+    player: lineupAttributes,
     onRemove: () => void,
     whiteList: number[],
     site: string
 }
 
 const Player = (props: playerProps) => {
+    const {playerId, name, status, team, position, projection, salary, displayPosition, opponentRank, opponent} = props.player;
     let roundedProjection;
     let formattedSalary;
-    if (props.player.salary) {
-        roundedProjection = parseFloat(props.player.projection.toFixed(1));
-        let salary = props.player.salary;
-        let isCaptain = props.player.displayPosition.includes('x Points)');
+    if (salary) {
+        let finalSalary = salary;
+        roundedProjection = projection && parseFloat(projection.toFixed(1));
+        let isCaptain = displayPosition.includes('x Points)');
         if (isCaptain && props.site === 'DraftKings') {
-            let multiplier = (parseFloat(props.player.displayPosition.split('(')[1].substring(0, 3)));
-            salary *= multiplier;
+            let multiplier = (parseFloat(displayPosition.split('(')[1].substring(0, 3)));
+            finalSalary *= multiplier;
         }
-        formattedSalary = '$'.concat(salary.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","))
+        formattedSalary = '$'.concat(finalSalary.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","))
     }
 
     return (
-        <tr style={{
-            backgroundColor: (
-                props.player.name && props.whiteList.includes(props.player.playerId)) ? 'lightgreen' : 'white'
-        }}>
+        <tr style={{backgroundColor: name && props.whiteList.includes(playerId) ? 'lightgreen' : 'white'}}>
             <td>
-                {props.player.position && props.player.name &&
+                {position && name &&
                 <button onClick={props.onRemove} style={{fontWeight: 'bold'}}>X</button>}
             </td>
-            <td>{props.player.displayPosition}</td>
+            <td>{displayPosition}</td>
             <td>
                 <tr>
-                    <b>{props.player.name + ' '}</b>
-                    <b style={{color: 'red'}}>{props.player.status}</b>
+                    <b>{name + ' '}</b>
+                    <b style={{color: 'red'}}>{status}</b>
                 </tr>
                 <tr>
-                    <b style={{color: 'blue'}}>{props.player.team + ' '}</b>
-                    <text style={{
-                        'color': props.player.opponentRank < 9 ?
-                            'red' : props.player.opponentRank > 22 ? 'green' : 'black'
-                    }}>{props.player.opponent}</text>
+                    <b style={{color: 'blue'}}>{team + ' '}</b>
+                    <text
+                        style={{'color': opponentRank && opponentRank < 9 ? 'red' :
+                                opponentRank && opponentRank > 22 ? 'green' :
+                                    'black'}}>
+                        {opponent}
+                    </text>
                 </tr>
             </td>
-            <td style={{fontWeight: (props.player.position) ? 'normal' : 'bold'}}>{roundedProjection}</td>
-            <td style={{fontWeight: (props.player.position) ? 'normal' : 'bold'}}>{formattedSalary}</td>
+            <td style={{fontWeight: (position) ? 'normal' : 'bold'}}>{roundedProjection}</td>
+            <td style={{fontWeight: (position) ? 'normal' : 'bold'}}>{formattedSalary}</td>
         </tr>
     );
 };
 
 export const Lineup = (props: {
-    dfsLineup: playerAttributes[],
+    dfsLineup: lineupAttributes[],
     removePlayerFunction: (playerIndex: number) => void,
     site: string,
     whiteList: number[],
     pointSum: number,
     salarySum: number,
-    cap: number
+    salaryCap: number
 }) =>
     <table style={{borderCollapse: "collapse"}} className={'Dfs-grid'}>
         <tbody>
@@ -96,7 +83,7 @@ export const Lineup = (props: {
             <td>{null}</td>
             <td>Total</td>
             <td>{props.pointSum.toFixed(1)}</td>
-            <td style={{color: (props.salarySum > props.cap) ? 'indianred' : 'black'}}>
+            <td style={{color: (props.salarySum > props.salaryCap) ? 'indianred' : 'black'}}>
                 {'$'.concat(props.salarySum.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","))}
             </td>
         </tr>

@@ -41,13 +41,13 @@ public class MapAdder {
     public static void addProjectionsToMap(Map<Integer, Map<String, Object>> projectionsData, JSONObject playerObject,
                                      Map<String, Object> statMap, int playerId) {
         try {
-            statMap.put("dkProjection", 0);
-            statMap.put("fdProjection", 0);
+            statMap.put("DraftKingsProjection", 0);
+            statMap.put("FanduelProjection", 0);
             JSONArray fantasyProjections = playerObject.getJSONArray("fantasyProjections");
             for (Object object : fantasyProjections) {
                 JSONObject projectionObject = (JSONObject) object;
-                String site = projectionObject.getString("name").contains("FanDuel") ? "fd" :
-                        projectionObject.getString("name").contains("DraftKings") ? "dk": "";
+                String site = projectionObject.getString("name").contains("FanDuel") ? "Fanduel" :
+                        projectionObject.getString("name").contains("DraftKings") ? "DraftKings": "";
                 if (site.length() > 0)
                     statMap.put(site + "Projection", Double.parseDouble(projectionObject.getString("points")));
             }

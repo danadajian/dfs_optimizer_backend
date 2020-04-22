@@ -1,7 +1,7 @@
 import {INJURY_ABBREVIATIONS, TEAM_ABBREVIATIONS} from "../../constants";
 
-export const combineDfsAndProjectionsData = (dfsPlayers: any[], projectionsData: any, site: string, opponentRanks: any,
-                                             injuries: any, playerStatuses: any) => {
+export const combineDfsAndProjectionsData = (dfsPlayers: any[], projectionsData: any, site: string,
+                                                   opponentRanks: any, injuries: any, playerStatuses: any) => {
     let combinedData: any[] = [];
     dfsPlayers.forEach((player: any) => {
         if (!player.playerId)

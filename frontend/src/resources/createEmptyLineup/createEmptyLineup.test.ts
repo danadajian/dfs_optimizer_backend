@@ -8,101 +8,47 @@ describe('gets empty lineup from matrix', () => {
             {
                 'playerId': 0,
                 'position': 'QB',
-                'displayPosition': 'QB',
-                'team': '',
-                'name': '',
-                'projection': '',
-                'salary': '',
-                'opponent': '',
-                'gameDate': ''
+                'displayPosition': 'QB'
             },
             {
                 'playerId': 0,
                 'position': 'RB',
-                'displayPosition': 'RB',
-                'team': '',
-                'name': '',
-                'projection': '',
-                'salary': '',
-                'opponent': '',
-                'gameDate': ''
+                'displayPosition': 'RB'
             },
             {
                 'playerId': 0,
                 'position': 'RB',
-                'displayPosition': 'RB',
-                'team': '',
-                'name': '',
-                'projection': '',
-                'salary': '',
-                'opponent': '',
-                'gameDate': ''
+                'displayPosition': 'RB'
             },
             {
                 'playerId': 0,
                 'position': 'WR',
-                'displayPosition': 'WR',
-                'team': '',
-                'name': '',
-                'projection': '',
-                'salary': '',
-                'opponent': '',
-                'gameDate': ''
+                'displayPosition': 'WR'
             },
             {
                 'playerId': 0,
                 'position': 'WR',
-                'displayPosition': 'WR',
-                'team': '',
-                'name': '',
-                'projection': '',
-                'salary': '',
-                'opponent': '',
-                'gameDate': ''
+                'displayPosition': 'WR'
             },
             {
                 'playerId': 0,
                 'position': 'WR',
-                'displayPosition': 'WR',
-                'team': '',
-                'name': '',
-                'projection': '',
-                'salary': '',
-                'opponent': '',
-                'gameDate': ''
+                'displayPosition': 'WR'
             },
             {
                 'playerId': 0,
                 'position': 'TE',
-                'displayPosition': 'TE',
-                'team': '',
-                'name': '',
-                'projection': '',
-                'salary': '',
-                'opponent': '',
-                'gameDate': ''
+                'displayPosition': 'TE'
             },
             {
                 'playerId': 0,
                 'position': 'RB,WR,TE',
-                'displayPosition': 'FLEX',
-                'team': '',
-                'name': '',
-                'projection': '',
-                'salary': '',
-                'opponent': '',
-                'gameDate': ''
+                'displayPosition': 'FLEX'
             },
             {
                 'playerId': 0,
                 'position': 'D/ST',
-                'displayPosition': 'D/ST',
-                'team': '',
-                'name': '',
-                'projection': '',
-                'salary': '',
-                'opponent': '',
-                'gameDate': ''
+                'displayPosition': 'D/ST'
             }
         ];
         expect(createEmptyLineup(lineupPositions, displayMatrix)).toEqual(expectedJson);

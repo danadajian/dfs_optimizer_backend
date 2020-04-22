@@ -73,16 +73,16 @@ class ProjectionsWithFunctionsTest {
         assertEquals("Thu 8:20PM EST", result.get(366).get("gameDate"));
         assertEquals("-15.0", result.get(366).get("spread"));
         assertEquals(44.5, result.get(366).get("overUnder"));
-        assertEquals(25.4156364974765640884448627852073774696, result.get(877745).get("dkProjection"));
-        assertEquals(24.1805531418601748497370736365420855337, result.get(877745).get("fdProjection"));
+        assertEquals(25.4156364974765640884448627852073774696, result.get(877745).get("DraftKingsProjection"));
+        assertEquals(24.1805531418601748497370736365420855337, result.get(877745).get("FanduelProjection"));
         assertEquals("Jets D/ST", result.get(352).get("name"));
         assertEquals("NYJ", result.get(352).get("team"));
         assertEquals("@ Bal", result.get(352).get("opponent"));
         assertEquals("Thu 8:20PM EST", result.get(352).get("gameDate"));
         assertEquals("+15.0", result.get(352).get("spread"));
         assertEquals(44.5, result.get(352).get("overUnder"));
-        assertEquals(3.41, result.get(352).get("dkProjection"));
-        assertEquals(3.41, result.get(352).get("fdProjection"));
+        assertEquals(3.41, result.get(352).get("DraftKingsProjection"));
+        assertEquals(3.41, result.get(352).get("FanduelProjection"));
     }
 
     @Test
@@ -113,16 +113,16 @@ class ProjectionsWithFunctionsTest {
         assertEquals("Tue 7:00PM EST", result.get(732552).get("gameDate"));
         assertEquals("-1.5", result.get(732552).get("spread"));
         assertEquals(6.5, result.get(732552).get("overUnder"));
-        assertEquals(1.65178, result.get(732552).get("dkProjection"));
-        assertEquals(5.73402, result.get(732552).get("fdProjection"));
+        assertEquals(1.65178, result.get(732552).get("DraftKingsProjection"));
+        assertEquals(5.73402, result.get(732552).get("FanduelProjection"));
         assertEquals("Christian Folin", result.get(824587).get("name"));
         assertEquals("Mon", result.get(824587).get("team"));
         assertEquals("@ Pit", result.get(824587).get("opponent"));
         assertEquals("Tue 7:00PM EST", result.get(824587).get("gameDate"));
         assertEquals("+1.5", result.get(824587).get("spread"));
         assertEquals(6.5, result.get(824587).get("overUnder"));
-        assertEquals(0.0, result.get(824587).get("dkProjection"));
-        assertEquals(0.0, result.get(824587).get("fdProjection"));
+        assertEquals(0.0, result.get(824587).get("DraftKingsProjection"));
+        assertEquals(0.0, result.get(824587).get("FanduelProjection"));
     }
 
     @Test
@@ -153,15 +153,15 @@ class ProjectionsWithFunctionsTest {
         assertEquals("Tue 8:00PM EST", result.get(280587).get("gameDate"));
         assertEquals("-4.0", result.get(280587).get("spread"));
         assertEquals(207.0, result.get(280587).get("overUnder"));
-        assertEquals(29.65199, result.get(280587).get("dkProjection"));
-        assertEquals(30.02133, result.get(280587).get("fdProjection"));
+        assertEquals(29.65199, result.get(280587).get("DraftKingsProjection"));
+        assertEquals(30.02133, result.get(280587).get("FanduelProjection"));
         assertEquals("Paul Millsap", result.get(237675).get("name"));
         assertEquals("Den", result.get(237675).get("team"));
         assertEquals("@ Phi", result.get(237675).get("opponent"));
         assertEquals("Tue 8:00PM EST", result.get(237675).get("gameDate"));
         assertEquals("+4.0", result.get(237675).get("spread"));
         assertEquals(207.0, result.get(237675).get("overUnder"));
-        assertEquals(0, result.get(237675).get("dkProjection"));
-        assertEquals(21.28275, result.get(237675).get("fdProjection"));
+        assertEquals(0, result.get(237675).get("DraftKingsProjection"));
+        assertEquals(21.28275, result.get(237675).get("FanduelProjection"));
     }
 }

@@ -12,7 +12,7 @@ export const PlayerPoolGrid: any = (props: {
     const {playerPool, filteredPool, lineup, whiteList, blackList, lineupPositions, displayMatrix} = props.state;
 
     const [sortAttribute, setSortAttribute] = useState('salary');
-    const [sortSign, setSortSign] = useState(1);
+    const [isAscendingSort, setSortSign] = useState(false);
 
     const handleAddPlayer = (playerIndex: number) => {
         const {newLineup, newWhiteList, newBlackList}: any = addPlayerToLineup(playerIndex, playerPool, lineup, whiteList, blackList);
@@ -43,14 +43,16 @@ export const PlayerPoolGrid: any = (props: {
         <div className={"Players"}>
             <table style={{borderCollapse: "collapse"}} className={'Dfs-grid'}>
                 <PlayerPoolGridHeader sortAttribute={sortAttribute} setSortAttribute={setSortAttribute}
-                                      sortSign={sortSign} setSortSign={setSortSign}/>
+                                      isAscendingSort={isAscendingSort} setSortSign={setSortSign}/>
                 <tbody>
                 {playerPool.sort((a: playerPoolAttributes, b: playerPoolAttributes) => {
-                    return (sortAttribute === 'pricePerPoint') ?
-                        sortSign * (b.salary / b.projection - a.salary / a.projection) :
-                        // @ts-ignore
-                        props.sortSign * (b[props.sortAttribute] - a[props.sortAttribute])
-                }).map((player, index) => {
+                    const sortMultiplier = isAscendingSort ? 1 : -1;
+                    if (sortAttribute === 'pricePerPoint') {
+                        return sortMultiplier * (a.salary / a.projection - b.salary / b.projection)
+                    } else {
+                        return sortMultiplier * (a[sortAttribute] - b[sortAttribute])
+                    }
+                }).map((player: playerPoolAttributes, index: number) => {
                         if (filteredPool.includes(player)) {
                             return (
                                 <PlayerPoolPlayer key={index}

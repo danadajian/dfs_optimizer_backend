@@ -62,4 +62,6 @@ export interface playerPoolAttributes {
     opponentRank: number,
     spread: string,
     overUnder: number
+
+    [key: string]: any
 }

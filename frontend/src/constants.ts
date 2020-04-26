@@ -20,7 +20,7 @@ export const INITIAL_STATE: State = {
     displayMatrix: [],
     contests: [],
     playerStatuses: [],
-    dfsData: {},
+    dfsData: [],
     injuries: {},
     lineupRestrictions: {},
     opponentRanks: {},

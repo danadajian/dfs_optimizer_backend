@@ -1,4 +1,4 @@
-import {combineDfsAndProjectionsData} from './combineDfsAndProjectionsData'
+import {getPlayerPool} from './getPlayerPool'
 
 describe('combineDfsAndProjectionsData', () => {
     let result: any;
@@ -23,7 +23,7 @@ describe('combineDfsAndProjectionsData', () => {
     const injuries = {"LeSean McCoy": "Questionable"};
 
     beforeEach(() => {
-        result = combineDfsAndProjectionsData(dfsPlayers, projectionsData, site, opponentRanks, injuries, [])
+        result = getPlayerPool(dfsPlayers, projectionsData, site, opponentRanks, injuries, [])
     });
 
     it('combines data correctly', () => {

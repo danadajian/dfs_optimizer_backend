@@ -1,8 +1,8 @@
 import {INJURY_ABBREVIATIONS, TEAM_ABBREVIATIONS} from "../../constants";
 
-export const combineDfsAndProjectionsData = (dfsPlayers: any[], projectionsData: any, site: string,
-                                                   opponentRanks: any, injuries: any, playerStatuses: any) => {
-    let combinedData: any[] = [];
+export const getPlayerPool = (dfsPlayers: any[], projectionsData: any, site: string,
+                              opponentRanks: any, injuries: any, playerStatuses: any) => {
+    let playerPool: any[] = [];
     dfsPlayers.forEach((player: any) => {
         if (!player.playerId)
             player.playerId = parseInt(
@@ -30,8 +30,8 @@ export const combineDfsAndProjectionsData = (dfsPlayers: any[], projectionsData:
             let injuryStatus = injuries[playerData.name] ? injuries[playerData.name].toLowerCase() : '';
             if (playerStatus || injuryStatus)
                 player.status = `${INJURY_ABBREVIATIONS[injuryStatus] || ''}${playerStatus ? ' ' : ''}${playerStatus}`;
-            combinedData.push(player);
+            playerPool.push(player);
         }
     });
-    return combinedData;
+    return playerPool;
 };

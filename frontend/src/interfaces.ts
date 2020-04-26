@@ -16,7 +16,7 @@ export interface State {
     lineup: lineupAttributes[],
     lineupPositions: string[],
     displayMatrix: string[],
-    dfsData: any,
+    dfsData: any[],
     injuries: any,
     lineupRestrictions: any,
     opponentRanks: any,

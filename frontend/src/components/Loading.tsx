@@ -20,7 +20,7 @@ export const Loading = (props: {
     return (
         <div className="Loading">
             <div><p className="Loading-text">{'Loading ' + props.loadingText + ' . . .'}</p></div>
-            <div><img src={sportImageMap[props.sport] || loading} className="Loading-logo" alt="Sport Image"/></div>
+            <div><img src={sportImageMap[props.sport] || loading} className="Loading-logo" alt="Loading Logo"/></div>
         </div>
     )
 }

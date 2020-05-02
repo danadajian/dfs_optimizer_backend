@@ -18,7 +18,7 @@ export const Optimizing = (props: {
     return (
         <div className="Loading">
             <div><p className="Optimizing-text">Optimizing . . .</p></div>
-            <div><img src={sportImageMap[props.sport]} className="Optimizing-logo" alt="Optimizing Image"/></div>
+            <div><img src={sportImageMap[props.sport]} className="Optimizing-logo" alt="Optimizing Logo"/></div>
         </div>
     )
 };

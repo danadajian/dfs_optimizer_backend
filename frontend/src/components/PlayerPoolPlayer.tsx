@@ -2,6 +2,7 @@ import React from "react";
 import {playerPoolAttributes, State} from "../interfaces";
 import {getOrdinalString} from "../helpers/getOrdinalString/getOrdinalString";
 import {sumAttribute} from "../helpers/sumAttribute/sumAttribute";
+import {getOpponentRankStyle} from "./LineupPlayer";
 
 const plusIcon = require("../icons/plus.ico") as any;
 const minusIcon = require("../icons/minus.ico") as any;
@@ -47,10 +48,7 @@ export const PlayerPoolPlayer = (props: {
             </td>
             <td>
                 {opponent + ' '}
-                <b style={{
-                    'color': opponentRank < 9 ?
-                        'red' : opponentRank > 22 ? 'green' : 'black'
-                }}>
+                <b style={getOpponentRankStyle(opponentRank)}>
                     {getOrdinalString(opponentRank)}
                 </b>
             </td>

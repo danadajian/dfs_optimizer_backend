@@ -1,5 +1,6 @@
 import React from "react";
 import {handleSiteChange} from "../handlers/handleSiteChange";
+import {getButtonStyle} from "../helpers/getButtonStyle/getButtonStyle";
 import {State} from "../interfaces";
 
 export const SiteSection = (props: {
@@ -13,7 +14,7 @@ export const SiteSection = (props: {
                 ['Fanduel', 'DraftKings'].map((site: string, index: number) => {
                     return <button
                         key={index}
-                        style={{backgroundColor: (props.state.site === site) ? 'dodgerblue' : 'white'}}
+                        style={getButtonStyle(props.state.site, site)}
                         onClick={() => handleSiteChange(site, props.setState)}>{site}
                     </button>;
                 })

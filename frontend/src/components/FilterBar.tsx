@@ -1,4 +1,5 @@
 import React from "react";
+import '../css/FilterBar.css'
 import {playerPoolAttributes} from "../interfaces";
 import {getSetFromArray} from "../helpers/getSetFromArray/getSetFromArray";
 
@@ -7,7 +8,7 @@ export const FilterBar: any = (props: {
     handleFilter: (attribute: string, value: string) => void
 }) => {
     return (
-        <div style={{display: 'flex'}}>
+        <div className="Filter-bar">
             <button onClick={() => props.handleFilter('position', 'All')}>All</button>
             {
                 getSetFromArray(props.playerPool.map((player) => player.position))

@@ -12,11 +12,7 @@ export const CsvSection = (props: {
     ];
     const shouldRenderElement = lineup.length > 0 && lineup.every((player: any) => player.name.length > 0);
 
-    if (shouldRenderElement) {
-        return (
-            <CSVLink data={csvData} filename={site + '-' + sport + '-lineup.csv'}>Download Lineup CSV</CSVLink>
+    const element = <CSVLink data={csvData} filename={site + '-' + sport + '-lineup.csv'}>Download Lineup CSV</CSVLink>
 
-        );
-    } else
-        return null
+    return <div>{shouldRenderElement && element}</div>
 };

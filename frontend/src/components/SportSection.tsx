@@ -1,7 +1,9 @@
 import React from "react";
+import '../css/SportSection.css'
 import {SUPPORTED_SPORTS} from "../constants";
 import {State} from "../interfaces";
 import {handleSportChange} from "../handlers/handleSportChange";
+import {getButtonStyle} from "../helpers/getButtonStyle/getButtonStyle";
 
 export const SportSection = (props: {
     state: State,
@@ -10,23 +12,21 @@ export const SportSection = (props: {
     const {isLoading, site, sport} = props.state;
     const shouldRenderElement = !isLoading && site;
 
-    if (shouldRenderElement) {
-        return (
-            <div>
-                <h3>Choose a sport:</h3>
-                <div style={{display: 'flex'}}>
-                    {SUPPORTED_SPORTS.map(
-                        supportedSport =>
-                            <button
-                                key={supportedSport}
-                                style={{backgroundColor: (sport === supportedSport) ? 'dodgerblue' : 'white'}}
-                                onClick={() => handleSportChange(supportedSport, props.state, props.setState)}>
-                                {supportedSport.toUpperCase()}
-                            </button>
-                    )}
-                </div>
+    const element =
+        <div>
+            <h3>Choose a sport:</h3>
+            <div className="Sport-section">
+                {SUPPORTED_SPORTS.map(
+                    supportedSport =>
+                        <button
+                            key={supportedSport}
+                            style={getButtonStyle(sport, supportedSport)}
+                            onClick={() => handleSportChange(supportedSport, props.state, props.setState)}>
+                            {supportedSport.toUpperCase()}
+                        </button>
+                )}
             </div>
-        );
-    } else
-        return null
+        </div>
+
+    return <div>{shouldRenderElement && element}</div>
 };

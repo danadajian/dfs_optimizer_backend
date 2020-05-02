@@ -1,4 +1,5 @@
 import React from "react";
+import '../css/GridSection.css'
 import {Loading} from "./Loading";
 import {Optimizing} from "./Optimizing";
 import {BlackList} from "./BlackList";
@@ -17,14 +18,13 @@ export const GridSection: any = (props: {
         return <Loading sport={sport} loadingText={loadingText}/>
     } else if (isOptimizing) {
         return <Optimizing sport={sport}/>
-    } else if (shouldRenderElement) {
-        return (
-            <div className={"Dfs-grid-section"}>
+    } else {
+        const element =
+            <div className="Grid-section">
                 <Lineup state={props.state} setState={props.setState}/>
                 <PlayerPool state={props.state} setState={props.setState}/>
                 <BlackList blackList={blackList} playerPool={playerPool}/>
             </div>
-        )
-    } else
-        return null
+        return <div>{shouldRenderElement && element}</div>
+    }
 };

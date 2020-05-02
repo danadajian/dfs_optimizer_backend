@@ -1,5 +1,7 @@
-import {lineupPlayerProps} from "../interfaces";
 import * as React from "react";
+import '../css/LineupPlayer.css'
+import {lineupPlayerProps} from "../interfaces";
+import {getFormattedSalary} from "./Lineup";
 
 export const LineupPlayer = (props: lineupPlayerProps) => {
     const {playerId, name, status, team, position, projection, salary, displayPosition, opponentRank, opponent} = props.player;
@@ -13,14 +15,14 @@ export const LineupPlayer = (props: lineupPlayerProps) => {
             let multiplier = (parseFloat(displayPosition.split('(')[1].substring(0, 3)));
             finalSalary *= multiplier;
         }
-        formattedSalary = '$'.concat(finalSalary.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","))
+        formattedSalary = getFormattedSalary(finalSalary)
     }
 
     return (
-        <tr style={{backgroundColor: name && props.whiteList.includes(playerId) ? 'lightgreen' : 'white'}}>
+        <tr style={getPlayerRowStyle(props.whiteList, playerId)}>
             <td>
                 {position && name &&
-                <button onClick={props.onRemove} style={{fontWeight: 'bold'}}>X</button>}
+                <button className="Remove-button" onClick={props.onRemove}>X</button>}
             </td>
             <td>{displayPosition}</td>
             <td>
@@ -31,17 +33,21 @@ export const LineupPlayer = (props: lineupPlayerProps) => {
                 <tr>
                     <b style={{color: 'blue'}}>{team + ' '}</b>
                     <text
-                        style={{
-                            'color': opponentRank && opponentRank < 9 ? 'red' :
-                                opponentRank && opponentRank > 22 ? 'green' :
-                                    'black'
-                        }}>
+                        style={getOpponentRankStyle(opponentRank!)}>
                         {opponent}
                     </text>
                 </tr>
             </td>
-            <td style={{fontWeight: (position) ? 'normal' : 'bold'}}>{roundedProjection}</td>
-            <td style={{fontWeight: (position) ? 'normal' : 'bold'}}>{formattedSalary}</td>
+            <td style={{fontWeight: position ? 'normal' : 'bold'}}>{roundedProjection}</td>
+            <td style={{fontWeight: position ? 'normal' : 'bold'}}>{formattedSalary}</td>
         </tr>
     );
 };
+
+const getPlayerRowStyle = (whiteList: number[], playerId: number) => ({
+    backgroundColor: whiteList.includes(playerId) ? 'lightgreen' : 'white'
+})
+
+export const getOpponentRankStyle = (opponentRank: number) => ({
+    color: opponentRank < 9 ? 'red' : opponentRank > 22 ? 'green' : 'black'
+})

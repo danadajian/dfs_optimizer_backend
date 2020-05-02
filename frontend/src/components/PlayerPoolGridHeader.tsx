@@ -1,4 +1,5 @@
 import React from "react";
+import '../css/PlayerPoolGridHeader.css'
 
 const upIcon = require("../icons/up.svg") as any;
 const downIcon = require("../icons/down.svg") as any;
@@ -20,33 +21,24 @@ export const PlayerPoolGridHeader = (props: {
 
     return (
         <thead>
-        <tr className={"Dfs-grid-header"}>
+        <tr className="Player-pool-grid-header">
             <th>{}</th>
             <th>{}</th>
             <th>Player</th>
             <th>Projection
                 <img src={isAscendingSort ? upIcon : downIcon} alt={"sort"}
                      onClick={() => sortByAttribute('projection')}
-                     style={{
-                         marginLeft: '1vmin', height: '2vmin',
-                         backgroundColor: sortAttribute === 'projection' ? 'red' : 'white'
-                     }}/>
+                     style={{backgroundColor: sortAttribute === 'projection' ? 'red' : 'white'}}/>
             </th>
             <th>Salary
                 <img src={isAscendingSort ? upIcon : downIcon} alt={"sort"}
                      onClick={() => sortByAttribute('salary')}
-                     style={{
-                         marginLeft: '1vmin', height: '2vmin',
-                         backgroundColor: sortAttribute === 'salary' ? 'red' : 'white'
-                     }}/>
+                     style={{backgroundColor: sortAttribute === 'salary' ? 'red' : 'white'}}/>
             </th>
             <th>$/Point
                 <img src={isAscendingSort ? upIcon : downIcon} alt={"sort"}
                      onClick={() => sortByAttribute('pricePerPoint')}
-                     style={{
-                         marginLeft: '1vmin', height: '2vmin',
-                         backgroundColor: sortAttribute === 'pricePerPoint' ? 'red' : 'white'
-                     }}/>
+                     style={{backgroundColor: sortAttribute === 'pricePerPoint' ? 'red' : 'white'}}/>
             </th>
             <th>Opponent</th>
             <th>Spread</th>

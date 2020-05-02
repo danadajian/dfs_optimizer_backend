@@ -14,129 +14,19 @@ body {
   background-color: white;
 }
 
-.Loading-text {
-  font-size: x-large;
-  font-weight: bold;
-  font-style: oblique;
-  text-align: center;
-  color: white;
-}
-
 .App-header {
   text-align: center;
   color: black;
   padding-top: 30px;
 }
 
-.Blacklist {
-  border-collapse: collapse;
+.App-body {
   display: flex;
   flex-direction: column;
-  overflow: auto;
-  max-width: 25vmin;
-  max-height: 100vmin;
-  padding-left: 2%;
-  padding-right: 2%;
-}
-
-.Player-pool {
-  padding-left: 2%;
-  padding-right: 2%;
-}
-
-.Players {
-  display: flex;
-  flex-direction: column;
-  overflow: auto;
-  width: 90vmin;
-  max-height: 100vmin;
-}
-
-.Lineup {
-  border-collapse: collapse;
-  display: flex;
-  flex-direction: column;
-  overflow: auto;
-  max-width: 70vmin;
-}
-
-.Loading {
-  display: flex;
-  flex-direction: column;
+  justify-content: center;
   align-items: center;
-  justify-content: space-evenly;
-}
-
-.Loading-text {
-  font-size: x-large;
-  font-weight: bold;
-  font-style: oblique;
   text-align: center;
   color: black;
-  padding-bottom: 30%;
-}
-
-.Optimizing-text {
-  font-size: x-large;
-  font-weight: bold;
-  font-style: oblique;
-  text-align: center;
-  color: black;
-  padding-top: 25%;
-}
-
-.App-logo {
-  animation: App-logo-spin infinite 2.5s linear;
-  height: 15vmin;
-  pointer-events: none;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-.App-logo2 {
-  animation: App-logo-fill 2s ease infinite;
-  background: white;
-  height: 20vmin;
-}
-
-@keyframes App-logo-fill {
-  0% {mask-image: linear-gradient(to right, rgba(0, 0, 0, 1) 0%, transparent 0)}
-  5% {mask-image: linear-gradient(to right, rgba(0, 0, 0, 1) 5%, transparent 0)}
-  10% {mask-image: linear-gradient(to right, rgba(0, 0, 0, 1) 10%, transparent 0)}
-  15% {mask-image: linear-gradient(to right, rgba(0, 0, 0, 1) 15%, transparent 0)}
-  20% {mask-image: linear-gradient(to right, rgba(0, 0, 0, 1) 20%, transparent 0)}
-  25% {mask-image: linear-gradient(to right, rgba(0, 0, 0, 1) 25%, transparent 0)}
-  30% {mask-image: linear-gradient(to right, rgba(0, 0, 0, 1) 30%, transparent 0)}
-  35% {mask-image: linear-gradient(to right, rgba(0, 0, 0, 1) 35%, transparent 0)}
-  40% {mask-image: linear-gradient(to right, rgba(0, 0, 0, 1) 40%, transparent 0)}
-  45% {mask-image: linear-gradient(to right, rgba(0, 0, 0, 1) 45%, transparent 0)}
-  50% {mask-image: linear-gradient(to right, rgba(0, 0, 0, 1) 50%, transparent 0)}
-  55% {mask-image: linear-gradient(to right, rgba(0, 0, 0, 1) 55%, transparent 0)}
-  60% {mask-image: linear-gradient(to right, rgba(0, 0, 0, 1) 60%, transparent 0)}
-  65% {mask-image: linear-gradient(to right, rgba(0, 0, 0, 1) 65%, transparent 0)}
-  70% {mask-image: linear-gradient(to right, rgba(0, 0, 0, 1) 70%, transparent 0)}
-  75% {mask-image: linear-gradient(to right, rgba(0, 0, 0, 1) 75%, transparent 0)}
-  80% {mask-image: linear-gradient(to right, rgba(0, 0, 0, 1) 80%, transparent 0)}
-  85% {mask-image: linear-gradient(to right, rgba(0, 0, 0, 1) 85%, transparent 0)}
-  90% {mask-image: linear-gradient(to right, rgba(0, 0, 0, 1) 90%, transparent 0)}
-  95% {mask-image: linear-gradient(to right, rgba(0, 0, 0, 1) 95%, transparent 0)}
-  100% {mask-image: none}
-}
-
-.Dfs-grid-section {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
-  width: 100%;
-  align-items: flex-start;
-  padding-bottom: 3%;
 }
 
 .Dfs-header {
@@ -148,14 +38,9 @@ body {
   color: black;
 }
 
-.Dfs-grid-header th {
-  background-color: gray;
-  position: sticky;
-  top: 0;
-}
-
 .Dfs-grid table, td {
   border: 1px solid black;
+  border-collapse: collapse;
   border-spacing: 0;
   margin: 0 auto 0 auto;
   overflow: auto;
@@ -174,19 +59,4 @@ body {
   padding: 0 16px 0 16px;
   text-align: center;
   color: white;
-}
-
-.Dfs-sport {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  color: black;
-}
-
-.Drop-down {
-  text-align: center;
-  width: 100px;
-  height: 30px;
 }

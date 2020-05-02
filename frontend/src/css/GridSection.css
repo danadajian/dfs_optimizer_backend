@@ -1,0 +1,8 @@
+.Grid-section {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    width: 100%;
+    align-items: flex-start;
+    padding-bottom: 3%;
+}

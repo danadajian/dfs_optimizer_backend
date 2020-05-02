@@ -1,4 +1,5 @@
 import * as React from 'react';
+import '../css/BlackList.css'
 import {lineupAttributes} from "../interfaces";
 
 interface playerProps {
@@ -8,7 +9,7 @@ interface playerProps {
 const Player = (props: playerProps) =>
     <tr>
         <td>
-            <tr style={{fontWeight: 'bold'}}>{props.player.name}</tr>
+            <tr className="Player-name">{props.player.name}</tr>
             <tr>{props.player.team} {props.player.position}</tr>
         </td>
     </tr>;
@@ -18,19 +19,16 @@ export const BlackList = (props: {
     playerPool: lineupAttributes[]
 }) => {
     return (
-        <div className={"Blacklist"}>
-            <h2 className={"Dfs-header"}>Blacklist</h2>
-            <table style={{borderCollapse: 'collapse'}} className={'Dfs-grid'}>
+        <div className="Blacklist">
+            <h2 className="Dfs-header">Blacklist</h2>
+            <table className="Dfs-grid">
                 <tbody>
-                <tr style={{backgroundColor: 'indianred'}}>
+                <tr>
                     <th>Player</th>
                 </tr>
                 {props.blackList.map(
-                    (playerId) => {
-                        return (
-                            <Player player={props.playerPool.filter(player => player.playerId === playerId)[0]}/>
-                        )
-                    }
+                    (playerId: number) =>
+                        <Player player={props.playerPool.find(player => player.playerId === playerId)!}/>
                 )}
                 </tbody>
             </table>

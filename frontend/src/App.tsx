@@ -16,8 +16,8 @@ const App = () => {
 
     return (
         <div>
-            <h1 className={"App-header"}>DFS Optimizer</h1>
-            <div className={"Dfs-sport"}>
+            <h1 className="App-header">DFS Optimizer</h1>
+            <div className="App-body">
                 <SiteSection state={state} setState={setState}/>
                 <DateSection state={state} setState={setState}/>
                 <SportSection state={state} setState={setState}/>

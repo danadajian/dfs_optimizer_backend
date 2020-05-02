@@ -1,4 +1,5 @@
 import React, {useState} from 'react'
+import '../css/PlayerPoolGrid.css'
 import {playerPoolAttributes, State} from "../interfaces";
 import {PlayerPoolPlayer} from "./PlayerPoolPlayer";
 import {addPlayerToLineup} from "../helpers/addPlayerToLineup/addPlayerToLineup";
@@ -40,8 +41,8 @@ export const PlayerPoolGrid: any = (props: {
     };
 
     return (
-        <div className={"Players"}>
-            <table style={{borderCollapse: "collapse"}} className={'Dfs-grid'}>
+        <div className="Player-pool-grid">
+            <table className="Dfs-grid">
                 <PlayerPoolGridHeader sortAttribute={sortAttribute} setSortAttribute={setSortAttribute}
                                       isAscendingSort={isAscendingSort} setSortSign={setSortSign}/>
                 <tbody>
@@ -63,8 +64,7 @@ export const PlayerPoolGrid: any = (props: {
                                                   setState={props.setState}
                                 />
                             )
-                        } else
-                            return null;
+                        }
                     }
                 )}
                 </tbody>

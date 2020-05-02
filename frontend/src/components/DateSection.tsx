@@ -10,14 +10,12 @@ export const DateSection = (props: {
     const {site, date} = props.state;
     const shouldRenderElement = site && date;
 
-    if (shouldRenderElement) {
-        return (
-            <div>
-                <h3>Choose a date:</h3>
-                <DatePicker onChange={(newDate: any) =>
-                    handleDateChange(newDate, props.state, props.setState)} value={date}/>
-            </div>
-        );
-    } else
-        return null
+    const element =
+        <div>
+            <h3>Choose a date:</h3>
+            <DatePicker onChange={(newDate: any) =>
+                handleDateChange(newDate, props.state, props.setState)} value={date}/>
+        </div>
+
+    return <div>{shouldRenderElement && element}</div>
 };

@@ -1,0 +1,11 @@
+.Lineup {
+    border-collapse: collapse;
+    display: flex;
+    flex-direction: column;
+    overflow: auto;
+    max-width: 70vmin;
+}
+
+.Lineup-total-row {
+    font-weight: bold;
+}

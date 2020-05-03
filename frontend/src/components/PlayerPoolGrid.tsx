@@ -53,20 +53,16 @@ export const PlayerPoolGrid: any = (props: {
                     } else {
                         return sortMultiplier * (a[sortAttribute] - b[sortAttribute])
                     }
-                }).map((player: playerPoolAttributes, index: number) => {
-                        if (filteredPool.includes(player)) {
-                            return (
-                                <PlayerPoolPlayer key={index}
-                                                  player={player}
-                                                  onPlusClick={() => handleAddPlayer(index)}
-                                                  onMinusClick={() => handleToggleBlackList(index)}
-                                                  state={props.state}
-                                                  setState={props.setState}
-                                />
-                            )
-                        }
-                    }
-                )}
+                }).filter((player: playerPoolAttributes) => filteredPool.includes(player))
+                    .map((player: playerPoolAttributes, index: number) =>
+                        <PlayerPoolPlayer key={index}
+                                          player={player}
+                                          onPlusClick={() => handleAddPlayer(index)}
+                                          onMinusClick={() => handleToggleBlackList(index)}
+                                          state={props.state}
+                                          setState={props.setState}/>
+                    )
+                }
                 </tbody>
             </table>
         </div>

@@ -1,6 +1,6 @@
 import React from 'react';
 import '../css/Lineup.css'
-import {removePlayerFromLineup} from "../helpers/removePlayerFromLineup/removePlayerFromLineup";
+import {handleRemovePlayerFromLineup} from "../handlers/handleRemovePlayerFromLineup/handleRemovePlayerFromLineup";
 import {sumAttribute} from "../helpers/sumAttribute/sumAttribute";
 import {LineupPlayer} from "./LineupPlayer";
 import {lineupAttributes, State} from "../interfaces";
@@ -9,18 +9,7 @@ export const Lineup = (props: {
     state: State,
     setState: (state: State) => void
 }) => {
-    const {site, lineup, whiteList, salaryCap, lineupPositions, displayMatrix} = props.state;
-
-    const handleRemovePlayer = (playerIndex: number) => {
-        const {newLineup, newWhiteList}: any = removePlayerFromLineup(playerIndex, lineup, whiteList, lineupPositions, displayMatrix);
-        props.setState({
-            ...props.state,
-            lineup: newLineup,
-            whiteList: newWhiteList,
-            searchText: '',
-            filteredPool: []
-        });
-    };
+    const {site, lineup, whiteList, salaryCap} = props.state;
 
     const pointSum = sumAttribute(lineup, 'projection');
     const salarySum = sumAttribute(lineup, 'salary');
@@ -40,7 +29,7 @@ export const Lineup = (props: {
                 {lineup.map(
                     (player: lineupAttributes, playerIndex: number) =>
                         <LineupPlayer player={player}
-                                      onRemove={() => handleRemovePlayer(playerIndex)}
+                                      onRemove={() => handleRemovePlayerFromLineup(playerIndex, props.state, props.setState)}
                                       whiteList={whiteList}
                                       site={site}
                         />

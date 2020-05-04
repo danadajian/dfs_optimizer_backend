@@ -1,7 +1,7 @@
 import React from "react";
 import DatePicker from 'react-date-picker';
 import {State} from "../interfaces";
-import {handleDateChange} from "../handlers/handleDateChange";
+import {handleDateChange} from "../handlers/handleDateChange/handleDateChange";
 
 export const DateSection = (props: {
     state: State,

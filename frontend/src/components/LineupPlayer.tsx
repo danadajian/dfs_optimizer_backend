@@ -27,11 +27,11 @@ export const LineupPlayer = (props: lineupPlayerProps) => {
             <td>{displayPosition}</td>
             <td>
                 <tr>
-                    <b>{name + ' '}</b>
+                    {name && <b>{name + ' '}</b>}
                     <b style={{color: 'red'}}>{status}</b>
                 </tr>
                 <tr>
-                    <b style={{color: 'blue'}}>{team + ' '}</b>
+                    {team && <b style={{color: 'blue'}}>{team + ' '}</b>}
                     <text
                         style={getOpponentRankStyle(opponentRank!)}>
                         {opponent}

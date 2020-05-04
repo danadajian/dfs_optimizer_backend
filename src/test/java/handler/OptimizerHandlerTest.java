@@ -24,9 +24,9 @@ class OptimizerHandlerTest {
     OptimizerHandlerTest() throws IOException {
     }
 
-    private String fakeOptimizerBody = new String(Files.readAllBytes(Paths.get("src/main/resources/optimizerHandlerBody.txt")));
-    private String fakeOptimizerWithPipelineInvocationBody = new String(Files.readAllBytes(Paths.get("src/main/resources/optimizerHandlerBodyWithPipelineInvocation.txt")));
-    private String fakeOptimizerWhiteAndBlackListBody = new String(Files.readAllBytes(Paths.get("src/main/resources/optimizerHandlerWhiteAndBlackListBody.txt")));
+    private String fakeOptimizerBody = new String(Files.readAllBytes(Paths.get("src/main/resources/optimizerHandlerBody.json")));
+    private String fakeOptimizerWithPipelineInvocationBody = new String(Files.readAllBytes(Paths.get("src/main/resources/optimizerHandlerBodyWithPipelineInvocation.json")));
+    private String fakeOptimizerWhiteAndBlackListBody = new String(Files.readAllBytes(Paths.get("src/main/resources/optimizerHandlerWhiteAndBlackListBody.json")));
     private Map<String, Object> optimizerInput = new ObjectMapper().readValue(fakeOptimizerBody, new TypeReference<Map<String, Object>>(){});
     private Map<String, Object> optimizerInputWithPipelineInvocation = new ObjectMapper().readValue(fakeOptimizerWithPipelineInvocationBody, new TypeReference<Map<String, Object>>(){});
     private Map<String, Object> optimizerWithWhiteAndBlackListInput = new ObjectMapper().readValue(fakeOptimizerWhiteAndBlackListBody, new TypeReference<Map<String, Object>>(){});

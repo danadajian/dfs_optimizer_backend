@@ -2,43 +2,18 @@ import React, {useState} from 'react'
 import '../css/PlayerPoolGrid.css'
 import {playerPoolAttributes, State} from "../interfaces";
 import {PlayerPoolPlayer} from "./PlayerPoolPlayer";
-import {addPlayerToLineup} from "../helpers/addPlayerToLineup/addPlayerToLineup";
-import {addPlayerToBlackList} from "../helpers/addPlayerToBlackList/addPlayerToBlackList";
+import {handleAddPlayerToLineup} from "../handlers/handleAddPlayerToLineup/handleAddPlayerToLineup";
+import {handleAddPlayerToBlackList} from "../handlers/handleAddPlayerToBlackList/handleAddPlayerToBlackList";
 import {PlayerPoolGridHeader} from "./PlayerPoolGridHeader";
 
 export const PlayerPoolGrid: any = (props: {
     state: State,
     setState: (state: State) => void
 }) => {
-    const {playerPool, filteredPool, lineup, whiteList, blackList, lineupPositions, displayMatrix} = props.state;
+    const {playerPool, searchText, filteredPool} = props.state;
 
     const [sortAttribute, setSortAttribute] = useState('salary');
     const [isAscendingSort, setSortSign] = useState(false);
-
-    const handleAddPlayer = (playerIndex: number) => {
-        const {newLineup, newWhiteList, newBlackList}: any = addPlayerToLineup(playerIndex, playerPool, lineup, whiteList, blackList);
-        props.setState({
-            ...props.state,
-            lineup: newLineup,
-            whiteList: newWhiteList,
-            blackList: newBlackList,
-            searchText: '',
-            filteredPool: []
-        });
-    };
-
-    const handleToggleBlackList = (playerIndex: number) => {
-        const {newLineup, newWhiteList, newBlackList}: any = addPlayerToBlackList(playerIndex, playerPool, lineup,
-            whiteList, blackList, lineupPositions, displayMatrix);
-        props.setState({
-            ...props.state,
-            lineup: newLineup,
-            whiteList: newWhiteList,
-            blackList: newBlackList,
-            searchText: '',
-            filteredPool: []
-        });
-    };
 
     return (
         <div className="Player-pool-grid">
@@ -53,15 +28,16 @@ export const PlayerPoolGrid: any = (props: {
                     } else {
                         return sortMultiplier * (a[sortAttribute] - b[sortAttribute])
                     }
-                }).filter((player: playerPoolAttributes) => filteredPool.includes(player))
-                    .map((player: playerPoolAttributes, index: number) =>
-                        <PlayerPoolPlayer key={index}
-                                          player={player}
-                                          onPlusClick={() => handleAddPlayer(index)}
-                                          onMinusClick={() => handleToggleBlackList(index)}
-                                          state={props.state}
-                                          setState={props.setState}/>
-                    )
+                }).filter((player: playerPoolAttributes) => {
+                    return filteredPool.includes(player) || (!searchText && filteredPool.length === 0)
+                }).map((player: playerPoolAttributes, index: number) =>
+                    <PlayerPoolPlayer key={index}
+                                      player={player}
+                                      onPlusClick={() => handleAddPlayerToLineup(index, props.state, props.setState)}
+                                      onMinusClick={() => handleAddPlayerToBlackList(index, props.state, props.setState)}
+                                      state={props.state}
+                                      setState={props.setState}/>
+                )
                 }
                 </tbody>
             </table>

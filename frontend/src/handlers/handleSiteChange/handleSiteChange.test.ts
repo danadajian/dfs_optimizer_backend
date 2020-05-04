@@ -1,5 +1,5 @@
 import {handleSiteChange} from "./handleSiteChange";
-import {INITIAL_STATE} from "../constants";
+import {INITIAL_STATE} from "../../constants";
 
 const setState = jest.fn();
 

@@ -1,3 +1,7 @@
+.Lineup-player-grid {
+    border-collapse: collapse;
+}
+
 .Remove-button {
     font-weight: bold;
 }

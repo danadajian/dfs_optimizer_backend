@@ -1,8 +1,8 @@
 import React from "react";
 import '../css/ActionButtonSection.css'
 import {State} from "../interfaces";
-import {handleGenerateOptimalLineup} from "../handlers/handleGenerateOptimalLineup";
-import {handleClearLineup} from "../handlers/handleClearLineup";
+import {handleGenerateOptimalLineup} from "../handlers/handleGenerateOptimalLineup/handleGenerateOptimalLineup";
+import {handleClearLineup} from "../handlers/handleClearLineup/handleClearLineup";
 
 export const ActionButtonSection = (props: {
     state: State,

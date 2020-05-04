@@ -1,9 +1,9 @@
 import {handleContestChange} from "./handleContestChange";
-import {getPlayerPool} from "../helpers/getPlayerPool/getPlayerPool";
-import {createEmptyLineup} from "../helpers/createEmptyLineup/createEmptyLineup";
+import {getPlayerPool} from "../../helpers/getPlayerPool/getPlayerPool";
+import {createEmptyLineup} from "../../helpers/createEmptyLineup/createEmptyLineup";
 
-jest.mock('../helpers/getPlayerPool/getPlayerPool');
-jest.mock('../helpers/createEmptyLineup/createEmptyLineup');
+jest.mock('../../helpers/getPlayerPool/getPlayerPool');
+jest.mock('../../helpers/createEmptyLineup/createEmptyLineup');
 
 (getPlayerPool as jest.Mock).mockReturnValue('player pool');
 (createEmptyLineup as jest.Mock).mockReturnValue('empty lineup');
@@ -138,7 +138,7 @@ describe('handleContestChange', () => {
         })
 
         it('should call window alert', () => {
-            expect(window.alert).toHaveBeenCalledWith('Player projection data is currently unavailable.');
+            expect(window.alert).toHaveBeenCalledWith('Projection data is currently unavailable.');
         });
 
         it('should return expected result', () => {

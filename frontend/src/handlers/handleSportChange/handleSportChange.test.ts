@@ -1,12 +1,12 @@
 import {handleSportChange} from "./handleSportChange";
-import {getDfsData} from "../helpers/getDfsData/getDfsData";
-import {extractContestsFromDfsData} from "../helpers/extractContestsFromDfsData/extractContestsFromDfsData";
-import {invokeLambdaFunction} from "../aws/aws";
-import {INITIAL_STATE} from "../constants";
+import {getDfsData} from "../../helpers/getDfsData/getDfsData";
+import {extractContestsFromDfsData} from "../../helpers/extractContestsFromDfsData/extractContestsFromDfsData";
+import {invokeLambdaFunction} from "../../aws/aws";
+import {INITIAL_STATE} from "../../constants";
 
-jest.mock("../helpers/getDfsData/getDfsData");
-jest.mock("../helpers/extractContestsFromDfsData/extractContestsFromDfsData");
-jest.mock("../aws/aws");
+jest.mock("../../helpers/getDfsData/getDfsData");
+jest.mock("../../helpers/extractContestsFromDfsData/extractContestsFromDfsData");
+jest.mock("../../aws/aws");
 
 (getDfsData as jest.Mock).mockResolvedValue('dfs data');
 (extractContestsFromDfsData as jest.Mock).mockReturnValue('contests');

@@ -1,29 +1,36 @@
 import React from "react";
 import '../css/FilterBar.css'
-import {playerPoolAttributes} from "../interfaces";
+import {playerPoolAttributes, State} from "../interfaces";
 import {getSetFromArray} from "../helpers/getSetFromArray/getSetFromArray";
+import {handleFilterPlayers} from "../handlers/handleFilterPlayers/handleFilterPlayers";
 
 export const FilterBar: any = (props: {
-    playerPool: playerPoolAttributes[]
-    handleFilter: (attribute: string, value: string) => void
+    state: State,
+    setState: (state: State) => void
 }) => {
+    const {playerPool} = props.state;
+
     return (
         <div className="Filter-bar">
-            <button onClick={() => props.handleFilter('position', 'All')}>All</button>
+            <button onClick={() =>
+                handleFilterPlayers('position', 'All', props.state, props.setState)}>All
+            </button>
             {
-                getSetFromArray(props.playerPool.map((player) => player.position))
-                    .map((position) =>
+                getSetFromArray(playerPool.map((player: playerPoolAttributes) => player.position))
+                    .map((position, index: number) =>
                         <button
+                            key={index}
                             onClick={() =>
-                                props.handleFilter('position', position)}>{position}</button>
+                                handleFilterPlayers('position', position, props.state, props.setState)}>{position}</button>
                     )
             }
-            <select onChange={(event) => props.handleFilter('team', event.target.value)}>
+            <select onChange={(event: any) =>
+                handleFilterPlayers('team', event.target.value, props.state, props.setState)}>
                 <option defaultValue={'All'}>All</option>
-                {getSetFromArray(props.playerPool.map((player) => player.team))
+                {getSetFromArray(playerPool.map((player: playerPoolAttributes) => player.team))
                     .sort()
-                    .map((team) =>
-                        <option value={team}>{team}</option>
+                    .map((team, index: number) =>
+                        <option key={index} value={team}>{team}</option>
                     )}
             </select>
         </div>

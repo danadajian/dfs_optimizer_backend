@@ -1,7 +1,11 @@
 import {invokeLambdaFunction} from './aws'
 import {Lambda} from "../aws";
+import {isDevelopment} from "../constants";
 
 jest.mock('../aws');
+jest.mock('../constants');
+
+(isDevelopment as jest.Mock).mockReturnValue(false);
 
 (Lambda.invoke as jest.Mock).mockImplementation(() => {
     return {

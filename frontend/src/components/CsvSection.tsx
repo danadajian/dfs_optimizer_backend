@@ -10,9 +10,10 @@ export const CsvSection = (props: {
         displayMatrix,
         lineup.map((player: any) => player.name)
     ];
-    const shouldRenderElement = lineup.length > 0 && lineup.every((player: any) => player.name.length > 0);
+    const shouldRenderElement = lineup.length > 0 && lineup.every((player: any) => player.name);
 
-    const element = <CSVLink data={csvData} filename={site + '-' + sport + '-lineup.csv'}>Download Lineup CSV</CSVLink>
+    const element = <CSVLink data={csvData}
+                             filename={`Optimal ${site} ${sport} Lineup.csv`}>Download Lineup CSV</CSVLink>
 
     return <div>{shouldRenderElement && element}</div>
 };

@@ -48,6 +48,10 @@ export interface lineupPlayerProps {
     site: string
 }
 
+export interface blackListPlayerProps {
+    player: lineupAttributes
+}
+
 export interface playerPoolAttributes {
     playerId: number,
     position: string,

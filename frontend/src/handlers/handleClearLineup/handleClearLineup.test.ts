@@ -1,7 +1,7 @@
 import {handleClearLineup} from "./handleClearLineup";
-import {createEmptyLineup} from "../helpers/createEmptyLineup/createEmptyLineup";
+import {createEmptyLineup} from "../../helpers/createEmptyLineup/createEmptyLineup";
 
-jest.mock('../helpers/createEmptyLineup/createEmptyLineup');
+jest.mock('../../helpers/createEmptyLineup/createEmptyLineup');
 
 (createEmptyLineup as jest.Mock).mockReturnValue('empty lineup');
 

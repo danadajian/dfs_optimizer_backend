@@ -1,18 +1,6 @@
 import * as React from 'react';
 import '../css/BlackList.css'
-import {lineupAttributes} from "../interfaces";
-
-interface playerProps {
-    player: lineupAttributes
-}
-
-const Player = (props: playerProps) =>
-    <tr>
-        <td>
-            <tr className="Player-name">{props.player.name}</tr>
-            <tr>{props.player.team} {props.player.position}</tr>
-        </td>
-    </tr>;
+import {blackListPlayerProps, lineupAttributes} from "../interfaces";
 
 export const BlackList = (props: {
     blackList: number[],
@@ -35,3 +23,11 @@ export const BlackList = (props: {
         </div>
     )
 };
+
+const Player = (props: blackListPlayerProps) =>
+    <tr>
+        <td>
+            <tr className="Player-name">{props.player.name}</tr>
+            <tr>{props.player.team} {props.player.position}</tr>
+        </td>
+    </tr>;

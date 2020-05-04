@@ -1,7 +1,7 @@
 import React from "react";
 import '../css/ContestSection.css'
 import {State} from "../interfaces";
-import {handleContestChange} from "../handlers/handleContestChange";
+import {handleContestChange} from "../handlers/handleContestChange/handleContestChange";
 import {getButtonStyle} from "../helpers/getButtonStyle/getButtonStyle";
 
 export const ContestSection = (props: {

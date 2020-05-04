@@ -1,4 +1,7 @@
-export const filterPlayers = (attribute: string, value: string, playerPool: any[]) => {
+import {State} from "../../interfaces";
+
+export const handleFilterPlayers = (attribute: string, value: string, state: State, setState: (state: State) => void) => {
+    const {playerPool} = state;
     let filteredPool;
     let searchText: string = '';
     if (value === 'All') {
@@ -13,8 +16,9 @@ export const filterPlayers = (attribute: string, value: string, playerPool: any[
             (player: any) => player[attribute].includes(value)
         );
     }
-    return {
+    setState({
+        ...state,
         searchText,
         filteredPool
-    }
+    })
 };

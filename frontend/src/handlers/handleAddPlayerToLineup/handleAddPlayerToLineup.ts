@@ -1,5 +1,7 @@
-export const addPlayerToLineup = (playerIndex: number, playerPool: any[], lineup: any[], whiteList: any[],
-                                  blackList: any[]) => {
+import {State} from "../../interfaces";
+
+export const handleAddPlayerToLineup = (playerIndex: number, state: State, setState: (state: State) => void) => {
+    const {playerPool, lineup, whiteList, blackList} = state;
     let playerToAdd = playerPool[playerIndex];
     let playerInLineup = lineup.find((player: any) => player.playerId === playerToAdd.playerId, null);
     if (playerInLineup) {
@@ -29,10 +31,13 @@ export const addPlayerToLineup = (playerIndex: number, playerPool: any[], lineup
         playerToAddCopy.position = spotToReplace.position;
         playerToAddCopy.displayPosition = spotToReplace.displayPosition;
         lineup[lineupIndex] = playerToAddCopy;
-        return {
-            lineup,
-            whiteList,
-            blackList
-        }
     }
+    setState({
+        ...state,
+        lineup,
+        whiteList,
+        blackList,
+        searchText: '',
+        filteredPool: []
+    })
 };

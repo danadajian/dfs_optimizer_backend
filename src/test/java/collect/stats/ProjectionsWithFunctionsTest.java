@@ -27,17 +27,17 @@ class ProjectionsWithFunctionsTest {
     private Events nbaEvents = new Events(mockApi, "nba");
     private Participants nbaParticipants = new Participants(mockApi, "nba");
     private StandardProjections standardProjectionsData = new StandardProjections(mockApi);
-    private String fakeNFLProjectionsResponse = new String(Files.readAllBytes(Paths.get("src/main/resources/nflProjectionsResponse.txt")));
-    private String fakeNFLEventsResponse = new String(Files.readAllBytes(Paths.get("src/main/resources/nflEventsResponse.txt")));
-    private String fakeNFLOddsResponse = new String(Files.readAllBytes(Paths.get("src/main/resources/nflOddsResponse.txt")));
-    private String fakeNBAEventsResponse = new String(Files.readAllBytes(Paths.get("src/main/resources/nbaEventsResponse.txt")));
-    private String fakeNBAParticipantsResponse = new String(Files.readAllBytes(Paths.get("src/main/resources/nbaParticipantsResponse.txt")));
-    private String fakeNBAProjectionsResponse = new String(Files.readAllBytes(Paths.get("src/main/resources/nbaProjectionsResponse.txt")));
-    private String fakeNBAOddsResponse = new String(Files.readAllBytes(Paths.get("src/main/resources/nbaOddsResponse.txt")));
-    private String fakeNHLEventsResponse = new String(Files.readAllBytes(Paths.get("src/main/resources/nhlEventsResponse.txt")));
-    private String fakeNHLParticipantsResponse = new String(Files.readAllBytes(Paths.get("src/main/resources/nhlParticipantsResponse.txt")));
-    private String fakeNHLProjectionsResponse = new String(Files.readAllBytes(Paths.get("src/main/resources/nhlProjectionsResponse.txt")));
-    private String fakeNHLOddsResponse = new String(Files.readAllBytes(Paths.get("src/main/resources/nhlOddsResponse.txt")));
+    private String fakeNFLProjectionsResponse = new String(Files.readAllBytes(Paths.get("src/main/resources/nflProjectionsResponse.json")));
+    private String fakeNFLEventsResponse = new String(Files.readAllBytes(Paths.get("src/main/resources/nflEventsResponse.json")));
+    private String fakeNFLOddsResponse = new String(Files.readAllBytes(Paths.get("src/main/resources/nflOddsResponse.json")));
+    private String fakeNBAEventsResponse = new String(Files.readAllBytes(Paths.get("src/main/resources/nbaEventsResponse.json")));
+    private String fakeNBAParticipantsResponse = new String(Files.readAllBytes(Paths.get("src/main/resources/nbaParticipantsResponse.json")));
+    private String fakeNBAProjectionsResponse = new String(Files.readAllBytes(Paths.get("src/main/resources/nbaProjectionsResponse.json")));
+    private String fakeNBAOddsResponse = new String(Files.readAllBytes(Paths.get("src/main/resources/nbaOddsResponse.json")));
+    private String fakeNHLEventsResponse = new String(Files.readAllBytes(Paths.get("src/main/resources/nhlEventsResponse.json")));
+    private String fakeNHLParticipantsResponse = new String(Files.readAllBytes(Paths.get("src/main/resources/nhlParticipantsResponse.json")));
+    private String fakeNHLProjectionsResponse = new String(Files.readAllBytes(Paths.get("src/main/resources/nhlProjectionsResponse.json")));
+    private String fakeNHLOddsResponse = new String(Files.readAllBytes(Paths.get("src/main/resources/nhlOddsResponse.json")));
 
     @BeforeEach
     void setUp() {

@@ -1,5 +1,5 @@
 import React from "react";
-import {handleSiteChange} from "../handlers/handleSiteChange";
+import {handleSiteChange} from "../handlers/handleSiteChange/handleSiteChange";
 import {getButtonStyle} from "../helpers/getButtonStyle/getButtonStyle";
 import {State} from "../interfaces";
 

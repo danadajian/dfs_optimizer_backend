@@ -1,4 +1,4 @@
-import {handleClearLineup} from "./handleClearLineup";
+import {handleClearLineup} from "../handleClearLineup/handleClearLineup";
 import {handleDateChange} from "./handleDateChange";
 
 const setState = jest.fn();

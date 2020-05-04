@@ -1,8 +1,8 @@
-import {getDfsData} from "../helpers/getDfsData/getDfsData";
-import {extractContestsFromDfsData} from "../helpers/extractContestsFromDfsData/extractContestsFromDfsData";
-import {invokeLambdaFunction} from "../aws/aws";
-import {State} from "../interfaces";
-import {INITIAL_STATE} from "../constants";
+import {getDfsData} from "../../helpers/getDfsData/getDfsData";
+import {extractContestsFromDfsData} from "../../helpers/extractContestsFromDfsData/extractContestsFromDfsData";
+import {invokeLambdaFunction} from "../../aws/aws";
+import {State} from "../../interfaces";
+import {INITIAL_STATE} from "../../constants";
 
 export const handleSportChange = async (sport: string, state: State, setState: (state: State) => void) => {
     const updateLoadingText = (loadingText: string) => {

@@ -1,5 +1,7 @@
-export const addPlayerToBlackList = (playerIndex: number, playerPool: any[], lineup: any[], whiteList: any[],
-                                     blackList: any[], lineupPositions: string[], displayMatrix: string[]) => {
+import {State} from "../../interfaces";
+
+export const handleAddPlayerToBlackList = (playerIndex: number, state: State, setState: (state: State) => void) => {
+    const {playerPool, lineup, whiteList, blackList, lineupPositions, displayMatrix} = state;
     let blackListedPlayer = playerPool[playerIndex];
     if (blackList.includes(blackListedPlayer.playerId)) {
         blackList.splice(blackList.indexOf(blackListedPlayer.playerId), 1);
@@ -12,20 +14,18 @@ export const addPlayerToBlackList = (playerIndex: number, playerPool: any[], lin
         if (playerInLineup) {
             let lineupIndex = lineup.indexOf(playerInLineup);
             lineup[lineupIndex] = {
+                playerId: 0,
                 position: lineupPositions[lineupIndex],
                 displayPosition: displayMatrix[lineupIndex],
-                team: '',
-                name: '',
-                playerId: '',
-                projected: '',
-                salary: '',
-                opponent: ''
             };
         }
     }
-    return {
-        lineup: lineup,
-        whiteList: whiteList,
-        blackList: blackList
-    }
+    setState({
+        ...state,
+        lineup,
+        whiteList,
+        blackList,
+        searchText: '',
+        filteredPool: []
+    })
 };

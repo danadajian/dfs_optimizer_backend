@@ -2,7 +2,7 @@ import React from "react";
 import '../css/SportSection.css'
 import {SUPPORTED_SPORTS} from "../constants";
 import {State} from "../interfaces";
-import {handleSportChange} from "../handlers/handleSportChange";
+import {handleSportChange} from "../handlers/handleSportChange/handleSportChange";
 import {getButtonStyle} from "../helpers/getButtonStyle/getButtonStyle";
 
 export const SportSection = (props: {

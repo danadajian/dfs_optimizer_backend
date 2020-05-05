@@ -1,0 +1,13 @@
+.Player-cell table {
+    border: none;
+    width: 100%;
+    text-align: center;
+}
+
+.Player-cell td {
+    border: none;
+}
+
+.Player-cell tr {
+    border: none
+}

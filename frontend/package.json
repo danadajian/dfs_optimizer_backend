@@ -14,12 +14,12 @@
     "aws-sdk": "latest",
     "dotenv": "latest",
     "react": "^16.13.1",
-    "react-bootstrap": "^1.0.0-beta.16",
-    "react-csv": "^1.1.2",
-    "react-date-picker": "^7.8.2",
+    "react-bootstrap": "^1.0.1",
+    "react-csv": "^2.0.3",
+    "react-date-picker": "^8.0.1",
     "react-dom": "^16.13.1",
     "react-scripts": "^3.4.1",
-    "typescript": "^3.7.5"
+    "typescript": "^3.8.3"
   },
   "scripts": {
     "start": "react-scripts start",

@@ -3,6 +3,7 @@ import {playerPoolAttributes, State} from "../interfaces";
 import {getOrdinalString} from "../helpers/getOrdinalString/getOrdinalString";
 import {sumAttribute} from "../helpers/sumAttribute/sumAttribute";
 import {getOpponentRankStyle} from "./LineupPlayer";
+import {PlayerPoolPlayerCell} from "./PlayerPoolPlayerCell";
 
 const plusIcon = require("../icons/plus.ico") as any;
 const minusIcon = require("../icons/minus.ico") as any;
@@ -15,7 +16,7 @@ export const PlayerPoolPlayer = (props: {
     setState: (state: State) => void,
 }) => {
     const {lineup, whiteList, blackList, salaryCap} = props.state;
-    const {playerId, name, status, team, position, projection, salary, opponentRank, opponent, spread, overUnder, gameDate} = props.player;
+    const {playerId, projection, salary, opponentRank, opponent, spread, overUnder, gameDate} = props.player;
 
     const salarySum = sumAttribute(lineup, 'salary');
 
@@ -30,12 +31,7 @@ export const PlayerPoolPlayer = (props: {
             <td>
                 <img src={minusIcon} alt={"remove"} onClick={props.onMinusClick} style={{height: '3vmin'}}/>
             </td>
-            <td>
-                <tr style={{fontWeight: 'bold'}}>
-                    {name} <b style={{color: 'red'}}>{status}</b>
-                </tr>
-                <tr>{team} {position}</tr>
-            </td>
+            <PlayerPoolPlayerCell {...props}/>
             <td>{projection.toFixed(1)}</td>
             <td style={{color: (salarySum + salary > salaryCap) ? 'red' : 'black'}}>
                 ${salary.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}

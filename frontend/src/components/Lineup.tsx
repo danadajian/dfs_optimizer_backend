@@ -28,10 +28,12 @@ export const Lineup = (props: {
                 </tr>
                 {lineup.map(
                     (player: lineupAttributes, playerIndex: number) =>
-                        <LineupPlayer player={player}
-                                      onRemove={() => handleRemovePlayerFromLineup(playerIndex, props.state, props.setState)}
-                                      whiteList={whiteList}
-                                      site={site}
+                        <LineupPlayer
+                            key={playerIndex}
+                            player={player}
+                            onRemove={() => handleRemovePlayerFromLineup(playerIndex, props.state, props.setState)}
+                            whiteList={whiteList}
+                            site={site}
                         />
                 )}
                 <tr className="Lineup-total-row">

@@ -1,4 +1,5 @@
 import * as React from "react";
+import Button from 'react-bootstrap/Button'
 import '../css/LineupPlayer.css'
 import {lineupPlayerProps} from "../interfaces";
 import {getFormattedSalary} from "./Lineup";
@@ -23,7 +24,10 @@ export const LineupPlayer = (props: lineupPlayerProps) => {
         <tr style={getPlayerRowStyle(props.whiteList, playerId)}>
             <td>
                 {position && name &&
-                <button className="Remove-button" onClick={props.onRemove}>X</button>}
+                <Button variant={"danger"}
+                        size={"sm"}
+                        className="Remove-button"
+                        onClick={props.onRemove}>X</Button>}
             </td>
             <td>{displayPosition}</td>
             <LineupPlayerCell {...props}/>

@@ -1,4 +1,5 @@
 import React from "react";
+import Button from 'react-bootstrap/Button';
 import '../css/ActionButtonSection.css'
 import {State} from "../interfaces";
 import {handleGenerateOptimalLineup} from "../handlers/handleGenerateOptimalLineup/handleGenerateOptimalLineup";
@@ -13,10 +14,12 @@ export const ActionButtonSection = (props: {
 
     const element =
         <div className="Action-button-section">
-            <button onClick={() => handleGenerateOptimalLineup(props.state, props.setState)}>Optimize
-                Lineup
-            </button>
-            <button onClick={() => handleClearLineup(props.state, props.setState)}>Clear Lineup</button>
+            <Button
+                variant={"success"}
+                onClick={() => handleGenerateOptimalLineup(props.state, props.setState)}>Optimize Lineup</Button>
+            <Button
+                variant={"secondary"}
+                onClick={() => handleClearLineup(props.state, props.setState)}>Clear Lineup</Button>
         </div>
 
     return <div>{shouldRenderElement && element}</div>

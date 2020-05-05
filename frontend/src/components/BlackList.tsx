@@ -1,4 +1,5 @@
 import * as React from 'react';
+import Table from 'react-bootstrap/Table'
 import '../css/BlackList.css'
 import {blackListPlayerProps, lineupAttributes} from "../interfaces";
 
@@ -9,7 +10,7 @@ export const BlackList = (props: {
     return (
         <div className="Blacklist">
             <h2 className="Dfs-header">Blacklist</h2>
-            <table className="Dfs-grid">
+            <Table size={"sm"} className="Dfs-grid">
                 <tbody>
                 <tr>
                     <th>Player</th>
@@ -19,7 +20,7 @@ export const BlackList = (props: {
                         <Player player={props.playerPool.find(player => player.playerId === playerId)!}/>
                 )}
                 </tbody>
-            </table>
+            </Table>
         </div>
     )
 };

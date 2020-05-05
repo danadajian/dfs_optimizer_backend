@@ -1,4 +1,5 @@
 import React from "react";
+import Table from 'react-bootstrap/Table'
 import '../css/PlayerCell.css'
 import {playerPoolAttributes} from "../interfaces";
 
@@ -9,7 +10,7 @@ export const PlayerPoolPlayerCell = (props: {
 
     return (
         <td className="Player-cell">
-            <table>
+            <Table>
                 <tbody>
                 <tr style={{fontWeight: 'bold'}}>
                     <td>{name} <b style={{color: 'red'}}>{status}</b></td>
@@ -18,7 +19,7 @@ export const PlayerPoolPlayerCell = (props: {
                     <td>{team} {position}</td>
                 </tr>
                 </tbody>
-            </table>
+            </Table>
         </td>
     )
 }

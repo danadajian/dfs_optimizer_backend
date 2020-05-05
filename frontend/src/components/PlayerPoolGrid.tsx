@@ -1,4 +1,5 @@
 import React, {useState} from 'react'
+import Table from 'react-bootstrap/Table'
 import '../css/PlayerPoolGrid.css'
 import {playerPoolAttributes, State} from "../interfaces";
 import {PlayerPoolPlayer} from "./PlayerPoolPlayer";
@@ -17,7 +18,7 @@ export const PlayerPoolGrid: any = (props: {
 
     return (
         <div className="Player-pool-grid">
-            <table className="Dfs-grid">
+            <Table responsive size={"sm"} className="Dfs-grid">
                 <PlayerPoolGridHeader sortAttribute={sortAttribute} setSortAttribute={setSortAttribute}
                                       isAscendingSort={isAscendingSort} setSortSign={setSortSign}/>
                 <tbody>
@@ -40,7 +41,7 @@ export const PlayerPoolGrid: any = (props: {
                 )
                 }
                 </tbody>
-            </table>
+            </Table>
         </div>
     )
 };

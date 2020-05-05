@@ -1,4 +1,5 @@
 import React from 'react';
+import Table from 'react-bootstrap/Table'
 import '../css/Lineup.css'
 import {handleRemovePlayerFromLineup} from "../handlers/handleRemovePlayerFromLineup/handleRemovePlayerFromLineup";
 import {sumAttribute} from "../helpers/sumAttribute/sumAttribute";
@@ -17,7 +18,7 @@ export const Lineup = (props: {
     return (
         <div className="Lineup">
             <h2 className="Dfs-header">Lineup</h2>
-            <table className="Dfs-grid">
+            <Table size={"sm"} className="Dfs-grid">
                 <tbody>
                 <tr style={getLineupStyle(site)}>
                     <th>{}</th>
@@ -46,7 +47,7 @@ export const Lineup = (props: {
                     </td>
                 </tr>
                 </tbody>
-            </table>
+            </Table>
         </div>
     )
 };

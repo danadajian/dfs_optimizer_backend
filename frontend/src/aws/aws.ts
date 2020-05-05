@@ -13,6 +13,8 @@ export const invokeLambdaFunction = async (functionName: any, payload = {}) => {
         Payload: JSON.stringify(payload)
     };
     if (isDevelopment()) {
+        const delay = (ms: number) => new Promise(res => setTimeout(res, ms));
+        await delay(500);
         return mockResponseMap[functionName]
     } else {
         const response: any = await Lambda.invoke(params).promise();

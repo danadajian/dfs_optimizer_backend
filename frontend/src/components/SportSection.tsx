@@ -1,32 +1,28 @@
 import React from "react";
-import '../css/SportSection.css'
+import ButtonGroup from 'react-bootstrap/ButtonGroup'
+import Button from 'react-bootstrap/Button'
 import {SUPPORTED_SPORTS} from "../constants";
 import {State} from "../interfaces";
 import {handleSportChange} from "../handlers/handleSportChange/handleSportChange";
-import {getButtonStyle} from "../helpers/getButtonStyle/getButtonStyle";
 
 export const SportSection = (props: {
     state: State,
     setState: (state: State) => void
 }) => {
-    const {isLoading, site, sport} = props.state;
-    const shouldRenderElement = !isLoading && site;
+    const {site, sport} = props.state;
 
-    const element =
-        <div>
-            <h3>Choose a sport:</h3>
-            <div className="Sport-section">
-                {SUPPORTED_SPORTS.map(
-                    supportedSport =>
-                        <button
-                            key={supportedSport}
-                            style={getButtonStyle(sport, supportedSport)}
-                            onClick={() => handleSportChange(supportedSport, props.state, props.setState)}>
-                            {supportedSport.toUpperCase()}
-                        </button>
-                )}
-            </div>
-        </div>
-
-    return <div>{shouldRenderElement && element}</div>
+    return (
+        <ButtonGroup className="ml-2 mr-2 mt-1 mb-1">
+            {SUPPORTED_SPORTS.map(
+                supportedSport =>
+                    <Button
+                        key={supportedSport}
+                        variant={site === 'Fanduel' ? "outline-primary" : "outline-dark"}
+                        active={sport === supportedSport}
+                        onClick={() => handleSportChange(supportedSport, props.state, props.setState)}>
+                        {supportedSport.toUpperCase()}
+                    </Button>
+            )}
+        </ButtonGroup>
+    )
 };

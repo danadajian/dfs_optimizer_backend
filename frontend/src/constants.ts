@@ -11,6 +11,7 @@ export const INITIAL_STATE: State = {
     contest: '',
     loadingText: '',
     searchText: '',
+    sortValue: 'All',
     playerPool: [],
     filteredPool: [],
     whiteList: [],

@@ -11,7 +11,7 @@ export const GridSection: any = (props: {
     state: State,
     setState: (state: State) => void
 }) => {
-    const {isLoading, isOptimizing, site, sport, contest, playerPool, blackList, loadingText,} = props.state;
+    const {isLoading, isOptimizing, site, sport, contest, playerPool, blackList, loadingText} = props.state;
     const shouldRenderElement = site && sport && contest;
 
     if (isLoading) {

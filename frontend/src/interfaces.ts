@@ -11,6 +11,7 @@ export interface State {
     contest: string,
     loadingText: string,
     searchText: string,
+    sortValue: string,
     playerPool: playerPoolAttributes[],
     filteredPool: playerPoolAttributes[],
     lineup: lineupAttributes[],

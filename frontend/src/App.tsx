@@ -1,9 +1,9 @@
 import React, {useState} from 'react'
 import './css/App.css'
-import {SiteSection} from "./components/SiteSection";
-import {DateSection} from "./components/DateSection";
-import {SportSection} from "./components/SportSection";
-import {ContestSection} from "./components/ContestSection";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'react-bootstrap-table/dist/react-bootstrap-table.min.css';
+import "react-datepicker/dist/react-datepicker.css";
+import {NavBar} from "./components/NavBar";
 import {ActionButtonSection} from "./components/ActionButtonSection";
 import {CsvSection} from "./components/CsvSection";
 import {GridSection} from "./components/GridSection";
@@ -16,12 +16,9 @@ const App = () => {
 
     return (
         <div>
-            <h1 className="App-header">DFS Optimizer</h1>
+            <NavBar state={state} setState={setState}/>
             <div className="App-body">
-                <SiteSection state={state} setState={setState}/>
-                <DateSection state={state} setState={setState}/>
-                <SportSection state={state} setState={setState}/>
-                <ContestSection state={state} setState={setState}/>
+                <h1 className="App-header">DFS Optimizer</h1>
                 <ActionButtonSection state={state} setState={setState}/>
                 <CsvSection state={state}/>
             </div>

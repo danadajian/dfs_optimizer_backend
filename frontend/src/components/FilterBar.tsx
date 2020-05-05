@@ -1,4 +1,8 @@
 import React from "react";
+import ButtonGroup from 'react-bootstrap/ButtonGroup';
+import Button from 'react-bootstrap/Button';
+import DropdownButton from 'react-bootstrap/DropdownButton';
+import Dropdown from "react-bootstrap/Dropdown";
 import '../css/FilterBar.css'
 import {playerPoolAttributes, State} from "../interfaces";
 import {getSetFromArray} from "../helpers/getSetFromArray/getSetFromArray";
@@ -8,31 +12,43 @@ export const FilterBar: any = (props: {
     state: State,
     setState: (state: State) => void
 }) => {
-    const {playerPool} = props.state;
+    const {playerPool, sortValue} = props.state;
 
     return (
         <div className="Filter-bar">
-            <button onClick={() =>
-                handleFilterPlayers('position', 'All', props.state, props.setState)}>All
-            </button>
-            {
-                getSetFromArray(playerPool.map((player: playerPoolAttributes) => player.position))
-                    .map((position, index: number) =>
-                        <button
-                            key={index}
-                            onClick={() =>
-                                handleFilterPlayers('position', position, props.state, props.setState)}>{position}</button>
-                    )
-            }
-            <select onChange={(event: any) =>
-                handleFilterPlayers('team', event.target.value, props.state, props.setState)}>
-                <option defaultValue={'All'}>All</option>
+            <ButtonGroup>
+                <Button variant={"dark"}
+                        active={sortValue === 'All'}
+                        onClick={() =>
+                            handleFilterPlayers('position', 'All', props.state, props.setState)}>All
+                </Button>
+                {
+                    getSetFromArray(playerPool.map((player: playerPoolAttributes) => player.position))
+                        .map((position, index: number) =>
+                            <Button key={index}
+                                    variant={"dark"}
+                                    active={sortValue === position}
+                                    onClick={() =>
+                                        handleFilterPlayers('position', position, props.state, props.setState)}>
+                                {position}
+                            </Button>
+                        )
+                }
+            </ButtonGroup>
+            <DropdownButton id={'team-filter'}
+                            title={'Team'}
+                            onSelect={(eventKey: any) =>
+                                handleFilterPlayers('team', eventKey, props.state, props.setState)}>
+                <Dropdown.Item eventKey={'All'}
+                               active={sortValue === 'All'}>All</Dropdown.Item>
                 {getSetFromArray(playerPool.map((player: playerPoolAttributes) => player.team))
                     .sort()
                     .map((team, index: number) =>
-                        <option key={index} value={team}>{team}</option>
+                        <Dropdown.Item key={index}
+                                       eventKey={team}
+                                       active={sortValue === team}>{team}</Dropdown.Item>
                     )}
-            </select>
+            </DropdownButton>
         </div>
     )
 };

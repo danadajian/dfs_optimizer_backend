@@ -24,6 +24,7 @@ describe('filterPlayers', () => {
         it('should call setState with correct params', () => {
             expect(setState).toHaveBeenCalledWith({
                 ...state,
+                sortValue: '4',
                 searchText: '4',
                 filteredPool: [
                     {name: 'Player4', playerId: 4, position: 'RB'}
@@ -53,6 +54,7 @@ describe('filterPlayers', () => {
         it('should call setState with correct params', () => {
             expect(setState).toHaveBeenCalledWith({
                 ...state,
+                sortValue: 'RB',
                 searchText: '',
                 filteredPool: [
                     {name: 'Player3', playerId: 3, position: 'RB'},
@@ -85,6 +87,7 @@ describe('filterPlayers', () => {
         it('should call setState with correct params', () => {
             expect(setState).toHaveBeenCalledWith({
                 ...state,
+                sortValue: 'WR',
                 searchText: '',
                 filteredPool: [
                     {name: 'Player4', playerId: 4, position: 'RB/WR'}
@@ -114,6 +117,7 @@ describe('filterPlayers', () => {
         it('should call setState with correct params', () => {
             expect(setState).toHaveBeenCalledWith({
                 ...state,
+                sortValue: 'All',
                 searchText: '',
                 filteredPool: [
                     {name: 'Player1', playerId: 1, position: 'QB'},

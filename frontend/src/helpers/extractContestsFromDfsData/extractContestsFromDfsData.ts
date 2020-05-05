@@ -2,7 +2,8 @@ export const extractContestsFromDfsData = (dataArray: any[], site: string, date:
     let contestArray: any[] = [];
     if (site === 'Fanduel')
         dataArray.forEach((contestJson: any) => contestArray.push(contestJson.contest));
-    else
+    else {
+        dataArray &&
         dataArray
             .filter((contestJson: any) => {
                 const contestName = contestJson.contest;
@@ -13,5 +14,6 @@ export const extractContestsFromDfsData = (dataArray: any[], site: string, date:
                 return date.getMonth() + 1 === month && date.getDate() === day;
             })
             .forEach((contestJson: any) => contestArray.push(contestJson.contest));
+    }
     return contestArray;
 };

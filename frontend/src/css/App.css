@@ -8,22 +8,15 @@ html {
   margin: auto;
 }
 
-body {
-  display: table-cell;
-  vertical-align: middle;
-  background-color: white;
-}
-
 .App-header {
   text-align: center;
   color: black;
-  padding-top: 30px;
 }
 
 .App-body {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  margin-top: 10vmin;
   align-items: center;
   text-align: center;
   color: black;
@@ -38,24 +31,13 @@ body {
   color: black;
 }
 
-.Dfs-grid {
-  border-collapse: collapse;
-}
-
-.Dfs-grid table, td {
+.Dfs-grid td {
   border: 1px solid black;
-  border-spacing: 0;
   margin: 0 auto 0 auto;
   overflow: auto;
-  padding-left: 8px;
-  padding-right: 8px;
   text-align: -webkit-center;
   vertical-align: middle;
   width: 90vmin;
-}
-
-.Dfs-grid tr:hover {
-  background-color: indianred;
 }
 
 .Dfs-grid th {

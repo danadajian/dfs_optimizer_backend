@@ -1,7 +1,6 @@
 import React, {useState} from 'react'
 import './css/App.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
-import 'react-bootstrap-table/dist/react-bootstrap-table.min.css';
 import "react-datepicker/dist/react-datepicker.css";
 import {NavBar} from "./components/NavBar";
 import {ActionButtonSection} from "./components/ActionButtonSection";

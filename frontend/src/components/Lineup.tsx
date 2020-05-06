@@ -38,8 +38,8 @@ export const Lineup = (props: {
                         />
                 )}
                 <tr className="Lineup-total-row">
-                    <td>{null}</td>
-                    <td>{null}</td>
+                    <td>{}</td>
+                    <td>{}</td>
                     <td>Total</td>
                     <td>{pointSum.toFixed(1)}</td>
                     <td style={getSalaryStyle(salarySum, salaryCap)}>

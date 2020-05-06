@@ -19,6 +19,7 @@ export const SportSection = (props: {
                         key={supportedSport}
                         variant={site === 'Fanduel' ? "outline-primary" : "outline-dark"}
                         active={sport === supportedSport}
+                        disabled={!site}
                         onClick={() => handleSportChange(supportedSport, props.state, props.setState)}>
                         {supportedSport.toUpperCase()}
                     </Button>

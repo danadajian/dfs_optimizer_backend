@@ -27,6 +27,7 @@ export const NavBar = (props: {
             <Nav>
                 <Nav.Link href="#home" className="ml-2 mr-2 mt-1 mb-1">Home</Nav.Link>
                 <Nav.Link href="#about" className="ml-2 mr-2 mt-1 mb-1">About</Nav.Link>
+                <Nav.Link href="#optimize" className="ml-2 mr-2 mt-1 mb-1">Optimize</Nav.Link>
                 <DateSection state={props.state} setState={props.setState}/>
                 <SiteSection state={props.state} setState={props.setState}/>
                 <SportSection state={props.state} setState={props.setState}/>

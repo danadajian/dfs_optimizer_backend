@@ -1,7 +1,5 @@
 .Player-pool-grid {
     display: flex;
-    flex-direction: column;
-    overflow: auto;
-    width: 90vmin;
-    max-height: 100vmin;
+    max-width: 100vmin;
+    max-height: 70vh;
 }

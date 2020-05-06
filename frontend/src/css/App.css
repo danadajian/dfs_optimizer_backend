@@ -1,25 +1,10 @@
-html, body {
-  height: 100%;
-  width: 100%;
-}
-
 html {
-  display: table;
-  margin: auto;
+  scroll-behavior: smooth;
 }
 
-.App-header {
-  text-align: center;
-  color: black;
-}
-
-.App-body {
-  display: flex;
-  flex-direction: column;
-  margin-top: 10vmin;
-  align-items: center;
-  text-align: center;
-  color: black;
+.jumbotron {
+  min-height: 100vh;
+  background-color: white !important;
 }
 
 .Dfs-header {
@@ -27,21 +12,18 @@ html {
   flex-direction: column;
   justify-content: space-between;
   text-align: center;
-  font-size: 28px;
   color: black;
+  margin-bottom: 5vmin;
 }
 
 .Dfs-grid td {
   border: 1px solid black;
-  margin: 0 auto 0 auto;
-  overflow: auto;
   text-align: -webkit-center;
   vertical-align: middle;
   width: 90vmin;
 }
 
 .Dfs-grid th {
-  padding: 0 16px 0 16px;
   text-align: center;
   color: white;
 }

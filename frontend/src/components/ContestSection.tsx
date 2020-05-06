@@ -9,8 +9,8 @@ export const ContestSection = (props: {
     state: State,
     setState: (state: State) => void
 }) => {
-    const {site, sport, contest, contests} = props.state;
-    const shouldRenderElement = site && sport;
+    const {isLoading, site, sport, contest, contests} = props.state;
+    const shouldRenderElement = !isLoading && site && sport;
 
     if (!shouldRenderElement) {
         return null

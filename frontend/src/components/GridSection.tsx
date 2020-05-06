@@ -2,16 +2,16 @@ import React from "react";
 import '../css/GridSection.css'
 import {Loading} from "./Loading";
 import {Optimizing} from "./Optimizing";
-import {BlackList} from "./BlackList";
 import {PlayerPool} from "./PlayerPool";
 import {Lineup} from "./Lineup";
 import {State} from "../interfaces";
+import {ActionButtonSection} from "./ActionButtonSection";
 
 export const GridSection: any = (props: {
     state: State,
     setState: (state: State) => void
 }) => {
-    const {isLoading, isOptimizing, site, sport, contest, playerPool, blackList, loadingText} = props.state;
+    const {isLoading, isOptimizing, site, sport, contest, loadingText} = props.state;
     const shouldRenderElement = site && sport && contest;
 
     if (isLoading) {
@@ -21,9 +21,11 @@ export const GridSection: any = (props: {
     } else {
         const element =
             <div className="Grid-section">
-                <Lineup state={props.state} setState={props.setState}/>
+                <div>
+                    <Lineup state={props.state} setState={props.setState}/>
+                    <ActionButtonSection state={props.state} setState={props.setState}/>
+                </div>
                 <PlayerPool state={props.state} setState={props.setState}/>
-                <BlackList blackList={blackList} playerPool={playerPool}/>
             </div>
         return <div>{shouldRenderElement && element}</div>
     }

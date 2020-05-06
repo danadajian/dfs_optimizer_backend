@@ -1,8 +1,5 @@
 .Action-button-section {
     display: flex;
-    margin: 2%;
-}
-
-.Action-button-section button {
+    align-items: center;
     margin-top: 10px;
 }

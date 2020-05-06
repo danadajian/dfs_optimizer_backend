@@ -2,8 +2,7 @@
     border-collapse: collapse;
     display: flex;
     flex-direction: column;
-    overflow: auto;
-    max-width: 70vmin;
+    max-width: 80vmin;
 }
 
 .Lineup-total-row {

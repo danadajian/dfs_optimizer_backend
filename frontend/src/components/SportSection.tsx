@@ -4,14 +4,17 @@ import Button from 'react-bootstrap/Button'
 import {SUPPORTED_SPORTS} from "../constants";
 import {State} from "../interfaces";
 import {handleSportChange} from "../handlers/handleSportChange/handleSportChange";
+import Tooltip from "react-bootstrap/Tooltip";
+import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 
 export const SportSection = (props: {
     state: State,
     setState: (state: State) => void
 }) => {
     const {site, sport} = props.state;
+    const shouldDisplayTooltip = site && !sport;
 
-    return (
+    const buttonGroup =
         <ButtonGroup className="ml-2 mr-2 mt-1 mb-1">
             {SUPPORTED_SPORTS.map(
                 supportedSport =>
@@ -24,6 +27,23 @@ export const SportSection = (props: {
                         {supportedSport.toUpperCase()}
                     </Button>
             )}
-        </ButtonGroup>
-    )
+        </ButtonGroup>;
+
+    if (shouldDisplayTooltip) {
+        return (
+            <OverlayTrigger
+                placement={'bottom'}
+                defaultShow
+                overlay={
+                    <Tooltip id={'site-tooltip'}>
+                        Select a sport.
+                    </Tooltip>
+                }
+            >
+                {buttonGroup}
+            </OverlayTrigger>
+        )
+    } else {
+        return buttonGroup
+    }
 };

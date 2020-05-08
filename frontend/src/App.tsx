@@ -21,6 +21,7 @@ const App = () => {
                     <p>
                         A better way to find the winning lineup.
                     </p>
+                    <GridSection state={state} setState={setState}/>
                 </Jumbotron>
             </section>
             <section id="about">
@@ -29,12 +30,6 @@ const App = () => {
                     <p>
                         Coming soon.
                     </p>
-                </Jumbotron>
-            </section>
-            <section id="optimize">
-                <Jumbotron>
-                    <h1>Optimize</h1>
-                    <GridSection state={state} setState={setState}/>
                 </Jumbotron>
             </section>
         </div>

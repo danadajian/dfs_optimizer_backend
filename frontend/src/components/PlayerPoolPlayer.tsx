@@ -1,5 +1,6 @@
 import React from "react";
 import {playerPoolAttributes, State} from "../interfaces";
+import '../css/PlayerPoolPlayer.css'
 import {getOrdinalString} from "../helpers/getOrdinalString/getOrdinalString";
 import {sumAttribute} from "../helpers/sumAttribute/sumAttribute";
 import {getOpponentRankStyle} from "./LineupPlayer";
@@ -21,15 +22,15 @@ export const PlayerPoolPlayer = (props: {
     const salarySum = sumAttribute(lineup, 'salary');
 
     return (
-        <tr style={{
+        <tr className="Player-pool-row" style={{
             backgroundColor: (whiteList.includes(playerId)) ? 'lightgreen' :
                 (blackList.includes(playerId)) ? 'indianred' : 'white'
         }}>
             <td>
-                <img src={plusIcon} alt={"add"} onClick={props.onPlusClick} style={{height: '3vmin'}}/>
+                <img src={plusIcon} alt={"add"} onClick={props.onPlusClick}/>
             </td>
             <td>
-                <img src={minusIcon} alt={"remove"} onClick={props.onMinusClick} style={{height: '3vmin'}}/>
+                <img src={minusIcon} alt={"remove"} onClick={props.onMinusClick}/>
             </td>
             <PlayerPoolPlayerCell {...props}/>
             <td>{projection.toFixed(1)}</td>

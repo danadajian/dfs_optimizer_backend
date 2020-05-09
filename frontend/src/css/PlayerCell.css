@@ -1,6 +1,5 @@
 .Player-cell table {
     border: none;
-    width: 100%;
     text-align: center;
 }
 
@@ -10,4 +9,16 @@
 
 .Player-cell tr {
     border: none;
+}
+
+.Player-cell-row {
+    font-weight: bold;
+}
+
+.Player-cell-row b {
+    color: red;
+}
+
+.Player-team-row b {
+    color: blue;
 }

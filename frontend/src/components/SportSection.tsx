@@ -35,7 +35,7 @@ export const SportSection = (props: {
                 placement={'bottom'}
                 defaultShow
                 overlay={
-                    <Tooltip id={'site-tooltip'}>
+                    <Tooltip id={'sport-tooltip'}>
                         Select a sport.
                     </Tooltip>
                 }

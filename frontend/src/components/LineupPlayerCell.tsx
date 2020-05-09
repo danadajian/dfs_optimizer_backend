@@ -9,15 +9,15 @@ export const LineupPlayerCell = (props: lineupPlayerProps) => {
         <td className="Player-cell">
             <table>
                 <tbody>
-                <tr>
+                <tr className="Player-cell-row">
                     <td>
-                        {name && <b>{name + ' '}</b>}
-                        <b style={{color: 'red'}}>{status}</b>
+                        {name && name + ' '}
+                        <b>{status}</b>
                     </td>
                 </tr>
-                <tr>
+                <tr className="Player-team-row">
                     <td>
-                        {team && <b style={{color: 'blue'}}>{team + ' '}</b>}
+                        {team && <b>{team + ' '}</b>}
                         <span
                             style={getOpponentRankStyle(opponentRank!)}>
                             {opponent}

@@ -12,8 +12,8 @@ export const PlayerPoolPlayerCell = (props: {
         <td className="Player-cell">
             <Table>
                 <tbody>
-                <tr style={{fontWeight: 'bold'}}>
-                    <td>{name} <b style={{color: 'red'}}>{status}</b></td>
+                <tr className="Player-cell-row">
+                    <td>{name} <b>{status}</b></td>
                 </tr>
                 <tr>
                     <td>{team} {position}</td>

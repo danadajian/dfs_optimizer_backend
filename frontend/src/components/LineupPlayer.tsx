@@ -21,7 +21,7 @@ export const LineupPlayer = (props: lineupPlayerProps) => {
     }
 
     return (
-        <tr style={getPlayerRowStyle(props.whiteList, playerId)}>
+        <tr style={getPlayerRowStyle(props.whiteList, playerId)} className="Player-row">
             <td>
                 {position && name &&
                 <Button variant={"danger"}

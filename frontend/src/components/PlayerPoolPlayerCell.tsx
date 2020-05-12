@@ -9,7 +9,7 @@ export const PlayerPoolPlayerCell = (props: {
     const {name, status, team, position} = props.player;
 
     return (
-        <td className="Player-cell">
+        <span className="Player-cell">
             <Table>
                 <tbody>
                 <tr className="Player-cell-row">
@@ -20,6 +20,6 @@ export const PlayerPoolPlayerCell = (props: {
                 </tr>
                 </tbody>
             </Table>
-        </td>
+        </span>
     )
 }

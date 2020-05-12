@@ -1,10 +1,4 @@
-.Player-pool-grid-header th {
-    background-color: gray;
-    position: sticky;
-    top: 0;
-}
+.Player-pool-grid-header {
 
-.Player-pool-grid-header img {
-    margin-left: 1vmin;
-    height: 2vmin;
+    text-align: center;
 }

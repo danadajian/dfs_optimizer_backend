@@ -13,6 +13,33 @@ export const ContestSection = (props: {
 }) => {
     const {isLoading, site, sport, contest, contests} = props.state;
     const shouldRenderElement = !isLoading && site && sport;
+    const shouldDisplayTooltip = shouldRenderElement && !contest;
+
+    const buttonGroup =
+        <ButtonGroup className="ml-2 mr-2 mt-1 mb-1">
+            {contests.map(
+                contestName =>
+                    <Button key={contestName}
+                            variant={site === 'Fanduel' ? "outline-primary" : "outline-dark"}
+                            active={contest === contestName}
+                            onClick={() => handleContestChange(contestName, props.state, props.setState)}>
+                        {contestName}
+                    </Button>
+            )}
+        </ButtonGroup>;
+
+    const dropdown =
+        <NavDropdown id="basic-nav-dropdown"
+                     title="Contests"
+                     onSelect={(eventKey: any) => handleContestChange(eventKey, props.state, props.setState)}>
+            {contests.map(
+                contestName =>
+                    <NavDropdown.Item eventKey={contestName}
+                                      active={contest === contestName}>
+                        {contestName}
+                    </NavDropdown.Item>
+            )}
+        </NavDropdown>;
 
     if (!shouldRenderElement) {
         return null
@@ -20,52 +47,24 @@ export const ContestSection = (props: {
         return <Button className="ml-2 mr-2 mt-1 mb-1"
                        disabled variant={"outline-danger"}>No contests are available.</Button>
     } else if (contests.length <= 4) {
-        return (
-            <OverlayTrigger
-                placement={'bottom'}
-                defaultShow
-                overlay={
-                    <Tooltip id={'contest-tooltip'}>
-                        Select a contest.
-                    </Tooltip>
-                }
-            >
-                <ButtonGroup className="ml-2 mr-2 mt-1 mb-1">
-                    {contests.map(
-                        contestName =>
-                            <Button key={contestName}
-                                    variant={site === 'Fanduel' ? "outline-primary" : "outline-dark"}
-                                    active={contest === contestName}
-                                    onClick={() => handleContestChange(contestName, props.state, props.setState)}>
-                                {contestName}
-                            </Button>
-                    )}
-                </ButtonGroup>
-            </OverlayTrigger>
-        )
+        return shouldDisplayTooltip ? overlayTooltip(buttonGroup) : buttonGroup
     } else {
-        return (
-            <OverlayTrigger
-                placement={'auto'}
-                defaultShow
-                overlay={
-                    <Tooltip id={'site-tooltip'}>
-                        Select a sport.
-                    </Tooltip>
-                }
-            >
-                <NavDropdown id="basic-nav-dropdown"
-                             title="Contests"
-                             onSelect={(eventKey: any) => handleContestChange(eventKey, props.state, props.setState)}>
-                    {contests.map(
-                        contestName =>
-                            <NavDropdown.Item eventKey={contestName}
-                                              active={contest === contestName}>
-                                {contestName}
-                            </NavDropdown.Item>
-                    )}
-                </NavDropdown>
-            </OverlayTrigger>
-        )
+        return shouldDisplayTooltip ? overlayTooltip(dropdown) : dropdown
     }
+};
+
+const overlayTooltip = (contestObject: any) => {
+    return (
+        <OverlayTrigger
+            placement={'bottom'}
+            defaultShow
+            overlay={
+                <Tooltip id={'contest-tooltip'}>
+                    Select a contest.
+                </Tooltip>
+            }
+        >
+            {contestObject}
+        </OverlayTrigger>
+    )
 };

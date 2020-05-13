@@ -5,6 +5,7 @@ import {State} from "../interfaces";
 import {handleGenerateOptimalLineup} from "../handlers/handleGenerateOptimalLineup/handleGenerateOptimalLineup";
 import {handleClearLineup} from "../handlers/handleClearLineup/handleClearLineup";
 import {CsvSection} from "./CsvSection";
+import {Lineup} from "./Lineup";
 
 export const ActionButtonSection = (props: {
     state: State,
@@ -15,8 +16,9 @@ export const ActionButtonSection = (props: {
 
     const element =
         <div className="Action-button-section">
+            <Lineup state={props.state} setState={props.setState}/>
             <Button
-                variant={"success"}
+                variant={"dark"}
                 onClick={() => handleGenerateOptimalLineup(props.state, props.setState)}>Optimize Lineup</Button>
             <Button
                 variant={"secondary"}

@@ -3,7 +3,6 @@ import '../css/GridSection.css'
 import {Loading} from "./Loading";
 import {Optimizing} from "./Optimizing";
 import {PlayerPool} from "./PlayerPool";
-import {Lineup} from "./Lineup";
 import {State} from "../interfaces";
 import {ActionButtonSection} from "./ActionButtonSection";
 
@@ -21,10 +20,9 @@ export const GridSection: any = (props: {
     } else {
         const element =
             <div className="Grid-section">
-                <div>
-                    <Lineup state={props.state} setState={props.setState}/>
+                <span>
                     <ActionButtonSection state={props.state} setState={props.setState}/>
-                </div>
+                </span>
                 <PlayerPool state={props.state} setState={props.setState}/>
             </div>
         return <div>{shouldRenderElement && element}</div>

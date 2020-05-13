@@ -12,7 +12,6 @@ export const PlayerPool = (props: {
 }) => {
     return (
         <div className="Player-pool">
-            <h2 className="Dfs-header">Players</h2>
             <InputGroup>
                 <SearchBar state={props.state} setState={props.setState}/>
                 <InputGroup.Append>

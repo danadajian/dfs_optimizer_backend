@@ -1,12 +1,14 @@
 import * as React from "react";
 import '../css/PlayerCell.css'
-import {lineupPlayerProps} from "../interfaces";
+import {lineupAttributes} from "../interfaces";
 import {getOpponentRankStyle} from "./LineupPlayer";
 
-export const LineupPlayerCell = (props: lineupPlayerProps) => {
+export const LineupPlayerCell = (props: {
+    player: lineupAttributes
+}) => {
     const {name, status, team, opponent, opponentRank} = props.player;
     return (
-        <td className="Player-cell">
+        <span className="Player-cell">
             <table>
                 <tbody>
                 <tr className="Player-cell-row">
@@ -26,6 +28,6 @@ export const LineupPlayerCell = (props: lineupPlayerProps) => {
                 </tr>
                 </tbody>
             </table>
-        </td>
+        </span>
     )
 };

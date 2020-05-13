@@ -27,6 +27,7 @@ export interface State {
 }
 
 export interface lineupAttributes {
+    lineupIndex: number,
     playerId: number,
     displayPosition: string,
     position?: string,

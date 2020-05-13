@@ -9,8 +9,8 @@ export const BlackList = (props: {
 }) => {
     return (
         <div className="Blacklist">
-            <h2 className="Dfs-header">Blacklist</h2>
-            <Table size={"sm"} className="Dfs-grid">
+            <h2>Blacklist</h2>
+            <Table size={"sm"}>
                 <tbody>
                 <tr>
                     <th>Player</th>

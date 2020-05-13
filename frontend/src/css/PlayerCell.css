@@ -1,6 +1,8 @@
 .Player-cell table {
     border: none;
     text-align: center;
+    display: flex;
+    justify-content: center;
 }
 
 .Player-cell td {

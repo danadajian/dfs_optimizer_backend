@@ -6,24 +6,3 @@ html {
   min-height: 100vh;
   background-color: white !important;
 }
-
-.Dfs-header {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  text-align: center;
-  color: black;
-  margin-bottom: 5vmin;
-}
-
-.Dfs-grid td {
-  border: 1px solid black;
-  text-align: -webkit-center;
-  vertical-align: middle;
-  width: 90vmin;
-}
-
-.Dfs-grid th {
-  text-align: center;
-  color: white;
-}

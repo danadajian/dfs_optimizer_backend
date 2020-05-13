@@ -14,6 +14,7 @@ describe('cannot add to lineup case', () => {
             {name: 'Player5', playerId: 5, position: 'RB'},
             {name: 'Player6', playerId: 6, position: 'RB'}
         ],
+        filteredPool: [],
         whiteList: [],
         blackList: [1, 3, 4, 5]
     }
@@ -110,6 +111,7 @@ describe('can add to lineup case', () => {
                 {name: 'Player5', playerId: 5, position: 'RB'},
                 {name: 'Player6', playerId: 6, position: 'RB'}
             ],
+            filteredPool: [],
             whiteList: [],
             blackList: [1, 3, 4, 5],
             lineup: [
@@ -137,7 +139,8 @@ describe('can add to lineup case', () => {
                 whiteList: [1],
                 blackList: [3, 4, 5],
                 searchText: '',
-                filteredPool: []
+                filteredPool: [],
+                sortValue: 'All'
             })
         });
     })
@@ -153,6 +156,7 @@ describe('can add to lineup case', () => {
                 {name: 'Player5', playerId: 5, position: 'RB'},
                 {name: 'Player6', playerId: 6, position: 'RB'}
             ],
+            filteredPool: [],
             whiteList: [],
             blackList: [1, 3, 4, 5],
             lineup: [
@@ -180,7 +184,8 @@ describe('can add to lineup case', () => {
                 whiteList: [4],
                 blackList: [1, 3, 5],
                 searchText: '',
-                filteredPool: []
+                filteredPool: [],
+                sortValue: 'All'
             })
         });
     })
@@ -196,6 +201,7 @@ describe('can add to lineup case', () => {
                 {name: 'Player5', playerId: 5, position: 'RB'},
                 {name: 'Player6', playerId: 6, position: 'RB'}
             ],
+            filteredPool: [],
             whiteList: [],
             blackList: [1, 3, 4, 5],
             lineup: [
@@ -223,7 +229,8 @@ describe('can add to lineup case', () => {
                 whiteList: [5],
                 blackList: [1, 3, 4],
                 searchText: '',
-                filteredPool: []
+                filteredPool: [],
+                sortValue: 'All'
             })
         });
     })
@@ -239,6 +246,7 @@ describe('can add to lineup case', () => {
                 {name: 'Player5', playerId: 5, position: 'RB'},
                 {name: 'Player6', playerId: 6, position: 'WR'}
             ],
+            filteredPool: [],
             whiteList: [],
             blackList: [],
             lineup: [
@@ -266,7 +274,8 @@ describe('can add to lineup case', () => {
                 whiteList: [6],
                 blackList: [],
                 searchText: '',
-                filteredPool: []
+                filteredPool: [],
+                sortValue: 'All'
             })
         });
     })
@@ -282,6 +291,7 @@ describe('can add to lineup case', () => {
                 {name: 'Player5', playerId: 5, position: 'RB'},
                 {name: 'Player6', playerId: 6, position: 'RB/WR'}
             ],
+            filteredPool: [],
             whiteList: [],
             blackList: [],
             lineup: [
@@ -309,7 +319,8 @@ describe('can add to lineup case', () => {
                 whiteList: [6],
                 blackList: [],
                 searchText: '',
-                filteredPool: []
+                filteredPool: [],
+                sortValue: 'All'
             })
         });
     })

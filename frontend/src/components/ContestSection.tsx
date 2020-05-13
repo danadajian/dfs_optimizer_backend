@@ -34,8 +34,10 @@ export const ContestSection = (props: {
                      onSelect={(eventKey: any) => handleContestChange(eventKey, props.state, props.setState)}>
             {contests.map(
                 contestName =>
-                    <NavDropdown.Item eventKey={contestName}
-                                      active={contest === contestName}>
+                    <NavDropdown.Item
+                        key={contestName}
+                        eventKey={contestName}
+                        active={contest === contestName}>
                         {contestName}
                     </NavDropdown.Item>
             )}

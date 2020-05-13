@@ -1,5 +1,9 @@
 .Grid-section {
     display: flex;
-    flex-wrap: wrap;
     justify-content: space-evenly;
+}
+
+.Grid-section span {
+    display: flex;
+    align-items: center;
 }

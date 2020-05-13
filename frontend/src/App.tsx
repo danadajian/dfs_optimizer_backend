@@ -17,10 +17,12 @@ const App = () => {
             <NavBar state={state} setState={setState}/>
             <section id="home">
                 <Jumbotron className="mh-100">
-                    <h1>DFS Optimizer</h1>
-                    <p>
-                        A better way to find the winning lineup.
-                    </p>
+                    {!state.site && !state.sport && <div>
+                        <h1>DFS Optimizer</h1>
+                        <p>
+                            A better way to find the winning lineup.
+                        </p>
+                    </div>}
                     <GridSection state={state} setState={setState}/>
                 </Jumbotron>
             </section>

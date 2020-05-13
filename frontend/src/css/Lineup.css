@@ -2,9 +2,26 @@
     border-collapse: collapse;
     display: flex;
     flex-direction: column;
-    max-width: 80vmin;
+    max-width: 120vmin;
+    text-align: center;
 }
 
-.Lineup-total-row {
-    font-weight: bold;
+.Lineup h2 {
+    text-align: center;
+}
+
+.Player-row td {
+    vertical-align: middle;
+    text-align: center;
+    padding: 1vmin;
+}
+
+.Fanduel-header {
+    background-color: dodgerblue;
+    color: white;
+    text-align: center;
+}
+
+.DraftKings-header {
+    background-color: black;
 }

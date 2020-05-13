@@ -14,6 +14,7 @@ describe('addPlayerToBlackList', () => {
                 {name: 'Player4', playerId: 4, position: 'RB'},
                 {name: 'Player5', playerId: 5, position: 'RB'}
             ],
+            filteredPool: [],
             whiteList: [5],
             blackList: [0, 2, 3, 4],
             lineup: [
@@ -42,7 +43,8 @@ describe('addPlayerToBlackList', () => {
                 whiteList: [],
                 blackList: [0, 2, 3, 4, 5],
                 searchText: '',
-                filteredPool: []
+                filteredPool: [],
+                sortValue: 'All'
             })
         });
     })
@@ -58,6 +60,7 @@ describe('addPlayerToBlackList', () => {
                 {name: 'Player4', playerId: 4, position: 'RB'},
                 {name: 'Player5', playerId: 5, position: 'RB'}
             ],
+            filteredPool: [],
             whiteList: [],
             blackList: [0, 2, 3, 4, 5],
             lineup: [
@@ -86,7 +89,8 @@ describe('addPlayerToBlackList', () => {
                 whiteList: [],
                 blackList: [0, 2, 3, 4],
                 searchText: '',
-                filteredPool: []
+                filteredPool: [],
+                sortValue: 'All'
             })
         });
     })

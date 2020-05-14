@@ -32,7 +32,7 @@ describe('cannot add to lineup case', () => {
 
         beforeEach(() => {
             // @ts-ignore
-            result = handleAddPlayerToLineup(0, state, setState)
+            result = handleAddPlayerToLineup(1, state, setState)
         })
 
         it('should alert that the player was already added', () => {
@@ -58,7 +58,7 @@ describe('cannot add to lineup case', () => {
 
         beforeEach(() => {
             // @ts-ignore
-            result = handleAddPlayerToLineup(1, state, setState)
+            result = handleAddPlayerToLineup(2, state, setState)
         })
 
         it('should alert that not enough positions are available', () => {
@@ -84,7 +84,7 @@ describe('cannot add to lineup case', () => {
 
         beforeEach(() => {
             // @ts-ignore
-            result = handleAddPlayerToLineup(5, state, setState)
+            result = handleAddPlayerToLineup(6, state, setState)
         })
 
         it('should alert that not enough positions are available', () => {
@@ -124,7 +124,7 @@ describe('can add to lineup case', () => {
 
         beforeEach(() => {
             // @ts-ignore
-            result = handleAddPlayerToLineup(0, state, setState)
+            result = handleAddPlayerToLineup(1, state, setState)
         })
 
         it('should call setState with correct params', () => {
@@ -169,7 +169,7 @@ describe('can add to lineup case', () => {
 
         beforeEach(() => {
             // @ts-ignore
-            result = handleAddPlayerToLineup(3, state, setState)
+            result = handleAddPlayerToLineup(4, state, setState)
         })
 
         it('should call setState with correct params', () => {
@@ -214,7 +214,7 @@ describe('can add to lineup case', () => {
 
         beforeEach(() => {
             // @ts-ignore
-            result = handleAddPlayerToLineup(4, state, setState)
+            result = handleAddPlayerToLineup(5, state, setState)
         })
 
         it('should call setState with correct params', () => {
@@ -259,7 +259,7 @@ describe('can add to lineup case', () => {
 
         beforeEach(() => {
             // @ts-ignore
-            result = handleAddPlayerToLineup(5, state, setState)
+            result = handleAddPlayerToLineup(6, state, setState)
         })
 
         it('should call setState with correct params', () => {
@@ -304,7 +304,7 @@ describe('can add to lineup case', () => {
 
         beforeEach(() => {
             // @ts-ignore
-            result = handleAddPlayerToLineup(5, state, setState)
+            result = handleAddPlayerToLineup(6, state, setState)
         })
 
         it('should call setState with correct params', () => {

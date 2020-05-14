@@ -9,17 +9,15 @@ export const PlayerPoolPlayerCell = (props: {
     const {name, status, team, position} = props.player;
 
     return (
-        <span className="Player-cell">
-            <Table>
-                <tbody>
-                <tr className="Player-cell-row">
-                    <td>{name} <b>{status}</b></td>
-                </tr>
-                <tr>
-                    <td>{team} {position}</td>
-                </tr>
-                </tbody>
-            </Table>
-        </span>
+        <Table className="Player-cell">
+            <tbody>
+            <tr className="Player-cell-row">
+                <td>{name} <b>{status}</b></td>
+            </tr>
+            <tr>
+                <td>{team} {position}</td>
+            </tr>
+            </tbody>
+        </Table>
     )
 }

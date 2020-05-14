@@ -1,14 +1,14 @@
-import {State} from "../../interfaces";
+import {playerPoolAttributes, State} from "../../interfaces";
 
-export const handleAddPlayerToLineup = (playerIndex: number, state: State, setState: (state: State) => void) => {
-    const {playerPool, filteredPool, lineup, whiteList, blackList} = state;
-    const displayPlayerPool = filteredPool.length > 0 ? filteredPool : playerPool;
-    let playerToAdd = displayPlayerPool[playerIndex];
-    let playerInLineup = lineup.find((player: any) => player.playerId === playerToAdd.playerId);
-    if (playerInLineup) {
+export const handleAddPlayerToLineup = (playerIdToAdd: number, state: State, setState: (state: State) => void) => {
+    const {playerPool, lineup, whiteList, blackList} = state;
+    const playerIsAlreadyInLineup = lineup.find((player: any) => player.playerId === playerIdToAdd);
+    if (playerIsAlreadyInLineup) {
         alert('Player already added to lineup.');
         return
     }
+    const playerToAdd = playerPool
+        .find((player: playerPoolAttributes) => player.playerId === playerIdToAdd)!;
     let spotsToReplace = lineup.filter(
         (player: any) =>
             !player.name && (

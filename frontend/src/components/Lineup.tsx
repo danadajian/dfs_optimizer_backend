@@ -9,6 +9,8 @@ import Button from "react-bootstrap/Button";
 import Popover from "react-bootstrap/Popover"
 import OverlayTrigger from "react-bootstrap/OverlayTrigger"
 import {LineupPlayerCell} from "./LineupPlayerCell";
+import {getFormattedSalary} from "../helpers/getFormattedSalary/getFormattedSalary";
+import {getAdjustedDraftKingsSalary} from "../helpers/getAdjustedDraftKingsSalary/getAdjustedDraftKingsSalary";
 
 export const Lineup = (props: {
     state: State,
@@ -55,22 +57,24 @@ export const Lineup = (props: {
         text: 'Projection',
         isDummyField: true,
         footer: pointSum.toFixed(1),
-        formatter: (cellContent: any, row: any) => <span>{row.projection && row.projection.toFixed(1)}</span>
+        formatter: (cellContent: any, row: any) => <p>{row.projection && row.projection.toFixed(1)}</p>
     }, {
         dataField: 'salary',
         text: 'Salary',
         isDummyField: true,
         footer: getFormattedSalary(salarySum),
         footerStyle: salaryStyle,
-        formatter: (cellContent: any, row: any) => <span>{row.salary && getFormattedSalary(row.salary)}</span>
+        formatter: (cellContent: any, row: any) =>
+            <p>{site === 'DraftKings' ?
+                getAdjustedDraftKingsSalary(row.salary, row.displayPosition) : getFormattedSalary(row.salary)}</p>
     }];
 
     const rowStyle = (row: any) => ({
         backgroundColor: whiteList.includes(row.playerId) ? 'lightgreen' : 'white'
     });
 
-    const popover = (
-        <Popover id="lineup-popover" className="mw-100">
+    const lineupPopover = (
+        <Popover id="lineup-popover" className="mw-100 mh-100">
             <Popover.Content>
                 <BootstrapTable keyField='lineupIndex'
                                 data={lineup}
@@ -84,12 +88,8 @@ export const Lineup = (props: {
     );
 
     return (
-        <OverlayTrigger trigger="click" placement="auto" overlay={popover}>
+        <OverlayTrigger trigger="click" placement="auto" overlay={lineupPopover}>
             <Button variant="success">View Lineup</Button>
         </OverlayTrigger>
     )
 };
-
-export const getFormattedSalary = (salary: number) => {
-    return '$'.concat(salary.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","))
-}

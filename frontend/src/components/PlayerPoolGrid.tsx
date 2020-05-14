@@ -5,8 +5,8 @@ import BootstrapTable from 'react-bootstrap-table-next';
 import {handleAddPlayerToLineup} from "../handlers/handleAddPlayerToLineup/handleAddPlayerToLineup";
 import {handleAddPlayerToBlackList} from "../handlers/handleAddPlayerToBlackList/handleAddPlayerToBlackList";
 import {PlayerPoolPlayerCell} from "./PlayerPoolPlayerCell";
-import {getOpponentRankStyle} from "./LineupPlayer";
 import {getOrdinalString} from "../helpers/getOrdinalString/getOrdinalString";
+import {getOpponentRankStyle} from "./LineupPlayerCell";
 
 const plusIcon = require('../icons/plus.ico');
 const minusIcon = require('../icons/minus.ico');
@@ -34,18 +34,24 @@ export const PlayerPoolGrid: any = (props: {
         dataField: 'add',
         text: '+',
         events: {
-            onClick: (event: any, column: any, columnIndex: number, row: any, rowIndex: number) =>
-                handleAddPlayerToLineup(rowIndex, props.state, props.setState)
+            onClick: (event: any) => {
+                const playerId = Number(event.target.getAttribute('data-player-id'));
+                handleAddPlayerToLineup(playerId, props.state, props.setState)
+            }
         },
-        formatter: () => <img src={plusIcon} alt={"add"}/>
+        formatter: (cell: any, row: any) =>
+            <img data-player-id={row.playerId} src={plusIcon} alt={"add"}/>
     }, {
         dataField: 'blacklist',
         text: '-',
         events: {
-            onClick: (event: any, column: any, columnIndex: number, row: any, rowIndex: number) =>
-                handleAddPlayerToBlackList(rowIndex, props.state, props.setState)
+            onClick: (event: any) => {
+                const playerId = Number(event.target.getAttribute('data-player-id'));
+                handleAddPlayerToBlackList(playerId, props.state, props.setState)
+            }
         },
-        formatter: () => <img src={minusIcon} alt={"blacklist"}/>
+        formatter: (cell: any, row: any) =>
+            <img data-player-id={row.playerId} src={minusIcon} alt={"blacklist"}/>
     }, {
         dataField: 'name',
         text: 'Player',

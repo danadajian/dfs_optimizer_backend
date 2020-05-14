@@ -1,7 +1,6 @@
 import * as React from "react";
 import '../css/PlayerCell.css'
 import {lineupAttributes} from "../interfaces";
-import {getOpponentRankStyle} from "./LineupPlayer";
 
 export const LineupPlayerCell = (props: {
     player: lineupAttributes
@@ -31,3 +30,7 @@ export const LineupPlayerCell = (props: {
         </span>
     )
 };
+
+export const getOpponentRankStyle = (opponentRank: number) => ({
+    color: opponentRank < 9 ? 'red' : opponentRank > 22 ? 'green' : 'black'
+})

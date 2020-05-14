@@ -44,6 +44,10 @@
     padding: 0.4vmin;
 }
 
+.Player-pool-row p {
+    all: unset;
+}
+
 .Player-pool-row img {
     height: 4vmin
 }

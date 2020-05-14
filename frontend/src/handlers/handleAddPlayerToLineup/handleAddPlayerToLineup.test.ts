@@ -23,10 +23,10 @@ describe('cannot add to lineup case', () => {
         const state = {
             ...stateConstants,
             lineup: [
-                {name: 'Player1', playerId: 1, position: 'QB'},
-                {playerId: 0, position: 'RB'},
-                {playerId: 0, position: 'RB'},
-                {playerId: 0, position: 'RB,WR,TE'}
+                {lineupIndex: 0, name: 'Player1', playerId: 1, position: 'QB'},
+                {lineupIndex: 1, playerId: 0, position: 'RB'},
+                {lineupIndex: 2, playerId: 0, position: 'RB'},
+                {lineupIndex: 3, playerId: 0, position: 'RB,WR,TE'}
             ]
         }
 
@@ -49,10 +49,10 @@ describe('cannot add to lineup case', () => {
         const state = {
             ...stateConstants,
             lineup: [
-                {name: 'Player1', playerId: 1, position: 'QB'},
-                {playerId: 0, position: 'RB'},
-                {playerId: 0, position: 'RB'},
-                {playerId: 0, position: 'RB,WR,TE'}
+                {lineupIndex: 0, name: 'Player1', playerId: 1, position: 'QB'},
+                {lineupIndex: 1, playerId: 0, position: 'RB'},
+                {lineupIndex: 2, playerId: 0, position: 'RB'},
+                {lineupIndex: 3, playerId: 0, position: 'RB,WR,TE'}
             ]
         }
 
@@ -75,10 +75,10 @@ describe('cannot add to lineup case', () => {
         const state = {
             ...stateConstants,
             lineup: [
-                {playerId: 0, position: 'QB'},
-                {name: 'Player3', playerId: 3, position: 'RB'},
-                {name: 'Player4', playerId: 4, position: 'RB'},
-                {name: 'Player5', playerId: 5, position: 'RB'}
+                {lineupIndex: 0, playerId: 0, position: 'QB'},
+                {lineupIndex: 1, name: 'Player3', playerId: 3, position: 'RB'},
+                {lineupIndex: 2, name: 'Player4', playerId: 4, position: 'RB'},
+                {lineupIndex: 3, name: 'Player5', playerId: 5, position: 'RB'}
             ]
         }
 
@@ -115,10 +115,10 @@ describe('can add to lineup case', () => {
             whiteList: [],
             blackList: [1, 3, 4, 5],
             lineup: [
-                {playerId: 0, position: 'QB'},
-                {playerId: 0, position: 'RB'},
-                {playerId: 0, position: 'RB'},
-                {playerId: 0, position: 'RB,WR,TE'}
+                {lineupIndex: 0, playerId: 0, position: 'QB'},
+                {lineupIndex: 1, playerId: 0, position: 'RB'},
+                {lineupIndex: 2, playerId: 0, position: 'RB'},
+                {lineupIndex: 3, playerId: 0, position: 'RB,WR,TE'}
             ]
         }
 
@@ -131,10 +131,10 @@ describe('can add to lineup case', () => {
             expect(setState).toHaveBeenCalledWith({
                 ...state,
                 lineup: [
-                    {name: 'Player1', playerId: 1, position: 'QB'},
-                    {playerId: 0, position: 'RB'},
-                    {playerId: 0, position: 'RB'},
-                    {playerId: 0, position: 'RB,WR,TE'}
+                    {lineupIndex: 0, name: 'Player1', playerId: 1, position: 'QB'},
+                    {lineupIndex: 1, playerId: 0, position: 'RB'},
+                    {lineupIndex: 2, playerId: 0, position: 'RB'},
+                    {lineupIndex: 3, playerId: 0, position: 'RB,WR,TE'}
                 ],
                 whiteList: [1],
                 blackList: [3, 4, 5],
@@ -160,10 +160,10 @@ describe('can add to lineup case', () => {
             whiteList: [],
             blackList: [1, 3, 4, 5],
             lineup: [
-                {playerId: 0, position: 'QB'},
-                {name: 'Player3', playerId: 3, position: 'RB'},
-                {playerId: 0, position: 'RB'},
-                {playerId: 0, position: 'RB,WR,TE'}
+                {lineupIndex: 0, playerId: 0, position: 'QB'},
+                {lineupIndex: 1, name: 'Player3', playerId: 3, position: 'RB'},
+                {lineupIndex: 2, playerId: 0, position: 'RB'},
+                {lineupIndex: 3, playerId: 0, position: 'RB,WR,TE'}
             ]
         }
 
@@ -176,10 +176,10 @@ describe('can add to lineup case', () => {
             expect(setState).toHaveBeenCalledWith({
                 ...state,
                 lineup: [
-                    {playerId: 0, position: 'QB'},
-                    {name: 'Player3', playerId: 3, position: 'RB'},
-                    {name: 'Player4', playerId: 4, position: 'RB'},
-                    {playerId: 0, position: 'RB,WR,TE'}
+                    {lineupIndex: 0, playerId: 0, position: 'QB'},
+                    {lineupIndex: 1, name: 'Player3', playerId: 3, position: 'RB'},
+                    {lineupIndex: 2, name: 'Player4', playerId: 4, position: 'RB'},
+                    {lineupIndex: 3, playerId: 0, position: 'RB,WR,TE'}
                 ],
                 whiteList: [4],
                 blackList: [1, 3, 5],
@@ -205,10 +205,10 @@ describe('can add to lineup case', () => {
             whiteList: [],
             blackList: [1, 3, 4, 5],
             lineup: [
-                {playerId: 0, position: 'QB'},
-                {name: 'Player3', playerId: 3, position: 'RB'},
-                {name: 'Player4', playerId: 4, position: 'RB'},
-                {playerId: 0, position: 'RB,WR,TE'}
+                {lineupIndex: 0, playerId: 0, position: 'QB'},
+                {lineupIndex: 1, name: 'Player3', playerId: 3, position: 'RB'},
+                {lineupIndex: 2, name: 'Player4', playerId: 4, position: 'RB'},
+                {lineupIndex: 3, playerId: 0, position: 'RB,WR,TE'}
             ]
         }
 
@@ -221,10 +221,10 @@ describe('can add to lineup case', () => {
             expect(setState).toHaveBeenCalledWith({
                 ...state,
                 lineup: [
-                    {playerId: 0, position: 'QB'},
-                    {name: 'Player3', playerId: 3, position: 'RB'},
-                    {name: 'Player4', playerId: 4, position: 'RB'},
-                    {name: 'Player5', playerId: 5, position: 'RB,WR,TE'}
+                    {lineupIndex: 0, playerId: 0, position: 'QB'},
+                    {lineupIndex: 1, name: 'Player3', playerId: 3, position: 'RB'},
+                    {lineupIndex: 2, name: 'Player4', playerId: 4, position: 'RB'},
+                    {lineupIndex: 3, name: 'Player5', playerId: 5, position: 'RB,WR,TE'}
                 ],
                 whiteList: [5],
                 blackList: [1, 3, 4],
@@ -250,10 +250,10 @@ describe('can add to lineup case', () => {
             whiteList: [],
             blackList: [],
             lineup: [
-                {playerId: 0, position: 'QB'},
-                {name: 'Player3', playerId: 3, position: 'RB'},
-                {name: 'Player4', playerId: 4, position: 'RB'},
-                {playerId: 0, position: 'RB/WR'}
+                {lineupIndex: 0, playerId: 0, position: 'QB'},
+                {lineupIndex: 1, name: 'Player3', playerId: 3, position: 'RB'},
+                {lineupIndex: 2, name: 'Player4', playerId: 4, position: 'RB'},
+                {lineupIndex: 3, playerId: 0, position: 'RB/WR'}
             ]
         }
 
@@ -266,10 +266,10 @@ describe('can add to lineup case', () => {
             expect(setState).toHaveBeenCalledWith({
                 ...state,
                 lineup: [
-                    {playerId: 0, position: 'QB'},
-                    {name: 'Player3', playerId: 3, position: 'RB'},
-                    {name: 'Player4', playerId: 4, position: 'RB'},
-                    {name: 'Player6', playerId: 6, position: 'RB/WR'}
+                    {lineupIndex: 0, playerId: 0, position: 'QB'},
+                    {lineupIndex: 1, name: 'Player3', playerId: 3, position: 'RB'},
+                    {lineupIndex: 2, name: 'Player4', playerId: 4, position: 'RB'},
+                    {lineupIndex: 3, name: 'Player6', playerId: 6, position: 'RB/WR'}
                 ],
                 whiteList: [6],
                 blackList: [],
@@ -295,10 +295,10 @@ describe('can add to lineup case', () => {
             whiteList: [],
             blackList: [],
             lineup: [
-                {playerId: 0, position: 'QB'},
-                {name: 'Player3', playerId: 3, position: 'RB'},
-                {name: 'Player4', playerId: 4, position: 'RB'},
-                {playerId: 0, position: 'WR'}
+                {lineupIndex: 0, playerId: 0, position: 'QB'},
+                {lineupIndex: 1, name: 'Player3', playerId: 3, position: 'RB'},
+                {lineupIndex: 2, name: 'Player4', playerId: 4, position: 'RB'},
+                {lineupIndex: 3, playerId: 0, position: 'WR'}
             ]
         }
 
@@ -311,10 +311,10 @@ describe('can add to lineup case', () => {
             expect(setState).toHaveBeenCalledWith({
                 ...state,
                 lineup: [
-                    {playerId: 0, position: 'QB'},
-                    {name: 'Player3', playerId: 3, position: 'RB'},
-                    {name: 'Player4', playerId: 4, position: 'RB'},
-                    {name: 'Player6', playerId: 6, position: 'WR'}
+                    {lineupIndex: 0, playerId: 0, position: 'QB'},
+                    {lineupIndex: 1, name: 'Player3', playerId: 3, position: 'RB'},
+                    {lineupIndex: 2, name: 'Player4', playerId: 4, position: 'RB'},
+                    {lineupIndex: 3, name: 'Player6', playerId: 6, position: 'WR'}
                 ],
                 whiteList: [6],
                 blackList: [],

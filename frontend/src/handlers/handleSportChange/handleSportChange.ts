@@ -38,6 +38,7 @@ export const handleSportChange = async (sport: string, state: State, setState: (
         opponentRanks,
         injuries,
         playerStatuses,
+        contest: '',
         playerPool: [],
         filteredPool: [],
         whiteList: [],

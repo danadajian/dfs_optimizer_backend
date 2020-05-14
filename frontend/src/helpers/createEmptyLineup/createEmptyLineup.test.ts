@@ -6,49 +6,58 @@ describe('gets empty lineup from matrix', () => {
         let displayMatrix = ['QB', 'RB', 'RB', 'WR', 'WR', 'WR', 'TE', 'FLEX', 'D/ST'];
         let expectedJson = [
             {
-                'playerId': 0,
-                'position': 'QB',
-                'displayPosition': 'QB'
+                lineupIndex: 0,
+                playerId: 0,
+                position: 'QB',
+                displayPosition: 'QB'
             },
             {
-                'playerId': 0,
-                'position': 'RB',
-                'displayPosition': 'RB'
+                lineupIndex: 1,
+                playerId: 0,
+                position: 'RB',
+                displayPosition: 'RB'
             },
             {
-                'playerId': 0,
-                'position': 'RB',
-                'displayPosition': 'RB'
+                lineupIndex: 2,
+                playerId: 0,
+                position: 'RB',
+                displayPosition: 'RB'
             },
             {
-                'playerId': 0,
-                'position': 'WR',
-                'displayPosition': 'WR'
+                lineupIndex: 3,
+                playerId: 0,
+                position: 'WR',
+                displayPosition: 'WR'
             },
             {
-                'playerId': 0,
-                'position': 'WR',
-                'displayPosition': 'WR'
+                lineupIndex: 4,
+                playerId: 0,
+                position: 'WR',
+                displayPosition: 'WR'
             },
             {
-                'playerId': 0,
-                'position': 'WR',
-                'displayPosition': 'WR'
+                lineupIndex: 5,
+                playerId: 0,
+                position: 'WR',
+                displayPosition: 'WR'
             },
             {
-                'playerId': 0,
-                'position': 'TE',
-                'displayPosition': 'TE'
+                lineupIndex: 6,
+                playerId: 0,
+                position: 'TE',
+                displayPosition: 'TE'
             },
             {
-                'playerId': 0,
-                'position': 'RB,WR,TE',
-                'displayPosition': 'FLEX'
+                lineupIndex: 7,
+                playerId: 0,
+                position: 'RB,WR,TE',
+                displayPosition: 'FLEX'
             },
             {
-                'playerId': 0,
-                'position': 'D/ST',
-                'displayPosition': 'D/ST'
+                lineupIndex: 8,
+                playerId: 0,
+                position: 'D/ST',
+                displayPosition: 'D/ST'
             }
         ];
         expect(createEmptyLineup(lineupPositions, displayMatrix)).toEqual(expectedJson);

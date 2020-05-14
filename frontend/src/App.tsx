@@ -17,7 +17,7 @@ const App = () => {
             <NavBar state={state} setState={setState}/>
             <section id="home">
                 <Jumbotron className="mh-100">
-                    {!state.site && !state.sport && <div>
+                    {!state.contest && <div>
                         <h1>DFS Optimizer</h1>
                         <p>
                             A better way to find the winning lineup.

@@ -21,12 +21,12 @@ export const PlayerPoolGrid: any = (props: {
 
     const getSortIcon = (sortOrder: string) => {
         if (sortOrder) {
-            return <span><img src={sortOrder === 'asc' ? upIcon : downIcon} alt={"sort"}/></span>
+            return <img src={sortOrder === 'asc' ? upIcon : downIcon} alt={"sort"}/>
         } else {
-            return <span>
+            return <div className="Up-down-buttons">
                 <img src={upIcon} alt={"up"}/>
                 <img src={downIcon} alt={"down"}/>
-            </span>
+            </div>
         }
     }
 
@@ -55,14 +55,14 @@ export const PlayerPoolGrid: any = (props: {
         text: 'Projection',
         sort: true,
         sortCaret: getSortIcon,
-        formatter: (cellContent: any, row: any) => <span>{row.projection.toFixed(1)}</span>
+        formatter: (cellContent: any, row: any) => <p>{row.projection.toFixed(1)}</p>
     }, {
         dataField: 'salary',
         text: 'Salary',
         sort: true,
         sortCaret: getSortIcon,
         formatter: (cellContent: any, row: any) =>
-            <span>${row.salary.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</span>
+            <p>${row.salary.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</p>
     }, {
         dataField: 'pricePerPoint',
         text: '$/Point',
@@ -70,22 +70,22 @@ export const PlayerPoolGrid: any = (props: {
         sortCaret: (order: any) => getSortIcon(order),
         sortValue: (cell: any, row: any) => row.salary / row.projection,
         formatter: (cellContent: any, row: any) =>
-            <span>
+            <p>
                 ${(row.salary / row.projection)
                 .toFixed(0)
                 .toString()
                 .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
-            </span>
+            </p>
     }, {
         dataField: 'opponent',
         text: 'Opponent',
         formatter: (cellContent: any, row: any) =>
-            <span>
+            <p>
                 {row.opponent + ' '}
                 <b style={getOpponentRankStyle(row.opponentRank)}>
                     {getOrdinalString(row.opponentRank)}
                 </b>
-            </span>
+            </p>
     }, {
         dataField: 'spread',
         text: 'Spread'
@@ -107,6 +107,7 @@ export const PlayerPoolGrid: any = (props: {
             <BootstrapTable keyField='playerId'
                             data={filteredPool.length > 0 ? filteredPool : playerPool}
                             columns={columns}
+                            classes="Player-table"
                             headerWrapperClasses="Player-pool-grid-header"
                             rowClasses="Player-pool-row"
                             rowStyle={rowStyle}

@@ -1,9 +1,11 @@
 .Grid-section {
     display: flex;
-    justify-content: space-evenly;
+    flex-wrap: wrap;
 }
 
 .Grid-section span {
     display: flex;
+    justify-content: center;
     align-items: center;
+    flex-grow: 1;
 }

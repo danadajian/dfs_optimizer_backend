@@ -26,6 +26,11 @@ export interface State {
     playerStatuses: any[],
 }
 
+export interface StateProps {
+    state: State,
+    setState: (state: State) => void
+}
+
 export interface lineupAttributes {
     lineupIndex: number,
     playerId: number,

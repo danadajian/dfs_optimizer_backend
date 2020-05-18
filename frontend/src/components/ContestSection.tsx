@@ -2,15 +2,12 @@ import React from "react";
 import ButtonGroup from 'react-bootstrap/ButtonGroup'
 import Button from 'react-bootstrap/Button'
 import NavDropdown from "react-bootstrap/NavDropdown";
-import {State} from "../interfaces";
+import {StateProps} from "../interfaces";
 import {handleContestChange} from "../handlers/handleContestChange/handleContestChange";
 import Tooltip from "react-bootstrap/Tooltip";
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 
-export const ContestSection = (props: {
-    state: State,
-    setState: (state: State) => void
-}) => {
+export const ContestSection = (props: StateProps) => {
     const {isLoading, site, sport, contest, contests} = props.state;
     const shouldRenderElement = !isLoading && site && sport;
     const shouldDisplayTooltip = shouldRenderElement && !contest;

@@ -1,5 +1,5 @@
 import {invokeLambdaFunction} from "../../aws/aws";
-import {State} from "../../interfaces";
+import {lineupAttributes, State} from "../../interfaces";
 
 export const handleGenerateOptimalLineup = async (state: State, setState: (state: State) => void) => {
     setState({
@@ -19,7 +19,10 @@ export const handleGenerateOptimalLineup = async (state: State, setState: (state
         newLineup = optimalPlayerIds.map((playerId: number) => {
             return state.playerPool.find((player: any) => player.playerId === playerId)
         });
-        newLineup.forEach((player: any, index: number) => player.displayPosition = state.displayMatrix[index]);
+        newLineup.forEach((player: lineupAttributes, lineupIndex: number) => {
+            player.lineupIndex = lineupIndex;
+            player.displayPosition = state.displayMatrix[lineupIndex];
+        });
     }
     setState({
         ...state,

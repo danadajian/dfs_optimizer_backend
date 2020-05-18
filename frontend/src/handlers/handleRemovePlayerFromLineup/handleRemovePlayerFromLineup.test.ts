@@ -18,7 +18,7 @@ describe('removePlayerFromLineup', () => {
 
     beforeEach(() => {
         // @ts-ignore
-        result = handleRemovePlayerFromLineup(1, state, setState)
+        result = handleRemovePlayerFromLineup(2, state, setState)
     })
 
     it('should call setState with correct params', () => {
@@ -32,7 +32,8 @@ describe('removePlayerFromLineup', () => {
             ],
             whiteList: [],
             searchText: '',
-            filteredPool: []
+            filteredPool: [],
+            sortValue: 'All'
         })
     });
 });

@@ -1,12 +1,9 @@
 import React from "react";
 import Form from 'react-bootstrap/Form'
-import {State} from "../interfaces";
+import {StateProps} from "../interfaces";
 import {handleFilterPlayers} from "../handlers/handleFilterPlayers/handleFilterPlayers";
 
-export const SearchBar: any = (props: {
-    state: State,
-    setState: (state: State) => void
-}) => {
+export const SearchBar: any = (props: StateProps) => {
     return (
         <Form.Control type="text"
                       placeholder="Search"

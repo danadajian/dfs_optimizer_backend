@@ -51,16 +51,19 @@ describe('handleGenerateOptimalLineup', () => {
                 isOptimizing: false,
                 lineup: [
                     {
+                        lineupIndex: 0,
                         some: 'info',
                         playerId: 1,
                         displayPosition: 'display1'
                     },
                     {
+                        lineupIndex: 1,
                         some: 'info',
                         playerId: 2,
                         displayPosition: 'display2'
                     },
                     {
+                        lineupIndex: 2,
                         some: 'info',
                         playerId: 3,
                         displayPosition: 'display3'

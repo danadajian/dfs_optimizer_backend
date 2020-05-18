@@ -1,7 +1,7 @@
 import React from "react";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
-import {State} from "../interfaces";
+import {StateProps} from "../interfaces";
 import {SiteSection} from "./SiteSection";
 import {SportSection} from "./SportSection";
 import {DateSection} from "./DateSection";
@@ -11,10 +11,7 @@ import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 
 const logo = require('../icons/logo.ico');
 
-export const NavBar = (props: {
-    state: State,
-    setState: (state: State) => void
-}) => {
+export const NavBar = (props: StateProps) => {
     const isDesktopView = window.innerWidth > 1200;
 
     return <Navbar sticky="top" bg="light" variant="light" expand="xl">
@@ -41,10 +38,10 @@ export const NavBar = (props: {
             <Nav>
                 <Nav.Link href="#home" className="ml-2 mr-2 mt-1 mb-1">Home</Nav.Link>
                 <Nav.Link href="#about" className="ml-2 mr-2 mt-1 mb-1">About</Nav.Link>
-                <DateSection state={props.state} setState={props.setState}/>
-                <SiteSection state={props.state} setState={props.setState} isDesktopView={isDesktopView}/>
-                <SportSection state={props.state} setState={props.setState}/>
-                <ContestSection state={props.state} setState={props.setState}/>
+                <DateSection {...props}/>
+                <SiteSection {...props} isDesktopView={isDesktopView}/>
+                <SportSection {...props}/>
+                <ContestSection {...props}/>
             </Nav>
         </Navbar.Collapse>
     </Navbar>

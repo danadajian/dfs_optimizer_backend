@@ -4,14 +4,11 @@ import Button from 'react-bootstrap/Button';
 import DropdownButton from 'react-bootstrap/DropdownButton';
 import Dropdown from "react-bootstrap/Dropdown";
 import '../css/FilterBar.css'
-import {playerPoolAttributes, State} from "../interfaces";
+import {playerPoolAttributes, StateProps} from "../interfaces";
 import {getSetFromArray} from "../helpers/getSetFromArray/getSetFromArray";
 import {handleFilterPlayers} from "../handlers/handleFilterPlayers/handleFilterPlayers";
 
-export const FilterBar: any = (props: {
-    state: State,
-    setState: (state: State) => void
-}) => {
+export const FilterBar: any = (props: StateProps) => {
     const {playerPool, sortValue} = props.state;
 
     return (

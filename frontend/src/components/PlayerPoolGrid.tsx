@@ -1,23 +1,20 @@
 import React from 'react'
 import '../css/PlayerPoolGrid.css'
-import {State} from "../interfaces";
+import {StateProps} from "../interfaces";
 import BootstrapTable from 'react-bootstrap-table-next';
+import Button from 'react-bootstrap/Button';
 import {handleAddPlayerToLineup} from "../handlers/handleAddPlayerToLineup/handleAddPlayerToLineup";
 import {handleAddPlayerToBlackList} from "../handlers/handleAddPlayerToBlackList/handleAddPlayerToBlackList";
 import {PlayerPoolPlayerCell} from "./PlayerPoolPlayerCell";
 import {getOrdinalString} from "../helpers/getOrdinalString/getOrdinalString";
 import {getOpponentRankStyle} from "./LineupPlayerCell";
+import {handleRemovePlayerFromLineup} from "../handlers/handleRemovePlayerFromLineup/handleRemovePlayerFromLineup";
 
-const plusIcon = require('../icons/plus.ico');
-const minusIcon = require('../icons/minus.ico');
 const upIcon = require('../icons/up.svg');
 const downIcon = require('../icons/down.svg');
 
-export const PlayerPoolGrid: any = (props: {
-    state: State,
-    setState: (state: State) => void
-}) => {
-    const {playerPool, filteredPool, whiteList, blackList} = props.state;
+export const PlayerPoolGrid: any = (props: StateProps) => {
+    const {playerPool, filteredPool, lineup, whiteList, blackList} = props.state;
 
     const getSortIcon = (sortOrder: string) => {
         if (sortOrder) {
@@ -31,27 +28,37 @@ export const PlayerPoolGrid: any = (props: {
     }
 
     const columns = [{
-        dataField: 'add',
-        text: '+',
+        dataField: 'add/remove',
+        text: '',
         events: {
             onClick: (event: any) => {
                 const playerId = Number(event.target.getAttribute('data-player-id'));
-                handleAddPlayerToLineup(playerId, props.state, props.setState)
+                lineup.map(player => player.playerId).includes(playerId) ?
+                    handleRemovePlayerFromLineup(playerId, props.state, props.setState) :
+                    handleAddPlayerToLineup(playerId, props.state, props.setState)
             }
         },
-        formatter: (cell: any, row: any) =>
-            <img data-player-id={row.playerId} src={plusIcon} alt={"add"}/>
+        formatter: (cell: any, row: any) => {
+            const playerInLineup = whiteList.includes(row.playerId);
+            return <Button size={"sm"}
+                           variant={playerInLineup ? "warning" : "success"}
+                           data-player-id={row.playerId}>{playerInLineup ? 'Remove' : 'Add'}</Button>
+        }
     }, {
         dataField: 'blacklist',
-        text: '-',
+        text: '',
         events: {
             onClick: (event: any) => {
                 const playerId = Number(event.target.getAttribute('data-player-id'));
                 handleAddPlayerToBlackList(playerId, props.state, props.setState)
             }
         },
-        formatter: (cell: any, row: any) =>
-            <img data-player-id={row.playerId} src={minusIcon} alt={"blacklist"}/>
+        formatter: (cell: any, row: any) => {
+            const blackListText = blackList.includes(row.playerId) ? 'Unblacklist' : 'Blacklist';
+            return <Button size={"sm"}
+                    variant={"danger"}
+                    data-player-id={row.playerId}>{blackListText}</Button>
+        }
     }, {
         dataField: 'name',
         text: 'Player',

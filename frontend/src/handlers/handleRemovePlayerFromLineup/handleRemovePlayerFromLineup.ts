@@ -1,12 +1,10 @@
-import {State} from "../../interfaces";
+import {lineupAttributes, State} from "../../interfaces";
 
-export const handleRemovePlayerFromLineup = (lineupIndex: number, state: State, setState: (state: State) => void) => {
+export const handleRemovePlayerFromLineup = (playerIdToRemove: number, state: State, setState: (state: State) => void) => {
     const {lineup, whiteList, lineupPositions, displayMatrix} = state;
-    let playerToRemove = lineup[lineupIndex];
-    let playerInWhiteList = whiteList.find((playerId: number) => playerId === playerToRemove.playerId);
-    if (playerInWhiteList) {
-        whiteList.splice(whiteList.indexOf(playerInWhiteList), 1);
-    }
+    const playerToRemove = lineup.find((player: lineupAttributes) => player.playerId === playerIdToRemove)!;
+    whiteList.splice(whiteList.indexOf(playerIdToRemove), 1);
+    const lineupIndex = playerToRemove.lineupIndex;
     lineup[lineupIndex] = {
         lineupIndex,
         playerId: 0,
@@ -18,6 +16,7 @@ export const handleRemovePlayerFromLineup = (lineupIndex: number, state: State, 
         lineup,
         whiteList,
         searchText: '',
-        filteredPool: []
+        filteredPool: [],
+        sortValue: 'All'
     })
 };

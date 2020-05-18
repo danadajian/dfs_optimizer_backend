@@ -18,31 +18,6 @@ describe('cannot add to lineup case', () => {
         whiteList: [],
         blackList: [1, 3, 4, 5]
     }
-    describe('player already in lineup', () => {
-        let result: any;
-        const state = {
-            ...stateConstants,
-            lineup: [
-                {lineupIndex: 0, name: 'Player1', playerId: 1, position: 'QB'},
-                {lineupIndex: 1, playerId: 0, position: 'RB'},
-                {lineupIndex: 2, playerId: 0, position: 'RB'},
-                {lineupIndex: 3, playerId: 0, position: 'RB,WR,TE'}
-            ]
-        }
-
-        beforeEach(() => {
-            // @ts-ignore
-            result = handleAddPlayerToLineup(1, state, setState)
-        })
-
-        it('should alert that the player was already added', () => {
-            expect(window.alert).toHaveBeenLastCalledWith('Player already added to lineup.');
-        });
-
-        it('should not change the state', () => {
-            expect(setState).not.toHaveBeenCalled();
-        });
-    })
 
     describe('not enough non-flex positions available', () => {
         let result: any;

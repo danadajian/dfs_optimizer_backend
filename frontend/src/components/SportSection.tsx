@@ -2,15 +2,12 @@ import React from "react";
 import ButtonGroup from 'react-bootstrap/ButtonGroup'
 import Button from 'react-bootstrap/Button'
 import {SUPPORTED_SPORTS} from "../constants";
-import {State} from "../interfaces";
+import {StateProps} from "../interfaces";
 import {handleSportChange} from "../handlers/handleSportChange/handleSportChange";
 import Tooltip from "react-bootstrap/Tooltip";
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 
-export const SportSection = (props: {
-    state: State,
-    setState: (state: State) => void
-}) => {
+export const SportSection = (props: StateProps) => {
     const {site, sport} = props.state;
     const shouldDisplayTooltip = site && !sport;
 

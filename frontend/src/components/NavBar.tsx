@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import {StateProps} from "../interfaces";
@@ -12,10 +12,13 @@ import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 const logo = require('../icons/logo.ico');
 
 export const NavBar = (props: StateProps) => {
+
+    const [homeEnabled, setHomeEnabled] = useState(true);
+
     const isDesktopView = window.innerWidth > 1200;
 
-    return <Navbar sticky="top" bg="light" variant="light" expand="xl">
-        <Navbar.Brand href="#home">
+    return <Navbar sticky="top" bg="dark" variant="dark" expand="xl">
+        <Navbar.Brand>
             <img alt="logo"
                  src={logo}
                  width="30"
@@ -36,8 +39,12 @@ export const NavBar = (props: StateProps) => {
         </OverlayTrigger>
         <Navbar.Collapse id="nav-bar">
             <Nav>
-                <Nav.Link href="#home" className="ml-2 mr-2 mt-1 mb-1">Home</Nav.Link>
-                <Nav.Link href="#about" className="ml-2 mr-2 mt-1 mb-1">About</Nav.Link>
+                <Nav.Link href="#home" active={homeEnabled}
+                          onClick={() => setHomeEnabled(true)}
+                          className="ml-2 mr-2 mt-1 mb-1">Home</Nav.Link>
+                <Nav.Link href="#about"
+                          onClick={() => setHomeEnabled(false)}
+                          className="ml-2 mr-2 mt-1 mb-1">About</Nav.Link>
                 <DateSection {...props}/>
                 <SiteSection {...props} isDesktopView={isDesktopView}/>
                 <SportSection {...props}/>

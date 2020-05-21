@@ -17,7 +17,7 @@ export const SportSection = (props: StateProps) => {
                 supportedSport =>
                     <Button
                         key={supportedSport}
-                        variant={site === 'Fanduel' ? "outline-primary" : "outline-dark"}
+                        variant={site === 'Fanduel' ? "outline-primary" : "outline-light"}
                         active={sport === supportedSport}
                         disabled={!site}
                         onClick={() => handleSportChange(supportedSport, props.state, props.setState)}>

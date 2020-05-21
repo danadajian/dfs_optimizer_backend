@@ -17,7 +17,7 @@ export const ContestSection = (props: StateProps) => {
             {contests.map(
                 contestName =>
                     <Button key={contestName}
-                            variant={site === 'Fanduel' ? "outline-primary" : "outline-dark"}
+                            variant={site === 'Fanduel' ? "outline-primary" : "outline-secondary"}
                             active={contest === contestName}
                             onClick={() => handleContestChange(contestName, props.state, props.setState)}>
                         {contestName}
@@ -44,7 +44,7 @@ export const ContestSection = (props: StateProps) => {
         return null
     } else if (contests.length === 0) {
         return <Button className="ml-2 mr-2 mt-1 mb-1"
-                       disabled variant={"outline-danger"}>No contests are available.</Button>
+                       disabled variant={"outline-light"}>No contests are available.</Button>
     } else if (contests.length <= 4) {
         return shouldDisplayTooltip ? overlayTooltip(buttonGroup) : buttonGroup
     } else {

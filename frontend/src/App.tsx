@@ -13,16 +13,16 @@ const App = () => {
     const [state, setState] = useState(INITIAL_STATE);
 
     return (
-        <div>
+        <>
             <NavBar state={state} setState={setState}/>
-            <section id="home">
-                <Jumbotron className="mh-100">
-                    {!state.contest && <div>
+            <section>
+                <Jumbotron>
+                    {!state.contest && <>
                         <h1>DFS Optimizer</h1>
                         <p>
                             A better way to find the winning lineup.
                         </p>
-                    </div>}
+                    </>}
                     <GridSection state={state} setState={setState}/>
                 </Jumbotron>
             </section>
@@ -34,7 +34,7 @@ const App = () => {
                     </p>
                 </Jumbotron>
             </section>
-        </div>
+        </>
     );
 };
 

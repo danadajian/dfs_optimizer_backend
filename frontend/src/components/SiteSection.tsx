@@ -17,7 +17,7 @@ export const SiteSection = (props: {
             <Button variant="outline-primary"
                     active={props.state.site === 'Fanduel'}
                     onClick={() => handleSiteChange('Fanduel', props.setState)}>Fanduel</Button>
-            <Button variant="outline-dark"
+            <Button variant="outline-light"
                     active={props.state.site === 'DraftKings'}
                     onClick={() => handleSiteChange('DraftKings', props.setState)}>DraftKings</Button>
         </ButtonGroup>

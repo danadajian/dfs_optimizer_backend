@@ -12,7 +12,6 @@ jest.mock('./downloadImage');
     toDataURL: jest.fn(() => 'dataUrl')
 });
 
-const setShouldRenderLineup = jest.fn();
 const componentRef = {
     current: 'component ref'
 };
@@ -31,12 +30,8 @@ describe('handleExportLineup', () => {
         }
 
         beforeEach(async () => {
-            result = await handleExportLineup(setShouldRenderLineup, mockNavigator, componentRef)
+            result = await handleExportLineup(mockNavigator, componentRef)
         })
-
-        it('should call setShouldRenderLineup with true', () => {
-            expect(setShouldRenderLineup).toHaveBeenCalledWith(true)
-        });
 
         it('should call findDOMNode with correct params', () => {
             expect(findDOMNode).toHaveBeenCalledWith('component ref')
@@ -62,12 +57,8 @@ describe('handleExportLineup', () => {
         }
 
         beforeEach(async () => {
-            result = await handleExportLineup(setShouldRenderLineup, mockNavigator, componentRef)
+            result = await handleExportLineup(mockNavigator, componentRef)
         })
-
-        it('should call setShouldRenderLineup with true', () => {
-            expect(setShouldRenderLineup).toHaveBeenCalledWith(true)
-        });
 
         it('should call findDOMNode with correct params', () => {
             expect(findDOMNode).toHaveBeenCalledWith('component ref')

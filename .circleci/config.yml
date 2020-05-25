@@ -4,7 +4,7 @@ container_config: &container_config
   docker:
     - image: openjdk:8-jdk-stretch
 jobs:
-  build_backend:
+  build:
     <<: *container_config
     steps:
       - checkout
@@ -14,7 +14,7 @@ jobs:
             apt-get -y -qq update
             apt-get -y -qq install maven
       - run:
-          name: Test and Package Backend
+          name: Test and Package
           command: |
             TIMESTAMP=$( date +"%Y-%m-%d_%H-%M-%S" )
             sed -i "s/REPLACE_ME_WITH_TIMESTAMP/$TIMESTAMP/g" pom.xml
@@ -22,7 +22,7 @@ jobs:
       - persist_to_workspace:
           root: ~/dfs-optimizer
           paths: .
-  deploy_backend:
+  deploy:
     <<: *container_config
     steps:
       - attach_workspace:
@@ -44,106 +44,22 @@ jobs:
       - run:
           name: Deploy to AWS
           command: |
-            chmod +x ./scripts/deployBackend.sh
-            ./scripts/deployBackend.sh
+            chmod +x ./scripts/deploy.sh
+            ./scripts/deploy.sh
       - persist_to_workspace:
           root: ~/dfs-optimizer
           paths: .
-  build_frontend:
-    <<: *container_config
-    steps:
-      - attach_workspace:
-          at: ~/dfs-optimizer
-      - run:
-          name: Install NPM
-          command: |
-            curl -sL https://deb.nodesource.com/setup_10.x | bash -
-            apt-get install -y -qq nodejs
-            curl -L https://www.npmjs.com/install.sh | sh
-      - run:
-          name: Install Frontend Packages
-          command: |
-            cd frontend
-            npm install
-      - run:
-          name: Install AWS CLI
-          command: |
-            apt-get -y -qq update
-            apt-get -y -qq install python-dev
-            apt-get -y -qq install python-pip
-            pip install --upgrade awscli
-      - run:
-          name: Configure AWS
-          command: |
-            aws configure set aws_access_key_id AWS_ACCESS_KEY_ID
-            aws configure set aws_secret_access_key AWS_SECRET_ACCESS_KEY
-            aws configure set default.region us-east-2
-      - run:
-          name: Install Jq
-          command: apt-get install -y -qq jq
-      - run:
-          name: Prepare Environment Variables
-          command: |
-            chmod +x ./scripts/createFrontendEnvironmentVariables.sh
-            ./scripts/createFrontendEnvironmentVariables.sh
-      - run:
-          name: Run Frontend Tests
-          command: |
-            cd frontend
-            npm run test
-      - run:
-          name: Build Frontend
-          command: |
-            cd frontend
-            npm run build
-      - persist_to_workspace:
-          root: ~/dfs-optimizer
-          paths: .
-  deploy_frontend:
-    <<: *container_config
-    steps:
-      - attach_workspace:
-          at: ~/dfs-optimizer
-      - run:
-          name: Install AWS CLI
-          command: |
-            apt-get -y -qq update
-            apt-get -y -qq install python-dev
-            apt-get -y -qq install python-pip
-            pip install --upgrade awscli
-      - run:
-          name: Configure AWS
-          command: |
-            aws configure set aws_access_key_id AWS_ACCESS_KEY_ID
-            aws configure set aws_secret_access_key AWS_SECRET_ACCESS_KEY
-            aws configure set default.region us-east-2
-      - run:
-          name: Deploy to AWS
-          command: |
-            chmod +x ./scripts/deployFrontend.sh
-            ./scripts/deployFrontend.sh
+
 workflows:
   version: 2
   deploy_dfs_optimizer:
     jobs:
-      - build_backend
-      - deploy_backend:
+      - build
+      - deploy:
           context: DFS_OPTIMIZER
           filters:
             branches:
               only:
                 - master
           requires:
-            - build_backend
-      - build_frontend:
-          context: DFS_OPTIMIZER
-          requires:
-            - deploy_backend
-      - deploy_frontend:
-          context: DFS_OPTIMIZER
-          filters:
-            branches:
-              only:
-                - master
-          requires:
-            - build_frontend
+            - build

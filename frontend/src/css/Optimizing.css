@@ -1,16 +1,23 @@
-.Optimizing-text {
+.Optimizing {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.Optimizing p {
     font-size: x-large;
     font-weight: bold;
     font-style: oblique;
     text-align: center;
     color: black;
-    padding-top: 25%;
 }
 
-.Optimizing-logo {
+.Optimizing img {
     animation: Optimizing-logo-fill 2s ease infinite;
     background: white;
-    height: 20vmin;
+    height: 25vmin;
 }
 
 @keyframes Optimizing-logo-fill {

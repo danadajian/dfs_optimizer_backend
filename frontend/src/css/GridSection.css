@@ -1,10 +1,13 @@
 .Grid-section {
     display: flex;
+    justify-content: center;
+    margin-top: 2rem;
     flex-wrap: wrap;
 }
 
 .Grid-section span {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     flex-grow: 1;

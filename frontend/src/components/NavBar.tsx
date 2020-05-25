@@ -21,7 +21,7 @@ export const NavBar = (props: {
     const {isLoading, sport, loadingText} = props.state;
     const {isDesktopView} = props;
 
-    return <Navbar sticky="top" bg="dark" variant="dark" expand="xl">
+    return <Navbar sticky="top" bg="dark" variant="dark" expand="xl" collapseOnSelect>
         <Navbar.Brand as={NavLink} to="/">
             <img alt="logo"
                  src={logo}

@@ -1,7 +1,7 @@
 import React, {useRef} from "react";
 import Button from 'react-bootstrap/Button';
 import '../css/ActionButtonSection.css'
-import {lineupAttributes, StateProps} from "../interfaces";
+import {StateProps} from "../interfaces";
 import {handleGenerateOptimalLineup} from "../handlers/handleGenerateOptimalLineup/handleGenerateOptimalLineup";
 import {handleClearLineup} from "../handlers/handleClearLineup/handleClearLineup";
 import {handleExportLineup} from "../handlers/handleExportLineup/handleExportLineup";
@@ -9,7 +9,7 @@ import {Lineup} from "./Lineup";
 import {Optimizing} from "./Optimizing";
 
 export const ActionButtonSection = (props: StateProps) => {
-    const {isOptimizing, site, sport, contest, lineup} = props.state;
+    const {isOptimizing, site, sport} = props.state;
     const shouldRenderElement = site && sport;
     const shouldRenderExportButton = true;
 

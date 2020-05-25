@@ -7,7 +7,7 @@ import {StateProps} from "../interfaces";
 import {Loading} from "./Loading";
 
 export const Home = (props: StateProps) => {
-    const {isLoading, sport, loadingText, contest} = props.state;
+    const {isLoading, sport, loadingText} = props.state;
 
     const isDesktopView = window.innerWidth > 1200;
 

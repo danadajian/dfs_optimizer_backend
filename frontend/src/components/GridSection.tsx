@@ -5,7 +5,7 @@ import {StateProps} from "../interfaces";
 import {ActionButtonSection} from "./ActionButtonSection";
 
 export const GridSection: any = (props: StateProps) => {
-    const {site, sport, contest} = props.state;
+    const {site, sport} = props.state;
     const shouldRenderElement = site && sport;
 
     const element =

@@ -9,16 +9,16 @@ export const handleExportLineup = async (navigator: any, componentRef: any) => {
         scrollY: -window.scrollY,
         useCORS: true,
     });
-    const dataUrl = canvas.toDataURL('image/png', 1.0);
 
     if (navigator.share) {
-        const args: any = {
+        const args: any = (blob: Blob) => ({
             title: 'Share Optimal Lineup',
-            text: 'Sample Text',
-            url: dataUrl
-        };
-        navigator.share(args);
+            blob,
+            mimeType: 'image/png'
+        })
+        canvas.toBlob(blob => navigator.share(args(blob)), 'image/png');
     } else {
+        const dataUrl = canvas.toDataURL('image/png', 1.0);
         downloadImage(dataUrl, 'lineup.png');
     }
 }

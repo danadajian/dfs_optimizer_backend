@@ -27,7 +27,7 @@ export const Home = (props: StateProps) => {
         <>
             <NavBar state={props.state} setState={props.setState} isDesktopView={isDesktopView}/>
             <Jumbotron>
-                {!contest &&
+                {!sport &&
                 <>
                     <h1>DFS Optimizer</h1>
                     <p>

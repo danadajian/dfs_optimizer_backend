@@ -10,8 +10,8 @@ import {Optimizing} from "./Optimizing";
 
 export const ActionButtonSection = (props: StateProps) => {
     const {isOptimizing, site, sport, contest, lineup} = props.state;
-    const shouldRenderElement = sport && contest && site;
-    const shouldRenderExportButton = lineup.every((player: lineupAttributes) => player.name);
+    const shouldRenderElement = site && sport;
+    const shouldRenderExportButton = true;
 
     const componentRef = useRef();
 

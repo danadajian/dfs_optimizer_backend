@@ -9,7 +9,8 @@ const hockey = require("../icons/hockey.svg") as any;
 
 export const Loading = (props: {
     sport: string,
-    loadingText: string
+    loadingText: string,
+    className: string
 }) => {
     const sportImageMap: any = {
         mlb: baseball,
@@ -18,9 +19,9 @@ export const Loading = (props: {
         nhl: hockey
     }
     return (
-        <div className="Loading">
-            <div><p className="Loading-text">{'Loading ' + props.loadingText + ' . . .'}</p></div>
-            <div><img src={sportImageMap[props.sport] || loading} className="Loading-logo" alt="Loading Logo"/></div>
+        <div className={props.className}>
+            <p className="Loading-text">{'Loading ' + props.loadingText + ' . . .'}</p>
+            <img src={sportImageMap[props.sport] || loading} className="Loading-logo" alt="Loading Logo"/>
         </div>
     )
 }

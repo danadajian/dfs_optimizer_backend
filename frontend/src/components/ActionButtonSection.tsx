@@ -28,16 +28,16 @@ export const ActionButtonSection = (props: StateProps) => {
 
     const element =
         <div className="Action-button-section">
+            <OverlayTrigger trigger={"hover"} placement={"auto"} defaultShow={true} overlay={toolTip}>
+                <Button variant={"success"}
+                        onClick={() => setShouldRenderLineup(!shouldRenderLineup)}>{lineupButtonText}</Button>
+            </OverlayTrigger>
             <Button
                 variant={"dark"}
                 onClick={() => handleGenerateOptimalLineup(props.state, props.setState)}>Optimize Lineup</Button>
             <Button
                 variant={"secondary"}
                 onClick={() => handleClearLineup(props.state, props.setState)}>Clear Lineup</Button>
-            <OverlayTrigger trigger={"hover"} placement={"auto"} defaultShow={true} overlay={toolTip}>
-                <Button variant={"success"}
-                        onClick={() => setShouldRenderLineup(!shouldRenderLineup)}>{lineupButtonText}</Button>
-            </OverlayTrigger>
             {shouldRenderExportButton &&
             <Button variant={"primary"}
                     onClick={() =>

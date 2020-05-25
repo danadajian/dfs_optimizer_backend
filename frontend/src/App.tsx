@@ -1,40 +1,26 @@
 import React, {useState} from 'react'
-import Jumbotron from 'react-bootstrap/Jumbotron'
+import {BrowserRouter, Route, Switch} from 'react-router-dom';
 import './css/App.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "react-datepicker/dist/react-datepicker.css";
-import {NavBar} from "./components/NavBar";
-import {GridSection} from "./components/GridSection";
-import {INITIAL_STATE} from "./constants";
 import './env'
+import {Home} from "./components/Home";
+import {About} from "./components/About";
+import ScrollToTop from "./components/ScrollToTop";
+import {INITIAL_STATE} from "./constants";
 
 const App = () => {
-
     const [state, setState] = useState(INITIAL_STATE);
 
     return (
-        <>
-            <NavBar state={state} setState={setState}/>
-            <section>
-                <Jumbotron>
-                    {!state.contest && <>
-                        <h1>DFS Optimizer</h1>
-                        <p>
-                            A better way to find the winning lineup.
-                        </p>
-                    </>}
-                    <GridSection state={state} setState={setState}/>
-                </Jumbotron>
-            </section>
-            <section id="about">
-                <Jumbotron className="mh-100">
-                    <h1>About</h1>
-                    <p>
-                        Coming soon.
-                    </p>
-                </Jumbotron>
-            </section>
-        </>
+        <BrowserRouter>
+            <ScrollToTop>
+                <Switch>
+                    <Route path="/" render={() => <Home state={state} setState={setState}/>} exact/>
+                    <Route path="/about" render={() => <About/>}/>
+                </Switch>
+            </ScrollToTop>
+        </BrowserRouter>
     );
 };
 

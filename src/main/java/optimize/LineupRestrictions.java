@@ -5,10 +5,10 @@ import java.util.List;
 import java.util.Map;
 
 public class LineupRestrictions {
-    private int distinctTeamsRequired;
-    private int maxPlayersPerTeam;
-    private String teamAgnosticPosition;
-    private List<String> whiteListedTeams;
+    int distinctTeamsRequired;
+    int maxPlayersPerTeam;
+    String teamAgnosticPosition;
+    List<String> whiteListedTeams;
 
     @SuppressWarnings("unchecked")
     public LineupRestrictions(Map<String, Object> input) {
@@ -37,5 +37,16 @@ public class LineupRestrictions {
 
     public void setWhiteListedTeams(List<String> whiteListedTeams) {
         this.whiteListedTeams = whiteListedTeams;
+    }
+
+    @Override
+    public boolean equals(Object object) {
+        if (object instanceof LineupRestrictions) {
+            return ((LineupRestrictions) object).getDistinctTeamsRequired() == this.distinctTeamsRequired &&
+                    ((LineupRestrictions) object).getMaxPlayersPerTeam() == this.maxPlayersPerTeam &&
+                    ((LineupRestrictions) object).getTeamAgnosticPosition().equals(this.teamAgnosticPosition) &&
+                    ((LineupRestrictions) object).getWhiteListedTeams() == this.whiteListedTeams;
+        } else
+            return false;
     }
 }

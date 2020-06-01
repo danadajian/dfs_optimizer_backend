@@ -78,4 +78,8 @@ public class PlayerSelector {
                 Arrays.asList(lineupPosition.split(",")).contains(player.position) ||
                 Arrays.asList(player.position.split("/")).contains(lineupPosition);
     }
+
+    public LineupMatrix getLineupMatrix(List<String> lineupPositions, List<Player> playerPool, long maxCombinations) {
+        return new LineupMatrix(lineupPositions, playerPool, maxCombinations);
+    }
 }

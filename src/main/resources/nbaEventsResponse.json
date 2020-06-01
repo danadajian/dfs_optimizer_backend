@@ -1,1 +1,500 @@
-{"status":"OK","recordCount":4,"startTimestamp":"2019-12-10T17:10:13.9501275Z","endTimestamp":"2019-12-10T17:10:13.9657539Z","timeTaken":0.0156264,"apiResults":[{"sportId":1,"name":"Basketball","league":{"leagueId":1,"name":"National Basketball Assoc.","abbreviation":"NBA","displayName":"National Basketball Assoc.","season":{"season":2019,"name":"2019-20 NBA Season","isActive":true,"eventType":[{"eventTypeId":1,"name":"Regular Season","events":[{"eventId":2176648,"startDate":[{"year":2019,"month":12,"date":10,"hour":19,"minute":0,"full":"2019-12-10T19:00:00","dateType":"Local"},{"year":2019,"month":12,"date":11,"hour":0,"minute":0,"full":"2019-12-11T00:00:00","dateType":"UTC"}],"isTba":false,"isDataConfirmed":{"score":false},"scheduledPeriods":4,"eventStatus":{"eventStatusId":1,"isActive":false,"name":"Pre-Game"},"venue":{"venueId":4630,"name":"Spectrum Center","city":"Charlotte","state":{"stateId":33,"name":"North Carolina","abbreviation":"NC"},"country":{"countryId":1,"name":"United States","abbreviation":"USA"}},"tvStations":[{"tvStationId":92,"name":"NBS Sports Washington","callLetters":"NSWA","networkType":{"networkTypeId":2,"name":"Regional"},"country":{"countryId":1,"name":"United States","abbreviation":"USA"}},{"tvStationId":893,"name":"Fox Sports Carolina","callLetters":"FSCR","networkType":{"networkTypeId":2,"name":"Regional"},"country":{"countryId":1,"name":"United States","abbreviation":"USA"}}],"teams":[{"teamId":5312,"location":"Charlotte","nickname":"Hornets","abbreviation":"Cha","teamLocationType":{"teamLocationTypeId":1,"name":"home"},"record":{"wins":9,"losses":16,"percentage":"  .360"},"isWinner":false},{"teamId":27,"location":"Washington","nickname":"Wizards","abbreviation":"Was","teamLocationType":{"teamLocationTypeId":2,"name":"away"},"record":{"wins":7,"losses":15,"percentage":"  .318"},"isWinner":false}],"coverageLevel":{"coverageLevelId":3,"details":"NBA FEED","name":"level 1"}},{"eventId":2176392,"startDate":[{"year":2019,"month":12,"date":10,"hour":20,"minute":0,"full":"2019-12-10T20:00:00","dateType":"Local"},{"year":2019,"month":12,"date":11,"hour":1,"minute":0,"full":"2019-12-11T01:00:00","dateType":"UTC"}],"isTba":false,"isDataConfirmed":{"score":false},"scheduledPeriods":4,"eventStatus":{"eventStatusId":1,"isActive":false,"name":"Pre-Game"},"venue":{"venueId":14,"name":"AmericanAirlines Arena","city":"Miami","state":{"stateId":9,"name":"Florida","abbreviation":"FL"},"country":{"countryId":1,"name":"United States","abbreviation":"USA"}},"tvStations":[{"tvStationId":84,"name":"TNT","callLetters":"TNT","networkType":{"networkTypeId":1,"name":"National"},"country":{"countryId":1,"name":"United States","abbreviation":"USA"}}],"teams":[{"teamId":14,"location":"Miami","nickname":"Heat","abbreviation":"Mia","teamLocationType":{"teamLocationTypeId":1,"name":"home"},"record":{"wins":17,"losses":6,"percentage":"  .739"},"isWinner":false},{"teamId":1,"location":"Atlanta","nickname":"Hawks","abbreviation":"Atl","teamLocationType":{"teamLocationTypeId":2,"name":"away"},"record":{"wins":6,"losses":17,"percentage":"  .261"},"isWinner":false}],"coverageLevel":{"coverageLevelId":3,"details":"NBA FEED","name":"level 1"}},{"eventId":2177081,"startDate":[{"year":2019,"month":12,"date":10,"hour":20,"minute":0,"full":"2019-12-10T20:00:00","dateType":"Local"},{"year":2019,"month":12,"date":11,"hour":1,"minute":0,"full":"2019-12-11T01:00:00","dateType":"UTC"}],"isTba":false,"isDataConfirmed":{"score":false},"scheduledPeriods":4,"eventStatus":{"eventStatusId":1,"isActive":false,"name":"Pre-Game"},"venue":{"venueId":20,"name":"Wells Fargo Center","city":"Philadelphia","state":{"stateId":38,"name":"Pennsylvania","abbreviation":"PA"},"country":{"countryId":1,"name":"United States","abbreviation":"USA"}},"tvStations":[{"tvStationId":826,"name":"Altitude Sports & Entertainmnt","callLetters":"ALT","networkType":{"networkTypeId":2,"name":"Regional"},"country":{"countryId":1,"name":"United States","abbreviation":"USA"}},{"tvStationId":9,"name":"NBC Sports Philadelphia","callLetters":"NSPA","networkType":{"networkTypeId":2,"name":"Regional"},"country":{"countryId":1,"name":"United States","abbreviation":"USA"}},{"tvStationId":84,"name":"TNT","callLetters":"TNT","networkType":{"networkTypeId":1,"name":"National"},"country":{"countryId":1,"name":"United States","abbreviation":"USA"}}],"teams":[{"teamId":20,"location":"Philadelphia","nickname":"76ers","abbreviation":"Phi","teamLocationType":{"teamLocationTypeId":1,"name":"home"},"record":{"wins":17,"losses":7,"percentage":"  .708"},"isWinner":false},{"teamId":7,"location":"Denver","nickname":"Nuggets","abbreviation":"Den","teamLocationType":{"teamLocationTypeId":2,"name":"away"},"record":{"wins":14,"losses":7,"percentage":"  .667"},"isWinner":false}],"coverageLevel":{"coverageLevelId":3,"details":"NBA FEED","name":"level 1"}},{"eventId":2176492,"startDate":[{"year":2019,"month":12,"date":10,"hour":19,"minute":0,"full":"2019-12-10T19:00:00","dateType":"Local"},{"year":2019,"month":12,"date":11,"hour":3,"minute":0,"full":"2019-12-11T03:00:00","dateType":"UTC"}],"isTba":false,"isDataConfirmed":{"score":false},"scheduledPeriods":4,"eventStatus":{"eventStatusId":1,"isActive":false,"name":"Pre-Game"},"venue":{"venueId":22,"name":"Moda Center at the Rose Quarter","city":"Portland","state":{"stateId":37,"name":"Oregon","abbreviation":"OR"},"country":{"countryId":1,"name":"United States","abbreviation":"USA"}},"tvStations":[{"tvStationId":886,"name":"NBC Sports Northwest","callLetters":"NSNW","networkType":{"networkTypeId":2,"name":"Regional"},"country":{"countryId":1,"name":"United States","abbreviation":"USA"}},{"tvStationId":51,"name":"MSG Network","callLetters":"MSG","networkType":{"networkTypeId":2,"name":"Regional"},"country":{"countryId":1,"name":"United States","abbreviation":"USA"}}],"teams":[{"teamId":22,"location":"Portland","nickname":"Trail Blazers","abbreviation":"Por","teamLocationType":{"teamLocationTypeId":1,"name":"home"},"record":{"wins":9,"losses":15,"percentage":"  .375"},"isWinner":false},{"teamId":18,"location":"New York","nickname":"Knicks","abbreviation":"NY","teamLocationType":{"teamLocationTypeId":2,"name":"away"},"record":{"wins":4,"losses":19,"percentage":"  .174"},"isWinner":false}],"coverageLevel":{"coverageLevelId":3,"details":"NBA FEED","name":"level 1"}}]}]}}}]}
+{
+  "status": "OK",
+  "recordCount": 4,
+  "startTimestamp": "2019-12-10T17:10:13.9501275Z",
+  "endTimestamp": "2019-12-10T17:10:13.9657539Z",
+  "timeTaken": 0.0156264,
+  "apiResults": [
+    {
+      "sportId": 1,
+      "name": "Basketball",
+      "league": {
+        "leagueId": 1,
+        "name": "National Basketball Assoc.",
+        "abbreviation": "NBA",
+        "displayName": "National Basketball Assoc.",
+        "season": {
+          "season": 2019,
+          "name": "2019-20 NBA Season",
+          "isActive": true,
+          "eventType": [
+            {
+              "eventTypeId": 1,
+              "name": "Regular Season",
+              "events": [
+                {
+                  "eventId": 2176648,
+                  "startDate": [
+                    {
+                      "year": 2019,
+                      "month": 12,
+                      "date": 10,
+                      "hour": 19,
+                      "minute": 0,
+                      "full": "2019-12-10T19:00:00",
+                      "dateType": "Local"
+                    },
+                    {
+                      "year": 2019,
+                      "month": 12,
+                      "date": 11,
+                      "hour": 0,
+                      "minute": 0,
+                      "full": "2019-12-11T00:00:00",
+                      "dateType": "UTC"
+                    }
+                  ],
+                  "isTba": false,
+                  "isDataConfirmed": {
+                    "score": false
+                  },
+                  "scheduledPeriods": 4,
+                  "eventStatus": {
+                    "eventStatusId": 1,
+                    "isActive": false,
+                    "name": "Pre-Game"
+                  },
+                  "venue": {
+                    "venueId": 4630,
+                    "name": "Spectrum Center",
+                    "city": "Charlotte",
+                    "state": {
+                      "stateId": 33,
+                      "name": "North Carolina",
+                      "abbreviation": "NC"
+                    },
+                    "country": {
+                      "countryId": 1,
+                      "name": "United States",
+                      "abbreviation": "USA"
+                    }
+                  },
+                  "tvStations": [
+                    {
+                      "tvStationId": 92,
+                      "name": "NBS Sports Washington",
+                      "callLetters": "NSWA",
+                      "networkType": {
+                        "networkTypeId": 2,
+                        "name": "Regional"
+                      },
+                      "country": {
+                        "countryId": 1,
+                        "name": "United States",
+                        "abbreviation": "USA"
+                      }
+                    },
+                    {
+                      "tvStationId": 893,
+                      "name": "Fox Sports Carolina",
+                      "callLetters": "FSCR",
+                      "networkType": {
+                        "networkTypeId": 2,
+                        "name": "Regional"
+                      },
+                      "country": {
+                        "countryId": 1,
+                        "name": "United States",
+                        "abbreviation": "USA"
+                      }
+                    }
+                  ],
+                  "teams": [
+                    {
+                      "teamId": 5312,
+                      "location": "Charlotte",
+                      "nickname": "Hornets",
+                      "abbreviation": "Cha",
+                      "teamLocationType": {
+                        "teamLocationTypeId": 1,
+                        "name": "home"
+                      },
+                      "record": {
+                        "wins": 9,
+                        "losses": 16,
+                        "percentage": "  .360"
+                      },
+                      "isWinner": false
+                    },
+                    {
+                      "teamId": 27,
+                      "location": "Washington",
+                      "nickname": "Wizards",
+                      "abbreviation": "Was",
+                      "teamLocationType": {
+                        "teamLocationTypeId": 2,
+                        "name": "away"
+                      },
+                      "record": {
+                        "wins": 7,
+                        "losses": 15,
+                        "percentage": "  .318"
+                      },
+                      "isWinner": false
+                    }
+                  ],
+                  "coverageLevel": {
+                    "coverageLevelId": 3,
+                    "details": "NBA FEED",
+                    "name": "level 1"
+                  }
+                },
+                {
+                  "eventId": 2176392,
+                  "startDate": [
+                    {
+                      "year": 2019,
+                      "month": 12,
+                      "date": 10,
+                      "hour": 20,
+                      "minute": 0,
+                      "full": "2019-12-10T20:00:00",
+                      "dateType": "Local"
+                    },
+                    {
+                      "year": 2019,
+                      "month": 12,
+                      "date": 11,
+                      "hour": 1,
+                      "minute": 0,
+                      "full": "2019-12-11T01:00:00",
+                      "dateType": "UTC"
+                    }
+                  ],
+                  "isTba": false,
+                  "isDataConfirmed": {
+                    "score": false
+                  },
+                  "scheduledPeriods": 4,
+                  "eventStatus": {
+                    "eventStatusId": 1,
+                    "isActive": false,
+                    "name": "Pre-Game"
+                  },
+                  "venue": {
+                    "venueId": 14,
+                    "name": "AmericanAirlines Arena",
+                    "city": "Miami",
+                    "state": {
+                      "stateId": 9,
+                      "name": "Florida",
+                      "abbreviation": "FL"
+                    },
+                    "country": {
+                      "countryId": 1,
+                      "name": "United States",
+                      "abbreviation": "USA"
+                    }
+                  },
+                  "tvStations": [
+                    {
+                      "tvStationId": 84,
+                      "name": "TNT",
+                      "callLetters": "TNT",
+                      "networkType": {
+                        "networkTypeId": 1,
+                        "name": "National"
+                      },
+                      "country": {
+                        "countryId": 1,
+                        "name": "United States",
+                        "abbreviation": "USA"
+                      }
+                    }
+                  ],
+                  "teams": [
+                    {
+                      "teamId": 14,
+                      "location": "Miami",
+                      "nickname": "Heat",
+                      "abbreviation": "Mia",
+                      "teamLocationType": {
+                        "teamLocationTypeId": 1,
+                        "name": "home"
+                      },
+                      "record": {
+                        "wins": 17,
+                        "losses": 6,
+                        "percentage": "  .739"
+                      },
+                      "isWinner": false
+                    },
+                    {
+                      "teamId": 1,
+                      "location": "Atlanta",
+                      "nickname": "Hawks",
+                      "abbreviation": "Atl",
+                      "teamLocationType": {
+                        "teamLocationTypeId": 2,
+                        "name": "away"
+                      },
+                      "record": {
+                        "wins": 6,
+                        "losses": 17,
+                        "percentage": "  .261"
+                      },
+                      "isWinner": false
+                    }
+                  ],
+                  "coverageLevel": {
+                    "coverageLevelId": 3,
+                    "details": "NBA FEED",
+                    "name": "level 1"
+                  }
+                },
+                {
+                  "eventId": 2177081,
+                  "startDate": [
+                    {
+                      "year": 2019,
+                      "month": 12,
+                      "date": 10,
+                      "hour": 20,
+                      "minute": 0,
+                      "full": "2019-12-10T20:00:00",
+                      "dateType": "Local"
+                    },
+                    {
+                      "year": 2019,
+                      "month": 12,
+                      "date": 11,
+                      "hour": 1,
+                      "minute": 0,
+                      "full": "2019-12-11T01:00:00",
+                      "dateType": "UTC"
+                    }
+                  ],
+                  "isTba": false,
+                  "isDataConfirmed": {
+                    "score": false
+                  },
+                  "scheduledPeriods": 4,
+                  "eventStatus": {
+                    "eventStatusId": 1,
+                    "isActive": false,
+                    "name": "Pre-Game"
+                  },
+                  "venue": {
+                    "venueId": 20,
+                    "name": "Wells Fargo Center",
+                    "city": "Philadelphia",
+                    "state": {
+                      "stateId": 38,
+                      "name": "Pennsylvania",
+                      "abbreviation": "PA"
+                    },
+                    "country": {
+                      "countryId": 1,
+                      "name": "United States",
+                      "abbreviation": "USA"
+                    }
+                  },
+                  "tvStations": [
+                    {
+                      "tvStationId": 826,
+                      "name": "Altitude Sports & Entertainmnt",
+                      "callLetters": "ALT",
+                      "networkType": {
+                        "networkTypeId": 2,
+                        "name": "Regional"
+                      },
+                      "country": {
+                        "countryId": 1,
+                        "name": "United States",
+                        "abbreviation": "USA"
+                      }
+                    },
+                    {
+                      "tvStationId": 9,
+                      "name": "NBC Sports Philadelphia",
+                      "callLetters": "NSPA",
+                      "networkType": {
+                        "networkTypeId": 2,
+                        "name": "Regional"
+                      },
+                      "country": {
+                        "countryId": 1,
+                        "name": "United States",
+                        "abbreviation": "USA"
+                      }
+                    },
+                    {
+                      "tvStationId": 84,
+                      "name": "TNT",
+                      "callLetters": "TNT",
+                      "networkType": {
+                        "networkTypeId": 1,
+                        "name": "National"
+                      },
+                      "country": {
+                        "countryId": 1,
+                        "name": "United States",
+                        "abbreviation": "USA"
+                      }
+                    }
+                  ],
+                  "teams": [
+                    {
+                      "teamId": 20,
+                      "location": "Philadelphia",
+                      "nickname": "76ers",
+                      "abbreviation": "Phi",
+                      "teamLocationType": {
+                        "teamLocationTypeId": 1,
+                        "name": "home"
+                      },
+                      "record": {
+                        "wins": 17,
+                        "losses": 7,
+                        "percentage": "  .708"
+                      },
+                      "isWinner": false
+                    },
+                    {
+                      "teamId": 7,
+                      "location": "Denver",
+                      "nickname": "Nuggets",
+                      "abbreviation": "Den",
+                      "teamLocationType": {
+                        "teamLocationTypeId": 2,
+                        "name": "away"
+                      },
+                      "record": {
+                        "wins": 14,
+                        "losses": 7,
+                        "percentage": "  .667"
+                      },
+                      "isWinner": false
+                    }
+                  ],
+                  "coverageLevel": {
+                    "coverageLevelId": 3,
+                    "details": "NBA FEED",
+                    "name": "level 1"
+                  }
+                },
+                {
+                  "eventId": 2176492,
+                  "startDate": [
+                    {
+                      "year": 2019,
+                      "month": 12,
+                      "date": 10,
+                      "hour": 19,
+                      "minute": 0,
+                      "full": "2019-12-10T19:00:00",
+                      "dateType": "Local"
+                    },
+                    {
+                      "year": 2019,
+                      "month": 12,
+                      "date": 11,
+                      "hour": 3,
+                      "minute": 0,
+                      "full": "2019-12-11T03:00:00",
+                      "dateType": "UTC"
+                    }
+                  ],
+                  "isTba": false,
+                  "isDataConfirmed": {
+                    "score": false
+                  },
+                  "scheduledPeriods": 4,
+                  "eventStatus": {
+                    "eventStatusId": 1,
+                    "isActive": false,
+                    "name": "Pre-Game"
+                  },
+                  "venue": {
+                    "venueId": 22,
+                    "name": "Moda Center at the Rose Quarter",
+                    "city": "Portland",
+                    "state": {
+                      "stateId": 37,
+                      "name": "Oregon",
+                      "abbreviation": "OR"
+                    },
+                    "country": {
+                      "countryId": 1,
+                      "name": "United States",
+                      "abbreviation": "USA"
+                    }
+                  },
+                  "tvStations": [
+                    {
+                      "tvStationId": 886,
+                      "name": "NBC Sports Northwest",
+                      "callLetters": "NSNW",
+                      "networkType": {
+                        "networkTypeId": 2,
+                        "name": "Regional"
+                      },
+                      "country": {
+                        "countryId": 1,
+                        "name": "United States",
+                        "abbreviation": "USA"
+                      }
+                    },
+                    {
+                      "tvStationId": 51,
+                      "name": "MSG Network",
+                      "callLetters": "MSG",
+                      "networkType": {
+                        "networkTypeId": 2,
+                        "name": "Regional"
+                      },
+                      "country": {
+                        "countryId": 1,
+                        "name": "United States",
+                        "abbreviation": "USA"
+                      }
+                    }
+                  ],
+                  "teams": [
+                    {
+                      "teamId": 22,
+                      "location": "Portland",
+                      "nickname": "Trail Blazers",
+                      "abbreviation": "Por",
+                      "teamLocationType": {
+                        "teamLocationTypeId": 1,
+                        "name": "home"
+                      },
+                      "record": {
+                        "wins": 9,
+                        "losses": 15,
+                        "percentage": "  .375"
+                      },
+                      "isWinner": false
+                    },
+                    {
+                      "teamId": 18,
+                      "location": "New York",
+                      "nickname": "Knicks",
+                      "abbreviation": "NY",
+                      "teamLocationType": {
+                        "teamLocationTypeId": 2,
+                        "name": "away"
+                      },
+                      "record": {
+                        "wins": 4,
+                        "losses": 19,
+                        "percentage": "  .174"
+                      },
+                      "isWinner": false
+                    }
+                  ],
+                  "coverageLevel": {
+                    "coverageLevelId": 3,
+                    "details": "NBA FEED",
+                    "name": "level 1"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

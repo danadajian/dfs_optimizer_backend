@@ -2,9 +2,8 @@ package handler;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import optimize.Adjuster;
-import optimize.LineupCompiler;
-import optimize.Player;
+import optimize.*;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.*;
@@ -24,18 +23,25 @@ class OptimizerHandlerTest {
     OptimizerHandlerTest() throws IOException {
     }
 
-    private String fakeOptimizerBody = new String(Files.readAllBytes(Paths.get("src/main/resources/optimizerHandlerBody.json")));
-    private String fakeOptimizerWithPipelineInvocationBody = new String(Files.readAllBytes(Paths.get("src/main/resources/optimizerHandlerBodyWithPipelineInvocation.json")));
-    private String fakeOptimizerWhiteAndBlackListBody = new String(Files.readAllBytes(Paths.get("src/main/resources/optimizerHandlerWhiteAndBlackListBody.json")));
-    private Map<String, Object> optimizerInput = new ObjectMapper().readValue(fakeOptimizerBody, new TypeReference<Map<String, Object>>(){});
-    private Map<String, Object> optimizerInputWithPipelineInvocation = new ObjectMapper().readValue(fakeOptimizerWithPipelineInvocationBody, new TypeReference<Map<String, Object>>(){});
-    private Map<String, Object> optimizerWithWhiteAndBlackListInput = new ObjectMapper().readValue(fakeOptimizerWhiteAndBlackListBody, new TypeReference<Map<String, Object>>(){});
+    String fakeOptimizerBody = new String(Files.readAllBytes(Paths.get("src/main/resources/optimizerHandlerBody.json")));
+    String fakeOptimizerWithPipelineInvocationBody = new String(Files.readAllBytes(Paths.get("src/main/resources/optimizerHandlerBodyWithPipelineInvocation.json")));
+    Map<String, Object> optimizerInput = new ObjectMapper().readValue(fakeOptimizerBody, new TypeReference<Map<String, Object>>(){});
+    Map<String, Object> optimizerInputWithPipelineInvocation = new ObjectMapper().readValue(fakeOptimizerWithPipelineInvocationBody, new TypeReference<Map<String, Object>>(){});
+
+    @Mock
+    InputParser inputParser;
 
     @Mock
     Adjuster adjuster;
 
     @Mock
+    PlayerSelector playerSelector;
+
+    @Mock
     LineupCompiler lineupCompiler;
+
+    @Mock
+    Optimizer optimizer;
 
     @Mock
     AWSClient awsClient;
@@ -43,74 +49,47 @@ class OptimizerHandlerTest {
     @InjectMocks
     OptimizerHandler optimizerHandler;
 
-    @Captor
-    ArgumentCaptor<List<Player>> playerPoolCaptor1;
-
-    @Captor
-    ArgumentCaptor<List<Player>> playerPoolCaptor2;
-
-    @Captor
-    ArgumentCaptor<List<String>> stringListCaptor;
-
-    @Captor
-    ArgumentCaptor<Integer> intCaptor;
-
-    Player emptyPlayer = new Player();
-    List<Player> emptyLineup = Arrays.asList(emptyPlayer, emptyPlayer, emptyPlayer, emptyPlayer, emptyPlayer,
-            emptyPlayer, emptyPlayer, emptyPlayer, emptyPlayer);
-    List<Player> whiteListLineup = Arrays.asList(emptyPlayer, new Player(456613), emptyPlayer, emptyPlayer,
-            emptyPlayer, emptyPlayer, emptyPlayer, emptyPlayer, emptyPlayer);
+    List<Player> mockLineup = Collections.emptyList();
+    List<Player> mockPlayerPool = Collections.emptyList();
+    List<Player> mockWhiteList = Collections.emptyList();
+    List<Player> mockBlackList = Collections.emptyList();
+    List<String> mockLineupPositions = Collections.emptyList();
+    LineupRestrictions mockLineupRestrictions = mock(LineupRestrictions.class);
+    List<Player> mockAdjustedPlayerPool = Collections.emptyList();
+    List<String> mockAdjustedLineupPositions = Collections.emptyList();
+    LineupRestrictions mockAdjustedLineupRestrictions = mock(LineupRestrictions.class);
+    int mockAdjustedSalaryCap = 69;
+    LineupMatrix lineupMatrix = mock(LineupMatrix.class);
+    List<List<Player>> mockTruncatedPlayerPools = Collections.emptyList();
+    List<Set<List<Player>>> mockPermutedPlayerPools = Collections.emptyList();
 
     @BeforeEach
     @SuppressWarnings("unchecked")
     void setUp() {
         MockitoAnnotations.initMocks(this);
-        when(lineupCompiler.outputLineupPlayerIds(anyList(), anyList())).thenReturn(Arrays.asList(1, 2, 3, 4, 5));
+        when(inputParser.getLineup(anyMap())).thenReturn(mockLineup);
         when(awsClient.downloadFromS3(anyString())).thenReturn((List<Map<String, Object>>) optimizerInput.get("playerPool"));
-    }
-
-    void shouldCollectLineup(List<Player> expectedLineup) {
-        verify(adjuster).getWhiteList(playerPoolCaptor1.capture());
-        assertEquals(expectedLineup, playerPoolCaptor1.getValue());
-    }
-
-    void shouldCollectPlayerPoolAndBlackList(List<Player> expectedBlackList) {
-        verify(adjuster).adjustPlayerPool(playerPoolCaptor2.capture(), playerPoolCaptor2.capture(), playerPoolCaptor2.capture());
-        List<List<Player>> arguments = playerPoolCaptor2.getAllValues();
-        assertEquals(344, arguments.get(0).size());
-        assertEquals(expectedBlackList, arguments.get(2));
-    }
-
-    void shouldCollectLineupPositions() {
-        verify(adjuster).adjustLineupPositions(playerPoolCaptor2.capture(), stringListCaptor.capture());
-        assertEquals(Arrays.asList("QB", "RB", "RB", "WR", "WR", "WR", "TE", "RB,WR,TE", "D"), stringListCaptor.getValue());
-    }
-
-    void shouldCollectSalaryCap() {
-        verify(adjuster).adjustSalaryCap(playerPoolCaptor2.capture(), intCaptor.capture());
-        assertEquals(60000, intCaptor.getValue());
+        when(inputParser.getPlayerPool(anyList())).thenReturn(mockPlayerPool);
+        when(inputParser.getBlackList(anyMap())).thenReturn(mockBlackList);
+        when(inputParser.getLineupPositions(anyMap())).thenReturn(mockLineupPositions);
+        when(inputParser.getLineupRestrictions(anyMap())).thenReturn(mockLineupRestrictions);
+        when(adjuster.getWhiteList(anyList())).thenReturn(mockWhiteList);
+        when(adjuster.adjustPlayerPool(anyList(), anyList(), anyList())).thenReturn(mockAdjustedPlayerPool);
+        when(adjuster.adjustLineupPositions(anyList(), anyList())).thenReturn(mockAdjustedLineupPositions);
+        when(adjuster.adjustLineupRestrictions(any(), anyList())).thenReturn(mockAdjustedLineupRestrictions);
+        when(adjuster.adjustSalaryCap(anyList(), anyInt())).thenReturn(mockAdjustedSalaryCap);
+        when(playerSelector.getLineupMatrix(anyList(), anyList(), anyLong())).thenReturn(lineupMatrix);
+        when(playerSelector.truncatePlayerPoolsByPosition(anyList(), any())).thenReturn(mockTruncatedPlayerPools);
+        when(playerSelector.getPlayerPoolCombinations(anyList(), any())).thenReturn(mockPermutedPlayerPools);
+        when(lineupCompiler.outputLineupPlayerIds(anyList(), anyList())).thenReturn(Arrays.asList(1, 2, 3, 4, 5));
     }
 
     @Test
     void shouldHandleOptimizerInput() {
         List<Integer> result = optimizerHandler.handleRequest(optimizerInput);
-        shouldCollectLineup(emptyLineup);
-        shouldCollectPlayerPoolAndBlackList(Collections.emptyList());
-        shouldCollectLineupPositions();
-        shouldCollectSalaryCap();
         assertEquals(Arrays.asList(1, 2, 3, 4, 5), result);
-        verify(awsClient, never()).uploadToS3(anyString(), any());
-        verify(awsClient, never()).downloadFromS3(anyString());
-    }
-
-    @Test
-    void shouldHandleOptimizerWhiteAndBlackListInput() {
-        List<Integer> result = optimizerHandler.handleRequest(optimizerWithWhiteAndBlackListInput);
-        shouldCollectLineup(whiteListLineup);
-        shouldCollectPlayerPoolAndBlackList(Collections.singletonList(new Player(868199)));
-        shouldCollectLineupPositions();
-        shouldCollectSalaryCap();
-        assertEquals(Arrays.asList(1, 2, 3, 4, 5), result);
+        verify(adjuster).adjustSalaryCap(mockWhiteList, (int) optimizerInput.get("salaryCap"));
+        verify(playerSelector).getLineupMatrix(mockAdjustedLineupPositions, mockAdjustedPlayerPool, (long) optimizerInput.get("maxCombinations"));
         verify(awsClient, never()).uploadToS3(anyString(), any());
         verify(awsClient, never()).downloadFromS3(anyString());
     }
@@ -118,12 +97,21 @@ class OptimizerHandlerTest {
     @Test
     void shouldHandleOptimizerInputWithPipelineInvocation() {
         List<Integer> result = optimizerHandler.handleRequest(optimizerInputWithPipelineInvocation);
-        shouldCollectLineup(emptyLineup);
-        shouldCollectPlayerPoolAndBlackList(Collections.emptyList());
-        shouldCollectLineupPositions();
-        shouldCollectSalaryCap();
         assertEquals(Collections.emptyList(), result);
+        verify(adjuster).adjustSalaryCap(mockWhiteList, (int) optimizerInputWithPipelineInvocation.get("salaryCap"));
+        verify(playerSelector).getLineupMatrix(mockAdjustedLineupPositions, mockAdjustedPlayerPool, (int) optimizerInputWithPipelineInvocation.get("maxCombinations"));
         verify(awsClient, times(1)).uploadToS3(anyString(), any());
         verify(awsClient, times(1)).downloadFromS3(anyString());
+    }
+
+    @AfterEach
+    void tearDown() {
+        verify(adjuster).getWhiteList(mockLineup);
+        verify(adjuster).adjustPlayerPool(mockPlayerPool, mockWhiteList, mockBlackList);
+        verify(adjuster).adjustLineupPositions(mockLineup, mockLineupPositions);
+        verify(adjuster).adjustLineupRestrictions(mockLineupRestrictions, mockWhiteList);
+        verify(playerSelector).truncatePlayerPoolsByPosition(mockAdjustedPlayerPool, lineupMatrix);
+        verify(playerSelector).getPlayerPoolCombinations(mockTruncatedPlayerPools, lineupMatrix);
+        verify(optimizer).generateOptimalLineup(mockPermutedPlayerPools, mockAdjustedSalaryCap, mockAdjustedLineupRestrictions);
     }
 }

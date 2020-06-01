@@ -6,34 +6,37 @@ import util.AWSClient;
 import java.util.*;
 
 public class OptimizerHandler {
+    InputParser inputParser = new InputParser();
     Adjuster adjuster = new Adjuster();
     PlayerSelector playerSelector = new PlayerSelector();
     Optimizer optimizer = new Optimizer();
     LineupCompiler lineupCompiler = new LineupCompiler();
-    private AWSClient awsClient = new AWSClient();
+    AWSClient awsClient = new AWSClient();
 
+    @SuppressWarnings("unchecked")
     public List<Integer> handleRequest(Map<String, Object> input) {
         boolean isPipelineInvocation = (input.getOrDefault("invocationType", "web")).equals("pipeline");
         String sport = (String) input.get("sport");
-        List<Player> lineup = new Lineup(input).getLineup();
+        List<Player> lineup = inputParser.getLineup(input);
         List<Player> playerPool = isPipelineInvocation ?
-                new PlayerPool(awsClient.downloadFromS3(sport + "PlayerPool.json")).getPlayerPool() :
-                new PlayerPool(input).getPlayerPool();
-        List<Player> blackList = new BlackList(input).getBlackList();
-        List<String> lineupPositions = new LineupPositions(input).getLineupPositions();
-        LineupRestrictions lineupRestrictions = new LineupRestrictions(input);
-        int salaryCap = (int) input.get("salaryCap");
+                inputParser.getPlayerPool(awsClient.downloadFromS3(sport + "PlayerPool.json")) :
+                inputParser.getPlayerPool((List<Map<String, Object>>) input.get("playerPool"));
+        List<Player> blackList = inputParser.getBlackList(input);
+        List<String> lineupPositions = inputParser.getLineupPositions(input);
+        LineupRestrictions lineupRestrictions = inputParser.getLineupRestrictions(input);
         long maxCombinationsReductionFactor = input.containsKey("previouslyTimedOut") ? 10 : 1;
         long maxCombinations = ((Number) input.get("maxCombinations")).longValue() / maxCombinationsReductionFactor;
+        int salaryCap = (int) input.get("salaryCap");
 
         List<Player> whiteList = adjuster.getWhiteList(lineup);
         List<Player> adjustedPlayerPool = adjuster.adjustPlayerPool(playerPool, whiteList, blackList);
         List<String> adjustedLineupPositions = adjuster.adjustLineupPositions(lineup, lineupPositions);
         LineupRestrictions adjustedLineupRestrictions = adjuster.adjustLineupRestrictions(lineupRestrictions, whiteList);
-        LineupMatrix lineupMatrix = new LineupMatrix(adjustedLineupPositions, adjustedPlayerPool, maxCombinations);
         int adjustedSalaryCap = adjuster.adjustSalaryCap(whiteList, salaryCap);
+        LineupMatrix lineupMatrix = playerSelector.getLineupMatrix(adjustedLineupPositions, adjustedPlayerPool, maxCombinations);
         List<List<Player>> truncatedPlayerPools = playerSelector.truncatePlayerPoolsByPosition(adjustedPlayerPool, lineupMatrix);
         List<Set<List<Player>>> permutedPlayerPools = playerSelector.getPlayerPoolCombinations(truncatedPlayerPools, lineupMatrix);
+
         List<Player> optimalPlayers = optimizer.generateOptimalLineup(permutedPlayerPools, adjustedSalaryCap, adjustedLineupRestrictions);
 
         if (isPipelineInvocation) {

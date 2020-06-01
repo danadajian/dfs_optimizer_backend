@@ -1,1 +1,1518 @@
-{"status":"OK","recordCount":12,"startTimestamp":"2019-12-10T17:14:43.3748635Z","endTimestamp":"2019-12-10T17:14:43.4061159Z","timeTaken":0.0312524,"apiResults":[{"sportId":3,"name":"Hockey","league":{"leagueId":18,"name":"National Hockey League","abbreviation":"NHL","displayName":"National Hockey League","season":{"season":2019,"name":"2019-20 NHL Season","isActive":true,"eventType":[{"eventTypeId":1,"name":"Regular Season","events":[{"eventId":2154763,"startDate":[{"year":2019,"month":12,"date":10,"hour":19,"minute":0,"full":"2019-12-10T19:00:00","dateType":"Local"},{"year":2019,"month":12,"date":11,"hour":0,"minute":0,"full":"2019-12-11T00:00:00","dateType":"UTC"}],"isTba":false,"isDataConfirmed":{"score":false},"eventStatus":{"isUnderReview":false,"isPenaltyShot":false,"eventStatusId":1,"isActive":false,"name":"Pre-Game"},"venue":{"venueId":3257,"name":"BB&T Center","city":"Sunrise","state":{"stateId":9,"name":"Florida","abbreviation":"FL"},"country":{"countryId":1,"name":"United States","abbreviation":"USA"}},"tvStations":[{"tvStationId":229,"name":"FOX Sports Florida","callLetters":"FSFL","networkType":{"networkTypeId":2,"name":"Regional"},"country":{"countryId":1,"name":"United States","abbreviation":"USA"}},{"tvStationId":158,"name":"Sunshine Sports","callLetters":"SunS","networkType":{"networkTypeId":2,"name":"Regional"},"country":{"countryId":1,"name":"United States","abbreviation":"USA"}},{"tvStationId":894,"name":"Rogers Sportsnet East","callLetters":"RSNE","networkType":{"networkTypeId":2,"name":"Regional"},"country":{"countryId":2,"name":"Canada","abbreviation":"CAN"}},{"tvStationId":895,"name":"Rogers Sportsnet Ontario","callLetters":"RSNO","networkType":{"networkTypeId":2,"name":"Regional"},"country":{"countryId":2,"name":"Canada","abbreviation":"CAN"}}],"teams":[{"teamId":4979,"location":"Florida","nickname":"Panthers","abbreviation":"Fla","teamLocationType":{"teamLocationTypeId":1,"name":"home"},"record":{"wins":15,"losses":9,"overtimeLosses":5},"isWinner":false},{"teamId":4973,"location":"Tampa Bay","nickname":"Lightning","abbreviation":"TB","teamLocationType":{"teamLocationTypeId":2,"name":"away"},"record":{"wins":14,"losses":11,"overtimeLosses":3},"isWinner":false}],"coverageLevel":{"coverageLevelId":1,"details":"STATS Feed","name":"Level 2"}},{"eventId":2154769,"startDate":[{"year":2019,"month":12,"date":10,"hour":19,"minute":0,"full":"2019-12-10T19:00:00","dateType":"Local"},{"year":2019,"month":12,"date":11,"hour":0,"minute":0,"full":"2019-12-11T00:00:00","dateType":"UTC"}],"isTba":false,"isDataConfirmed":{"score":false},"eventStatus":{"isUnderReview":false,"isPenaltyShot":false,"eventStatusId":1,"isActive":false,"name":"Pre-Game"},"venue":{"venueId":9415,"name":"PPG Paints Arena","city":"Pittsburgh","state":{"stateId":38,"name":"Pennsylvania","abbreviation":"PA"},"country":{"countryId":1,"name":"United States","abbreviation":"USA"}},"tvStations":[{"tvStationId":910,"name":"AT&T SportsNet Pittsburgh","callLetters":"ATTP","networkType":{"networkTypeId":2,"name":"Regional"},"country":{"countryId":1,"name":"United States","abbreviation":"USA"}},{"tvStationId":884,"name":"TSN2","callLetters":"TSN2","networkType":{"networkTypeId":1,"name":"National"},"country":{"countryId":2,"name":"Canada","abbreviation":"CAN"}},{"tvStationId":146,"name":"RDS","callLetters":"RDS","networkType":{"networkTypeId":1,"name":"National"},"country":{"countryId":2,"name":"Canada","abbreviation":"CAN"}}],"teams":[{"teamId":4969,"location":"Pittsburgh","nickname":"Penguins","abbreviation":"Pit","teamLocationType":{"teamLocationTypeId":1,"name":"home"},"record":{"wins":17,"losses":9,"overtimeLosses":4},"isWinner":false},{"teamId":4963,"location":"Montreal","nickname":"Canadiens","abbreviation":"Mon","teamLocationType":{"teamLocationTypeId":2,"name":"away"},"record":{"wins":13,"losses":11,"overtimeLosses":6},"isWinner":false}],"coverageLevel":{"coverageLevelId":1,"details":"STATS Feed","name":"Level 2"}},{"eventId":2154760,"startDate":[{"year":2019,"month":12,"date":10,"hour":19,"minute":30,"full":"2019-12-10T19:30:00","dateType":"Local"},{"year":2019,"month":12,"date":11,"hour":0,"minute":30,"full":"2019-12-11T00:30:00","dateType":"UTC"}],"isTba":false,"isDataConfirmed":{"score":false},"eventStatus":{"isUnderReview":false,"isPenaltyShot":false,"eventStatusId":1,"isActive":false,"name":"Pre-Game"},"venue":{"venueId":1788,"name":"KeyBank Center","city":"Buffalo","state":{"stateId":32,"name":"New York","abbreviation":"NY"},"country":{"countryId":1,"name":"United States","abbreviation":"USA"}},"tvStations":[{"tvStationId":849,"name":"NBC Sports Network","callLetters":"NBCS","networkType":{"networkTypeId":1,"name":"National"},"country":{"countryId":1,"name":"United States","abbreviation":"USA"}},{"tvStationId":195,"name":"FOX Sports Midwest","callLetters":"FSMW","networkType":{"networkTypeId":2,"name":"Regional"},"country":{"countryId":1,"name":"United States","abbreviation":"USA"}}],"teams":[{"teamId":4955,"location":"Buffalo","nickname":"Sabres","abbreviation":"Buf","teamLocationType":{"teamLocationTypeId":1,"name":"home"},"record":{"wins":14,"losses":11,"overtimeLosses":6},"isWinner":false},{"teamId":4972,"location":"St. Louis","nickname":"Blues","abbreviation":"StL","teamLocationType":{"teamLocationTypeId":2,"name":"away"},"record":{"wins":18,"losses":7,"overtimeLosses":6},"isWinner":false}],"coverageLevel":{"coverageLevelId":1,"details":"STATS Feed","name":"Level 2"}},{"eventId":2154781,"startDate":[{"year":2019,"month":12,"date":10,"hour":19,"minute":0,"full":"2019-12-10T19:00:00","dateType":"Local"},{"year":2019,"month":12,"date":11,"hour":1,"minute":0,"full":"2019-12-11T01:00:00","dateType":"UTC"}],"isTba":false,"isDataConfirmed":{"score":false},"eventStatus":{"isUnderReview":false,"isPenaltyShot":false,"eventStatusId":1,"isActive":false,"name":"Pre-Game"},"venue":{"venueId":3260,"name":"Xcel Energy Center","city":"St. Paul","state":{"stateId":23,"name":"Minnesota","abbreviation":"MN"},"country":{"countryId":1,"name":"United States","abbreviation":"USA"}},"tvStations":[{"tvStationId":184,"name":"Prime Ticket","callLetters":"PRIT","networkType":{"networkTypeId":2,"name":"Regional"},"country":{"countryId":1,"name":"United States","abbreviation":"USA"}},{"tvStationId":862,"name":"FOX Sports North","callLetters":"FSN","networkType":{"networkTypeId":2,"name":"Regional"},"country":{"countryId":1,"name":"United States","abbreviation":"USA"}},{"tvStationId":938,"name":"Fox Sports Wisconsin","callLetters":"FSWI","networkType":{"networkTypeId":2,"name":"Regional"},"country":{"countryId":1,"name":"United States","abbreviation":"USA"}}],"teams":[{"teamId":4983,"location":"Minnesota","nickname":"Wild","abbreviation":"Min","teamLocationType":{"teamLocationTypeId":1,"name":"home"},"record":{"wins":14,"losses":12,"overtimeLosses":4},"isWinner":false},{"teamId":4978,"location":"Anaheim","nickname":"Ducks","abbreviation":"Anh","teamLocationType":{"teamLocationTypeId":2,"name":"away"},"record":{"wins":12,"losses":14,"overtimeLosses":4},"isWinner":false}],"coverageLevel":{"coverageLevelId":1,"details":"STATS Feed","name":"Level 2"}},{"eventId":2154774,"startDate":[{"year":2019,"month":12,"date":10,"hour":19,"minute":0,"full":"2019-12-10T19:00:00","dateType":"Local"},{"year":2019,"month":12,"date":11,"hour":1,"minute":0,"full":"2019-12-11T01:00:00","dateType":"UTC"}],"isTba":false,"isDataConfirmed":{"score":false},"eventStatus":{"isUnderReview":false,"isPenaltyShot":false,"eventStatusId":1,"isActive":false,"name":"Pre-Game"},"venue":{"venueId":3256,"name":"Bridgestone Arena","city":"Nashville","state":{"stateId":42,"name":"Tennessee","abbreviation":"TN"},"country":{"countryId":1,"name":"United States","abbreviation":"USA"}},"tvStations":[{"tvStationId":928,"name":"NBC Sports California","callLetters":"NSCA","networkType":{"networkTypeId":2,"name":"Regional"},"country":{"countryId":1,"name":"United States","abbreviation":"USA"}},{"tvStationId":889,"name":"FOX Sports Tennessee","callLetters":"FSTN","networkType":{"networkTypeId":2,"name":"Regional"},"country":{"countryId":1,"name":"United States","abbreviation":"USA"}}],"teams":[{"teamId":4980,"location":"Nashville","nickname":"Predators","abbreviation":"Nsh","teamLocationType":{"teamLocationTypeId":1,"name":"home"},"record":{"wins":13,"losses":10,"overtimeLosses":5},"isWinner":false},{"teamId":4971,"location":"San Jose","nickname":"Sharks","abbreviation":"SJ","teamLocationType":{"teamLocationTypeId":2,"name":"away"},"record":{"wins":15,"losses":15,"overtimeLosses":2},"isWinner":false}],"coverageLevel":{"coverageLevelId":1,"details":"STATS Feed","name":"Level 2"}},{"eventId":2154786,"startDate":[{"year":2019,"month":12,"date":10,"hour":19,"minute":0,"full":"2019-12-10T19:00:00","dateType":"Local"},{"year":2019,"month":12,"date":11,"hour":1,"minute":0,"full":"2019-12-11T01:00:00","dateType":"UTC"}],"isTba":false,"isDataConfirmed":{"score":false},"eventStatus":{"isUnderReview":false,"isPenaltyShot":false,"eventStatusId":1,"isActive":false,"name":"Pre-Game"},"venue":{"venueId":4600,"name":"Bell MTS Place","city":"Winnipeg","state":{"stateId":55,"name":"Manitoba","abbreviation":"MB"},"country":{"countryId":2,"name":"Canada","abbreviation":"CAN"}},"tvStations":[{"tvStationId":192,"name":"FOX Sports Detroit","callLetters":"FSDT","networkType":{"networkTypeId":2,"name":"Regional"},"country":{"countryId":1,"name":"United States","abbreviation":"USA"}},{"tvStationId":916,"name":"TSN3","callLetters":"TSN3","networkType":{"networkTypeId":2,"name":"Regional"},"country":{"countryId":2,"name":"Canada","abbreviation":"CAN"}}],"teams":[{"teamId":4981,"location":"Winnipeg","nickname":"Jets","abbreviation":"Wpg","teamLocationType":{"teamLocationTypeId":1,"name":"home"},"record":{"wins":18,"losses":10,"overtimeLosses":2},"isWinner":false},{"teamId":4958,"location":"Detroit","nickname":"Red Wings","abbreviation":"Det","teamLocationType":{"teamLocationTypeId":2,"name":"away"},"record":{"wins":7,"losses":21,"overtimeLosses":3},"isWinner":false}],"coverageLevel":{"coverageLevelId":1,"details":"STATS Feed","name":"Level 2"}},{"eventId":2154796,"startDate":[{"year":2019,"month":12,"date":10,"hour":19,"minute":30,"full":"2019-12-10T19:30:00","dateType":"Local"},{"year":2019,"month":12,"date":11,"hour":1,"minute":30,"full":"2019-12-11T01:30:00","dateType":"UTC"}],"isTba":false,"isDataConfirmed":{"score":false},"eventStatus":{"isUnderReview":false,"isPenaltyShot":false,"eventStatusId":1,"isActive":false,"name":"Pre-Game"},"venue":{"venueId":2757,"name":"American Airlines Center","city":"Dallas","state":{"stateId":43,"name":"Texas","abbreviation":"TX"},"country":{"countryId":1,"name":"United States","abbreviation":"USA"}},"tvStations":[{"tvStationId":188,"name":"FOX Sports Southwest","callLetters":"FSSW","networkType":{"networkTypeId":2,"name":"Regional"},"country":{"countryId":1,"name":"United States","abbreviation":"USA"}},{"tvStationId":885,"name":"MSG-Plus","callLetters":"MSG+","networkType":{"networkTypeId":2,"name":"Regional"},"country":{"countryId":1,"name":"United States","abbreviation":"USA"}}],"teams":[{"teamId":4962,"location":"Dallas","nickname":"Stars","abbreviation":"Dal","teamLocationType":{"teamLocationTypeId":1,"name":"home"},"record":{"wins":17,"losses":11,"overtimeLosses":3},"isWinner":false},{"teamId":4964,"location":"New Jersey","nickname":"Devils","abbreviation":"NJ","teamLocationType":{"teamLocationTypeId":2,"name":"away"},"record":{"wins":9,"losses":15,"overtimeLosses":5},"isWinner":false}],"coverageLevel":{"coverageLevelId":1,"details":"STATS Feed","name":"Level 2"}},{"eventId":2154813,"startDate":[{"year":2019,"month":12,"date":10,"hour":19,"minute":0,"full":"2019-12-10T19:00:00","dateType":"Local"},{"year":2019,"month":12,"date":11,"hour":2,"minute":0,"full":"2019-12-11T02:00:00","dateType":"UTC"}],"isTba":false,"isDataConfirmed":{"score":false},"eventStatus":{"isUnderReview":false,"isPenaltyShot":false,"eventStatusId":1,"isActive":false,"name":"Pre-Game"},"venue":{"venueId":3480,"name":"Gila River Arena","city":"Glendale","state":{"stateId":3,"name":"Arizona","abbreviation":"AZ"},"country":{"countryId":1,"name":"United States","abbreviation":"USA"}},"tvStations":[{"tvStationId":180,"name":"FOX Sports Arizona","callLetters":"FSAZ","networkType":{"networkTypeId":2,"name":"Regional"},"country":{"countryId":1,"name":"United States","abbreviation":"USA"}},{"tvStationId":929,"name":"Sportsnet ONE","callLetters":"RSN1","networkType":{"networkTypeId":1,"name":"National"},"country":{"countryId":2,"name":"Canada","abbreviation":"CAN"}},{"tvStationId":908,"name":"FOX Sports Arizona Plus","callLetters":"FAZ+","networkType":{"networkTypeId":2,"name":"Regional"},"country":{"countryId":1,"name":"United States","abbreviation":"USA"}}],"teams":[{"teamId":4977,"location":"Arizona","nickname":"Coyotes","abbreviation":"Ari","teamLocationType":{"teamLocationTypeId":1,"name":"home"},"record":{"wins":18,"losses":10,"overtimeLosses":4},"isWinner":false},{"teamId":4956,"location":"Calgary","nickname":"Flames","abbreviation":"Cgy","teamLocationType":{"teamLocationTypeId":2,"name":"away"},"record":{"wins":16,"losses":12,"overtimeLosses":4},"isWinner":false}],"coverageLevel":{"coverageLevelId":1,"details":"STATS Feed","name":"Level 2"}},{"eventId":2154804,"startDate":[{"year":2019,"month":12,"date":10,"hour":19,"minute":0,"full":"2019-12-10T19:00:00","dateType":"Local"},{"year":2019,"month":12,"date":11,"hour":2,"minute":0,"full":"2019-12-11T02:00:00","dateType":"UTC"}],"isTba":false,"isDataConfirmed":{"score":false},"eventStatus":{"isUnderReview":false,"isPenaltyShot":false,"eventStatusId":1,"isActive":false,"name":"Pre-Game"},"venue":{"venueId":15206,"name":"Rogers Place","city":"Edmonton","state":{"stateId":52,"name":"Alberta","abbreviation":"AB"},"country":{"countryId":2,"name":"Canada","abbreviation":"CAN"}},"tvStations":[{"tvStationId":855,"name":"Rogers Sportsnet West","callLetters":"RSNW","networkType":{"networkTypeId":2,"name":"Regional"},"country":{"countryId":2,"name":"Canada","abbreviation":"CAN"}},{"tvStationId":892,"name":"FOX Sports Carolinas","callLetters":"FSCR","networkType":{"networkTypeId":2,"name":"Regional"},"country":{"countryId":1,"name":"United States","abbreviation":"USA"}}],"teams":[{"teamId":4959,"location":"Edmonton","nickname":"Oilers","abbreviation":"Edm","teamLocationType":{"teamLocationTypeId":1,"name":"home"},"record":{"wins":18,"losses":10,"overtimeLosses":4},"isWinner":false},{"teamId":4960,"location":"Carolina","nickname":"Hurricanes","abbreviation":"Car","teamLocationType":{"teamLocationTypeId":2,"name":"away"},"record":{"wins":18,"losses":11,"overtimeLosses":1},"isWinner":false}],"coverageLevel":{"coverageLevelId":1,"details":"STATS Feed","name":"Level 2"}},{"eventId":2154818,"startDate":[{"year":2019,"month":12,"date":10,"hour":19,"minute":0,"full":"2019-12-10T19:00:00","dateType":"Local"},{"year":2019,"month":12,"date":11,"hour":3,"minute":0,"full":"2019-12-11T03:00:00","dateType":"UTC"}],"isTba":false,"isDataConfirmed":{"score":false},"eventStatus":{"isUnderReview":false,"isPenaltyShot":false,"eventStatusId":1,"isActive":false,"name":"Pre-Game"},"venue":{"venueId":29,"name":"Rogers Arena","city":"Vancouver","state":{"stateId":53,"name":"British Columbia","abbreviation":"BC"},"country":{"countryId":2,"name":"Canada","abbreviation":"CAN"}},"tvStations":[{"tvStationId":893,"name":"Rogers Sportsnet Pacific","callLetters":"RSNP","networkType":{"networkTypeId":2,"name":"Regional"},"country":{"countryId":2,"name":"Canada","abbreviation":"CAN"}},{"tvStationId":895,"name":"Rogers Sportsnet Ontario","callLetters":"RSNO","networkType":{"networkTypeId":2,"name":"Regional"},"country":{"countryId":2,"name":"Canada","abbreviation":"CAN"}}],"teams":[{"teamId":4975,"location":"Vancouver","nickname":"Canucks","abbreviation":"Van","teamLocationType":{"teamLocationTypeId":1,"name":"home"},"record":{"wins":15,"losses":11,"overtimeLosses":4},"isWinner":false},{"teamId":4974,"location":"Toronto","nickname":"Maple Leafs","abbreviation":"Tor","teamLocationType":{"teamLocationTypeId":2,"name":"away"},"record":{"wins":14,"losses":13,"overtimeLosses":4},"isWinner":false}],"coverageLevel":{"coverageLevelId":1,"details":"STATS Feed","name":"Level 2"}},{"eventId":2154821,"startDate":[{"year":2019,"month":12,"date":10,"hour":19,"minute":0,"full":"2019-12-10T19:00:00","dateType":"Local"},{"year":2019,"month":12,"date":11,"hour":3,"minute":0,"full":"2019-12-11T03:00:00","dateType":"UTC"}],"isTba":false,"isDataConfirmed":{"score":false},"eventStatus":{"isUnderReview":false,"isPenaltyShot":false,"eventStatusId":1,"isActive":false,"name":"Pre-Game"},"venue":{"venueId":15339,"name":"T-Mobile Arena","city":"Las Vegas","state":{"stateId":28,"name":"Nevada","abbreviation":"NV"},"country":{"countryId":1,"name":"United States","abbreviation":"USA"}},"tvStations":[{"tvStationId":933,"name":"AT&T Sports Rocky Mountain","callLetters":"ATRM","networkType":{"networkTypeId":2,"name":"Regional"},"country":{"countryId":1,"name":"United States","abbreviation":"USA"}},{"tvStationId":931,"name":"NBC Sports Chicago","callLetters":"NSCH","networkType":{"networkTypeId":2,"name":"Regional"},"country":{"countryId":1,"name":"United States","abbreviation":"USA"}}],"teams":[{"teamId":33447,"location":"Vegas","nickname":"Golden Knights","abbreviation":"VGK","teamLocationType":{"teamLocationTypeId":1,"name":"home"},"record":{"wins":15,"losses":12,"overtimeLosses":5},"isWinner":false},{"teamId":4957,"location":"Chicago","nickname":"Blackhawks","abbreviation":"Chi","teamLocationType":{"teamLocationTypeId":2,"name":"away"},"record":{"wins":12,"losses":12,"overtimeLosses":6},"isWinner":false}],"coverageLevel":{"coverageLevelId":1,"details":"STATS Feed","name":"Level 2"}},{"eventId":2154827,"startDate":[{"year":2019,"month":12,"date":10,"hour":19,"minute":30,"full":"2019-12-10T19:30:00","dateType":"Local"},{"year":2019,"month":12,"date":11,"hour":3,"minute":30,"full":"2019-12-11T03:30:00","dateType":"UTC"}],"isTba":false,"isDataConfirmed":{"score":false},"eventStatus":{"isUnderReview":false,"isPenaltyShot":false,"eventStatusId":1,"isActive":false,"name":"Pre-Game"},"venue":{"venueId":12,"name":"Staples Center","city":"Los Angeles","state":{"stateId":5,"name":"California","abbreviation":"CA"},"country":{"countryId":1,"name":"United States","abbreviation":"USA"}},"tvStations":[{"tvStationId":187,"name":"FOX Sports West","callLetters":"FSW","networkType":{"networkTypeId":2,"name":"Regional"},"country":{"countryId":1,"name":"United States","abbreviation":"USA"}},{"tvStationId":129,"name":"MSG 2","callLetters":"MSG2","networkType":{"networkTypeId":2,"name":"Regional"},"country":{"countryId":1,"name":"United States","abbreviation":"USA"}}],"teams":[{"teamId":4961,"location":"Los Angeles","nickname":"Kings","abbreviation":"LA","teamLocationType":{"teamLocationTypeId":1,"name":"home"},"record":{"wins":11,"losses":18,"overtimeLosses":2},"isWinner":false},{"teamId":4966,"location":"New York","nickname":"Rangers","abbreviation":"NYR","teamLocationType":{"teamLocationTypeId":2,"name":"away"},"record":{"wins":15,"losses":11,"overtimeLosses":3},"isWinner":false}],"coverageLevel":{"coverageLevelId":1,"details":"STATS Feed","name":"Level 2"}}]}]}}}]}
+{
+  "status": "OK",
+  "recordCount": 12,
+  "startTimestamp": "2019-12-10T17:14:43.3748635Z",
+  "endTimestamp": "2019-12-10T17:14:43.4061159Z",
+  "timeTaken": 0.0312524,
+  "apiResults": [
+    {
+      "sportId": 3,
+      "name": "Hockey",
+      "league": {
+        "leagueId": 18,
+        "name": "National Hockey League",
+        "abbreviation": "NHL",
+        "displayName": "National Hockey League",
+        "season": {
+          "season": 2019,
+          "name": "2019-20 NHL Season",
+          "isActive": true,
+          "eventType": [
+            {
+              "eventTypeId": 1,
+              "name": "Regular Season",
+              "events": [
+                {
+                  "eventId": 2154763,
+                  "startDate": [
+                    {
+                      "year": 2019,
+                      "month": 12,
+                      "date": 10,
+                      "hour": 19,
+                      "minute": 0,
+                      "full": "2019-12-10T19:00:00",
+                      "dateType": "Local"
+                    },
+                    {
+                      "year": 2019,
+                      "month": 12,
+                      "date": 11,
+                      "hour": 0,
+                      "minute": 0,
+                      "full": "2019-12-11T00:00:00",
+                      "dateType": "UTC"
+                    }
+                  ],
+                  "isTba": false,
+                  "isDataConfirmed": {
+                    "score": false
+                  },
+                  "eventStatus": {
+                    "isUnderReview": false,
+                    "isPenaltyShot": false,
+                    "eventStatusId": 1,
+                    "isActive": false,
+                    "name": "Pre-Game"
+                  },
+                  "venue": {
+                    "venueId": 3257,
+                    "name": "BB&T Center",
+                    "city": "Sunrise",
+                    "state": {
+                      "stateId": 9,
+                      "name": "Florida",
+                      "abbreviation": "FL"
+                    },
+                    "country": {
+                      "countryId": 1,
+                      "name": "United States",
+                      "abbreviation": "USA"
+                    }
+                  },
+                  "tvStations": [
+                    {
+                      "tvStationId": 229,
+                      "name": "FOX Sports Florida",
+                      "callLetters": "FSFL",
+                      "networkType": {
+                        "networkTypeId": 2,
+                        "name": "Regional"
+                      },
+                      "country": {
+                        "countryId": 1,
+                        "name": "United States",
+                        "abbreviation": "USA"
+                      }
+                    },
+                    {
+                      "tvStationId": 158,
+                      "name": "Sunshine Sports",
+                      "callLetters": "SunS",
+                      "networkType": {
+                        "networkTypeId": 2,
+                        "name": "Regional"
+                      },
+                      "country": {
+                        "countryId": 1,
+                        "name": "United States",
+                        "abbreviation": "USA"
+                      }
+                    },
+                    {
+                      "tvStationId": 894,
+                      "name": "Rogers Sportsnet East",
+                      "callLetters": "RSNE",
+                      "networkType": {
+                        "networkTypeId": 2,
+                        "name": "Regional"
+                      },
+                      "country": {
+                        "countryId": 2,
+                        "name": "Canada",
+                        "abbreviation": "CAN"
+                      }
+                    },
+                    {
+                      "tvStationId": 895,
+                      "name": "Rogers Sportsnet Ontario",
+                      "callLetters": "RSNO",
+                      "networkType": {
+                        "networkTypeId": 2,
+                        "name": "Regional"
+                      },
+                      "country": {
+                        "countryId": 2,
+                        "name": "Canada",
+                        "abbreviation": "CAN"
+                      }
+                    }
+                  ],
+                  "teams": [
+                    {
+                      "teamId": 4979,
+                      "location": "Florida",
+                      "nickname": "Panthers",
+                      "abbreviation": "Fla",
+                      "teamLocationType": {
+                        "teamLocationTypeId": 1,
+                        "name": "home"
+                      },
+                      "record": {
+                        "wins": 15,
+                        "losses": 9,
+                        "overtimeLosses": 5
+                      },
+                      "isWinner": false
+                    },
+                    {
+                      "teamId": 4973,
+                      "location": "Tampa Bay",
+                      "nickname": "Lightning",
+                      "abbreviation": "TB",
+                      "teamLocationType": {
+                        "teamLocationTypeId": 2,
+                        "name": "away"
+                      },
+                      "record": {
+                        "wins": 14,
+                        "losses": 11,
+                        "overtimeLosses": 3
+                      },
+                      "isWinner": false
+                    }
+                  ],
+                  "coverageLevel": {
+                    "coverageLevelId": 1,
+                    "details": "STATS Feed",
+                    "name": "Level 2"
+                  }
+                },
+                {
+                  "eventId": 2154769,
+                  "startDate": [
+                    {
+                      "year": 2019,
+                      "month": 12,
+                      "date": 10,
+                      "hour": 19,
+                      "minute": 0,
+                      "full": "2019-12-10T19:00:00",
+                      "dateType": "Local"
+                    },
+                    {
+                      "year": 2019,
+                      "month": 12,
+                      "date": 11,
+                      "hour": 0,
+                      "minute": 0,
+                      "full": "2019-12-11T00:00:00",
+                      "dateType": "UTC"
+                    }
+                  ],
+                  "isTba": false,
+                  "isDataConfirmed": {
+                    "score": false
+                  },
+                  "eventStatus": {
+                    "isUnderReview": false,
+                    "isPenaltyShot": false,
+                    "eventStatusId": 1,
+                    "isActive": false,
+                    "name": "Pre-Game"
+                  },
+                  "venue": {
+                    "venueId": 9415,
+                    "name": "PPG Paints Arena",
+                    "city": "Pittsburgh",
+                    "state": {
+                      "stateId": 38,
+                      "name": "Pennsylvania",
+                      "abbreviation": "PA"
+                    },
+                    "country": {
+                      "countryId": 1,
+                      "name": "United States",
+                      "abbreviation": "USA"
+                    }
+                  },
+                  "tvStations": [
+                    {
+                      "tvStationId": 910,
+                      "name": "AT&T SportsNet Pittsburgh",
+                      "callLetters": "ATTP",
+                      "networkType": {
+                        "networkTypeId": 2,
+                        "name": "Regional"
+                      },
+                      "country": {
+                        "countryId": 1,
+                        "name": "United States",
+                        "abbreviation": "USA"
+                      }
+                    },
+                    {
+                      "tvStationId": 884,
+                      "name": "TSN2",
+                      "callLetters": "TSN2",
+                      "networkType": {
+                        "networkTypeId": 1,
+                        "name": "National"
+                      },
+                      "country": {
+                        "countryId": 2,
+                        "name": "Canada",
+                        "abbreviation": "CAN"
+                      }
+                    },
+                    {
+                      "tvStationId": 146,
+                      "name": "RDS",
+                      "callLetters": "RDS",
+                      "networkType": {
+                        "networkTypeId": 1,
+                        "name": "National"
+                      },
+                      "country": {
+                        "countryId": 2,
+                        "name": "Canada",
+                        "abbreviation": "CAN"
+                      }
+                    }
+                  ],
+                  "teams": [
+                    {
+                      "teamId": 4969,
+                      "location": "Pittsburgh",
+                      "nickname": "Penguins",
+                      "abbreviation": "Pit",
+                      "teamLocationType": {
+                        "teamLocationTypeId": 1,
+                        "name": "home"
+                      },
+                      "record": {
+                        "wins": 17,
+                        "losses": 9,
+                        "overtimeLosses": 4
+                      },
+                      "isWinner": false
+                    },
+                    {
+                      "teamId": 4963,
+                      "location": "Montreal",
+                      "nickname": "Canadiens",
+                      "abbreviation": "Mon",
+                      "teamLocationType": {
+                        "teamLocationTypeId": 2,
+                        "name": "away"
+                      },
+                      "record": {
+                        "wins": 13,
+                        "losses": 11,
+                        "overtimeLosses": 6
+                      },
+                      "isWinner": false
+                    }
+                  ],
+                  "coverageLevel": {
+                    "coverageLevelId": 1,
+                    "details": "STATS Feed",
+                    "name": "Level 2"
+                  }
+                },
+                {
+                  "eventId": 2154760,
+                  "startDate": [
+                    {
+                      "year": 2019,
+                      "month": 12,
+                      "date": 10,
+                      "hour": 19,
+                      "minute": 30,
+                      "full": "2019-12-10T19:30:00",
+                      "dateType": "Local"
+                    },
+                    {
+                      "year": 2019,
+                      "month": 12,
+                      "date": 11,
+                      "hour": 0,
+                      "minute": 30,
+                      "full": "2019-12-11T00:30:00",
+                      "dateType": "UTC"
+                    }
+                  ],
+                  "isTba": false,
+                  "isDataConfirmed": {
+                    "score": false
+                  },
+                  "eventStatus": {
+                    "isUnderReview": false,
+                    "isPenaltyShot": false,
+                    "eventStatusId": 1,
+                    "isActive": false,
+                    "name": "Pre-Game"
+                  },
+                  "venue": {
+                    "venueId": 1788,
+                    "name": "KeyBank Center",
+                    "city": "Buffalo",
+                    "state": {
+                      "stateId": 32,
+                      "name": "New York",
+                      "abbreviation": "NY"
+                    },
+                    "country": {
+                      "countryId": 1,
+                      "name": "United States",
+                      "abbreviation": "USA"
+                    }
+                  },
+                  "tvStations": [
+                    {
+                      "tvStationId": 849,
+                      "name": "NBC Sports Network",
+                      "callLetters": "NBCS",
+                      "networkType": {
+                        "networkTypeId": 1,
+                        "name": "National"
+                      },
+                      "country": {
+                        "countryId": 1,
+                        "name": "United States",
+                        "abbreviation": "USA"
+                      }
+                    },
+                    {
+                      "tvStationId": 195,
+                      "name": "FOX Sports Midwest",
+                      "callLetters": "FSMW",
+                      "networkType": {
+                        "networkTypeId": 2,
+                        "name": "Regional"
+                      },
+                      "country": {
+                        "countryId": 1,
+                        "name": "United States",
+                        "abbreviation": "USA"
+                      }
+                    }
+                  ],
+                  "teams": [
+                    {
+                      "teamId": 4955,
+                      "location": "Buffalo",
+                      "nickname": "Sabres",
+                      "abbreviation": "Buf",
+                      "teamLocationType": {
+                        "teamLocationTypeId": 1,
+                        "name": "home"
+                      },
+                      "record": {
+                        "wins": 14,
+                        "losses": 11,
+                        "overtimeLosses": 6
+                      },
+                      "isWinner": false
+                    },
+                    {
+                      "teamId": 4972,
+                      "location": "St. Louis",
+                      "nickname": "Blues",
+                      "abbreviation": "StL",
+                      "teamLocationType": {
+                        "teamLocationTypeId": 2,
+                        "name": "away"
+                      },
+                      "record": {
+                        "wins": 18,
+                        "losses": 7,
+                        "overtimeLosses": 6
+                      },
+                      "isWinner": false
+                    }
+                  ],
+                  "coverageLevel": {
+                    "coverageLevelId": 1,
+                    "details": "STATS Feed",
+                    "name": "Level 2"
+                  }
+                },
+                {
+                  "eventId": 2154781,
+                  "startDate": [
+                    {
+                      "year": 2019,
+                      "month": 12,
+                      "date": 10,
+                      "hour": 19,
+                      "minute": 0,
+                      "full": "2019-12-10T19:00:00",
+                      "dateType": "Local"
+                    },
+                    {
+                      "year": 2019,
+                      "month": 12,
+                      "date": 11,
+                      "hour": 1,
+                      "minute": 0,
+                      "full": "2019-12-11T01:00:00",
+                      "dateType": "UTC"
+                    }
+                  ],
+                  "isTba": false,
+                  "isDataConfirmed": {
+                    "score": false
+                  },
+                  "eventStatus": {
+                    "isUnderReview": false,
+                    "isPenaltyShot": false,
+                    "eventStatusId": 1,
+                    "isActive": false,
+                    "name": "Pre-Game"
+                  },
+                  "venue": {
+                    "venueId": 3260,
+                    "name": "Xcel Energy Center",
+                    "city": "St. Paul",
+                    "state": {
+                      "stateId": 23,
+                      "name": "Minnesota",
+                      "abbreviation": "MN"
+                    },
+                    "country": {
+                      "countryId": 1,
+                      "name": "United States",
+                      "abbreviation": "USA"
+                    }
+                  },
+                  "tvStations": [
+                    {
+                      "tvStationId": 184,
+                      "name": "Prime Ticket",
+                      "callLetters": "PRIT",
+                      "networkType": {
+                        "networkTypeId": 2,
+                        "name": "Regional"
+                      },
+                      "country": {
+                        "countryId": 1,
+                        "name": "United States",
+                        "abbreviation": "USA"
+                      }
+                    },
+                    {
+                      "tvStationId": 862,
+                      "name": "FOX Sports North",
+                      "callLetters": "FSN",
+                      "networkType": {
+                        "networkTypeId": 2,
+                        "name": "Regional"
+                      },
+                      "country": {
+                        "countryId": 1,
+                        "name": "United States",
+                        "abbreviation": "USA"
+                      }
+                    },
+                    {
+                      "tvStationId": 938,
+                      "name": "Fox Sports Wisconsin",
+                      "callLetters": "FSWI",
+                      "networkType": {
+                        "networkTypeId": 2,
+                        "name": "Regional"
+                      },
+                      "country": {
+                        "countryId": 1,
+                        "name": "United States",
+                        "abbreviation": "USA"
+                      }
+                    }
+                  ],
+                  "teams": [
+                    {
+                      "teamId": 4983,
+                      "location": "Minnesota",
+                      "nickname": "Wild",
+                      "abbreviation": "Min",
+                      "teamLocationType": {
+                        "teamLocationTypeId": 1,
+                        "name": "home"
+                      },
+                      "record": {
+                        "wins": 14,
+                        "losses": 12,
+                        "overtimeLosses": 4
+                      },
+                      "isWinner": false
+                    },
+                    {
+                      "teamId": 4978,
+                      "location": "Anaheim",
+                      "nickname": "Ducks",
+                      "abbreviation": "Anh",
+                      "teamLocationType": {
+                        "teamLocationTypeId": 2,
+                        "name": "away"
+                      },
+                      "record": {
+                        "wins": 12,
+                        "losses": 14,
+                        "overtimeLosses": 4
+                      },
+                      "isWinner": false
+                    }
+                  ],
+                  "coverageLevel": {
+                    "coverageLevelId": 1,
+                    "details": "STATS Feed",
+                    "name": "Level 2"
+                  }
+                },
+                {
+                  "eventId": 2154774,
+                  "startDate": [
+                    {
+                      "year": 2019,
+                      "month": 12,
+                      "date": 10,
+                      "hour": 19,
+                      "minute": 0,
+                      "full": "2019-12-10T19:00:00",
+                      "dateType": "Local"
+                    },
+                    {
+                      "year": 2019,
+                      "month": 12,
+                      "date": 11,
+                      "hour": 1,
+                      "minute": 0,
+                      "full": "2019-12-11T01:00:00",
+                      "dateType": "UTC"
+                    }
+                  ],
+                  "isTba": false,
+                  "isDataConfirmed": {
+                    "score": false
+                  },
+                  "eventStatus": {
+                    "isUnderReview": false,
+                    "isPenaltyShot": false,
+                    "eventStatusId": 1,
+                    "isActive": false,
+                    "name": "Pre-Game"
+                  },
+                  "venue": {
+                    "venueId": 3256,
+                    "name": "Bridgestone Arena",
+                    "city": "Nashville",
+                    "state": {
+                      "stateId": 42,
+                      "name": "Tennessee",
+                      "abbreviation": "TN"
+                    },
+                    "country": {
+                      "countryId": 1,
+                      "name": "United States",
+                      "abbreviation": "USA"
+                    }
+                  },
+                  "tvStations": [
+                    {
+                      "tvStationId": 928,
+                      "name": "NBC Sports California",
+                      "callLetters": "NSCA",
+                      "networkType": {
+                        "networkTypeId": 2,
+                        "name": "Regional"
+                      },
+                      "country": {
+                        "countryId": 1,
+                        "name": "United States",
+                        "abbreviation": "USA"
+                      }
+                    },
+                    {
+                      "tvStationId": 889,
+                      "name": "FOX Sports Tennessee",
+                      "callLetters": "FSTN",
+                      "networkType": {
+                        "networkTypeId": 2,
+                        "name": "Regional"
+                      },
+                      "country": {
+                        "countryId": 1,
+                        "name": "United States",
+                        "abbreviation": "USA"
+                      }
+                    }
+                  ],
+                  "teams": [
+                    {
+                      "teamId": 4980,
+                      "location": "Nashville",
+                      "nickname": "Predators",
+                      "abbreviation": "Nsh",
+                      "teamLocationType": {
+                        "teamLocationTypeId": 1,
+                        "name": "home"
+                      },
+                      "record": {
+                        "wins": 13,
+                        "losses": 10,
+                        "overtimeLosses": 5
+                      },
+                      "isWinner": false
+                    },
+                    {
+                      "teamId": 4971,
+                      "location": "San Jose",
+                      "nickname": "Sharks",
+                      "abbreviation": "SJ",
+                      "teamLocationType": {
+                        "teamLocationTypeId": 2,
+                        "name": "away"
+                      },
+                      "record": {
+                        "wins": 15,
+                        "losses": 15,
+                        "overtimeLosses": 2
+                      },
+                      "isWinner": false
+                    }
+                  ],
+                  "coverageLevel": {
+                    "coverageLevelId": 1,
+                    "details": "STATS Feed",
+                    "name": "Level 2"
+                  }
+                },
+                {
+                  "eventId": 2154786,
+                  "startDate": [
+                    {
+                      "year": 2019,
+                      "month": 12,
+                      "date": 10,
+                      "hour": 19,
+                      "minute": 0,
+                      "full": "2019-12-10T19:00:00",
+                      "dateType": "Local"
+                    },
+                    {
+                      "year": 2019,
+                      "month": 12,
+                      "date": 11,
+                      "hour": 1,
+                      "minute": 0,
+                      "full": "2019-12-11T01:00:00",
+                      "dateType": "UTC"
+                    }
+                  ],
+                  "isTba": false,
+                  "isDataConfirmed": {
+                    "score": false
+                  },
+                  "eventStatus": {
+                    "isUnderReview": false,
+                    "isPenaltyShot": false,
+                    "eventStatusId": 1,
+                    "isActive": false,
+                    "name": "Pre-Game"
+                  },
+                  "venue": {
+                    "venueId": 4600,
+                    "name": "Bell MTS Place",
+                    "city": "Winnipeg",
+                    "state": {
+                      "stateId": 55,
+                      "name": "Manitoba",
+                      "abbreviation": "MB"
+                    },
+                    "country": {
+                      "countryId": 2,
+                      "name": "Canada",
+                      "abbreviation": "CAN"
+                    }
+                  },
+                  "tvStations": [
+                    {
+                      "tvStationId": 192,
+                      "name": "FOX Sports Detroit",
+                      "callLetters": "FSDT",
+                      "networkType": {
+                        "networkTypeId": 2,
+                        "name": "Regional"
+                      },
+                      "country": {
+                        "countryId": 1,
+                        "name": "United States",
+                        "abbreviation": "USA"
+                      }
+                    },
+                    {
+                      "tvStationId": 916,
+                      "name": "TSN3",
+                      "callLetters": "TSN3",
+                      "networkType": {
+                        "networkTypeId": 2,
+                        "name": "Regional"
+                      },
+                      "country": {
+                        "countryId": 2,
+                        "name": "Canada",
+                        "abbreviation": "CAN"
+                      }
+                    }
+                  ],
+                  "teams": [
+                    {
+                      "teamId": 4981,
+                      "location": "Winnipeg",
+                      "nickname": "Jets",
+                      "abbreviation": "Wpg",
+                      "teamLocationType": {
+                        "teamLocationTypeId": 1,
+                        "name": "home"
+                      },
+                      "record": {
+                        "wins": 18,
+                        "losses": 10,
+                        "overtimeLosses": 2
+                      },
+                      "isWinner": false
+                    },
+                    {
+                      "teamId": 4958,
+                      "location": "Detroit",
+                      "nickname": "Red Wings",
+                      "abbreviation": "Det",
+                      "teamLocationType": {
+                        "teamLocationTypeId": 2,
+                        "name": "away"
+                      },
+                      "record": {
+                        "wins": 7,
+                        "losses": 21,
+                        "overtimeLosses": 3
+                      },
+                      "isWinner": false
+                    }
+                  ],
+                  "coverageLevel": {
+                    "coverageLevelId": 1,
+                    "details": "STATS Feed",
+                    "name": "Level 2"
+                  }
+                },
+                {
+                  "eventId": 2154796,
+                  "startDate": [
+                    {
+                      "year": 2019,
+                      "month": 12,
+                      "date": 10,
+                      "hour": 19,
+                      "minute": 30,
+                      "full": "2019-12-10T19:30:00",
+                      "dateType": "Local"
+                    },
+                    {
+                      "year": 2019,
+                      "month": 12,
+                      "date": 11,
+                      "hour": 1,
+                      "minute": 30,
+                      "full": "2019-12-11T01:30:00",
+                      "dateType": "UTC"
+                    }
+                  ],
+                  "isTba": false,
+                  "isDataConfirmed": {
+                    "score": false
+                  },
+                  "eventStatus": {
+                    "isUnderReview": false,
+                    "isPenaltyShot": false,
+                    "eventStatusId": 1,
+                    "isActive": false,
+                    "name": "Pre-Game"
+                  },
+                  "venue": {
+                    "venueId": 2757,
+                    "name": "American Airlines Center",
+                    "city": "Dallas",
+                    "state": {
+                      "stateId": 43,
+                      "name": "Texas",
+                      "abbreviation": "TX"
+                    },
+                    "country": {
+                      "countryId": 1,
+                      "name": "United States",
+                      "abbreviation": "USA"
+                    }
+                  },
+                  "tvStations": [
+                    {
+                      "tvStationId": 188,
+                      "name": "FOX Sports Southwest",
+                      "callLetters": "FSSW",
+                      "networkType": {
+                        "networkTypeId": 2,
+                        "name": "Regional"
+                      },
+                      "country": {
+                        "countryId": 1,
+                        "name": "United States",
+                        "abbreviation": "USA"
+                      }
+                    },
+                    {
+                      "tvStationId": 885,
+                      "name": "MSG-Plus",
+                      "callLetters": "MSG+",
+                      "networkType": {
+                        "networkTypeId": 2,
+                        "name": "Regional"
+                      },
+                      "country": {
+                        "countryId": 1,
+                        "name": "United States",
+                        "abbreviation": "USA"
+                      }
+                    }
+                  ],
+                  "teams": [
+                    {
+                      "teamId": 4962,
+                      "location": "Dallas",
+                      "nickname": "Stars",
+                      "abbreviation": "Dal",
+                      "teamLocationType": {
+                        "teamLocationTypeId": 1,
+                        "name": "home"
+                      },
+                      "record": {
+                        "wins": 17,
+                        "losses": 11,
+                        "overtimeLosses": 3
+                      },
+                      "isWinner": false
+                    },
+                    {
+                      "teamId": 4964,
+                      "location": "New Jersey",
+                      "nickname": "Devils",
+                      "abbreviation": "NJ",
+                      "teamLocationType": {
+                        "teamLocationTypeId": 2,
+                        "name": "away"
+                      },
+                      "record": {
+                        "wins": 9,
+                        "losses": 15,
+                        "overtimeLosses": 5
+                      },
+                      "isWinner": false
+                    }
+                  ],
+                  "coverageLevel": {
+                    "coverageLevelId": 1,
+                    "details": "STATS Feed",
+                    "name": "Level 2"
+                  }
+                },
+                {
+                  "eventId": 2154813,
+                  "startDate": [
+                    {
+                      "year": 2019,
+                      "month": 12,
+                      "date": 10,
+                      "hour": 19,
+                      "minute": 0,
+                      "full": "2019-12-10T19:00:00",
+                      "dateType": "Local"
+                    },
+                    {
+                      "year": 2019,
+                      "month": 12,
+                      "date": 11,
+                      "hour": 2,
+                      "minute": 0,
+                      "full": "2019-12-11T02:00:00",
+                      "dateType": "UTC"
+                    }
+                  ],
+                  "isTba": false,
+                  "isDataConfirmed": {
+                    "score": false
+                  },
+                  "eventStatus": {
+                    "isUnderReview": false,
+                    "isPenaltyShot": false,
+                    "eventStatusId": 1,
+                    "isActive": false,
+                    "name": "Pre-Game"
+                  },
+                  "venue": {
+                    "venueId": 3480,
+                    "name": "Gila River Arena",
+                    "city": "Glendale",
+                    "state": {
+                      "stateId": 3,
+                      "name": "Arizona",
+                      "abbreviation": "AZ"
+                    },
+                    "country": {
+                      "countryId": 1,
+                      "name": "United States",
+                      "abbreviation": "USA"
+                    }
+                  },
+                  "tvStations": [
+                    {
+                      "tvStationId": 180,
+                      "name": "FOX Sports Arizona",
+                      "callLetters": "FSAZ",
+                      "networkType": {
+                        "networkTypeId": 2,
+                        "name": "Regional"
+                      },
+                      "country": {
+                        "countryId": 1,
+                        "name": "United States",
+                        "abbreviation": "USA"
+                      }
+                    },
+                    {
+                      "tvStationId": 929,
+                      "name": "Sportsnet ONE",
+                      "callLetters": "RSN1",
+                      "networkType": {
+                        "networkTypeId": 1,
+                        "name": "National"
+                      },
+                      "country": {
+                        "countryId": 2,
+                        "name": "Canada",
+                        "abbreviation": "CAN"
+                      }
+                    },
+                    {
+                      "tvStationId": 908,
+                      "name": "FOX Sports Arizona Plus",
+                      "callLetters": "FAZ+",
+                      "networkType": {
+                        "networkTypeId": 2,
+                        "name": "Regional"
+                      },
+                      "country": {
+                        "countryId": 1,
+                        "name": "United States",
+                        "abbreviation": "USA"
+                      }
+                    }
+                  ],
+                  "teams": [
+                    {
+                      "teamId": 4977,
+                      "location": "Arizona",
+                      "nickname": "Coyotes",
+                      "abbreviation": "Ari",
+                      "teamLocationType": {
+                        "teamLocationTypeId": 1,
+                        "name": "home"
+                      },
+                      "record": {
+                        "wins": 18,
+                        "losses": 10,
+                        "overtimeLosses": 4
+                      },
+                      "isWinner": false
+                    },
+                    {
+                      "teamId": 4956,
+                      "location": "Calgary",
+                      "nickname": "Flames",
+                      "abbreviation": "Cgy",
+                      "teamLocationType": {
+                        "teamLocationTypeId": 2,
+                        "name": "away"
+                      },
+                      "record": {
+                        "wins": 16,
+                        "losses": 12,
+                        "overtimeLosses": 4
+                      },
+                      "isWinner": false
+                    }
+                  ],
+                  "coverageLevel": {
+                    "coverageLevelId": 1,
+                    "details": "STATS Feed",
+                    "name": "Level 2"
+                  }
+                },
+                {
+                  "eventId": 2154804,
+                  "startDate": [
+                    {
+                      "year": 2019,
+                      "month": 12,
+                      "date": 10,
+                      "hour": 19,
+                      "minute": 0,
+                      "full": "2019-12-10T19:00:00",
+                      "dateType": "Local"
+                    },
+                    {
+                      "year": 2019,
+                      "month": 12,
+                      "date": 11,
+                      "hour": 2,
+                      "minute": 0,
+                      "full": "2019-12-11T02:00:00",
+                      "dateType": "UTC"
+                    }
+                  ],
+                  "isTba": false,
+                  "isDataConfirmed": {
+                    "score": false
+                  },
+                  "eventStatus": {
+                    "isUnderReview": false,
+                    "isPenaltyShot": false,
+                    "eventStatusId": 1,
+                    "isActive": false,
+                    "name": "Pre-Game"
+                  },
+                  "venue": {
+                    "venueId": 15206,
+                    "name": "Rogers Place",
+                    "city": "Edmonton",
+                    "state": {
+                      "stateId": 52,
+                      "name": "Alberta",
+                      "abbreviation": "AB"
+                    },
+                    "country": {
+                      "countryId": 2,
+                      "name": "Canada",
+                      "abbreviation": "CAN"
+                    }
+                  },
+                  "tvStations": [
+                    {
+                      "tvStationId": 855,
+                      "name": "Rogers Sportsnet West",
+                      "callLetters": "RSNW",
+                      "networkType": {
+                        "networkTypeId": 2,
+                        "name": "Regional"
+                      },
+                      "country": {
+                        "countryId": 2,
+                        "name": "Canada",
+                        "abbreviation": "CAN"
+                      }
+                    },
+                    {
+                      "tvStationId": 892,
+                      "name": "FOX Sports Carolinas",
+                      "callLetters": "FSCR",
+                      "networkType": {
+                        "networkTypeId": 2,
+                        "name": "Regional"
+                      },
+                      "country": {
+                        "countryId": 1,
+                        "name": "United States",
+                        "abbreviation": "USA"
+                      }
+                    }
+                  ],
+                  "teams": [
+                    {
+                      "teamId": 4959,
+                      "location": "Edmonton",
+                      "nickname": "Oilers",
+                      "abbreviation": "Edm",
+                      "teamLocationType": {
+                        "teamLocationTypeId": 1,
+                        "name": "home"
+                      },
+                      "record": {
+                        "wins": 18,
+                        "losses": 10,
+                        "overtimeLosses": 4
+                      },
+                      "isWinner": false
+                    },
+                    {
+                      "teamId": 4960,
+                      "location": "Carolina",
+                      "nickname": "Hurricanes",
+                      "abbreviation": "Car",
+                      "teamLocationType": {
+                        "teamLocationTypeId": 2,
+                        "name": "away"
+                      },
+                      "record": {
+                        "wins": 18,
+                        "losses": 11,
+                        "overtimeLosses": 1
+                      },
+                      "isWinner": false
+                    }
+                  ],
+                  "coverageLevel": {
+                    "coverageLevelId": 1,
+                    "details": "STATS Feed",
+                    "name": "Level 2"
+                  }
+                },
+                {
+                  "eventId": 2154818,
+                  "startDate": [
+                    {
+                      "year": 2019,
+                      "month": 12,
+                      "date": 10,
+                      "hour": 19,
+                      "minute": 0,
+                      "full": "2019-12-10T19:00:00",
+                      "dateType": "Local"
+                    },
+                    {
+                      "year": 2019,
+                      "month": 12,
+                      "date": 11,
+                      "hour": 3,
+                      "minute": 0,
+                      "full": "2019-12-11T03:00:00",
+                      "dateType": "UTC"
+                    }
+                  ],
+                  "isTba": false,
+                  "isDataConfirmed": {
+                    "score": false
+                  },
+                  "eventStatus": {
+                    "isUnderReview": false,
+                    "isPenaltyShot": false,
+                    "eventStatusId": 1,
+                    "isActive": false,
+                    "name": "Pre-Game"
+                  },
+                  "venue": {
+                    "venueId": 29,
+                    "name": "Rogers Arena",
+                    "city": "Vancouver",
+                    "state": {
+                      "stateId": 53,
+                      "name": "British Columbia",
+                      "abbreviation": "BC"
+                    },
+                    "country": {
+                      "countryId": 2,
+                      "name": "Canada",
+                      "abbreviation": "CAN"
+                    }
+                  },
+                  "tvStations": [
+                    {
+                      "tvStationId": 893,
+                      "name": "Rogers Sportsnet Pacific",
+                      "callLetters": "RSNP",
+                      "networkType": {
+                        "networkTypeId": 2,
+                        "name": "Regional"
+                      },
+                      "country": {
+                        "countryId": 2,
+                        "name": "Canada",
+                        "abbreviation": "CAN"
+                      }
+                    },
+                    {
+                      "tvStationId": 895,
+                      "name": "Rogers Sportsnet Ontario",
+                      "callLetters": "RSNO",
+                      "networkType": {
+                        "networkTypeId": 2,
+                        "name": "Regional"
+                      },
+                      "country": {
+                        "countryId": 2,
+                        "name": "Canada",
+                        "abbreviation": "CAN"
+                      }
+                    }
+                  ],
+                  "teams": [
+                    {
+                      "teamId": 4975,
+                      "location": "Vancouver",
+                      "nickname": "Canucks",
+                      "abbreviation": "Van",
+                      "teamLocationType": {
+                        "teamLocationTypeId": 1,
+                        "name": "home"
+                      },
+                      "record": {
+                        "wins": 15,
+                        "losses": 11,
+                        "overtimeLosses": 4
+                      },
+                      "isWinner": false
+                    },
+                    {
+                      "teamId": 4974,
+                      "location": "Toronto",
+                      "nickname": "Maple Leafs",
+                      "abbreviation": "Tor",
+                      "teamLocationType": {
+                        "teamLocationTypeId": 2,
+                        "name": "away"
+                      },
+                      "record": {
+                        "wins": 14,
+                        "losses": 13,
+                        "overtimeLosses": 4
+                      },
+                      "isWinner": false
+                    }
+                  ],
+                  "coverageLevel": {
+                    "coverageLevelId": 1,
+                    "details": "STATS Feed",
+                    "name": "Level 2"
+                  }
+                },
+                {
+                  "eventId": 2154821,
+                  "startDate": [
+                    {
+                      "year": 2019,
+                      "month": 12,
+                      "date": 10,
+                      "hour": 19,
+                      "minute": 0,
+                      "full": "2019-12-10T19:00:00",
+                      "dateType": "Local"
+                    },
+                    {
+                      "year": 2019,
+                      "month": 12,
+                      "date": 11,
+                      "hour": 3,
+                      "minute": 0,
+                      "full": "2019-12-11T03:00:00",
+                      "dateType": "UTC"
+                    }
+                  ],
+                  "isTba": false,
+                  "isDataConfirmed": {
+                    "score": false
+                  },
+                  "eventStatus": {
+                    "isUnderReview": false,
+                    "isPenaltyShot": false,
+                    "eventStatusId": 1,
+                    "isActive": false,
+                    "name": "Pre-Game"
+                  },
+                  "venue": {
+                    "venueId": 15339,
+                    "name": "T-Mobile Arena",
+                    "city": "Las Vegas",
+                    "state": {
+                      "stateId": 28,
+                      "name": "Nevada",
+                      "abbreviation": "NV"
+                    },
+                    "country": {
+                      "countryId": 1,
+                      "name": "United States",
+                      "abbreviation": "USA"
+                    }
+                  },
+                  "tvStations": [
+                    {
+                      "tvStationId": 933,
+                      "name": "AT&T Sports Rocky Mountain",
+                      "callLetters": "ATRM",
+                      "networkType": {
+                        "networkTypeId": 2,
+                        "name": "Regional"
+                      },
+                      "country": {
+                        "countryId": 1,
+                        "name": "United States",
+                        "abbreviation": "USA"
+                      }
+                    },
+                    {
+                      "tvStationId": 931,
+                      "name": "NBC Sports Chicago",
+                      "callLetters": "NSCH",
+                      "networkType": {
+                        "networkTypeId": 2,
+                        "name": "Regional"
+                      },
+                      "country": {
+                        "countryId": 1,
+                        "name": "United States",
+                        "abbreviation": "USA"
+                      }
+                    }
+                  ],
+                  "teams": [
+                    {
+                      "teamId": 33447,
+                      "location": "Vegas",
+                      "nickname": "Golden Knights",
+                      "abbreviation": "VGK",
+                      "teamLocationType": {
+                        "teamLocationTypeId": 1,
+                        "name": "home"
+                      },
+                      "record": {
+                        "wins": 15,
+                        "losses": 12,
+                        "overtimeLosses": 5
+                      },
+                      "isWinner": false
+                    },
+                    {
+                      "teamId": 4957,
+                      "location": "Chicago",
+                      "nickname": "Blackhawks",
+                      "abbreviation": "Chi",
+                      "teamLocationType": {
+                        "teamLocationTypeId": 2,
+                        "name": "away"
+                      },
+                      "record": {
+                        "wins": 12,
+                        "losses": 12,
+                        "overtimeLosses": 6
+                      },
+                      "isWinner": false
+                    }
+                  ],
+                  "coverageLevel": {
+                    "coverageLevelId": 1,
+                    "details": "STATS Feed",
+                    "name": "Level 2"
+                  }
+                },
+                {
+                  "eventId": 2154827,
+                  "startDate": [
+                    {
+                      "year": 2019,
+                      "month": 12,
+                      "date": 10,
+                      "hour": 19,
+                      "minute": 30,
+                      "full": "2019-12-10T19:30:00",
+                      "dateType": "Local"
+                    },
+                    {
+                      "year": 2019,
+                      "month": 12,
+                      "date": 11,
+                      "hour": 3,
+                      "minute": 30,
+                      "full": "2019-12-11T03:30:00",
+                      "dateType": "UTC"
+                    }
+                  ],
+                  "isTba": false,
+                  "isDataConfirmed": {
+                    "score": false
+                  },
+                  "eventStatus": {
+                    "isUnderReview": false,
+                    "isPenaltyShot": false,
+                    "eventStatusId": 1,
+                    "isActive": false,
+                    "name": "Pre-Game"
+                  },
+                  "venue": {
+                    "venueId": 12,
+                    "name": "Staples Center",
+                    "city": "Los Angeles",
+                    "state": {
+                      "stateId": 5,
+                      "name": "California",
+                      "abbreviation": "CA"
+                    },
+                    "country": {
+                      "countryId": 1,
+                      "name": "United States",
+                      "abbreviation": "USA"
+                    }
+                  },
+                  "tvStations": [
+                    {
+                      "tvStationId": 187,
+                      "name": "FOX Sports West",
+                      "callLetters": "FSW",
+                      "networkType": {
+                        "networkTypeId": 2,
+                        "name": "Regional"
+                      },
+                      "country": {
+                        "countryId": 1,
+                        "name": "United States",
+                        "abbreviation": "USA"
+                      }
+                    },
+                    {
+                      "tvStationId": 129,
+                      "name": "MSG 2",
+                      "callLetters": "MSG2",
+                      "networkType": {
+                        "networkTypeId": 2,
+                        "name": "Regional"
+                      },
+                      "country": {
+                        "countryId": 1,
+                        "name": "United States",
+                        "abbreviation": "USA"
+                      }
+                    }
+                  ],
+                  "teams": [
+                    {
+                      "teamId": 4961,
+                      "location": "Los Angeles",
+                      "nickname": "Kings",
+                      "abbreviation": "LA",
+                      "teamLocationType": {
+                        "teamLocationTypeId": 1,
+                        "name": "home"
+                      },
+                      "record": {
+                        "wins": 11,
+                        "losses": 18,
+                        "overtimeLosses": 2
+                      },
+                      "isWinner": false
+                    },
+                    {
+                      "teamId": 4966,
+                      "location": "New York",
+                      "nickname": "Rangers",
+                      "abbreviation": "NYR",
+                      "teamLocationType": {
+                        "teamLocationTypeId": 2,
+                        "name": "away"
+                      },
+                      "record": {
+                        "wins": 15,
+                        "losses": 11,
+                        "overtimeLosses": 3
+                      },
+                      "isWinner": false
+                    }
+                  ],
+                  "coverageLevel": {
+                    "coverageLevelId": 1,
+                    "details": "STATS Feed",
+                    "name": "Level 2"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

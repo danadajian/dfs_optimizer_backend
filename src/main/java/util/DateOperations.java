@@ -7,13 +7,13 @@ import java.util.TimeZone;
 
 public class DateOperations {
 
-    public String getTodaysDateString() {
-        Calendar today = getTodaysDate();
+    public String getDateTodayString() {
+        Calendar today = getDateToday();
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         return dateFormat.format(today.getTime());
     }
 
-    public Calendar getTodaysDate() {
+    public Calendar getDateToday() {
         return Calendar.getInstance();
     }
 

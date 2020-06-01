@@ -6,14 +6,14 @@ import java.util.stream.Stream;
 
 public class Optimizer {
     List<Set<List<Player>>> playerPools;
-    List<Player> optimalLineup;
-    double maxPoints;
     int salaryCap;
     LineupRestrictions lineupRestrictions;
+    LineupValidator lineupValidator = new LineupValidator();
+    double maxPoints;
+    List<Player> optimalLineup;
 
-    public List<Player> generateOptimalLineup(List<Set<List<Player>>> playerPools, int salaryCap, LineupRestrictions lineupRestrictions) {
-        this.optimalLineup = Collections.emptyList();
-        this.maxPoints = 0;
+    public List<Player> generateOptimalLineup(List<Set<List<Player>>> playerPools, int salaryCap,
+                                              LineupRestrictions lineupRestrictions) {
         this.playerPools = playerPools;
         this.salaryCap = salaryCap;
         this.lineupRestrictions = lineupRestrictions;
@@ -22,9 +22,12 @@ public class Optimizer {
     }
 
     private void optimize(List<Player> lineup, int poolsIndex) {
-        boolean isCompleteLineup = ++poolsIndex == playerPools.size();
-        if (isCompleteLineup) {
-            checkIfLineupIsBestYet(lineup);
+        boolean lineupIsFull = ++poolsIndex == playerPools.size();
+        if (lineupIsFull &&
+                lineupIsBetter(lineup, salaryCap, maxPoints) &&
+                lineupValidator.lineupIsValid(lineup, lineupRestrictions)) {
+            maxPoints = totalProjection(lineup);
+            optimalLineup = lineup;
         } else {
             Set<List<Player>> nextPlayerList = playerPools.get(poolsIndex);
             for (List<Player> players : nextPlayerList) {
@@ -32,20 +35,10 @@ public class Optimizer {
                         .flatMap(List::stream)
                         .collect(Collectors.toList());
                 if (canFindABetterLineup(concatenatedLineup, playerPools, maxPoints, salaryCap) &&
-                        satisfiesMaxPlayersPerTeam(concatenatedLineup, lineupRestrictions)) {
+                        lineupValidator.lineupSatisfiesMaxPlayersPerTeam(concatenatedLineup, lineupRestrictions)) {
                     optimize(concatenatedLineup, poolsIndex);
                 }
             }
-        }
-    }
-
-    private void checkIfLineupIsBestYet(List<Player> lineup) {
-        if (areNoDuplicates(lineup) &&
-                lineupIsBetter(lineup, salaryCap, maxPoints) &&
-                satisfiesDistinctTeamsRequired(lineup, lineupRestrictions) &&
-                satisfiesMaxPlayersPerTeam(lineup, lineupRestrictions)) {
-            maxPoints = totalProjection(lineup);
-            optimalLineup = lineup;
         }
     }
 
@@ -86,32 +79,6 @@ public class Optimizer {
                         .orElse(0)
                 )
                 .sum();
-    }
-
-    public boolean areNoDuplicates(List<Player> lineup) {
-        return lineup.size() == lineup.stream().distinct().count();
-    }
-
-    public boolean satisfiesDistinctTeamsRequired(List<Player> lineup, LineupRestrictions lineupRestrictions) {
-        return Stream
-                .concat(lineup.stream().map(player -> player.team), lineupRestrictions.getWhiteListedTeams().stream())
-                .distinct()
-                .count() >= lineupRestrictions.getDistinctTeamsRequired();
-    }
-
-    public boolean satisfiesMaxPlayersPerTeam(List<Player> lineup, LineupRestrictions lineupRestrictions) {
-        Stream<String> teamsInLineup = lineup
-                .stream()
-                .filter(player -> !player.position.equals(lineupRestrictions.getTeamAgnosticPosition()))
-                .map(player -> player.team);
-        List<String> teamsList = Stream
-                .concat(teamsInLineup, lineupRestrictions.getWhiteListedTeams().stream())
-                .collect(Collectors.toList());
-        return lineup
-                .stream()
-                .map(player -> player.team)
-                .distinct()
-                .allMatch(team -> Collections.frequency(teamsList, team) <= lineupRestrictions.getMaxPlayersPerTeam());
     }
 
     public boolean lineupIsBetter(List<Player> lineup, int salaryCap, double maxPoints) {

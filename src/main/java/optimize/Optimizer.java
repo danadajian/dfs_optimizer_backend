@@ -2,6 +2,7 @@ package optimize;
 
 import java.util.*;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 public class Optimizer {
@@ -16,34 +17,36 @@ public class Optimizer {
                                               LineupRestrictions lineupRestrictions) {
         this.playerPools = playerPools;
         this.salaryCap = salaryCap;
+        this.maxPoints = 0;
         this.lineupRestrictions = lineupRestrictions;
         optimize(Collections.emptyList(), -1);
         return optimalLineup;
     }
 
-    private void optimize(List<Player> lineup, int poolsIndex) {
+    public void optimize(List<Player> lineup, int poolsIndex) {
         boolean lineupIsFull = ++poolsIndex == playerPools.size();
-        if (lineupIsFull &&
-                lineupIsBetter(lineup, salaryCap, maxPoints) &&
-                lineupValidator.lineupIsValid(lineup, lineupRestrictions)) {
+        if (lineupIsFull && lineupIsBetter(lineup) && lineupValidator.lineupIsValid(lineup, lineupRestrictions)) {
             maxPoints = totalProjection(lineup);
             optimalLineup = lineup;
         } else {
-            Set<List<Player>> nextPlayerList = playerPools.get(poolsIndex);
-            for (List<Player> players : nextPlayerList) {
-                List<Player> concatenatedLineup = Stream.of(lineup, players)
-                        .flatMap(List::stream)
-                        .collect(Collectors.toList());
-                if (canFindABetterLineup(concatenatedLineup, playerPools, maxPoints, salaryCap) &&
-                        lineupValidator.lineupSatisfiesMaxPlayersPerTeam(concatenatedLineup, lineupRestrictions)) {
-                    optimize(concatenatedLineup, poolsIndex);
-                }
+            recursivelyCheckLineups(lineup, poolsIndex);
+        }
+    }
+
+    public void recursivelyCheckLineups(List<Player> lineup, int poolsIndex) {
+        Set<List<Player>> positionCombos = playerPools.get(poolsIndex);
+        for (List<Player> players : positionCombos) {
+            List<Player> concatenatedLineup = Stream.of(lineup, players)
+                    .flatMap(List::stream)
+                    .collect(Collectors.toList());
+            if (canFindABetterLineup(concatenatedLineup, playerPools) &&
+                    lineupValidator.lineupSatisfiesMaxPlayersPerTeam(concatenatedLineup, lineupRestrictions)) {
+                optimize(concatenatedLineup, poolsIndex);
             }
         }
     }
 
-    public boolean canFindABetterLineup(List<Player> currentLineup, List<Set<List<Player>>> playerPools,
-                                        double maxPoints, int salaryCap) {
+    public boolean canFindABetterLineup(List<Player> currentLineup, List<Set<List<Player>>> playerPools) {
         int numberOfPositionsFilled = getDistinctNumberOfPositionTypesFilled(currentLineup);
         List<Set<List<Player>>> remainingPlayerPools = playerPools.subList(numberOfPositionsFilled, playerPools.size());
         double maxPointsToAdd = getMaxPointsToAdd(remainingPlayerPools);
@@ -53,12 +56,13 @@ public class Optimizer {
     }
 
     public int getDistinctNumberOfPositionTypesFilled(List<Player> currentLineup) {
-        int numberOfPositionsFilled = 1;
-        for (int i = 1; i < currentLineup.size(); i++) {
-            if (!currentLineup.get(i - 1).position.equals(currentLineup.get(i).position))
-                numberOfPositionsFilled++;
-        }
-        return numberOfPositionsFilled;
+        return IntStream.range(0, currentLineup.size())
+                .map(i -> {
+                    String playerPosition = currentLineup.get(i).position;
+                    String precedingPlayerPosition = i == 0 ? "N/A" : currentLineup.get(i - 1).position;
+                    return !playerPosition.equals(precedingPlayerPosition) ? 1 : 0;
+                })
+                .sum();
     }
 
     public double getMaxPointsToAdd(List<Set<List<Player>>> remainingPlayerPools) {
@@ -81,7 +85,7 @@ public class Optimizer {
                 .sum();
     }
 
-    public boolean lineupIsBetter(List<Player> lineup, int salaryCap, double maxPoints) {
+    public boolean lineupIsBetter(List<Player> lineup) {
         return totalSalary(lineup) <= salaryCap && totalProjection(lineup) > maxPoints;
     }
 
@@ -91,5 +95,29 @@ public class Optimizer {
 
     public int totalSalary(List<Player> lineup) {
         return lineup.stream().mapToInt(player -> player.salary).sum();
+    }
+
+    public void setSalaryCap(int salaryCap) {
+        this.salaryCap = salaryCap;
+    }
+
+    public void setMaxPoints(double maxPoints) {
+        this.maxPoints = maxPoints;
+    }
+
+    public void setPlayerPools(List<Set<List<Player>>> playerPools) {
+        this.playerPools = playerPools;
+    }
+
+    public void setLineupValidator(LineupValidator lineupValidator) {
+        this.lineupValidator = lineupValidator;
+    }
+
+    public double getMaxPoints() {
+        return maxPoints;
+    }
+
+    public List<Player> getOptimalLineup() {
+        return optimalLineup;
     }
 }

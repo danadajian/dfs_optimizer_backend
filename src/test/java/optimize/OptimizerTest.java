@@ -1,7 +1,10 @@
 package optimize;
 
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import static org.mockito.Mockito.verify;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -24,13 +27,75 @@ class OptimizerTest {
     Player te1 = new Player(13, "TE", "team1", 10.1, 6700);
     Player dst1 = new Player(15, "D", "team1", 6.0, 4600);
 
+    List<Set<List<Player>>> playerPools = Arrays.asList(
+            Stream.of(Collections.singletonList(qb0)).collect(Collectors.toSet()),
+            Stream.of(Arrays.asList(rb1, rb2), Arrays.asList(rb1, rb3), Arrays.asList(rb1, rb4), Arrays.asList(rb2, rb3), Arrays.asList(rb2, rb4), Arrays.asList(rb3, rb4)).collect(Collectors.toSet()),
+            Stream.of(Arrays.asList(wr1, wr2, wr3), Arrays.asList(wr1, wr2, wr4), Arrays.asList(wr1, wr3, wr4), Arrays.asList(wr2, wr3, wr4)).collect(Collectors.toSet()),
+            Stream.of(Collections.singletonList(te1)).collect(Collectors.toSet()),
+            Stream.of(Collections.singletonList(dst1)).collect(Collectors.toSet())
+    );
+
     Optimizer optimizer = mock(Optimizer.class);
     LineupRestrictions lineupRestrictions = mock(LineupRestrictions.class);
     LineupValidator lineupValidator = mock(LineupValidator.class);
 
     @BeforeEach
     void setUp() {
+        doCallRealMethod().when(optimizer).setSalaryCap(anyInt());
+        doCallRealMethod().when(optimizer).setMaxPoints(anyDouble());
+        doCallRealMethod().when(optimizer).setPlayerPools(anyList());
+        doCallRealMethod().when(optimizer).setLineupValidator(any());
+        when(optimizer.getMaxPoints()).thenCallRealMethod();
+        when(optimizer.getOptimalLineup()).thenCallRealMethod();
+    }
+
+    @AfterEach
+    void tearDown() {
         reset(optimizer, lineupRestrictions, lineupValidator);
+    }
+
+    @Test
+    void shouldSetNewMaxPointsAndLineup() {
+        doCallRealMethod().when(optimizer).optimize(anyList(), anyInt());
+        when(optimizer.lineupIsBetter(anyList())).thenReturn(true);
+        when(lineupValidator.lineupIsValid(anyList(), any())).thenReturn(true);
+        when(optimizer.totalProjection(anyList())).thenReturn(6.9);
+        optimizer.setPlayerPools(playerPools);
+        optimizer.setLineupValidator(lineupValidator);
+        optimizer.optimize(Arrays.asList(qb0, rb1, rb2), 4);
+        assertEquals(optimizer.getMaxPoints(), 6.9);
+        assertEquals(optimizer.getOptimalLineup(), Arrays.asList(qb0, rb1, rb2));
+        verify(optimizer, never()).recursivelyCheckLineups(anyList(), anyInt());
+    }
+
+    @Test
+    void shouldContinueCheckingLineups() {
+        doCallRealMethod().when(optimizer).optimize(anyList(), anyInt());
+        when(optimizer.lineupIsBetter(anyList())).thenReturn(true);
+        when(lineupValidator.lineupIsValid(anyList(), any())).thenReturn(true);
+        when(optimizer.totalProjection(anyList())).thenReturn(6.9);
+        optimizer.setPlayerPools(playerPools);
+        optimizer.setLineupValidator(lineupValidator);
+        optimizer.optimize(Arrays.asList(qb0, rb1, rb2), 1);
+        assertEquals(optimizer.getMaxPoints(), 0);
+        assertNull(optimizer.getOptimalLineup());
+        verify(optimizer, times(1)).recursivelyCheckLineups(Arrays.asList(qb0, rb1, rb2), 2);
+    }
+
+    @Test
+    void shouldRecursivelyCheckLineups() {
+        when(optimizer.canFindABetterLineup(anyList(), anyList())).thenReturn(true);
+        when(lineupValidator.lineupSatisfiesMaxPlayersPerTeam(anyList(), any())).thenReturn(true);
+        doNothing().when(optimizer).optimize(anyList(), anyInt());
+        doCallRealMethod().when(optimizer).recursivelyCheckLineups(anyList(), anyInt());
+        optimizer.setPlayerPools(playerPools);
+        optimizer.setLineupValidator(lineupValidator);
+        optimizer.recursivelyCheckLineups(Collections.singletonList(qb0), 1);
+        verify(optimizer, times(1)).optimize(Arrays.asList(qb0, rb1, rb3), 1);
+        verify(optimizer, times(1)).optimize(Arrays.asList(qb0, rb1, rb4), 1);
+        verify(optimizer, times(1)).optimize(Arrays.asList(qb0, rb2, rb3), 1);
+        verify(optimizer, times(1)).optimize(Arrays.asList(qb0, rb2, rb4), 1);
+        verify(optimizer, times(1)).optimize(Arrays.asList(qb0, rb3, rb4), 1);
     }
 
     @Test
@@ -39,8 +104,10 @@ class OptimizerTest {
         when(optimizer.getMinSalaryToAdd(anyList())).thenReturn(2);
         when(optimizer.totalProjection(anyList())).thenReturn(3.0);
         when(optimizer.totalSalary(anyList())).thenReturn(2);
-        when(optimizer.canFindABetterLineup(anyList(), any(), anyDouble(), anyInt())).thenCallRealMethod();
-        assertTrue(optimizer.canFindABetterLineup(Collections.emptyList(), Collections.emptyList(), 6.9, 5));
+        when(optimizer.canFindABetterLineup(anyList(), any())).thenCallRealMethod();
+        optimizer.setSalaryCap(5);
+        optimizer.setMaxPoints(6.9);
+        assertTrue(optimizer.canFindABetterLineup(Collections.emptyList(), Collections.emptyList()));
     }
 
     @Test
@@ -49,8 +116,10 @@ class OptimizerTest {
         when(optimizer.getMinSalaryToAdd(anyList())).thenReturn(2);
         when(optimizer.totalProjection(anyList())).thenReturn(3.0);
         when(optimizer.totalSalary(anyList())).thenReturn(2);
-        when(optimizer.canFindABetterLineup(anyList(), any(), anyDouble(), anyInt())).thenCallRealMethod();
-        assertFalse(optimizer.canFindABetterLineup(Collections.emptyList(), Collections.emptyList(), 6.9, 5));
+        when(optimizer.canFindABetterLineup(anyList(), any())).thenCallRealMethod();
+        optimizer.setSalaryCap(5);
+        optimizer.setMaxPoints(6.9);
+        assertFalse(optimizer.canFindABetterLineup(Collections.emptyList(), Collections.emptyList()));
     }
 
     @Test
@@ -59,8 +128,10 @@ class OptimizerTest {
         when(optimizer.getMinSalaryToAdd(anyList())).thenReturn(4);
         when(optimizer.totalProjection(anyList())).thenReturn(3.0);
         when(optimizer.totalSalary(anyList())).thenReturn(2);
-        when(optimizer.canFindABetterLineup(anyList(), any(), anyDouble(), anyInt())).thenCallRealMethod();
-        assertFalse(optimizer.canFindABetterLineup(Collections.emptyList(), Collections.emptyList(), 6.9, 5));
+        when(optimizer.canFindABetterLineup(anyList(), any())).thenCallRealMethod();
+        optimizer.setSalaryCap(5);
+        optimizer.setMaxPoints(6.9);
+        assertFalse(optimizer.canFindABetterLineup(Collections.emptyList(), Collections.emptyList()));
     }
 
     @Test
@@ -108,28 +179,34 @@ class OptimizerTest {
 
     @Test
     void shouldDetermineLineupIsBetter() {
+        when(optimizer.lineupIsBetter(anyList())).thenCallRealMethod();
         when(optimizer.totalSalary(anyList())).thenReturn(68999);
         when(optimizer.totalProjection(anyList())).thenReturn(69.1);
-        when(optimizer.lineupIsBetter(anyList(), anyInt(), anyDouble())).thenCallRealMethod();
-        boolean result = optimizer.lineupIsBetter(Collections.emptyList(), 69000, 6.9);
+        optimizer.setSalaryCap(69000);
+        optimizer.setMaxPoints(6.9);
+        boolean result = optimizer.lineupIsBetter(Collections.emptyList());
         assertTrue(result);
     }
 
     @Test
     void shouldDetermineLineupNotBetterDueToLowerProjection() {
+        when(optimizer.lineupIsBetter(anyList())).thenCallRealMethod();
         when(optimizer.totalSalary(anyList())).thenReturn(68999);
         when(optimizer.totalProjection(anyList())).thenReturn(7.0);
-        when(optimizer.lineupIsBetter(anyList(), anyInt(), anyDouble())).thenCallRealMethod();
-        boolean result = optimizer.lineupIsBetter(Collections.emptyList(), 69000, 69.0);
+        optimizer.setSalaryCap(69000);
+        optimizer.setMaxPoints(69.0);
+        boolean result = optimizer.lineupIsBetter(Collections.emptyList());
         assertFalse(result);
     }
 
     @Test
     void shouldDetermineLineupNotBetterDueToHigherSalary() {
+        when(optimizer.lineupIsBetter(anyList())).thenCallRealMethod();
         when(optimizer.totalSalary(anyList())).thenReturn(69001);
         when(optimizer.totalProjection(anyList())).thenReturn(69.1);
-        when(optimizer.lineupIsBetter(anyList(), anyInt(), anyDouble())).thenCallRealMethod();
-        boolean result = optimizer.lineupIsBetter(Collections.emptyList(), 69000, 69.0);
+        optimizer.setSalaryCap(69000);
+        optimizer.setMaxPoints(69.0);
+        boolean result = optimizer.lineupIsBetter(Collections.emptyList());
         assertFalse(result);
     }
 
@@ -153,15 +230,7 @@ class OptimizerTest {
         when(lineupRestrictions.getMaxPlayersPerTeam()).thenReturn(4);
         when(lineupRestrictions.getTeamAgnosticPosition()).thenReturn("QB");
         when(lineupRestrictions.getWhiteListedTeams()).thenReturn(Collections.emptyList());
-        List<Set<List<Player>>> playerPools = Arrays.asList(
-                Stream.of(Collections.singletonList(qb0)).collect(Collectors.toSet()),
-                Stream.of(Arrays.asList(rb1, rb2), Arrays.asList(rb1, rb3), Arrays.asList(rb1, rb4), Arrays.asList(rb2, rb3), Arrays.asList(rb2, rb4), Arrays.asList(rb3, rb4)).collect(Collectors.toSet()),
-                Stream.of(Arrays.asList(wr1, wr2, wr3), Arrays.asList(wr1, wr2, wr4), Arrays.asList(wr1, wr3, wr4), Arrays.asList(wr2, wr3, wr4)).collect(Collectors.toSet()),
-                Stream.of(Collections.singletonList(te1)).collect(Collectors.toSet()),
-                Stream.of(Collections.singletonList(dst1)).collect(Collectors.toSet())
-        );
-        Optimizer optimizerNew = new Optimizer();
-        List<Player> result = optimizerNew.generateOptimalLineup(playerPools, 50000, lineupRestrictions);
+        List<Player> result = new Optimizer().generateOptimalLineup(playerPools, 50000, lineupRestrictions);
         assertEquals(Arrays.asList(qb0, rb2, rb3, wr1, wr2, wr4, te1, dst1), result);
     }
 }

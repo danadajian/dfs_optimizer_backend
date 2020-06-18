@@ -58,7 +58,7 @@ class OptimizerTest {
     void shouldSetNewMaxPointsAndLineup() {
         doCallRealMethod().when(optimizer).optimize(anyList(), anyInt());
         when(optimizer.lineupIsBetter(anyList())).thenReturn(true);
-        when(lineupValidator.lineupIsValid(anyList(), any())).thenReturn(true);
+        when(lineupValidator.lineupSatisfiesDistinctTeamsRequired(anyList(), any())).thenReturn(true);
         when(optimizer.totalProjection(anyList())).thenReturn(6.9);
         optimizer.setPlayerPools(playerPools);
         optimizer.setLineupValidator(lineupValidator);
@@ -72,7 +72,8 @@ class OptimizerTest {
     void shouldContinueCheckingLineups() {
         doCallRealMethod().when(optimizer).optimize(anyList(), anyInt());
         when(optimizer.lineupIsBetter(anyList())).thenReturn(true);
-        when(lineupValidator.lineupIsValid(anyList(), any())).thenReturn(true);
+        when(lineupValidator.lineupContainsNoDuplicates(anyList())).thenReturn(true);
+        when(lineupValidator.lineupSatisfiesMaxPlayersPerTeam(anyList(), any())).thenReturn(true);
         when(optimizer.totalProjection(anyList())).thenReturn(6.9);
         optimizer.setPlayerPools(playerPools);
         optimizer.setLineupValidator(lineupValidator);
@@ -85,6 +86,7 @@ class OptimizerTest {
     @Test
     void shouldRecursivelyCheckLineups() {
         when(optimizer.canFindABetterLineup(anyList(), anyList())).thenReturn(true);
+        when(lineupValidator.lineupContainsNoDuplicates(anyList())).thenReturn(true);
         when(lineupValidator.lineupSatisfiesMaxPlayersPerTeam(anyList(), any())).thenReturn(true);
         doNothing().when(optimizer).optimize(anyList(), anyInt());
         doCallRealMethod().when(optimizer).recursivelyCheckLineups(anyList(), anyInt());

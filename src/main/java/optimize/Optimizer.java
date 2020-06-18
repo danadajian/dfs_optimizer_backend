@@ -25,7 +25,7 @@ public class Optimizer {
 
     public void optimize(List<Player> lineup, int poolsIndex) {
         boolean lineupIsFull = ++poolsIndex == playerPools.size();
-        if (lineupIsFull && lineupIsBetter(lineup) && lineupValidator.lineupIsValid(lineup, lineupRestrictions)) {
+        if (lineupIsFull && lineupIsBetter(lineup) && lineupValidator.lineupSatisfiesDistinctTeamsRequired(lineup, lineupRestrictions)) {
             maxPoints = totalProjection(lineup);
             optimalLineup = lineup;
         } else {
@@ -36,13 +36,15 @@ public class Optimizer {
     public void recursivelyCheckLineups(List<Player> lineup, int poolsIndex) {
         Set<List<Player>> positionCombos = playerPools.get(poolsIndex);
         for (List<Player> players : positionCombos) {
-            List<Player> concatenatedLineup = Stream.of(lineup, players)
+            List<Player> lineupFragment = Stream.of(lineup, players)
                     .flatMap(List::stream)
                     .collect(Collectors.toList());
-            if (canFindABetterLineup(concatenatedLineup, playerPools) &&
-                    lineupValidator.lineupSatisfiesMaxPlayersPerTeam(concatenatedLineup, lineupRestrictions)) {
-                optimize(concatenatedLineup, poolsIndex);
-            }
+            boolean shouldContinueBuildingLineup =
+                    lineupValidator.lineupContainsNoDuplicates(lineupFragment) &&
+                    lineupValidator.lineupSatisfiesMaxPlayersPerTeam(lineupFragment, lineupRestrictions) &&
+                    canFindABetterLineup(lineupFragment, playerPools);
+            if (shouldContinueBuildingLineup)
+                optimize(lineupFragment, poolsIndex);
         }
     }
 
@@ -86,7 +88,7 @@ public class Optimizer {
     }
 
     public boolean lineupIsBetter(List<Player> lineup) {
-        return totalSalary(lineup) <= salaryCap && totalProjection(lineup) > maxPoints;
+        return totalProjection(lineup) > maxPoints && totalSalary(lineup) <= salaryCap;
     }
 
     public double totalProjection(List<Player> lineup) {

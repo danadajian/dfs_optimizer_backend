@@ -13,20 +13,19 @@ import static org.mockito.ArgumentMatchers.anyList;
 import static org.mockito.Mockito.*;
 
 class LineupValidatorTest {
-    private Player qb0 = new Player(1, "QB", "team1", 0, 0);
-    private Player rb1 = new Player(3, "RB", "team1", 15.0, 5000);
-    private Player rb2 = new Player(4, "RB", "team2", 18.9, 8000);
-    private Player rb3 = new Player(5, "RB", "team3", 14.0, 7500);
-    private Player rb4 = new Player(6, "RB", "team4", 12.7, 7200);
-    private Player wr1 = new Player(9, "WR", "team1", 22.9, 10000);
-    private Player wr2 = new Player(10, "WR", "team2", 11.6, 7900);
-    private Player wr3 = new Player(11, "WR", "team3", 5.5, 8400);
-    private Player wr4 = new Player(12, "WR", "team1", 7.9, 3700);
-    private Player te1 = new Player(13, "TE", "team1", 10.1, 6700);
-    private Player dst1 = new Player(15, "D", "team1", 6.0, 4600);
+    Player qb0 = new Player(1, "QB", "team1", 0, 0);
+    Player rb1 = new Player(3, "RB", "team1", 15.0, 5000);
+    Player rb2 = new Player(4, "RB", "team2", 18.9, 8000);
+    Player rb3 = new Player(5, "RB", "team3", 14.0, 7500);
+    Player wr1 = new Player(9, "WR", "team1", 22.9, 10000);
+    Player wr2 = new Player(10, "WR", "team2", 11.6, 7900);
+    Player wr3 = new Player(11, "WR", "team3", 5.5, 8400);
+    Player wr4 = new Player(12, "WR", "team1", 7.9, 3700);
+    Player te1 = new Player(13, "TE", "team1", 10.1, 6700);
+    Player dst1 = new Player(15, "D", "team1", 6.0, 4600);
 
-    private LineupValidator lineupValidator = mock(LineupValidator.class);
-    private LineupRestrictions lineupRestrictions = mock(LineupRestrictions.class);
+    LineupValidator lineupValidator = mock(LineupValidator.class);
+    LineupRestrictions lineupRestrictions = mock(LineupRestrictions.class);
 
     @BeforeEach
     void setUp() {

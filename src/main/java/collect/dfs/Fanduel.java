@@ -9,7 +9,7 @@ import java.util.*;
 
 public class Fanduel extends DFS {
     private final List<String> supportedSports = Arrays.asList("NFL", "MLB", "NBA", "NHL");
-    private final List<String> supportedContests = Arrays.asList("Main", "Thu", "Sat", "Sun");
+    private final List<String> supportedContests = Arrays.asList("Main", "Thu", "Sat", "Sun", "Opening Day");
     private ApiClient apiClient;
 
     public Fanduel(ApiClient apiClient) {

@@ -15,9 +15,6 @@ public class Optimizer {
 
     public List<Player> generateOptimalLineup(List<Set<List<Player>>> playerPools, int salaryCap,
                                               LineupRestrictions lineupRestrictions) {
-        System.out.println("playerPools:" + playerPools);
-        System.out.println("salaryCap:" + salaryCap);
-        System.out.println("lineupRestrictions:" + lineupRestrictions);
         this.playerPools = playerPools;
         this.salaryCap = salaryCap;
         this.maxPoints = 0;
@@ -37,6 +34,7 @@ public class Optimizer {
     }
 
     public void recursivelyCheckLineups(List<Player> lineup, int poolsIndex) {
+        System.out.println(lineup);
         Set<List<Player>> positionCombos = playerPools.get(poolsIndex);
         for (List<Player> players : positionCombos) {
             List<Player> lineupFragment = Stream.of(lineup, players)

@@ -1,5 +1,6 @@
 package handler;
 
+import collect.stats.MLBProjections;
 import collect.stats.NFLProjections;
 import collect.stats.NHLProjections;
 import collect.stats.StandardProjections;
@@ -27,6 +28,9 @@ class ProjectionsHandlerTest {
     NHLProjections nhlProjections;
 
     @Mock
+    MLBProjections mlbProjections;
+
+    @Mock
     AWSClient AWSClient;
 
     @InjectMocks
@@ -45,7 +49,7 @@ class ProjectionsHandlerTest {
         Map<String, String> testMap = new HashMap<>();
         testMap.put("sport", "mlb");
         projectionsHandler.handleRequest(testMap);
-        verify(standardProjectionsData).getProjectionsData("mlb");
+        verify(mlbProjections).getProjectionsData();
     }
 
     @Test

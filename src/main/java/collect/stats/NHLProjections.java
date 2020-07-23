@@ -27,7 +27,7 @@ public class NHLProjections extends Projections {
         Map<Integer, Map<String, Number>> oddsData = new Odds(apiClient, "nhl").getOddsData();
         for (int eventId : eventIds) {
             String apiResponse = apiClient.getProjectionsFromEvent("nhl", eventId);
-            if (apiResponse != null) {
+            if (apiResponse.length() > 0) {
                 JSONObject projectionsJson = new JSONObject(apiResponse).getJSONArray("apiResults").getJSONObject(0)
                         .getJSONObject("league").getJSONObject("season").getJSONArray("eventType").getJSONObject(0)
                         .getJSONObject("fantasyProjections");

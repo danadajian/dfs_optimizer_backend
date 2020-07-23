@@ -31,7 +31,7 @@ public class StandardProjections extends Projections {
         Map<Integer, Map<String, Number>> oddsData = new Odds(apiClient, sport).getOddsData();
         for (int eventId : eventIds) {
             String apiResponse = apiClient.getProjectionsFromEvent(sport, eventId);
-            if (apiResponse != null) {
+            if (apiResponse.length() > 0) {
                 JSONObject projectionsJson = new JSONObject(apiResponse).getJSONArray("apiResults").getJSONObject(0)
                         .getJSONObject("league").getJSONObject("season").getJSONArray("eventType").getJSONObject(0)
                         .getJSONObject("fantasyProjections");

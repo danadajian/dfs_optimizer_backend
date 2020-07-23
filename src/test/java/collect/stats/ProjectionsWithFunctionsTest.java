@@ -46,11 +46,10 @@ class ProjectionsWithFunctionsTest {
         when(mockApi.getOddsData("nfl")).thenReturn(fakeNFLOddsResponse);
         when(mockApi.getCurrentEvents("nhl")).thenReturn(fakeNHLEventsResponse);
         when(mockApi.getParticipants("nhl")).thenReturn(fakeNHLParticipantsResponse);
-        when(mockApi.getProjectionsFromEvent("nhl", 2154769)).thenReturn(fakeNHLProjectionsResponse);
+        when(mockApi.getProjectionsFromEvent(anyString(), anyInt())).thenReturn("");
         when(mockApi.getOddsData("nhl")).thenReturn(fakeNHLOddsResponse);
         when(mockApi.getCurrentEvents("nba")).thenReturn(fakeNBAEventsResponse);
         when(mockApi.getParticipants("nba")).thenReturn(fakeNBAParticipantsResponse);
-        when(mockApi.getProjectionsFromEvent("nba", 2177081)).thenReturn(fakeNBAProjectionsResponse);
         when(mockApi.getOddsData("nba")).thenReturn(fakeNBAOddsResponse);
     }
 
@@ -104,6 +103,7 @@ class ProjectionsWithFunctionsTest {
 
     @Test
     void shouldGetNHLProjectionsFromThisWeek() {
+        when(mockApi.getProjectionsFromEvent("nhl", 2154769)).thenReturn(fakeNHLProjectionsResponse);
         Map<Integer, Map<String, Object>> result = nhlProjections.getProjectionsData();
         verify(mockApi, times(1)).getCurrentEvents("nhl");
         verify(mockApi, times(1)).getParticipants("nhl");
@@ -144,6 +144,7 @@ class ProjectionsWithFunctionsTest {
 
     @Test
     void shouldGetNBAProjectionsFromThisWeek() {
+        when(mockApi.getProjectionsFromEvent("nba", 2177081)).thenReturn(fakeNBAProjectionsResponse);
         Map<Integer, Map<String, Object>> result = standardProjectionsData.getProjectionsData("nba");
         verify(mockApi, times(1)).getCurrentEvents("nba");
         verify(mockApi, times(1)).getParticipants("nba");

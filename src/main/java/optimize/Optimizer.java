@@ -25,16 +25,15 @@ public class Optimizer {
 
     public void optimize(List<Player> lineup, int poolsIndex) {
         boolean lineupIsFull = ++poolsIndex == playerPools.size();
-        if (lineupIsFull && lineupIsBetter(lineup) && lineupValidator.lineupSatisfiesDistinctTeamsRequired(lineup, lineupRestrictions)) {
+        if (!lineupIsFull)
+            recursivelyCheckLineups(lineup, poolsIndex);
+        else if (lineupIsBetter(lineup) && lineupValidator.lineupSatisfiesDistinctTeamsRequired(lineup, lineupRestrictions)) {
             maxPoints = totalProjection(lineup);
             optimalLineup = lineup;
-        } else {
-            recursivelyCheckLineups(lineup, poolsIndex);
         }
     }
 
     public void recursivelyCheckLineups(List<Player> lineup, int poolsIndex) {
-        System.out.println(lineup);
         Set<List<Player>> positionCombos = playerPools.get(poolsIndex);
         for (List<Player> players : positionCombos) {
             List<Player> lineupFragment = Stream.of(lineup, players)

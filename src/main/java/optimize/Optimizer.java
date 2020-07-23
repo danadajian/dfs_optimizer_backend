@@ -88,7 +88,7 @@ public class Optimizer {
     }
 
     public boolean lineupIsBetter(List<Player> lineup) {
-        return totalProjection(lineup) > maxPoints && totalSalary(lineup) <= salaryCap;
+        return totalProjection(lineup) >= maxPoints && totalSalary(lineup) <= salaryCap;
     }
 
     public double totalProjection(List<Player> lineup) {

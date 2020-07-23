@@ -15,6 +15,7 @@ public class OptimizerHandler {
 
     @SuppressWarnings("unchecked")
     public List<Integer> handleRequest(Map<String, Object> input) {
+        System.out.println(input);
         boolean isPipelineInvocation = (input.getOrDefault("invocationType", "web")).equals("pipeline");
         String sport = (String) input.get("sport");
         List<Player> lineup = inputParser.getLineup(input);

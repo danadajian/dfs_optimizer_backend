@@ -15,6 +15,9 @@ public class Optimizer {
 
     public List<Player> generateOptimalLineup(List<Set<List<Player>>> playerPools, int salaryCap,
                                               LineupRestrictions lineupRestrictions) {
+        System.out.println("playerPools:" + playerPools);
+        System.out.println("salaryCap:" + salaryCap);
+        System.out.println("lineupRestrictions:" + lineupRestrictions);
         this.playerPools = playerPools;
         this.salaryCap = salaryCap;
         this.maxPoints = 0;

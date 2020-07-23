@@ -26,7 +26,8 @@ public class Participants {
                 JSONObject playerObject = (JSONObject) object;
                 Map<String, String> statMap = new HashMap<>();
                 statMap.put("name", playerObject.getString("firstName") + " " + playerObject.getString("lastName"));
-                statMap.put("team", playerObject.getJSONObject("team").getString("abbreviation"));
+                if (playerObject.has("team"))
+                    statMap.put("team", playerObject.getJSONObject("team").getString("abbreviation"));
                 allPlayerData.put(playerObject.getInt("playerId"), statMap);
             }
         }

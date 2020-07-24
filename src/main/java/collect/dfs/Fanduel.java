@@ -8,8 +8,6 @@ import org.json.XML;
 import java.util.*;
 
 public class Fanduel extends DFS {
-    private final List<String> supportedSports = Arrays.asList("NFL", "MLB", "NBA", "NHL");
-    private final List<String> supportedContests = Arrays.asList("Main", "Thu", "Sat", "Sun", "Opening Day");
     private ApiClient apiClient;
 
     public Fanduel(ApiClient apiClient) {
@@ -50,12 +48,7 @@ public class Fanduel extends DFS {
             JSONArray contests = xmlResponse.getJSONObject("data").getJSONArray("fixturelist");
             for (Object object : contests) {
                 JSONObject contest = (JSONObject) object;
-                String contestName = contest.getJSONObject("game").getString("label");
-                if (supportedSports.contains(contest.getString("sport")) &&
-                        (supportedContests.stream().anyMatch(contestName::contains) ||
-                                (contestName.split(" ").length == 3 && contestName.contains("@")))) {
-                    validContests.add(contest);
-                }
+                validContests.add(contest);
             }
         }
         return validContests;

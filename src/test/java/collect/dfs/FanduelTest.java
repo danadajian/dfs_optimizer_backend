@@ -33,7 +33,7 @@ class FanduelTest {
     void shouldGetValidContests() {
         List<JSONObject> result = fanduel.getValidContests("testDateString");
         verify(mockApi).getFanduelData(anyString());
-        assertEquals(1, result.size());
+        assertEquals(3, result.size());
     }
 
     @SuppressWarnings("unchecked")

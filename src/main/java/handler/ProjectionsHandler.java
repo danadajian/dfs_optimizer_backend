@@ -5,7 +5,7 @@ import api.DataCollector;
 import collect.stats.MLBProjections;
 import collect.stats.NFLProjections;
 import collect.stats.NHLProjections;
-import collect.stats.StandardProjections;
+import collect.stats.NBAProjections;
 import util.AWSClient;
 
 import java.util.HashMap;
@@ -13,7 +13,7 @@ import java.util.Map;
 
 public class ProjectionsHandler {
     private DataCollector dataCollector = new DataCollector(new ApiCaller());
-    private StandardProjections standardProjectionsData = new StandardProjections(dataCollector);
+    private NBAProjections nbaProjections = new NBAProjections(dataCollector);
     private NFLProjections nflProjections = new NFLProjections(dataCollector);
     private NHLProjections nhlProjections = new NHLProjections(dataCollector);
     private MLBProjections mlbProjections = new MLBProjections(dataCollector);
@@ -23,10 +23,10 @@ public class ProjectionsHandler {
         String sport = input.get("sport");
         String invocationType = input.getOrDefault("invocationType", "web");
         Map<Integer, Map<String, Object>> result =
-                sport.equals("nfl") ? nflProjections.getProjectionsData() :
-                        (sport.equals("nhl")) ? nhlProjections.getProjectionsData() :
-                                (sport.equals("mlb")) ? mlbProjections.getProjectionsData() :
-                                    standardProjectionsData.getProjectionsData(sport);
+                (sport.equals("mlb")) ? mlbProjections.getProjectionsData() :
+                        sport.equals("nfl") ? nflProjections.getProjectionsData() :
+                                (sport.equals("nhl")) ? nhlProjections.getProjectionsData() :
+                                        nbaProjections.getProjectionsData();
         Map<String, Object> resultMap = new HashMap<>();
         if (invocationType.equals("pipeline")) {
             AWSClient.uploadToS3(sport + "ProjectionsData.json", result);

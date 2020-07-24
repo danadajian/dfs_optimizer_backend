@@ -13,19 +13,21 @@ import static collect.stats.MapAdder.addOddsDataToMap;
 
 public class NFLProjections extends Projections {
     private ApiClient apiClient;
+    private String sport;
     private Map<Integer, Map<Object, Object>> eventData;
     private Map<Integer, Map<String, Number>> oddsData;
 
     public NFLProjections(ApiClient apiClient) {
         this.apiClient = apiClient;
+        this.sport = "nfl";
     }
 
     @Override
     public Map<Integer, Map<String, Object>> getProjectionsData() {
         Map<Integer, Map<String, Object>> projectionsData = new HashMap<>();
-        eventData = new Events(apiClient, "nfl").getEventData();
-        oddsData = new Odds(apiClient, "nfl").getOddsData();
-        String apiResponse = apiClient.getProjectionsFromThisWeek("nfl");
+        eventData = new Events(apiClient, sport).getEventData();
+        oddsData = new Odds(apiClient, sport).getOddsData();
+        String apiResponse = apiClient.getProjectionsFromThisWeek(sport);
         if (apiResponse.length() > 0) {
             JSONObject projectionsJson = new JSONObject(apiResponse).getJSONArray("apiResults").getJSONObject(0)
                     .getJSONObject("league").getJSONObject("season").getJSONArray("eventType").getJSONObject(0)

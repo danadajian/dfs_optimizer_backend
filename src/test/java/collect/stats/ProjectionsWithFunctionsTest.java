@@ -26,7 +26,7 @@ class ProjectionsWithFunctionsTest {
     private NHLProjections nhlProjections = new NHLProjections(mockApi);
     private Events nbaEvents = new Events(mockApi, "nba");
     private Participants nbaParticipants = new Participants(mockApi, "nba");
-    private StandardProjections standardProjectionsData = new StandardProjections(mockApi);
+    private NBAProjections nbaProjections = new NBAProjections(mockApi);
     private String fakeNFLProjectionsResponse = new String(Files.readAllBytes(Paths.get("src/main/resources/nflProjectionsResponse.json")));
     private String fakeNFLEventsResponse = new String(Files.readAllBytes(Paths.get("src/main/resources/nflEventsResponse.json")));
     private String fakeNFLOddsResponse = new String(Files.readAllBytes(Paths.get("src/main/resources/nflOddsResponse.json")));
@@ -145,7 +145,7 @@ class ProjectionsWithFunctionsTest {
     @Test
     void shouldGetNBAProjectionsFromThisWeek() {
         when(mockApi.getProjectionsFromEvent("nba", 2177081)).thenReturn(fakeNBAProjectionsResponse);
-        Map<Integer, Map<String, Object>> result = standardProjectionsData.getProjectionsData("nba");
+        Map<Integer, Map<String, Object>> result = nbaProjections.getProjectionsData();
         verify(mockApi, times(1)).getCurrentEvents("nba");
         verify(mockApi, times(1)).getParticipants("nba");
         assertEquals("Al Horford", result.get(280587).get("name"));

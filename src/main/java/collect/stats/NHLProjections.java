@@ -13,20 +13,22 @@ import static collect.stats.MapAdder.collectProjectionsData;
 
 public class NHLProjections extends Projections {
     private ApiClient apiClient;
+    private String sport;
 
     public NHLProjections(ApiClient apiClient) {
         this.apiClient = apiClient;
+        this.sport = "nhl";
     }
 
     @Override
     public Map<Integer, Map<String, Object>> getProjectionsData() {
         Map<Integer, Map<String, Object>> projectionsData = new HashMap<>();
-        Map<Integer, Map<Object, Object>> eventData = new Events(apiClient, "nhl").getEventData();
+        Map<Integer, Map<Object, Object>> eventData = new Events(apiClient, sport).getEventData();
         Set<Integer> eventIds = eventData.keySet();
-        Map<Integer, Map<String, String>> participantsData = new Participants(apiClient, "nhl").getParticipantsData();
-        Map<Integer, Map<String, Number>> oddsData = new Odds(apiClient, "nhl").getOddsData();
+        Map<Integer, Map<String, String>> participantsData = new Participants(apiClient, sport).getParticipantsData();
+        Map<Integer, Map<String, Number>> oddsData = new Odds(apiClient, sport).getOddsData();
         for (int eventId : eventIds) {
-            String apiResponse = apiClient.getProjectionsFromEvent("nhl", eventId);
+            String apiResponse = apiClient.getProjectionsFromEvent(sport, eventId);
             if (apiResponse.length() > 0) {
                 JSONObject projectionsJson = new JSONObject(apiResponse).getJSONArray("apiResults").getJSONObject(0)
                         .getJSONObject("league").getJSONObject("season").getJSONArray("eventType").getJSONObject(0)

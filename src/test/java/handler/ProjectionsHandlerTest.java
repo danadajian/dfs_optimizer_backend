@@ -3,7 +3,7 @@ package handler;
 import collect.stats.MLBProjections;
 import collect.stats.NFLProjections;
 import collect.stats.NHLProjections;
-import collect.stats.StandardProjections;
+import collect.stats.NBAProjections;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
@@ -19,7 +19,7 @@ import static org.mockito.Mockito.*;
 class ProjectionsHandlerTest {
 
     @Mock
-    StandardProjections standardProjectionsData;
+    NBAProjections nbaProjections;
 
     @Mock
     NFLProjections nflProjections;
@@ -41,7 +41,7 @@ class ProjectionsHandlerTest {
         MockitoAnnotations.initMocks(this);
         when(nflProjections.getProjectionsData()).thenReturn(new HashMap<>());
         when(nhlProjections.getProjectionsData()).thenReturn(new HashMap<>());
-        when(standardProjectionsData.getProjectionsData(anyString())).thenReturn(new HashMap<>());
+        when(nbaProjections.getProjectionsData()).thenReturn(new HashMap<>());
     }
 
     @Test
@@ -65,7 +65,7 @@ class ProjectionsHandlerTest {
         Map<String, String> testMap = new HashMap<>();
         testMap.put("sport", "nba");
         projectionsHandler.handleRequest(testMap);
-        verify(standardProjectionsData).getProjectionsData("nba");
+        verify(nbaProjections).getProjectionsData();
     }
 
     @Test

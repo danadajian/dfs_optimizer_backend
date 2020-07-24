@@ -11,19 +11,16 @@ import java.util.Set;
 
 import static collect.stats.MapAdder.collectProjectionsData;
 
-public class StandardProjections extends Projections {
+public class NBAProjections extends Projections {
     private ApiClient apiClient;
+    private String sport;
 
-    public StandardProjections(ApiClient apiClient) {
+    public NBAProjections(ApiClient apiClient) {
         this.apiClient = apiClient;
+        this.sport = "nba";
     }
 
-    @Override
     public Map<Integer, Map<String, Object>> getProjectionsData() {
-        return null;
-    }
-
-    public Map<Integer, Map<String, Object>> getProjectionsData(String sport) {
         Map<Integer, Map<String, Object>> projectionsData = new HashMap<>();
         Map<Integer, Map<Object, Object>> eventData = new Events(apiClient, sport).getEventData();
         Set<Integer> eventIds = eventData.keySet();

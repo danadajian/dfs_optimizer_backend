@@ -21,21 +21,23 @@ public class Fanduel extends DFS {
             contestMap.put("sport", event.getString("sport"));
             String contest = event.getJSONObject("game").getString("label");
             contestMap.put("contest", contest);
-            JSONArray playerPool = event.getJSONArray("player");
-            List<Map<String, Object>> playerList = new ArrayList<>();
-            for (Object object : playerPool) {
-                JSONObject playerObject = (JSONObject) object;
-                Map<String, Object> infoMap = new HashMap<>();
-                if (playerObject.get("statsid").toString().length() > 0)
-                    infoMap.put("playerId", playerObject.getInt("statsid"));
-                infoMap.put("name", playerObject.getString("name"));
-                infoMap.put("team", playerObject.getString("team"));
-                infoMap.put("position", playerObject.getString("position"));
-                infoMap.put("salary", playerObject.getInt("salary"));
-                playerList.add(infoMap);
+            if (event.has("player")) {
+                JSONArray playerPool = event.getJSONArray("player");
+                List<Map<String, Object>> playerList = new ArrayList<>();
+                for (Object object : playerPool) {
+                    JSONObject playerObject = (JSONObject) object;
+                    Map<String, Object> infoMap = new HashMap<>();
+                    if (playerObject.get("statsid").toString().length() > 0)
+                        infoMap.put("playerId", playerObject.getInt("statsid"));
+                    infoMap.put("name", playerObject.getString("name"));
+                    infoMap.put("team", playerObject.getString("team"));
+                    infoMap.put("position", playerObject.getString("position"));
+                    infoMap.put("salary", playerObject.getInt("salary"));
+                    playerList.add(infoMap);
+                }
+                contestMap.put("players", playerList);
+                allContestInfo.add(contestMap);
             }
-            contestMap.put("players", playerList);
-            allContestInfo.add(contestMap);
         });
         return allContestInfo;
     }

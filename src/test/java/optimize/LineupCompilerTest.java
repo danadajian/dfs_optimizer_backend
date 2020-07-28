@@ -69,19 +69,22 @@ public class LineupCompilerTest {
                 new Player(2, "name2", "RB","team2", 2.0, 20),
                 new Player(3, "name3", "RB","team3", 3.0, 50)
         );
-        Map<String, String> playerMap1 = new HashMap<>();
+        Map<String, Object> playerMap1 = new HashMap<>();
         playerMap1.put("name", "name1");
         playerMap1.put("team", "team1");
         playerMap1.put("position", "RB");
-        Map<String, String> playerMap2 = new HashMap<>();
+        playerMap1.put("projection", 1.0);
+        Map<String, Object> playerMap2 = new HashMap<>();
         playerMap2.put("name", "name2");
         playerMap2.put("team", "team2");
         playerMap2.put("position", "RB");
-        Map<String, String> playerMap3 = new HashMap<>();
+        playerMap2.put("projection", 2.0);
+        Map<String, Object> playerMap3 = new HashMap<>();
         playerMap3.put("name", "name3");
         playerMap3.put("team", "team3");
         playerMap3.put("position", "RB");
-        List<Map<String, String>> expectedListOfPlayerMaps = Arrays.asList(playerMap1, playerMap2, playerMap3);
+        playerMap3.put("projection", 3.0);
+        List<Map<String, Object>> expectedListOfPlayerMaps = Arrays.asList(playerMap1, playerMap2, playerMap3);
         Map<String, Object> result = lineupCompiler.generateFileOutput(playersWithNames);
         Map<String, Object> resultMap = new HashMap<>();
         resultMap.put("lineup", expectedListOfPlayerMaps);

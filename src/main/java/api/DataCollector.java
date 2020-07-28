@@ -56,6 +56,12 @@ public class DataCollector implements ApiClient {
         return apiCaller.callStatsApi(baseCall);
     }
 
+    @Override
+    public String getWeatherData(String sport) {
+        String baseCall = "stats/" + getSportName(sport) + "/" + sport + "/weatherforecasts/";
+        return apiCaller.callStatsApi(baseCall);
+    }
+
     private String getSportName(String sport) {
         switch (sport) {
             case "nfl":

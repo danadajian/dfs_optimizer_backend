@@ -26,6 +26,7 @@ public class NBAProjections extends Projections {
         Set<Integer> eventIds = eventData.keySet();
         Map<Integer, Map<String, String>> participantsData = new Participants(apiClient, sport).getParticipantsData();
         Map<Integer, Map<String, Number>> oddsData = new Odds(apiClient, sport).getOddsData();
+        Map<Integer, Map<String, String>> weatherData = new HashMap<>();
         for (int eventId : eventIds) {
             String apiResponse = apiClient.getProjectionsFromEvent(sport, eventId);
             if (apiResponse.length() > 0) {
@@ -35,7 +36,7 @@ public class NBAProjections extends Projections {
                 for (Object object : projectionsJson.getJSONArray("teams")) {
                     int teamId = ((JSONObject) object).getInt("teamId");
                     JSONArray playerArray = ((JSONObject) object).getJSONArray("players");
-                    collectProjectionsData(playerArray, projectionsData, participantsData, eventData, oddsData, eventId, teamId);
+                    collectProjectionsData(playerArray, projectionsData, participantsData, eventData, oddsData, weatherData, eventId, teamId);
                 }
             }
         }

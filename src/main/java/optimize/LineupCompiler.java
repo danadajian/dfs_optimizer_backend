@@ -41,12 +41,13 @@ public class LineupCompiler {
 
     public Map<String, Object> generateFileOutput(List<Player> optimalPlayers) {
         Map<String, Object> fileOutput = new HashMap<>();
-        List<Map<String, String>> optimalPlayerNames = optimalPlayers.stream()
+        List<Map<String, Object>> optimalLineup = optimalPlayers.stream()
                 .map(player -> {
-                    Map<String, String> playerMap = new HashMap<>();
+                    Map<String, Object> playerMap = new HashMap<>();
                     playerMap.put("name", player.name);
                     playerMap.put("team", player.team);
                     playerMap.put("position", player.position);
+                    playerMap.put("projection", player.projection);
                     return playerMap;
                 })
                 .collect(Collectors.toList());
@@ -56,7 +57,7 @@ public class LineupCompiler {
         int totalSalary = optimalPlayers.stream()
                 .mapToInt(player -> player.salary)
                 .sum();
-        fileOutput.put("lineup", optimalPlayerNames);
+        fileOutput.put("lineup", optimalLineup);
         fileOutput.put("totalProjection", totalProjection);
         fileOutput.put("totalSalary", totalSalary);
         return fileOutput;

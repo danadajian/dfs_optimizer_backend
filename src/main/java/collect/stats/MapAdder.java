@@ -11,7 +11,8 @@ public class MapAdder {
     public static void collectProjectionsData(JSONArray playerArray, Map<Integer, Map<String, Object>> projectionsData,
                                               Map<Integer, Map<String, String>> participantsData,
                                               Map<Integer, Map<Object, Object>> eventData,
-                                              Map<Integer, Map<String, Number>> oddsData, int eventId, int teamId) {
+                                              Map<Integer, Map<String, Number>> oddsData,
+                                              Map<Integer, Map<String, String>> weatherData, int eventId, int teamId) {
         for (Object thing : playerArray) {
             JSONObject playerObject = (JSONObject) thing;
             Map<String, Object> statMap = new HashMap<>();
@@ -21,20 +22,26 @@ public class MapAdder {
                 statMap.put("team", participantsData.get(playerId).get("team"));
                 statMap.put("opponent", eventData.get(eventId).get(teamId));
                 statMap.put("gameDate", eventData.get(eventId).get("gameDate"));
-                addOddsDataToMap(projectionsData, oddsData, playerObject, statMap, eventId, teamId, playerId);
+                addMiscDataToMap(projectionsData, oddsData, weatherData, playerObject, statMap, eventId, teamId, playerId);
             }
         }
     }
 
-    public static void addOddsDataToMap(Map<Integer, Map<String, Object>> projectionsData,
-                                        Map<Integer, Map<String, Number>> oddsData, JSONObject playerObject,
+    public static void addMiscDataToMap(Map<Integer, Map<String, Object>> projectionsData,
+                                        Map<Integer, Map<String, Number>> oddsData,
+                                        Map<Integer, Map<String, String>> weatherData, JSONObject playerObject,
                                         Map<String, Object> statMap, int eventId, int teamId, int playerId) {
-        Map<String, Number> defaultMap = new HashMap<>();
-        Map<String, Number> eventOddsData = oddsData.getOrDefault(eventId, defaultMap);
+        Map<String, Number> defaultOddsMap = new HashMap<>();
+        Map<String, Number> eventOddsData = oddsData.getOrDefault(eventId, defaultOddsMap);
         int spreadMultiplier = (int) eventOddsData.getOrDefault("favoriteTeamId", 0) == teamId ? 1 : -1;
         String spreadSign = (int) eventOddsData.getOrDefault("favoriteTeamId", 0) == teamId ? "" : "+";
         statMap.put("spread", spreadSign + (spreadMultiplier * (double) eventOddsData.getOrDefault("spread", 0.0)));
         statMap.put("overUnder", eventOddsData.getOrDefault("overUnder", 0));
+        Map<String, String> defaultWeatherMap = new HashMap<>();
+        if (!weatherData.isEmpty()) {
+            Map<String, String> eventWeatherData = weatherData.getOrDefault(eventId, defaultWeatherMap);
+            statMap.put("weather", eventWeatherData);
+        }
         addProjectionsToMap(projectionsData, playerObject, statMap, playerId);
     }
 

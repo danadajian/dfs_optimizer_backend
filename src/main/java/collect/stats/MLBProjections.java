@@ -2,6 +2,7 @@ package collect.stats;
 
 import api.ApiClient;
 import collect.misc.Odds;
+import collect.misc.Weather;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -27,6 +28,7 @@ public class MLBProjections extends Projections {
         Set<Integer> eventIds = eventData.keySet();
         Map<Integer, Map<String, String>> participantsData = new Participants(apiClient, sport).getParticipantsData();
         Map<Integer, Map<String, Number>> oddsData = new Odds(apiClient, sport).getOddsData();
+        Map<Integer, Map<String, String>> weatherData = new Weather(apiClient, sport).getWeatherData();
         for (int eventId : eventIds) {
             String apiResponse = apiClient.getProjectionsFromEvent(sport, eventId);
             if (apiResponse.length() > 0) {
@@ -36,9 +38,9 @@ public class MLBProjections extends Projections {
                 for (Object object : projectionsJson.getJSONArray("teams")) {
                     int teamId = ((JSONObject) object).getInt("teamId");
                     JSONArray playerArray = ((JSONObject) object).getJSONArray("batters");
-                    collectProjectionsData(playerArray, projectionsData, participantsData, eventData, oddsData, eventId, teamId);
+                    collectProjectionsData(playerArray, projectionsData, participantsData, eventData, oddsData, weatherData, eventId, teamId);
                     JSONArray goalieArray = ((JSONObject) object).getJSONArray("pitchers");
-                    collectProjectionsData(goalieArray, projectionsData, participantsData, eventData, oddsData, eventId, teamId);
+                    collectProjectionsData(goalieArray, projectionsData, participantsData, eventData, oddsData, weatherData, eventId, teamId);
                 }
             }
         }

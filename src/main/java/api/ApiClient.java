@@ -10,4 +10,5 @@ public interface ApiClient {
     String getOpponentRanksData(String sport);
     String getInjuryData(String sport);
     String getOddsData(String sport);
+    String getWeatherData(String sport);
 }

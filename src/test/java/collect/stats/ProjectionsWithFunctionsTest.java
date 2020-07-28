@@ -38,6 +38,7 @@ class ProjectionsWithFunctionsTest {
     private String fakeNHLParticipantsResponse = new String(Files.readAllBytes(Paths.get("src/main/resources/nhlParticipantsResponse.json")));
     private String fakeNHLProjectionsResponse = new String(Files.readAllBytes(Paths.get("src/main/resources/nhlProjectionsResponse.json")));
     private String fakeNHLOddsResponse = new String(Files.readAllBytes(Paths.get("src/main/resources/nhlOddsResponse.json")));
+    private String fakeWeatherResponse = new String(Files.readAllBytes(Paths.get("src/main/resources/weatherResponse.json")));
 
     @BeforeEach
     void setUp() {
@@ -51,6 +52,7 @@ class ProjectionsWithFunctionsTest {
         when(mockApi.getCurrentEvents("nba")).thenReturn(fakeNBAEventsResponse);
         when(mockApi.getParticipants("nba")).thenReturn(fakeNBAParticipantsResponse);
         when(mockApi.getOddsData("nba")).thenReturn(fakeNBAOddsResponse);
+        when(mockApi.getWeatherData(anyString())).thenReturn(fakeWeatherResponse);
     }
 
     @Test
@@ -61,6 +63,7 @@ class ProjectionsWithFunctionsTest {
         assertEquals("@ Bal", result.get(2142041).get(352));
     }
 
+    @SuppressWarnings("unchecked")
     @Test
     void shouldGetNFLProjectionsFromThisWeek() {
         Map<Integer, Map<String, Object>> result = nflProjections.getProjectionsData();
@@ -72,6 +75,8 @@ class ProjectionsWithFunctionsTest {
         assertEquals("Thu 8:20PM EST", result.get(366).get("gameDate"));
         assertEquals("-15.0", result.get(366).get("spread"));
         assertEquals(44.5, result.get(366).get("overUnder"));
+        assertEquals("Sunny", ((Map<String, String>) result.get(877745).get("weather")).get("forecast"));
+        assertEquals("85°, 4% precip", ((Map<String, String>) result.get(877745).get("weather")).get("details"));
         assertEquals(25.4156364974765640884448627852073774696, result.get(877745).get("DraftKingsProjection"));
         assertEquals(24.1805531418601748497370736365420855337, result.get(877745).get("FanduelProjection"));
         assertEquals("Jets D/ST", result.get(352).get("name"));
@@ -113,6 +118,7 @@ class ProjectionsWithFunctionsTest {
         assertEquals("Tue 7:00PM EST", result.get(732552).get("gameDate"));
         assertEquals("-1.5", result.get(732552).get("spread"));
         assertEquals(6.5, result.get(732552).get("overUnder"));
+        assertFalse(result.get(732552).containsKey("weather"));
         assertEquals(1.65178, result.get(732552).get("DraftKingsProjection"));
         assertEquals(5.73402, result.get(732552).get("FanduelProjection"));
         assertEquals("Christian Folin", result.get(824587).get("name"));
@@ -154,6 +160,7 @@ class ProjectionsWithFunctionsTest {
         assertEquals("Tue 8:00PM EST", result.get(280587).get("gameDate"));
         assertEquals("-4.0", result.get(280587).get("spread"));
         assertEquals(207.0, result.get(280587).get("overUnder"));
+        assertFalse(result.get(280587).containsKey("weather"));
         assertEquals(29.65199, result.get(280587).get("DraftKingsProjection"));
         assertEquals(30.02133, result.get(280587).get("FanduelProjection"));
         assertEquals("Paul Millsap", result.get(237675).get("name"));

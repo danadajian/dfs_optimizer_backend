@@ -2,6 +2,7 @@ package collect.stats;
 
 import api.ApiClient;
 import collect.misc.Odds;
+import collect.misc.Weather;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import util.DateOperations;
@@ -9,13 +10,14 @@ import util.DateOperations;
 import java.util.HashMap;
 import java.util.Map;
 
-import static collect.stats.MapAdder.addOddsDataToMap;
+import static collect.stats.MapAdder.addMiscDataToMap;
 
 public class NFLProjections extends Projections {
     private ApiClient apiClient;
     private String sport;
     private Map<Integer, Map<Object, Object>> eventData;
     private Map<Integer, Map<String, Number>> oddsData;
+    private Map<Integer, Map<String, String>> weatherData;
 
     public NFLProjections(ApiClient apiClient) {
         this.apiClient = apiClient;
@@ -27,6 +29,7 @@ public class NFLProjections extends Projections {
         Map<Integer, Map<String, Object>> projectionsData = new HashMap<>();
         eventData = new Events(apiClient, sport).getEventData();
         oddsData = new Odds(apiClient, sport).getOddsData();
+        weatherData = new Weather(apiClient, sport).getWeatherData();
         String apiResponse = apiClient.getProjectionsFromThisWeek(sport);
         if (apiResponse.length() > 0) {
             JSONObject projectionsJson = new JSONObject(apiResponse).getJSONArray("apiResults").getJSONObject(0)
@@ -74,6 +77,6 @@ public class NFLProjections extends Projections {
         statMap.put("gameDate",
                 new DateOperations().getEasternTime(playerObject.getJSONObject("gameDate").getString("full"),
                         playerObject.getJSONObject("gameDate").getString("dateType"), "EEE h:mma z"));
-        addOddsDataToMap(playerMap, oddsData, playerObject, statMap, eventId, teamId, id);
+        addMiscDataToMap(playerMap, oddsData, weatherData, playerObject, statMap, eventId, teamId, id);
     }
 }

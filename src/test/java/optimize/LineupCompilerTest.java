@@ -70,16 +70,19 @@ public class LineupCompilerTest {
                 new Player(3, "name3", "RB","team3", 3.0, 50)
         );
         Map<String, Object> playerMap1 = new HashMap<>();
+        playerMap1.put("playerId", 1);
         playerMap1.put("name", "name1");
         playerMap1.put("team", "team1");
         playerMap1.put("position", "RB");
         playerMap1.put("projection", 1.0);
         Map<String, Object> playerMap2 = new HashMap<>();
+        playerMap2.put("playerId", 2);
         playerMap2.put("name", "name2");
         playerMap2.put("team", "team2");
         playerMap2.put("position", "RB");
         playerMap2.put("projection", 2.0);
         Map<String, Object> playerMap3 = new HashMap<>();
+        playerMap3.put("playerId", 3);
         playerMap3.put("name", "name3");
         playerMap3.put("team", "team3");
         playerMap3.put("position", "RB");

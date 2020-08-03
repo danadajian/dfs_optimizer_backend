@@ -44,6 +44,7 @@ public class LineupCompiler {
         List<Map<String, Object>> optimalLineup = optimalPlayers.stream()
                 .map(player -> {
                     Map<String, Object> playerMap = new HashMap<>();
+                    playerMap.put("playerId", player.playerId);
                     playerMap.put("name", player.name);
                     playerMap.put("team", player.team);
                     playerMap.put("position", player.position);

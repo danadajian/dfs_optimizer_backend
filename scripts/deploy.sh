@@ -1,13 +1,13 @@
 #!/bin/bash -e
 
 TEST_BUCKET_NAME="kotlin-optimizer-backend"
-if aws s3api head-bucket --bucket "${BUCKET_NAME}" 2>/dev/null
+if aws s3api head-bucket --bucket "${TEST_BUCKET_NAME}" 2>/dev/null
 then
     echo "Bucket exists: $TEST_BUCKET_NAME"
 else
-    echo "Bucket does not exist, creating: ${BUCKET_NAME}"
-    aws s3 mb s3://"${BUCKET_NAME}"
-    aws s3api put-bucket-policy --bucket "${BUCKET_NAME}" --policy file://./bucket-policy.json
+    echo "Bucket does not exist, creating: ${TEST_BUCKET_NAME}"
+    aws s3 mb s3://"${TEST_BUCKET_NAME}"
+    aws s3api put-bucket-policy --bucket "${TEST_BUCKET_NAME}" --policy file://./bucket-policy.json
 #    aws s3 website "s3://${BUCKET_NAME}" --index-document index.html
 fi
 

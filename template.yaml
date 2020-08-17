@@ -20,70 +20,78 @@ Globals:
     Timeout: 900
 
 Resources:
-  GetDraftKingsDataFunction:
+  TestFunction:
     Type: AWS::Serverless::Function
     Properties:
       CodeUri:
         Bucket: !Ref BucketName
         Key: !Ref CodeKey
-      Handler: handler.DraftKingsHandler::handleRequest
-      Runtime: java8
-
-  GetFanduelDataFunction:
-    Type: AWS::Serverless::Function
-    Properties:
-      CodeUri:
-        Bucket: !Ref BucketName
-        Key: !Ref CodeKey
-      Handler: handler.FanduelHandler::handleRequest
-      Runtime: java8
-      Environment:
-        Variables:
-          AWS_KEY: !Ref AwsKey
-          AWS_SECRET: !Ref AwsSecret
-
-  GetProjectionsDataFunction:
-    Type: AWS::Serverless::Function
-    Properties:
-      CodeUri:
-        Bucket: !Ref BucketName
-        Key: !Ref CodeKey
-      Handler: handler.ProjectionsHandler::handleRequest
-      Runtime: java8
-      Environment:
-        Variables:
-          key: !Ref ApiKey
-          secret: !Ref ApiSecret
-          AWS_KEY: !Ref AwsKey
-          AWS_SECRET: !Ref AwsSecret
-
-  GetOpponentRanksDataFunction:
-    Type: AWS::Serverless::Function
-    Properties:
-      CodeUri:
-        Bucket: !Ref BucketName
-        Key: !Ref CodeKey
-      Handler: handler.OpponentRanksHandler::handleRequest
-      Runtime: java8
-
-  GetInjuryDataFunction:
-    Type: AWS::Serverless::Function
-    Properties:
-      CodeUri:
-        Bucket: !Ref BucketName
-        Key: !Ref CodeKey
-      Handler: handler.InjuryHandler::handleRequest
-      Runtime: java8
-
-  GetOptimalLineupFunction:
-    Type: AWS::Serverless::Function
-    Properties:
-      CodeUri:
-        Bucket: !Ref BucketName
-        Key: !Ref CodeKey
-      Handler: handler.OptimizerHandler::handleRequest
-      Runtime: java8
-      Environment:
-        Variables:
-          AWS_KEY: !Ref AwsKey
-          AWS_SECRET: !Ref AwsSecret
+      Handler: handler.KotlinHandler::handleRequest
+      Runtime: java11
+#  GetDraftKingsDataFunction:
+#    Type: AWS::Serverless::Function
+#    Properties:
+#      CodeUri:
+#        Bucket: !Ref BucketName
+#        Key: !Ref CodeKey
+#      Handler: handler.DraftKingsHandler::handleRequest
+#      Runtime: java8
+#
+#  GetFanduelDataFunction:
+#    Type: AWS::Serverless::Function
+#    Properties:
+#      CodeUri:
+#        Bucket: !Ref BucketName
+#        Key: !Ref CodeKey
+#      Handler: handler.FanduelHandler::handleRequest
+#      Runtime: java8
+#      Environment:
+#        Variables:
+#          AWS_KEY: !Ref AwsKey
+#          AWS_SECRET: !Ref AwsSecret
+#
+#  GetProjectionsDataFunction:
+#    Type: AWS::Serverless::Function
+#    Properties:
+#      CodeUri:
+#        Bucket: !Ref BucketName
+#        Key: !Ref CodeKey
+#      Handler: handler.ProjectionsHandler::handleRequest
+#      Runtime: java8
+#      Environment:
+#        Variables:
+#          key: !Ref ApiKey
+#          secret: !Ref ApiSecret
+#          AWS_KEY: !Ref AwsKey
+#          AWS_SECRET: !Ref AwsSecret
+#
+#  GetOpponentRanksDataFunction:
+#    Type: AWS::Serverless::Function
+#    Properties:
+#      CodeUri:
+#        Bucket: !Ref BucketName
+#        Key: !Ref CodeKey
+#      Handler: handler.OpponentRanksHandler::handleRequest
+#      Runtime: java8
+#
+#  GetInjuryDataFunction:
+#    Type: AWS::Serverless::Function
+#    Properties:
+#      CodeUri:
+#        Bucket: !Ref BucketName
+#        Key: !Ref CodeKey
+#      Handler: handler.InjuryHandler::handleRequest
+#      Runtime: java8
+#
+#  GetOptimalLineupFunction:
+#    Type: AWS::Serverless::Function
+#    Properties:
+#      CodeUri:
+#        Bucket: !Ref BucketName
+#        Key: !Ref CodeKey
+#      Handler: handler.OptimizerHandler::handleRequest
+#      Runtime: java8
+#      Environment:
+#        Variables:
+#          AWS_KEY: !Ref AwsKey
+#          AWS_SECRET: !Ref AwsSecret

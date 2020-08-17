@@ -6,11 +6,13 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="DFS-Optimizer-Web" />
+        <module name="kotlin-test" />
+        <module name="dfs_optimizer_backend" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="DFS-Optimizer-Web" target="1.8" />
+      <module name="dfs_optimizer_backend" target="1.5" />
+      <module name="kotlin-test" target="1.5" />
     </bytecodeTargetLevel>
   </component>
 </project>

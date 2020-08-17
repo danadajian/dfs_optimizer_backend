@@ -52,7 +52,7 @@ jobs:
 
 workflows:
   version: 2
-  deploy_dfs_optimizer:
+  deploy_dfs_optimizer_backend:
     jobs:
       - build
       - deploy:

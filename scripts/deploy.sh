@@ -15,8 +15,8 @@ PATH_TO_FILE=$(find . -name "*-jar-with-dependencies.jar*" | head -n 1)
 
 echo "### Initiating SAM Deploy..."
 
-aws s3 rm "s3://${BUCKET_NAME}" --recursive --exclude "*" --include "*.jar"
-aws s3 cp "${PATH_TO_FILE}" "s3://${BUCKET_NAME}/"
+aws s3 rm "s3://${TEST_BUCKET_NAME}" --recursive --exclude "*" --include "*.jar"
+aws s3 cp "${PATH_TO_FILE}" "s3://${TEST_BUCKET_NAME}/"
 FILE_NAME="${PATH_TO_FILE:9}"
 
 STACK_NAME="kotlin-optimizer-stack"

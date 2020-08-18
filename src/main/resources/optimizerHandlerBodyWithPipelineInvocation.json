@@ -1,0 +1,124 @@
+{
+  "invocationType": "pipeline",
+  "sport": "nfl",
+  "lineup": [
+    {
+      "playerId": 0,
+      "position": "QB",
+      "displayPosition": "QB",
+      "team": "",
+      "name": "",
+      "projection": "",
+      "salary": "",
+      "opponent": "",
+      "gameDate": ""
+    },
+    {
+      "playerId": 0,
+      "position": "RB",
+      "displayPosition": "RB",
+      "team": "",
+      "name": "",
+      "projection": "",
+      "salary": "",
+      "opponent": "",
+      "gameDate": ""
+    },
+    {
+      "playerId": 0,
+      "position": "RB",
+      "displayPosition": "RB",
+      "team": "",
+      "name": "",
+      "projection": "",
+      "salary": "",
+      "opponent": "",
+      "gameDate": ""
+    },
+    {
+      "playerId": 0,
+      "position": "WR",
+      "displayPosition": "WR",
+      "team": "",
+      "name": "",
+      "projection": "",
+      "salary": "",
+      "opponent": "",
+      "gameDate": ""
+    },
+    {
+      "playerId": 0,
+      "position": "WR",
+      "displayPosition": "WR",
+      "team": "",
+      "name": "",
+      "projection": "",
+      "salary": "",
+      "opponent": "",
+      "gameDate": ""
+    },
+    {
+      "playerId": 0,
+      "position": "WR",
+      "displayPosition": "WR",
+      "team": "",
+      "name": "",
+      "projection": "",
+      "salary": "",
+      "opponent": "",
+      "gameDate": ""
+    },
+    {
+      "playerId": 0,
+      "position": "TE",
+      "displayPosition": "TE",
+      "team": "",
+      "name": "",
+      "projection": "",
+      "salary": "",
+      "opponent": "",
+      "gameDate": ""
+    },
+    {
+      "playerId": 0,
+      "position": "RB,WR,TE",
+      "displayPosition": "FLEX",
+      "team": "",
+      "name": "",
+      "projection": "",
+      "salary": "",
+      "opponent": "",
+      "gameDate": ""
+    },
+    {
+      "playerId": 0,
+      "position": "D",
+      "displayPosition": "D/ST",
+      "team": "",
+      "name": "",
+      "projection": "",
+      "salary": "",
+      "opponent": "",
+      "gameDate": ""
+    }
+  ],
+  "blackList": [],
+  "lineupPositions": [
+    "QB",
+    "RB",
+    "RB",
+    "WR",
+    "WR",
+    "WR",
+    "TE",
+    "RB,WR,TE",
+    "D"
+  ],
+  "salaryCap": 60000,
+  "maxCombinations": 69,
+  "lineupRestrictions": {
+    "distinctTeamsRequired": 3,
+    "maxPlayersPerTeam": 4,
+    "teamAgnosticPosition": ""
+  }
+}

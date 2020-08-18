@@ -1,0 +1,181 @@
+{
+  "status": "OK",
+  "recordCount": 16,
+  "startTimestamp": "2020-07-28T13:59:05.1004424Z",
+  "endTimestamp": "2020-07-28T13:59:05.272335Z",
+  "timeTaken": 0.17189259999999998,
+  "apiResults": [
+    {
+      "sportId": 2,
+      "name": "Baseball",
+      "league": {
+        "leagueId": 7,
+        "name": "Major League Baseball",
+        "abbreviation": "MLB",
+        "displayName": "Major League Baseball",
+        "season": {
+          "season": 2020,
+          "name": "2020 MLB Season",
+          "isActive": true,
+          "eventType": [
+            {
+              "eventTypeId": 1,
+              "name": "Regular Season",
+              "weatherForecasts": [
+                {
+                  "eventId": 2142041,
+                  "forecasts": [
+                    {
+                      "forecastDate": [],
+                      "condition": "Sunny",
+                      "temperature": [
+                        {
+                          "temperatureScaleId": 1,
+                          "name": "Fahrenheit",
+                          "degrees": 85
+                        },
+                        {
+                          "temperatureScaleId": 2,
+                          "name": "Celsius",
+                          "degrees": 29.4
+                        }
+                      ],
+                      "precipitation": " 4.20",
+                      "humidity": " 0.43",
+                      "dewpoint": [
+                        {
+                          "temperatureScaleId": 1,
+                          "name": "Fahrenheit",
+                          "degrees": 60
+                        },
+                        {
+                          "temperatureScaleId": 2,
+                          "name": "Celsius",
+                          "degrees": 15.6
+                        }
+                      ],
+                      "wind": {
+                        "mph": 7,
+                        "direction": "NW",
+                        "degrees": 318
+                      },
+                      "cloudCover": " 0.03",
+                      "windChill": [
+                        {
+                          "temperatureScaleId": 1,
+                          "name": "Fahrenheit",
+                          "degrees": 85
+                        },
+                        {
+                          "temperatureScaleId": 2,
+                          "name": "Celsius",
+                          "degrees": 29.4
+                        }
+                      ],
+                      "heatIndex": [
+                        {
+                          "temperatureScaleId": 1,
+                          "name": "Fahrenheit",
+                          "degrees": 86
+                        },
+                        {
+                          "temperatureScaleId": 2,
+                          "name": "Celsius",
+                          "degrees": 30
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "eventId": 2246084,
+                  "forecasts": [
+                    {
+                      "forecastDate": [
+                        {
+                          "year": 2020,
+                          "month": 7,
+                          "date": 28,
+                          "hour": 18,
+                          "minute": 10,
+                          "full": "2020-07-28T18:10:00",
+                          "dateType": "Eastern"
+                        },
+                        {
+                          "year": 2020,
+                          "month": 7,
+                          "date": 28,
+                          "hour": 22,
+                          "minute": 10,
+                          "full": "2020-07-28T22:10:00",
+                          "dateType": "UTC"
+                        }
+                      ],
+                      "condition": "Mostly Sunny",
+                      "temperature": [
+                        {
+                          "temperatureScaleId": 1,
+                          "name": "Fahrenheit",
+                          "degrees": 85
+                        },
+                        {
+                          "temperatureScaleId": 2,
+                          "name": "Celsius",
+                          "degrees": 29.4
+                        }
+                      ],
+                      "precipitation": " 0.03",
+                      "humidity": " 0.71",
+                      "dewpoint": [
+                        {
+                          "temperatureScaleId": 1,
+                          "name": "Fahrenheit",
+                          "degrees": 75
+                        },
+                        {
+                          "temperatureScaleId": 2,
+                          "name": "Celsius",
+                          "degrees": 23.9
+                        }
+                      ],
+                      "wind": {
+                        "mph": 7,
+                        "direction": "E",
+                        "degrees": 100
+                      },
+                      "cloudCover": " 0.29",
+                      "windChill": [
+                        {
+                          "temperatureScaleId": 1,
+                          "name": "Fahrenheit",
+                          "degrees": 85
+                        },
+                        {
+                          "temperatureScaleId": 2,
+                          "name": "Celsius",
+                          "degrees": 29.4
+                        }
+                      ],
+                      "heatIndex": [
+                        {
+                          "temperatureScaleId": 1,
+                          "name": "Fahrenheit",
+                          "degrees": 94
+                        },
+                        {
+                          "temperatureScaleId": 2,
+                          "name": "Celsius",
+                          "degrees": 34.4
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

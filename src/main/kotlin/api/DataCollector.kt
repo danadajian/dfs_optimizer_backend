@@ -1,13 +1,13 @@
 package api
 
-val SPORT_MAP = mapOf(
+private val SPORT_MAP = mapOf(
         "nfl" to "football",
         "mlb" to "baseball",
         "nba" to "basketball",
         "nhl" to "hockey"
 )
 
-fun callStatsApi(baseCall: String): String {
+private fun callStatsApi(baseCall: String): String {
     val (key, secret) = getCredentials()
     val sig: String = getSignature(key, secret)
     return makeHttpRequest("http://api.stats.com/v1/$baseCall?accept=json&api_key=$key&sig=$sig")

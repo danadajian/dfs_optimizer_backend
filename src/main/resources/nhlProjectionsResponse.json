@@ -1,0 +1,1426 @@
+{
+  "status": "OK",
+  "recordCount": 1,
+  "startTimestamp": "2019-12-10T17:14:44.9769603Z",
+  "endTimestamp": "2019-12-10T17:14:47.7192531Z",
+  "timeTaken": 2.7422928,
+  "apiResults": [
+    {
+      "sportId": 3,
+      "name": "Hockey",
+      "league": {
+        "leagueId": 18,
+        "name": "National Hockey League",
+        "abbreviation": "NHL",
+        "displayName": "National Hockey League",
+        "season": {
+          "season": 2019,
+          "name": "2019-20 NHL Season",
+          "isActive": true,
+          "eventType": [
+            {
+              "eventTypeId": 1,
+              "name": "Regular Season",
+              "fantasyProjections": {
+                "eventId": 2154769,
+                "teams": [
+                  {
+                    "teamId": 4963,
+                    "skaters": [
+                      {
+                        "playerId": 231127,
+                        "goals": "0.14613",
+                        "assists": "0.43783",
+                        "points": "0.58396",
+                        "plusMinus": "-0.21464",
+                        "penaltyMinutes": "0.57586",
+                        "shotsOnGoal": "2.8046",
+                        "powerPlayPoints": "0.21317",
+                        "shortHandedPoints": "0.0201",
+                        "iceTime": "1560.0",
+                        "evenStrengthIceTime": "1191.49653",
+                        "powerPlayIceTime": "166.43436",
+                        "shortHandedIceTime": "202.0691",
+                        "blockedShots": "2.09214",
+                        "fantasyProjections": [
+                          {
+                            "siteId": 1,
+                            "name": "DraftKings (draftkings.com)",
+                            "salary": "6700",
+                            "points": "3.7825",
+                            "position": "D"
+                          },
+                          {
+                            "siteId": 2,
+                            "name": "FanDuel (fanduel.com)",
+                            "salary": "6500",
+                            "points": "13.2377",
+                            "position": "D"
+                          }
+                        ]
+                      },
+                      {
+                        "playerId": 296046,
+                        "goals": "0.08774",
+                        "assists": "0.1322",
+                        "points": "0.21994",
+                        "plusMinus": "-0.07938",
+                        "penaltyMinutes": "0.37023",
+                        "shotsOnGoal": "1.02863",
+                        "powerPlayPoints": "0.00315",
+                        "shortHandedPoints": "0.01359",
+                        "iceTime": "697.88411",
+                        "evenStrengthIceTime": "578.19166",
+                        "powerPlayIceTime": "4.35647",
+                        "shortHandedIceTime": "115.33599",
+                        "blockedShots": "0.73623",
+                        "fantasyProjections": [
+                          {
+                            "siteId": 1,
+                            "name": "DraftKings (draftkings.com)",
+                            "salary": "2600",
+                            "points": "1.42363",
+                            "position": "C"
+                          },
+                          {
+                            "siteId": 2,
+                            "name": "FanDuel (fanduel.com)",
+                            "salary": "3200",
+                            "points": "4.96299",
+                            "position": "C"
+                          }
+                        ]
+                      },
+                      {
+                        "playerId": 522267,
+                        "goals": "0.23196",
+                        "assists": "0.36179",
+                        "points": "0.59376",
+                        "plusMinus": "-0.08521",
+                        "penaltyMinutes": "0.46694",
+                        "shotsOnGoal": "2.42649",
+                        "powerPlayPoints": "0.14776",
+                        "shortHandedPoints": "0.00029",
+                        "iceTime": "898.66748",
+                        "evenStrengthIceTime": "764.10512",
+                        "powerPlayIceTime": "133.39721",
+                        "shortHandedIceTime": "1.16514",
+                        "blockedShots": "0.34658",
+                        "fantasyProjections": [
+                          {
+                            "siteId": 1,
+                            "name": "DraftKings (draftkings.com)",
+                            "salary": "5400",
+                            "points": "2.8063",
+                            "position": "LW"
+                          },
+                          {
+                            "siteId": 2,
+                            "name": "FanDuel (fanduel.com)",
+                            "salary": "5900",
+                            "points": "10.18928",
+                            "position": "W"
+                          }
+                        ]
+                      },
+                      {
+                        "playerId": 542700,
+                        "goals": "0.10709",
+                        "assists": "0.39842",
+                        "points": "0.50551",
+                        "plusMinus": "-0.2038",
+                        "penaltyMinutes": "0.48854",
+                        "shotsOnGoal": "2.12449",
+                        "powerPlayPoints": "0.18855",
+                        "shortHandedPoints": "0.00959",
+                        "iceTime": "1373.09914",
+                        "evenStrengthIceTime": "1098.8704",
+                        "powerPlayIceTime": "145.69725",
+                        "shortHandedIceTime": "128.53149",
+                        "blockedShots": "1.22961",
+                        "fantasyProjections": [
+                          {
+                            "siteId": 1,
+                            "name": "DraftKings (draftkings.com)",
+                            "salary": "4100",
+                            "points": "2.80475",
+                            "position": "D"
+                          },
+                          {
+                            "siteId": 2,
+                            "name": "FanDuel (fanduel.com)",
+                            "salary": "4600",
+                            "points": "9.95244",
+                            "position": "D"
+                          }
+                        ]
+                      },
+                      {
+                        "playerId": 547578,
+                        "goals": "0.06484",
+                        "assists": "0.23793",
+                        "points": "0.30277",
+                        "plusMinus": "-0.25165",
+                        "penaltyMinutes": "0.85217",
+                        "shotsOnGoal": "1.9364",
+                        "powerPlayPoints": "0.00532",
+                        "shortHandedPoints": "0.00783",
+                        "iceTime": "1560.0",
+                        "evenStrengthIceTime": "1358.62533",
+                        "powerPlayIceTime": "7.5396",
+                        "shortHandedIceTime": "193.83508",
+                        "blockedShots": "1.92508",
+                        "fantasyProjections": [
+                          {
+                            "siteId": 1,
+                            "name": "DraftKings (draftkings.com)",
+                            "salary": "4200",
+                            "points": "2.60896",
+                            "position": "D"
+                          },
+                          {
+                            "siteId": 2,
+                            "name": "FanDuel (fanduel.com)",
+                            "salary": "4100",
+                            "points": "8.87824",
+                            "position": "D"
+                          }
+                        ]
+                      },
+                      {
+                        "playerId": 554524,
+                        "goals": "0.16666",
+                        "assists": "0.18886",
+                        "points": "0.35553",
+                        "plusMinus": "-0.11044",
+                        "penaltyMinutes": "0.32478",
+                        "shotsOnGoal": "1.70937",
+                        "powerPlayPoints": "0.12084",
+                        "shortHandedPoints": "0.00068",
+                        "iceTime": "721.52474",
+                        "evenStrengthIceTime": "596.05015",
+                        "powerPlayIceTime": "122.09028",
+                        "shortHandedIceTime": "3.3843",
+                        "blockedShots": "0.363",
+                        "fantasyProjections": [
+                          {
+                            "siteId": 1,
+                            "name": "DraftKings (draftkings.com)",
+                            "salary": "2500",
+                            "points": "1.91458",
+                            "position": "RW"
+                          },
+                          {
+                            "siteId": 2,
+                            "name": "FanDuel (fanduel.com)",
+                            "salary": "3100",
+                            "points": "6.88843",
+                            "position": "W"
+                          }
+                        ]
+                      },
+                      {
+                        "playerId": 555807,
+                        "goals": "0.31852",
+                        "assists": "0.35263",
+                        "points": "0.67115",
+                        "plusMinus": "-0.08477",
+                        "penaltyMinutes": "0.3313",
+                        "shotsOnGoal": "3.4838",
+                        "powerPlayPoints": "0.16979",
+                        "shortHandedPoints": "0.00046",
+                        "iceTime": "987.07693",
+                        "evenStrengthIceTime": "847.18678",
+                        "powerPlayIceTime": "138.0938",
+                        "shortHandedIceTime": "1.79635",
+                        "blockedShots": "0.63192",
+                        "fantasyProjections": [
+                          {
+                            "siteId": 1,
+                            "name": "DraftKings (draftkings.com)",
+                            "salary": "6200",
+                            "points": "3.71916",
+                            "position": "RW"
+                          },
+                          {
+                            "siteId": 2,
+                            "name": "FanDuel (fanduel.com)",
+                            "salary": "7500",
+                            "points": "13.31431",
+                            "position": "W"
+                          }
+                        ]
+                      },
+                      {
+                        "playerId": 600113,
+                        "goals": "0.26381",
+                        "assists": "0.29988",
+                        "points": "0.56369",
+                        "plusMinus": "-0.12873",
+                        "penaltyMinutes": "0.35266",
+                        "shotsOnGoal": "2.6331",
+                        "powerPlayPoints": "0.14181",
+                        "shortHandedPoints": "0.01169",
+                        "iceTime": "1067.06643",
+                        "evenStrengthIceTime": "850.61982",
+                        "powerPlayIceTime": "154.89979",
+                        "shortHandedIceTime": "61.54682",
+                        "blockedShots": "0.42428",
+                        "fantasyProjections": [
+                          {
+                            "siteId": 1,
+                            "name": "DraftKings (draftkings.com)",
+                            "salary": "4900",
+                            "points": "2.93157",
+                            "position": "RW"
+                          },
+                          {
+                            "siteId": 2,
+                            "name": "FanDuel (fanduel.com)",
+                            "salary": "4400",
+                            "points": "10.55084",
+                            "position": "W"
+                          }
+                        ]
+                      },
+                      {
+                        "playerId": 600128,
+                        "goals": "0.18822",
+                        "assists": "0.3625",
+                        "points": "0.55072",
+                        "plusMinus": "-0.11173",
+                        "penaltyMinutes": "0.52215",
+                        "shotsOnGoal": "2.10479",
+                        "powerPlayPoints": "0.05644",
+                        "shortHandedPoints": "0.02717",
+                        "iceTime": "1200.0",
+                        "evenStrengthIceTime": "957.63933",
+                        "powerPlayIceTime": "72.85341",
+                        "shortHandedIceTime": "169.50726",
+                        "blockedShots": "0.57275",
+                        "fantasyProjections": [
+                          {
+                            "siteId": 1,
+                            "name": "DraftKings (draftkings.com)",
+                            "salary": "4600",
+                            "points": "2.65561",
+                            "position": "C"
+                          },
+                          {
+                            "siteId": 2,
+                            "name": "FanDuel (fanduel.com)",
+                            "salary": "5400",
+                            "points": "9.5253",
+                            "position": "C"
+                          }
+                        ]
+                      },
+                      {
+                        "playerId": 607960,
+                        "goals": "0.17507",
+                        "assists": "0.24156",
+                        "points": "0.41664",
+                        "plusMinus": "-0.12365",
+                        "penaltyMinutes": "0.39176",
+                        "shotsOnGoal": "1.97148",
+                        "powerPlayPoints": "0.10407",
+                        "shortHandedPoints": "0.00008",
+                        "iceTime": "858.5108",
+                        "evenStrengthIceTime": "745.11073",
+                        "powerPlayIceTime": "113.01373",
+                        "shortHandedIceTime": "0.38635",
+                        "blockedShots": "0.55863",
+                        "fantasyProjections": [
+                          {
+                            "siteId": 1,
+                            "name": "DraftKings (draftkings.com)",
+                            "salary": "2700",
+                            "points": "2.27348",
+                            "position": "LW"
+                          },
+                          {
+                            "siteId": 2,
+                            "name": "FanDuel (fanduel.com)",
+                            "salary": "3400",
+                            "points": "8.13374",
+                            "position": "W"
+                          }
+                        ]
+                      },
+                      {
+                        "playerId": 610577,
+                        "goals": "0.0",
+                        "assists": "0.0",
+                        "points": "0.0",
+                        "plusMinus": "0.0",
+                        "penaltyMinutes": "0.0",
+                        "shotsOnGoal": "0.0",
+                        "powerPlayPoints": "0.0",
+                        "shortHandedPoints": "0.0",
+                        "iceTime": "0.0",
+                        "evenStrengthIceTime": "0.0",
+                        "powerPlayIceTime": "0.0",
+                        "shortHandedIceTime": "0.0",
+                        "blockedShots": "0.0",
+                        "fantasyProjections": [
+                          {
+                            "siteId": 1,
+                            "name": "DraftKings (draftkings.com)",
+                            "salary": "2500",
+                            "points": "0.0",
+                            "position": "D"
+                          },
+                          {
+                            "siteId": 2,
+                            "name": "FanDuel (fanduel.com)",
+                            "salary": "3600",
+                            "points": "0.0",
+                            "position": "D"
+                          }
+                        ]
+                      },
+                      {
+                        "playerId": 615338,
+                        "goals": "0.08712",
+                        "assists": "0.11825",
+                        "points": "0.20537",
+                        "plusMinus": "-0.07438",
+                        "penaltyMinutes": "0.21078",
+                        "shotsOnGoal": "1.02665",
+                        "powerPlayPoints": "0.0",
+                        "shortHandedPoints": "0.0",
+                        "iceTime": "549.5635",
+                        "evenStrengthIceTime": "549.5635",
+                        "powerPlayIceTime": "0.0",
+                        "shortHandedIceTime": "0.0",
+                        "blockedShots": "0.2854",
+                        "fantasyProjections": [
+                          {
+                            "siteId": 1,
+                            "name": "DraftKings (draftkings.com)",
+                            "salary": "2500",
+                            "points": "1.15389",
+                            "position": "RW"
+                          },
+                          {
+                            "siteId": 2,
+                            "name": "FanDuel (fanduel.com)",
+                            "salary": "3000",
+                            "points": "4.09073",
+                            "position": "C"
+                          }
+                        ]
+                      },
+                      {
+                        "playerId": 681417,
+                        "goals": "0.05066",
+                        "assists": "0.16926",
+                        "points": "0.21992",
+                        "plusMinus": "-0.20584",
+                        "penaltyMinutes": "0.60358",
+                        "shotsOnGoal": "1.41693",
+                        "powerPlayPoints": "0.00325",
+                        "shortHandedPoints": "0.00036",
+                        "iceTime": "1091.03089",
+                        "evenStrengthIceTime": "1080.21699",
+                        "powerPlayIceTime": "4.3142",
+                        "shortHandedIceTime": "6.4997",
+                        "blockedShots": "1.36964",
+                        "fantasyProjections": [
+                          {
+                            "siteId": 1,
+                            "name": "DraftKings (draftkings.com)",
+                            "salary": "2500",
+                            "points": "1.88415",
+                            "position": "D"
+                          },
+                          {
+                            "siteId": 2,
+                            "name": "FanDuel (fanduel.com)",
+                            "salary": "3500",
+                            "points": "6.42286",
+                            "position": "D"
+                          }
+                        ]
+                      },
+                      {
+                        "playerId": 681548,
+                        "goals": "0.0",
+                        "assists": "0.0",
+                        "points": "0.0",
+                        "plusMinus": "0.0",
+                        "penaltyMinutes": "0.0",
+                        "shotsOnGoal": "0.0",
+                        "powerPlayPoints": "0.0",
+                        "shortHandedPoints": "0.0",
+                        "iceTime": "0.0",
+                        "evenStrengthIceTime": "0.0",
+                        "powerPlayIceTime": "0.0",
+                        "shortHandedIceTime": "0.0",
+                        "blockedShots": "0.0",
+                        "fantasyProjections": [
+                          {
+                            "siteId": 1,
+                            "name": "DraftKings (draftkings.com)",
+                            "salary": "2500",
+                            "points": "0.0",
+                            "position": "LW"
+                          }
+                        ]
+                      },
+                      {
+                        "playerId": 741442,
+                        "goals": "0.22763",
+                        "assists": "0.36776",
+                        "points": "0.59539",
+                        "plusMinus": "-0.10342",
+                        "penaltyMinutes": "0.51868",
+                        "shotsOnGoal": "2.21514",
+                        "powerPlayPoints": "0.19307",
+                        "shortHandedPoints": "0.00021",
+                        "iceTime": "955.01636",
+                        "evenStrengthIceTime": "807.23331",
+                        "powerPlayIceTime": "146.91284",
+                        "shortHandedIceTime": "0.8702",
+                        "blockedShots": "0.25212",
+                        "fantasyProjections": [
+                          {
+                            "siteId": 1,
+                            "name": "DraftKings (draftkings.com)",
+                            "salary": "4700",
+                            "points": "2.65226",
+                            "position": "C"
+                          },
+                          {
+                            "siteId": 2,
+                            "name": "FanDuel (fanduel.com)",
+                            "salary": "5500",
+                            "points": "9.71823",
+                            "position": "C"
+                          }
+                        ]
+                      },
+                      {
+                        "playerId": 743064,
+                        "goals": "0.21677",
+                        "assists": "0.24744",
+                        "points": "0.4642",
+                        "plusMinus": "-0.07895",
+                        "penaltyMinutes": "0.45847",
+                        "shotsOnGoal": "2.36824",
+                        "powerPlayPoints": "0.00619",
+                        "shortHandedPoints": "0.03393",
+                        "iceTime": "1041.48274",
+                        "evenStrengthIceTime": "873.61203",
+                        "powerPlayIceTime": "6.59145",
+                        "shortHandedIceTime": "161.27926",
+                        "blockedShots": "0.61857",
+                        "fantasyProjections": [
+                          {
+                            "siteId": 1,
+                            "name": "DraftKings (draftkings.com)",
+                            "salary": "3300",
+                            "points": "2.67251",
+                            "position": "LW"
+                          },
+                          {
+                            "siteId": 2,
+                            "name": "FanDuel (fanduel.com)",
+                            "salary": "4100",
+                            "points": "9.43056",
+                            "position": "W"
+                          }
+                        ]
+                      },
+                      {
+                        "playerId": 824587,
+                        "goals": "0.0",
+                        "assists": "0.0",
+                        "points": "0.0",
+                        "plusMinus": "0.0",
+                        "penaltyMinutes": "0.0",
+                        "shotsOnGoal": "0.0",
+                        "powerPlayPoints": "0.0",
+                        "shortHandedPoints": "0.0",
+                        "iceTime": "0.0",
+                        "evenStrengthIceTime": "0.0",
+                        "powerPlayIceTime": "0.0",
+                        "shortHandedIceTime": "0.0",
+                        "blockedShots": "0.0",
+                        "fantasyProjections": [
+                          {
+                            "siteId": 1,
+                            "name": "DraftKings (draftkings.com)",
+                            "salary": "2500",
+                            "points": "0.0",
+                            "position": "D"
+                          },
+                          {
+                            "siteId": 2,
+                            "name": "FanDuel (fanduel.com)",
+                            "salary": "3500",
+                            "points": "0.0",
+                            "position": "D"
+                          }
+                        ]
+                      },
+                      {
+                        "playerId": 1057111,
+                        "goals": "0.1559",
+                        "assists": "0.21448",
+                        "points": "0.37038",
+                        "plusMinus": "-0.1489",
+                        "penaltyMinutes": "0.44963",
+                        "shotsOnGoal": "1.80616",
+                        "powerPlayPoints": "0.11147",
+                        "shortHandedPoints": "0.00181",
+                        "iceTime": "879.88452",
+                        "evenStrengthIceTime": "726.60717",
+                        "powerPlayIceTime": "139.70997",
+                        "shortHandedIceTime": "13.56738",
+                        "blockedShots": "0.41616",
+                        "fantasyProjections": [
+                          {
+                            "siteId": 1,
+                            "name": "DraftKings (draftkings.com)",
+                            "salary": "3600",
+                            "points": "2.00963",
+                            "position": "C"
+                          },
+                          {
+                            "siteId": 2,
+                            "name": "FanDuel (fanduel.com)",
+                            "salary": "3800",
+                            "points": "7.20172",
+                            "position": "C"
+                          }
+                        ]
+                      },
+                      {
+                        "playerId": 1057197,
+                        "goals": "0.02698",
+                        "assists": "0.07689",
+                        "points": "0.10386",
+                        "plusMinus": "-0.14963",
+                        "penaltyMinutes": "0.30162",
+                        "shotsOnGoal": "0.75807",
+                        "powerPlayPoints": "0.00037",
+                        "shortHandedPoints": "0.0041",
+                        "iceTime": "762.65294",
+                        "evenStrengthIceTime": "721.69071",
+                        "powerPlayIceTime": "0.7808",
+                        "shortHandedIceTime": "40.18142",
+                        "blockedShots": "0.9516",
+                        "fantasyProjections": [
+                          {
+                            "siteId": 1,
+                            "name": "DraftKings (draftkings.com)",
+                            "salary": "2500",
+                            "points": "1.09363",
+                            "position": "D"
+                          },
+                          {
+                            "siteId": 2,
+                            "name": "FanDuel (fanduel.com)",
+                            "salary": "3500",
+                            "points": "3.68265",
+                            "position": "D"
+                          }
+                        ]
+                      },
+                      {
+                        "playerId": 1121432,
+                        "goals": "0.09169",
+                        "assists": "0.16704",
+                        "points": "0.25873",
+                        "plusMinus": "-0.05554",
+                        "penaltyMinutes": "0.16712",
+                        "shotsOnGoal": "1.04059",
+                        "powerPlayPoints": "0.04919",
+                        "shortHandedPoints": "0.00003",
+                        "iceTime": "480.0",
+                        "evenStrengthIceTime": "433.59099",
+                        "powerPlayIceTime": "46.26491",
+                        "shortHandedIceTime": "0.1441",
+                        "blockedShots": "0.23272",
+                        "fantasyProjections": [
+                          {
+                            "siteId": 1,
+                            "name": "DraftKings (draftkings.com)",
+                            "salary": "3300",
+                            "points": "1.24582",
+                            "position": "C"
+                          },
+                          {
+                            "siteId": 2,
+                            "name": "FanDuel (fanduel.com)",
+                            "salary": "4300",
+                            "points": "4.4985",
+                            "position": "C"
+                          }
+                        ]
+                      },
+                      {
+                        "playerId": 1166541,
+                        "goals": "0.02283",
+                        "assists": "0.09565",
+                        "points": "0.11848",
+                        "plusMinus": "-0.14427",
+                        "penaltyMinutes": "0.35343",
+                        "shotsOnGoal": "0.64279",
+                        "powerPlayPoints": "0.0",
+                        "shortHandedPoints": "0.0",
+                        "iceTime": "720.0",
+                        "evenStrengthIceTime": "720.0",
+                        "powerPlayIceTime": "0.0",
+                        "shortHandedIceTime": "0.0",
+                        "blockedShots": "0.76859",
+                        "fantasyProjections": [
+                          {
+                            "siteId": 1,
+                            "name": "DraftKings (draftkings.com)",
+                            "salary": "2500",
+                            "points": "0.96547",
+                            "position": "D"
+                          },
+                          {
+                            "siteId": 2,
+                            "name": "FanDuel (fanduel.com)",
+                            "salary": "3500",
+                            "points": "3.29732",
+                            "position": "D"
+                          }
+                        ]
+                      }
+                    ],
+                    "goalies": [
+                      {
+                        "playerId": 300782,
+                        "gamesPlayed": "1.0",
+                        "wins": "0.40881",
+                        "shutouts": "0.03699",
+                        "goalsAgainst": "3.15647",
+                        "shotsOnGoalAgainst": "34.15847",
+                        "saves": "31.002",
+                        "powerPlayGoalsAgainst": "0.70329",
+                        "fantasyProjections": [
+                          {
+                            "siteId": 1,
+                            "name": "DraftKings (draftkings.com)",
+                            "salary": "7300",
+                            "points": "4.34432",
+                            "position": "G"
+                          },
+                          {
+                            "siteId": 2,
+                            "name": "FanDuel (fanduel.com)",
+                            "salary": "8300",
+                            "points": "17.37729",
+                            "position": "G"
+                          }
+                        ]
+                      },
+                      {
+                        "playerId": 1057936,
+                        "gamesPlayed": "0.0",
+                        "wins": "0.0",
+                        "shutouts": "0.0",
+                        "goalsAgainst": "0.0",
+                        "shotsOnGoalAgainst": "0.0",
+                        "saves": "0.0",
+                        "powerPlayGoalsAgainst": "0.0",
+                        "fantasyProjections": [
+                          {
+                            "siteId": 1,
+                            "name": "DraftKings (draftkings.com)",
+                            "salary": "7100",
+                            "points": "0.0",
+                            "position": "G"
+                          },
+                          {
+                            "siteId": 2,
+                            "name": "FanDuel (fanduel.com)",
+                            "salary": "7200",
+                            "points": "0.0",
+                            "position": "G"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "teamId": 4969,
+                    "skaters": [
+                      {
+                        "playerId": 268144,
+                        "goals": "0.49214",
+                        "assists": "0.77135",
+                        "points": "1.26349",
+                        "plusMinus": "0.33423",
+                        "penaltyMinutes": "0.91161",
+                        "shotsOnGoal": "3.57976",
+                        "powerPlayPoints": "0.42226",
+                        "shortHandedPoints": "0.00055",
+                        "iceTime": "1200.0",
+                        "evenStrengthIceTime": "990.58918",
+                        "powerPlayIceTime": "207.96132",
+                        "shortHandedIceTime": "1.4495",
+                        "blockedShots": "0.57184",
+                        "fantasyProjections": [
+                          {
+                            "siteId": 1,
+                            "name": "DraftKings (draftkings.com)",
+                            "salary": "8200",
+                            "points": "5.09548",
+                            "position": "C"
+                          },
+                          {
+                            "siteId": 2,
+                            "name": "FanDuel (fanduel.com)",
+                            "salary": "8600",
+                            "points": "18.9313",
+                            "position": "C"
+                          }
+                        ]
+                      },
+                      {
+                        "playerId": 298608,
+                        "goals": "0.04764",
+                        "assists": "0.19878",
+                        "points": "0.24642",
+                        "plusMinus": "0.11994",
+                        "penaltyMinutes": "0.36536",
+                        "shotsOnGoal": "1.23164",
+                        "powerPlayPoints": "0.00498",
+                        "shortHandedPoints": "0.00905",
+                        "iceTime": "1223.18067",
+                        "evenStrengthIceTime": "1076.97733",
+                        "powerPlayIceTime": "6.1261",
+                        "shortHandedIceTime": "140.07723",
+                        "blockedShots": "1.40369",
+                        "fantasyProjections": [
+                          {
+                            "siteId": 1,
+                            "name": "DraftKings (draftkings.com)",
+                            "salary": "2500",
+                            "points": "1.8672",
+                            "position": "D"
+                          },
+                          {
+                            "siteId": 2,
+                            "name": "FanDuel (fanduel.com)",
+                            "salary": "3500",
+                            "points": "6.39905",
+                            "position": "D"
+                          }
+                        ]
+                      },
+                      {
+                        "playerId": 339745,
+                        "goals": "0.20849",
+                        "assists": "0.63342",
+                        "points": "0.84191",
+                        "plusMinus": "0.23839",
+                        "penaltyMinutes": "0.48906",
+                        "shotsOnGoal": "3.12389",
+                        "powerPlayPoints": "0.33337",
+                        "shortHandedPoints": "0.01423",
+                        "iceTime": "1460.39215",
+                        "evenStrengthIceTime": "1133.58175",
+                        "powerPlayIceTime": "202.07477",
+                        "shortHandedIceTime": "124.73562",
+                        "blockedShots": "1.26499",
+                        "fantasyProjections": [
+                          {
+                            "siteId": 1,
+                            "name": "DraftKings (draftkings.com)",
+                            "salary": "7000",
+                            "points": "4.10099",
+                            "position": "D"
+                          },
+                          {
+                            "siteId": 2,
+                            "name": "FanDuel (fanduel.com)",
+                            "salary": "6600",
+                            "points": "14.78664",
+                            "position": "D"
+                          }
+                        ]
+                      },
+                      {
+                        "playerId": 554539,
+                        "goals": "0.2948",
+                        "assists": "0.38006",
+                        "points": "0.67485",
+                        "plusMinus": "0.21798",
+                        "penaltyMinutes": "0.50433",
+                        "shotsOnGoal": "2.80566",
+                        "powerPlayPoints": "0.08587",
+                        "shortHandedPoints": "0.02673",
+                        "iceTime": "1200.0",
+                        "evenStrengthIceTime": "1012.55096",
+                        "powerPlayIceTime": "83.98091",
+                        "shortHandedIceTime": "103.46813",
+                        "blockedShots": "0.753",
+                        "fantasyProjections": [
+                          {
+                            "siteId": 1,
+                            "name": "DraftKings (draftkings.com)",
+                            "salary": "6800",
+                            "points": "3.45055",
+                            "position": "LW"
+                          },
+                          {
+                            "siteId": 2,
+                            "name": "FanDuel (fanduel.com)",
+                            "salary": "5100",
+                            "points": "12.36823",
+                            "position": "W"
+                          }
+                        ]
+                      },
+                      {
+                        "playerId": 600123,
+                        "goals": "0.17839",
+                        "assists": "0.19139",
+                        "points": "0.36978",
+                        "plusMinus": "0.06477",
+                        "penaltyMinutes": "0.34176",
+                        "shotsOnGoal": "1.39461",
+                        "powerPlayPoints": "0.16795",
+                        "shortHandedPoints": "0.0",
+                        "iceTime": "587.68042",
+                        "evenStrengthIceTime": "421.40997",
+                        "powerPlayIceTime": "166.27045",
+                        "shortHandedIceTime": "0.0",
+                        "blockedShots": "0.36146",
+                        "fantasyProjections": [
+                          {
+                            "siteId": 1,
+                            "name": "DraftKings (draftkings.com)",
+                            "salary": "3300",
+                            "points": "1.79598",
+                            "position": "RW"
+                          },
+                          {
+                            "siteId": 2,
+                            "name": "FanDuel (fanduel.com)",
+                            "salary": "3400",
+                            "points": "6.56546",
+                            "position": "W"
+                          }
+                        ]
+                      },
+                      {
+                        "playerId": 659810,
+                        "goals": "0.15879",
+                        "assists": "0.25213",
+                        "points": "0.41091",
+                        "plusMinus": "0.1071",
+                        "penaltyMinutes": "0.17866",
+                        "shotsOnGoal": "1.33935",
+                        "powerPlayPoints": "0.13716",
+                        "shortHandedPoints": "0.00001",
+                        "iceTime": "520.35515",
+                        "evenStrengthIceTime": "445.00907",
+                        "powerPlayIceTime": "75.31129",
+                        "shortHandedIceTime": "0.03479",
+                        "blockedShots": "0.18807",
+                        "fantasyProjections": [
+                          {
+                            "siteId": 1,
+                            "name": "DraftKings (draftkings.com)",
+                            "salary": "3700",
+                            "points": "1.74434",
+                            "position": "LW"
+                          },
+                          {
+                            "siteId": 2,
+                            "name": "FanDuel (fanduel.com)",
+                            "salary": "4400",
+                            "points": "6.43495",
+                            "position": "W"
+                          }
+                        ]
+                      },
+                      {
+                        "playerId": 660044,
+                        "goals": "0.14363",
+                        "assists": "0.37744",
+                        "points": "0.52107",
+                        "plusMinus": "0.11769",
+                        "penaltyMinutes": "0.27051",
+                        "shotsOnGoal": "2.15131",
+                        "powerPlayPoints": "0.21528",
+                        "shortHandedPoints": "0.00016",
+                        "iceTime": "1187.3158",
+                        "evenStrengthIceTime": "1022.05654",
+                        "powerPlayIceTime": "164.04446",
+                        "shortHandedIceTime": "1.21481",
+                        "blockedShots": "0.93289",
+                        "fantasyProjections": [
+                          {
+                            "siteId": 1,
+                            "name": "DraftKings (draftkings.com)",
+                            "salary": "4200",
+                            "points": "2.72803",
+                            "position": "D"
+                          },
+                          {
+                            "siteId": 2,
+                            "name": "FanDuel (fanduel.com)",
+                            "salary": "4100",
+                            "points": "9.78574",
+                            "position": "D"
+                          }
+                        ]
+                      },
+                      {
+                        "playerId": 660801,
+                        "goals": "0.15879",
+                        "assists": "0.20102",
+                        "points": "0.35981",
+                        "plusMinus": "0.15094",
+                        "penaltyMinutes": "0.46164",
+                        "shotsOnGoal": "1.74966",
+                        "powerPlayPoints": "0.00908",
+                        "shortHandedPoints": "0.03261",
+                        "iceTime": "934.68873",
+                        "evenStrengthIceTime": "792.78544",
+                        "powerPlayIceTime": "7.58473",
+                        "shortHandedIceTime": "134.31856",
+                        "blockedShots": "0.55656",
+                        "fantasyProjections": [
+                          {
+                            "siteId": 1,
+                            "name": "DraftKings (draftkings.com)",
+                            "salary": "3100",
+                            "points": "2.06413",
+                            "position": "C"
+                          },
+                          {
+                            "siteId": 2,
+                            "name": "FanDuel (fanduel.com)",
+                            "salary": "3500",
+                            "points": "7.27336",
+                            "position": "C"
+                          }
+                        ]
+                      },
+                      {
+                        "playerId": 732552,
+                        "goals": "0.05847",
+                        "assists": "0.19667",
+                        "points": "0.25514",
+                        "plusMinus": "0.11245",
+                        "penaltyMinutes": "0.58878",
+                        "shotsOnGoal": "1.28012",
+                        "powerPlayPoints": "0.0",
+                        "shortHandedPoints": "0.00557",
+                        "iceTime": "1010.50831",
+                        "evenStrengthIceTime": "911.91687",
+                        "powerPlayIceTime": "0.0",
+                        "shortHandedIceTime": "98.59144",
+                        "blockedShots": "0.87481",
+                        "fantasyProjections": [
+                          {
+                            "siteId": 1,
+                            "name": "DraftKings (draftkings.com)",
+                            "salary": "2500",
+                            "points": "1.65178",
+                            "position": "D"
+                          },
+                          {
+                            "siteId": 2,
+                            "name": "FanDuel (fanduel.com)",
+                            "salary": "3600",
+                            "points": "5.73402",
+                            "position": "D"
+                          }
+                        ]
+                      },
+                      {
+                        "playerId": 743255,
+                        "goals": "0.40761",
+                        "assists": "0.52787",
+                        "points": "0.93548",
+                        "plusMinus": "0.24471",
+                        "penaltyMinutes": "0.47033",
+                        "shotsOnGoal": "3.1881",
+                        "powerPlayPoints": "0.21082",
+                        "shortHandedPoints": "0.00216",
+                        "iceTime": "1200.0",
+                        "evenStrengthIceTime": "1016.63367",
+                        "powerPlayIceTime": "175.25334",
+                        "shortHandedIceTime": "8.11299",
+                        "blockedShots": "0.42467",
+                        "fantasyProjections": [
+                          {
+                            "siteId": 1,
+                            "name": "DraftKings (draftkings.com)",
+                            "salary": "7600",
+                            "points": "4.08711",
+                            "position": "LW"
+                          },
+                          {
+                            "siteId": 2,
+                            "name": "FanDuel (fanduel.com)",
+                            "salary": "8100",
+                            "points": "15.00443",
+                            "position": "W"
+                          }
+                        ]
+                      },
+                      {
+                        "playerId": 831091,
+                        "goals": "0.23232",
+                        "assists": "0.27734",
+                        "points": "0.50966",
+                        "plusMinus": "0.15008",
+                        "penaltyMinutes": "0.31567",
+                        "shotsOnGoal": "1.94563",
+                        "powerPlayPoints": "0.0798",
+                        "shortHandedPoints": "0.00973",
+                        "iceTime": "817.3414",
+                        "evenStrengthIceTime": "701.03169",
+                        "powerPlayIceTime": "76.15308",
+                        "shortHandedIceTime": "40.15663",
+                        "blockedShots": "0.47934",
+                        "fantasyProjections": [
+                          {
+                            "siteId": 1,
+                            "name": "DraftKings (draftkings.com)",
+                            "salary": "4500",
+                            "points": "2.47386",
+                            "position": "C"
+                          },
+                          {
+                            "siteId": 2,
+                            "name": "FanDuel (fanduel.com)",
+                            "salary": "4600",
+                            "points": "8.9459",
+                            "position": "C"
+                          }
+                        ]
+                      },
+                      {
+                        "playerId": 831265,
+                        "goals": "0.06804",
+                        "assists": "0.24774",
+                        "points": "0.31578",
+                        "plusMinus": "0.09297",
+                        "penaltyMinutes": "0.40022",
+                        "shotsOnGoal": "1.27799",
+                        "powerPlayPoints": "0.06599",
+                        "shortHandedPoints": "0.00302",
+                        "iceTime": "1010.19371",
+                        "evenStrengthIceTime": "895.63787",
+                        "powerPlayIceTime": "72.59662",
+                        "shortHandedIceTime": "41.95921",
+                        "blockedShots": "0.92308",
+                        "fantasyProjections": [
+                          {
+                            "siteId": 1,
+                            "name": "DraftKings (draftkings.com)",
+                            "salary": "2600",
+                            "points": "1.80315",
+                            "position": "D"
+                          },
+                          {
+                            "siteId": 2,
+                            "name": "FanDuel (fanduel.com)",
+                            "salary": "3500",
+                            "points": "6.35915",
+                            "position": "D"
+                          }
+                        ]
+                      },
+                      {
+                        "playerId": 831466,
+                        "goals": "0.09593",
+                        "assists": "0.11828",
+                        "points": "0.2142",
+                        "plusMinus": "0.08195",
+                        "penaltyMinutes": "0.31569",
+                        "shotsOnGoal": "0.94648",
+                        "powerPlayPoints": "0.00134",
+                        "shortHandedPoints": "0.00801",
+                        "iceTime": "480.0",
+                        "evenStrengthIceTime": "431.39076",
+                        "powerPlayIceTime": "1.43792",
+                        "shortHandedIceTime": "47.17131",
+                        "blockedShots": "0.30837",
+                        "fantasyProjections": [
+                          {
+                            "siteId": 1,
+                            "name": "DraftKings (draftkings.com)",
+                            "salary": "2600",
+                            "points": "1.15977",
+                            "position": "C"
+                          },
+                          {
+                            "siteId": 2,
+                            "name": "FanDuel (fanduel.com)",
+                            "salary": "3100",
+                            "points": "4.12177",
+                            "position": "W"
+                          }
+                        ]
+                      },
+                      {
+                        "playerId": 878299,
+                        "goals": "0.17323",
+                        "assists": "0.2774",
+                        "points": "0.45063",
+                        "plusMinus": "0.1388",
+                        "penaltyMinutes": "0.35525",
+                        "shotsOnGoal": "1.76583",
+                        "powerPlayPoints": "0.03576",
+                        "shortHandedPoints": "0.00209",
+                        "iceTime": "802.55501",
+                        "evenStrengthIceTime": "755.56947",
+                        "powerPlayIceTime": "33.75576",
+                        "shortHandedIceTime": "13.22979",
+                        "blockedShots": "0.34793",
+                        "fantasyProjections": [
+                          {
+                            "siteId": 1,
+                            "name": "DraftKings (draftkings.com)",
+                            "salary": "3100",
+                            "points": "2.13346",
+                            "position": "RW"
+                          },
+                          {
+                            "siteId": 2,
+                            "name": "FanDuel (fanduel.com)",
+                            "salary": "3600",
+                            "points": "7.70202",
+                            "position": "W"
+                          }
+                        ]
+                      },
+                      {
+                        "playerId": 878330,
+                        "goals": "0.05678",
+                        "assists": "0.26737",
+                        "points": "0.32415",
+                        "plusMinus": "0.13937",
+                        "penaltyMinutes": "0.49632",
+                        "shotsOnGoal": "1.25657",
+                        "powerPlayPoints": "0.00874",
+                        "shortHandedPoints": "0.01593",
+                        "iceTime": "1213.42794",
+                        "evenStrengthIceTime": "1064.92272",
+                        "powerPlayIceTime": "15.1094",
+                        "shortHandedIceTime": "133.39582",
+                        "blockedShots": "1.29814",
+                        "fantasyProjections": [
+                          {
+                            "siteId": 1,
+                            "name": "DraftKings (draftkings.com)",
+                            "salary": "3200",
+                            "points": "1.99838",
+                            "position": "D"
+                          },
+                          {
+                            "siteId": 2,
+                            "name": "FanDuel (fanduel.com)",
+                            "salary": "3900",
+                            "points": "6.94413",
+                            "position": "D"
+                          }
+                        ]
+                      },
+                      {
+                        "playerId": 913797,
+                        "goals": "0.1367",
+                        "assists": "0.23122",
+                        "points": "0.36792",
+                        "plusMinus": "0.15145",
+                        "penaltyMinutes": "0.31313",
+                        "shotsOnGoal": "1.61138",
+                        "powerPlayPoints": "0.00407",
+                        "shortHandedPoints": "0.02023",
+                        "iceTime": "892.53178",
+                        "evenStrengthIceTime": "764.07842",
+                        "powerPlayIceTime": "4.61013",
+                        "shortHandedIceTime": "123.84324",
+                        "blockedShots": "0.84651",
+                        "fantasyProjections": [
+                          {
+                            "siteId": 1,
+                            "name": "DraftKings (draftkings.com)",
+                            "salary": "3000",
+                            "points": "2.12173",
+                            "position": "RW"
+                          },
+                          {
+                            "siteId": 2,
+                            "name": "FanDuel (fanduel.com)",
+                            "salary": "4000",
+                            "points": "7.46531",
+                            "position": "W"
+                          }
+                        ]
+                      },
+                      {
+                        "playerId": 975434,
+                        "goals": "0.18736",
+                        "assists": "0.20969",
+                        "points": "0.39705",
+                        "plusMinus": "0.14317",
+                        "penaltyMinutes": "0.50283",
+                        "shotsOnGoal": "1.92261",
+                        "powerPlayPoints": "0.04112",
+                        "shortHandedPoints": "0.0145",
+                        "iceTime": "892.84638",
+                        "evenStrengthIceTime": "753.75979",
+                        "powerPlayIceTime": "38.92778",
+                        "shortHandedIceTime": "100.15881",
+                        "blockedShots": "0.53525",
+                        "fantasyProjections": [
+                          {
+                            "siteId": 1,
+                            "name": "DraftKings (draftkings.com)",
+                            "salary": "2600",
+                            "points": "2.22489",
+                            "position": "LW"
+                          },
+                          {
+                            "siteId": 2,
+                            "name": "FanDuel (fanduel.com)",
+                            "salary": "3300",
+                            "points": "7.90798",
+                            "position": "W"
+                          }
+                        ]
+                      },
+                      {
+                        "playerId": 1096972,
+                        "goals": "0.19806",
+                        "assists": "0.24604",
+                        "points": "0.4441",
+                        "plusMinus": "0.11888",
+                        "penaltyMinutes": "0.28936",
+                        "shotsOnGoal": "1.72858",
+                        "powerPlayPoints": "0.07528",
+                        "shortHandedPoints": "0.00008",
+                        "iceTime": "776.75748",
+                        "evenStrengthIceTime": "699.00585",
+                        "powerPlayIceTime": "77.38412",
+                        "shortHandedIceTime": "0.3675",
+                        "blockedShots": "0.34137",
+                        "fantasyProjections": [
+                          {
+                            "siteId": 1,
+                            "name": "DraftKings (draftkings.com)",
+                            "salary": "3100",
+                            "points": "2.12132",
+                            "position": "RW"
+                          },
+                          {
+                            "siteId": 2,
+                            "name": "FanDuel (fanduel.com)",
+                            "salary": "4500",
+                            "points": "7.69479",
+                            "position": "W"
+                          }
+                        ]
+                      },
+                      {
+                        "playerId": 1116810,
+                        "goals": "0.0",
+                        "assists": "0.0",
+                        "points": "0.0",
+                        "plusMinus": "0.0",
+                        "penaltyMinutes": "0.0",
+                        "shotsOnGoal": "0.0",
+                        "powerPlayPoints": "0.0",
+                        "shortHandedPoints": "0.0",
+                        "iceTime": "0.0",
+                        "evenStrengthIceTime": "0.0",
+                        "powerPlayIceTime": "0.0",
+                        "shortHandedIceTime": "0.0",
+                        "blockedShots": "0.0",
+                        "fantasyProjections": [
+                          {
+                            "siteId": 1,
+                            "name": "DraftKings (draftkings.com)",
+                            "salary": "2700",
+                            "points": "0.0",
+                            "position": "D"
+                          },
+                          {
+                            "siteId": 2,
+                            "name": "FanDuel (fanduel.com)",
+                            "salary": "3500",
+                            "points": "0.0",
+                            "position": "D"
+                          }
+                        ]
+                      }
+                    ],
+                    "goalies": [
+                      {
+                        "playerId": 680827,
+                        "gamesPlayed": "1.0",
+                        "wins": "0.59119",
+                        "shutouts": "0.07211",
+                        "goalsAgainst": "2.53233",
+                        "shotsOnGoalAgainst": "33.4004",
+                        "saves": "30.86807",
+                        "powerPlayGoalsAgainst": "0.5609",
+                        "fantasyProjections": [
+                          {
+                            "siteId": 1,
+                            "name": "DraftKings (draftkings.com)",
+                            "salary": "8100",
+                            "points": "5.55908",
+                            "position": "G"
+                          },
+                          {
+                            "siteId": 2,
+                            "name": "FanDuel (fanduel.com)",
+                            "salary": "8200",
+                            "points": "22.23632",
+                            "position": "G"
+                          }
+                        ]
+                      },
+                      {
+                        "playerId": 743053,
+                        "gamesPlayed": "0.0",
+                        "wins": "0.0",
+                        "shutouts": "0.0",
+                        "goalsAgainst": "0.0",
+                        "shotsOnGoalAgainst": "0.0",
+                        "saves": "0.0",
+                        "powerPlayGoalsAgainst": "0.0",
+                        "fantasyProjections": [
+                          {
+                            "siteId": 1,
+                            "name": "DraftKings (draftkings.com)",
+                            "salary": "8100",
+                            "points": "0.0",
+                            "position": "G"
+                          },
+                          {
+                            "siteId": 2,
+                            "name": "FanDuel (fanduel.com)",
+                            "salary": "8200",
+                            "points": "0.0",
+                            "position": "G"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

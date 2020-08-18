@@ -1,0 +1,1744 @@
+{
+  "status": "OK",
+  "recordCount": 16,
+  "startTimestamp": "2019-12-10T17:22:02.4595793Z",
+  "endTimestamp": "2019-12-10T17:22:02.5386839Z",
+  "timeTaken": 0.0791046,
+  "apiResults": [
+    {
+      "sportId": 4,
+      "name": "Football",
+      "league": {
+        "leagueId": 8,
+        "name": "National Football League",
+        "abbreviation": "NFL",
+        "displayName": "National Football League",
+        "season": {
+          "season": 2019,
+          "name": "2019-2020 NFL Season",
+          "isActive": true,
+          "eventType": [
+            {
+              "eventTypeId": 1,
+              "name": "Regular Season",
+              "lineEvents": [
+                {
+                  "eventId": 2142041,
+                  "startDate": [
+                    {
+                      "year": 2019,
+                      "month": 12,
+                      "date": 12,
+                      "hour": 20,
+                      "minute": 20,
+                      "full": "2019-12-12T20:20:00",
+                      "dateType": "Local"
+                    },
+                    {
+                      "year": 2019,
+                      "month": 12,
+                      "date": 13,
+                      "hour": 1,
+                      "minute": 20,
+                      "full": "2019-12-13T01:20:00",
+                      "dateType": "UTC"
+                    }
+                  ],
+                  "teams": [
+                    {
+                      "teamId": 366,
+                      "rotation": 302,
+                      "location": "Baltimore",
+                      "nickname": "Ravens",
+                      "abbreviation": "Bal",
+                      "teamLocationType": {
+                        "teamLocationTypeId": 1,
+                        "name": "home"
+                      }
+                    },
+                    {
+                      "teamId": 352,
+                      "rotation": 301,
+                      "location": "New York",
+                      "nickname": "Jets",
+                      "abbreviation": "NYJ",
+                      "teamLocationType": {
+                        "teamLocationTypeId": 2,
+                        "name": "away"
+                      }
+                    }
+                  ],
+                  "lines": [
+                    {
+                      "scope": {
+                        "scopeId": 1,
+                        "name": "Game"
+                      },
+                      "changeDate": [
+                        {
+                          "year": 2019,
+                          "month": 12,
+                          "date": 10,
+                          "hour": 10,
+                          "minute": 22,
+                          "full": "2019-12-10T10:22:15",
+                          "dateType": "Local"
+                        },
+                        {
+                          "year": 2019,
+                          "month": 12,
+                          "date": 10,
+                          "hour": 15,
+                          "minute": 22,
+                          "full": "2019-12-10T15:22:15",
+                          "dateType": "UTC"
+                        }
+                      ],
+                      "line": [
+                        {
+                          "lineType": {
+                            "lineTypeId": 1,
+                            "name": "opening"
+                          },
+                          "favoriteTeamId": 366,
+                          "favoritePoints": -14.0,
+                          "favoriteMoney": "-110",
+                          "underdogMoney": "-110",
+                          "homeMoney": "-825",
+                          "awayMoney": "+575",
+                          "total": 44.0,
+                          "overMoney": "-110",
+                          "underMoney": "-110"
+                        },
+                        {
+                          "lineType": {
+                            "lineTypeId": 2,
+                            "name": "current"
+                          },
+                          "favoriteTeamId": 366,
+                          "favoritePoints": -15.0,
+                          "favoriteMoney": "-105",
+                          "underdogMoney": "-115",
+                          "homeMoney": "-855",
+                          "awayMoney": "+605",
+                          "total": 44.5,
+                          "overMoney": "-110",
+                          "underMoney": "-110"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "eventId": 2142045,
+                  "startDate": [
+                    {
+                      "year": 2019,
+                      "month": 12,
+                      "date": 15,
+                      "hour": 13,
+                      "minute": 0,
+                      "full": "2019-12-15T13:00:00",
+                      "dateType": "Local"
+                    },
+                    {
+                      "year": 2019,
+                      "month": 12,
+                      "date": 15,
+                      "hour": 18,
+                      "minute": 0,
+                      "full": "2019-12-15T18:00:00",
+                      "dateType": "UTC"
+                    }
+                  ],
+                  "teams": [
+                    {
+                      "teamId": 364,
+                      "rotation": 316,
+                      "location": "Carolina",
+                      "nickname": "Panthers",
+                      "abbreviation": "Car",
+                      "teamLocationType": {
+                        "teamLocationTypeId": 1,
+                        "name": "home"
+                      }
+                    },
+                    {
+                      "teamId": 361,
+                      "rotation": 315,
+                      "location": "Seattle",
+                      "nickname": "Seahawks",
+                      "abbreviation": "Sea",
+                      "teamLocationType": {
+                        "teamLocationTypeId": 2,
+                        "name": "away"
+                      }
+                    }
+                  ],
+                  "lines": [
+                    {
+                      "scope": {
+                        "scopeId": 1,
+                        "name": "Game"
+                      },
+                      "changeDate": [
+                        {
+                          "year": 2019,
+                          "month": 12,
+                          "date": 10,
+                          "hour": 10,
+                          "minute": 22,
+                          "full": "2019-12-10T10:22:15",
+                          "dateType": "Local"
+                        },
+                        {
+                          "year": 2019,
+                          "month": 12,
+                          "date": 10,
+                          "hour": 15,
+                          "minute": 22,
+                          "full": "2019-12-10T15:22:15",
+                          "dateType": "UTC"
+                        }
+                      ],
+                      "line": [
+                        {
+                          "lineType": {
+                            "lineTypeId": 1,
+                            "name": "opening"
+                          },
+                          "favoriteTeamId": 361,
+                          "favoritePoints": -4.5,
+                          "favoriteMoney": "-110",
+                          "underdogMoney": "-110",
+                          "homeMoney": "+200",
+                          "awayMoney": "-250",
+                          "total": 48.5,
+                          "overMoney": "-110",
+                          "underMoney": "-110"
+                        },
+                        {
+                          "lineType": {
+                            "lineTypeId": 2,
+                            "name": "current"
+                          },
+                          "favoriteTeamId": 361,
+                          "favoritePoints": -6.0,
+                          "favoriteMoney": "-110",
+                          "underdogMoney": "-110",
+                          "homeMoney": "+215",
+                          "awayMoney": "-265",
+                          "total": 48.5,
+                          "overMoney": "-110",
+                          "underMoney": "-110"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "eventId": 2142049,
+                  "startDate": [
+                    {
+                      "year": 2019,
+                      "month": 12,
+                      "date": 15,
+                      "hour": 13,
+                      "minute": 0,
+                      "full": "2019-12-15T13:00:00",
+                      "dateType": "Local"
+                    },
+                    {
+                      "year": 2019,
+                      "month": 12,
+                      "date": 15,
+                      "hour": 18,
+                      "minute": 0,
+                      "full": "2019-12-15T18:00:00",
+                      "dateType": "UTC"
+                    }
+                  ],
+                  "teams": [
+                    {
+                      "teamId": 327,
+                      "rotation": 312,
+                      "location": "Cincinnati",
+                      "nickname": "Bengals",
+                      "abbreviation": "Cin",
+                      "teamLocationType": {
+                        "teamLocationTypeId": 1,
+                        "name": "home"
+                      }
+                    },
+                    {
+                      "teamId": 348,
+                      "rotation": 311,
+                      "location": "New England",
+                      "nickname": "Patriots",
+                      "abbreviation": "NE",
+                      "teamLocationType": {
+                        "teamLocationTypeId": 2,
+                        "name": "away"
+                      }
+                    }
+                  ],
+                  "lines": [
+                    {
+                      "scope": {
+                        "scopeId": 1,
+                        "name": "Game"
+                      },
+                      "changeDate": [
+                        {
+                          "year": 2019,
+                          "month": 12,
+                          "date": 10,
+                          "hour": 10,
+                          "minute": 22,
+                          "full": "2019-12-10T10:22:15",
+                          "dateType": "Local"
+                        },
+                        {
+                          "year": 2019,
+                          "month": 12,
+                          "date": 10,
+                          "hour": 15,
+                          "minute": 22,
+                          "full": "2019-12-10T15:22:15",
+                          "dateType": "UTC"
+                        }
+                      ],
+                      "line": [
+                        {
+                          "lineType": {
+                            "lineTypeId": 1,
+                            "name": "opening"
+                          },
+                          "favoriteTeamId": 348,
+                          "favoritePoints": -10.5,
+                          "favoriteMoney": "-110",
+                          "underdogMoney": "-110",
+                          "homeMoney": "+335",
+                          "awayMoney": "-435",
+                          "total": 40.0,
+                          "overMoney": "-110",
+                          "underMoney": "-110"
+                        },
+                        {
+                          "lineType": {
+                            "lineTypeId": 2,
+                            "name": "current"
+                          },
+                          "favoriteTeamId": 348,
+                          "favoritePoints": -9.5,
+                          "favoriteMoney": "-110",
+                          "underdogMoney": "-110",
+                          "homeMoney": "+340",
+                          "awayMoney": "-440",
+                          "total": 40.5,
+                          "overMoney": "-110",
+                          "underMoney": "-110"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "eventId": 2142051,
+                  "startDate": [
+                    {
+                      "year": 2019,
+                      "month": 12,
+                      "date": 15,
+                      "hour": 13,
+                      "minute": 0,
+                      "full": "2019-12-15T13:00:00",
+                      "dateType": "Local"
+                    },
+                    {
+                      "year": 2019,
+                      "month": 12,
+                      "date": 15,
+                      "hour": 18,
+                      "minute": 0,
+                      "full": "2019-12-15T18:00:00",
+                      "dateType": "UTC"
+                    }
+                  ],
+                  "teams": [
+                    {
+                      "teamId": 334,
+                      "rotation": 306,
+                      "location": "Detroit",
+                      "nickname": "Lions",
+                      "abbreviation": "Det",
+                      "teamLocationType": {
+                        "teamLocationTypeId": 1,
+                        "name": "home"
+                      }
+                    },
+                    {
+                      "teamId": 362,
+                      "rotation": 305,
+                      "location": "Tampa Bay",
+                      "nickname": "Buccaneers",
+                      "abbreviation": "TB",
+                      "teamLocationType": {
+                        "teamLocationTypeId": 2,
+                        "name": "away"
+                      }
+                    }
+                  ],
+                  "lines": [
+                    {
+                      "scope": {
+                        "scopeId": 1,
+                        "name": "Game"
+                      },
+                      "changeDate": [
+                        {
+                          "year": 2019,
+                          "month": 12,
+                          "date": 10,
+                          "hour": 10,
+                          "minute": 22,
+                          "full": "2019-12-10T10:22:15",
+                          "dateType": "Local"
+                        },
+                        {
+                          "year": 2019,
+                          "month": 12,
+                          "date": 10,
+                          "hour": 15,
+                          "minute": 22,
+                          "full": "2019-12-10T15:22:15",
+                          "dateType": "UTC"
+                        }
+                      ],
+                      "line": [
+                        {
+                          "lineType": {
+                            "lineTypeId": 1,
+                            "name": "opening"
+                          },
+                          "favoriteTeamId": 362,
+                          "favoritePoints": -4.0,
+                          "favoriteMoney": "-110",
+                          "underdogMoney": "-110",
+                          "homeMoney": "+175",
+                          "awayMoney": "-210",
+                          "total": 47.5,
+                          "overMoney": "-110",
+                          "underMoney": "-110"
+                        },
+                        {
+                          "lineType": {
+                            "lineTypeId": 2,
+                            "name": "current"
+                          },
+                          "favoriteTeamId": 362,
+                          "favoritePoints": -3.5,
+                          "favoriteMoney": "-110",
+                          "underdogMoney": "-110",
+                          "homeMoney": "+160",
+                          "awayMoney": "-190",
+                          "total": 47.5,
+                          "overMoney": "-110",
+                          "underMoney": "-110"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "eventId": 2142055,
+                  "startDate": [
+                    {
+                      "year": 2019,
+                      "month": 12,
+                      "date": 15,
+                      "hour": 12,
+                      "minute": 0,
+                      "full": "2019-12-15T12:00:00",
+                      "dateType": "Local"
+                    },
+                    {
+                      "year": 2019,
+                      "month": 12,
+                      "date": 15,
+                      "hour": 18,
+                      "minute": 0,
+                      "full": "2019-12-15T18:00:00",
+                      "dateType": "UTC"
+                    }
+                  ],
+                  "teams": [
+                    {
+                      "teamId": 335,
+                      "rotation": 310,
+                      "location": "Green Bay",
+                      "nickname": "Packers",
+                      "abbreviation": "GB",
+                      "teamLocationType": {
+                        "teamLocationTypeId": 1,
+                        "name": "home"
+                      }
+                    },
+                    {
+                      "teamId": 326,
+                      "rotation": 309,
+                      "location": "Chicago",
+                      "nickname": "Bears",
+                      "abbreviation": "Chi",
+                      "teamLocationType": {
+                        "teamLocationTypeId": 2,
+                        "name": "away"
+                      }
+                    }
+                  ],
+                  "lines": [
+                    {
+                      "scope": {
+                        "scopeId": 1,
+                        "name": "Game"
+                      },
+                      "changeDate": [
+                        {
+                          "year": 2019,
+                          "month": 12,
+                          "date": 10,
+                          "hour": 10,
+                          "minute": 22,
+                          "full": "2019-12-10T10:22:15",
+                          "dateType": "Local"
+                        },
+                        {
+                          "year": 2019,
+                          "month": 12,
+                          "date": 10,
+                          "hour": 15,
+                          "minute": 22,
+                          "full": "2019-12-10T15:22:15",
+                          "dateType": "UTC"
+                        }
+                      ],
+                      "line": [
+                        {
+                          "lineType": {
+                            "lineTypeId": 1,
+                            "name": "opening"
+                          },
+                          "favoriteTeamId": 335,
+                          "favoritePoints": -7.0,
+                          "favoriteMoney": "-110",
+                          "underdogMoney": "-110",
+                          "homeMoney": "-225",
+                          "awayMoney": "+185",
+                          "total": 41.0,
+                          "overMoney": "-110",
+                          "underMoney": "-110"
+                        },
+                        {
+                          "lineType": {
+                            "lineTypeId": 2,
+                            "name": "current"
+                          },
+                          "favoriteTeamId": 335,
+                          "favoritePoints": -4.5,
+                          "favoriteMoney": "-110",
+                          "underdogMoney": "-110",
+                          "homeMoney": "-220",
+                          "awayMoney": "+180",
+                          "total": 41.0,
+                          "overMoney": "-110",
+                          "underMoney": "-110"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "eventId": 2142058,
+                  "startDate": [
+                    {
+                      "year": 2019,
+                      "month": 12,
+                      "date": 15,
+                      "hour": 12,
+                      "minute": 0,
+                      "full": "2019-12-15T12:00:00",
+                      "dateType": "Local"
+                    },
+                    {
+                      "year": 2019,
+                      "month": 12,
+                      "date": 15,
+                      "hour": 18,
+                      "minute": 0,
+                      "full": "2019-12-15T18:00:00",
+                      "dateType": "UTC"
+                    }
+                  ],
+                  "teams": [
+                    {
+                      "teamId": 339,
+                      "rotation": 318,
+                      "location": "Kansas City",
+                      "nickname": "Chiefs",
+                      "abbreviation": "KC",
+                      "teamLocationType": {
+                        "teamLocationTypeId": 1,
+                        "name": "home"
+                      }
+                    },
+                    {
+                      "teamId": 332,
+                      "rotation": 317,
+                      "location": "Denver",
+                      "nickname": "Broncos",
+                      "abbreviation": "Den",
+                      "teamLocationType": {
+                        "teamLocationTypeId": 2,
+                        "name": "away"
+                      }
+                    }
+                  ],
+                  "lines": [
+                    {
+                      "scope": {
+                        "scopeId": 1,
+                        "name": "Game"
+                      },
+                      "changeDate": [
+                        {
+                          "year": 2019,
+                          "month": 12,
+                          "date": 10,
+                          "hour": 10,
+                          "minute": 22,
+                          "full": "2019-12-10T10:22:15",
+                          "dateType": "Local"
+                        },
+                        {
+                          "year": 2019,
+                          "month": 12,
+                          "date": 10,
+                          "hour": 15,
+                          "minute": 22,
+                          "full": "2019-12-10T15:22:15",
+                          "dateType": "UTC"
+                        }
+                      ],
+                      "line": [
+                        {
+                          "lineType": {
+                            "lineTypeId": 1,
+                            "name": "opening"
+                          },
+                          "favoriteTeamId": 339,
+                          "favoritePoints": -12.5,
+                          "favoriteMoney": "-110",
+                          "underdogMoney": "-110",
+                          "homeMoney": "-570",
+                          "awayMoney": "+420",
+                          "total": 46.5,
+                          "overMoney": "-110",
+                          "underMoney": "-110"
+                        },
+                        {
+                          "lineType": {
+                            "lineTypeId": 2,
+                            "name": "current"
+                          },
+                          "favoriteTeamId": 339,
+                          "favoritePoints": -10.0,
+                          "favoriteMoney": null,
+                          "underdogMoney": null,
+                          "homeMoney": null,
+                          "awayMoney": null,
+                          "total": 45.5,
+                          "overMoney": "-110",
+                          "underMoney": "-110"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "eventId": 2142061,
+                  "startDate": [
+                    {
+                      "year": 2019,
+                      "month": 12,
+                      "date": 15,
+                      "hour": 13,
+                      "minute": 0,
+                      "full": "2019-12-15T13:00:00",
+                      "dateType": "Local"
+                    },
+                    {
+                      "year": 2019,
+                      "month": 12,
+                      "date": 15,
+                      "hour": 18,
+                      "minute": 0,
+                      "full": "2019-12-15T18:00:00",
+                      "dateType": "UTC"
+                    }
+                  ],
+                  "teams": [
+                    {
+                      "teamId": 351,
+                      "rotation": 320,
+                      "location": "New York",
+                      "nickname": "Giants",
+                      "abbreviation": "NYG",
+                      "teamLocationType": {
+                        "teamLocationTypeId": 1,
+                        "name": "home"
+                      }
+                    },
+                    {
+                      "teamId": 345,
+                      "rotation": 319,
+                      "location": "Miami",
+                      "nickname": "Dolphins",
+                      "abbreviation": "Mia",
+                      "teamLocationType": {
+                        "teamLocationTypeId": 2,
+                        "name": "away"
+                      }
+                    }
+                  ],
+                  "lines": [
+                    {
+                      "scope": {
+                        "scopeId": 1,
+                        "name": "Game"
+                      },
+                      "changeDate": [
+                        {
+                          "year": 2019,
+                          "month": 12,
+                          "date": 10,
+                          "hour": 10,
+                          "minute": 22,
+                          "full": "2019-12-10T10:22:15",
+                          "dateType": "Local"
+                        },
+                        {
+                          "year": 2019,
+                          "month": 12,
+                          "date": 10,
+                          "hour": 15,
+                          "minute": 22,
+                          "full": "2019-12-10T15:22:15",
+                          "dateType": "UTC"
+                        }
+                      ],
+                      "line": [
+                        {
+                          "lineType": {
+                            "lineTypeId": 1,
+                            "name": "opening"
+                          },
+                          "favoriteTeamId": 351,
+                          "favoritePoints": -3.5,
+                          "favoriteMoney": "-110",
+                          "underdogMoney": "-110",
+                          "homeMoney": "-170",
+                          "awayMoney": "+145",
+                          "total": 48.0,
+                          "overMoney": "-110",
+                          "underMoney": "-110"
+                        },
+                        {
+                          "lineType": {
+                            "lineTypeId": 2,
+                            "name": "current"
+                          },
+                          "favoriteTeamId": 351,
+                          "favoritePoints": -3.5,
+                          "favoriteMoney": "-105",
+                          "underdogMoney": "-115",
+                          "homeMoney": "-185",
+                          "awayMoney": "+155",
+                          "total": 46.5,
+                          "overMoney": "-110",
+                          "underMoney": "-110"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "eventId": 2142069,
+                  "startDate": [
+                    {
+                      "year": 2019,
+                      "month": 12,
+                      "date": 15,
+                      "hour": 12,
+                      "minute": 0,
+                      "full": "2019-12-15T12:00:00",
+                      "dateType": "Local"
+                    },
+                    {
+                      "year": 2019,
+                      "month": 12,
+                      "date": 15,
+                      "hour": 18,
+                      "minute": 0,
+                      "full": "2019-12-15T18:00:00",
+                      "dateType": "UTC"
+                    }
+                  ],
+                  "teams": [
+                    {
+                      "teamId": 336,
+                      "rotation": 314,
+                      "location": "Tennessee",
+                      "nickname": "Titans",
+                      "abbreviation": "Ten",
+                      "teamLocationType": {
+                        "teamLocationTypeId": 1,
+                        "name": "home"
+                      }
+                    },
+                    {
+                      "teamId": 325,
+                      "rotation": 313,
+                      "location": "Houston",
+                      "nickname": "Texans",
+                      "abbreviation": "Hou",
+                      "teamLocationType": {
+                        "teamLocationTypeId": 2,
+                        "name": "away"
+                      }
+                    }
+                  ],
+                  "lines": [
+                    {
+                      "scope": {
+                        "scopeId": 1,
+                        "name": "Game"
+                      },
+                      "changeDate": [
+                        {
+                          "year": 2019,
+                          "month": 12,
+                          "date": 10,
+                          "hour": 10,
+                          "minute": 22,
+                          "full": "2019-12-10T10:22:15",
+                          "dateType": "Local"
+                        },
+                        {
+                          "year": 2019,
+                          "month": 12,
+                          "date": 10,
+                          "hour": 15,
+                          "minute": 22,
+                          "full": "2019-12-10T15:22:15",
+                          "dateType": "UTC"
+                        }
+                      ],
+                      "line": [
+                        {
+                          "lineType": {
+                            "lineTypeId": 1,
+                            "name": "opening"
+                          },
+                          "favoriteTeamId": 336,
+                          "favoritePoints": -2.5,
+                          "favoriteMoney": "-110",
+                          "underdogMoney": "-110",
+                          "homeMoney": "-170",
+                          "awayMoney": "+145",
+                          "total": 47.5,
+                          "overMoney": "-110",
+                          "underMoney": "-110"
+                        },
+                        {
+                          "lineType": {
+                            "lineTypeId": 2,
+                            "name": "current"
+                          },
+                          "favoriteTeamId": 336,
+                          "favoritePoints": -3.0,
+                          "favoriteMoney": "+100",
+                          "underdogMoney": "-120",
+                          "homeMoney": "-150",
+                          "awayMoney": "+130",
+                          "total": 50.0,
+                          "overMoney": "-110",
+                          "underMoney": "-110"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "eventId": 2142071,
+                  "startDate": [
+                    {
+                      "year": 2019,
+                      "month": 12,
+                      "date": 15,
+                      "hour": 13,
+                      "minute": 0,
+                      "full": "2019-12-15T13:00:00",
+                      "dateType": "Local"
+                    },
+                    {
+                      "year": 2019,
+                      "month": 12,
+                      "date": 15,
+                      "hour": 18,
+                      "minute": 0,
+                      "full": "2019-12-15T18:00:00",
+                      "dateType": "UTC"
+                    }
+                  ],
+                  "teams": [
+                    {
+                      "teamId": 363,
+                      "rotation": 308,
+                      "location": "Washington",
+                      "nickname": "Redskins",
+                      "abbreviation": "Was",
+                      "teamLocationType": {
+                        "teamLocationTypeId": 1,
+                        "name": "home"
+                      }
+                    },
+                    {
+                      "teamId": 354,
+                      "rotation": 307,
+                      "location": "Philadelphia",
+                      "nickname": "Eagles",
+                      "abbreviation": "Phi",
+                      "teamLocationType": {
+                        "teamLocationTypeId": 2,
+                        "name": "away"
+                      }
+                    }
+                  ],
+                  "lines": [
+                    {
+                      "scope": {
+                        "scopeId": 1,
+                        "name": "Game"
+                      },
+                      "changeDate": [
+                        {
+                          "year": 2019,
+                          "month": 12,
+                          "date": 10,
+                          "hour": 10,
+                          "minute": 22,
+                          "full": "2019-12-10T10:22:15",
+                          "dateType": "Local"
+                        },
+                        {
+                          "year": 2019,
+                          "month": 12,
+                          "date": 10,
+                          "hour": 15,
+                          "minute": 22,
+                          "full": "2019-12-10T15:22:15",
+                          "dateType": "UTC"
+                        }
+                      ],
+                      "line": [
+                        {
+                          "lineType": {
+                            "lineTypeId": 1,
+                            "name": "opening"
+                          },
+                          "favoriteTeamId": 354,
+                          "favoritePoints": -6.0,
+                          "favoriteMoney": "-110",
+                          "underdogMoney": "-110",
+                          "homeMoney": "+220",
+                          "awayMoney": "-270",
+                          "total": 40.0,
+                          "overMoney": "-110",
+                          "underMoney": "-110"
+                        },
+                        {
+                          "lineType": {
+                            "lineTypeId": 2,
+                            "name": "current"
+                          },
+                          "favoriteTeamId": 354,
+                          "favoritePoints": -4.5,
+                          "favoriteMoney": "-110",
+                          "underdogMoney": "-110",
+                          "homeMoney": "+175",
+                          "awayMoney": "-210",
+                          "total": 40.0,
+                          "overMoney": "-110",
+                          "underMoney": "-110"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "eventId": 2142074,
+                  "startDate": [
+                    {
+                      "year": 2019,
+                      "month": 12,
+                      "date": 15,
+                      "hour": 14,
+                      "minute": 5,
+                      "full": "2019-12-15T14:05:00",
+                      "dateType": "Local"
+                    },
+                    {
+                      "year": 2019,
+                      "month": 12,
+                      "date": 15,
+                      "hour": 21,
+                      "minute": 5,
+                      "full": "2019-12-15T21:05:00",
+                      "dateType": "UTC"
+                    }
+                  ],
+                  "teams": [
+                    {
+                      "teamId": 355,
+                      "rotation": 326,
+                      "location": "Arizona",
+                      "nickname": "Cardinals",
+                      "abbreviation": "Ari",
+                      "teamLocationType": {
+                        "teamLocationTypeId": 1,
+                        "name": "home"
+                      }
+                    },
+                    {
+                      "teamId": 329,
+                      "rotation": 325,
+                      "location": "Cleveland",
+                      "nickname": "Browns",
+                      "abbreviation": "Cle",
+                      "teamLocationType": {
+                        "teamLocationTypeId": 2,
+                        "name": "away"
+                      }
+                    }
+                  ],
+                  "lines": [
+                    {
+                      "scope": {
+                        "scopeId": 1,
+                        "name": "Game"
+                      },
+                      "changeDate": [
+                        {
+                          "year": 2019,
+                          "month": 12,
+                          "date": 10,
+                          "hour": 10,
+                          "minute": 22,
+                          "full": "2019-12-10T10:22:15",
+                          "dateType": "Local"
+                        },
+                        {
+                          "year": 2019,
+                          "month": 12,
+                          "date": 10,
+                          "hour": 15,
+                          "minute": 22,
+                          "full": "2019-12-10T15:22:15",
+                          "dateType": "UTC"
+                        }
+                      ],
+                      "line": [
+                        {
+                          "lineType": {
+                            "lineTypeId": 1,
+                            "name": "opening"
+                          },
+                          "favoriteTeamId": 329,
+                          "favoritePoints": -2.5,
+                          "favoriteMoney": "-110",
+                          "underdogMoney": "-110",
+                          "homeMoney": "+110",
+                          "awayMoney": "-130",
+                          "total": 47.0,
+                          "overMoney": "-110",
+                          "underMoney": "-110"
+                        },
+                        {
+                          "lineType": {
+                            "lineTypeId": 2,
+                            "name": "current"
+                          },
+                          "favoriteTeamId": 329,
+                          "favoritePoints": -2.5,
+                          "favoriteMoney": "-115",
+                          "underdogMoney": "-105",
+                          "homeMoney": "+125",
+                          "awayMoney": "-145",
+                          "total": 48.0,
+                          "overMoney": "-110",
+                          "underMoney": "-110"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "eventId": 2142088,
+                  "startDate": [
+                    {
+                      "year": 2019,
+                      "month": 12,
+                      "date": 15,
+                      "hour": 13,
+                      "minute": 5,
+                      "full": "2019-12-15T13:05:00",
+                      "dateType": "Local"
+                    },
+                    {
+                      "year": 2019,
+                      "month": 12,
+                      "date": 15,
+                      "hour": 21,
+                      "minute": 5,
+                      "full": "2019-12-15T21:05:00",
+                      "dateType": "UTC"
+                    }
+                  ],
+                  "teams": [
+                    {
+                      "teamId": 357,
+                      "rotation": 332,
+                      "location": "Los Angeles",
+                      "nickname": "Chargers",
+                      "abbreviation": "LAC",
+                      "teamLocationType": {
+                        "teamLocationTypeId": 1,
+                        "name": "home"
+                      }
+                    },
+                    {
+                      "teamId": 347,
+                      "rotation": 331,
+                      "location": "Minnesota",
+                      "nickname": "Vikings",
+                      "abbreviation": "Min",
+                      "teamLocationType": {
+                        "teamLocationTypeId": 2,
+                        "name": "away"
+                      }
+                    }
+                  ],
+                  "lines": [
+                    {
+                      "scope": {
+                        "scopeId": 1,
+                        "name": "Game"
+                      },
+                      "changeDate": [
+                        {
+                          "year": 2019,
+                          "month": 12,
+                          "date": 10,
+                          "hour": 10,
+                          "minute": 22,
+                          "full": "2019-12-10T10:22:15",
+                          "dateType": "Local"
+                        },
+                        {
+                          "year": 2019,
+                          "month": 12,
+                          "date": 10,
+                          "hour": 15,
+                          "minute": 22,
+                          "full": "2019-12-10T15:22:15",
+                          "dateType": "UTC"
+                        }
+                      ],
+                      "line": [
+                        {
+                          "lineType": {
+                            "lineTypeId": 1,
+                            "name": "opening"
+                          },
+                          "favoriteTeamId": 347,
+                          "favoritePoints": -3.0,
+                          "favoriteMoney": "-110",
+                          "underdogMoney": "-110",
+                          "homeMoney": "+130",
+                          "awayMoney": "-150",
+                          "total": 46.0,
+                          "overMoney": "-110",
+                          "underMoney": "-110"
+                        },
+                        {
+                          "lineType": {
+                            "lineTypeId": 2,
+                            "name": "current"
+                          },
+                          "favoriteTeamId": 347,
+                          "favoritePoints": -2.5,
+                          "favoriteMoney": "-110",
+                          "underdogMoney": "-110",
+                          "homeMoney": "+120",
+                          "awayMoney": "-140",
+                          "total": 44.5,
+                          "overMoney": "-110",
+                          "underMoney": "-110"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "eventId": 2142077,
+                  "startDate": [
+                    {
+                      "year": 2019,
+                      "month": 12,
+                      "date": 15,
+                      "hour": 13,
+                      "minute": 5,
+                      "full": "2019-12-15T13:05:00",
+                      "dateType": "Local"
+                    },
+                    {
+                      "year": 2019,
+                      "month": 12,
+                      "date": 15,
+                      "hour": 21,
+                      "minute": 5,
+                      "full": "2019-12-15T21:05:00",
+                      "dateType": "UTC"
+                    }
+                  ],
+                  "teams": [
+                    {
+                      "teamId": 341,
+                      "rotation": 324,
+                      "location": "Oakland",
+                      "nickname": "Raiders",
+                      "abbreviation": "Oak",
+                      "teamLocationType": {
+                        "teamLocationTypeId": 1,
+                        "name": "home"
+                      }
+                    },
+                    {
+                      "teamId": 365,
+                      "rotation": 323,
+                      "location": "Jacksonville",
+                      "nickname": "Jaguars",
+                      "abbreviation": "Jax",
+                      "teamLocationType": {
+                        "teamLocationTypeId": 2,
+                        "name": "away"
+                      }
+                    }
+                  ],
+                  "lines": [
+                    {
+                      "scope": {
+                        "scopeId": 1,
+                        "name": "Game"
+                      },
+                      "changeDate": [
+                        {
+                          "year": 2019,
+                          "month": 12,
+                          "date": 10,
+                          "hour": 10,
+                          "minute": 22,
+                          "full": "2019-12-10T10:22:15",
+                          "dateType": "Local"
+                        },
+                        {
+                          "year": 2019,
+                          "month": 12,
+                          "date": 10,
+                          "hour": 15,
+                          "minute": 22,
+                          "full": "2019-12-10T15:22:15",
+                          "dateType": "UTC"
+                        }
+                      ],
+                      "line": [
+                        {
+                          "lineType": {
+                            "lineTypeId": 1,
+                            "name": "opening"
+                          },
+                          "favoriteTeamId": 341,
+                          "favoritePoints": -4.0,
+                          "favoriteMoney": "-110",
+                          "underdogMoney": "-110",
+                          "homeMoney": "-250",
+                          "awayMoney": "+200",
+                          "total": 44.5,
+                          "overMoney": "-110",
+                          "underMoney": "-110"
+                        },
+                        {
+                          "lineType": {
+                            "lineTypeId": 2,
+                            "name": "current"
+                          },
+                          "favoriteTeamId": 341,
+                          "favoritePoints": -6.5,
+                          "favoriteMoney": "-110",
+                          "underdogMoney": "-110",
+                          "homeMoney": "-280",
+                          "awayMoney": "+230",
+                          "total": 45.5,
+                          "overMoney": "-110",
+                          "underMoney": "-110"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "eventId": 2142080,
+                  "startDate": [
+                    {
+                      "year": 2019,
+                      "month": 12,
+                      "date": 15,
+                      "hour": 15,
+                      "minute": 25,
+                      "full": "2019-12-15T15:25:00",
+                      "dateType": "Local"
+                    },
+                    {
+                      "year": 2019,
+                      "month": 12,
+                      "date": 15,
+                      "hour": 21,
+                      "minute": 25,
+                      "full": "2019-12-15T21:25:00",
+                      "dateType": "UTC"
+                    }
+                  ],
+                  "teams": [
+                    {
+                      "teamId": 331,
+                      "rotation": 330,
+                      "location": "Dallas",
+                      "nickname": "Cowboys",
+                      "abbreviation": "Dal",
+                      "teamLocationType": {
+                        "teamLocationTypeId": 1,
+                        "name": "home"
+                      }
+                    },
+                    {
+                      "teamId": 343,
+                      "rotation": 329,
+                      "location": "Los Angeles",
+                      "nickname": "Rams",
+                      "abbreviation": "LAR",
+                      "teamLocationType": {
+                        "teamLocationTypeId": 2,
+                        "name": "away"
+                      }
+                    }
+                  ],
+                  "lines": [
+                    {
+                      "scope": {
+                        "scopeId": 1,
+                        "name": "Game"
+                      },
+                      "changeDate": [
+                        {
+                          "year": 2019,
+                          "month": 12,
+                          "date": 10,
+                          "hour": 10,
+                          "minute": 22,
+                          "full": "2019-12-10T10:22:15",
+                          "dateType": "Local"
+                        },
+                        {
+                          "year": 2019,
+                          "month": 12,
+                          "date": 10,
+                          "hour": 15,
+                          "minute": 22,
+                          "full": "2019-12-10T15:22:15",
+                          "dateType": "UTC"
+                        }
+                      ],
+                      "line": [
+                        {
+                          "lineType": {
+                            "lineTypeId": 1,
+                            "name": "opening"
+                          },
+                          "favoriteTeamId": 331,
+                          "favoritePoints": -3.5,
+                          "favoriteMoney": "-110",
+                          "underdogMoney": "-110",
+                          "homeMoney": "-160",
+                          "awayMoney": "+135",
+                          "total": 47.0,
+                          "overMoney": "-110",
+                          "underMoney": "-110"
+                        },
+                        {
+                          "lineType": {
+                            "lineTypeId": 2,
+                            "name": "current"
+                          },
+                          "favoriteTeamId": 0,
+                          "favoritePoints": 0.0,
+                          "favoriteMoney": "-110",
+                          "underdogMoney": "-110",
+                          "homeMoney": "-110",
+                          "awayMoney": "-110",
+                          "total": 49.0,
+                          "overMoney": "-110",
+                          "underMoney": "-110"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "eventId": 2142085,
+                  "startDate": [
+                    {
+                      "year": 2019,
+                      "month": 12,
+                      "date": 15,
+                      "hour": 13,
+                      "minute": 25,
+                      "full": "2019-12-15T13:25:00",
+                      "dateType": "Local"
+                    },
+                    {
+                      "year": 2019,
+                      "month": 12,
+                      "date": 15,
+                      "hour": 21,
+                      "minute": 25,
+                      "full": "2019-12-15T21:25:00",
+                      "dateType": "UTC"
+                    }
+                  ],
+                  "teams": [
+                    {
+                      "teamId": 359,
+                      "rotation": 328,
+                      "location": "San Francisco",
+                      "nickname": "49ers",
+                      "abbreviation": "SF",
+                      "teamLocationType": {
+                        "teamLocationTypeId": 1,
+                        "name": "home"
+                      }
+                    },
+                    {
+                      "teamId": 323,
+                      "rotation": 327,
+                      "location": "Atlanta",
+                      "nickname": "Falcons",
+                      "abbreviation": "Atl",
+                      "teamLocationType": {
+                        "teamLocationTypeId": 2,
+                        "name": "away"
+                      }
+                    }
+                  ],
+                  "lines": [
+                    {
+                      "scope": {
+                        "scopeId": 1,
+                        "name": "Game"
+                      },
+                      "changeDate": [
+                        {
+                          "year": 2019,
+                          "month": 12,
+                          "date": 10,
+                          "hour": 10,
+                          "minute": 22,
+                          "full": "2019-12-10T10:22:15",
+                          "dateType": "Local"
+                        },
+                        {
+                          "year": 2019,
+                          "month": 12,
+                          "date": 10,
+                          "hour": 15,
+                          "minute": 22,
+                          "full": "2019-12-10T15:22:15",
+                          "dateType": "UTC"
+                        }
+                      ],
+                      "line": [
+                        {
+                          "lineType": {
+                            "lineTypeId": 1,
+                            "name": "opening"
+                          },
+                          "favoriteTeamId": 359,
+                          "favoritePoints": -11.5,
+                          "favoriteMoney": "-110",
+                          "underdogMoney": "-110",
+                          "homeMoney": "-540",
+                          "awayMoney": "+395",
+                          "total": 45.5,
+                          "overMoney": "-110",
+                          "underMoney": "-110"
+                        },
+                        {
+                          "lineType": {
+                            "lineTypeId": 2,
+                            "name": "current"
+                          },
+                          "favoriteTeamId": 359,
+                          "favoritePoints": -11.0,
+                          "favoriteMoney": "-110",
+                          "underdogMoney": "-110",
+                          "homeMoney": "-555",
+                          "awayMoney": "+405",
+                          "total": 47.0,
+                          "overMoney": "-110",
+                          "underMoney": "-110"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "eventId": 2142066,
+                  "startDate": [
+                    {
+                      "year": 2019,
+                      "month": 12,
+                      "date": 15,
+                      "hour": 20,
+                      "minute": 20,
+                      "full": "2019-12-15T20:20:00",
+                      "dateType": "Local"
+                    },
+                    {
+                      "year": 2019,
+                      "month": 12,
+                      "date": 16,
+                      "hour": 1,
+                      "minute": 20,
+                      "full": "2019-12-16T01:20:00",
+                      "dateType": "UTC"
+                    }
+                  ],
+                  "teams": [
+                    {
+                      "teamId": 356,
+                      "rotation": 322,
+                      "location": "Pittsburgh",
+                      "nickname": "Steelers",
+                      "abbreviation": "Pit",
+                      "teamLocationType": {
+                        "teamLocationTypeId": 1,
+                        "name": "home"
+                      }
+                    },
+                    {
+                      "teamId": 324,
+                      "rotation": 321,
+                      "location": "Buffalo",
+                      "nickname": "Bills",
+                      "abbreviation": "Buf",
+                      "teamLocationType": {
+                        "teamLocationTypeId": 2,
+                        "name": "away"
+                      }
+                    }
+                  ],
+                  "lines": [
+                    {
+                      "scope": {
+                        "scopeId": 1,
+                        "name": "Game"
+                      },
+                      "changeDate": [
+                        {
+                          "year": 2019,
+                          "month": 12,
+                          "date": 10,
+                          "hour": 10,
+                          "minute": 22,
+                          "full": "2019-12-10T10:22:15",
+                          "dateType": "Local"
+                        },
+                        {
+                          "year": 2019,
+                          "month": 12,
+                          "date": 10,
+                          "hour": 15,
+                          "minute": 22,
+                          "full": "2019-12-10T15:22:15",
+                          "dateType": "UTC"
+                        }
+                      ],
+                      "line": [
+                        {
+                          "lineType": {
+                            "lineTypeId": 1,
+                            "name": "opening"
+                          },
+                          "favoriteTeamId": 324,
+                          "favoritePoints": -1.0,
+                          "favoriteMoney": "-110",
+                          "underdogMoney": "-110",
+                          "homeMoney": "-130",
+                          "awayMoney": "+110",
+                          "total": 37.0,
+                          "overMoney": "-110",
+                          "underMoney": "-110"
+                        },
+                        {
+                          "lineType": {
+                            "lineTypeId": 2,
+                            "name": "current"
+                          },
+                          "favoriteTeamId": 356,
+                          "favoritePoints": -2.0,
+                          "favoriteMoney": "-115",
+                          "underdogMoney": "-105",
+                          "homeMoney": "-135",
+                          "awayMoney": "+115",
+                          "total": 36.5,
+                          "overMoney": "-110",
+                          "underMoney": "-110"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "eventId": 2142090,
+                  "startDate": [
+                    {
+                      "year": 2019,
+                      "month": 12,
+                      "date": 16,
+                      "hour": 19,
+                      "minute": 15,
+                      "full": "2019-12-16T19:15:00",
+                      "dateType": "Local"
+                    },
+                    {
+                      "year": 2019,
+                      "month": 12,
+                      "date": 17,
+                      "hour": 1,
+                      "minute": 15,
+                      "full": "2019-12-17T01:15:00",
+                      "dateType": "UTC"
+                    }
+                  ],
+                  "teams": [
+                    {
+                      "teamId": 350,
+                      "rotation": 334,
+                      "location": "New Orleans",
+                      "nickname": "Saints",
+                      "abbreviation": "NO",
+                      "teamLocationType": {
+                        "teamLocationTypeId": 1,
+                        "name": "home"
+                      }
+                    },
+                    {
+                      "teamId": 338,
+                      "rotation": 333,
+                      "location": "Indianapolis",
+                      "nickname": "Colts",
+                      "abbreviation": "Ind",
+                      "teamLocationType": {
+                        "teamLocationTypeId": 2,
+                        "name": "away"
+                      }
+                    }
+                  ],
+                  "lines": [
+                    {
+                      "scope": {
+                        "scopeId": 1,
+                        "name": "Game"
+                      },
+                      "changeDate": [
+                        {
+                          "year": 2019,
+                          "month": 12,
+                          "date": 10,
+                          "hour": 10,
+                          "minute": 22,
+                          "full": "2019-12-10T10:22:15",
+                          "dateType": "Local"
+                        },
+                        {
+                          "year": 2019,
+                          "month": 12,
+                          "date": 10,
+                          "hour": 15,
+                          "minute": 22,
+                          "full": "2019-12-10T15:22:15",
+                          "dateType": "UTC"
+                        }
+                      ],
+                      "line": [
+                        {
+                          "lineType": {
+                            "lineTypeId": 1,
+                            "name": "opening"
+                          },
+                          "favoriteTeamId": 350,
+                          "favoritePoints": -8.5,
+                          "favoriteMoney": "-110",
+                          "underdogMoney": "-110",
+                          "homeMoney": "-370",
+                          "awayMoney": "+295",
+                          "total": 44.0,
+                          "overMoney": "-110",
+                          "underMoney": "-110"
+                        },
+                        {
+                          "lineType": {
+                            "lineTypeId": 2,
+                            "name": "current"
+                          },
+                          "favoriteTeamId": 350,
+                          "favoritePoints": -9.0,
+                          "favoriteMoney": "-110",
+                          "underdogMoney": "-110",
+                          "homeMoney": "-425",
+                          "awayMoney": "+325",
+                          "total": 46.0,
+                          "overMoney": "-110",
+                          "underMoney": "-110"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

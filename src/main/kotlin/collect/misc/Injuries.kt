@@ -1,4 +1,4 @@
-package collect
+package collect.misc
 
 import org.json.JSONArray
 import org.json.JSONObject

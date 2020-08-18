@@ -1,4 +1,4 @@
-package collect
+package collect.misc
 
 import org.json.JSONException
 import org.json.JSONObject

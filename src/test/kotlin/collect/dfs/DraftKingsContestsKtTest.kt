@@ -1,7 +1,9 @@
 @file:Suppress("UNCHECKED_CAST")
 
-package collect
+package collect.dfs
 
+import collect.dfs.getDraftKingsContestData
+import collect.dfs.getValidDraftKingsContests
 import org.json.JSONObject
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test

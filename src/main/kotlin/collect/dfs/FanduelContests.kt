@@ -1,4 +1,4 @@
-package collect
+package collect.dfs
 
 import org.json.JSONObject
 import org.json.XML

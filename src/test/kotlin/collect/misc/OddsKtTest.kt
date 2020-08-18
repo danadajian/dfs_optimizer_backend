@@ -1,4 +1,4 @@
-package collect
+package collect.misc
 
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test

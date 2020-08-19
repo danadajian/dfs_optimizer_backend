@@ -1,1 +1,685 @@
-{}
+{
+  "status": "OK",
+  "recordCount": 1,
+  "startTimestamp": "2020-08-19T14:47:57.9439667Z",
+  "endTimestamp": "2020-08-19T14:47:58.8190451Z",
+  "timeTaken": 0.8750783999999999,
+  "apiResults": [
+    {
+      "sportId": 2,
+      "name": "Baseball",
+      "league": {
+        "leagueId": 7,
+        "name": "Major League Baseball",
+        "abbreviation": "MLB",
+        "displayName": "Major League Baseball",
+        "season": {
+          "season": 2020,
+          "name": "2020 MLB Season",
+          "isActive": true,
+          "eventType": [
+            {
+              "eventTypeId": 1,
+              "name": "Regular Season",
+              "fantasyProjections": {
+                "eventId": 2246540,
+                "teams": [
+                  {
+                    "teamId": 225,
+                    "batters": [
+                      {
+                        "playerId": 737615,
+                        "battingSlot": 1,
+                        "atBats": "4.26783",
+                        "singles": "0.63288",
+                        "doubles": "0.20878",
+                        "triples": "0.00654",
+                        "homeRuns": "0.13735",
+                        "runsBattedIn": "0.43311",
+                        "runs": "0.69441",
+                        "walks": "0.44051",
+                        "hitByPitch": "0.16752",
+                        "stolenBases": "0.01091",
+                        "caughtStealing": "0.00727",
+                        "outs": "3.28228",
+                        "fantasyProjections": [
+                          {
+                            "siteId": 1,
+                            "name": "DraftKings (draftkings.com)",
+                            "salary": "3700",
+                            "points": "7.89401",
+                            "position": "C"
+                          },
+                          {
+                            "siteId": 2,
+                            "name": "FanDuel (fanduel.com)",
+                            "salary": "3500",
+                            "points": "10.48593",
+                            "position": "C"
+                          }
+                        ]
+                      },
+                      {
+                        "playerId": 659463,
+                        "battingSlot": 2,
+                        "atBats": "4.38443",
+                        "singles": "0.64659",
+                        "doubles": "0.24881",
+                        "triples": "0.01903",
+                        "homeRuns": "0.15808",
+                        "runsBattedIn": "0.48212",
+                        "runs": "0.64474",
+                        "walks": "0.213",
+                        "hitByPitch": "0.04785",
+                        "stolenBases": "0.0338",
+                        "caughtStealing": "0.01582",
+                        "outs": "3.31192",
+                        "fantasyProjections": [
+                          {
+                            "siteId": 1,
+                            "name": "DraftKings (draftkings.com)",
+                            "salary": "4300",
+                            "points": "7.86128",
+                            "position": "OF"
+                          },
+                          {
+                            "siteId": 2,
+                            "name": "FanDuel (fanduel.com)",
+                            "salary": "6500",
+                            "points": "10.2368",
+                            "position": "OF"
+                          }
+                        ]
+                      },
+                      {
+                        "playerId": 657980,
+                        "battingSlot": 3,
+                        "atBats": "4.05829",
+                        "singles": "0.6343",
+                        "doubles": "0.20449",
+                        "triples": "0.01677",
+                        "homeRuns": "0.115",
+                        "runsBattedIn": "0.58733",
+                        "runs": "0.56539",
+                        "walks": "0.43833",
+                        "hitByPitch": "0.02445",
+                        "stolenBases": "0.01955",
+                        "caughtStealing": "0.0108",
+                        "outs": "3.08773",
+                        "fantasyProjections": [
+                          {
+                            "siteId": 1,
+                            "name": "DraftKings (draftkings.com)",
+                            "salary": "3700",
+                            "points": "7.53826",
+                            "position": "3B"
+                          },
+                          {
+                            "siteId": 2,
+                            "name": "FanDuel (fanduel.com)",
+                            "salary": "6000",
+                            "points": "10.03131",
+                            "position": "3B"
+                          }
+                        ]
+                      },
+                      {
+                        "playerId": 596834,
+                        "battingSlot": 4,
+                        "atBats": "4.10593",
+                        "singles": "0.56685",
+                        "doubles": "0.19866",
+                        "triples": "0.00818",
+                        "homeRuns": "0.20159",
+                        "runsBattedIn": "0.65146",
+                        "runs": "0.55321",
+                        "walks": "0.27979",
+                        "hitByPitch": "0.05839",
+                        "stolenBases": "0.01904",
+                        "caughtStealing": "0.01052",
+                        "outs": "3.13064",
+                        "fantasyProjections": [
+                          {
+                            "siteId": 1,
+                            "name": "DraftKings (draftkings.com)",
+                            "salary": "4200",
+                            "points": "7.95609",
+                            "position": "1B/3B"
+                          },
+                          {
+                            "siteId": 2,
+                            "name": "FanDuel (fanduel.com)",
+                            "salary": "6000",
+                            "points": "10.56437",
+                            "position": "1B"
+                          }
+                        ]
+                      },
+                      {
+                        "playerId": 599084,
+                        "battingSlot": 5,
+                        "atBats": "3.99654",
+                        "singles": "0.65083",
+                        "doubles": "0.19273",
+                        "triples": "0.01061",
+                        "homeRuns": "0.11735",
+                        "runsBattedIn": "0.55394",
+                        "runs": "0.51819",
+                        "walks": "0.28835",
+                        "hitByPitch": "0.04375",
+                        "stolenBases": "0.01518",
+                        "caughtStealing": "0.00892",
+                        "outs": "3.02503",
+                        "fantasyProjections": [
+                          {
+                            "siteId": 1,
+                            "name": "DraftKings (draftkings.com)",
+                            "salary": "4300",
+                            "points": "7.05888",
+                            "position": "C"
+                          },
+                          {
+                            "siteId": 2,
+                            "name": "FanDuel (fanduel.com)",
+                            "salary": "5500",
+                            "points": "9.29694",
+                            "position": "C"
+                          }
+                        ]
+                      },
+                      {
+                        "playerId": 597794,
+                        "battingSlot": 6,
+                        "atBats": "3.84656",
+                        "singles": "0.64353",
+                        "doubles": "0.21197",
+                        "triples": "0.01359",
+                        "homeRuns": "0.10481",
+                        "runsBattedIn": "0.53194",
+                        "runs": "0.49738",
+                        "walks": "0.32742",
+                        "hitByPitch": "0.04382",
+                        "stolenBases": "0.04839",
+                        "caughtStealing": "0.01943",
+                        "outs": "2.87266",
+                        "fantasyProjections": [
+                          {
+                            "siteId": 1,
+                            "name": "DraftKings (draftkings.com)",
+                            "salary": "3800",
+                            "points": "7.19033",
+                            "position": "OF"
+                          },
+                          {
+                            "siteId": 2,
+                            "name": "FanDuel (fanduel.com)",
+                            "salary": "3000",
+                            "points": "9.43991",
+                            "position": "OF"
+                          }
+                        ]
+                      },
+                      {
+                        "playerId": 708988,
+                        "battingSlot": 7,
+                        "atBats": "3.8599",
+                        "singles": "0.48465",
+                        "doubles": "0.17307",
+                        "triples": "0.01618",
+                        "homeRuns": "0.11572",
+                        "runsBattedIn": "0.41394",
+                        "runs": "0.39008",
+                        "walks": "0.20319",
+                        "hitByPitch": "0.00946",
+                        "stolenBases": "0.02204",
+                        "caughtStealing": "0.01137",
+                        "outs": "3.07028",
+                        "fantasyProjections": [
+                          {
+                            "siteId": 1,
+                            "name": "DraftKings (draftkings.com)",
+                            "salary": "2400",
+                            "points": "5.74948",
+                            "position": "3B/SS"
+                          },
+                          {
+                            "siteId": 2,
+                            "name": "FanDuel (fanduel.com)",
+                            "salary": "3000",
+                            "points": "7.49387",
+                            "position": "3B"
+                          }
+                        ]
+                      },
+                      {
+                        "playerId": 873639,
+                        "battingSlot": 8,
+                        "atBats": "3.68686",
+                        "singles": "0.53654",
+                        "doubles": "0.15925",
+                        "triples": "0.04287",
+                        "homeRuns": "0.06394",
+                        "runsBattedIn": "0.38232",
+                        "runs": "0.39205",
+                        "walks": "0.25524",
+                        "hitByPitch": "0.0335",
+                        "stolenBases": "0.07302",
+                        "caughtStealing": "0.02476",
+                        "outs": "2.88427",
+                        "fantasyProjections": [
+                          {
+                            "siteId": 1,
+                            "name": "DraftKings (draftkings.com)",
+                            "salary": "2700",
+                            "points": "5.87955",
+                            "position": "OF"
+                          },
+                          {
+                            "siteId": 2,
+                            "name": "FanDuel (fanduel.com)",
+                            "salary": "3000",
+                            "points": "7.61525",
+                            "position": "OF"
+                          }
+                        ]
+                      },
+                      {
+                        "playerId": 658104,
+                        "battingSlot": 9,
+                        "atBats": "3.6461",
+                        "singles": "0.5059",
+                        "doubles": "0.16534",
+                        "triples": "0.02333",
+                        "homeRuns": "0.09155",
+                        "runsBattedIn": "0.36761",
+                        "runs": "0.39876",
+                        "walks": "0.17501",
+                        "hitByPitch": "0.03793",
+                        "stolenBases": "0.10387",
+                        "caughtStealing": "0.0303",
+                        "outs": "2.85998",
+                        "fantasyProjections": [
+                          {
+                            "siteId": 1,
+                            "name": "DraftKings (draftkings.com)",
+                            "salary": "3100",
+                            "points": "5.92451",
+                            "position": "2B/SS"
+                          },
+                          {
+                            "siteId": 2,
+                            "name": "FanDuel (fanduel.com)",
+                            "salary": "3000",
+                            "points": "7.64302",
+                            "position": "3B"
+                          }
+                        ]
+                      }
+                    ],
+                    "pitchers": [
+                      {
+                        "playerId": 454596,
+                        "inningsPitched": "5.1963",
+                        "strikeouts": "4.3907",
+                        "wins": "0.31892",
+                        "qualityStarts": "0.35166",
+                        "earnedRuns": "2.77136",
+                        "hits": "5.24501",
+                        "walks": "0.88739",
+                        "hitBatsmen": "0.27246",
+                        "completeGames": "0.0",
+                        "shutouts": "0.0",
+                        "noHitters": "0.0",
+                        "fantasyProjections": [
+                          {
+                            "siteId": 1,
+                            "name": "DraftKings (draftkings.com)",
+                            "salary": "7500",
+                            "points": "12.36312",
+                            "position": "SP"
+                          },
+                          {
+                            "siteId": 2,
+                            "name": "FanDuel (fanduel.com)",
+                            "salary": "7200",
+                            "points": "24.27396",
+                            "position": "P"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "teamId": 238,
+                    "batters": [
+                      {
+                        "playerId": 738582,
+                        "battingSlot": 1,
+                        "atBats": "4.21561",
+                        "singles": "0.61631",
+                        "doubles": "0.18583",
+                        "triples": "0.02122",
+                        "homeRuns": "0.1743",
+                        "runsBattedIn": "0.46564",
+                        "runs": "0.74657",
+                        "walks": "0.49273",
+                        "hitByPitch": "0.03948",
+                        "stolenBases": "0.06569",
+                        "caughtStealing": "0.02471",
+                        "outs": "3.21795",
+                        "fantasyProjections": [
+                          {
+                            "siteId": 1,
+                            "name": "DraftKings (draftkings.com)",
+                            "salary": "5200",
+                            "points": "8.50813",
+                            "position": "2B/OF"
+                          },
+                          {
+                            "siteId": 2,
+                            "name": "FanDuel (fanduel.com)",
+                            "salary": "7500",
+                            "points": "11.25602",
+                            "position": "2B"
+                          }
+                        ]
+                      },
+                      {
+                        "playerId": 500734,
+                        "battingSlot": 2,
+                        "atBats": "4.398",
+                        "singles": "0.59112",
+                        "doubles": "0.26178",
+                        "triples": "0.01956",
+                        "homeRuns": "0.27283",
+                        "runsBattedIn": "0.5634",
+                        "runs": "0.75344",
+                        "walks": "0.19943",
+                        "hitByPitch": "0.05526",
+                        "stolenBases": "0.0311",
+                        "caughtStealing": "0.01495",
+                        "outs": "3.25272",
+                        "fantasyProjections": [
+                          {
+                            "siteId": 1,
+                            "name": "DraftKings (draftkings.com)",
+                            "salary": "3900",
+                            "points": "9.2656",
+                            "position": "OF"
+                          },
+                          {
+                            "siteId": 2,
+                            "name": "FanDuel (fanduel.com)",
+                            "salary": "5500",
+                            "points": "12.12762",
+                            "position": "OF"
+                          }
+                        ]
+                      },
+                      {
+                        "playerId": 578040,
+                        "battingSlot": 3,
+                        "atBats": "4.12422",
+                        "singles": "0.53999",
+                        "doubles": "0.18337",
+                        "triples": "0.00842",
+                        "homeRuns": "0.16754",
+                        "runsBattedIn": "0.56958",
+                        "runs": "0.5483",
+                        "walks": "0.3724",
+                        "hitByPitch": "0.04485",
+                        "stolenBases": "0.03731",
+                        "caughtStealing": "0.01678",
+                        "outs": "3.2249",
+                        "fantasyProjections": [
+                          {
+                            "siteId": 1,
+                            "name": "DraftKings (draftkings.com)",
+                            "salary": "3900",
+                            "points": "7.53639",
+                            "position": "1B/3B"
+                          },
+                          {
+                            "siteId": 2,
+                            "name": "FanDuel (fanduel.com)",
+                            "salary": "4000",
+                            "points": "10.03015",
+                            "position": "3B"
+                          }
+                        ]
+                      },
+                      {
+                        "playerId": 920245,
+                        "battingSlot": 4,
+                        "atBats": "4.07499",
+                        "singles": "0.75792",
+                        "doubles": "0.23977",
+                        "triples": "0.00981",
+                        "homeRuns": "0.18806",
+                        "runsBattedIn": "0.7536",
+                        "runs": "0.63995",
+                        "walks": "0.31072",
+                        "hitByPitch": "0.03306",
+                        "stolenBases": "0.0319",
+                        "caughtStealing": "0.01498",
+                        "outs": "2.87943",
+                        "fantasyProjections": [
+                          {
+                            "siteId": 1,
+                            "name": "DraftKings (draftkings.com)",
+                            "salary": "4700",
+                            "points": "9.06585",
+                            "position": "1B"
+                          },
+                          {
+                            "siteId": 2,
+                            "name": "FanDuel (fanduel.com)",
+                            "salary": "5000",
+                            "points": "11.96557",
+                            "position": "1B"
+                          }
+                        ]
+                      },
+                      {
+                        "playerId": 738162,
+                        "battingSlot": 5,
+                        "atBats": "4.01588",
+                        "singles": "0.66138",
+                        "doubles": "0.22596",
+                        "triples": "0.01099",
+                        "homeRuns": "0.13741",
+                        "runsBattedIn": "0.58785",
+                        "runs": "0.5499",
+                        "walks": "0.26901",
+                        "hitByPitch": "0.10229",
+                        "stolenBases": "0.02834",
+                        "caughtStealing": "0.01372",
+                        "outs": "2.98014",
+                        "fantasyProjections": [
+                          {
+                            "siteId": 1,
+                            "name": "DraftKings (draftkings.com)",
+                            "salary": "3900",
+                            "points": "7.73576",
+                            "position": "C"
+                          },
+                          {
+                            "siteId": 2,
+                            "name": "FanDuel (fanduel.com)",
+                            "salary": "3500",
+                            "points": "10.18883",
+                            "position": "C"
+                          }
+                        ]
+                      },
+                      {
+                        "playerId": 908697,
+                        "battingSlot": 6,
+                        "atBats": "4.04453",
+                        "singles": "0.66142",
+                        "doubles": "0.22801",
+                        "triples": "0.01743",
+                        "homeRuns": "0.18135",
+                        "runsBattedIn": "0.56203",
+                        "runs": "0.52551",
+                        "walks": "0.12946",
+                        "hitByPitch": "0.05599",
+                        "stolenBases": "0.02721",
+                        "caughtStealing": "0.01324",
+                        "outs": "2.95632",
+                        "fantasyProjections": [
+                          {
+                            "siteId": 1,
+                            "name": "DraftKings (draftkings.com)",
+                            "salary": "4400",
+                            "points": "7.75928",
+                            "position": "OF"
+                          },
+                          {
+                            "siteId": 2,
+                            "name": "FanDuel (fanduel.com)",
+                            "salary": "3500",
+                            "points": "10.05374",
+                            "position": "OF"
+                          }
+                        ]
+                      },
+                      {
+                        "playerId": 549169,
+                        "battingSlot": 7,
+                        "atBats": "3.86258",
+                        "singles": "0.61734",
+                        "doubles": "0.22865",
+                        "triples": "0.01142",
+                        "homeRuns": "0.14454",
+                        "runsBattedIn": "0.51179",
+                        "runs": "0.48228",
+                        "walks": "0.20051",
+                        "hitByPitch": "0.03725",
+                        "stolenBases": "0.01439",
+                        "caughtStealing": "0.00846",
+                        "outs": "2.86063",
+                        "fantasyProjections": [
+                          {
+                            "siteId": 1,
+                            "name": "DraftKings (draftkings.com)",
+                            "salary": "2700",
+                            "points": "7.06764",
+                            "position": "2B/3B"
+                          },
+                          {
+                            "siteId": 2,
+                            "name": "FanDuel (fanduel.com)",
+                            "salary": "3000",
+                            "points": "9.19536",
+                            "position": "3B"
+                          }
+                        ]
+                      },
+                      {
+                        "playerId": 657953,
+                        "battingSlot": 8,
+                        "atBats": "3.72617",
+                        "singles": "0.53534",
+                        "doubles": "0.16431",
+                        "triples": "0.00637",
+                        "homeRuns": "0.09505",
+                        "runsBattedIn": "0.38863",
+                        "runs": "0.39851",
+                        "walks": "0.21593",
+                        "hitByPitch": "0.0767",
+                        "stolenBases": "0.08922",
+                        "caughtStealing": "0.02801",
+                        "outs": "2.9251",
+                        "fantasyProjections": [
+                          {
+                            "siteId": 1,
+                            "name": "DraftKings (draftkings.com)",
+                            "salary": "2900",
+                            "points": "6.03467",
+                            "position": "OF"
+                          },
+                          {
+                            "siteId": 2,
+                            "name": "FanDuel (fanduel.com)",
+                            "salary": "3000",
+                            "points": "7.83846",
+                            "position": "OF"
+                          }
+                        ]
+                      },
+                      {
+                        "playerId": 918188,
+                        "battingSlot": 9,
+                        "atBats": "3.64997",
+                        "singles": "0.68721",
+                        "doubles": "0.15486",
+                        "triples": "0.02058",
+                        "homeRuns": "0.05692",
+                        "runsBattedIn": "0.39488",
+                        "runs": "0.42834",
+                        "walks": "0.17114",
+                        "hitByPitch": "0.02701",
+                        "stolenBases": "0.03962",
+                        "caughtStealing": "0.01654",
+                        "outs": "2.7304",
+                        "fantasyProjections": [
+                          {
+                            "siteId": 1,
+                            "name": "DraftKings (draftkings.com)",
+                            "salary": "2300",
+                            "points": "5.81061",
+                            "position": "SS"
+                          },
+                          {
+                            "siteId": 2,
+                            "name": "FanDuel (fanduel.com)",
+                            "salary": "3000",
+                            "points": "7.44399",
+                            "position": "SS"
+                          }
+                        ]
+                      }
+                    ],
+                    "pitchers": [
+                      {
+                        "playerId": 454939,
+                        "inningsPitched": "5.35587",
+                        "strikeouts": "5.60474",
+                        "wins": "0.33379",
+                        "qualityStarts": "0.37376",
+                        "earnedRuns": "2.85646",
+                        "hits": "4.95576",
+                        "walks": "1.48415",
+                        "hitBatsmen": "0.27772",
+                        "completeGames": "0.0",
+                        "shutouts": "0.0",
+                        "noHitters": "0.0",
+                        "fantasyProjections": [
+                          {
+                            "siteId": 1,
+                            "name": "DraftKings (draftkings.com)",
+                            "salary": "8100",
+                            "points": "14.85184",
+                            "position": "SP"
+                          },
+                          {
+                            "siteId": 2,
+                            "name": "FanDuel (fanduel.com)",
+                            "salary": "6500",
+                            "points": "28.31792",
+                            "position": "P"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

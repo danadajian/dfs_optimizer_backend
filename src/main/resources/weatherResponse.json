@@ -170,6 +170,90 @@
                       ]
                     }
                   ]
+                },
+                {
+                  "eventId": 2246540,
+                  "forecasts": [
+                    {
+                      "forecastDate": [
+                        {
+                          "year": 2020,
+                          "month": 7,
+                          "date": 28,
+                          "hour": 18,
+                          "minute": 10,
+                          "full": "2020-07-28T18:10:00",
+                          "dateType": "Eastern"
+                        },
+                        {
+                          "year": 2020,
+                          "month": 7,
+                          "date": 28,
+                          "hour": 22,
+                          "minute": 10,
+                          "full": "2020-07-28T22:10:00",
+                          "dateType": "UTC"
+                        }
+                      ],
+                      "condition": "Mostly Sunny",
+                      "temperature": [
+                        {
+                          "temperatureScaleId": 1,
+                          "name": "Fahrenheit",
+                          "degrees": 85
+                        },
+                        {
+                          "temperatureScaleId": 2,
+                          "name": "Celsius",
+                          "degrees": 29.4
+                        }
+                      ],
+                      "precipitation": " 0.03",
+                      "humidity": " 0.71",
+                      "dewpoint": [
+                        {
+                          "temperatureScaleId": 1,
+                          "name": "Fahrenheit",
+                          "degrees": 75
+                        },
+                        {
+                          "temperatureScaleId": 2,
+                          "name": "Celsius",
+                          "degrees": 23.9
+                        }
+                      ],
+                      "wind": {
+                        "mph": 7,
+                        "direction": "E",
+                        "degrees": 100
+                      },
+                      "cloudCover": " 0.29",
+                      "windChill": [
+                        {
+                          "temperatureScaleId": 1,
+                          "name": "Fahrenheit",
+                          "degrees": 85
+                        },
+                        {
+                          "temperatureScaleId": 2,
+                          "name": "Celsius",
+                          "degrees": 29.4
+                        }
+                      ],
+                      "heatIndex": [
+                        {
+                          "temperatureScaleId": 1,
+                          "name": "Fahrenheit",
+                          "degrees": 94
+                        },
+                        {
+                          "temperatureScaleId": 2,
+                          "name": "Celsius",
+                          "degrees": 34.4
+                        }
+                      ]
+                    }
+                  ]
                 }
               ]
             }

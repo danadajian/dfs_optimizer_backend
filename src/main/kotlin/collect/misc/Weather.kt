@@ -6,12 +6,12 @@ import kotlin.math.roundToInt
 
 fun getWeatherData(sport: String, dataGetter: (sport: String) -> String): Map<Int, Map<String, String>> {
     val apiResponse: String = dataGetter(sport)
-    if (apiResponse.isNotEmpty()) {
+    return if (apiResponse.isEmpty()) mapOf() else {
         try {
             val forecastArray = JSONObject(apiResponse).getJSONArray("apiResults")
                     .getJSONObject(0).getJSONObject("league").getJSONObject("season")
                     .getJSONArray("eventType").getJSONObject(0).getJSONArray("weatherForecasts")
-            return forecastArray.map {
+            forecastArray.map {
                 it as JSONObject
                 val eventId = it.getInt("eventId")
                 val forecast = it.getJSONArray("forecasts").getJSONObject(0)
@@ -24,7 +24,7 @@ fun getWeatherData(sport: String, dataGetter: (sport: String) -> String): Map<In
             }.toMap()
         } catch (e: JSONException) {
             e.printStackTrace()
+            mapOf()
         }
     }
-    return mapOf()
 }

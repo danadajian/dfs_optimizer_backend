@@ -23,33 +23,46 @@ fun buildProjectionsMap(
                 player as JSONObject
                 val playerId = player.getInt("playerId")
                 participantsData.containsKey(playerId)
-            }.map { player ->
-                player as JSONObject
-                val playerId = player.getInt("playerId")
-                val eventOddsData = oddsData.getOrDefault(eventId, mapOf())
-                val spreadMultiplier = if ((eventOddsData.getOrDefault("favoriteTeamId", 0)) as Int == teamId) 1 else -1
-                val spreadSign = if ((eventOddsData.getOrDefault("favoriteTeamId", 0)) as Int == teamId) "" else "+"
-                val fantasyProjections = player.getJSONArray("fantasyProjections")
-                val draftKingsProjection = (fantasyProjections.find {
-                    it as JSONObject
-                    it.getString("name").contains("DraftKings")
-                } as? JSONObject)?.getString("points")?.toDouble()
-                val fanduelProjection = (fantasyProjections.find {
-                    it as JSONObject
-                    it.getString("name").contains("FanDuel")
-                } as? JSONObject)?.getString("points")?.toDouble()
+            }.map { playerJson ->
+                playerJson as JSONObject
+                val playerId = playerJson.getInt("playerId")
                 playerId to mapOf(
                         "name" to participantsData.getValue(playerId)["name"],
                         "team" to participantsData.getValue(playerId)["team"],
-                        "opponent" to eventData.getValue(eventId)[teamId],
-                        "gameDate" to eventData.getValue(eventId)["gameDate"],
-                        *(if (weatherData.isNotEmpty()) arrayOf("weather" to weatherData.getOrDefault(eventId, mapOf())) else arrayOf()),
-                        "spread" to spreadSign + spreadMultiplier * (eventOddsData.getOrDefault("spread", 0.0)) as Double,
-                        "overUnder" to (eventOddsData.getOrDefault("overUnder", 0)),
-                        "DraftKingsProjection" to (draftKingsProjection ?: 0),
-                        "FanduelProjection" to (fanduelProjection ?: 0),
+                        *(getSpreadCommonMapValues(playerJson, eventId, teamId, eventData, oddsData, weatherData))
                 )
             }
         }
     }.flatten().flatten()
+}
+
+fun getSpreadCommonMapValues(
+        playerJson: JSONObject,
+        eventId: Int,
+        teamId: Int,
+        eventData: Map<Int, Map<*, Any>>,
+        oddsData: Map<Int, Map<String, Number>>,
+        weatherData: Map<Int, Map<String, String>> = mapOf()
+): Array<Pair<String, Any?>> {
+    val eventOddsData = oddsData.getOrDefault(eventId, mapOf())
+    val spreadMultiplier = if ((eventOddsData.getOrDefault("favoriteTeamId", 0)) as Int == teamId) 1 else -1
+    val spreadSign = if ((eventOddsData.getOrDefault("favoriteTeamId", 0)) as Int == teamId) "" else "+"
+    val fantasyProjections = playerJson.getJSONArray("fantasyProjections")
+    val draftKingsProjection = (fantasyProjections.find {
+        it as JSONObject
+        it.getString("name").contains("DraftKings")
+    } as? JSONObject)?.getString("points")?.toDouble()
+    val fanduelProjection = (fantasyProjections.find {
+        it as JSONObject
+        it.getString("name").contains("FanDuel")
+    } as? JSONObject)?.getString("points")?.toDouble()
+    return arrayOf(
+            "opponent" to eventData.getValue(eventId)[teamId],
+            "gameDate" to eventData.getValue(eventId)["gameDate"],
+            *(if (weatherData.isNotEmpty()) arrayOf("weather" to weatherData.getOrDefault(eventId, mapOf())) else arrayOf()),
+            "spread" to spreadSign + spreadMultiplier * (eventOddsData.getOrDefault("spread", 0.0)) as Double,
+            "overUnder" to (eventOddsData.getOrDefault("overUnder", 0)),
+            "DraftKingsProjection" to (draftKingsProjection ?: 0),
+            "FanduelProjection" to (fanduelProjection ?: 0)
+    )
 }

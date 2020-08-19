@@ -6,14 +6,14 @@ import org.json.XML
 
 fun getOpponentRanks(sport: String, dataGetter: (sport: String) -> String): Map<String, Map<String, Int>> {
     val scrapedResponse: String = dataGetter(sport)
-    if (scrapedResponse.isNotEmpty()) {
+    return if (scrapedResponse.isEmpty()) mapOf() else {
         val startIndex = scrapedResponse.indexOf("<tbody>")
         val endIndex = scrapedResponse.indexOf("</tbody>") + "</tbody>".length
         val responseSubstring = scrapedResponse.substring(startIndex, endIndex)
         val adjustedResponse = responseSubstring.replace("</td><tr>", "</td></tr>")
         val rankingsJson = XML.toJSONObject(adjustedResponse).getJSONObject("tbody")
         val rankingsArray = rankingsJson.getJSONArray("tr")
-        return rankingsArray.map {
+        rankingsArray.map {
             it as JSONObject
             val teamArray = it.getJSONArray("td")
             val teamName = teamArray.getJSONObject(0).getJSONObject("a").getString("content")
@@ -33,7 +33,6 @@ fun getOpponentRanks(sport: String, dataGetter: (sport: String) -> String): Map<
             )
         }.toMap()
     }
-    return mapOf()
 }
 
 private fun getRank(teamArray: JSONArray, index: Int): Int {

@@ -1,1 +1,1667 @@
-{}
+{
+  "status": "OK",
+  "recordCount": 15,
+  "startTimestamp": "2020-08-19T14:45:42.102952Z",
+  "endTimestamp": "2020-08-19T14:45:42.2748402Z",
+  "timeTaken": 0.1718882,
+  "apiResults": [
+    {
+      "sportId": 2,
+      "name": "Baseball",
+      "league": {
+        "leagueId": 7,
+        "name": "Major League Baseball",
+        "abbreviation": "MLB",
+        "displayName": "Major League Baseball",
+        "season": {
+          "season": 2020,
+          "name": "2020 MLB Season",
+          "isActive": true,
+          "eventType": [
+            {
+              "eventTypeId": 1,
+              "name": "Regular Season",
+              "lineEvents": [
+                {
+                  "eventId": 2246540,
+                  "startDate": [
+                    {
+                      "year": 2020,
+                      "month": 8,
+                      "date": 19,
+                      "hour": 13,
+                      "minute": 5,
+                      "full": "2020-08-19T13:05:00",
+                      "dateType": "Local"
+                    },
+                    {
+                      "year": 2020,
+                      "month": 8,
+                      "date": 19,
+                      "hour": 17,
+                      "minute": 5,
+                      "full": "2020-08-19T17:05:00",
+                      "dateType": "UTC"
+                    }
+                  ],
+                  "teams": [
+                    {
+                      "startingPitcher": "(L) Tommy Milone",
+                      "teamId": 225,
+                      "rotation": 954,
+                      "location": "Baltimore",
+                      "nickname": "Orioles",
+                      "abbreviation": "Bal",
+                      "teamLocationType": {
+                        "teamLocationTypeId": 1,
+                        "name": "home"
+                      }
+                    },
+                    {
+                      "startingPitcher": "(R) Tanner Roark",
+                      "teamId": 238,
+                      "rotation": 953,
+                      "location": "Toronto",
+                      "nickname": "Blue Jays",
+                      "abbreviation": "Tor",
+                      "teamLocationType": {
+                        "teamLocationTypeId": 2,
+                        "name": "away"
+                      }
+                    }
+                  ],
+                  "lines": [
+                    {
+                      "scope": {
+                        "scopeId": 1,
+                        "name": "Game"
+                      },
+                      "changeDate": [
+                        {
+                          "year": 2020,
+                          "month": 8,
+                          "date": 19,
+                          "hour": 9,
+                          "minute": 9,
+                          "full": "2020-08-19T09:09:34",
+                          "dateType": "Local"
+                        },
+                        {
+                          "year": 2020,
+                          "month": 8,
+                          "date": 19,
+                          "hour": 13,
+                          "minute": 9,
+                          "full": "2020-08-19T13:09:34",
+                          "dateType": "UTC"
+                        }
+                      ],
+                      "line": [
+                        {
+                          "lineType": {
+                            "lineTypeId": 1,
+                            "name": "opening"
+                          },
+                          "favoriteTeamId": 238,
+                          "favoritePoints": -1.5,
+                          "favoriteMoney": "+135",
+                          "underdogMoney": "-160",
+                          "homeMoney": "+105",
+                          "awayMoney": "-125",
+                          "total": 10,
+                          "overMoney": "-110",
+                          "underMoney": "-110"
+                        },
+                        {
+                          "lineType": {
+                            "lineTypeId": 2,
+                            "name": "current"
+                          },
+                          "favoriteTeamId": 238,
+                          "favoritePoints": -1.5,
+                          "favoriteMoney": "+140",
+                          "underdogMoney": "-165",
+                          "homeMoney": "-110",
+                          "awayMoney": "-110",
+                          "total": 9.5,
+                          "overMoney": "-110",
+                          "underMoney": "-110"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "eventId": 2246843,
+                  "startDate": [
+                    {
+                      "year": 2020,
+                      "month": 8,
+                      "date": 19,
+                      "hour": 13,
+                      "minute": 35,
+                      "full": "2020-08-19T13:35:00",
+                      "dateType": "Local"
+                    },
+                    {
+                      "year": 2020,
+                      "month": 8,
+                      "date": 19,
+                      "hour": 17,
+                      "minute": 35,
+                      "full": "2020-08-19T17:35:00",
+                      "dateType": "UTC"
+                    }
+                  ],
+                  "teams": [
+                    {
+                      "startingPitcher": "(L) Kyle Hart",
+                      "teamId": 226,
+                      "rotation": 962,
+                      "location": "Boston",
+                      "nickname": "Red Sox",
+                      "abbreviation": "Bos",
+                      "teamLocationType": {
+                        "teamLocationTypeId": 1,
+                        "name": "home"
+                      }
+                    },
+                    {
+                      "startingPitcher": "(R) Jake Arrieta",
+                      "teamId": 246,
+                      "rotation": 961,
+                      "location": "Philadelphia",
+                      "nickname": "Phillies",
+                      "abbreviation": "Phi",
+                      "teamLocationType": {
+                        "teamLocationTypeId": 2,
+                        "name": "away"
+                      }
+                    }
+                  ],
+                  "lines": [
+                    {
+                      "scope": {
+                        "scopeId": 1,
+                        "name": "Game"
+                      },
+                      "changeDate": [
+                        {
+                          "year": 2020,
+                          "month": 8,
+                          "date": 19,
+                          "hour": 9,
+                          "minute": 9,
+                          "full": "2020-08-19T09:09:34",
+                          "dateType": "Local"
+                        },
+                        {
+                          "year": 2020,
+                          "month": 8,
+                          "date": 19,
+                          "hour": 13,
+                          "minute": 9,
+                          "full": "2020-08-19T13:09:34",
+                          "dateType": "UTC"
+                        }
+                      ],
+                      "line": [
+                        {
+                          "lineType": {
+                            "lineTypeId": 1,
+                            "name": "opening"
+                          },
+                          "favoriteTeamId": 246,
+                          "favoritePoints": -1.5,
+                          "favoriteMoney": "+105",
+                          "underdogMoney": "-125",
+                          "homeMoney": "+125",
+                          "awayMoney": "-145",
+                          "total": 11,
+                          "overMoney": "-105",
+                          "underMoney": "-115"
+                        },
+                        {
+                          "lineType": {
+                            "lineTypeId": 2,
+                            "name": "current"
+                          },
+                          "favoriteTeamId": 246,
+                          "favoritePoints": -1.5,
+                          "favoriteMoney": "-105",
+                          "underdogMoney": "-115",
+                          "homeMoney": "+125",
+                          "awayMoney": "-145",
+                          "total": 11,
+                          "overMoney": "-120",
+                          "underMoney": "+100"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "eventId": 2246603,
+                  "startDate": [
+                    {
+                      "year": 2020,
+                      "month": 8,
+                      "date": 19,
+                      "hour": 13,
+                      "minute": 20,
+                      "full": "2020-08-19T13:20:00",
+                      "dateType": "Local"
+                    },
+                    {
+                      "year": 2020,
+                      "month": 8,
+                      "date": 19,
+                      "hour": 18,
+                      "minute": 20,
+                      "full": "2020-08-19T18:20:00",
+                      "dateType": "UTC"
+                    }
+                  ],
+                  "teams": [
+                    {
+                      "startingPitcher": "(R) Alec Mills",
+                      "teamId": 240,
+                      "rotation": 970,
+                      "location": "Chicago",
+                      "nickname": "Cubs",
+                      "abbreviation": "ChC",
+                      "teamLocationType": {
+                        "teamLocationTypeId": 1,
+                        "name": "home"
+                      }
+                    },
+                    {
+                      "startingPitcher": "(R) Jack Flaherty",
+                      "teamId": 248,
+                      "rotation": 969,
+                      "location": "St. Louis",
+                      "nickname": "Cardinals",
+                      "abbreviation": "StL",
+                      "teamLocationType": {
+                        "teamLocationTypeId": 2,
+                        "name": "away"
+                      }
+                    }
+                  ],
+                  "lines": [
+                    {
+                      "scope": {
+                        "scopeId": 1,
+                        "name": "Game"
+                      },
+                      "changeDate": [
+                        {
+                          "year": 2020,
+                          "month": 8,
+                          "date": 19,
+                          "hour": 9,
+                          "minute": 9,
+                          "full": "2020-08-19T09:09:34",
+                          "dateType": "Local"
+                        },
+                        {
+                          "year": 2020,
+                          "month": 8,
+                          "date": 19,
+                          "hour": 13,
+                          "minute": 9,
+                          "full": "2020-08-19T13:09:34",
+                          "dateType": "UTC"
+                        }
+                      ],
+                      "line": [
+                        {
+                          "lineType": {
+                            "lineTypeId": 1,
+                            "name": "opening"
+                          },
+                          "favoriteTeamId": 248,
+                          "favoritePoints": -1.5,
+                          "favoriteMoney": "+155",
+                          "underdogMoney": "-185",
+                          "homeMoney": "+110",
+                          "awayMoney": "-130",
+                          "total": 6.5,
+                          "overMoney": "-105",
+                          "underMoney": "-115"
+                        },
+                        {
+                          "lineType": {
+                            "lineTypeId": 2,
+                            "name": "current"
+                          },
+                          "favoriteTeamId": 248,
+                          "favoritePoints": -1.5,
+                          "favoriteMoney": "+160",
+                          "underdogMoney": "-190",
+                          "homeMoney": "+105",
+                          "awayMoney": "-125",
+                          "total": 6,
+                          "overMoney": "-120",
+                          "underMoney": "+100"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "eventId": 2246526,
+                  "startDate": [
+                    {
+                      "year": 2020,
+                      "month": 8,
+                      "date": 19,
+                      "hour": 16,
+                      "minute": 5,
+                      "full": "2020-08-19T16:05:00",
+                      "dateType": "Local"
+                    },
+                    {
+                      "year": 2020,
+                      "month": 8,
+                      "date": 19,
+                      "hour": 21,
+                      "minute": 5,
+                      "full": "2020-08-19T21:05:00",
+                      "dateType": "UTC"
+                    }
+                  ],
+                  "teams": [
+                    {
+                      "startingPitcher": "(R) Brad Keller",
+                      "teamId": 231,
+                      "rotation": 984,
+                      "location": "Kansas City",
+                      "nickname": "Royals",
+                      "abbreviation": "KC",
+                      "teamLocationType": {
+                        "teamLocationTypeId": 1,
+                        "name": "home"
+                      }
+                    },
+                    {
+                      "startingPitcher": "(R) Luis Castillo",
+                      "teamId": 241,
+                      "rotation": 983,
+                      "location": "Cincinnati",
+                      "nickname": "Reds",
+                      "abbreviation": "Cin",
+                      "teamLocationType": {
+                        "teamLocationTypeId": 2,
+                        "name": "away"
+                      }
+                    }
+                  ],
+                  "lines": [
+                    {
+                      "scope": {
+                        "scopeId": 1,
+                        "name": "Game"
+                      },
+                      "changeDate": [
+                        {
+                          "year": 2020,
+                          "month": 8,
+                          "date": 19,
+                          "hour": 9,
+                          "minute": 9,
+                          "full": "2020-08-19T09:09:34",
+                          "dateType": "Local"
+                        },
+                        {
+                          "year": 2020,
+                          "month": 8,
+                          "date": 19,
+                          "hour": 13,
+                          "minute": 9,
+                          "full": "2020-08-19T13:09:34",
+                          "dateType": "UTC"
+                        }
+                      ],
+                      "line": [
+                        {
+                          "lineType": {
+                            "lineTypeId": 1,
+                            "name": "opening"
+                          },
+                          "favoriteTeamId": 241,
+                          "favoritePoints": -1.5,
+                          "favoriteMoney": "+135",
+                          "underdogMoney": "-160",
+                          "homeMoney": "+125",
+                          "awayMoney": "-145",
+                          "total": 7,
+                          "overMoney": "-105",
+                          "underMoney": "-115"
+                        },
+                        {
+                          "lineType": {
+                            "lineTypeId": 2,
+                            "name": "current"
+                          },
+                          "favoriteTeamId": 241,
+                          "favoritePoints": -1.5,
+                          "favoriteMoney": "+135",
+                          "underdogMoney": "-160",
+                          "homeMoney": "+125",
+                          "awayMoney": "-145",
+                          "total": 7,
+                          "overMoney": "+100",
+                          "underMoney": "-120"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "eventId": 2246147,
+                  "startDate": [
+                    {
+                      "year": 2020,
+                      "month": 8,
+                      "date": 19,
+                      "hour": 19,
+                      "minute": 5,
+                      "full": "2020-08-19T19:05:00",
+                      "dateType": "Local"
+                    },
+                    {
+                      "year": 2020,
+                      "month": 8,
+                      "date": 19,
+                      "hour": 23,
+                      "minute": 5,
+                      "full": "2020-08-19T23:05:00",
+                      "dateType": "UTC"
+                    }
+                  ],
+                  "teams": [
+                    {
+                      "startingPitcher": "(R) Gerrit Cole",
+                      "teamId": 234,
+                      "rotation": 952,
+                      "location": "New York",
+                      "nickname": "Yankees",
+                      "abbreviation": "NYY",
+                      "teamLocationType": {
+                        "teamLocationTypeId": 1,
+                        "name": "home"
+                      }
+                    },
+                    {
+                      "startingPitcher": "(R) Tyler Glasnow",
+                      "teamId": 254,
+                      "rotation": 951,
+                      "location": "Tampa Bay",
+                      "nickname": "Rays",
+                      "abbreviation": "TB",
+                      "teamLocationType": {
+                        "teamLocationTypeId": 2,
+                        "name": "away"
+                      }
+                    }
+                  ],
+                  "lines": [
+                    {
+                      "scope": {
+                        "scopeId": 1,
+                        "name": "Game"
+                      },
+                      "changeDate": [
+                        {
+                          "year": 2020,
+                          "month": 8,
+                          "date": 19,
+                          "hour": 9,
+                          "minute": 9,
+                          "full": "2020-08-19T09:09:34",
+                          "dateType": "Local"
+                        },
+                        {
+                          "year": 2020,
+                          "month": 8,
+                          "date": 19,
+                          "hour": 13,
+                          "minute": 9,
+                          "full": "2020-08-19T13:09:34",
+                          "dateType": "UTC"
+                        }
+                      ],
+                      "line": [
+                        {
+                          "lineType": {
+                            "lineTypeId": 1,
+                            "name": "opening"
+                          },
+                          "favoriteTeamId": 234,
+                          "favoritePoints": -1.5,
+                          "favoriteMoney": "-105",
+                          "underdogMoney": "-115",
+                          "homeMoney": "-210",
+                          "awayMoney": "+175",
+                          "total": 8.5,
+                          "overMoney": "+100",
+                          "underMoney": "-120"
+                        },
+                        {
+                          "lineType": {
+                            "lineTypeId": 2,
+                            "name": "current"
+                          },
+                          "favoriteTeamId": 234,
+                          "favoritePoints": -1.5,
+                          "favoriteMoney": "+105",
+                          "underdogMoney": "-125",
+                          "homeMoney": "-185",
+                          "awayMoney": "+155",
+                          "total": 8,
+                          "overMoney": "-110",
+                          "underMoney": "-110"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "eventId": 2246253,
+                  "startDate": [
+                    {
+                      "year": 2020,
+                      "month": 8,
+                      "date": 19,
+                      "hour": 19,
+                      "minute": 5,
+                      "full": "2020-08-19T19:05:00",
+                      "dateType": "Local"
+                    },
+                    {
+                      "year": 2020,
+                      "month": 8,
+                      "date": 19,
+                      "hour": 23,
+                      "minute": 5,
+                      "full": "2020-08-19T23:05:00",
+                      "dateType": "UTC"
+                    }
+                  ],
+                  "teams": [
+                    {
+                      "startingPitcher": "(L) Steven Brault",
+                      "teamId": 247,
+                      "rotation": 956,
+                      "location": "Pittsburgh",
+                      "nickname": "Pirates",
+                      "abbreviation": "Pit",
+                      "teamLocationType": {
+                        "teamLocationTypeId": 1,
+                        "name": "home"
+                      }
+                    },
+                    {
+                      "startingPitcher": "(R) Aaron Civale",
+                      "teamId": 229,
+                      "rotation": 955,
+                      "location": "Cleveland",
+                      "nickname": "Indians",
+                      "abbreviation": "Cle",
+                      "teamLocationType": {
+                        "teamLocationTypeId": 2,
+                        "name": "away"
+                      }
+                    }
+                  ],
+                  "lines": [
+                    {
+                      "scope": {
+                        "scopeId": 1,
+                        "name": "Game"
+                      },
+                      "changeDate": [
+                        {
+                          "year": 2020,
+                          "month": 8,
+                          "date": 19,
+                          "hour": 9,
+                          "minute": 9,
+                          "full": "2020-08-19T09:09:34",
+                          "dateType": "Local"
+                        },
+                        {
+                          "year": 2020,
+                          "month": 8,
+                          "date": 19,
+                          "hour": 13,
+                          "minute": 9,
+                          "full": "2020-08-19T13:09:34",
+                          "dateType": "UTC"
+                        }
+                      ],
+                      "line": [
+                        {
+                          "lineType": {
+                            "lineTypeId": 1,
+                            "name": "opening"
+                          },
+                          "favoriteTeamId": 229,
+                          "favoritePoints": -1.5,
+                          "favoriteMoney": "-105",
+                          "underdogMoney": "-115",
+                          "homeMoney": "+145",
+                          "awayMoney": "-170",
+                          "total": 9,
+                          "overMoney": "-105",
+                          "underMoney": "-115"
+                        },
+                        {
+                          "lineType": {
+                            "lineTypeId": 2,
+                            "name": "current"
+                          },
+                          "favoriteTeamId": 229,
+                          "favoritePoints": -1.5,
+                          "favoriteMoney": "-115",
+                          "underdogMoney": "-105",
+                          "homeMoney": "+160",
+                          "awayMoney": "-190",
+                          "total": 8.5,
+                          "overMoney": "-120",
+                          "underMoney": "+100"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "eventId": 2246702,
+                  "startDate": [
+                    {
+                      "year": 2020,
+                      "month": 8,
+                      "date": 19,
+                      "hour": 19,
+                      "minute": 10,
+                      "full": "2020-08-19T19:10:00",
+                      "dateType": "Local"
+                    },
+                    {
+                      "year": 2020,
+                      "month": 8,
+                      "date": 19,
+                      "hour": 23,
+                      "minute": 10,
+                      "full": "2020-08-19T23:10:00",
+                      "dateType": "UTC"
+                    }
+                  ],
+                  "teams": [
+                    {
+                      "startingPitcher": "(R) Kyle Wright",
+                      "teamId": 239,
+                      "rotation": 960,
+                      "location": "Atlanta",
+                      "nickname": "Braves",
+                      "abbreviation": "Atl",
+                      "teamLocationType": {
+                        "teamLocationTypeId": 1,
+                        "name": "home"
+                      }
+                    },
+                    {
+                      "startingPitcher": "(R) Erick Fedde",
+                      "teamId": 244,
+                      "rotation": 959,
+                      "location": "Washington",
+                      "nickname": "Nationals",
+                      "abbreviation": "Was",
+                      "teamLocationType": {
+                        "teamLocationTypeId": 2,
+                        "name": "away"
+                      }
+                    }
+                  ],
+                  "lines": [
+                    {
+                      "scope": {
+                        "scopeId": 1,
+                        "name": "Game"
+                      },
+                      "changeDate": [
+                        {
+                          "year": 2020,
+                          "month": 8,
+                          "date": 19,
+                          "hour": 9,
+                          "minute": 9,
+                          "full": "2020-08-19T09:09:34",
+                          "dateType": "Local"
+                        },
+                        {
+                          "year": 2020,
+                          "month": 8,
+                          "date": 19,
+                          "hour": 13,
+                          "minute": 9,
+                          "full": "2020-08-19T13:09:34",
+                          "dateType": "UTC"
+                        }
+                      ],
+                      "line": [
+                        {
+                          "lineType": {
+                            "lineTypeId": 1,
+                            "name": "opening"
+                          },
+                          "favoriteTeamId": 239,
+                          "favoritePoints": -1.5,
+                          "favoriteMoney": "+150",
+                          "underdogMoney": "-180",
+                          "homeMoney": "-120",
+                          "awayMoney": "+100",
+                          "total": 10,
+                          "overMoney": "-110",
+                          "underMoney": "-110"
+                        },
+                        {
+                          "lineType": {
+                            "lineTypeId": 2,
+                            "name": "current"
+                          },
+                          "favoriteTeamId": 239,
+                          "favoritePoints": -1.5,
+                          "favoriteMoney": "+145",
+                          "underdogMoney": "-170",
+                          "homeMoney": "-135",
+                          "awayMoney": "+115",
+                          "total": 10.5,
+                          "overMoney": "-115",
+                          "underMoney": "-105"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "eventId": 2246196,
+                  "startDate": [
+                    {
+                      "year": 2020,
+                      "month": 8,
+                      "date": 19,
+                      "hour": 19,
+                      "minute": 10,
+                      "full": "2020-08-19T19:10:00",
+                      "dateType": "Local"
+                    },
+                    {
+                      "year": 2020,
+                      "month": 8,
+                      "date": 19,
+                      "hour": 23,
+                      "minute": 10,
+                      "full": "2020-08-19T23:10:00",
+                      "dateType": "UTC"
+                    }
+                  ],
+                  "teams": [
+                    {
+                      "startingPitcher": "(R) Pablo Lopez",
+                      "teamId": 252,
+                      "rotation": 958,
+                      "location": "Miami",
+                      "nickname": "Marlins",
+                      "abbreviation": "Mia",
+                      "teamLocationType": {
+                        "teamLocationTypeId": 1,
+                        "name": "home"
+                      }
+                    },
+                    {
+                      "startingPitcher": "(R) Jacob deGrom",
+                      "teamId": 245,
+                      "rotation": 957,
+                      "location": "New York",
+                      "nickname": "Mets",
+                      "abbreviation": "NYM",
+                      "teamLocationType": {
+                        "teamLocationTypeId": 2,
+                        "name": "away"
+                      }
+                    }
+                  ],
+                  "lines": [
+                    {
+                      "scope": {
+                        "scopeId": 1,
+                        "name": "Game"
+                      },
+                      "changeDate": [
+                        {
+                          "year": 2020,
+                          "month": 8,
+                          "date": 19,
+                          "hour": 9,
+                          "minute": 9,
+                          "full": "2020-08-19T09:09:34",
+                          "dateType": "Local"
+                        },
+                        {
+                          "year": 2020,
+                          "month": 8,
+                          "date": 19,
+                          "hour": 13,
+                          "minute": 9,
+                          "full": "2020-08-19T13:09:34",
+                          "dateType": "UTC"
+                        }
+                      ],
+                      "line": [
+                        {
+                          "lineType": {
+                            "lineTypeId": 1,
+                            "name": "opening"
+                          },
+                          "favoriteTeamId": 245,
+                          "favoritePoints": -1.5,
+                          "favoriteMoney": "-140",
+                          "underdogMoney": "+120",
+                          "homeMoney": "+210",
+                          "awayMoney": "-260",
+                          "total": 7.5,
+                          "overMoney": "-105",
+                          "underMoney": "-115"
+                        },
+                        {
+                          "lineType": {
+                            "lineTypeId": 2,
+                            "name": "current"
+                          },
+                          "favoriteTeamId": 245,
+                          "favoritePoints": -1.5,
+                          "favoriteMoney": "-135",
+                          "underdogMoney": "+115",
+                          "homeMoney": "+190",
+                          "awayMoney": "-235",
+                          "total": 7.5,
+                          "overMoney": "+100",
+                          "underMoney": "-120"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "eventId": 2246313,
+                  "startDate": [
+                    {
+                      "year": 2020,
+                      "month": 8,
+                      "date": 19,
+                      "hour": 19,
+                      "minute": 10,
+                      "full": "2020-08-19T19:10:00",
+                      "dateType": "Local"
+                    },
+                    {
+                      "year": 2020,
+                      "month": 8,
+                      "date": 20,
+                      "hour": 0,
+                      "minute": 10,
+                      "full": "2020-08-20T00:10:00",
+                      "dateType": "UTC"
+                    }
+                  ],
+                  "teams": [
+                    {
+                      "startingPitcher": "(R) Dane Dunning",
+                      "teamId": 228,
+                      "rotation": 968,
+                      "location": "Chicago",
+                      "nickname": "White Sox",
+                      "abbreviation": "CWS",
+                      "teamLocationType": {
+                        "teamLocationTypeId": 1,
+                        "name": "home"
+                      }
+                    },
+                    {
+                      "startingPitcher": "(R) Casey Mize",
+                      "teamId": 230,
+                      "rotation": 967,
+                      "location": "Detroit",
+                      "nickname": "Tigers",
+                      "abbreviation": "Det",
+                      "teamLocationType": {
+                        "teamLocationTypeId": 2,
+                        "name": "away"
+                      }
+                    }
+                  ],
+                  "lines": [
+                    {
+                      "scope": {
+                        "scopeId": 1,
+                        "name": "Game"
+                      },
+                      "changeDate": [
+                        {
+                          "year": 2020,
+                          "month": 8,
+                          "date": 19,
+                          "hour": 9,
+                          "minute": 9,
+                          "full": "2020-08-19T09:09:34",
+                          "dateType": "Local"
+                        },
+                        {
+                          "year": 2020,
+                          "month": 8,
+                          "date": 19,
+                          "hour": 13,
+                          "minute": 9,
+                          "full": "2020-08-19T13:09:34",
+                          "dateType": "UTC"
+                        }
+                      ],
+                      "line": [
+                        {
+                          "lineType": {
+                            "lineTypeId": 1,
+                            "name": "opening"
+                          },
+                          "favoriteTeamId": 228,
+                          "favoritePoints": -1.5,
+                          "favoriteMoney": "+120",
+                          "underdogMoney": "-140",
+                          "homeMoney": "-165",
+                          "awayMoney": "+140",
+                          "total": 9,
+                          "overMoney": "-110",
+                          "underMoney": "-110"
+                        },
+                        {
+                          "lineType": {
+                            "lineTypeId": 2,
+                            "name": "current"
+                          },
+                          "favoriteTeamId": 228,
+                          "favoritePoints": -1.5,
+                          "favoriteMoney": "+115",
+                          "underdogMoney": "-135",
+                          "homeMoney": "-165",
+                          "awayMoney": "+140",
+                          "total": 9,
+                          "overMoney": "-105",
+                          "underMoney": "-115"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "eventId": 2246413,
+                  "startDate": [
+                    {
+                      "year": 2020,
+                      "month": 8,
+                      "date": 19,
+                      "hour": 19,
+                      "minute": 10,
+                      "full": "2020-08-19T19:10:00",
+                      "dateType": "Local"
+                    },
+                    {
+                      "year": 2020,
+                      "month": 8,
+                      "date": 20,
+                      "hour": 0,
+                      "minute": 10,
+                      "full": "2020-08-20T00:10:00",
+                      "dateType": "UTC"
+                    }
+                  ],
+                  "teams": [
+                    {
+                      "startingPitcher": "(L) Rich Hill",
+                      "teamId": 233,
+                      "rotation": 966,
+                      "location": "Minnesota",
+                      "nickname": "Twins",
+                      "abbreviation": "Min",
+                      "teamLocationType": {
+                        "teamLocationTypeId": 1,
+                        "name": "home"
+                      }
+                    },
+                    {
+                      "startingPitcher": "(L) Brett Anderson",
+                      "teamId": 232,
+                      "rotation": 965,
+                      "location": "Milwaukee",
+                      "nickname": "Brewers",
+                      "abbreviation": "Mil",
+                      "teamLocationType": {
+                        "teamLocationTypeId": 2,
+                        "name": "away"
+                      }
+                    }
+                  ],
+                  "lines": [
+                    {
+                      "scope": {
+                        "scopeId": 1,
+                        "name": "Game"
+                      },
+                      "changeDate": [
+                        {
+                          "year": 2020,
+                          "month": 8,
+                          "date": 19,
+                          "hour": 9,
+                          "minute": 9,
+                          "full": "2020-08-19T09:09:34",
+                          "dateType": "Local"
+                        },
+                        {
+                          "year": 2020,
+                          "month": 8,
+                          "date": 19,
+                          "hour": 13,
+                          "minute": 9,
+                          "full": "2020-08-19T13:09:34",
+                          "dateType": "UTC"
+                        }
+                      ],
+                      "line": [
+                        {
+                          "lineType": {
+                            "lineTypeId": 1,
+                            "name": "opening"
+                          },
+                          "favoriteTeamId": 233,
+                          "favoritePoints": -1.5,
+                          "favoriteMoney": "+110",
+                          "underdogMoney": "-130",
+                          "homeMoney": "-180",
+                          "awayMoney": "+150",
+                          "total": 9.5,
+                          "overMoney": "+100",
+                          "underMoney": "-120"
+                        },
+                        {
+                          "lineType": {
+                            "lineTypeId": 2,
+                            "name": "current"
+                          },
+                          "favoriteTeamId": 233,
+                          "favoritePoints": -1.5,
+                          "favoriteMoney": "+120",
+                          "underdogMoney": "-140",
+                          "homeMoney": "-160",
+                          "awayMoney": "+135",
+                          "total": 9.5,
+                          "overMoney": "-105",
+                          "underMoney": "-115"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "eventId": 2246102,
+                  "startDate": [
+                    {
+                      "year": 2020,
+                      "month": 8,
+                      "date": 19,
+                      "hour": 18,
+                      "minute": 40,
+                      "full": "2020-08-19T18:40:00",
+                      "dateType": "Local"
+                    },
+                    {
+                      "year": 2020,
+                      "month": 8,
+                      "date": 20,
+                      "hour": 0,
+                      "minute": 40,
+                      "full": "2020-08-20T00:40:00",
+                      "dateType": "UTC"
+                    }
+                  ],
+                  "teams": [
+                    {
+                      "startingPitcher": "(R) Ryan Castellani",
+                      "teamId": 251,
+                      "rotation": 972,
+                      "location": "Colorado",
+                      "nickname": "Rockies",
+                      "abbreviation": "Col",
+                      "teamLocationType": {
+                        "teamLocationTypeId": 1,
+                        "name": "home"
+                      }
+                    },
+                    {
+                      "startingPitcher": "(L) Framber Valdez",
+                      "teamId": 242,
+                      "rotation": 971,
+                      "location": "Houston",
+                      "nickname": "Astros",
+                      "abbreviation": "Hou",
+                      "teamLocationType": {
+                        "teamLocationTypeId": 2,
+                        "name": "away"
+                      }
+                    }
+                  ],
+                  "lines": [
+                    {
+                      "scope": {
+                        "scopeId": 1,
+                        "name": "Game"
+                      },
+                      "changeDate": [
+                        {
+                          "year": 2020,
+                          "month": 8,
+                          "date": 19,
+                          "hour": 9,
+                          "minute": 9,
+                          "full": "2020-08-19T09:09:34",
+                          "dateType": "Local"
+                        },
+                        {
+                          "year": 2020,
+                          "month": 8,
+                          "date": 19,
+                          "hour": 13,
+                          "minute": 9,
+                          "full": "2020-08-19T13:09:34",
+                          "dateType": "UTC"
+                        }
+                      ],
+                      "line": [
+                        {
+                          "lineType": {
+                            "lineTypeId": 1,
+                            "name": "opening"
+                          },
+                          "favoriteTeamId": 242,
+                          "favoritePoints": -1.5,
+                          "favoriteMoney": "-105",
+                          "underdogMoney": "-115",
+                          "homeMoney": "+125",
+                          "awayMoney": "-145",
+                          "total": 12.5,
+                          "overMoney": "+100",
+                          "underMoney": "-120"
+                        },
+                        {
+                          "lineType": {
+                            "lineTypeId": 2,
+                            "name": "current"
+                          },
+                          "favoriteTeamId": 242,
+                          "favoritePoints": -1.5,
+                          "favoriteMoney": "-105",
+                          "underdogMoney": "-115",
+                          "homeMoney": "+135",
+                          "awayMoney": "-160",
+                          "total": 12.5,
+                          "overMoney": "-115",
+                          "underMoney": "-105"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "eventId": 2246414,
+                  "startDate": [
+                    {
+                      "year": 2020,
+                      "month": 8,
+                      "date": 19,
+                      "hour": 18,
+                      "minute": 10,
+                      "full": "2020-08-19T18:10:00",
+                      "dateType": "Local"
+                    },
+                    {
+                      "year": 2020,
+                      "month": 8,
+                      "date": 20,
+                      "hour": 1,
+                      "minute": 10,
+                      "full": "2020-08-20T01:10:00",
+                      "dateType": "UTC"
+                    }
+                  ],
+                  "teams": [
+                    {
+                      "startingPitcher": "(R) Chris Paddack",
+                      "teamId": 249,
+                      "rotation": 974,
+                      "location": "San Diego",
+                      "nickname": "Padres",
+                      "abbreviation": "SD",
+                      "teamLocationType": {
+                        "teamLocationTypeId": 1,
+                        "name": "home"
+                      }
+                    },
+                    {
+                      "startingPitcher": "(R) Lance Lynn",
+                      "teamId": 237,
+                      "rotation": 973,
+                      "location": "Texas",
+                      "nickname": "Rangers",
+                      "abbreviation": "Tex",
+                      "teamLocationType": {
+                        "teamLocationTypeId": 2,
+                        "name": "away"
+                      }
+                    }
+                  ],
+                  "lines": [
+                    {
+                      "scope": {
+                        "scopeId": 1,
+                        "name": "Game"
+                      },
+                      "changeDate": [
+                        {
+                          "year": 2020,
+                          "month": 8,
+                          "date": 19,
+                          "hour": 9,
+                          "minute": 9,
+                          "full": "2020-08-19T09:09:34",
+                          "dateType": "Local"
+                        },
+                        {
+                          "year": 2020,
+                          "month": 8,
+                          "date": 19,
+                          "hour": 13,
+                          "minute": 9,
+                          "full": "2020-08-19T13:09:34",
+                          "dateType": "UTC"
+                        }
+                      ],
+                      "line": [
+                        {
+                          "lineType": {
+                            "lineTypeId": 1,
+                            "name": "opening"
+                          },
+                          "favoriteTeamId": 249,
+                          "favoritePoints": -1.5,
+                          "favoriteMoney": "+170",
+                          "underdogMoney": "-200",
+                          "homeMoney": "-130",
+                          "awayMoney": "+110",
+                          "total": 7,
+                          "overMoney": "-115",
+                          "underMoney": "-105"
+                        },
+                        {
+                          "lineType": {
+                            "lineTypeId": 2,
+                            "name": "current"
+                          },
+                          "favoriteTeamId": 249,
+                          "favoritePoints": -1.5,
+                          "favoriteMoney": "+160",
+                          "underdogMoney": "-190",
+                          "homeMoney": "-130",
+                          "awayMoney": "+110",
+                          "total": 7.5,
+                          "overMoney": "-115",
+                          "underMoney": "-105"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "eventId": 2246669,
+                  "startDate": [
+                    {
+                      "year": 2020,
+                      "month": 8,
+                      "date": 19,
+                      "hour": 18,
+                      "minute": 40,
+                      "full": "2020-08-19T18:40:00",
+                      "dateType": "Local"
+                    },
+                    {
+                      "year": 2020,
+                      "month": 8,
+                      "date": 20,
+                      "hour": 1,
+                      "minute": 40,
+                      "full": "2020-08-20T01:40:00",
+                      "dateType": "UTC"
+                    }
+                  ],
+                  "teams": [
+                    {
+                      "startingPitcher": "(L) Jesus Luzardo",
+                      "teamId": 235,
+                      "rotation": 976,
+                      "location": "Oakland",
+                      "nickname": "Athletics",
+                      "abbreviation": "Oak",
+                      "teamLocationType": {
+                        "teamLocationTypeId": 1,
+                        "name": "home"
+                      }
+                    },
+                    {
+                      "startingPitcher": "(R) Merrill Kelly",
+                      "teamId": 253,
+                      "rotation": 975,
+                      "location": "Arizona",
+                      "nickname": "Diamondbacks",
+                      "abbreviation": "Ari",
+                      "teamLocationType": {
+                        "teamLocationTypeId": 2,
+                        "name": "away"
+                      }
+                    }
+                  ],
+                  "lines": [
+                    {
+                      "scope": {
+                        "scopeId": 1,
+                        "name": "Game"
+                      },
+                      "changeDate": [
+                        {
+                          "year": 2020,
+                          "month": 8,
+                          "date": 19,
+                          "hour": 9,
+                          "minute": 9,
+                          "full": "2020-08-19T09:09:34",
+                          "dateType": "Local"
+                        },
+                        {
+                          "year": 2020,
+                          "month": 8,
+                          "date": 19,
+                          "hour": 13,
+                          "minute": 9,
+                          "full": "2020-08-19T13:09:34",
+                          "dateType": "UTC"
+                        }
+                      ],
+                      "line": [
+                        {
+                          "lineType": {
+                            "lineTypeId": 1,
+                            "name": "opening"
+                          },
+                          "favoriteTeamId": 235,
+                          "favoritePoints": -1.5,
+                          "favoriteMoney": "+115",
+                          "underdogMoney": "-135",
+                          "homeMoney": "-180",
+                          "awayMoney": "+150",
+                          "total": 8.5,
+                          "overMoney": "-115",
+                          "underMoney": "-105"
+                        },
+                        {
+                          "lineType": {
+                            "lineTypeId": 2,
+                            "name": "current"
+                          },
+                          "favoriteTeamId": 235,
+                          "favoritePoints": -1.5,
+                          "favoriteMoney": "+115",
+                          "underdogMoney": "-135",
+                          "homeMoney": "-170",
+                          "awayMoney": "+145",
+                          "total": 8.5,
+                          "overMoney": "-110",
+                          "underMoney": "-110"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "eventId": 2246756,
+                  "startDate": [
+                    {
+                      "year": 2020,
+                      "month": 8,
+                      "date": 19,
+                      "hour": 18,
+                      "minute": 40,
+                      "full": "2020-08-19T18:40:00",
+                      "dateType": "Local"
+                    },
+                    {
+                      "year": 2020,
+                      "month": 8,
+                      "date": 20,
+                      "hour": 1,
+                      "minute": 40,
+                      "full": "2020-08-20T01:40:00",
+                      "dateType": "UTC"
+                    }
+                  ],
+                  "teams": [
+                    {
+                      "startingPitcher": "(R) Taijuan Walker",
+                      "teamId": 236,
+                      "rotation": 978,
+                      "location": "Seattle",
+                      "nickname": "Mariners",
+                      "abbreviation": "Sea",
+                      "teamLocationType": {
+                        "teamLocationTypeId": 1,
+                        "name": "home"
+                      }
+                    },
+                    {
+                      "startingPitcher": "(L) Julio Urias",
+                      "teamId": 243,
+                      "rotation": 977,
+                      "location": "Los Angeles",
+                      "nickname": "Dodgers",
+                      "abbreviation": "LAD",
+                      "teamLocationType": {
+                        "teamLocationTypeId": 2,
+                        "name": "away"
+                      }
+                    }
+                  ],
+                  "lines": [
+                    {
+                      "scope": {
+                        "scopeId": 1,
+                        "name": "Game"
+                      },
+                      "changeDate": [
+                        {
+                          "year": 2020,
+                          "month": 8,
+                          "date": 19,
+                          "hour": 9,
+                          "minute": 9,
+                          "full": "2020-08-19T09:09:34",
+                          "dateType": "Local"
+                        },
+                        {
+                          "year": 2020,
+                          "month": 8,
+                          "date": 19,
+                          "hour": 13,
+                          "minute": 9,
+                          "full": "2020-08-19T13:09:34",
+                          "dateType": "UTC"
+                        }
+                      ],
+                      "line": [
+                        {
+                          "lineType": {
+                            "lineTypeId": 1,
+                            "name": "opening"
+                          },
+                          "favoriteTeamId": 243,
+                          "favoritePoints": -1.5,
+                          "favoriteMoney": "-160",
+                          "underdogMoney": "+135",
+                          "homeMoney": "+210",
+                          "awayMoney": "-260",
+                          "total": 9,
+                          "overMoney": "-115",
+                          "underMoney": "-105"
+                        },
+                        {
+                          "lineType": {
+                            "lineTypeId": 2,
+                            "name": "current"
+                          },
+                          "favoriteTeamId": 243,
+                          "favoritePoints": -1.5,
+                          "favoriteMoney": "-150",
+                          "underdogMoney": "+130",
+                          "homeMoney": "+200",
+                          "awayMoney": "-250",
+                          "total": 9.5,
+                          "overMoney": "+100",
+                          "underMoney": "-120"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "eventId": 2246585,
+                  "startDate": [
+                    {
+                      "year": 2020,
+                      "month": 8,
+                      "date": 19,
+                      "hour": 18,
+                      "minute": 45,
+                      "full": "2020-08-19T18:45:00",
+                      "dateType": "Local"
+                    },
+                    {
+                      "year": 2020,
+                      "month": 8,
+                      "date": 20,
+                      "hour": 1,
+                      "minute": 45,
+                      "full": "2020-08-20T01:45:00",
+                      "dateType": "UTC"
+                    }
+                  ],
+                  "teams": [
+                    {
+                      "startingPitcher": "(R) Johnny Cueto",
+                      "teamId": 250,
+                      "rotation": 980,
+                      "location": "San Francisco",
+                      "nickname": "Giants",
+                      "abbreviation": "SF",
+                      "teamLocationType": {
+                        "teamLocationTypeId": 1,
+                        "name": "home"
+                      }
+                    },
+                    {
+                      "startingPitcher": "(L) Patrick Sandoval",
+                      "teamId": 227,
+                      "rotation": 979,
+                      "location": "Los Angeles",
+                      "nickname": "Angels",
+                      "abbreviation": "LAA",
+                      "teamLocationType": {
+                        "teamLocationTypeId": 2,
+                        "name": "away"
+                      }
+                    }
+                  ],
+                  "lines": [
+                    {
+                      "scope": {
+                        "scopeId": 1,
+                        "name": "Game"
+                      },
+                      "changeDate": [
+                        {
+                          "year": 2020,
+                          "month": 8,
+                          "date": 19,
+                          "hour": 9,
+                          "minute": 9,
+                          "full": "2020-08-19T09:09:34",
+                          "dateType": "Local"
+                        },
+                        {
+                          "year": 2020,
+                          "month": 8,
+                          "date": 19,
+                          "hour": 13,
+                          "minute": 9,
+                          "full": "2020-08-19T13:09:34",
+                          "dateType": "UTC"
+                        }
+                      ],
+                      "line": [
+                        {
+                          "lineType": {
+                            "lineTypeId": 1,
+                            "name": "opening"
+                          },
+                          "favoriteTeamId": 227,
+                          "favoritePoints": -1.5,
+                          "favoriteMoney": "+125",
+                          "underdogMoney": "-145",
+                          "homeMoney": "+100",
+                          "awayMoney": "-120",
+                          "total": 8.5,
+                          "overMoney": "-115",
+                          "underMoney": "-105"
+                        },
+                        {
+                          "lineType": {
+                            "lineTypeId": 2,
+                            "name": "current"
+                          },
+                          "favoriteTeamId": 227,
+                          "favoritePoints": -1.5,
+                          "favoriteMoney": "+115",
+                          "underdogMoney": "-135",
+                          "homeMoney": "+130",
+                          "awayMoney": "-150",
+                          "total": 9,
+                          "overMoney": "-110",
+                          "underMoney": "-110"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

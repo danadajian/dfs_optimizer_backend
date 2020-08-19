@@ -4,7 +4,6 @@ import java.nio.charset.StandardCharsets
 import java.security.MessageDigest
 import java.util.*
 
-
 fun getSignature(key: String, secret: String): String {
     val combo = key + secret + Date().time / 1000
     val digest = MessageDigest.getInstance("SHA-256")

@@ -5,12 +5,12 @@ import org.json.JSONObject
 
 fun getOddsData(sport: String, dataGetter: (sport: String) -> String): Map<Int, Map<String, Number>> {
     val apiResponse: String = dataGetter(sport)
-    if (apiResponse.isNotEmpty()) {
+    return if (apiResponse.isEmpty()) mapOf() else {
         try {
             val oddsArray = JSONObject(apiResponse).getJSONArray("apiResults")
                     .getJSONObject(0).getJSONObject("league").getJSONObject("season")
                     .getJSONArray("eventType").getJSONObject(0).getJSONArray("lineEvents")
-            return oddsArray.map {
+            oddsArray.map {
                 it as JSONObject
                 val eventId = it.getInt("eventId")
                 val currentLine = it.getJSONArray("lines").getJSONObject(0)
@@ -23,7 +23,7 @@ fun getOddsData(sport: String, dataGetter: (sport: String) -> String): Map<Int, 
             }.toMap()
         } catch (e: JSONException) {
             e.printStackTrace()
+            mapOf()
         }
     }
-    return mapOf()
 }

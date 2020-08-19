@@ -5,11 +5,11 @@ import util.getEasternTime
 
 fun getEventData(sport: String, dataGetter: (sport: String) -> String): Map<Int, Map<*, Any>> {
     val apiResponse: String = dataGetter(sport)
-    if (apiResponse.isNotEmpty()) {
+    return if (apiResponse.isEmpty()) mapOf() else {
         val eventsArray = JSONObject(apiResponse).getJSONArray("apiResults").getJSONObject(0)
                 .getJSONObject("league").getJSONObject("season").getJSONArray("eventType").getJSONObject(0)
                 .getJSONArray("events")
-        return eventsArray.map {
+        eventsArray.map {
             it as JSONObject
             val eventId = it.getInt("eventId")
             val dateObject = it.getJSONArray("startDate").getJSONObject(1)
@@ -27,5 +27,4 @@ fun getEventData(sport: String, dataGetter: (sport: String) -> String): Map<Int,
             )
         }.toMap()
     }
-    return mapOf()
 }

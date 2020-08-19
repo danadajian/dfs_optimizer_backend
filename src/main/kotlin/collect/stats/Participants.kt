@@ -4,10 +4,10 @@ import org.json.JSONObject
 
 fun getParticipantsData(sport: String, dataGetter: (sport: String) -> String): Map<Int, Map<String, String>> {
     val apiResponse: String = dataGetter(sport)
-    if (apiResponse.isNotEmpty()) {
+    return if (apiResponse.isEmpty()) mapOf() else {
         val playersArray = JSONObject(apiResponse).getJSONArray("apiResults").getJSONObject(0)
                 .getJSONObject("league").getJSONArray("players")
-        return playersArray.map {
+        playersArray.map {
             it as JSONObject
             it.getInt("playerId") to mapOf(
                     "name" to "${it.getString("firstName")} ${it.getString("lastName")}",
@@ -16,5 +16,4 @@ fun getParticipantsData(sport: String, dataGetter: (sport: String) -> String): M
             )
         }.toMap()
     }
-    return mapOf()
 }

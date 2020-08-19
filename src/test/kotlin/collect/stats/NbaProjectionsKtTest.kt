@@ -8,18 +8,18 @@ import java.nio.file.Files.readAllBytes
 import java.nio.file.Paths
 
 class NbaProjectionsKtTest {
-    private val fakeNBAEventsResponse: String = String(readAllBytes(Paths.get("src/main/resources/nbaEventsResponse.json")))
-    private val fakeNBAParticipantsResponse: String = String(readAllBytes(Paths.get("src/main/resources/nbaParticipantsResponse.json")))
-    private val fakeNBAOddsResponse: String = String(readAllBytes(Paths.get("src/main/resources/nbaOddsResponse.json")))
-    private val fakeNBAProjectionsResponse: String = String(readAllBytes(Paths.get("src/main/resources/nbaProjectionsResponse.json")))
+    private val fakeNbaEventsResponse: String = String(readAllBytes(Paths.get("src/main/resources/nbaEventsResponse.json")))
+    private val fakeNbaParticipantsResponse: String = String(readAllBytes(Paths.get("src/main/resources/nbaParticipantsResponse.json")))
+    private val fakeNbaOddsResponse: String = String(readAllBytes(Paths.get("src/main/resources/nbaOddsResponse.json")))
+    private val fakeNbaProjectionsResponse: String = String(readAllBytes(Paths.get("src/main/resources/nbaProjectionsResponse.json")))
 
     @Test
-    fun shouldGetNBAProjections() {
+    fun shouldGetNbaProjections() {
         val result: Map<Int, Map<String, Any?>> = getNbaProjectionsData(
-                { getEventData("nba") {fakeNBAEventsResponse} },
-                { getParticipantsData("nba") {fakeNBAParticipantsResponse} },
-                { getOddsData("nba") {fakeNBAOddsResponse} },
-                {_: String, _: Int -> fakeNBAProjectionsResponse }
+                { getEventData("nba") {fakeNbaEventsResponse} },
+                { getParticipantsData("nba") {fakeNbaParticipantsResponse} },
+                { getOddsData("nba") {fakeNbaOddsResponse} },
+                {_: String, _: Int -> fakeNbaProjectionsResponse }
         )
         assertEquals("Al Horford", result.getValue(280587)["name"])
         assertEquals("Phi", result.getValue(280587)["team"])

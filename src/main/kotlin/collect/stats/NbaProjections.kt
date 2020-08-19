@@ -6,13 +6,13 @@ fun getNbaProjectionsData(
         eventGetter: (sport: String) -> Map<Int, Map<*, Any>>,
         participantsGetter: (sport: String) -> Map<Int, Map<String, String>>,
         oddsGetter: (sport: String) -> Map<Int, Map<String, Number>>,
-        projectionsGetter: (sport: String, eventId: Int) -> String,
+        projectionsGetter: (sport: String, eventId: Int) -> String
 ): Map<Int, Map<String, Any?>> {
     val sport = "nba"
     val eventData: Map<Int, Map<*, Any>> = eventGetter(sport)
-    val eventIds = eventData.keys
     val participantsData: Map<Int, Map<String, String>> = participantsGetter(sport)
     val oddsData: Map<Int, Map<String, Number>> = oddsGetter(sport)
+    val eventIds = eventData.keys
     return eventIds.map { eventId ->
         projectionsGetter(sport, eventId)
     }.filter { apiResponse ->

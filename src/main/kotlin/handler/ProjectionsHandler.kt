@@ -4,7 +4,7 @@ import collect.stats.*
 import util.AWS
 
 class ProjectionsHandler {
-    fun handleRequest(input: Map<String, String>): Map<String, Any?> {
+    fun handleRequest(input: Map<String, String>): Map<String, Any> {
         val sport = input.getValue("sport")
         val invocationType = input.getOrDefault("invocationType", "web")
         val projections: Map<Int, Map<String, Any?>> =

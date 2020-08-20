@@ -6,7 +6,6 @@ import org.junit.jupiter.api.Test
 import kotlin.test.assertEquals
 
 class ProjectionsHandlerKtTest {
-
     private val projectionsHandler = spyk<ProjectionsHandler>()
     private val mlbResult: Map<Int, Map<String, Any?>> = mapOf(0 to mapOf())
 

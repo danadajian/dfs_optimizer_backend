@@ -4,10 +4,10 @@ import api.DataCollector
 import org.json.JSONObject
 import util.getEasternTime
 
-private val supportedGameTypes = listOf("Classic", "Showdown Captain Mode", "Showdown")
-private val supportedContests = listOf("Main", "Thu", "Sat", "Sun")
-
 class DraftKingsContests {
+    private val supportedGameTypes = listOf("Classic", "Showdown Captain Mode", "Showdown")
+    private val supportedContests = listOf("Main", "Thu", "Sat", "Sun")
+
     fun getDraftKingsContestData(sport: String): List<Map<String, Any>> {
         return getValidDraftKingsContests(sport).map { it ->
             val gameDate = it.getJSONArray("competitions").getJSONObject(0).getString("startTime")

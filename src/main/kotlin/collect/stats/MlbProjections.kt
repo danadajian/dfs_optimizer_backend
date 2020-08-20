@@ -1,23 +1,44 @@
 package collect.stats
 
-fun getMlbProjectionsData(
-        eventGetter: (sport: String) -> Map<Int, Map<*, Any>>,
-        participantsGetter: (sport: String) -> Map<Int, Map<String, String>>,
-        oddsGetter: (sport: String) -> Map<Int, Map<String, Number>>,
-        weatherGetter: (sport: String) -> Map<Int, Map<String, String>>,
-        projectionsGetter: (sport: String, eventId: Int) -> String,
-): Map<Int, Map<String, Any?>> {
-    val sport = "mlb"
-    val eventData = eventGetter(sport)
-    val participantsData = participantsGetter(sport)
-    val oddsData = oddsGetter(sport)
-    val weatherData = weatherGetter(sport)
-    val eventIds = eventData.keys
-    return eventIds.map { eventId ->
-        projectionsGetter(sport, eventId)
-    }.filter { apiResponse ->
-        apiResponse.isNotEmpty()
-    }.map { apiResponse ->
-        buildProjectionsMap(apiResponse, listOf("batters", "pitchers"), eventData, participantsData, oddsData, weatherData)
-    }.flatten().toMap()
+import api.DataCollector
+import collect.misc.Odds
+import collect.misc.Weather
+
+class MlbProjections {
+    private val sport = "mlb"
+
+    fun getMlbProjectionsData(): Map<Int, Map<String, Any?>> {
+        val eventData = getEventData()
+        val participantsData = getParticipantsData()
+        val oddsData = getOddsData()
+        val weatherData = getWeatherData()
+        val eventIds = eventData.keys
+        return eventIds.map { eventId ->
+            getProjectionsFromEvent(eventId)
+        }.filter { apiResponse ->
+            apiResponse.isNotEmpty()
+        }.map { apiResponse ->
+            buildProjectionsMap(apiResponse, listOf("batters", "pitchers"), eventData, participantsData, oddsData, weatherData)
+        }.flatten().toMap()
+    }
+
+    fun getEventData(): Map<Int, Map<*, Any>> {
+        return Events().getEventData(sport)
+    }
+
+    fun getParticipantsData(): Map<Int, Map<String, String>> {
+        return Participants().getParticipantsData(sport)
+    }
+
+    fun getOddsData(): Map<Int, Map<String, Number>> {
+        return Odds().getOddsData(sport)
+    }
+
+    fun getWeatherData(): Map<Int, Map<String, String>> {
+        return Weather().getWeatherData(sport)
+    }
+
+    fun getProjectionsFromEvent(eventId: Int): String {
+        return DataCollector().getProjectionsFromEvent(sport, eventId)
+    }
 }

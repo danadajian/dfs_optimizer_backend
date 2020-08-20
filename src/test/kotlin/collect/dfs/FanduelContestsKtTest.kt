@@ -2,11 +2,12 @@
 
 package collect.dfs
 
-import collect.dfs.getFanduelContestData
-import collect.dfs.getValidFanduelContests
+import io.mockk.every
+import io.mockk.spyk
 import org.json.JSONObject
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Assertions.assertNull
+import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import java.nio.file.Files.readAllBytes
 import java.nio.file.Paths
@@ -14,15 +15,23 @@ import java.nio.file.Paths
 class FanduelContestsKtTest {
     private val fakeFanduelData: String = String(readAllBytes(Paths.get("src/main/resources/fanduelDataResponse.txt")))
 
+    private val date = "testDateString"
+    private val fanduelContests = spyk<FanduelContests>()
+
+    @BeforeEach
+    fun setUp() {
+        every { fanduelContests.getFanduelData(date) } returns fakeFanduelData
+    }
+
     @Test
     fun shouldGetValidContests() {
-        val result: List<JSONObject> = getValidFanduelContests("testDateString") { fakeFanduelData }
+        val result: List<JSONObject> = fanduelContests.getValidFanduelContests(date)
         assertEquals(3, result.size)
     }
 
     @Test
     fun shouldGetAllContestData() {
-        val result: List<Map<String, Any>> = getFanduelContestData("testDateString") { fakeFanduelData }
+        val result: List<Map<String, Any>> = fanduelContests.getFanduelContestData(date)
         assertEquals("NFL", result[0]["sport"])
         assertEquals("PIT @ CLE", result[0]["contest"])
         val players = result[0]["players"] as List<Map<String, Any>>

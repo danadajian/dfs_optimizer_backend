@@ -1,26 +1,40 @@
 package collect.stats
 
-import collect.misc.getOddsData
-import collect.misc.getWeatherData
+import collect.misc.Odds
+import collect.misc.Weather
+import io.mockk.every
+import io.mockk.spyk
 import org.junit.jupiter.api.Assertions.assertEquals
+import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import java.nio.file.Files
 import java.nio.file.Paths
 
 class NflProjectionsKtTest {
     private val fakeNflEventsResponse: String = String(Files.readAllBytes(Paths.get("src/main/resources/nflEventsResponse.json")))
-    private val fakeOddsResponse: String = String(Files.readAllBytes(Paths.get("src/main/resources/nflOddsResponse.json")))
+    private val fakeNflOddsResponse: String = String(Files.readAllBytes(Paths.get("src/main/resources/nflOddsResponse.json")))
     private val fakeWeatherResponse = String(Files.readAllBytes(Paths.get("src/main/resources/weatherResponse.json")))
     private val fakeNflProjectionsResponse: String = String(Files.readAllBytes(Paths.get("src/main/resources/nflProjectionsResponse.json")))
 
+    private val nflProjections = spyk<NflProjections>()
+    private val events = spyk<Events>()
+    private val odds = spyk<Odds>()
+    private val weather = spyk<Weather>()
+
+    @BeforeEach
+    fun setUp() {
+        every { events.callEvents("nfl") } returns fakeNflEventsResponse
+        every { odds.callOdds("nfl") } returns fakeNflOddsResponse
+        every { weather.callWeather("nfl") } returns fakeWeatherResponse
+        every { nflProjections.getEventData() } returns events.getEventData("nfl")
+        every { nflProjections.getOddsData() } returns odds.getOddsData("nfl")
+        every { nflProjections.getWeatherData() } returns weather.getWeatherData("nfl")
+        every { nflProjections.getProjectionsFromThisWeek() } returns fakeNflProjectionsResponse
+    }
+
     @Test
     fun shouldGetNflProjectionsFromThisWeek() {
-        val result: Map<Int, Map<String, Any?>> = getNflProjectionsData(
-                { getEventData("nfl") { fakeNflEventsResponse } },
-                { getOddsData("nfl") { fakeOddsResponse } },
-                { getWeatherData("nfl") { fakeWeatherResponse } },
-                { fakeNflProjectionsResponse }
-        )
+        val result: Map<Int, Map<String, Any?>> = nflProjections.getNflProjectionsData()
         assertEquals("Lamar Jackson", result.getValue(877745)["name"])
         assertEquals("Bal", result.getValue(877745)["team"])
         assertEquals("v. NYJ", result.getValue(877745)["opponent"])

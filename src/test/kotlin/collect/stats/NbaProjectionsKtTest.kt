@@ -1,8 +1,11 @@
 package collect.stats
 
-import collect.misc.getOddsData
+import collect.misc.Odds
+import io.mockk.every
+import io.mockk.spyk
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Assertions.assertFalse
+import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import java.nio.file.Files.readAllBytes
 import java.nio.file.Paths
@@ -13,14 +16,25 @@ class NbaProjectionsKtTest {
     private val fakeNbaOddsResponse: String = String(readAllBytes(Paths.get("src/main/resources/nbaOddsResponse.json")))
     private val fakeNbaProjectionsResponse: String = String(readAllBytes(Paths.get("src/main/resources/nbaProjectionsResponse.json")))
 
+    private val nbaProjections = spyk<NbaProjections>()
+    private val events = spyk<Events>()
+    private val participants = spyk<Participants>()
+    private val odds = spyk<Odds>()
+
+    @BeforeEach
+    fun setUp() {
+        every { events.callEvents("nba") } returns fakeNbaEventsResponse
+        every { participants.callParticipants("nba") } returns fakeNbaParticipantsResponse
+        every { odds.callOdds("nba") } returns fakeNbaOddsResponse
+        every { nbaProjections.getEventData() } returns events.getEventData("nba")
+        every { nbaProjections.getParticipantsData() } returns participants.getParticipantsData("nba")
+        every { nbaProjections.getOddsData() } returns odds.getOddsData("nba")
+        every { nbaProjections.getProjectionsFromEvent(any()) } returns fakeNbaProjectionsResponse
+    }
+
     @Test
     fun shouldGetNbaProjections() {
-        val result: Map<Int, Map<String, Any?>> = getNbaProjectionsData(
-                { getEventData("nba") {fakeNbaEventsResponse} },
-                { getParticipantsData("nba") {fakeNbaParticipantsResponse} },
-                { getOddsData("nba") {fakeNbaOddsResponse} },
-                {_: String, _: Int -> fakeNbaProjectionsResponse }
-        )
+        val result: Map<Int, Map<String, Any?>> = nbaProjections.getNbaProjectionsData()
         assertEquals("Al Horford", result.getValue(280587)["name"])
         assertEquals("Phi", result.getValue(280587)["team"])
         assertEquals("v. Den", result.getValue(280587)["opponent"])

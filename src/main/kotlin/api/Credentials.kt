@@ -24,7 +24,7 @@ private fun convertBytesToHex(hash: ByteArray): String {
 }
 
 fun getCredentials(): Array<String> {
-    val key = System.getenv("key") ?: ""
-    val secret = System.getenv("secret") ?: ""
+    val key = System.getenv("key").orEmpty()
+    val secret = System.getenv("secret").orEmpty()
     return arrayOf(key, secret)
 }

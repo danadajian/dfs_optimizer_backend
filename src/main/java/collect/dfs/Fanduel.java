@@ -21,7 +21,7 @@ public class Fanduel extends DFS {
             contestMap.put("sport", event.getString("sport"));
             String contest = event.getJSONObject("game").getString("label");
             contestMap.put("contest", contest);
-            if (event.has("player")) {
+            if (event.has("player") && Objects.nonNull(event.optJSONArray("player"))) {
                 JSONArray playerPool = event.getJSONArray("player");
                 List<Map<String, Object>> playerList = new ArrayList<>();
                 for (Object object : playerPool) {

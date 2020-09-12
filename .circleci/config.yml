@@ -30,9 +30,9 @@ jobs:
       - run:
           name: Install SAM CLI
           command: |
-            apt-get -y -qq update
-            apt-get -y -qq install python3.7
-            apt-get -y -qq install python3-pip
+            apt -y -qq update
+            apt -y -qq install python3.7
+            apt -y -qq install python3-pip
             pip3 install --upgrade awscli
             pip3 install --upgrade aws-sam-cli
       - run:

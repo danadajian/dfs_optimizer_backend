@@ -3,19 +3,20 @@ package collect.stats
 import api.DataCollector
 import collect.misc.Odds
 import collect.misc.Weather
+import kotlinx.coroutines.*
 
 class MlbProjections {
     private val sport = "mlb"
 
-    fun getMlbProjectionsData(): Map<Int, Map<String, Any?>> {
-        val eventData = getEventData()
-        val participantsData = getParticipantsData()
-        val oddsData = getOddsData()
-        val weatherData = getWeatherData()
+    suspend fun getMlbProjectionsData(): Map<Int, Map<String, Any?>> {
+        val eventData = withContext(Dispatchers.Default) { getEventData() }
+        val participantsData = withContext(Dispatchers.Default) { getParticipantsData() }
+        val oddsData = withContext(Dispatchers.Default) { getOddsData() }
+        val weatherData = withContext(Dispatchers.Default) { getWeatherData() }
         val eventIds = eventData.keys
         return eventIds.map { eventId ->
-            getProjectionsFromEvent(eventId)
-        }.filter { apiResponse ->
+            GlobalScope.async { getProjectionsFromEvent(eventId) }
+        }.awaitAll().filter { apiResponse ->
             apiResponse.isNotEmpty()
         }.map { apiResponse ->
             buildProjectionsMap(apiResponse, listOf("batters", "pitchers"), eventData, participantsData, oddsData, weatherData)

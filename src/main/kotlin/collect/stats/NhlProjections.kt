@@ -2,18 +2,19 @@ package collect.stats
 
 import api.DataCollector
 import collect.misc.Odds
+import kotlinx.coroutines.*
 
 class NhlProjections {
     private val sport = "nhl"
 
-    fun getNhlProjectionsData(): Map<Int, Map<String, Any?>> {
-        val eventData = getEventData()
-        val participantsData = getParticipantsData()
-        val oddsData = getOddsData()
+    suspend fun getNhlProjectionsData(): Map<Int, Map<String, Any?>> {
+        val eventData = withContext(Dispatchers.Default) { getEventData() }
+        val participantsData = withContext(Dispatchers.Default) { getParticipantsData() }
+        val oddsData = withContext(Dispatchers.Default) { getOddsData() }
         val eventIds = eventData.keys
         return eventIds.map { eventId ->
-            getProjectionsFromEvent(eventId)
-        }.filter { apiResponse ->
+            GlobalScope.async { getProjectionsFromEvent(eventId) }
+        }.awaitAll().filter { apiResponse ->
             apiResponse.isNotEmpty()
         }.map { apiResponse ->
             buildProjectionsMap(apiResponse, listOf("skaters", "goalies"), eventData, participantsData, oddsData)

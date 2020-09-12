@@ -1,10 +1,15 @@
 package handler
 
-import collect.stats.*
+import collect.stats.MlbProjections
+import collect.stats.NbaProjections
+import collect.stats.NflProjections
+import collect.stats.NhlProjections
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 import util.AWS
 
 class ProjectionsHandler {
-    fun handleRequest(input: Map<String, String>): Map<String, Any> {
+    suspend fun handleRequest(input: Map<String, String>): Map<String, Any> {
         val sport = input.getValue("sport")
         val invocationType = input.getOrDefault("invocationType", "web")
         val projections: Map<Int, Map<String, Any?>> =
@@ -21,23 +26,23 @@ class ProjectionsHandler {
         } else mapOf("body" to projections)
     }
 
-    fun getMlbProjectionsData(): Map<Int, Map<String, Any?>> {
+    suspend fun getMlbProjectionsData(): Map<Int, Map<String, Any?>> {
         return MlbProjections().getMlbProjectionsData()
     }
 
-    fun getNflProjectionsData(): Map<Int, Map<String, Any?>> {
+    suspend fun getNflProjectionsData(): Map<Int, Map<String, Any?>> {
         return NflProjections().getNflProjectionsData()
     }
 
-    fun getNhlProjectionsData(): Map<Int, Map<String, Any?>> {
+    suspend fun getNhlProjectionsData(): Map<Int, Map<String, Any?>> {
         return NhlProjections().getNhlProjectionsData()
     }
 
-    fun getNbaProjectionsData(): Map<Int, Map<String, Any?>> {
+    suspend fun getNbaProjectionsData(): Map<Int, Map<String, Any?>> {
         return NbaProjections().getNbaProjectionsData()
     }
 
-    fun uploadToS3(fileName: String, objectToUpload: Any) {
-        return AWS().uploadToS3(fileName, objectToUpload)
+    suspend fun uploadToS3(fileName: String, objectToUpload: Any) {
+        return withContext(Dispatchers.Default) { AWS().uploadToS3(fileName, objectToUpload) }
     }
 }

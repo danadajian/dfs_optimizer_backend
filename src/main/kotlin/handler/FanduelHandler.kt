@@ -1,10 +1,12 @@
 package handler
 
 import collect.dfs.FanduelContests
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 import util.AWS
 
 class FanduelHandler {
-    fun handleRequest(input: Map<String, String>): List<Map<String, Any>> {
+    suspend fun handleRequest(input: Map<String, String>): List<Map<String, Any>> {
         val date = input.getValue("date")
         val invocationType = input.getOrDefault("invocationType", "web")
         val fanduelData = getFanduelContestData(date)
@@ -18,7 +20,7 @@ class FanduelHandler {
         return FanduelContests().getFanduelContestData(date)
     }
 
-    fun uploadToS3(fileName: String, objectToUpload: Any) {
-        return AWS().uploadToS3(fileName, objectToUpload)
+    suspend fun uploadToS3(fileName: String, objectToUpload: Any) {
+        return withContext(Dispatchers.Default) { AWS().uploadToS3(fileName, objectToUpload) }
     }
 }

@@ -3,17 +3,19 @@ package collect.stats
 import api.DataCollector
 import collect.misc.Odds
 import collect.misc.Weather
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 import org.json.JSONObject
 
 
 class NflProjections {
     private val sport = "nfl"
 
-    fun getNflProjectionsData(): Map<Int, Map<String, Any?>> {
-        val eventData = getEventData()
-        val oddsData = getOddsData()
-        val weatherData = getWeatherData()
-        val apiResponse: String = getProjectionsFromThisWeek()
+    suspend fun getNflProjectionsData(): Map<Int, Map<String, Any?>> {
+        val eventData = withContext(Dispatchers.Default) { getEventData() }
+        val oddsData = withContext(Dispatchers.Default) { getOddsData() }
+        val weatherData = withContext(Dispatchers.Default) { getWeatherData() }
+        val apiResponse: String = withContext(Dispatchers.Default) { getProjectionsFromThisWeek() }
         return if (apiResponse.isEmpty()) mapOf() else {
             val projectionsJson = JSONObject(apiResponse).getJSONArray("apiResults").getJSONObject(0)
                     .getJSONObject("league").getJSONObject("season").getJSONArray("eventType").getJSONObject(0)

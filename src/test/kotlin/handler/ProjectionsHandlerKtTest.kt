@@ -1,6 +1,7 @@
 package handler
 
 import io.mockk.*
+import kotlinx.coroutines.runBlocking
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import kotlin.test.assertEquals
@@ -11,24 +12,24 @@ class ProjectionsHandlerKtTest {
 
     @BeforeEach
     fun setUp() {
-        every { projectionsHandler.getMlbProjectionsData() } returns mlbResult
-        every { projectionsHandler.getNflProjectionsData() } returns mapOf()
-        every { projectionsHandler.getNhlProjectionsData() } returns mapOf()
-        every { projectionsHandler.getNbaProjectionsData() } returns mapOf()
-        justRun { projectionsHandler.uploadToS3(any(), any()) }
+        coEvery { projectionsHandler.getMlbProjectionsData() } returns mlbResult
+        coEvery { projectionsHandler.getNflProjectionsData() } returns mapOf()
+        coEvery { projectionsHandler.getNhlProjectionsData() } returns mapOf()
+        coEvery { projectionsHandler.getNbaProjectionsData() } returns mapOf()
+        coJustRun { projectionsHandler.uploadToS3(any(), any()) }
     }
 
     @Test
-    fun `should handle request with web invocation`() {
+    fun `should handle request with web invocation`() = runBlocking {
         val result = projectionsHandler.handleRequest(mapOf("sport" to "mlb"))
-        verify(exactly = 0) { projectionsHandler.uploadToS3(any(), any()) }
+        coVerify(exactly = 0) { projectionsHandler.uploadToS3(any(), any()) }
         assertEquals(mapOf("body" to mlbResult), result)
     }
 
     @Test
-    fun `should handle request with pipeline invocation`() {
+    fun `should handle request with pipeline invocation`() = runBlocking {
         val result = projectionsHandler.handleRequest(mapOf("sport" to "mlb", "invocationType" to "pipeline"))
-        verify { projectionsHandler.uploadToS3("mlbProjectionsData.json", mlbResult) }
+        coVerify { projectionsHandler.uploadToS3("mlbProjectionsData.json", mlbResult) }
         assertEquals(mapOf("sport" to "mlb"), result)
     }
 }

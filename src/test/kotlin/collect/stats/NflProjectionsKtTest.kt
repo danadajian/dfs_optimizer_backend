@@ -4,6 +4,7 @@ import collect.misc.Odds
 import collect.misc.Weather
 import io.mockk.every
 import io.mockk.spyk
+import kotlinx.coroutines.runBlocking
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
@@ -33,7 +34,7 @@ class NflProjectionsKtTest {
     }
 
     @Test
-    fun shouldGetNflProjectionsFromThisWeek() {
+    fun `should get NFL projections from this week`() = runBlocking {
         val result: Map<Int, Map<String, Any?>> = nflProjections.getNflProjectionsData()
         assertEquals("Lamar Jackson", result.getValue(877745)["name"])
         assertEquals("Bal", result.getValue(877745)["team"])

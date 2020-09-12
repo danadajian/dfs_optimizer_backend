@@ -2,8 +2,10 @@ package collect.stats
 
 import collect.misc.Odds
 import collect.misc.Weather
+import io.mockk.coEvery
 import io.mockk.every
 import io.mockk.spyk
+import kotlinx.coroutines.runBlocking
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
@@ -37,7 +39,7 @@ class MlbProjectionsKtTest {
     }
 
     @Test
-    fun shouldGetMlbProjections() {
+    fun `should get MLB projections`() = runBlocking {
         val result: Map<Int, Map<String, Any?>> = mlbProjections.getMlbProjectionsData()
         assertEquals("Renato Nunez", result.getValue(596834)["name"])
         assertEquals("Bal", result.getValue(596834)["team"])

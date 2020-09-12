@@ -32,7 +32,7 @@ jobs:
           command: |
             apt-get -y -qq update
             apt-get -y -qq install python-dev
-            apt-get -y -qq install python-pip
+            apt-get -y -qq install python3-pip
             pip install --upgrade awscli
             pip install --upgrade aws-sam-cli
       - run:

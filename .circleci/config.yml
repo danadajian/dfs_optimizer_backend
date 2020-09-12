@@ -32,7 +32,7 @@ jobs:
           command: |
             apt-get -y -qq update
             apt-get -y -qq install software-properties-common
-            add-apt-repository -y -qq ppa:deadsnakes/ppa
+            add-apt-repository -y ppa:deadsnakes/ppa
             apt -y -qq install python3.7
             apt -y -qq install python3-pip
             pip3 install --upgrade awscli

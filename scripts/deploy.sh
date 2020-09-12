@@ -8,7 +8,6 @@ else
     echo "Bucket does not exist, creating: ${TEST_BUCKET_NAME}"
     aws s3 mb s3://"${TEST_BUCKET_NAME}"
     aws s3api put-bucket-policy --bucket "${TEST_BUCKET_NAME}" --policy file://./bucket-policy.json
-#    aws s3 website "s3://${BUCKET_NAME}" --index-document index.html
 fi
 
 PATH_TO_FILE=$(find . -name "*-jar-with-dependencies.jar*" | head -n 1)

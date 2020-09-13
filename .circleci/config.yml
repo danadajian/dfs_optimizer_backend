@@ -27,9 +27,9 @@ jobs:
   deploy:
     <<: *container_config
     steps:
-      - attach_workspace:
-          at: ~/dfs-optimizer
       - sam/install
+      - attach_workspace:
+        at: ~/dfs-optimizer
       - run:
           name: Deploy to AWS
           command: |

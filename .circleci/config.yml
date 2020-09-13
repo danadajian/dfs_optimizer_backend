@@ -22,6 +22,7 @@ jobs:
           paths: .
   deploy:
     <<: *container_config
+    executor: sam/default
     steps:
       - attach_workspace:
           at: ~/dfs-optimizer

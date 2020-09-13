@@ -30,8 +30,9 @@ jobs:
       - run:
           name: Install SAM CLI
           command: |
+            add-apt-repository -y ppa:jonathonf/python-3.6
             apt-get -y -qq update
-            apt-get install python3\.6
+            apt-get install -y python3.6
             apt-get install python3-pip
             pip3 install --upgrade awscli
             pip3 install --upgrade aws-sam-cli

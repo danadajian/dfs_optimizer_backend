@@ -26,7 +26,6 @@ jobs:
           paths: .
   deploy:
     <<: *container_config
-    executor: sam/default
     steps:
       - attach_workspace:
           at: ~/dfs-optimizer
@@ -36,9 +35,6 @@ jobs:
           command: |
             chmod +x ./scripts/deploy.sh
             ./scripts/deploy.sh
-      - persist_to_workspace:
-          root: ~/dfs-optimizer
-          paths: .
 
 workflows:
   version: 2

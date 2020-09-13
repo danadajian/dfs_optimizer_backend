@@ -27,11 +27,11 @@ jobs:
   deploy:
     <<: *container_config
     steps:
-      - attach_workspace:
-          at: ~/dfs-optimizer
       - run:
           name: Set Bash Environment
           command: echo "export PATH='$PATH:/root/.local/bin'" >> $BASH_ENV
+      - attach_workspace:
+          at: ~/dfs-optimizer
       - sam/install
       - run:
           name: Deploy to AWS

@@ -5,18 +5,20 @@ container_config: &container_config
     - image: openjdk:8-jdk-stretch
 orbs:
   maven: circleci/maven@1.0.2
-  aws-sam-serverless: circleci/aws-sam-serverless@1.0.1
+  sam: circleci/aws-sam-serverless@1.0.1
 jobs:
   build:
     <<: *container_config
     steps:
       - checkout
       - run:
-          name: Test and Package
+          name: Update pom.xml
           command: |
             TIMESTAMP=$( date +"%Y-%m-%d_%H-%M-%S" )
             sed -i "s/REPLACE_ME_WITH_TIMESTAMP/$TIMESTAMP/g" pom.xml
-            mvn clean package
+      - maven/test:
+          name: Test and Package
+          command: clean package
       - persist_to_workspace:
           root: ~/dfs-optimizer
           paths: .

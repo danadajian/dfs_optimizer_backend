@@ -7,7 +7,7 @@ orbs:
   maven: circleci/maven@1.0.2
   sam: circleci/aws-sam-serverless@1.0.1
 jobs:
-  build:
+  config:
     <<: *container_config
     steps:
       - checkout
@@ -16,9 +16,6 @@ jobs:
           command: |
             TIMESTAMP=$( date +"%Y-%m-%d_%H-%M-%S" )
             sed -i "s/REPLACE_ME_WITH_TIMESTAMP/$TIMESTAMP/g" pom.xml
-      - maven/test:
-          name: Test and Package
-          command: clean package
       - persist_to_workspace:
           root: ~/dfs-optimizer
           paths: .
@@ -48,7 +45,9 @@ workflows:
   version: 2
   deploy_dfs_optimizer_backend:
     jobs:
-      - build
+      - config
+      - maven/test:
+          command: clean package
       - deploy:
           context: DFS_OPTIMIZER
           filters:
@@ -56,4 +55,5 @@ workflows:
               only:
                 - kotlin-migration
           requires:
-            - build
+            - config
+            - maven/test

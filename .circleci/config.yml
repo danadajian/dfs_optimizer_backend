@@ -29,13 +29,8 @@ jobs:
     steps:
       - attach_workspace:
           at: ~/dfs-optimizer
-      - sam/install
-      - run:
-          name: Configure AWS
-          command: |
-            aws configure set aws_access_key_id AWS_ACCESS_KEY_ID
-            aws configure set aws_secret_access_key AWS_SECRET_ACCESS_KEY
-            aws configure set default.region us-east-2
+      - sam/install:
+          aws-region: us-east-2
       - run:
           name: Deploy to AWS
           command: |

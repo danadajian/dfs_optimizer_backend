@@ -1,18 +1,16 @@
-version: 2.0
+version: 2.1
 container_config: &container_config
   working_directory: ~/dfs-optimizer
   docker:
     - image: openjdk:8-jdk-stretch
+orbs:
+  maven: circleci/maven@1.0.2
+  aws-sam-serverless: circleci/aws-sam-serverless@1.0.1
 jobs:
   build:
     <<: *container_config
     steps:
       - checkout
-      - run:
-          name: Install Maven
-          command: |
-            apt-get -y -qq update
-            apt-get -y -qq install maven
       - run:
           name: Test and Package
           command: |
@@ -27,17 +25,7 @@ jobs:
     steps:
       - attach_workspace:
           at: ~/dfs-optimizer
-      - run:
-          name: Install SAM CLI
-          command: |
-            apt-get -y -qq update
-            apt-get install -y software-properties-common
-            add-apt-repository -y ppa:deadsnakes/ppa
-            apt-get -y -qq update
-            apt-get install python3.6
-            apt-get install python3-pip
-            pip3 install --upgrade awscli
-            pip3 install --upgrade aws-sam-cli
+      - sam/install
       - run:
           name: Configure AWS
           command: |

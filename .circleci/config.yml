@@ -4,24 +4,28 @@ container_config: &container_config
   docker:
     - image: openjdk:8-jdk-stretch
 orbs:
-  maven: circleci/maven@1.0.2
-  sam: circleci/aws-sam-serverless@1.0.1
+  aws-sam-serverless: circleci/aws-sam-serverless@1.0.1
 jobs:
-  config:
+  build:
     <<: *container_config
     steps:
       - checkout
       - run:
-          name: Update pom.xml
+          name: Install Maven
+          command: |
+            apt-get -y -qq update
+            apt-get -y -qq install maven
+      - run:
+          name: Test and Package
           command: |
             TIMESTAMP=$( date +"%Y-%m-%d_%H-%M-%S" )
             sed -i "s/REPLACE_ME_WITH_TIMESTAMP/$TIMESTAMP/g" pom.xml
+            mvn clean package
       - persist_to_workspace:
           root: ~/dfs-optimizer
           paths: .
   deploy:
     <<: *container_config
-    executor: sam/default
     steps:
       - attach_workspace:
           at: ~/dfs-optimizer
@@ -45,9 +49,7 @@ workflows:
   version: 2
   deploy_dfs_optimizer_backend:
     jobs:
-      - config
-      - maven/test:
-          command: clean package
+      - build
       - deploy:
           context: DFS_OPTIMIZER
           filters:
@@ -55,5 +57,4 @@ workflows:
               only:
                 - kotlin-migration
           requires:
-            - config
-            - maven/test
+            - build

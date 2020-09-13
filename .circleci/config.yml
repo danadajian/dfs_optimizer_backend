@@ -29,7 +29,7 @@ jobs:
     steps:
       - sam/install
       - attach_workspace:
-        at: ~/dfs-optimizer
+          at: ~/dfs-optimizer
       - run:
           name: Deploy to AWS
           command: |

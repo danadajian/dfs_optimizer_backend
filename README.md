@@ -8,7 +8,7 @@ player has a position, a projection, and a salary, and a lineup must contain a c
 optimization problem presented here is a type of knapsack problem, which involves picking items with weights and values 
 optimally to fit inside a knapsack.
 
-![dfs-optimizer-example](https://github.com/danadajian/Personal-Website/raw/master/src/images/dfs-optimizer-example.png)
+![dfs-optimizer-example](https://github.com/danadajian/danadajian.github.io/blob/master/src/images/dfs-optimizer-example.png)
 
 ### My Solution
 
